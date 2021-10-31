@@ -1,0 +1,8 @@
+config.php
+tests/config.php
+.phpunit.result.cache
+.project
+*.bfproject
+.buildpath
+node-modules
+node-modules/*

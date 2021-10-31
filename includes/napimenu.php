@@ -1,0 +1,158 @@
+<?php
+
+// $_GET['id'] menu rekord id
+function menuDelete() {
+	$db = new \RATWEB\DB\Query('napimenuk');
+	$db->where('id','=',$_GET['id'])
+	   ->where('created_by','=', $_SESSION['loged']) 
+	   ->delete();
+	home();	
+}
+
+// $_GET['ev', 'ho', 'nap', .... képernyő mezők .... ] 
+function menusave() {
+	$ev = $_GET['ev'];
+	$ho = $_GET['ho'];
+	$nap = $_GET['nap'];
+	if ($ho < 10) $ho = '0'.$ho;
+	if ($nap < 10) $nap = '0'.$nap;
+	
+	$db = new \RATWEB\DB\Query('napimenuk');
+	$db->where('ev','=',$ev)
+	   ->where('ho','=',$ho)
+	   ->where('nap','=',$nap)
+	   ->where('created_by','=',$_SESSION['loged']);
+	$db->delete();
+	
+	$r = new \RATWEB\DB\Record();
+	$r->ev = $ev;	
+	$r->ho = $ho;	
+	$r->nap = $nap;	
+	$r->datum = $ev.'-'.$ho.'-'.$nap;
+	$r->recept1 = $_GET['recept1'];	
+	$r->recept2 = $_GET['recept2'];	
+	$r->recept3 = $_GET['recept3'];	
+	$r->recept4 = $_GET['recept4'];
+	$r->created_by = $_SESSION['loged'];	
+	$r->adag = $_GET['adag'];
+	if (!is_numeric($r->adag)) $r->adag = 4;	
+	$db->insert($r);
+	home();
+}
+
+function napimenu() {
+	// get nap
+	// sessionban a numYear és numMonth
+	$db = new \RATWEB\DB\Query('napimenuk');
+	$db->exec('CREATE TABLE IF NOT EXISTS napimenuk (
+		    id int AUTO_INCREMENT,
+		    ev int,
+		    ho int,
+		    nap int,
+		    datum varchar(12),
+		    adag int,
+		    recept1 int,
+		    recept2 int,
+		    recept3 int,
+		    recept4 int,
+		    created_by int,
+		    PRIMARY KEY (id)
+	)');	
+	$nap = $_GET['nap'];
+	$ho = $_SESSION['numMonth'];
+	$ev = $_SESSION['numYear'];
+
+	// aktuális menu
+	$rec = JSON_decode('{"id":0, "recept1":0, "recept2":0, "recept3":0, "recept4":0, "adag":4}');	
+	$db->where('ev','=',$ev)
+	   ->where('ho','=',$ho)
+	   ->where('nap','=',$nap)
+	   ->where('created_by','=',$_SESSION['loged']);
+	$rec = $db->first();
+	if ($db->error != '') {
+		$rec = JSON_decode('{"id":0, "recept1":0, "recept2":0, "recept3":0, "recept4":0, "adag":4}');	
+	}
+
+	// összes meglévő recept
+	$receptek = [];
+	$db = new \RATWEB\DB\Query('receptek');
+	$receptek = $db->orderBy('nev')->all();
+	
+	function receptSelect($v, $a) {
+		if ($v == $a) echo ' selected="selected"';
+	}
+
+	?>
+	<img src="https://cdn.pixabay.com/photo/2017/03/02/02/16/place-setting-2110245_960_720.jpg"
+	class="dekorImg" />
+	<div class="row">
+		<form id="menuForm" action="index.php">
+			<input type="hidden" value="menusave" name="task" />			
+			<input type="hidden" value="<?php echo  $nap; ?>" name="nap" />
+			<input type="hidden" value="<?php echo $ho; ?>" name="ho" />
+			<input type="hidden" value="<?php echo $ev; ?>" name="ev" />
+			<h2><?php echo $ev.'.'.$ho.'.'.$nap?> napi menü</h2>
+			<div class="form-outline mb-4">
+				<input type="number" name="adag" 
+					value="<?php echo $rec->adag; ?>" style="width:60px" /> adag
+				<br /><br />	
+			<div>			
+			<div class="form-outline mb-4">
+				<select name="recept1" style="width:400px">
+					<option value="0"></option>
+					<?php foreach ($receptek as $recept) : ?>
+					<option value="<?php echo $recept->id; ?>"<?php receptSelect($recept->id, $rec->recept1); ?>><?php echo $recept->nev; ?></option>
+					<?php endforeach; ?> 				
+				</select>
+			</div>
+			<div class="form-outline mb-4">
+				<select name="recept2" style="width:400px">
+					<option value="0"></option>
+					<?php foreach ($receptek as $recept) : ?>
+					<option value="<?php echo $recept->id; ?>"<?php receptSelect($recept->id, $rec->recept2); ?>><?php echo $recept->nev; ?></option>
+					<?php endforeach; ?> 				
+				</select>
+			</div>
+			<div class="form-outline mb-4">
+				<select name="recept3" style="width:400px">
+					<option value="0"></option>
+					<?php foreach ($receptek as $recept) : ?>
+					<option value="<?php echo $recept->id; ?>"<?php receptSelect($recept->id, $rec->recept3); ?>><?php echo $recept->nev; ?></option>
+					<?php endforeach; ?> 				
+				</select>
+			</div>
+			<div class="form-outline mb-4">
+				<select name="recept4" style="width:400px">
+					<option value="0"></option>
+					<?php foreach ($receptek as $recept) : ?>
+					<option value="<?php echo $recept->id; ?>"<?php receptSelect($recept->id, $rec->recept4); ?>><?php echo $recept->nev; ?></option>
+					<?php endforeach; ?> 				
+				</select>
+			</div>
+			<div class="form-outline mb-4">
+				A legtöbb főétel receptje nem tartalmazza a köretet. Szükség esetén azt
+				külön sorban válaszd ki!
+			</div>
+									
+			<div class="form-outline mb-4">
+				<button type="submit" class="btn btn-primary">
+				<em class="fas fa-check"></em>&nbsp;Tárolás</button>
+				&nbsp;
+				<?php if ($rec->id > 0) : ?>
+				<button type="button" onclick="delClick()" class="btn btn-danger">
+				<em class="fas fa-ban"></em>&nbsp;Napi menü törlése</button>
+				<?php endif; ?>
+			</div>
+		</form>
+	</div>	
+	<script>
+		function delClick() {
+			if (window.confirm('Biztos, hogy törölni akarod ezt a napi menüt?')) {
+				document.location = 'index.php?task=menudelete&id=<?php echo $rec->id; ?>';
+			}			
+		}	
+	</script>	
+	<?php
+}
+
+?>

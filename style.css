@@ -1,0 +1,46 @@
+html {font-size:18px}
+body {text-align:center}
+.container {display:inline-block; margin:10px; padding:0px 0px 0px 0px; 
+            border-radius:30px; background-color:#d0f0d0}
+#header {height:100px; margin:20px; background-image:url('images/fejlec.png')}
+nav {background-color:#448444; color:white; text-align:left}
+.nav-link {color:white;}
+.nav-link:hover {color:silver} 
+.page {min-height:600px; text-align:left; padding:10px}
+.dekorImg {float:right; height:250px; margin:10px;}
+table {background-color:white; padding:5px;
+		border-style:solid; border-width:1px;}
+img {margin:5px}		
+button {margin-top:10px;}
+#receptForm {padding: 20px 20px 20px 20px}
+nav ul {list-style:none}
+nav li {display:inline-block; width:auto}
+form {margin:10px 10px 10px 20px}
+.van {background-color:green; padding:5px}
+.van a {color:white; text-decoration:none }
+.nincs {background-color:white; padding:5px}
+.nincs a {color:blue; text-decoration:none }
+.mainap {border-style:solid; border-width:2px; border-color:black}
+.receptKep {height:250px; float:right}
+.sajat a {color:blue; font-weight:bold}
+.idegen a {color:#a0a0a0}
+#osszegzes {padding: 10px 10px 10px 100px}
+#osszegzes table {width:50%}
+
+#receptListTable {width:500px; max-height:450px; overflow:scroll}
+
+#footer {background-color:silver; padding:20px; 
+  border-radius: 0px 0px 30px 30px; text-align:center}
+
+@media print {
+	 h1,h2,h3,h4 {font-size:10px; font-weight: bold}
+    #header {display:none; height:0px;}
+	 .page {min-height:10px; text-align:left; padding:10px; font-size:8px}
+    nav {display:none; height:0px;}
+    /* img {display:none; height:0px;} */
+    button {display:none; height:0px;}
+    .help {display:none; height:0px;}
+    textarea {border-style:none; }
+	.receptKep {height:100px; float:right}
+	#footer {display:none}
+}
