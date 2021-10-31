@@ -11,11 +11,11 @@ function impresszum() {
 	  <p>Fogler Tibor</p>
 	  <p>tibor.fogler@gmail.com</p>
 	  <h2>Adat kezelő</h2>
-	  <p>?????</p>
-	  <p>?????</p>
+	  <p>Fogler Tibor</p>
+	  <p>tibor.fogler@gmail.com</p>
 	  <h2>Adat feldolgozó</h2>
-	  <p>?????</p>
-	  <p>?????</p>	
+	  <p>Tárhely.Eu Szolgáltató Kft.</p>
+	  <p>https://tarhely.eu</p>	
 	</div>
 	<?php
 }

@@ -17,6 +17,11 @@ function menusave() {
 	if ($ho < 10) $ho = '0'.$ho;
 	if ($nap < 10) $nap = '0'.$nap;
 	
+	if ($_SESSION['loged'] < 0) {
+		echo '<div class="alert alert-danger">Napi menü felviteléhez be kell jelentkezni!</div>';
+		return;	
+	}
+	
 	$db = new \RATWEB\DB\Query('napimenuk');
 	$db->where('ev','=',$ev)
 	   ->where('ho','=',$ho)
@@ -80,6 +85,10 @@ function napimenu() {
 	
 	function receptSelect($v, $a) {
 		if ($v == $a) echo ' selected="selected"';
+	}
+
+	if ($_SESSION['loged'] < 0) {
+		echo '<div class="alert alert-danger">Napi menü felviteléhez be kell jelentkezni!</div>';	
 	}
 
 	?>

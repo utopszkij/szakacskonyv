@@ -22,6 +22,12 @@ function receptdelete() {
 
 function receptsave() {
 	// get -ben: id, leiras, hozzvalok0, mennyiseg0, me0, hozzavalok1,....
+	
+	if ($_SESSION['loged'] < 0) {
+		echo '<div class="alert alert-danger">Recept felviteléhez be kell jelentkezni!</div>';
+		return;	
+	}
+	
 	$receptId = $_POST['id'];
 	if ($receptId == 0) {
 		$db = new \RATWEB\DB\Query('receptek');
@@ -169,6 +175,11 @@ function recept() {
 	while (count($hozzavalok) < 15) {
 			$hozzavalok[] = JSON_decode('{"mennyiseg":"", "me":0, "hozzavalo":""}');					
 	}
+	
+	if ($_SESSION['loged'] < 0) {
+		echo '<div class="alert alert-danger">Recept felviteléhez be kell jelentkezni!</div>';	
+	}
+
 	?>
 	<div id="recept">
 		<form id="receptForm" action="index.php?task=receptsave" method="post" enctype="multipart/form-data">
