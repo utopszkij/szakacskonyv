@@ -45,11 +45,30 @@ ezekkel kapcsolatban semmilyen felelősséget nem vállal.
 - config.php elkészítésa a config-exampla.php alapján.
 - fájlok és könyvtárak feltöltése a szerverre
 - az images könyvtár legyen irható a web szerver számára, a többi csak olvasható legyen
-- adatbázis kezdeti feltöltése a dbinit.sql segitségével.
+- adatbázis kezdeti feltöltése a vendir/database/dbinit.sql segitségével.
 - többfelhasználós üzemmódban, a program "Regisztráció" menüpontjában hozzuk létre a
 - a system adminisztrátor fiokot.
 
 ## Lecensz
 
 GNU/GPL
+
+## képernyő képek
+
+![napi menük](https://github.com/utopszkij/szakacskonyv/blob/main/images/kezdolap.png?raw=true)
+
+![napi menü](https://github.com/utopszkij/szakacskonyv/blob/main/images/napimenu.png?raw=true)
+
+![receptek](https://github.com/utopszkij/szakacskonyv/blob/main/images/receptek.png?raw=true)
+
+![recept](https://github.com/utopszkij/szakacskonyv/blob/main/images/recept.png?raw=true)
+
+![összesítés](https://github.com/utopszkij/szakacskonyv/blob/main/images/osszesites.png?raw=true)
+
+![bevásárló lista](https://github.com/utopszkij/szakacskonyv/blob/main/images/bevlista.png?raw=true)
+
+
+
+
+
 
