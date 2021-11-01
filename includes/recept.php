@@ -35,78 +35,85 @@ function receptsave() {
 		$r->nev = $_GET['nev'];
 		$r->created_by = $_SESSION['loged'];
 		$receptId = $db->insert($r);
+	} else {
+		$db = new \RATWEB\DB\Query('receptek');
+		$db->where('id','=',$receptId);
+		$recept = $db->first();
+		if (($recept->created_by != $_SESSION['loged']) & 
+		    ($_SESSION['logedName'] != ADMIN)) {
+			echo '<div class="alert alert-danger">Hozzáférés megtagadva!</div>';
+			return;
+		}
 	}
 
 
-	// leírás tárolása, csak a saját maga által felvittet módosíthatja
+	// leírás és név tárolása
 	$db = new \RATWEB\DB\Query('receptek');
 	$db->where('id','=',$receptId);
 	$recept = $db->first();
-	if ($recept->created_by == $_SESSION['loged']) {	
-		$r = new \RATWEB\DB\Record();
-		$r->leiras = $_POST['leiras'];
-		$r->nev = $_POST['nev'];
-		$db->where('id','=',$receptId)
-			->where('created_by','=',$_SESSION['loged'])
-		   ->update($r);
+	$r = new \RATWEB\DB\Record();
+	$r->leiras = $_POST['leiras'];
+	$r->nev = $_POST['nev'];
+	$db->where('id','=',$receptId)
+	   ->update($r);
+	
+	// meglévő hozzávalók törlése
+	$db = new \RATWEB\DB\Query('hozzavalok');
+	if ($receptId > '0') {
+		$db->where('recept_id','=',$receptId)->delete();	
+	}
+	
+	// hozzávalók felvitele
+	for ($i = 0; $i < 15; $i++) {
+		if (isset($_POST['hozzavalo'.$i])) {
+			if ($_POST['hozzavalo'.$i] != '') {
+				$r = new \RATWEB\DB\Record();
+				$r->recept_id = $receptId;
+				$r->nev = $_POST['hozzavalo'.$i];
+				$r->mennyiseg = $_POST['mennyiseg'.$i];
+				if (!is_numeric($r->mennyiseg)) $r->mennyiseg = 0;
+				$r->me = $_POST['me'.$i];
+				$db->insert($r);
+			}
+		}	
+	}
+	
+	// kép file feltöltése
+	if (file_exists($_FILES['kepfile']['tmp_name'])) { 
+		$target_dir = str_replace('/includes','',__DIR__)."/images/";
+		$target_file = $target_dir . basename($_FILES["kepfile"]["name"]);
+		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		$target_file = $target_dir.$_POST['nev'].'.'.$imageFileType;		
+		$uploadOk = '';
 		
-		// meglévő hozzávalók törlése
-		$db = new \RATWEB\DB\Query('hozzavalok');
-		if ($receptId > '0') {
-			$db->where('recept_id','=',$receptId)->delete();	
+	   $check = getimagesize($_FILES["kepfile"]["tmp_name"]);
+		if($check == false) {
+		    $uploadOk = 'nem kép fájl';
 		}
 		
-		// hozzávalók felvitele
-		for ($i = 0; $i < 15; $i++) {
-			if (isset($_POST['hozzavalo'.$i])) {
-				if ($_POST['hozzavalo'.$i] != '') {
-					$r = new \RATWEB\DB\Record();
-					$r->recept_id = $receptId;
-					$r->nev = $_POST['hozzavalo'.$i];
-					$r->mennyiseg = $_POST['mennyiseg'.$i];
-					if (!is_numeric($r->mennyiseg)) $r->mennyiseg = 0;
-					$r->me = $_POST['me'.$i];
-					$db->insert($r);
-				}
-			}	
+		if (file_exists($target_file)) {
+		  unlink($target_file);
 		}
-		// kép file feltöltése
-		if (file_exists($_FILES['kepfile']['tmp_name'])) { 
-			$target_dir = str_replace('/includes','',__DIR__)."/images/";
-			$target_file = $target_dir . basename($_FILES["kepfile"]["name"]);
-			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-			$target_file = $target_dir.$_POST['nev'].'.'.$imageFileType;		
-			$uploadOk = '';
-			
-		   $check = getimagesize($_FILES["kepfile"]["tmp_name"]);
-			if($check == false) {
-			    $uploadOk = 'nem kép fájl';
-			}
-			
-			if (file_exists($target_file)) {
-			  unlink($target_file);
-			}
-			
-			if ($_FILES["kepfile"]["size"] > 5000000) {
-			  $uploadOk .= ' túl nagy fájl méret';
-			}
-			
-			if($imageFileType != "jpg" && 
-			   $imageFileType != "png" && 
-			   $imageFileType != "jpeg" && 
-			   $imageFileType != "gif" ) {
-			  $uploadOk .= ' nem megengedett fájl kiterjesztés';
-			}
-			
-			if ($uploadOk == '') {
-			  if (!move_uploaded_file($_FILES["kepfile"]["tmp_name"], $target_file)) {
-			    echo "Hiba a fájl feltöltés közben ".$target_file; exit();
-			  }
-			} else {
-				echo $uploadOk; exit();			
-			}
-		} // van file upload
-	} // jogosult a müveletre
+		
+		if ($_FILES["kepfile"]["size"] > 5000000) {
+		  $uploadOk .= ' túl nagy fájl méret';
+		}
+		
+		if($imageFileType != "jpg" && 
+		   $imageFileType != "png" && 
+		   $imageFileType != "jpeg" && 
+		   $imageFileType != "gif" ) {
+		  $uploadOk .= ' nem megengedett fájl kiterjesztés';
+		}
+		
+		if ($uploadOk == '') {
+		  if (!move_uploaded_file($_FILES["kepfile"]["tmp_name"], $target_file)) {
+		    echo "Hiba a fájl feltöltés közben ".$target_file; exit();
+		  }
+		} else {
+			echo $uploadOk; exit();			
+		}
+	} // van file upload
 	receptek();
 }
 
@@ -177,7 +184,7 @@ function recept() {
 	}
 	
 	if ($_SESSION['loged'] < 0) {
-		echo '<div class="alert alert-danger">Recept felviteléhez be kell jelentkezni!</div>';	
+		echo '<div class="alert alert-danger">Recept felviteléhez, modosításhoz, törléséhez be kell jelentkezni!</div>';	
 	}
 
 	?>
@@ -227,7 +234,7 @@ function recept() {
 					<input type="text" <?php echo $disable; ?>
 						value="<?php echo $hozzavalok[$i]->nev; ?>" 
 						name="hozzavalo<?php echo $i; ?>" 
-						id="hozzavalo<?php echo $i; ?>"/>			
+						id="hozzavalo<?php echo $i; ?>" />
 					<input type="number" min="0" max="100" step="0.5" 
 					   <?php echo $disable; ?>
 						value="<?php echo $hozzavalok[$i]->mennyiseg; ?>"
@@ -483,10 +490,14 @@ function receptek() {
 			</table>
 		</div>	
 		<p>Kattints a recept nevére a megtekintéséhez, modosításhoz, törléséhez!</p>
+		<?php if ($_SESSION['loged'] >= 0) : ?>
 		<div style="text-align:center">
 			<a href="?task=recept&id=0" class="btn btn-primary">
 				<em class="fas fa-plus"></em>&nbsp;Új recept</a>
 		</div>
+		<?php else : ?>
+		<div>Recept felviteléhez be kell jelentkezni.</div>
+		<?php endif; ?>
 	</div>	
 	<?php
 }

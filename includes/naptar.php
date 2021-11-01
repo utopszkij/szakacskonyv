@@ -82,27 +82,35 @@ function home() {
 		else if (1 != $dayOfWeek) 
 		   $t .= '<td colspan="'.($dayOfWeek - 1).'"> </td>';
 		for($i=1; $i<=$daysInMonth; $i++) {
-			$class = 'nincs';
+			$tdClass = 'nincs';
 			$title = '';
 			for ($j =0; $j < count($menuk); $j++) {
 				if ($i == $menuk[$j]->nap) {
-					$class = 'van';
+					$tdClass = 'van';
 				}			
 			} 
 			if (($i == date('d')) & 
 			    ($numMonth == date('m')) &
 			    ($numYear == date('Y'))) {
-				$class .= ' mainap';			
+				$tdClass .= ' mainap';			
 			}
-			$t .= '<td class="'.$class.'"><a href="?task=napimenu&nap='.$i.'">'.$i.'</a></td>';
+			if ($_SESSION['loged'] >= 0) {
+				$t .= '<td class="'.$tdClass.'">'.
+			      '<a href="?task=napimenu&nap='.$i.'">'.$i.'</a></td>';
+			} else {
+				$t .= '<td class="'.$tdClass.'">'.$i.'</td>';
+			}      
 			if(date('w', mktime(0,0,0,$numMonth, $i, $numYear)) == 0) {
 				$t .= "</tr><tr>";
 			}
 		}
-		$t .= '</tr></tbody></table>
-		<p>Kattints a napra a napi menü felviteléhez/mődsításához/törléséhez!</p>		
-		</center>'
-		;
+		$t .= '</tr></tbody></table>';
+		if ($_SESSION['loged'] >= 0) {
+			$t .= '<p>Kattints a napra a napi menü felviteléhez/mődsításához/törléséhez!</p>';
+		} else {
+			$t .= '<p>Napi menü kezeléshez be kell jelentkezni.</p>';
+		}			
+		$t .= '</center>';
 		echo $t;
 		?>
 		<div class="leiras">

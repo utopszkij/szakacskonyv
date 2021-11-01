@@ -268,6 +268,9 @@ class Query {
 		$this->unions[] = new Union($from, $alias);
 		$this->groupBy = [];
 		$this->mysqli = new \mysqli(HOST, USER, PSW, DBNAME);
+		$this->exec('SET character_set_results=utf8');
+      $this->exec('SET character_set_connection=utf8');
+      $this->exec('SET character_set_client=utf8');		
 		$this->error = mysqli_error($this->mysqli);
 		$this->errno = mysqli_errno($this->mysqli);
 	}

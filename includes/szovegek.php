@@ -14,8 +14,15 @@ function impresszum() {
 	  <p>Fogler Tibor</p>
 	  <p>tibor.fogler@gmail.com</p>
 	  <h2>Adat feldolgozó</h2>
-	  <p>Tárhely.Eu Szolgáltató Kft.</p>
-	  <p>https://tarhely.eu</p>	
+	  <p>infinityfree.net</p>
+	  <p></p>
+	  <h2>Felhasznált opensource termékek</h2>
+	  <ul>
+			<li>PHP v7 (https://php.net)</li>	  
+			<li>MYSQL v5 (https://mysql.com)</li>	  
+			<li>Bootstrap v5.1.3 (https://getbootstrap.com/)</li>	  
+			<li>Font awesome 5.14.4 (https://fontawesome.com)</li>	  
+	  </ul>	
 	</div>
 	<?php
 }
@@ -29,7 +36,7 @@ function adatkezeles() {
 	  <p>Kezelt adatok:</p>	
 	  <p>bejelentkezési név, jelszó, recept adatok, napi menük</p>	
 	  <p></p>	
-	  <p>A jelszót a program nem tárolja, csak annak "hash" kódját tárolja.</p>	
+	  <p>A jelszót magát a program nem tárolja a szerveren, csak annak "hash" kódját tárolja.</p>	
 	  <p></p>	
 	  <p>A recept adatok (név, hozzávalók, leírás, kép) minden a web oldalra 
 	  látogató számára láthatóak.</p>	
@@ -38,7 +45,7 @@ function adatkezeles() {
 	  a felvivő törölheti.</p>
 	  <p>A napi menü adatokat csak az azokat felvivő módosíthatja, törölheti</p>
 	  <p>Az összesítések eredményeit és az ezekből kialakított bevásárló listákat
-	  a program nem tárolja.</p>	
+	  a program nem tárolja. Azokat csak az összesítést lekérő felhasználó látja.</p>	
 	</div>
 	<?php
 }

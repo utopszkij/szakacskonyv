@@ -90,7 +90,7 @@ include_once 'includes/szovegek.php';
 			        <li>
 			          <a class="nav-link" href="?task=login" v-on:click="click('login')">
 			            <em class="fas fa-sign-in-alt"></em>&nbsp;
-			          	Bejelntkezés</a>
+			          	Bejelentkezés</a>
 			        </li>
 			        <?php endif; ?>
 		           <?php if ($_SESSION['loged'] >= 0) : ?>

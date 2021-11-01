@@ -142,7 +142,8 @@ function napimenu() {
 				A legtöbb főétel receptje nem tartalmazza a köretet. Szükség esetén azt
 				külön sorban válaszd ki!
 			</div>
-									
+					
+			<?php if ($_SESSION['loged'] >= 0) : ?>						
 			<div class="form-outline mb-4">
 				<button type="submit" class="btn btn-primary">
 				<em class="fas fa-check"></em>&nbsp;Tárolás</button>
@@ -152,6 +153,7 @@ function napimenu() {
 				<em class="fas fa-ban"></em>&nbsp;Napi menü törlése</button>
 				<?php endif; ?>
 			</div>
+			<?php endif; ?>
 		</form>
 	</div>	
 	<script>

@@ -41,17 +41,29 @@ ezekkel kapcsolatban semmilyen felelősséget nem vállal.
 
 ## Telepítés
 
-- adatbázis létrehozása (utf8, magyar rendezéssel)
-- config.php elkészítésa a config-exampla.php alapján.
-- fájlok és könyvtárak feltöltése a szerverre
-- az images könyvtár legyen irható a web szerver számára, a többi csak olvasható legyen
-- adatbázis kezdeti feltöltése a vendir/database/dbinit.sql segitségével.
-- többfelhasználós üzemmódban, a program "Regisztráció" menüpontjában hozzuk létre a
-- a system adminisztrátor fiokot.
+- adatbázis létrehozása (utf8, magyar rendezéssel),
+- config.php elkészítésa a config-example.php alapján,
+- az includes/szovegek.php fájl szükség szerinti módosítása (impresszum, adatkezelési leírás),
+- fájlok és könyvtárak feltöltése a szerverre,
+- az images könyvtár legyen irható a web szerver számára, a többi csak olvasható legyen,
+- adatbázis kezdeti feltöltése a vendor/database/dbinit.sql segitségével,
+- többfelhasználós üzemmód esetén; a program "Regisztrálás" menüpontjában hozzuk létre a
+  a system adminisztrátor fiokot (a config.php -ban beállított bejelentkezési névvel).
 
 ## Lecensz
 
 GNU/GPL
+
+## Felhasznált opensource termékek
+
+- PHP	v7  [https://php.net](https://php.net)
+- MYSQL v5 [https://mysql.com](https://mysql.com)	  
+- Bootstrap v5.1.3 [https://bootstrap.com/](https://bootstrap.com/)	  
+- Font awesome 5.14.4 [https://fontawesome.com](https://fontawesome.com)	  
+
+## Müködő web hely:
+
+[http://szakacskonyv.great-site.net](http://szakacskonyv.great-site.net)
 
 ## képernyő képek
 
