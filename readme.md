@@ -3,7 +3,7 @@
 A programba étel recepteket és napi menüket lehet kezelni.
 			
 Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
-Ebből bevásárló listát lehat a program segitségével készíteni.
+Ebből bevásárló listát lehet a program segitségével készíteni.
 			
 ## Tulajdonságok
 
