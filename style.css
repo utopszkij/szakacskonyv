@@ -3,31 +3,26 @@ body {text-align:center}
 .container {display:inline-block; margin:10px; padding:0px 0px 0px 0px; 
             border-radius:30px; background-color:#d0f0d0}
 #header {height:100px; margin:20px; background-image:url('images/fejlec.png')}
-nav {background-color:#448444; color:white; text-align:left}
-.nav-link {color:white;}
-.nav-link:hover {color:silver} 
 .page {min-height:600px; text-align:left; padding:10px}
-.dekorImg {float:right; height:250px; margin:10px;}
+.dekorImg {width:98%; }
 table {background-color:white; padding:5px;
 		border-style:solid; border-width:1px;}
 img {margin:5px}		
 button {margin-top:10px;}
 #receptForm {padding: 20px 20px 20px 20px}
-nav ul {list-style:none}
-nav li {display:inline-block; width:auto}
+#receptForm textarea {width:100%}
 form {margin:10px 10px 10px 20px}
 .van {background-color:green; padding:5px}
 .van a {color:white; text-decoration:none }
 .nincs {background-color:white; padding:5px}
 .nincs a {color:blue; text-decoration:none }
 .mainap {border-style:solid; border-width:2px; border-color:black}
-.receptKep {height:250px; float:right}
+.receptKep {width:98%}
 .sajat a {color:blue; font-weight:bold}
 .idegen a {color:#a0a0a0}
 #osszegzes {padding: 10px 10px 10px 100px}
 #osszegzes table {width:50%}
-
-#receptListTable {width:500px; max-height:450px; overflow:scroll}
+#bevasarloLista textarea {width:100%}
 
 #footer {background-color:silver; padding:20px; 
   border-radius: 0px 0px 30px 30px; text-align:center}
@@ -41,6 +36,6 @@ form {margin:10px 10px 10px 20px}
     button {display:none; height:0px;}
     .help {display:none; height:0px;}
     textarea {border-style:none; }
-	.receptKep {height:100px; float:right}
+	.receptKep {height:100px; width:auto; float:right}
 	#footer {display:none}
 }

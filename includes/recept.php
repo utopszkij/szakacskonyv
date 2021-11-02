@@ -1,21 +1,23 @@
 <?php
-error_reporting(E_ALL);
+use \RATWEB\DB\Query;
+use \RATWEB\DB\Record;
+
 
 // $_GET['id']
 function receptdelete() {
 	// normál user csak a saját maga által felvittet törölheti
 	// system admin mindent törölhet
-	$db = new \RATWEB\DB\Query('receptek');
-	$db->where('id','=',$_GET['id']);
+	$db = new Query('receptek');
+	$db->where('id','=',$db->sqlValue($_GET['id']));
 	$recept = $db->first();
 	if (($recept->created_by != $_SESSION['loged']) &
 	    ($_SESSION['logedName'] != ADMIN)) {
 	   receptek();
 	} else {
-		$db = new \RATWEB\DB\Query('receptek');
-		$db->where('id','=',$_GET['id'])->delete();
-		$db = new \RATWEB\DB\Query('hozzavalok');
-		$db->where('recept_id','=',$_GET['id'])->delete();
+		$db = new Query('receptek');
+		$db->where('id','=',$db->sqlValue($_GET['id']))->delete();
+		$db = new Query('hozzavalok');
+		$db->where('recept_id','=',$db->sqlValue($_GET['id']))->delete();
 		receptek();
 	}
 }
@@ -23,21 +25,23 @@ function receptdelete() {
 function receptsave() {
 	// get -ben: id, leiras, hozzvalok0, mennyiseg0, me0, hozzavalok1,....
 	
+	
 	if ($_SESSION['loged'] < 0) {
 		echo '<div class="alert alert-danger">Recept felviteléhez be kell jelentkezni!</div>';
 		return;	
 	}
+
 	
 	$receptId = $_POST['id'];
 	if ($receptId == 0) {
-		$db = new \RATWEB\DB\Query('receptek');
-		$r = new \RATWEB\DB\Record();
-		$r->nev = $_GET['nev'];
+		$db = new Query('receptek');
+		$r = new Record();
+		$r->nev = $_POST['nev'];
 		$r->created_by = $_SESSION['loged'];
 		$receptId = $db->insert($r);
 	} else {
-		$db = new \RATWEB\DB\Query('receptek');
-		$db->where('id','=',$receptId);
+		$db = new Query('receptek');
+		$db->where('id','=',$db->sqlValue($receptId));
 		$recept = $db->first();
 		if (($recept->created_by != $_SESSION['loged']) & 
 		    ($_SESSION['logedName'] != ADMIN)) {
@@ -46,28 +50,27 @@ function receptsave() {
 		}
 	}
 
-
 	// leírás és név tárolása
-	$db = new \RATWEB\DB\Query('receptek');
-	$db->where('id','=',$receptId);
+	$db = new Query('receptek');
+	$db->where('id','=',$db->sqlValue($receptId));
 	$recept = $db->first();
-	$r = new \RATWEB\DB\Record();
+	$r = new Record();
 	$r->leiras = $_POST['leiras'];
 	$r->nev = $_POST['nev'];
-	$db->where('id','=',$receptId)
+	$db->where('id','=',$db->sqlValue($receptId))
 	   ->update($r);
 	
 	// meglévő hozzávalók törlése
-	$db = new \RATWEB\DB\Query('hozzavalok');
+	$db = new Query('hozzavalok');
 	if ($receptId > '0') {
-		$db->where('recept_id','=',$receptId)->delete();	
+		$db->where('recept_id','=',$db->sqlValue($receptId))->delete();	
 	}
 	
 	// hozzávalók felvitele
 	for ($i = 0; $i < 15; $i++) {
 		if (isset($_POST['hozzavalo'.$i])) {
 			if ($_POST['hozzavalo'.$i] != '') {
-				$r = new \RATWEB\DB\Record();
+				$r = new Record();
 				$r->recept_id = $receptId;
 				$r->nev = $_POST['hozzavalo'.$i];
 				$r->mennyiseg = $_POST['mennyiseg'.$i];
@@ -146,18 +149,18 @@ function receptKep($recept) {
 */
 function recept() {
 	global $hozzavalok;
-	$recept = JSON_decode('{"id":0, "leiras":"", "nev":""}');	
+	$recept = JSON_decode('{"id":0, "leiras":"", "nev":"", "created_by":0}');	
 	$hozzavalok = [];	
 	$receptId = $_GET['id'];
 	$disable = '';
 
 	// recept és hozzávalók beolvasása
 	if ($receptId > '0') {
-		$db = new \RATWEB\DB\Query('receptek');
-		$db->where('id','=',$receptId);
+		$db = new Query('receptek');
+		$db->where('id','=',$db->sqlValue($receptId));
 		$recept = $db->first();	
-		$db = new \RATWEB\DB\Query('hozzavalok');
-		$hozzavalok = $db->where('recept_id','=',$receptId)->all();
+		$db = new Query('hozzavalok');
+		$hozzavalok = $db->where('recept_id','=',$db->sqlValue($receptId))->all();
 		if (($recept->created_by != $_SESSION['loged']) &
 		    ($_SESSION['logedName'] != ADMIN)) {
 			$disable = ' disabled="disabled"';		
@@ -165,7 +168,7 @@ function recept() {
 	}
 	
 	// meglévő recept nevek beolvasása
-	$db = new \RATWEB\DB\Query('receptek');
+	$db = new Query('receptek');
 	?>	
 	<script>
 	var receptNevek = <?php echo JSON_encode($db->select(['id','nev'])->all()); ?>;
@@ -180,7 +183,7 @@ function recept() {
    }
 	$kep = receptKep($recept);
 	while (count($hozzavalok) < 15) {
-			$hozzavalok[] = JSON_decode('{"mennyiseg":"", "me":0, "hozzavalo":""}');					
+			$hozzavalok[] = JSON_decode('{"mennyiseg":"", "me":0, "nev":""}');					
 	}
 	
 	if ($_SESSION['loged'] < 0) {
@@ -193,9 +196,14 @@ function recept() {
 			<input type="hidden" value="receptsave" name="task" />			
 			<input type="hidden" value="<?php echo $receptId; ?>" name="id" id = "id" />
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<div class="form-outline mb-4">
 						<h2>Recept<h2>			
+					</div>
+					<div class="form-outline mb-4 d-inline d-md-none">
+						<?php if ($kep != '') : ?>
+						<img src="<?php echo $kep; ?>" class="receptKep" class="receptKep" />				
+						<?php endif; ?>			
 					</div>
 					<div class="form-outline mb-4">
 						<label>Recept megnevezése:</label>			
@@ -203,12 +211,13 @@ function recept() {
 					<div class="form-outline mb-4">
 						<input type="text" value="<?php echo $recept->nev; ?>"
 						 id="nev" name="nev" <?php echo $disable; ?>
-						 class="form-control"  style="width:500px" />
+						 class="form-control"  />
 					</div>
 					<?php if ($disable == '') : ?>
 					<div class="form-outline mb-4">
 						A mindmegette.hu -n jelöld be a hozzávalókat és 
-						másold az alábbi input mezőbe, majd kattints a "Feldolgoz" gombra!					</div>
+						másold az alábbi input mezőbe, majd kattints a "Feldolgoz" gombra!
+					</div>
 					<div class="form-outline mb-4">
 						<input type="text" id="paste" <?php echo $disable; ?> />
 						<button type="button" class="btn btn-secondary"
@@ -217,14 +226,12 @@ function recept() {
 					<?php endif; ?>
 					
 				</div>
-				<div class="col-md-6">
-					<?php 
-					if ($kep != '') {
-						echo '<img src="'.$kep.'" class="receptKep" class="receptKep" />';				
-					}				
-					?>
+				<div class="d-none d-md-inline col-md-4">
+					<?php if ($kep != '') : ?>
+						<img src="<?php echo $kep; ?>" class="receptKep" class="receptKep" />				
+					<?php endif; ?>			
 				</div>
-			</div>
+			</div><!-- .row -->
 
 			<div class="row">
 			<div class="col-md-6">
@@ -406,14 +413,14 @@ function receptprint() {
 	$recept = JSON_decode('{"id":0, "leiras":"", "nev":""}');	
 	$hozzavalok = [];	
 	$receptId = $_GET['id'];
-	$db = new \RATWEB\DB\Query('receptek');
+	$db = new Query('receptek');
 	if ($receptId > '0') {
-		$db->where('id','=',$receptId);
+		$db->where('id','=',$db->sqlValue($receptId));
 		$recept = $db->first();	
 	}
-	$db = new \RATWEB\DB\Query('hozzavalok');
+	$db = new Query('hozzavalok');
 	if ($receptId > '0') {
-		$hozzavalok = $db->where('recept_id','=',$receptId)->all();	
+		$hozzavalok = $db->where('recept_id','=',$db->sqlValue($receptId))->all();	
 	}
 	$recept->leiras = str_replace("\n",'<br />',$recept->leiras);
 	?>
@@ -439,7 +446,7 @@ function receptprint() {
 
 
 function receptek() {
-	$db = new \RATWEB\DB\Query('receptek');
+	$db = new Query('receptek');
 	$db->exec('CREATE TABLE IF NOT EXISTS receptek (
 		    id int AUTO_INCREMENT,
 		    nev varchar(80),
@@ -457,38 +464,42 @@ function receptek() {
 		    PRIMARY KEY (id),
 		    KEY (recept_id)
 		)');
-	$db = new \RATWEB\DB\Query('receptek');
+	$db = new Query('receptek');
 	$db->orderBy('nev');
 	$list = $db->all();
 	?>
 	<div id="receptList">
-		<img src="https://cdn.pixabay.com/photo/2014/09/17/20/26/restaurant-449952_960_720.jpg"
-		class="dekorImg" />
 		<div class="row">
 			<h2>Receptek</h2>
-		</div>		
-		<div id="receptListTable">
-			<table style="width:100%">
-				<thead>
-					<tr><td>ID</td><td>Megnevezés</td></tr>		
-				</thead>
-				<tbody>
-					<?php
-					foreach ($list as $item) {
-						$trClass = '';
-						if ($item->created_by == $_SESSION['loged']) {
-							$trClass = 'sajat';
-						} else {
-							$trClass = 'idegen';
-						}
-						echo '<tr class="'.$trClass.'">'.
-						'<td><a href="?task=recept&id='.$item->id.'">'.$item->id.'</a></td>'.
-						'<td><a href="?task=recept&id='.$item->id.'">'.$item->nev.'</a></td></tr>';
-					}
-					?>
-				</tbody>
-			</table>
 		</div>	
+		<div class="row">	
+			<div id="receptListTable" class="col-md-8">
+				<table style="width:100%">
+					<thead>
+						<tr><td>ID</td><td>Megnevezés</td></tr>		
+					</thead>
+					<tbody>
+						<?php
+						foreach ($list as $item) {
+							$trClass = '';
+							if ($item->created_by == $_SESSION['loged']) {
+								$trClass = 'sajat';
+							} else {
+								$trClass = 'idegen';
+							}
+							echo '<tr class="'.$trClass.'">'.
+							'<td><a href="?task=recept&id='.$item->id.'">'.$item->id.'</a></td>'.
+							'<td><a href="?task=recept&id='.$item->id.'">'.$item->nev.'</a></td></tr>';
+						}
+						?>
+					</tbody>
+				</table>
+			</div>
+			<div class="d-none d-md-inline col-md-4">
+				<img src="https://cdn.pixabay.com/photo/2014/09/17/20/26/restaurant-449952_960_720.jpg"
+				class="dekorImg" />
+			</div>	
+		</div>
 		<p>Kattints a recept nevére a megtekintéséhez, modosításhoz, törléséhez!</p>
 		<?php if ($_SESSION['loged'] >= 0) : ?>
 		<div style="text-align:center">

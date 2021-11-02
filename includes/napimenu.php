@@ -1,10 +1,12 @@
 <?php
+use \RATWEB\DB\Query;
+use \RATWEB\DB\Record;
 
 // $_GET['id'] menu rekord id
 function menuDelete() {
-	$db = new \RATWEB\DB\Query('napimenuk');
-	$db->where('id','=',$_GET['id'])
-	   ->where('created_by','=', $_SESSION['loged']) 
+	$db = new Query('napimenuk');
+	$db->where('id','=',$db->sqlValue($_GET['id']))
+	   ->where('created_by','=', $db->sqlValue($_SESSION['loged'])) 
 	   ->delete();
 	home();	
 }
@@ -22,14 +24,14 @@ function menusave() {
 		return;	
 	}
 	
-	$db = new \RATWEB\DB\Query('napimenuk');
-	$db->where('ev','=',$ev)
-	   ->where('ho','=',$ho)
-	   ->where('nap','=',$nap)
-	   ->where('created_by','=',$_SESSION['loged']);
+	$db = new Query('napimenuk');
+	$db->where('ev','=',$db->sqlValue($ev))
+	   ->where('ho','=',$db->sqlValue($ho))
+	   ->where('nap','=',$db->sqlValue($nap))
+	   ->where('created_by','=',$db->sqlValue($_SESSION['loged']));
 	$db->delete();
 	
-	$r = new \RATWEB\DB\Record();
+	$r = new Record();
 	$r->ev = $ev;	
 	$r->ho = $ho;	
 	$r->nap = $nap;	
@@ -48,7 +50,7 @@ function menusave() {
 function napimenu() {
 	// get nap
 	// sessionban a numYear és numMonth
-	$db = new \RATWEB\DB\Query('napimenuk');
+	$db = new Query('napimenuk');
 	$db->exec('CREATE TABLE IF NOT EXISTS napimenuk (
 		    id int AUTO_INCREMENT,
 		    ev int,
@@ -69,10 +71,10 @@ function napimenu() {
 
 	// aktuális menu
 	$rec = JSON_decode('{"id":0, "recept1":0, "recept2":0, "recept3":0, "recept4":0, "adag":4}');	
-	$db->where('ev','=',$ev)
-	   ->where('ho','=',$ho)
-	   ->where('nap','=',$nap)
-	   ->where('created_by','=',$_SESSION['loged']);
+	$db->where('ev','=',$db->sqlValue($ev))
+	   ->where('ho','=',$db->sqlValue($ho))
+	   ->where('nap','=',$db->sqlValue($nap))
+	   ->where('created_by','=',$db->sqlValue($_SESSION['loged']));
 	$rec = $db->first();
 	if ($db->error != '') {
 		$rec = JSON_decode('{"id":0, "recept1":0, "recept2":0, "recept3":0, "recept4":0, "adag":4}');	
@@ -80,7 +82,7 @@ function napimenu() {
 
 	// összes meglévő recept
 	$receptek = [];
-	$db = new \RATWEB\DB\Query('receptek');
+	$db = new Query('receptek');
 	$receptek = $db->orderBy('nev')->all();
 	
 	function receptSelect($v, $a) {
@@ -92,9 +94,8 @@ function napimenu() {
 	}
 
 	?>
-	<img src="https://cdn.pixabay.com/photo/2017/03/02/02/16/place-setting-2110245_960_720.jpg"
-	class="dekorImg" />
 	<div class="row">
+		<div class="col-md-6">
 		<form id="menuForm" action="index.php">
 			<input type="hidden" value="menusave" name="task" />			
 			<input type="hidden" value="<?php echo  $nap; ?>" name="nap" />
@@ -105,7 +106,7 @@ function napimenu() {
 				<input type="number" name="adag" 
 					value="<?php echo $rec->adag; ?>" style="width:60px" /> adag
 				<br /><br />	
-			<div>			
+			</div>			
 			<div class="form-outline mb-4">
 				<select name="recept1" style="width:400px">
 					<option value="0"></option>
@@ -155,6 +156,11 @@ function napimenu() {
 			</div>
 			<?php endif; ?>
 		</form>
+		</div>
+		<div class="d-none d-lg-inline col-md-6">
+			<img src="https://cdn.pixabay.com/photo/2017/03/02/02/16/place-setting-2110245_960_720.jpg"
+			class="dekorImg" />
+		</div>
 	</div>	
 	<script>
 		function delClick() {

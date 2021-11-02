@@ -1,4 +1,6 @@
 <?php
+use \RATWEB\DB\Query;
+use \RATWEB\DB\Record;
 
 function login() {
 	if (isset($_GET['msg'])) {
@@ -54,7 +56,7 @@ function regist() {
 }
 
 function dologin() {
-	$db = new \RATWEB\DB\Query('users');
+	$db = new Query('users');
 	$db->exec('CREATE TABLE IF NOT EXISTS users (
 		    id int AUTO_INCREMENT,
 		    username varchar(32),
@@ -95,7 +97,7 @@ function dologin() {
 }
 
 function doregist() {
-	$db = new \RATWEB\DB\Query('users');
+	$db = new Query('users');
 	$db->exec('CREATE TABLE IF NOT EXISTS users (
 		    id int AUTO_INCREMENT,
 		    username varchar(32),
@@ -126,7 +128,7 @@ function doregist() {
 			<?php			
 		
 		} else {
-			$r = new \RATWEB\DB\Record();
+			$r = new Record();
 			$r->username = $userName;
 			$r->password = md5($password);
 			$userId = $db->insert($r);

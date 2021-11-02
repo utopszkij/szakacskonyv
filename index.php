@@ -1,9 +1,8 @@
 <?php
+namespace RATWEB\DB;
 session_start();
-// namespace \RATWEB\DB;
 include_once 'config.php';
 include_once 'vendor/database/db.php';
-
 // egy felhasználós módban minen "0" user_id -hez rendelve 
 // szerepel az adatbázisban
 // több felhasználós változatban a bejelentkezési folyamatban
@@ -40,6 +39,8 @@ include_once 'includes/recept.php';
 include_once 'includes/naptar.php';
 include_once 'includes/user.php';
 include_once 'includes/szovegek.php';
+
+
 ?>
 
 <html lang="en">
@@ -62,57 +63,56 @@ include_once 'includes/szovegek.php';
 	<div class="row" id="header">
 	&nbsp;
 	</div>
-	<nav>
-		<div>
-			    <div class="row">
-			      <ul class="col-md-7">
-			        <li>
-			          <a class="nav-link" href="?task=home" v-on:click="click('home')">
-			            <em class="fas fa-home"></em>&nbsp;
-			          	Napi menük</a>
-			        </li>
-			        <li>
-			          <a class="nav-link" href="?task=receptek" v-on:click="click('description')">
-			            <em class="fas fa-book"></em>&nbsp;
-			          	Receptek</a>
-			        </li>
-			        <li>
-			          <a class="nav-link" href="?task=osszeg" v-on:click="click('description')">
-			            <em class="fas fa-plus"></em>&nbsp;
-			          	Összesítés</a>
-			        </li>
-					</ul>
-					<?php if (MULTIUSER) : ?>
-			      <ul class="col-md-5" style="text-align:right">
-			        <li>	
-		           	<?php if ($_SESSION['loged'] < 0) : ?>
-		           </li>	
-			        <li>
-			          <a class="nav-link" href="?task=login" v-on:click="click('login')">
-			            <em class="fas fa-sign-in-alt"></em>&nbsp;
-			          	Bejelentkezés</a>
-			        </li>
-			        <?php endif; ?>
-		           <?php if ($_SESSION['loged'] >= 0) : ?>
-			           <li>
-				          <var><?php echo $_SESSION['logedName']; ?></var>&nbsp;
-				        </li>  
-				        <li>
-				          <a class="nav-link" href="?task=logout" v-on:click="click('logout')">
-				            <em class="fas fa-sign-out-alt"></em>&nbsp;
-				          	Kijelentkezés</a>
-				        </li>
-			        <?php endif; ?>
-			        <li>
-			          <a class="nav-link" href="?task=regist" v-on:click="click('regist')">
-			            <em class="fas fa-key"></em>&nbsp;
-			          	Regisztrálás</a>
-			        </li>
-					</ul>	
-					<?php endif; ?>	    
-			    </div>
-		</div>	    
-	</nav>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <div class="container-fluid">
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item">
+	          <a class="nav-link" href="index.php?task=home">
+	          <em class="fas fa-home"></em>&nbsp;Napi menük</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="index.php?task=receptek">
+	          <em class="fas fa-book"></em>&nbsp;Receptek</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="index.php?task=osszeg">
+	          <em class="fas fa-plus"></em>&nbsp;Összesítés</a>
+	        </li>
+	      </ul>
+	      <?php if (MULTIUSER) : ?>
+	      <ul class="navbar-nav mb-2 mb-lg-0 text-right">
+			  <?php if ($_SESSION['loged'] <= 0) : ?>
+	        <li class="nav-item">
+	          <a class="nav-link" href="index.php?task=login">
+	          <em class="fas fa-sign-in-alt"></em>&nbsp;Bejelentkezés</a>
+	        </li>
+	        <?php endif; ?>
+	        <?php if ($_SESSION['loged'] > 0) : ?>
+	        <li class="nav-item">
+	        		<a class="nav-link" href="#"><?php echo $_SESSION['logedName']; ?></a> 
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="index.php?task=logout">
+	          <em class="fas fa-sign-out-alt"></em>&nbsp;Kijelentkezés</a>
+	        </li>
+	        <?php endif; ?>
+	        <li class="nav-item">
+	          <a class="nav-link" href="index.php?task=regist">
+	          <em class="fas fa-key"></em>&nbsp;Regisztrálás</a>
+	        </li>
+	      </ul>
+			<?php endif; ?>
+	      <!-- form class="d-flex">
+	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+	        <button class="btn btn-outline-success" type="submit">Search</button>
+	      </form -->
+	    </div>
+	  </div>
+	</nav>	
 	<div class="page">
 	<?php 
 		$task ();

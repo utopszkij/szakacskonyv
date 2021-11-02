@@ -29,24 +29,6 @@ function sqlName(string $s): string {
 } 
 
 /**
-* sql mező értékeket szükség szerint "érték" alakra konvertálja
-* sql injection elleni védelem
-* @param string|number|bool $s
-* @return string|number|bool
-*/
-function sqlValue($s) {
-	if (is_numeric($s)) {
-		$result = $s;
-	} else if (is_bool($s)) {
-		$result = $s;
-	} else {
-		$s = str_replace('"','&quot;',$s);
-		$result = '"'.str_replace('"','\"',$s).'"';
-	}	
-	return $result;
-} 
-
-/**
 * sql where kezelő objektum 
 */
 class Where {
@@ -142,9 +124,9 @@ class Union {
 			$w = '';
 			foreach ($this->selects as $select) {
 				if ($select[1] != '') {
-					$result .= $w.sqlName($select[0]).' AS '.$select[1]; 
+					$result .= $w.$select[0].' AS '.$select[1]; 
 				} else {
-					$result .= $w.sqlName($select[0]); 
+					$result .= $w.$select[0]; 
 				}			
 				$w = ',';
 			}
@@ -164,13 +146,11 @@ class Union {
 		} else {
 			$result .= "\n";
 		}
-
-		$result .= $this->where->getSql()."\n";
-
 		foreach ($this->joins as $join) {
 			$result .= $join[0].' JOIN '.sqlName($join[1]).' AS '.$join[2].
 			' ON '.sqlName($join[3]).' '.$join[4].' '.$join[5]."\n";
 		}		
+		$result .= $this->where->getSql()."\n";
 		return $result;
 	}
 
@@ -240,6 +220,9 @@ class Union {
 	} 
 }
 
+global $mysqli;
+$mysqli = false;
+
 /**
 * sql query kezelő objektum 
 */
@@ -265,16 +248,64 @@ class Query {
 	* @param string alias (elhagyható)
 	*/
 	function __construct($from, string $alias='') {
+		global $mysqli;
 		$this->unions[] = new Union($from, $alias);
 		$this->groupBy = [];
-		$this->mysqli = new \mysqli(HOST, USER, PSW, DBNAME);
-		$this->exec('SET character_set_results=utf8');
-      $this->exec('SET character_set_connection=utf8');
-      $this->exec('SET character_set_client=utf8');		
+		if ($mysqli == false) {
+			$mysqli = new \mysqli(HOST, USER, PSW, DBNAME);
+			$mysqli->set_charset('utf8');
+			$this->mysqli = $mysqli;	
+			$this->exec('SET character_set_results=utf8');
+   	   $this->exec('SET character_set_connection=utf8');
+      	$this->exec('SET character_set_client=utf8');		
+		} else {
+			$this->mysqli = $mysqli;
+		}	
 		$this->error = mysqli_error($this->mysqli);
 		$this->errno = mysqli_errno($this->mysqli);
 	}
 	
+	/**
+	* sql mező értékeket szükség szerint "érték" alakra konvertálja
+	* sql injection elleni védelem
+	* @param string|number|bool $s
+	* @return string|number|bool
+	*/
+	public static function sqlValue($s) {
+		global $mysqli;
+		if ($mysqli === false) {
+			$mysqli = new \mysqli(HOST, USER, PSW, DBNAME);
+			$mysqli->set_charset('utf8');
+			$this->mysqli = $mysqli;	
+			$this->exec('SET character_set_results=utf8');
+   	   $this->exec('SET character_set_connection=utf8');
+      	$this->exec('SET character_set_client=utf8');		
+		}
+		if (is_numeric($s)) {
+			$result = $s;
+		} else if (is_bool($s)) {
+			$result = $s;
+		} else {
+			$result = '"'.$mysqli->real_escape_string($s).'"';	
+		}
+		return $result;
+	} 
+	
+	/**
+	* sql mező és tábla neveket `név` alakba konvertálja
+	* @param string $s
+	* @return string
+	*/
+	public static function sqlName(string $s): string {
+		if (strpos($s,'.') > 0) {
+			$result = str_replace('.','.`',$s).'`';
+		} else {
+			$result = '`'.$s.'`';
+		}
+		return $result;
+	} 
+
+
 	/**
 	* az utoljára végrehajtott all() funkció eredménysorainak száma
 	* @return int
@@ -301,6 +332,13 @@ class Query {
 		} else {
 			$this->res = $this->mysqli->query($this->sql);
 		}
+		$this->error = mysqli_error($this->mysqli);
+		$this->errno = mysqli_errno($this->mysqli);
+		if ($this->error != '') {
+			$this->cursor = -1;
+			return $result;
+		}
+		
 		if ($this->res->num_rows == 0) {
 			$this->error = 'not found';
 			$this->errno = 404;
@@ -308,8 +346,6 @@ class Query {
 			return $result;
 		}
 		$this->sql = '';	
-		$this->error = mysqli_error($this->mysqli);
-		$this->errno = mysqli_errno($this->mysqli);
 		$this->cursor = -1;
 		if (($this->errno == 0) & (isset($this->res->num_rows))) {
 			for ($i = 0;  $i < $this->res->num_rows; $i++) {
@@ -422,7 +458,7 @@ class Query {
 		$sql .= 'VALUES (';
 		$w = '';
 		foreach ($record as $fn => $fv) {
-			$sql .= $w.sqlValue($fv);
+			$sql .= $w.$this->sqlValue($fv);
 			$w = ','; 		
 		}
 		$sql .= ")\n";
@@ -448,7 +484,7 @@ class Query {
 		$sql .= 'SET ';
 		$w = '';
 		foreach ($record as $fn => $fv) {
-			$sql .= $w.sqlName($fn).' = '.sqlvalue($fv)."\n";
+			$sql .= $w.sqlName($fn).' = '.$this->sqlvalue($fv)."\n";
 			$w = ','; 		
 		}
 		$sql .= "\n".$this->unions[0]->where->getSql()."\n";
@@ -643,8 +679,8 @@ class Query {
 			$result .= $w.$union->getSql();
 			$w = "\nUNION ALL\n";		
 		}
-		if (count($this->orderBy) > 0) {
-			$result .= 'GRROUP BY '.implode(',', $this->groupBy)."\n";		
+		if (count($this->groupBy) > 0) {
+			$result .= 'GROUP BY '.implode(',', $this->groupBy)."\n";		
 		}
 		if ($this->order != '') {
 			$result .= 'ORDER BY '.sqlName($this->order);
