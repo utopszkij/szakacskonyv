@@ -37,6 +37,7 @@ $union2 = new Query('napimenuk','m');
 $union2->select(['m.adag','h.nev',['(m.adag / 4 * h.mennyiseg)','mennyiseg'],'h.me'])
 		->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept2')
 		->where('h.nev','<>',Query::sqlValue(''))
+		->where('h.mennyiseg','>',0)
 		->where('m.datum','>=',Query::sqlValue($datum1))
 		->where('m.datum','<=',Query::sqlValue($datum2))
 		->where('m.created_by','=',Query::sqlValue($loged));
@@ -45,6 +46,7 @@ $union3 = new Query('napimenuk','m');
 $union3->select(['m.adag','h.nev',['(m.adag / 4 * h.mennyiseg)','mennyiseg'],'h.me'])
 		->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept3')
 		->where('h.nev','<>',Query::sqlValue(''))
+		->where('h.mennyiseg','>',0)
 		->where('m.datum','>=',Query::sqlValue($datum1))
 		->where('m.datum','<=',Query::sqlValue($datum2))
 		->where('m.created_by','=',Query::sqlValue($loged));
@@ -53,6 +55,7 @@ $union4 = new Query('napimenuk','m');
 $union4->select(['m.adag','h.nev',['(m.adag / 4 * h.mennyiseg)','mennyiseg'],'h.me'])
 		->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept4')
 		->where('h.nev','<>',Query::sqlValue(''))
+		->where('h.mennyiseg','>',0)
 		->where('m.datum','>=',Query::sqlValue($datum1))
 		->where('m.datum','<=',Query::sqlValue($datum2))
 		->where('m.created_by','=',Query::sqlValue($loged));
@@ -61,6 +64,7 @@ $subSelect = new Query('napimenuk','m');
 $subSelect->select(['m.adag','h.nev',['(m.adag / 4 * h.mennyiseg)','mennyiseg'],'h.me'])
 			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept1')
 			->where('h.nev','<>',Query::sqlValue(''))
+			->where('h.mennyiseg','>',0)
 			->where('m.datum','>=',Query::sqlValue($datum1))
 			->where('m.datum','<=',Query::sqlValue($datum2))
 			->where('m.created_by','=',Query::sqlValue($loged))

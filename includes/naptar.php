@@ -66,8 +66,8 @@ function home() {
 		<div class="col-md-8 text-center">
 		';
 		$t	= '
-		<table style="width:350px">
-			<thead>
+		<table style="display:inline-block">
+			<thead style="width:100%">
 			<tr>
 			<th abbr="Monday" scope="col" title="Hétfő">H</th>
 			<th abbr="Tuesday" scope="col" title="Kedd">K</th>

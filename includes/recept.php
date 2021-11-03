@@ -86,9 +86,17 @@ function receptsave() {
 				$r = new Record();
 				$r->recept_id = $receptId;
 				$r->nev = $_POST['hozzavalo'.$i];
-				$r->mennyiseg = $_POST['mennyiseg'.$i];
+				if (isset($_POST['mennyiseg'.$i])) {
+					$r->mennyiseg = $_POST['mennyiseg'.$i];
+				} else {
+					$r->mennyiseg = 0;
+				}	
 				if (!is_numeric($r->mennyiseg)) $r->mennyiseg = 0;
-				$r->me = $_POST['me'.$i];
+				if (isset($_POST['me'.$i])) {
+					$r->me = $_POST['me'.$i];
+				} else {
+					$r->me = '';				
+				}
 				$db->insert($r);
 			}
 		}	
@@ -255,7 +263,7 @@ function recept() {
 
 			<div class="row">
 				<div class="form-outline col-mb-10">
-					<h2>Hozzávalók</h2>
+					<h2>Hozzávalók 4 adaghoz</h2>
 					<strong>Hozzávaló neve / mennyiség / mértékegység</strong>
 				</div>				
 				<?php for ($i=0; $i < count($hozzavalok);  $i++) : ?>
