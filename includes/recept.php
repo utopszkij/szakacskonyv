@@ -2,6 +2,19 @@
 use \RATWEB\DB\Query;
 use \RATWEB\DB\Record;
 
+/*
+hozzávalók választhatóak is lehetnek:
+
+<input type="text" list="cars" />
+<datalist id="cars">
+  <option>Volvo</option>
+  <option>Saab</option>
+  <option>Mercedes</option>
+  <option>Audi</option>
+</datalist>
+*/
+
+include_once 'atvesz.php';
 
 // $_GET['id']
 function receptdelete() {
@@ -154,7 +167,7 @@ function recept() {
 	$receptId = $_GET['id'];
 	$disable = '';
 
-	// recept és hozzávalók beolvasása
+	// aktuális recept és hozzávalók beolvasása
 	if ($receptId > '0') {
 		$db = new Query('receptek');
 		$db->where('id','=',$db->sqlValue($receptId));
@@ -174,6 +187,13 @@ function recept() {
 	var receptNevek = <?php echo JSON_encode($db->select(['id','nev'])->all()); ?>;
 	</script>	
 	<?php	
+	
+	// meglévő hozzávaló nevek beolvasása
+	$db = new Query('hozzavalok');
+	$db->select(['distinct nev'])
+		->orderBy('nev');
+	$nevek = $db->all();
+	
 	
 	function meSelect($v,$i) {
 		global $hozzavalok;
@@ -215,8 +235,8 @@ function recept() {
 					</div>
 					<?php if ($disable == '') : ?>
 					<div class="form-outline mb-4">
-						A mindmegette.hu -n jelöld be a hozzávalókat és 
-						másold az alábbi input mezőbe, majd kattints a "Feldolgoz" gombra!
+						A mindmegette.hu -n nyisd meg a recept oldalát, 
+						a web címét másold az alábbi input mezőbe, majd kattints a "Feldolgoz" gombra!
 					</div>
 					<div class="form-outline mb-4">
 						<input type="text" id="paste" <?php echo $disable; ?> />
@@ -234,20 +254,30 @@ function recept() {
 			</div><!-- .row -->
 
 			<div class="row">
-			<div class="col-md-6">
-				<h3>Hozzávalók 4 főre</h3>
+				<div class="form-outline col-mb-10">
+					<h2>Hozzávalók</h2>
+					<strong>Hozzávaló neve / mennyiség / mértékegység</strong>
+				</div>				
 				<?php for ($i=0; $i < count($hozzavalok);  $i++) : ?>
 				<div class="form-outline col-mb-10">
 					<input type="text" <?php echo $disable; ?>
 						value="<?php echo $hozzavalok[$i]->nev; ?>" 
 						name="hozzavalo<?php echo $i; ?>" 
-						id="hozzavalo<?php echo $i; ?>" />
+						list="alapanyagok"
+						id="hozzavalo<?php echo $i; ?>"
+						style="width:49%" /> 
+					<datalist id="alapanyagok">
+						<?php foreach ($nevek as $nev) : ?> 
+					  	<option><?php echo $nev->nev; ?></option>
+					  	<?php endforeach; ?>
+					</datalist>
+						
 					<input type="number" min="0" max="100" step="0.5" 
 					   <?php echo $disable; ?>
 						value="<?php echo $hozzavalok[$i]->mennyiseg; ?>"
-						name="mennyiseg<?php echo $i; ?>" style="width:80px" 
+						name="mennyiseg<?php echo $i; ?>" style="width:23%"
 						id="mennyiseg<?php echo $i; ?>" />			
-					<select style="width:90px; height:30px"
+					<select style="width:24%; height:30px"
 					   <?php echo $disable; ?> 
 						name="me<?php echo $i; ?>"
 						id="me<?php echo $i; ?>">	
@@ -282,7 +312,7 @@ function recept() {
 				<h3>Elkészítés</h3>			
 				<textarea name="leiras" id="leiras"
 				<?php echo $disable; ?> 
-				cols="40" rows="11"><?php echo $recept->leiras; ?></textarea>
+				cols="40" rows="15"><?php echo $recept->leiras; ?></textarea>
 				<p>Kép fájl (jpg vagy png, nem kötelező)</p>
 				<input type="file" name="kepfile" <?php echo $disable; ?> />			
 			</div>
@@ -334,6 +364,10 @@ function recept() {
 		}	
 	}
 	function processPaste() {
+		
+		var s = document.getElementById('paste').value;
+		document.location='index.php?task=recept&id=0&url='+encodeURI(s);		
+		
 		var i = 0;
 		var j = 0;
 		var szavak = []; // a nem TAB -al szeparált lista szavai
@@ -373,8 +407,6 @@ function recept() {
 				i = i + 1;		
 			}
 		}
-		console.log(szavak);
-		console.log(items);
 	
 		// items -ek feldolgozása
 		i = 0; // pointer a feldolgozandó szóra
@@ -403,6 +435,9 @@ function recept() {
 	</script>
 	
 	<?php
+	if (isset($_GET['url'])) {
+		atvesz($_GET['url']);	
+	}
 }
 
 /**
@@ -496,8 +531,7 @@ function receptek() {
 				</table>
 			</div>
 			<div class="d-none d-md-inline col-md-4">
-				<img src="https://cdn.pixabay.com/photo/2014/09/17/20/26/restaurant-449952_960_720.jpg"
-				class="dekorImg" />
+				<img src="images/dekor1.jpg" class="dekorImg" />
 			</div>	
 		</div>
 		<p>Kattints a recept nevére a megtekintéséhez, modosításhoz, törléséhez!</p>

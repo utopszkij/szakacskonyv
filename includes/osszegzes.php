@@ -3,21 +3,28 @@ use \RATWEB\DB\Query;
 
 function osszeg() {
 	?>
-	<form action="index.php" style="margin:20px 20px 20px 200px">
-		<input type="hidden" name="task" value="szamol" />
-		<h2>Összegzés</h2>
-		<p>Időszak: éééé-hh-nn -tól éééé-hh-nn -ig</p>
-		<p>
-			<input type="date" name="datum1" value="<?php echo date('Y-m-d'); ?>" />
-			&nbsp;-&nbsp;
-			<input type="date" name="datum2" value="<?php echo date('Y-m-d'); ?>" />
+	<div class="row">
+		<div class="col-md-12 text-center">
+		<form action="index.php">
+			<input type="hidden" name="task" value="szamol" />
+			<h2>Összegzés</h2>
+			<p>Időszak: éééé-hh-nn -tól éééé-hh-nn -ig</p>
 			<p>
+				<input type="date" name="datum1" 
+				style="width:170px" value="<?php echo date('Y-m-d'); ?>" />
+				&nbsp;-&nbsp;tól
 				<br />
+				<input type="date" name="datum2" 
+				style="width:170px" value="<?php echo date('Y-m-d'); ?>" />
+				&nbsp;-&nbsp;ig&nbsp;
+			</p>	
+			<p>
 				<button type="submit" class="btn btn-primary">
 				<em class="fas fa-check"></em>&nbsp;start</button>			
 			</p> 		
-		</p>	
-	</form>
+		</form>
+		</div>
+	</div>
 	<?php
 }
 
@@ -25,43 +32,6 @@ function szamol() {
 	$datum1 = $_GET['datum1'];	
 	$datum2 = $_GET['datum2'];
 	$loged = $_SESSION['loged'];	
-	$sql = "
-select kell.nev, sum(kell.mennyiseg) mennyiseg, kell.me
-from
-(SELECT m.adag, h.nev, 
-       (m.adag / 4 * h.mennyiseg) mennyiseg, h.me 
-from napimenuk m
-LEFT OUTER JOIN hozzavalok h ON h.recept_id = m.recept1
-WHERE h.nev <> '' and m.datum >= '$datum1' and m.datum <= '$datum2'
-		and m.created_by = $loged
-UNION ALL
-SELECT m.adag, h.nev, 
-       (m.adag / 4 * h.mennyiseg) mennyiseg, h.me 
-from napimenuk m
-LEFT OUTER JOIN hozzavalok h ON h.recept_id = m.recept2
-WHERE h.nev <> '' and m.datum >= '$datum1' and m.datum <= '$datum2'
-		and m.created_by = $loged
-UNION ALL
-SELECT m.adag, h.nev, 
-       (m.adag / 4 * h.mennyiseg) mennyiseg, h.me 
-from napimenuk m
-LEFT OUTER JOIN hozzavalok h ON h.recept_id = m.recept3
-WHERE h.nev <> ''and m.datum >= '$datum1' and m.datum <= '$datum2'
-		and m.created_by = $loged
-UNION ALL
-SELECT m.adag, h.nev, 
-       (m.adag / 4 * h.mennyiseg) mennyiseg, h.me 
-from napimenuk m
-LEFT OUTER JOIN hozzavalok h ON h.recept_id = m.recept4
-WHERE h.nev <> '' and m.datum >= '$datum1' and m.datum <= '$datum2'
-		and m.created_by = $loged
-) kell
-group by kell.nev, kell.me
-order by kell.nev
-";
-$db = new Query('napimenuk');
-$db->setSql($sql);
-$items = $db->all();
 
 $union2 = new Query('napimenuk','m');
 $union2->select(['m.adag','h.nev',['(m.adag / 4 * h.mennyiseg)','mennyiseg'],'h.me'])
@@ -117,7 +87,7 @@ $db->select(['m.datum','m.adag',
 	->join('LEFT OUTER','receptek','r4','r4.id','=','m.recept4')
 	->where('m.datum','>=',Query::sqlValue($datum1))
 	->where('m.datum','<=',Query::sqlValue($datum2))
-	->where('m.created_by','>=',Query::sqlValue($loged))
+	->where('m.created_by','=',Query::sqlValue($loged))
 	->orderBy('m.datum');
 $napiMenuk = $db->all();	
 
@@ -154,8 +124,7 @@ $napiMenuk = $db->all();
 			</table>
 		</div>
 		<div class="d-none d-lg-inline col-md-4 help">
-			<img src="https://cdn.pixabay.com/photo/2017/08/10/07/20/grocery-store-2619380_960_720.jpg"
-			class="dekorImg" />
+			<img src="images/dekor2.jpg" class="dekorImg" />
 		</div>
 	</div> 
 	<div id="bevListBtn" style="text-align:center">

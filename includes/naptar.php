@@ -56,12 +56,14 @@ function home() {
 	
 	echo '
 	<div class="row">	
-		<div class="col-md-8">
-			<p>
+		<div class="col-md-8 text-center">
 				<a href="?task=elozo" class="btn btn-primary">&lt;</a>&nbsp;&nbsp;
-				<var style="display:inline-block; width:250px">'.$numYear.' '.$strMonth.'</var>
+				<var style="display:inline-block; width:auto">'.$numYear.' '.$strMonth.'</var>
 				<a href="?task=kovetkezo" class="btn btn-primary">&gt;</a>
-			</p>	
+		</div>
+	</div>		
+	<div class="row">	
+		<div class="col-md-8 text-center">
 		';
 		$t	= '
 		<table style="width:350px">
@@ -110,8 +112,7 @@ function home() {
 			    </table>
 			</div>
 			<div class="col-md-4">
-				 	<img src="https://cdn.pixabay.com/photo/2019/05/28/00/14/breakfast-4234067_960_720.jpg" 
-				  	class="dekorImg" />
+				 	<img src="images/dekor1.jpg" class="dekorImg" />
 			</div>
 		</div><!-- .row -->';
 			if ($_SESSION['loged'] >= 0) {

@@ -48,7 +48,7 @@ include_once 'includes/szovegek.php';
   <meta>
     <meta charset="UTF-8">
     <title>Hetimenü</title>
-    <meta name="viewport" content="width=1240px, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	 <!-- bootstrap -->	
 	 <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
     <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>

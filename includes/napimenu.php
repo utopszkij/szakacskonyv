@@ -108,7 +108,7 @@ function napimenu() {
 				<br /><br />	
 			</div>			
 			<div class="form-outline mb-4">
-				<select name="recept1" style="width:400px">
+				<select name="recept1" style="width:90%">
 					<option value="0"></option>
 					<?php foreach ($receptek as $recept) : ?>
 					<option value="<?php echo $recept->id; ?>"<?php receptSelect($recept->id, $rec->recept1); ?>><?php echo $recept->nev; ?></option>
@@ -116,7 +116,7 @@ function napimenu() {
 				</select>
 			</div>
 			<div class="form-outline mb-4">
-				<select name="recept2" style="width:400px">
+				<select name="recept2" style="width:90%">
 					<option value="0"></option>
 					<?php foreach ($receptek as $recept) : ?>
 					<option value="<?php echo $recept->id; ?>"<?php receptSelect($recept->id, $rec->recept2); ?>><?php echo $recept->nev; ?></option>
@@ -124,7 +124,7 @@ function napimenu() {
 				</select>
 			</div>
 			<div class="form-outline mb-4">
-				<select name="recept3" style="width:400px">
+				<select name="recept3" style="width:90%">
 					<option value="0"></option>
 					<?php foreach ($receptek as $recept) : ?>
 					<option value="<?php echo $recept->id; ?>"<?php receptSelect($recept->id, $rec->recept3); ?>><?php echo $recept->nev; ?></option>
@@ -132,7 +132,7 @@ function napimenu() {
 				</select>
 			</div>
 			<div class="form-outline mb-4">
-				<select name="recept4" style="width:400px">
+				<select name="recept4" style="width:90%">
 					<option value="0"></option>
 					<?php foreach ($receptek as $recept) : ?>
 					<option value="<?php echo $recept->id; ?>"<?php receptSelect($recept->id, $rec->recept4); ?>><?php echo $recept->nev; ?></option>
@@ -158,8 +158,7 @@ function napimenu() {
 		</form>
 		</div>
 		<div class="d-none d-lg-inline col-md-6">
-			<img src="https://cdn.pixabay.com/photo/2017/03/02/02/16/place-setting-2110245_960_720.jpg"
-			class="dekorImg" />
+			<img src="images/dekor1.jpg" class="dekorImg" />
 		</div>
 	</div>	
 	<script>
