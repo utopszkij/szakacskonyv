@@ -33,6 +33,17 @@ if (isset($_GET['task'])) {
 	$task = 'home';
 }
 
+// Facebbok loginból érkező hívás feldolgozása
+if (isset($_GET['usercode'])) {
+	$w = explode('-',$_GET['usercode']);
+	$userName = base64_decode($w[0]);
+	$userId = $w[1];
+	if ($w[2] == md5($userId.FB_SECRET)) {
+		$_SESSION['loged'] = $userId;
+		$_SESSION['logedName'] = $userName;
+	}
+}
+
 global $components; // [[taskName, compName],....]
 $components = [];
 

@@ -21,6 +21,11 @@ class User {
 			<input type="password" name="password" placeholder="Jelszó" required="true" />
 			<br /><br />
 			<input type="submit" class="btn btn-primary" name="submit" value="Küld" />
+			<br /><br />
+			<a href="vendor/fblogin.php" class="btn" 
+			   style="background-color:blue; color:white">
+				<strong>f</strong> Belépés Facebook -al			
+			</a>
 			</form>
 		</div>
 		<?php	
