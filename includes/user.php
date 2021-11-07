@@ -26,6 +26,11 @@ class User {
 			   style="background-color:blue; color:white">
 				<strong>f</strong> Belépés Facebook -al			
 			</a>
+			<br /><br />
+			<a href="vendor/googlelogin.php" class="btn" 
+			   style="background-color:blue; color:white">
+				<strong>g</strong> Belépés Google -al			
+			</a>
 			</form>
 		</div>
 		<?php	

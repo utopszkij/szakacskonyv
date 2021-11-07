@@ -17,7 +17,7 @@ class Naptar {
 		$_SESSION['numDay'] = $numDay;
 		$_SESSION['numMonth'] = $numMonth;
 		$_SESSION['numYear'] = $numYear;
-		home();
+		$this->home();
 	}
 	
 	public function kovetkezo() {
@@ -33,7 +33,7 @@ class Naptar {
 		$_SESSION['numDay'] = $numDay;
 		$_SESSION['numMonth'] = $numMonth;
 		$_SESSION['numYear'] = $numYear;
-		home();
+		$this->home();
 	}
 	
 	public function home() {

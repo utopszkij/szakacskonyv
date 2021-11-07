@@ -1,7 +1,44 @@
 <?php
+/*
+konfig: developer.facebook.com
 
-// lásd: https://www.cloudways.com/blog/add-facebook-login-in-php/
+  create new app: Type: nincs, facebook login, www
+  						site url "quicstart" js kodokat javasol.
+  							
+  Basic settings
+	Display name      	megadva 
+	App domains       	valami.hu
+	Namespace         	üres
+	Contact email     	megadva 
+	Privacy Policy URL   megadva
+	Terms of Service URL megadva
+	User Data Deletion URL megadva
+	Category  Lifestyle
+	App purpose Clients
+	Site url             megadva
+  Advanced
+   Nativ or Desctop app
+   SocialDiscovery
+  App Review
+   Permission and Faitures
+   	public_profile  Advanced Access
+   	email				 Advanced Access
+   	
+   	beállításához a Requests menüben az "Edit" ikon majd 
+   	"+ Add aditional..." linken keresztül	lehet eljutni. A jobb szélen
+   	lévő szürke téglalapra kell kattintani.	
+  Facebook Login
+  	setting
+  		első 5 "yes"
+  Képernyő felső részén App mode: "live"		 	
+   	 
+​
+User Data Deletion
+https://netpolgar.hu/policy
+App Icon (1024 x 1024)
 
+
+*/
 include_once __DIR__.'/../config.php';
 
 /**
@@ -51,7 +88,8 @@ if (isset($_GET['code'])) {
 	if ($code == 'test') {
 		$token = JSON_decode('{"access_token":"test"}');	
 	} else {
-  		$token = $this->apiRequest(
+		// kell ilyen paraméter is? 'redirect_uri' => \URL::to('/').'/auth/facebook/callback',
+  		$token = apiRequest(
    	      'https://graph.facebook.com/oauth/access_token',
    		   ['client_id' => FB_APPID,
              'client_secret' => FB_SECRET,
@@ -61,6 +99,7 @@ if (isset($_GET['code'])) {
              'code' => $code
    		   ]
 		);
+		echo JSON_encode($token).'<br />';
 	}	
 	if (isset($token->access_token)) {
 		if ($token->access_token == 'test') {
@@ -70,10 +109,10 @@ if (isset($_GET['code'])) {
    		$fbuser = apiRequest($url,
 					['access_token' => $token->access_token]
 			);
+			echo JSON_encode($fbuser);
 		}		
 		if (!isset($fbuser->error)) {
 			// sikeres fb login fbuser:{id, name, picture, email}
-			// hivjuk az index.php -t URL paraméterben küldjük a usercode -ot.
 			$userCode = base64_encode($fbuser->name).'-'.
 				$fbuser->id.'-'.md5($fbuser->id.FB_SECRET);
 			?>
@@ -84,7 +123,7 @@ if (isset($_GET['code'])) {
 			<?php
 		} else {
 			echo 'Fatal error facebook login '.JSON_encode($fbuser->error); exit();
-		}				
+		}	
 	} else {
 		   echo 'Fatal error facebook login invalid call not get access_token'; exit();
 	}
@@ -94,7 +133,7 @@ if (isset($_GET['code'])) {
 	<script>
 	document.location='https://www.facebook.com/v12.0/dialog/oauth'+
 			'?client_id=<?php echo FB_APPID; ?>'+
-        	'&redirect_uri=encodeURI(<?php echo FB_REDIRECT; ?>)'+
+			'&redirect_uri='+encodeURI(FB_REDIRECT)+
         	'&state=0';
 	</script>
 	<?php
