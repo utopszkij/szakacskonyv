@@ -331,8 +331,9 @@ class Recept {
 						onclick="location='index.php?task=receptprint&id=<?php echo $receptId; ?>';">
 						<em class="fas fa-print"></em>&nbsp;Nyomtatas</button>
 						&nbsp;
-						<?php if (($recept->created_by == $_SESSION['loged']) | 
-						          ($_SESSION['logedName'] == ADMIN)) : ?>
+						<?php if (($_SESSION['loged'] > 0) &
+								  (($recept->created_by == $_SESSION['loged']) | 
+						          ($_SESSION['logedName'] == ADMIN))) : ?>
 							<button type="button" class="btn btn-danger"
 							onclick="delClick()">
 								<em class="fas fa-ban"></em>&nbsp;Recept törlése 

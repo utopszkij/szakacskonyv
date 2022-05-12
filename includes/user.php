@@ -38,6 +38,7 @@ class User {
 	
 	public function logout() {
 		$_SESSION['loged'] = -1;
+		$_SESSION['logedName'] = 'guest';
 		?>
 		<script>
 				document.location="index.php";		

@@ -112,7 +112,7 @@ class Osszegzes {
 		<h2><?php echo $datum1.' - '.$datum2; ?></h2>
 		<div class="row">
 			<div class="col-md-8">
-				<div class="help">
+				<div class="napimenu">
 				<?php foreach ($napiMenuk as $napiMenu) : ?>
 					<div><?php 
 						echo $napiMenu->datum.' '.
@@ -156,9 +156,9 @@ class Osszegzes {
 			Javithatsz, sorokat törölhetsz, új sorokat vehetsz fel.
 		</div>
 		<textarea cols="60" rows="20" id="bevLista">
-			<?php foreach ($items as $item) : ?>
-	<?php echo $item->nev; ?>&nbsp;<?php echo $item->mennyiseg; ?>&nbsp;<?php echo $item->me."\n"; ?>
-			<?php endforeach ?>
+<?php foreach ($items as $item) : ?>
+<?php echo $item->nev; ?>&nbsp;<?php echo $item->mennyiseg; ?>&nbsp;<?php echo $item->me."\n"; ?>
+<?php endforeach ?>
 		</textarea>
 		<div class="help">
 			<button type="button" onclick="printClick()" class="btn btn-secondary">
@@ -177,7 +177,7 @@ class Osszegzes {
 			var sorok = document.getElementById('bevLista').value;
 			var sorokSzama = sorok.split("\n").length;
 			console.log('sorok száma',sorokSzama); 	
-			document.getElementById('bevLista').rows = sorokSzama;
+			document.getElementById('bevLista').rows = sorokSzama + 10;
 			window.print();
 		}
 	</script>
