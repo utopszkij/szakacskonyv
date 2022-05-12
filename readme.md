@@ -31,6 +31,9 @@ A felhasználók által felvitt receptek és képek tartalmáért, a kizárólag
 az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
 ezekkel kapcsolatban semmilyen felelősséget nem vállal.
 			
+index.php hívással a "welcome" komponens betöltésével indul a program.
+
+index.php?page=xxxx hívással a "xxxx" vue komponens betöltésével is inditható a program.
 
 ### A programot mindenki csak saját felelősségére használhatja.
 			

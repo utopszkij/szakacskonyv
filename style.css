@@ -38,4 +38,7 @@ form {margin:10px 10px 10px 20px}
     textarea {border-style:none; }
 	.receptKep {height:100px; width:auto; float:right}
 	#footer {display:none}
+	
+	#osszegzes {display:block; width:50%; margin:0px; padding:0px; float:right}
+	#bevasarloLista {display:block; width:50%; margin:0px; padding:0px; float:left}
 }

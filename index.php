@@ -33,13 +33,35 @@ if (isset($_GET['task'])) {
 	$task = 'home';
 }
 
-include_once 'includes/osszegzes.php';
-include_once 'includes/napimenu.php';
-include_once 'includes/recept.php';
-include_once 'includes/naptar.php';
-include_once 'includes/user.php';
-include_once 'includes/szovegek.php';
+// Facebbok loginból érkező hívás feldolgozása
+if (isset($_GET['usercode'])) {
+	$w = explode('-',$_GET['usercode']);
+	$userName = base64_decode($w[0]);
+	$userId = $w[1];
+	if ($w[2] == md5($userId.FB_SECRET)) {
+		$_SESSION['loged'] = $userId;
+		$_SESSION['logedName'] = $userName;
+	}
+}
 
+global $components; // [[taskName, compName],....]
+$components = [];
+
+function importComponent($name) {
+	global $components;
+	include_once 'includes/'.strtolower($name).'.php';
+	$methods = get_class_methods(ucFirst($name));
+	foreach ($methods as $method) {
+		$components[] = [$method,ucFirst($name)];
+	}
+}
+
+importComponent('osszegzes');
+importComponent('napimenu');
+importComponent('recept');
+importComponent('naptar');
+importComponent('user');
+importComponent('szovegek');
 
 ?>
 
@@ -114,8 +136,19 @@ include_once 'includes/szovegek.php';
 	  </div>
 	</nav>	
 	<div class="page">
-	<?php 
-		$task ();
+	<?php
+		$compName = '';
+		for ($i=0; $i<count($components); $i++) {
+			if ($components[$i][0] == $task) {
+				$compName = $components[$i][1];			
+			}		
+		} 
+		if ($compName != '') {
+			$comp = new $compName ();
+			$comp->$task ();			
+		} else {
+			$task ();
+		}	
 	?>
 	</div>
 	<div id="footer">
