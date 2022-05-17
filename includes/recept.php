@@ -43,7 +43,12 @@ class Recept {
 			$db = new Query('receptek');
 			$r = new Record();
 			$r->nev = $_POST['nev'];
-			$r->created_by = $_SESSION['loged'];
+			if ($_SESSION['loged'] > 0) {
+				$r->created_by = $_SESSION['loged'];
+			} else {
+				$r->created_by = 0;
+			}	
+			$r->created_at = date('Y.m.d');
 			$receptId = $db->insert($r);
 		} else {
 			$db = new Query('receptek');
@@ -54,6 +59,9 @@ class Recept {
 				echo '<div class="alert alert-danger">Hozzáférés megtagadva!</div>';
 				return;
 			}
+		}
+		if ($db->error != '') {
+			echo ' error in insert '.$db->error.' '.$db->getSql(); exit();
 		}
 	
 		// leírás és név tárolása
@@ -71,7 +79,9 @@ class Recept {
 		if ($receptId > '0') {
 			$db->where('recept_id','=',$db->sqlValue($receptId))->delete();	
 		}
-		
+		if ($db->error != '') {
+			echo ' error in del hozzavalok '.$db->error; exit();
+		}
 		// hozzávalók felvitele
 		for ($i = 0; $i < 15; $i++) {
 			if (isset($_POST['hozzavalo'.$i])) {
@@ -91,7 +101,10 @@ class Recept {
 						$r->me = '';				
 					}
 					$db->insert($r);
-				}
+					if ($db->error != '') {
+						echo ' error in insert hozzavalok '.$db->error; exit();
+					}
+							}
 			}	
 		}
 		
@@ -163,11 +176,15 @@ class Recept {
 	*/
 	public function recept() {
 		global $hozzavalok;
-		$recept = JSON_decode('{"id":0, "leiras":"", "nev":"", "created_by":0}');	
+		$recept = JSON_decode('{"id":0, "leiras":"", "nev":"", "created_by":0, "created_at":"2022.01.01"}');	
 		$hozzavalok = [];	
 		$receptId = $_GET['id'];
 		$disable = '';
 	
+		if (isset($_GET['url'])) {	
+			$url = urldecode($_GET['url']);
+			atvesz($url);	
+		}
 		// aktuális recept és hozzávalók beolvasása
 		if ($receptId > '0') {
 			$db = new Query('receptek');
@@ -179,8 +196,18 @@ class Recept {
 			    ($_SESSION['logedName'] != ADMIN)) {
 				$disable = ' disabled="disabled"';		
 			}	
+			// creator hozzáolvasása
+			$db = new Query('users');
+			$creator = $db->where('id','=',$recept->created_by)->first();
+			if (!isset($creator->username)) {
+				$creator->username = 'guest';
+			}
+		} else {
+			$creator = new stdClass();
+			$creator->id = $_SESSION['loged'];
+			$creator->username = $_SESSION['logedName'];
 		}
-		
+
 		// meglévő recept nevek beolvasása
 		$db = new Query('receptek');
 		?>	
@@ -318,7 +345,12 @@ class Recept {
 					<input type="file" name="kepfile" <?php echo $disable; ?> />			
 				</div>
 				
-				</div>
+				<?php if ($recept->id > 0) : ?>
+				<div class="col-md-6">
+					<h3>Feltöltés</h3>
+					<?php echo $recept->created_at.' '.$creator->username; ?>
+				</div>				
+				<?php endif; ?>
 					
 				<div class="form-outline mb-4">
 					<?php if (($recept->id == 0) | ($recept->created_by == $_SESSION['loged'])) : ?>
@@ -331,7 +363,7 @@ class Recept {
 						onclick="location='index.php?task=receptprint&id=<?php echo $receptId; ?>';">
 						<em class="fas fa-print"></em>&nbsp;Nyomtatas</button>
 						&nbsp;
-						<?php if (($_SESSION['loged'] > 0) &
+						<?php if (($_SESSION['l0,5oged'] > 0) &
 								  (($recept->created_by == $_SESSION['loged']) | 
 						          ($_SESSION['logedName'] == ADMIN))) : ?>
 							<button type="button" class="btn btn-danger"
@@ -479,9 +511,42 @@ class Recept {
 			window.print();
 		</script>
 		<?php	
-	}	
+	}
+	
+	protected function getParam(string $name): string {
+		$result = '';
+		if (isset($_SESSION[$name])) {
+			$result = $_SESSION[$name];
+		}
+		if (isset($_GET[$name])) {
+			$result = $_GET[$name];
+		}
+		$_SESSION[$name] = $result;
+		return $result;
+	}
 	
 	public function receptek() {
+		if (isset($_GET['page'])) {
+			$page = $_GET['page'];
+			$offset = (20 * $page) - 20;
+		} else {
+			$page = 1;
+			$offset = 0;
+		}
+		$filterStr = $this->getParam('filterstr');
+		$filterCreator = $this->getParam('filtercreator');
+		$filterCreated = $this->getParam('filtercreated');
+		$filterCreatorId = -1;
+		if ($filterCreator != '') {
+			$db = new Query('users');
+			$r = $db->where('username','=',$filterCreator)->first();
+			if (isset($r->id)) {
+				$filterCreatorId = $r->id;
+			} else {
+				$filterCreatorId = 999999999;
+			}
+		}
+
 		$db = new Query('receptek');
 		$db->exec('CREATE TABLE IF NOT EXISTS receptek (
 			    id int AUTO_INCREMENT,
@@ -501,12 +566,58 @@ class Recept {
 			    KEY (recept_id)
 			)');
 		$db = new Query('receptek');
-		$db->orderBy('nev');
+		if ($filterStr != '') {
+			$db->where('nev','like','%'.$filterStr.'%');
+		}
+		if ($filterCreated != '') {
+			$db->where('created_at','>=',$filterCreated);
+		}
+		if ($filterCreatorId >= 0) {
+			$db->where('created_by','=',$filterCreatorId);
+		}
+		$list = $db->where('nev','<>','')->all();
+		$total = $db->count();
+		$db = new Query('receptek');
+		if ($filterStr != '') {
+			$db->where('nev','like','%'.$filterStr.'%');
+		}
+		if ($filterCreated != '') {
+			$db->where('created_at','>=',$filterCreated);
+		}
+		if ($filterCreatorId >= 0) {
+			$db->where('created_by','=',$filterCreatorId);
+		}
+		$db->where('nev','<>','')
+		   ->orderBy('nev')
+		   ->offset($offset)
+		   ->limit(20);
 		$list = $db->all();
+			
+
 		?>
 		<div id="receptList">
 			<div class="row">
 				<h2>Receptek</h2>
+			</div>	
+			<div class="filterForm">
+				<form method="get" action="index.php">
+					<input type="hidden" name="task" value="receptek" />
+					<div>
+						<label>Név részlet:</label>
+						<input type="text" name="filterstr" value="<?php echo $filterStr; ?>" />
+					</div>
+					<div>
+						<label>Csak</label>
+						<input type="text" name="filtercreator"
+							value="<?php echo $filterCreator ?>" /> által feltöltöttek
+					</div>		
+					<div>
+						<label>Csak</label>
+						<input type="date" name="filtercreated"
+							value="<?php echo $filterCreated ?>" /> után feltöltöttek
+							<button type="submit">Szürés</button>
+					</div>	
+				</form>
 			</div>	
 			<div class="row">	
 				<div id="receptListTable" class="col-md-8">
@@ -530,6 +641,23 @@ class Recept {
 							?>
 						</tbody>
 					</table>
+					<p>Összesen: <?php echo $total; ?></p>
+					<ul class="paginator">
+						<?php for ($p=1; (($p - 1)*20) < $total; $p++) : ?>
+								<?php if ($page == $p) : ?>
+									<li class="actPaginatorItem">
+										<?php echo $p; ?>
+									</li>
+								<?php else :?>
+									<li class="paginatorItem">
+										<a href="index.php?task=receptek&page=<?php echo $p; ?>">
+											<?php echo $p; ?>
+										</a>
+									</li>
+								<?php endif; ?>	
+							</a>&nbsp;	
+						<?php endfor; ?>	
+					</ul>	
 				</div>
 				<div class="d-none d-md-inline col-md-4">
 					<img src="images/dekor1.jpg" class="dekorImg" />

@@ -76,7 +76,7 @@ class Where {
 				$result .= $w.'(';
 				$w2 = '';
 				foreach ($or as $and) {
-					$result .= $w2.sqlName($and[0]).' '.$and[1].' '.$and[2];
+					$result .= $w2.sqlName($and[0]).' '.$and[1].' '.Query::sqlValue($and[2]);
 					$w2 = ' AND ';				
 				}
 				$result .= ')';
@@ -278,10 +278,12 @@ class Query {
 			$mysqli->set_charset('utf8');
 			$this->mysqli = $mysqli;	
 			$this->exec('SET character_set_results=utf8');
-   	   $this->exec('SET character_set_connection=utf8');
-      	$this->exec('SET character_set_client=utf8');		
+   	   		$this->exec('SET character_set_connection=utf8');
+      		$this->exec('SET character_set_client=utf8');		
 		}
-		if (is_numeric($s)) {
+		if ($s === '') {
+			$result = '""';
+		} else if (is_numeric($s)) {
 			$result = $s;
 		} else if (is_bool($s)) {
 			$result = $s;
@@ -509,22 +511,11 @@ class Query {
 		$result = false;
 		$this->res = false;
 		$this->cursor = -1;
-		// van ilyen?
-		$res = $this->all();
-		if ($this->errno == 0) {
-			if (count($res) == 0) {
-				// nincs
-				$this->errno = 404;
-				$this->error = 'not found';
-			} else {
-				// van
-				$sql = 'DELETE FROM '.sqlName($this->unions[0]->tableName)."\n";
-				$sql .= $this->unions[0]->where->getSql()."\n";
-				$this->mysqli->query($sql);
-				$this->error = mysqli_error($this->mysqli);
-				$this->errno = mysqli_errno($this->mysqli);
-			}
-		}
+		$sql = 'DELETE FROM '.sqlName($this->unions[0]->tableName)."\n";
+		$sql .= $this->unions[0]->where->getSql()."\n";
+		$this->mysqli->query($sql);
+		$this->error = mysqli_error($this->mysqli);
+		$this->errno = mysqli_errno($this->mysqli);
 		return ($this->errno == 0);	
 	}
 
