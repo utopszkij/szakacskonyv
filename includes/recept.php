@@ -60,6 +60,9 @@ class Recept {
 				return;
 			}
 		}
+		if ($db->error != '') {
+			echo ' error in insert '.$db->error.' '.$db->getSql(); exit();
+		}
 	
 		// leírás és név tárolása
 		$db = new Query('receptek');
@@ -76,7 +79,9 @@ class Recept {
 		if ($receptId > '0') {
 			$db->where('recept_id','=',$db->sqlValue($receptId))->delete();	
 		}
-		
+		if ($db->error != '') {
+			echo ' error in del hozzavalok '.$db->error; exit();
+		}
 		// hozzávalók felvitele
 		for ($i = 0; $i < 15; $i++) {
 			if (isset($_POST['hozzavalo'.$i])) {
@@ -96,7 +101,10 @@ class Recept {
 						$r->me = '';				
 					}
 					$db->insert($r);
-				}
+					if ($db->error != '') {
+						echo ' error in insert hozzavalok '.$db->error; exit();
+					}
+							}
 			}	
 		}
 		
@@ -182,24 +190,24 @@ class Recept {
 			$db = new Query('receptek');
 			$db->where('id','=',$db->sqlValue($receptId));
 			$recept = $db->first();	
-			if ($recept->created_at < '2022-01-01') {
-				$recept->created_at = '2022-01-01';
-			}
 			$db = new Query('hozzavalok');
 			$hozzavalok = $db->where('recept_id','=',$db->sqlValue($receptId))->all();
 			if (($recept->created_by != $_SESSION['loged']) &
 			    ($_SESSION['logedName'] != ADMIN)) {
 				$disable = ' disabled="disabled"';		
 			}	
+			// creator hozzáolvasása
+			$db = new Query('users');
+			$creator = $db->where('id','=',$recept->created_by)->first();
+			if (!isset($creator->username)) {
+				$creator->username = 'guest';
+			}
+		} else {
+			$creator = new stdClass();
+			$creator->id = $_SESSION['loged'];
+			$creator->username = $_SESSION['logedName'];
+		}
 
-		}
-		// creator hozzáolvasása
-		$db = new Query('users');
-		$creator = $db->where('id','=',$recept->created_by)->first();
-		if (!isset($creator->username)) {
-			$creator->username = 'guest';
-		}
-		
 		// meglévő recept nevek beolvasása
 		$db = new Query('receptek');
 		?>	
@@ -503,7 +511,19 @@ class Recept {
 			window.print();
 		</script>
 		<?php	
-	}	
+	}
+	
+	protected function getParam(string $name): string {
+		$result = '';
+		if (isset($_SESSION[$name])) {
+			$result = $_SESSION[$name];
+		}
+		if (isset($_GET[$name])) {
+			$result = $_GET[$name];
+		}
+		$_SESSION[$name] = $result;
+		return $result;
+	}
 	
 	public function receptek() {
 		if (isset($_GET['page'])) {
@@ -513,35 +533,19 @@ class Recept {
 			$page = 1;
 			$offset = 0;
 		}
-
-		$filterStr = '';
-		if (isset($_SESSION['filterStr'])) {
-			$filterStr = $_SESSION['filterStr'];
+		$filterStr = $this->getParam('filterstr');
+		$filterCreator = $this->getParam('filtercreator');
+		$filterCreated = $this->getParam('filtercreated');
+		$filterCreatorId = -1;
+		if ($filterCreator != '') {
+			$db = new Query('users');
+			$r = $db->where('username','=',$filterCreator)->first();
+			if (isset($r->id)) {
+				$filterCreatorId = $r->id;
+			} else {
+				$filterCreatorId = 999999999;
+			}
 		}
-		if (isset($_GET['filterstr'])) {
-			$filterStr = $_GET['filterstr'];
-		}
-		$_SESSION['filterStr'] = $filterStr;
-
-		$filteCreator = '';
-		if (isset($_SESSION['filterCreator'])) {
-			$filterCreator = $_SESSION['filterCreator'];
-		}
-		if (isset($_GET['filtercreator'])) {
-			$filterCreator = $_GET['filtercreator'];
-		}
-		$_SESSION['filterCreator'] = $filterCreator;
-
-		$filteCreated = '';
-		if (isset($_SESSION['filterCreted'])) {
-			$filterCreated = $_SESSION['filterCreated'];
-		}
-		if (isset($_GET['filtercreated'])) {
-			$filterCreated = $_GET['filtercreated'];
-		}
-		$_SESSION['filterCreated'] = $filterCreated;
-
-		
 
 		$db = new Query('receptek');
 		$db->exec('CREATE TABLE IF NOT EXISTS receptek (
@@ -561,24 +565,34 @@ class Recept {
 			    PRIMARY KEY (id),
 			    KEY (recept_id)
 			)');
-		
 		$db = new Query('receptek');
 		if ($filterStr != '') {
 			$db->where('nev','like','%'.$filterStr.'%');
 		}
+		if ($filterCreated != '') {
+			$db->where('created_at','>=',$filterCreated);
+		}
+		if ($filterCreatorId >= 0) {
+			$db->where('created_by','=',$filterCreatorId);
+		}
 		$list = $db->where('nev','<>','')->all();
 		$total = $db->count();
-
 		$db = new Query('receptek');
 		if ($filterStr != '') {
 			$db->where('nev','like','%'.$filterStr.'%');
+		}
+		if ($filterCreated != '') {
+			$db->where('created_at','>=',$filterCreated);
+		}
+		if ($filterCreatorId >= 0) {
+			$db->where('created_by','=',$filterCreatorId);
 		}
 		$db->where('nev','<>','')
 		   ->orderBy('nev')
 		   ->offset($offset)
 		   ->limit(20);
 		$list = $db->all();
-				
+			
 
 		?>
 		<div id="receptList">
@@ -599,7 +613,7 @@ class Recept {
 					</div>		
 					<div>
 						<label>Csak</label>
-						<input type="text" name="filtercreated"
+						<input type="date" name="filtercreated"
 							value="<?php echo $filterCreated ?>" /> után feltöltöttek
 							<button type="submit">Szürés</button>
 					</div>	

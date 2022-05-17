@@ -86,7 +86,7 @@ class User {
 		$db->where('username','=','"'.$userName.'"');
 		$rec = $db->first();
 		if ($db->error != '') {
-				$error = 'Nincs ilyen néven fiók!';
+				$error = 'Nincs ilyen néven fiók! '.$db->error.' '.$db->getSql();
 				?>
 				<script>
 					document.location="index.php?task=login&msg=<?php echo $error; ?>";		
