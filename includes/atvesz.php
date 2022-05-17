@@ -13,6 +13,9 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 	
 	$s = implode("\n",file($url));
 	$w = explode('id="recipeAllDetails"',$s);
+	
+//	echo $w; exit();
+	
 	if (count($w) > 1) {
 		$w = explode('<h1 class="title">',$w[1]);
 		if (count($w) > 1) {
@@ -51,6 +54,7 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 							$elkeszites = $w2[0];
 							$elkeszites = str_replace('</li>','\n',$elkeszites);
 							$elkeszites = str_replace("\n",'',$elkeszites);
+							$elkeszites = str_replace("\r",'',$elkeszites);
 							$elkeszites = str_replace('"','\"',$elkeszites);
 							$elkeszites = strip_tags($elkeszites);
 						}				

@@ -63,6 +63,34 @@ importComponent('naptar');
 importComponent('user');
 importComponent('szovegek');
 
+//+ ----------- db verzio kezelés start ------------
+$q = new Query('receptek');
+$q->exec('create table if not exists dbverzio (
+	verzio varchar(32)
+)');
+$q = new Query('dbverzio');
+$w = $q->first();
+if (isset($w->verzio)) {
+	$dbverzio = $w->verzio;
+} else {
+	$dbverzio = 'v0.0';
+	$r = new Record();
+	$r->verzio = 'v0.0';
+	$q->insert($r);
+}
+
+// v.0.1 created_at mező a receptek -be
+if ($dbverzio < 'v0.1') {
+	$q->exec('alter table receptek 
+		add created_at date
+	');
+	$q = new Query('dbverzio');
+	$r = new Record();
+	$r->verzio = "v0.1";
+	$q->where('verzio','<>','')->update($r);
+}
+//- ----------- db verzio kezelés end ------------
+
 ?>
 
 <html lang="en">

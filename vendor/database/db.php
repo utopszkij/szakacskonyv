@@ -76,7 +76,7 @@ class Where {
 				$result .= $w.'(';
 				$w2 = '';
 				foreach ($or as $and) {
-					$result .= $w2.sqlName($and[0]).' '.$and[1].' '.$and[2];
+					$result .= $w2.sqlName($and[0]).' '.$and[1].' "'.$and[2].'"';
 					$w2 = ' AND ';				
 				}
 				$result .= ')';
@@ -278,10 +278,12 @@ class Query {
 			$mysqli->set_charset('utf8');
 			$this->mysqli = $mysqli;	
 			$this->exec('SET character_set_results=utf8');
-   	   $this->exec('SET character_set_connection=utf8');
-      	$this->exec('SET character_set_client=utf8');		
+   	   		$this->exec('SET character_set_connection=utf8');
+      		$this->exec('SET character_set_client=utf8');		
 		}
-		if (is_numeric($s)) {
+		if ($s === '') {
+			$result = '""';
+		} else if (is_numeric($s)) {
 			$result = $s;
 		} else if (is_bool($s)) {
 			$result = $s;
