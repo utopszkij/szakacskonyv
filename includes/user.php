@@ -22,15 +22,17 @@ class User {
 			<br /><br />
 			<input type="submit" class="btn btn-primary" name="submit" value="Küld" />
 			<br /><br />
-			<a href="vendor/fblogin.php" class="btn" 
+<!--				
+			<a href="https://netpolgar.hu/fblogin.php?state=<?php echo urlencode(SITEURL); ?>" class="btn" 
 			   style="background-color:blue; color:white">
 				<strong>f</strong> Belépés Facebook -al			
 			</a>
 			<br /><br />
-			<a href="vendor/googlelogin.php" class="btn" 
+			<a href="https://netpolgar.hu/googlelogin.php?state=<?php echo urlencode(SITEURL); ?>" class="btn" 
 			   style="background-color:blue; color:white">
 				<strong>g</strong> Belépés Google -al			
 			</a>
+-->
 			</form>
 		</div>
 		<?php	
@@ -85,8 +87,11 @@ class User {
 		$error = '';
 		$db->where('username','=','"'.$userName.'"');
 		$rec = $db->first();
+		
+		// echo $db->getSql(); exit();
+		
 		if ($db->error != '') {
-				$error = 'Nincs ilyen néven fiók! '.$db->error.' '.$db->getSql();
+				$error = 'Nincs ilyen néven fiók! '.$db->error;
 				?>
 				<script>
 					document.location="index.php?task=login&msg=<?php echo $error; ?>";		
