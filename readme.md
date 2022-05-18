@@ -5,6 +5,17 @@ A programba étel recepteket és napi menüket lehet kezelni.
 Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
 Ebből bevásárló listát lehet a program segitségével készíteni.
 			
+## verzió V0.1 
+- mindmegette.hu átvétel javítása
+- recepet böngésző lapozás és szűrés
+### változott fájlok
+- index.php
+- readme.md
+- vendor/database/db.php
+- includes/user.php
+- includes/recept.php
+- includes/atvesz.php
+
 ## Tulajdonságok
 
 - Recepthez hozzávalók, elkészítési leírás és kép vihető fel,
