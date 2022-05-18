@@ -600,22 +600,24 @@ class Recept {
 				<h2>Receptek</h2>
 			</div>	
 			<div class="filterForm">
-				<form method="get" action="index.php">
+				<form method="get" action="index.php" id="filterForm">
 					<input type="hidden" name="task" value="receptek" />
 					<div>
 						<label>Név részlet:</label>
-						<input type="text" name="filterstr" value="<?php echo $filterStr; ?>" />
+						<input type="text" name="filterstr" id="filterstr" 
+							   value="<?php echo $filterStr; ?>" />
 					</div>
 					<div>
 						<label>Csak</label>
-						<input type="text" name="filtercreator"
+						<input type="text" name="filtercreator" id="filtercreator"
 							value="<?php echo $filterCreator ?>" /> által feltöltöttek
 					</div>		
 					<div>
 						<label>Csak</label>
-						<input type="date" name="filtercreated"
+						<input type="date" name="filtercreated" id="filtercreated"
 							value="<?php echo $filterCreated ?>" /> után feltöltöttek
 							<button type="submit">Szürés</button>
+							<button type="button" onclick="delFilter()" title="szürés törlése">X</button>
 					</div>	
 				</form>
 			</div>	
@@ -664,6 +666,14 @@ class Recept {
 				</div>	
 			</div>
 			<p>Kattints a recept nevére a megtekintéséhez, modosításhoz, törléséhez!</p>
+			<script>
+				function delFilter() {
+					document.getElementById('filterstr').value = '';
+					document.getElementById('filtercreator').value = '';
+					document.getElementById('filtercreated').value = '';
+					document.getElementById('filterForm').submit();
+				}
+			</script>	
 			<?php if ($_SESSION['loged'] >= 0) : ?>
 			<div style="text-align:center">
 				<a href="?task=recept&id=0" class="btn btn-primary">
