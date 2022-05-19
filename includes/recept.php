@@ -363,7 +363,7 @@ class Recept {
 						onclick="location='index.php?task=receptprint&id=<?php echo $receptId; ?>';">
 						<em class="fas fa-print"></em>&nbsp;Nyomtatas</button>
 						&nbsp;
-						<?php if (($_SESSION['l0,5oged'] > 0) &
+						<?php if (($_SESSION['loged'] > 0) &
 								  (($recept->created_by == $_SESSION['loged']) | 
 						          ($_SESSION['logedName'] == ADMIN))) : ?>
 							<button type="button" class="btn btn-danger"

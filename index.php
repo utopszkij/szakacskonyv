@@ -33,12 +33,28 @@ if (isset($_GET['task'])) {
 	$task = 'home';
 }
 
-// Facebbok loginból érkező hívás feldolgozása
+// Facebbok/google loginból érkező hívás feldolgozása
 if (isset($_GET['usercode'])) {
 	$w = explode('-',$_GET['usercode']);
-	$userName = base64_decode($w[0]);
+	$userName = 's_'.base64_decode($w[0]);
 	$userId = $w[1];
 	if ($w[2] == md5($userId.FB_SECRET)) {
+
+		// van már ilyen user?
+		$db->where('username','=','"'.$userName.'"');
+		$rec = $db->first();
+		if ($db->error != '') {
+			// nincs, létrehozzuk és az újra jelentkezünk be
+			$r = new Record();
+			$r->username = $userName;
+			$r->password = $w[2];
+			$userId = $db->insert($r);
+		} else {
+			// van erre jelentkezünk be
+			$userId = $rec->id;
+		}
+
+		// bejelentkeztetés
 		$_SESSION['loged'] = $userId;
 		$_SESSION['logedName'] = $userName;
 	}

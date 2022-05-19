@@ -22,17 +22,15 @@ class User {
 			<br /><br />
 			<input type="submit" class="btn btn-primary" name="submit" value="Küld" />
 			<br /><br />
-<!--				
-			<a href="https://netpolgar.hu/fblogin.php?state=<?php echo urlencode(SITEURL); ?>" class="btn" 
+			<a href="https://netpolgar.hu/auth/facebook?state=<?php echo urlencode(SITEURL); ?>" class="btn" 
 			   style="background-color:blue; color:white">
 				<strong>f</strong> Belépés Facebook -al			
 			</a>
 			<br /><br />
-			<a href="https://netpolgar.hu/googlelogin.php?state=<?php echo urlencode(SITEURL); ?>" class="btn" 
+			<a href="https://netpolgar.hu/auth/google?state=<?php echo urlencode(SITEURL); ?>" class="btn" 
 			   style="background-color:blue; color:white">
 				<strong>g</strong> Belépés Google -al			
 			</a>
--->
 			</form>
 		</div>
 		<?php	
