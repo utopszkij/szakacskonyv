@@ -156,7 +156,8 @@ class Recept {
 		} else if ($recept->nev != '') {
 		   	$receptNev = strtolower($recept->nev);
 		   	$receptNev = urlencode($receptNev);
-			   $sorok = file('https://www.picsearch.com/index.cgi?q='.$receptNev);
+			$sorok = file('https://www.picsearch.com/index.cgi?q='.$receptNev);
+			if (is_array($sorok)) {
 			   $s = implode("\n",$sorok);
 			   // echo 'SSS '.$s.' SSS';
 			   $w = explode('"result"',$s);
@@ -166,7 +167,8 @@ class Recept {
 				   	$w = explode('"',$w[1]);
 				   	$kep = $w[0];
 				   }	
-			   }	
+			   }
+			}	
 		}
 		return $kep;
 	}
@@ -353,7 +355,9 @@ class Recept {
 				<?php endif; ?>
 					
 				<div class="form-outline mb-4">
-					<?php if (($recept->id == 0) | ($recept->created_by == $_SESSION['loged'])) : ?>
+					<?php if (($recept->id == 0) | 
+					          ($recept->created_by == $_SESSION['loged']) |
+							  ($_SESSION['logedName'] == ADMIN)) : ?>
 					<button type="button" class="btn btn-primary" onclick="okClick()">
 					<em class="fas fa-check"></em>&nbsp;Tárolás</button>
 					<?php endif; ?>

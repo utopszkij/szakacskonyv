@@ -5,17 +5,6 @@ A programba étel recepteket és napi menüket lehet kezelni.
 Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
 Ebből bevásárló listát lehet a program segitségével készíteni.
 			
-## verzió V0.1 
-- mindmegette.hu átvétel javítása
-- recepet böngésző lapozás és szűrés
-### változott fájlok
-- index.php
-- readme.md
-- vendor/database/db.php
-- includes/user.php
-- includes/recept.php
-- includes/atvesz.php
-
 ## Tulajdonságok
 
 - Recepthez hozzávalók, elkészítési leírás és kép vihető fel,
@@ -93,6 +82,30 @@ GNU/GPL
 
 ![bevásárló lista](https://github.com/utopszkij/szakacskonyv/blob/main/images/bevlista.png?raw=true)
 
+## verzió v0.2 
+2022.05.21.
+- program frissités kezelése (jelzi ha van új verzió, és kiirja a frissitendő fájlok listáját)
+- admin user recept törlési lehetőség hibájának javítása
+- facebook / google bejelentkezés hibájának javítása
+- admin user recept modositással kapcsolatos hibajavitás
+- napi összesítéssel kapcsolatos hibajavítás
+### változott fájlok
+- index.php
+- readme.md
+- style.css
+- includes/upgrade.php
+- includes/napimenu.php
+
+## verzió v0.1 
+- mindmegette.hu átvétel javítása
+- recepet böngésző lapozás és szűrés
+### változott fájlok
+- index.php
+- readme.md
+- vendor/database/db.php
+- includes/user.php
+- includes/recept.php
+- includes/atvesz.php
 
 
 

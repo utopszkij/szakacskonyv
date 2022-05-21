@@ -24,6 +24,9 @@ form {margin:10px 10px 10px 20px}
 #osszegzes table {width:50%}
 #bevasarloLista textarea {width:100%}
 
+.warning {background-color:red; color:yellow; padding:10px;}
+.warning a {color:yellow;}
+
 .paginator {display:inline-block; list-style: none;}
 .paginator a {text-decoration:none; color:black;}
 .paginatorItem {display:inline-block; border-style:solid; border-width:1px; 
@@ -41,13 +44,14 @@ form {margin:10px 10px 10px 20px}
   border-radius: 0px 0px 30px 30px; text-align:center}
 
 @media print {
-	 h1,h2,h3,h4 {font-size:10px; font-weight: bold}
+	 h1,h2,h3,h4 {font-size:18px; font-weight: bold}
     #header {display:none; height:0px;}
-	 .page {min-height:10px; text-align:left; padding:10px; font-size:8px}
+	 .page {min-height:14px; text-align:left; padding:10px; font-size:14px}
     nav {display:none; height:0px;}
     /* img {display:none; height:0px;} */
     button {display:none; height:0px;}
     .help {display:none; height:0px;}
+    .warning {display:none; height:0px;}
     textarea {border-style:none; }
 	.receptKep {height:100px; width:auto; float:right}
 	#footer {display:none}

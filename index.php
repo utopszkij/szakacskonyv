@@ -33,33 +33,6 @@ if (isset($_GET['task'])) {
 	$task = 'home';
 }
 
-// Facebbok/google loginból érkező hívás feldolgozása
-if (isset($_GET['usercode'])) {
-	$w = explode('-',$_GET['usercode']);
-	$userName = 's_'.base64_decode($w[0]);
-	$userId = $w[1];
-	if ($w[2] == md5($userId.FB_SECRET)) {
-
-		// van már ilyen user?
-		$db->where('username','=','"'.$userName.'"');
-		$rec = $db->first();
-		if ($db->error != '') {
-			// nincs, létrehozzuk és az újra jelentkezünk be
-			$r = new Record();
-			$r->username = $userName;
-			$r->password = $w[2];
-			$userId = $db->insert($r);
-		} else {
-			// van erre jelentkezünk be
-			$userId = $rec->id;
-		}
-
-		// bejelentkeztetés
-		$_SESSION['loged'] = $userId;
-		$_SESSION['logedName'] = $userName;
-	}
-}
-
 global $components; // [[taskName, compName],....]
 $components = [];
 
@@ -78,7 +51,35 @@ importComponent('recept');
 importComponent('naptar');
 importComponent('user');
 importComponent('szovegek');
+importComponent('upgrade');
 
+// Facebbok/google loginból érkező hívás feldolgozása
+if (isset($_GET['usercode'])) {
+	$w = explode('-',$_GET['usercode']);
+	$userName = 's_'.base64_decode($w[0]);
+	$userId = $w[1];
+	if ($w[2] == md5($userId.FB_SECRET)) {
+
+		// van már ilyen user?
+		$db = new Query('users');
+		$db->where('username','=','"'.$userName.'"');
+		$rec = $db->first();
+		if ($db->error != '') {
+			// nincs, létrehozzuk és az újra jelentkezünk be
+			$r = new Record();
+			$r->username = $userName;
+			$r->password = $w[2];
+			$userId = $db->insert($r);
+		} else {
+			// van erre jelentkezünk be
+			$userId = $rec->id;
+		}
+
+		// bejelentkeztetés
+		$_SESSION['loged'] = $userId;
+		$_SESSION['logedName'] = $userName;
+	}
+}
 //+ ----------- db verzio kezelés start ------------
 $q = new Query('receptek');
 $q->exec('create table if not exists dbverzio (
@@ -94,17 +95,8 @@ if (isset($w->verzio)) {
 	$r->verzio = 'v0.0';
 	$q->insert($r);
 }
-
-// v.0.1 created_at mező a receptek -be
-if ($dbverzio < 'v0.1') {
-	$q->exec('alter table receptek 
-		add created_at date
-	');
-	$q = new Query('dbverzio');
-	$r = new Record();
-	$r->verzio = "v0.1";
-	$q->where('verzio','<>','')->update($r);
-}
+$upgrade = new \Upgrade();
+$lastVerzio = $upgrade->getLastVersion();
 //- ----------- db verzio kezelés end ------------
 
 ?>
@@ -176,9 +168,19 @@ if ($dbverzio < 'v0.1') {
 	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 	        <button class="btn btn-outline-success" type="submit">Search</button>
 	      </form -->
-	    </div>
+	    </div>	<div class="upgrade">
+
 	  </div>
 	</nav>	
+	<?php if ($lastVerzio > $dbverzio) : ?>
+	<div class="warning">
+		<a href="index.php?task=upgrade1&version=<?php echo $lastVerzio; ?>" 
+			class="btn btn-primary">
+			Új verzó érhető el <?php echo $lastVerzio; ?>
+		</a>
+		(telepitve: <?php echo $dbverzio; ?>)
+	</div>	
+	<?php endif; ?>	
 	<div class="page">
 	<?php
 		$compName = '';
