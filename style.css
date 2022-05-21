@@ -24,6 +24,9 @@ form {margin:10px 10px 10px 20px}
 #osszegzes table {width:50%}
 #bevasarloLista textarea {width:100%}
 
+.warning {background-color:red; color:yellow; padding:10px;}
+.warning a {color:yellow;}
+
 .paginator {display:inline-block; list-style: none;}
 .paginator a {text-decoration:none; color:black;}
 .paginatorItem {display:inline-block; border-style:solid; border-width:1px; 
