@@ -77,6 +77,7 @@ if (isset($_GET['usercode'])) {
 
 		// bejelentkeztetés
 		$_SESSION['loged'] = $userId;
+		$_SESSION['logedName'] = $userName;
 	}
 }
 //+ ----------- db verzio kezelés start ------------

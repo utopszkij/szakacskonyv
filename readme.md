@@ -85,15 +85,16 @@ GNU/GPL
 ## verzió v0.2 
 2022.05.21.
 - program frissités kezelése (jelzi ha van új verzió, és kiirja a frissitendő fájlok listáját)
-- recept törlési lehetőség hibájának javítása
+- admin user recept törlési lehetőség hibájának javítása
 - facebook / google bejelentkezés hibájának javítása
 - admin user recept modositással kapcsolatos hibajavitás
+- napi összesítéssel kapcsolatos hibajavítás
 ### változott fájlok
 - index.php
 - readme.md
 - style.css
 - includes/upgrade.php
-- includes/recept.php
+- includes/napimenu.php
 
 ## verzió v0.1 
 - mindmegette.hu átvétel javítása

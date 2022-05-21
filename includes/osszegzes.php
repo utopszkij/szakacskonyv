@@ -105,6 +105,7 @@ class Osszegzes {
 		->where('m.datum','<=',Query::sqlValue($datum2))
 		->where('m.created_by','=',Query::sqlValue($loged))
 		->orderBy('m.datum');
+
 	$napiMenuk = $db->all();	
 	
 	?>

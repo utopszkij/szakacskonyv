@@ -23,12 +23,11 @@ class NapiMenu {
 	// napimenü képernyő adatainak tárolása
 	// $_GET['ev', 'ho', 'nap', .... képernyő mezők .... ] 
 	public function menusave() {
-		$ev = $_GET['ev'];
-		$ho = $_GET['ho'];
-		$nap = $_GET['nap'];
+		$ev = intval($_GET['ev']);
+		$ho = intval($_GET['ho']);
+		$nap = intval($_GET['nap']);
 		if ($ho < 10) $ho = '0'.$ho;
 		if ($nap < 10) $nap = '0'.$nap;
-		
 		if ($_SESSION['loged'] < 0) {
 			echo '<div class="alert alert-danger">Napi menü felviteléhez be kell jelentkezni!</div>';
 			return;	
