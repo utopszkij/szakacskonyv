@@ -87,6 +87,7 @@ GNU/GPL
 - program frissités kezelése (jelzi ha van új verzió, és kiirja a frissitendő fájlok listáját)
 - recept törlési lehetőség hibájának javítása
 - facebook / google bejelentkezés hibájának javítása
+- admin user recept modositással kapcsolatos hibajavitás
 ### változott fájlok
 - index.php
 - readme.md
