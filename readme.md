@@ -91,6 +91,7 @@ GNU/GPL
 ### változott fájlok
 - index.php
 - readme.md
+- style.css
 - includes/upgrade.php
 - includes/recept.php
 
