@@ -66,7 +66,7 @@ GNU/GPL
 
 ## Müködő web hely:
 
-[http://szakacskonyv.great-site.net](http://szakacskonyv.great-site.net)
+[http://szakacs.great-site.net](http://szakacs.great-site.net)
 
 ## képernyő képek
 

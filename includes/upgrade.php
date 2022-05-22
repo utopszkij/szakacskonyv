@@ -60,13 +60,108 @@ class Upgrade {
 				</p>
 			<?php else : ?>
 				<p>
-					<a class="btn btn-secondary" href="index.php?task=upgrade3&version=<?php echo $version; ?>">
+				<a class="btn btn-secondary" href="index.php?task=upgrade3&version=<?php echo $version; ?>">
 						OK
 					</a>
 				</p>
 			<?php endif; ?>
 		</div>	
 		<?php
+	}
+
+	/**
+	 * Könyvtár irhatóvá tétele
+	 */
+	protected function setWritableDir($path) {
+/*
+		try {
+			$w = fileperms($path);
+			chmod($path, ($w || 0070)); // group irhatja
+		} catch (Exception $e) {	
+		}	
+*/
+	}
+
+	/**
+	 * könyvtár olvashatóvá tétele 
+	 */
+	protected function setReadonlyDir($path) {
+/*
+		try {
+			$w = fileperms($path);
+			chmod($path, ($w && 0755)); // group nem irhatja
+		} catch (Exception $e) {	
+		}	
+*/
+	}
+	
+	protected function updateFile($path) {
+		try {
+			$w = fileperms(__DIR__.'/../'.$path);
+			chmod(__DIR__.'/../'.$path,($w || 0070)); // group irhatja
+			//unlink(__DIR__.'/../'.$path);
+			$this->downloadFile($path);
+		} catch (Exception $e) {	
+			$this->errorCount++;
+			$this->msg .= 'ERROR update '.$path.' '.JSON_encode($e).'<br>';
+		}		
+	}
+
+	protected function downloadFile($path) {
+		try {
+			$owner = stat(__DIR__.'/../index.php')['uid'];
+			$lines = file($this->github.$path);		
+			$fp = fopen(__DIR__.'/../'.$path.'.new','w+');
+			fwrite($fp, implode("",$lines));
+			fclose($fp);
+			chown (__DIR__.'/../'.$path.'.new', $owner); // tulajdonosa ugyanaz mint az index.php -nek
+			chmod(__DIR__.'/../'.$path.'.new',0555); // senki nem irhatja
+		} catch (Exception $e) {	
+			$this->errorCount++;
+			$this->msg .= 'ERROR download '.$path.' '.JSON_encode($e).'<br>';
+		}		
+	}
+
+	/**
+	 * változott fájlok frissitése
+	 * GET: version
+	 */
+	public function upgrade2() {
+		error_reporting(E_ERROR | E_PARSE);
+		$this->errorCount = 0;
+		$this->msg = '';
+		$lastVersion = $_GET['version'];
+		$files = $this->getNewFilesList($this->githubReadme, $lastVersion);
+		try {
+			$this->setWritableDir('.');
+			$this->setWritableDir('..');
+			foreach ($files as $file) {
+				if (file_exists(__DIR__.'/../'.$file)) {
+					$this->updateFile($file); 
+				} else {
+					$this->downloadFile($file); 
+				}		
+			}
+			$this->setReadonlyDir('.');
+			$this->setReadonlyeDir('..');
+		} catch (Exception $e) {	
+			$this->errorCount++;
+			$this->msg .= JSON_encode($e);
+		}	
+		if ($this->errorCount == 0) {
+			?>
+			<div>
+			<h3><?php echo $lastVersion; ?></h3>
+				<p>Fájlok frissitése megtörtént</p>
+				<a class="btn btn-secondary" href="index.php?task=upgrade3&version=<?php echo $lastVersion; ?>">
+				Tovább
+				</a>
+			</div>
+			<?php
+		} else {
+			echo '<h3>'.$lastVersion.'</h3>
+			<p>Hiba lépett fel a fájlok frissitése közben!</p>'.$msg;
+		}
 	}
 
 	/**
