@@ -3,12 +3,24 @@ body {text-align:center}
 .container {display:inline-block; margin:10px; padding:0px 0px 0px 0px; 
             border-radius:30px; background-color:#d0f0d0}
 #header {height:100px; margin:20px; background-image:url('images/fejlec.png')}
+
 .page {min-height:600px; text-align:left; padding:10px}
 .dekorImg {width:98%; }
 table {background-color:white; padding:5px;
 		border-style:solid; border-width:1px;}
 img {margin:5px}		
 button {margin-top:10px;}
+.warning {background-color:red; color:yellow; padding:10px;}
+.warning a {color:yellow;}
+.form-control {display:inline-block; width:auto}
+
+#popup {position:fixed; z-index:99; top:100px; left:100px; display:none;
+  padding:10px; text-align:center; width:auto; height:auto;
+  border-radius:5px;}
+.popupError {background-color:red; color:white}
+.popupSuccess {background-color:rgb(80, 156, 96); color:rgb(24, 16, 16)}
+.popupSimple {background-color:silver; color:black;} 
+
 #receptForm {padding: 20px 20px 20px 20px}
 #receptForm textarea {width:100%}
 form {margin:10px 10px 10px 20px}
@@ -20,12 +32,10 @@ form {margin:10px 10px 10px 20px}
 .receptKep {width:98%}
 .sajat a {color:blue; font-weight:bold}
 .idegen a {color:#a0a0a0}
+
 #osszegzes {padding: 10px 10px 10px 100px}
 #osszegzes table {width:50%}
 #bevasarloLista textarea {width:100%}
-
-.warning {background-color:red; color:yellow; padding:10px;}
-.warning a {color:yellow;}
 
 .paginator {display:inline-block; list-style: none;}
 .paginator a {text-decoration:none; color:black;}

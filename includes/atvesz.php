@@ -10,15 +10,33 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 	$kep = '';
 	$hozzavalok = '';
 	$elkeszites = '';
+	$adag = 4;
+	$elkeszitesiIdo = 0;
+	$energia = 0;
 	
 	$s = implode("\n",file($url));
 	$w = explode('id="recipeAllDetails"',$s);
 	
-//	echo $w; exit();
-	
 	if (count($w) > 1) {
 		$w = explode('<h1 class="title">',$w[1]);
 		if (count($w) > 1) {
+
+			// adag
+			$i = strpos($w[1],'adag</strong>');
+			if ($i > 0) {
+				$s = substr($w[1],$i-3,3);
+				$s = trim(str_replace('>','',$s));
+				$adag = intval($s);
+			}
+
+			// elkészítési idő
+			$i = strpos($w[1],'perc</strong>');
+			if ($i > 0) {
+				$s = substr($w[1],$i-3,3);
+				$s = trim(str_replace('>','',$s));
+				$elkeszitesiIdo = intval($s);
+			}
+
 			$w = explode('</h1>',$w[1]);
 			$cim = $w[0];
 
@@ -72,6 +90,9 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 	?>
 	<script>
 		document.getElementById('nev').value = "<?php echo $cim; ?>";
+		document.getElementById('adag').value = "<?php echo $adag; ?>";
+		document.getElementById('energia').value = "<?php echo $energia; ?>";
+		document.getElementById('elkeszites').value = "<?php echo $elkeszitesiIdo; ?>";
 		<?php 
 			$w = explode("\n",$hozzavalok);
 			for ($i = 0; ($i < count($w) & $i < 15); $i++) {

@@ -311,7 +311,7 @@ class Query {
 
 
 	/**
-	* az utoljára végrehajtott all() funkció eredménysorainak száma
+	* az összeállított sql eredménysorainak száma
 	* @return int
 	*/
 	public function count(): int {

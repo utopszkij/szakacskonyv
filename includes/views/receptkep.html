@@ -1,0 +1,244 @@
+<div class="alert alert-danger" v-if="loged == 0">
+    Recept felviteléhez, modosításhoz, törléséhez be kell jelentkezni!
+</div>	
+<div id="recept">
+    <form id="receptForm" action="index.php?task=receptsave" method="post" 
+        enctype="multipart/form-data">
+        <input type="hidden" value="receptsave" name="task" />			
+        <input type="hidden" v-model="receptId" name="id" />
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-outline mb-4">
+                    <h2>Recept<h2>			
+                </div>
+                <div class="form-outline mb-4 d-inline d-md-none">
+                    <img v-if="kep != ''" v-bind:src="kep" class="receptKep" class="receptKep" />				
+                </div>
+                <div class="form-outline mb-4">
+                    <label>Recept megnevezése:</label>			
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" v-model="recept.nev"
+                     id="nev" name="nev" :disabled="disabled != ''"
+                     class="form-control"  />
+                </div>
+
+                <div class="form-outline mb-4" v-if="disabled == ''">
+                    A mindmegette.hu -n nyisd meg a recept oldalát, 
+                    a web címét másold az alábbi input mezőbe, majd kattints a "Feldolgoz" gombra!
+                </div>
+                <div class="form-outline mb-4" v-if="disabled == ''">
+                    <input type="text" id="paste" class="form-control" />
+                    <button type="button" class="btn btn-secondary"
+                        v-on:click="processPaste()">Feldolgoz</button>
+                </div>
+                
+            </div>
+            <div class="d-none d-md-inline col-md-4">
+                    <img v-if="kep != ''" v-bind:src="kep" class="receptKep" class="receptKep" />				
+            </div>
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col-10">
+            Elkésuitési idő:
+            <input type="number" min="1" max="400" 
+                name="elkeszites" id="elkeszites" v-model="recept.elkeszites"
+                style="display:inlne-block; width:100px"  class="form-control"/> perc&nbsp;&nbsp;
+            Energia:
+                <input type="number" min="1" max="400" 
+                    name="energia" id="energia" v-model="recept.energia"
+                    style="display:inlne-block; width:100px"  class="form-control"/> kalória
+            </div>    
+        </div>
+        <div class="row" id="hozzavalok">
+            <div class="form-outline col-mb-10">
+                <h2>Hozzávalók 
+                    <input type="number" min="1" max="20" 
+                        name="adag" id="adag" v-model="recept.adag" 
+                        style="display:inline-block; width:80px;" placeholder="4"  class="form-control" />
+                adaghoz</h2>
+                <strong>Hozzávaló neve / mennyiség / mértékegység</strong>
+            </div>				
+            <div class="form-outline col-mb-10 hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
+                <input type="text" :disabled="disabled != ''"
+                    v-model="hozzavalo.nev" 
+                    v-bind:name="makeName('hozzavalo',i)" 
+                    list="alapanyagok"
+                    v-bind:id="makeName('hozzavalo',i)"
+                    style="width:49%"  class="form-control" /> 
+                <datalist id="alapanyagok">
+                      <option v-for="nev in nevek">{{ nev.nev }}</option>
+                </datalist>
+                    
+                <input type="number" min="0" max="100" step="0.5" 
+                   :disabled="disabled != ''"
+                   v-model="hozzavalo.mennyiseg"
+                   v-bind:name="makeName('mennyiseg',i)" style="width:23%"
+                   v-bind:id="makeName('mennyiseg',i)"  class="form-control"/>			
+                <select style="width:24%;" 
+                   :disabled="disabled != ''" 
+                   v-bind:name="makeName('me',i)"
+                   v-bind:id="makeName('me',i)"
+                   v-model="hozzavalo.me" class="form-control">	
+                    <option value="?">?</option>		
+                    <option value="db">db</option>		
+                    <option value="csomag">csomag</option>		
+                    <option value="tábla">tábla</option>		
+                    <option value="fej">fej</option>		
+                    <option value="g">g</option>		
+                    <option value="dkg">dkg</option>		
+                    <option value="kg">kg</option>		
+                    <option value="ek">ek</option>		
+                    <option value="tk">tk</option>		
+                    <option value="kk">kk</option>		
+                    <option value="csipet">csipet</option>		
+                    <option value="ml">ml</option>		
+                    <option value="dl">dl</option>		
+                    <option value="l">l</option>
+                    <option value="bögre">bögre</option>
+                    <option value="pohár">pohár</option>
+                    <option value="pár">pár</option>		
+                    <option value="gerezd">gerezd</option>		
+                    <option value="fej">fej</option>		
+                    <option value="szelet">szelet</option>		
+                    <option value=""></option>		
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cimke" style="display:inline-block; width:auto;" v-for="cimke in cimkek">
+                <input type="checkbox" v-bind:id="cimke" v-bind:name="cimke" value="1" :disabled="disabled != ''" />
+                {{ cimke }}&nbsp;
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-secondary" v-on:click="addHozzavalo">+ hozzávaló</button>
+        </div>
+        <p>Hozzávaló törléshez, töröld ki a nevét!</p>
+        <div class="col-md-6">
+            <h3>Elkészítés</h3>			
+            <textarea name="leiras" id="leiras"
+            :disabled="disabled != ''" 
+            cols="40" rows="15" v-model="recept.leiras"></textarea>
+            <p>Kép fájl (jpg vagy png, nem kötelező)</p>
+            <input type="file" name="kepfile" :disabled="disabled != ''" />			
+        </div>
+        
+        <div class="col-md-6" v-if="recept.id > 0">
+            <h3>Recept feltöltési infó</h3>
+            {{ recept.created_at }} {{creator.username }}
+        </div>				
+            
+        <div class="form-outline mb-4">
+            <button type="button" class="btn btn-primary"
+                v-if="((recept.id == 0) | 
+                (recept.created_by == loged) |
+                (logedName == ADMIN))" 
+                lass="btn btn-primary" 
+                v-on:click="okClick()">
+            <em class="fas fa-check"></em>&nbsp;Tárolás</button>
+            &nbsp;
+                <button type="button" class="btn btn-secondary"
+                v-if="recept.id > 0"
+                v-on:click="printClick(receptId)">
+                <em class="fas fa-print"></em>&nbsp;Nyomtatas</button>
+                &nbsp;
+                <button type="button" class="btn btn-danger"
+                    v-if="((loged > 0) &
+                    ((recept.created_by == loged) | 
+                     (logedName == ADMIN)))"
+                    v-on:click="delClick()">
+                        <em class="fas fa-ban"></em>&nbsp;Recept törlése 
+                </button>
+        </div>
+    </form>
+</div>
+<script>
+var methods = {
+        printClick(receptId) {
+           location="index.php?task=receptprint&id="+receptId; 
+        },
+        makeName(txt,i) {
+            return txt+i;
+        },
+        delClick() {
+			popupConfirm('Bitos, törölni akarod ezt a receptet? ('+this.receptId+')', function() {
+				document.location = 'index.php?task=receptdelete&id='+app.receptId;		
+			});
+		},
+		okClick() {
+            var jo = true;
+			var id = this.recept.id;
+			var nev = this.recept.nev;
+			var i = 0;
+			for (i=0; i< receptNevek.length; i++) {
+				if ((receptNevek[i].nev == nev) &
+				    (receptNevek[i].id != id)) {
+				    jo = false;
+                    popupMsg('Már van ilyen nevü recept! ','alert-danger');	
+				}		
+			}
+			if (jo) {
+				document.getElementById('receptForm').submit();		
+			}	
+		},
+		processPaste() {
+			var s = document.getElementById('paste').value;
+			document.location='index.php?task=recept&id=0&url='+encodeURI(s);		
+		},
+        addHozzavalo() {
+            var divHozzavalok = document.getElementById('hozzavalok');
+            var i = 0;
+            var divHozzavalo = false;
+            var newHozzavalo = false;
+            var child = false;
+            // meglévő hozzávalók megszámolása, első
+            // hozzávaló div --> divHozzavalo
+            child = divHozzavalok.firstChild;
+            while (child) {
+                if (child.className == 'form-outline col-mb-10 hozzavalo') {
+                    i++;
+                    if (!divHozzavalo) {
+                        divHozzavalo = child;
+                    }    
+                }
+                child = child.nextSibling;
+            }
+            if (!divHozzavalo) {
+                return;  // fatális hiba
+            }
+            // új hozzávaló div kialakitása
+            newHozzavalo = divHozzavalo.cloneNode(true);
+            child = newHozzavalo.firstChild;
+            while (child) {
+                if (child.nodeName == 'INPUT') {
+                    child.value = '';
+                    if (child.id == 'hozzavalo0') {
+                        child.id = 'hozzavalo'+i;
+                        child.name = 'hozzavalo'+i;
+                    }
+                    if (child.id == 'mennyiseg0') {
+                        child.id = 'mennyiseg'+i;
+                        child.name = 'mennyiseg'+i;
+                    }
+                }
+                if (child.nodeName == 'SELECT') {
+                    child.selectedIndex = 0;
+                    child.id = 'me'+i;
+                    child.name = 'me'+i;
+                }
+                child = child.nextSibling;
+            }
+            // új hozzavalo Div beillesztése a DOM -ba
+            divHozzavalok.appendChild(newHozzavalo);
+        },
+        afterMount() {
+            for (var i=0; i<this.receptCimkek.length; i++) {
+                document.getElementById(this.receptCimkek[i].cimke).checked = true;
+            }
+        }
+};   
+
+
+</script>

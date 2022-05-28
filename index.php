@@ -3,6 +3,11 @@ namespace RATWEB\DB;
 session_start();
 include_once 'config.php';
 include_once 'vendor/database/db.php';
+include_once(__DIR__.'/includes/views/view.php');
+include_once(__DIR__.'/includes/models/model.php');
+
+define('DOCROOT',__DIR__);
+
 // egy felhasználós módban minen "0" user_id -hez rendelve 
 // szerepel az adatbázisban
 // több felhasználós változatban a bejelentkezési folyamatban
@@ -27,6 +32,7 @@ if (isset($_SESSION['numDay'])) {
 	$_SESSION['numMonth'] = date('m', $time);
 	$_SESSION['numYear'] = date('Y', $time);
 }
+
 if (isset($_GET['task'])) {
 	$task = $_GET['task'];
 } else {
@@ -38,7 +44,7 @@ $components = [];
 
 function importComponent($name) {
 	global $components;
-	include_once 'includes/'.strtolower($name).'.php';
+	include_once 'includes/controllers/'.strtolower($name).'.php';
 	$methods = get_class_methods(ucFirst($name));
 	foreach ($methods as $method) {
 		$components[] = [$method,ucFirst($name)];
@@ -80,24 +86,48 @@ if (isset($_GET['usercode'])) {
 		$_SESSION['logedName'] = $userName;
 	}
 }
-//+ ----------- db verzio kezelés start ------------
-$q = new Query('receptek');
-$q->exec('create table if not exists dbverzio (
-	verzio varchar(32)
-)');
-$q = new Query('dbverzio');
-$w = $q->first();
-if (isset($w->verzio)) {
-	$dbverzio = $w->verzio;
-} else {
-	$dbverzio = 'v0.0';
-	$r = new Record();
-	$r->verzio = 'v0.0';
-	$q->insert($r);
-}
+//+ ----------- verzio kezelés start ------------
+
+// -------------------
+$fileVerzio = 'v0.2';
+// -------------------
+
 $upgrade = new \Upgrade();
+$dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
-//- ----------- db verzio kezelés end ------------
+
+if ($dbverzio < 'v0.1') {
+	$q = new Query('receptek');
+	$q->exec('alter table receptek 
+		add created_at date
+	');
+	$q = new Query('dbverzio');
+	$r = new Record();
+	$r->verzio = 'v0.1';
+	$q->where('verzio','<>','')->update($r);
+}
+if ($dbverzio < 'v0.3') {
+	$q = new Query('receptek');
+	$q->exec('alter table receptek 
+		add energia varchar(32),
+		add elkeszites int,
+		add adag int
+	');
+	$q->exec('update receptek set energia = 0, elkeszites = 0, adag = 4');
+	$q->exec('create table if not exists recept_cimke ( 
+		recept_id int,
+		cimke varchar(64),
+		KEY `recept_cimke_id` (`recept_id`),
+		KEY `recept_cimke_cimke` (`cimke`)
+		) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+	');
+	$q = new Query('dbverzio');
+	$r = new Record();
+	$r->verzio = 'v0.3';
+	$q->where('verzio','<>','')->update($r);
+}
+// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
+//- ----------- verzio kezelés end ------------
 
 ?>
 
@@ -115,8 +145,44 @@ $lastVerzio = $upgrade->getLastVersion();
 	 <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
 
 	 <link rel="stylesheet" href="style.css">
+	<script type="text/javascript">
+		function popupConfirm(txt, yesfun) {
+			document.getElementById('popupOkBtn').style.display="inline-block";
+			document.getElementById('popupNoBtn').style.display='inline-block';
+			document.getElementById('popup').className='popupSimple';
+			document.getElementById('popupTxt').innerHTML = txt;
+			document.getElementById('popupOkBtn').onclick=yesfun;
+			document.getElementById('popup').style.display='block';
+		}
+		function popupClose() {
+			document.getElementById('popup').style.display='none';
+		}
+		function popupMsg(txt,className) {
+			if (className == undefined) {
+				className = 'popupSimple';
+			}
+			document.getElementById('popupOkBtn').style.display="none";
+			document.getElementById('popupNoBtn').style.display='none';
+			document.getElementById('popup').className=className;
+			document.getElementById('popupTxt').innerHTML = txt;
+			document.getElementById('popup').style.display='block';
+		}
+	</script>	 
 </head>	 
 <body>
+<div id="popup">
+	<div style="text-align:right">
+		<button type="button" onclick="popupClose()" 
+			title="Bezár" style="margin:0px 0px 0px 0px; padding:0px 5px 0px 5px"
+			class="btn btn-secondary">X</button>
+	</div>
+	<div id="popupTxt"></div>
+	<div>
+	<button type="button" id="popupOkBtn" class="btn btn-danger">Igen</button>
+		&nbsp;
+		<button type="button" id="popupNoBtn"class="btn btn-primary" onclick="popupClose()">Nem</button>
+	</div>
+</div>	 	
 <div class="container">
 	<div class="row" id="header">
 	&nbsp;
@@ -172,13 +238,12 @@ $lastVerzio = $upgrade->getLastVersion();
 
 	  </div>
 	</nav>	
-	<?php if ($lastVerzio > $dbverzio) : ?>
+	<?php if ($lastVerzio > $fileVerzio) : ?>
 	<div class="warning">
 		<a href="index.php?task=upgrade1&version=<?php echo $lastVerzio; ?>" 
 			class="btn btn-primary">
 			Új verzó érhető el <?php echo $lastVerzio; ?>
 		</a>
-		(telepitve: <?php echo $dbverzio; ?>)
 	</div>	
 	<?php endif; ?>	
 	<div class="page">

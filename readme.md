@@ -53,6 +53,29 @@ index.php?page=xxxx hívással a "xxxx" vue komponens betöltésével is inditha
 - többfelhasználós üzemmód esetén; a program "Regisztrálás" menüpontjában hozzuk létre a
   a system adminisztrátor fiokot (a config.php -ban beállított bejelentkezési névvel).
 
+Könyvtár szerkezet
+```
+[document_root]
+  [images]
+     kép fájlok
+  [includes]
+    [controllers]
+      kontrollerek php fájlok
+    [models]
+      adat modellek php fájlok
+    [views]
+      viewer templates  spec. html fájlok. vue elemeket tartalmaznak
+    atvesz.php - átvétel a mindmegette.hu -ról
+    cimkek.txt - cimke lista
+  [vendor]
+    keretrendszer fájlok, harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
+  index.php  - fő program
+  config.php - konfigurációs adatok
+  style.css  - megjelenés
+  readme.md  - ez a fájl
+  LICENSE    - licensz
+```  
+
 ## Lecensz
 
 GNU/GPL
@@ -62,7 +85,8 @@ GNU/GPL
 - PHP	v7  [https://php.net](https://php.net)
 - MYSQL v5 [https://mysql.com](https://mysql.com)	  
 - Bootstrap v5.1.3 [https://bootstrap.com/](https://bootstrap.com/)	  
-- Font awesome 5.14.4 [https://fontawesome.com](https://fontawesome.com)	  
+- Font awesome 5.14.4 [https://fontawesome.com](https://fontawesome.com)
+- vuejs 3 [https://vuejs.org/](https://vuejs.org/)	  
 
 ## Müködő web hely:
 
@@ -81,6 +105,39 @@ GNU/GPL
 ![összesítés](https://github.com/utopszkij/szakacskonyv/blob/main/images/osszesites.png?raw=true)
 
 ![bevásárló lista](https://github.com/utopszkij/szakacskonyv/blob/main/images/bevlista.png?raw=true)
+
+## verzió v0.3
+2022.06.??
+- MVC struktúra, VUE form template
+- 30 összetevő vihető fel egy recepthez
+- Recept energia tartalom, elkészitési idő, adag kezelése
+- recept cimkézés felvitelnél, módositásnál, törlésnél, keresésnél
+### változott fájlok
+- index.php
+- readme.md
+- vendor/database/dbinit.sql
+- includes/cimkek.txt
+- includes/controllers/index.php
+- includes/controllers/napimenu.php
+- includes/controllers/naptar.php
+- includes/controllers/osszegzes.php
+- includes/controllers/recept.php
+- includes/controllers/szovegek.php
+- includes/controllers/upgrade.php
+- includes/controllers/user.php
+- includes/models/model.php
+- includes/models/receptmodel.php
+- includes/views/view.php
+- includes/views/receptek.html
+- includes/views/receptkep.html
+- includes/views/napimenukep.html
+- [del]includes/napimenu.php
+- [del]includes/naptar.php
+- [del]includes/osszegzes.php
+- [del]includes/recept.php
+- [del]includes/szovegek.php
+- [del]includes/upgrade.php
+- [del]includes/user.php
 
 ## verzió v0.2 
 2022.05.21.
