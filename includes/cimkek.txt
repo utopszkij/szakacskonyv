@@ -3,6 +3,7 @@ Főétel
 Desszert
 Saláta
 Sütemény
+Leves
 Köret
 Sertés
 Marha

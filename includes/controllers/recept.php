@@ -315,7 +315,7 @@ class Recept {
 			</div>
 			<div class="col-md-12">
 				<br /><strong>Elkészítési idő</strong>:
-				<?php echo $recept->elkeszites; ?>
+				<?php echo $recept->elkeszites; ?> perc
 				&nbsp;Energia tartalom:
 				<?php echo $recept->energia; ?>kalória
 			</div>
@@ -405,10 +405,14 @@ class Recept {
 		if (isset($_GET['page'])) {
 			$page = $_GET['page'];
 			$offset = (20 * $page) - 20;
+		} else if (isset($_SESSION['page'])) {
+			$page = $_SESSION['page'];
+			$offset = (20 * $page) - 20;
 		} else {
 			$page = 1;
 			$offset = 0;
 		}
+		$_SESSION['page'] = $page;
 		$db = new Query('receptek');
 		$db->exec('CREATE TABLE IF NOT EXISTS receptek (
 			    id int AUTO_INCREMENT,

@@ -139,7 +139,11 @@
                 v-on:click="okClick()">
             <em class="fas fa-check"></em>&nbsp;Tárolás</button>
             &nbsp;
-                <button type="button" class="btn btn-secondary"
+            <a href="index.php?task=receptek" class="btn btn-secondary">
+                <em class="fas fa-reply"></em>Mégsem
+            </a>
+            &nbsp;
+            <button type="button" class="btn btn-secondary"
                 v-if="recept.id > 0"
                 v-on:click="printClick(receptId)">
                 <em class="fas fa-print"></em>&nbsp;Nyomtatas</button>

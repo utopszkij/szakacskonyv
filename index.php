@@ -199,7 +199,7 @@ if ($dbverzio < 'v0.3') {
 	          <em class="fas fa-home"></em>&nbsp;Napi menük</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="index.php?task=receptek">
+	          <a class="nav-link" href="index.php?task=receptek&page=1">
 	          <em class="fas fa-book"></em>&nbsp;Receptek</a>
 	        </li>
 	        <li class="nav-item">
