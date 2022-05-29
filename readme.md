@@ -117,6 +117,7 @@ GNU/GPL
 - readme.md
 - vendor/database/dbinit.sql
 - includes/cimkek.txt
+- includes/atvesz.php
 - includes/controllers/index.php
 - includes/controllers/napimenu.php
 - includes/controllers/naptar.php
@@ -127,6 +128,7 @@ GNU/GPL
 - includes/controllers/user.php
 - includes/models/model.php
 - includes/models/receptmodel.php
+- includes/models/napimenumodel.php
 - includes/views/view.php
 - includes/views/receptek.html
 - includes/views/receptkep.html
