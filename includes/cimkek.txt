@@ -1,0 +1,16 @@
+Előétel
+Főétel
+Desszert
+Saláta
+Sütemény
+Leves
+Köret
+Sertés
+Marha
+Szárnyas
+Hal
+Vad
+Tészta
+Vegetáriánus
+Vegán
+Glutén mentes
