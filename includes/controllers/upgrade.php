@@ -118,7 +118,7 @@ class Upgrade {
 			<div><?php echo $this->info; ?></div>
 			<ul>
 			<?php foreach ($files as $file) :?>
-				<?php if (file_exists(DOVROOT.'/'.$file)) : ?>
+				<?php if (file_exists(DOCROOT.'/'.$file)) : ?>
 					<li>változott <?php echo $file; ?></li> 
 				<?php else : ?>
 					<li>új file <?php echo $file; ?></li> 

@@ -89,7 +89,7 @@ if (isset($_GET['usercode'])) {
 //+ ----------- verzio kezelés start ------------
 
 // -------------------
-$fileVerzio = 'v0.3';
+$fileVerzio = 'v0.2';
 // -------------------
 
 $upgrade = new \Upgrade();

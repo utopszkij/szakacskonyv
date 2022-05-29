@@ -107,7 +107,7 @@ GNU/GPL
 ![bevásárló lista](https://github.com/utopszkij/szakacskonyv/blob/main/images/bevlista.png?raw=true)
 
 ## verzió v0.3
-2022.06.??
+2022.06.29
 - MVC struktúra, VUE form template
 - 30 összetevő vihető fel egy recepthez
 - Recept energia tartalom, elkészitési idő, adag kezelése
