@@ -3,13 +3,13 @@
 				<h2>Receptek</h2>
 			</div>	
 			<div class="filterForm">
-				<form method="get" action="index.php" id="filterForm">
+				<form method="get" action="index.php" id="filterForm" class="form">
 					<input type="hidden" name="task" value="receptek" />
 					<input type="hidden" name="page" value="1" />
 					<div>
 						<label>Név részlet:</label>
 						<input type="text" name="filterstr" id="filterstr" 
-							   v-model="filterStr" />
+							   v-model="filterStr" class="form-control"/>
 					</div>
 					<div>
 						<label>Cimke:</label>
@@ -23,14 +23,16 @@
 					<div>
 						<label>Csak</label>
 						<input type="text" name="filtercreator" id="filtercreator"
-							v-model="filterCreator" /> által feltöltöttek
+							v-model="filterCreator" class="form-control" /> által feltöltöttek
 					</div>		
 					<div>
 						<label>Csak</label>
 						<input type="date" name="filtercreated" id="filtercreated"
-							v-model="filterCreated" /> után feltöltöttek
-							<button type="submit">Szürés</button>
-							<button type="button" v-on:click="delFilter()" title="szürés törlése">X</button>
+							v-model="filterCreated" class="form-control" /> után feltöltöttek
+							<button type="submit" class="btn btn-primary">
+								<em class="fa fa-search"></em>Szürés</button>
+							<button type="button" v-on:click="delFilter()" 
+								title="szürés törlése" class="btn btn-secondary">X</button>
 					</div>	
 				</form>
 			</div>	

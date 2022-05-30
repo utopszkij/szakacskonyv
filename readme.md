@@ -1,8 +1,10 @@
 # Szakácskönyv
- 
-A programba étel recepteket és napi menüket lehet kezelni.
+ - includes/models/receptmodel.php
+és napi menüket lehet kezelni.
 			
-Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
+Ezek alapján a program adott id- includes/models/receptmodel.php
+szak összesített anyagszü- includes/models/receptmodel.php
+kségleteit tudja meghatározni. 
 Ebből bevásárló listát lehet a program segitségével készíteni.
 			
 ## Tulajdonságok
@@ -25,9 +27,8 @@ Több felhasználós módban mindenki csak a sajátmaga által felvitt napi men�
 látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
 látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
 sajátmaga által felvitteket tudja.
-			
-			
-A felhasználók által felvitt receptek és képek tartalmáért, a kizárólag
+			- includes/models/receptmodel.php
+ceptek és képek tartalmáért, a kizárólag
 az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
 ezekkel kapcsolatban semmilyen felelősséget nem vállal.
 			
@@ -76,19 +77,7 @@ Könyvtár szerkezet
   LICENSE    - licensz
 ```  
 
-## Lecensz
-
-GNU/GPL
-
-## Felhasznált opensource termékek
-
-- PHP	v7  [https://php.net](https://php.net)
-- MYSQL v5 [https://mysql.com](https://mysql.com)	  
-- Bootstrap v5.1.3 [https://bootstrap.com/](https://bootstrap.com/)	  
-- Font awesome 5.14.4 [https://fontawesome.com](https://fontawesome.com)
-- vuejs 3 [https://vuejs.org/](https://vuejs.org/)	  
-
-## Müködő web hely:
+## Lecensz- includes/models/receptmodel.php
 
 [http://szakacs.great-site.net](http://szakacs.great-site.net)
 
@@ -106,8 +95,8 @@ GNU/GPL
 
 ![bevásárló lista](https://github.com/utopszkij/szakacskonyv/blob/main/images/bevlista.png?raw=true)
 
-## verzió v0.3
-2022.06.29
+## verzió v1.0
+2022.06.30
 - MVC struktúra, VUE form template
 - 30 összetevő vihető fel egy recepthez
 - Recept energia tartalom, elkészitési idő, adag kezelése

@@ -1,18 +1,21 @@
 <?php
 /**
 * adatátvétel a mindmegette.hu -ról
-* a képernyőn lévő nev. leiras, hozzavalo0, mennyiseg0, me0,.... mezőket tölti ki.
+* a $recept és a $hozzavalok tömb mezőket tölti ki.
 * képet másol az images könyvtárba.
 * @param string $url; // recept képernyő a mindmegette.hu -n
+* @param Rekord $recept
+* @param array $hozzavalok
 */
-function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesztaval.recept/') {	
+function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesztaval.recept/',
+    &$recept, &$hozzavalok) {	
 	$cim = '';
 	$kep = '';
-	$hozzavalok = '';
 	$elkeszites = '';
 	$adag = 4;
 	$elkeszitesiIdo = 0;
 	$energia = 0;
+	$hozza = '';
 	
 	$s = implode("\n",file($url));
 	$w = explode('id="recipeAllDetails"',$s);
@@ -26,29 +29,30 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 			if ($i > 0) {
 				$s = substr($w[1],$i-3,3);
 				$s = trim(str_replace('>','',$s));
-				$adag = intval($s);
+				$recept->adag = intval($s);
 			}
 
 			// elkészítési idő
 			$i = strpos($w[1],'perc</strong>');
 			if ($i > 0) {
-				$s = substr($w[1],$i-3,3);
+				$s = substr($w[1],$i-4,4);
 				$s = trim(str_replace('>','',$s));
-				$elkeszitesiIdo = intval($s);
+				$s = trim(str_replace('g','',$s));
+				$recept->elkeszites = intval($s);
 			}
 
 			$w = explode('</h1>',$w[1]);
-			$cim = $w[0];
+			$recept->nev = trim($w[0]);
 
 			if (count($w) > 1) {
 						$w2 = explode('<ul class="shopingCart">',$w[1]);
 						if (count($w2) > 1) {
 							$w2 = explode('</ul>',$w2[1]);
-							$hozzavalok = $w2[0];	
-							$hozzavalok = str_replace("<span class='comment'>",';;;',$hozzavalok);
-							$hozzavalok = str_replace('</span>',';',$hozzavalok);
-							$hozzavalok = str_replace('</li>',"\n",$hozzavalok);
-							$hozzavalok = strip_tags($hozzavalok,['br']);
+							$hozza = $w2[0];	
+							$hozza = str_replace("<span class='comment'>",';;;',$hozza);
+							$hozza = str_replace('</span>',';',$hozza);
+							$hozza = str_replace('</li>',"\n",$hozza);
+							$hozza = strip_tags($hozza,['br']);
 						}				
 			}
 
@@ -70,12 +74,17 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 							$elkeszites = $w2[0];	
 							$w2 = explode('<div',$elkeszites);
 							$elkeszites = $w2[0];
-							$elkeszites = str_replace('</li>','\n',$elkeszites);
-							$elkeszites = str_replace("\n",'',$elkeszites);
-							$elkeszites = str_replace("\r",'',$elkeszites);
-							$elkeszites = str_replace('"','\"',$elkeszites);
-							$elkeszites = strip_tags($elkeszites);
-						}				
+						} else {
+							$w2 = explode('<div class="instructions">',$w[1]);
+							if (count($w2) > 1) {
+								$w2 = explode('</div>',$w2[1]);
+								$elkeszites = $w2[0];	
+							}	
+						}	
+						$elkeszites = str_replace("\n",' ',$elkeszites);
+						$elkeszites = str_replace('</li>',"\n",$elkeszites);
+						$elkeszites = str_replace("\r",' ',$elkeszites);
+						$recept->leiras = trim(strip_tags($elkeszites));
 			}
 			if ($kep != '') {
 				$imageFileType = strtolower(pathinfo($kep,PATHINFO_EXTENSION));
@@ -87,26 +96,16 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 			}
 		}
 	}	
-	?>
-	<script>
-		document.getElementById('nev').value = "<?php echo $cim; ?>";
-		document.getElementById('adag').value = "<?php echo $adag; ?>";
-		document.getElementById('energia').value = "<?php echo $energia; ?>";
-		document.getElementById('elkeszites').value = "<?php echo $elkeszitesiIdo; ?>";
-		<?php 
-			$w = explode("\n",$hozzavalok);
-			for ($i = 0; ($i < count($w) & $i < 15); $i++) {
-				$w2 = explode(';',$w[$i]);
-				if (count($w2) > 3) {
-					echo 'document.getElementById("hozzavalo'.$i.'").value = "'.$w2[3].'";'."\n";
-					echo 'document.getElementById("mennyiseg'.$i.'").value = "'.$w2[0].'";'."\n";
-					echo 'document.getElementById("me'.$i.'").value = "'.$w2[1].'";'."\n";
-				}
-			}		
-		?>
-		document.getElementById('leiras').value = "<?php echo $elkeszites; ?>";	
-	</script>
-	<?php	
+	$w = explode("\n",$hozza);
+	for ($i = 0; ($i < count($w) & $i < 30); $i++) {
+		$w2 = explode(';',$w[$i]);
+		if (count($w2) > 3) {
+			$hozzavalok[$i] = new \stdClass();
+			$hozzavalok[$i]->nev = trim($w2[3]);
+			$hozzavalok[$i]->mennyiseg = trim($w2[0]);
+			$hozzavalok[$i]->me = trim($w2[1]);
+		}
+	}		
 	
 }	
 

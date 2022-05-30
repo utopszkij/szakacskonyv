@@ -20,7 +20,7 @@
                 <div class="form-outline mb-4">
                     <input type="text" v-model="recept.nev"
                      id="nev" name="nev" :disabled="disabled != ''"
-                     class="form-control"  />
+                     class="form-control" style="width:100%" />
                 </div>
 
                 <div class="form-outline mb-4" v-if="disabled == ''">
@@ -30,7 +30,8 @@
                 <div class="form-outline mb-4" v-if="disabled == ''">
                     <input type="text" id="paste" class="form-control" />
                     <button type="button" class="btn btn-secondary"
-                        v-on:click="processPaste()">Feldolgoz</button>
+                        v-on:click="processPaste()">
+                        <em class="fa fa-cogs"></em>Feldolgoz</button>
                 </div>
                 
             </div>
@@ -176,11 +177,11 @@ var methods = {
 			var id = this.recept.id;
 			var nev = this.recept.nev;
 			var i = 0;
-			for (i=0; i< receptNevek.length; i++) {
-				if ((receptNevek[i].nev == nev) &
-				    (receptNevek[i].id != id)) {
+			for (i=0; i< this.receptNevek.length; i++) {
+				if ((this.receptNevek[i].nev == nev) &
+				    (this.receptNevek[i].id != id)) {
 				    jo = false;
-                    popupMsg('Már van ilyen nevü recept! ','alert-danger');	
+                    popupMsg('Már van ilyen nevü recept! ', 'alert-danger');	
 				}		
 			}
 			if (jo) {
