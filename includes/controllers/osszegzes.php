@@ -120,7 +120,7 @@ class Osszegzes {
 				<div class="napimenu">
 				<?php foreach ($napiMenuk as $napiMenu) : ?>
 					<div><?php 
-						echo $napiMenu->datum.' '.
+						echo $napiMenu->datum.' '.$napiMenu->adag.' adag '.
 						$napiMenu->nev1.' '.
 					   $napiMenu->nev2.' '.
 					   $napiMenu->nev3.' '.

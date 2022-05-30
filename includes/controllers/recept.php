@@ -212,10 +212,6 @@ class Recept {
 		$receptId = $_GET['id'];
 		$disable = '';
 	
-		if (isset($_GET['url'])) {	
-			$url = urldecode($_GET['url']);
-			atvesz($url);	
-		}
 		// aktuális recept és hozzávalók beolvasása
 		if ($receptId > '0') {
 			$recept = $this->model->getById($receptId);	
@@ -258,6 +254,10 @@ class Recept {
 
 		$receptCimkek = $this->model->getReceptCimkek($receptId);
 
+		if (isset($_GET['url'])) {
+			atvesz($_GET['url'],$recept,$hozzavalok);	
+		}
+
 		view('receptkep',[
 			"loged" => $_SESSION['loged'],
 			"logedName" => $_SESSION['logedName'],
@@ -267,15 +267,13 @@ class Recept {
 			"disabled" => $disable,
 			"hozzavalok" => $hozzavalok,
 			"nevek" => $nevek,
+			"receptNevek" => $receptNevek,
 			"cimkek" => $cimkek,
 			"receptCimkek" => $receptCimkek,
 			"ADMIN" => ADMIN,
 			"creator" => $creator
 		]);
 		
-		if (isset($_GET['url'])) {
-			atvesz($_GET['url']);	
-		}
 	}
 	
 	/**

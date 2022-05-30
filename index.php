@@ -89,7 +89,7 @@ if (isset($_GET['usercode'])) {
 //+ ----------- verzio kezelés start ------------
 
 // -------------------
-$fileVerzio = 'v0.3';
+$fileVerzio = 'v1.0';
 // -------------------
 
 $upgrade = new \Upgrade();
@@ -238,11 +238,11 @@ if ($dbverzio < 'v0.3') {
 
 	  </div>
 	</nav>	
-	<?php if ($lastVerzio > $fileVerzio) : ?>
+	<?php if (trim($lastVerzio) > trim($fileVerzio)) : ?>
 	<div class="warning">
 		<a href="index.php?task=upgrade1&version=<?php echo $lastVerzio; ?>" 
 			class="btn btn-primary">
-			Új verzó érhető el <?php echo $lastVerzio; ?>
+			Új verzó érhető el "<?php echo $lastVerzio; ?>" "<?php echo $fileVerzio; ?>"
 		</a>
 	</div>	
 	<?php endif; ?>	
