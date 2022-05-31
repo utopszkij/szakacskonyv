@@ -89,44 +89,14 @@ if (isset($_GET['usercode'])) {
 //+ ----------- verzio kezelés start ------------
 
 // -------------------
-$fileVerzio = 'v1.0';
+$fileVerzio = 'v1.1';
 // -------------------
 
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
+$upgrade->dbUpgrade($dbverzio);
 
-if ($dbverzio < 'v0.1') {
-	$q = new Query('receptek');
-	$q->exec('alter table receptek 
-		add created_at date
-	');
-	$q = new Query('dbverzio');
-	$r = new Record();
-	$r->verzio = 'v0.1';
-	$q->where('verzio','<>','')->update($r);
-}
-if ($dbverzio < 'v0.3') {
-	$q = new Query('receptek');
-	$q->exec('alter table receptek 
-		add energia varchar(32),
-		add elkeszites int,
-		add adag int
-	');
-	$q->exec('update receptek set energia = 0, elkeszites = 0, adag = 4');
-	$q->exec('create table if not exists recept_cimke ( 
-		recept_id int,
-		cimke varchar(64),
-		KEY `recept_cimke_id` (`recept_id`),
-		KEY `recept_cimke_cimke` (`cimke`)
-		) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
-	');
-	$q = new Query('dbverzio');
-	$r = new Record();
-	$r->verzio = 'v0.3';
-	$q->where('verzio','<>','')->update($r);
-}
-// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 //- ----------- verzio kezelés end ------------
 
 ?>
@@ -238,11 +208,12 @@ if ($dbverzio < 'v0.3') {
 
 	  </div>
 	</nav>	
-	<?php if (trim($lastVerzio) > trim($fileVerzio)) : ?>
+	<?php if ((trim($lastVerzio) > trim($fileVerzio))  & 
+			  ((MULTIUSER == false) | ($_SESSION['logedName'] == ADMIN))) : ?>
 	<div class="warning">
 		<a href="index.php?task=upgrade1&version=<?php echo $lastVerzio; ?>" 
 			class="btn btn-primary">
-			Új verzó érhető el "<?php echo $lastVerzio; ?>" "<?php echo $fileVerzio; ?>"
+			Új verzó érhető el "<?php echo $lastVerzio; ?>" 
 		</a>
 	</div>	
 	<?php endif; ?>	

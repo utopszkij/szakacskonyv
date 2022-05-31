@@ -95,16 +95,29 @@ Könyvtár szerkezet
 
 ![bevásárló lista](https://github.com/utopszkij/szakacskonyv/blob/main/images/bevlista.png?raw=true)
 
+## verzió v1.1
+2022.06.??
+- újverzió kezelés csak admin számára
+- dbupgrade átkerült az upgrade komponensbe
+- az energia mértékegysége az SI -ben  "kJ"
+### változott fájlok
+- index.php
+- readme.md
+- style.css
+- includes/controllers/upgrade.php
+- includes/controllers/naptar.php
+- includes/views/receptkep.html
+
 ## verzió v1.0
-2022.06.30
+2022.05.30
 - MVC struktúra, VUE form template
 - 30 összetevő vihető fel egy recepthez
 - Recept energia tartalom, elkészitési idő, adag kezelése
 - recept cimkézés felvitelnél, módositásnál, törlésnél, keresésnél
-### változott fájlok
+- vendor/database/dbinit.sql
 - index.php
 - readme.md
-- vendor/database/dbinit.sql
+- style.css
 - includes/cimkek.txt
 - includes/atvesz.php
 - includes/controllers/index.php
@@ -112,8 +125,8 @@ Könyvtár szerkezet
 - includes/controllers/naptar.php
 - includes/controllers/osszegzes.php
 - includes/controllers/recept.php
-- includes/controllers/szovegek.php
 - includes/controllers/upgrade.php
+- includes/controllers/szovegek.php
 - includes/controllers/user.php
 - includes/models/model.php
 - includes/models/receptmodel.php
@@ -122,6 +135,7 @@ Könyvtár szerkezet
 - includes/views/receptek.html
 - includes/views/receptkep.html
 - includes/views/napimenukep.html
+- vendor/vue.global.js
 - [del]includes/napimenu.php
 - [del]includes/naptar.php
 - [del]includes/osszegzes.php

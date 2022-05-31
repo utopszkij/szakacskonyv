@@ -21,10 +21,25 @@ a github/readm.md -t használja:
 class Upgrade {
 
 	protected $github =       'https://raw.githubusercontent.com/utopszkij/szakacskonyv/main/';
-	protected $githubReadme = 'https://raw.githubusercontent.com/utopszkij/szakacskonyv/main/readme.md';
+	protected $githubReadme = $this->github.'readme.md';
 	protected $msg = '';
 	protected $errorCount = 0;
 	protected $info = '';
+
+	function __construct() {
+		// fejlesztő környezetben ?branch=xxx URL paraméterrel cserélhető
+		// a github alapértelmezett "main" branch
+		if (isset($_GET['branch'])) {
+			$branch = $_GET['branch'];
+			$_SESSION['branch'] = $brabch;
+			$this->github = 'https://raw.githubusercontent.com/utopszkij/szakacskonyv/'.$branch.'/';
+		} else if isset($_SESSION['branch']) {
+			$branch = $_SESSION['branch'];
+			$_SESSION['branch'] = $brabch;
+			$this->github = 'https://raw.githubusercontent.com/utopszkij/szakacskonyv/'.$branch.'/';
+		}
+
+	}
 
 	public function getLastVersion() {
 		$result = 'v0.0';
@@ -121,7 +136,11 @@ class Upgrade {
 				<?php if (file_exists(DOCROOT.'/'.$file)) : ?>
 					<li>változott <?php echo $file; ?></li> 
 				<?php else : ?>
-					<li>új file <?php echo $file; ?></li> 
+					<?php if (substr($file,0,5) == '[del]') : ?>
+						<li>törölni <?php echo substr($file,5,100); ?></li> 
+					<?php else : ?>	
+						<li>új file <?php echo $file; ?></li> 
+					<?php endif; ?>
 				<?php endif; ?>		
 			<?php endforeach; ?>	
 			</ul>
@@ -133,6 +152,7 @@ class Upgrade {
 					<a class="btn btn-secondary" href="index.php?task=upgrade3&version=<?php echo $version; ?>">
 						A fájlok frissitést megcsináltam</a>
 				</p>
+				<div style="background-color:silver; padding:10px;">
 				<?php
 				$this->echoWritable(DOCROOT);
 				$this->echoWritable(DOCROOT.'/includes');
@@ -141,10 +161,12 @@ class Upgrade {
 				$this->echoWritable(DOCROOT.'/includes/controllers');
 				$this->echoWritable(DOCROOT.'/includes/models');
 				$this->echoWritable(DOCROOT.'/includes/views');
-				
 				?>
-				<p>A "fájlok frissitése most" funkció csak akoor használható, ha a web szervernek joga 
-					van a könyvtárak, fájlok írásához, törléséhez!</p>
+				</div>
+				<p> </p>
+				<p><strong>A "fájlok frissitése most" funkció csak akkor használható, ha a web szervernek joga 
+					van a könyvtárak, fájlok írásához, törléséhez! 
+					Ennek a funkciónak a használata előtt csinálj mentést a működő program változatról!</strong></p>
 			<?php else : ?>
 				<p>
 				<a class="btn btn-secondary" href="index.php?task=upgrade3&version=<?php echo $version; ?>">
@@ -221,7 +243,7 @@ class Upgrade {
 		}
 
 		// keresi a ### sort
-		for ($j=$i; (($j<count($lines)) & (substr($lines[$j],0,4) != '### ')); $j++) {
+		for ($j=$i+1; (($j<count($lines)) & (substr($lines[$j],0,4) != '### ')); $j++) {
 			$this->info .= $lines[$j].'<br />';
 		}
 
@@ -235,5 +257,44 @@ class Upgrade {
 		}
 		return $result;
 	} 
+
+	/**
+	 * szükség szerint adatbázis alterek, új táblák létrehozása
+	 * adatbázisban tárolt dbverzio frissitése
+	 * @param string $dbverzio jelenlegi telepitett adatbázis verzió
+	 */
+	public function dbUpgrade(string $dbverzio) {
+		if ($dbverzio < 'v0.1') {
+			$q = new Query('receptek');
+			$q->exec('alter table receptek 
+				add created_at date
+			');
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v0.1';
+			$q->where('verzio','<>','')->update($r);
+		}
+		if ($dbverzio < 'v0.3') {
+			$q = new Query('receptek');
+			$q->exec('alter table receptek 
+				add energia varchar(32),
+				add elkeszites int,
+				add adag int
+			');
+			$q->exec('update receptek set energia = 0, elkeszites = 0, adag = 4');
+			$q->exec('create table if not exists recept_cimke ( 
+				recept_id int,
+				cimke varchar(64),
+				KEY `recept_cimke_id` (`recept_id`),
+				KEY `recept_cimke_cimke` (`cimke`)
+				) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v0.3';
+			$q->where('verzio','<>','')->update($r);
+		}
+		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
+	}
 }
 ?>

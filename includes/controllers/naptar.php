@@ -134,7 +134,7 @@ class Naptar {
 					<h3>Tulajdonságok</h3>
 					<ul>
 						<li>Recepthez hozzávalók, elkészítési leírás és kép vihető fel,</li>
-						<li>egy recepthez max 15 hozzávaló adható meg,</li>
+						<li>egy recepthez max 30 hozzávaló adható meg,</li>
 						<li>a program támogatja a mindmegette.hu -ról történő adatátvételt,</li>
 						<li>a receptek módosíthatóak, törölhetőek,</li>
 						<li>ha a recepthez képet nem adunk meg akkor a program a recept neve 
