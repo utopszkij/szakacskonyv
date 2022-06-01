@@ -1,17 +1,18 @@
 .:
-összesen 88
--rw-rw-r-- 1 utopszkij www-data    603 2021-11-06 config-example.php
--rw-rw-r-- 1 utopszkij www-data    523 2022-05-31 config.php
--rwxrwxr-x 1 utopszkij utopszkij    46 2022-05-31 files.sh
--rw-rw-r-- 1 utopszkij utopszkij     0 2022-05-31 files.txt
-drwxrwxrwx 2 utopszkij utopszkij  4096 2022-05-30 images
-drwxrwxrwx 5 utopszkij www-data   4096 2022-05-27 includes
--rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
--rw-rw-r-- 1 utopszkij www-data   7904 2022-05-31 index.php
--rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  6064 2022-05-31 readme.md
--rw-r--r-- 1 utopszkij utopszkij  2915 2022-05-27 style.css
-drwxrwxr-x 5 www-data  www-data   4096 2022-05-26 vendor
+összesen 208
+-rw-rw-r-- 1 utopszkij www-data     603 2021-11-06 config-example.php
+-rw-rw-r-- 1 utopszkij www-data     523 2022-05-31 config.php
+-rwxrwxr-x 1 utopszkij utopszkij     46 2022-05-31 files.sh
+-rw-rw-r-- 1 utopszkij utopszkij 119307 2022-05-31 files.tst
+-rw-rw-r-- 1 utopszkij utopszkij      0 2022-06-01 files.txt
+drwxrwxrwx 2 utopszkij utopszkij   4096 2022-05-30 images
+drwxrwxrwx 5 utopszkij www-data    4096 2022-05-27 includes
+-rw-rw-r-- 1 utopszkij utopszkij   5706 2022-05-22 index2.html
+-rw-rw-r-- 1 utopszkij www-data    7904 2022-05-31 index.php
+-rw-rw-r-- 1 utopszkij www-data   35149 2021-10-31 LICENSE
+-rw-r--r-- 1 utopszkij utopszkij   6321 2022-06-01 readme.md
+-rw-r--r-- 1 utopszkij utopszkij   2915 2022-05-27 style.css
+drwxrwxr-x 5 www-data  www-data    4096 2022-05-26 vendor
 
 ./images:
 összesen 5000
@@ -77,7 +78,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-05-27 views
 -rwxrwxrwx 1 utopszkij www-data   6344 2022-05-29 osszegzes.php
 -rwxrwxrwx 1 utopszkij www-data  12939 2022-05-29 recept.php
 -rwxrwxrwx 1 utopszkij www-data  22291 2021-11-03 szovegek.php
--rwxrwxrwx 1 utopszkij www-data   8304 2022-05-31 upgrade.php
+-rwxrwxrwx 1 utopszkij www-data  10920 2022-06-01 upgrade.php
 -rwxrwxrwx 1 utopszkij www-data   4544 2022-05-19 user.php
 
 ./includes/models:
