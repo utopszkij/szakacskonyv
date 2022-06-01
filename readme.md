@@ -98,15 +98,20 @@ Könyvtár szerkezet
 ## verzió v1.1
 2022.06.??
 - újverzió kezelés csak admin számára
+- változott fájlok listája nem a readme.md alapján hanem a files.txt alapján történik,
+    a files.txt a fejlesztő környezetben a ./files.sh commanline paranccsal állítható elő
 - dbupgrade átkerült az upgrade komponensbe
 - az energia mértékegysége az SI -ben  "kJ"
 ### változott fájlok
 - index.php
 - readme.md
 - style.css
+- files.sh
+- files.txt
 - includes/controllers/upgrade.php
 - includes/controllers/naptar.php
 - includes/views/receptkep.html
+### ***************************************
 
 ## verzió v1.0
 2022.05.30

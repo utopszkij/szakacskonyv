@@ -96,7 +96,7 @@ $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
 $upgrade->dbUpgrade($dbverzio);
-
+$branch = $upgrade->branch;
 //- ----------- verzio kezelés end ------------
 
 ?>
