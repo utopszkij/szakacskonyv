@@ -291,9 +291,12 @@ class Upgrade {
 				`msg` text CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci,
 				`created_by` int DEFAULT NULL,
 				`created_at` date DEFAULT NULL,
+				`img0` varchar(80),
+				`img1` varchar(80),
+				`img2` varchar(80),
 				PRIMARY KEY (`id`),
 				KEY `comments_recept_id` (`recept_id`)
-			  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
+			  )  DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
 			');
 			$q = new Query('dbverzio');
 			$r = new Record();
