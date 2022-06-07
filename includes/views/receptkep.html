@@ -49,7 +49,7 @@
             Energia:
                 <input type="number" min="1" max="400" 
                     name="energia" id="energia" v-model="recept.energia"
-                    style="display:inlne-block; width:100px"  class="form-control"/> kalória
+                    style="display:inlne-block; width:100px"  class="form-control"/> kJ
             </div>    
         </div>
         <div class="row" id="hozzavalok">
@@ -127,8 +127,10 @@
         </div>
         
         <div class="col-md-6" v-if="recept.id > 0">
+            <hr />
             <h3>Recept feltöltési infó</h3>
             {{ recept.created_at }} {{creator.username }}
+            <hr />
         </div>				
             
         <div class="form-outline mb-4">
@@ -156,6 +158,49 @@
                     v-on:click="delClick()">
                         <em class="fas fa-ban"></em>&nbsp;Recept törlése 
                 </button>
+        </div>
+        <hr />
+        <div class="row comments">
+            <h3>Hozzászólások</h3>
+            
+            <div v-for="comment in comments" class="comment">
+                <a v-bind:href="'index.php?task=comment&id='+comment.id">
+                    <p></p><em class="fas fa-hand-point-right"></em>
+                        {{ comment.created_at }} <strong>{{ comment.username }}</strong></p>
+                    <p>{{ comment.msg }}</p>
+                </a>
+                <div class="commentImages">
+                    <div v-if="comment.img0 > '0'" style="display:inline-block; width:auto; height:auto">
+                        <img v-bind:src="'images/comments/'+comment.img0" />
+                    </div>     
+                    <div v-if="comment.img1 > '0'" style="display:inline-block; width:auto; height:auto">
+                        <img v-bind:src="'images/comments/'+comment.img1" />
+                    </div>     
+                    <div v-if="comment.img2 > '0'" style="display:inline-block; width:auto; height:auto">
+                        <img v-bind:src="'images/comments/'+comment.img2"  />
+                    </div>     
+                </div>
+            </div>
+            <div v-if="commentsTotal > 0">Összes hozzászólás ehhez a recepthez: {{ commentsTotal }}</div>
+            <div v-if="commentsTotal == 0">Még nincs hozzászólás ehhez a recepthez</div>
+
+            <ul class="paginator" v-if="pages.length > 1">
+                <li v-for="p in pages" style="display:inline-block; width:auto">
+                    <span :class="makePaginatorClass(p,page)">
+                        <a v-bind:href="'index.php?task=recept&id='+recept.id+'&page='+p" v-if="p != page">
+                            {{ p }}
+                        </a>
+                        <strong v-if="p == page">{{ p }}</strong>
+                    </span>&nbsp;
+                </li>
+            </ul>	
+            <div v-if="loged > 0">
+                <a class="btn btn-primary" 
+                    v-bind:href="'index.php?task=commentadd&receptid='+recept.id">
+                    <em class="fas fa-comment"></em> Új hozzászólás beküldése
+                </a>
+            </div>
+            <div v-if="loged == 0">Hozzászólás beküldéséhez be kell jelentkezni.</div>
         </div>
     </form>
 </div>
@@ -242,7 +287,17 @@ var methods = {
             for (var i=0; i<this.receptCimkek.length; i++) {
                 document.getElementById(this.receptCimkek[i].cimke).checked = true;
             }
-        }
+        },
+        makePaginatorClass(p,page) {
+            var result = '';
+            if (p == page) {
+                result="actPaginatorItem";
+            } else {
+                result="paginatorItem"
+            }
+            return result;
+        },
+
 };   
 
 

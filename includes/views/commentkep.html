@@ -1,0 +1,103 @@
+<div class="alert alert-danger" v-if="loged == 0">
+    Hozzászóláshoz be kell jelentkezni!
+</div>	
+<div id="commentForm">
+    <form id="commentForm" action="index.php?task=commentsave" method="post" 
+        enctype="multipart/form-data">
+        <input type="hidden" value="commentsave" name="task" />			
+        <input type="hidden" v-model="recept.id" name="recept_id" />
+        <input type="hidden" v-model="comment.id" name="id" />
+        <input type="hidden" v-model="comment.created_by" name="created_by" />
+        <input type="hidden" v-model="comment.created_at" name="created_at" />
+        <div class="row">
+            <div class="form-outline col-12">
+                    <h2>{{ recept.nev }}<h2>			
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-outline col-12">
+                    <h3>Hozzászólás<h3>			
+            </div>
+        </div>
+        <div class="row">        
+            <div class="form-outline col-12">
+                <textarea cols="60" rows="5" v-model="comment.msg"
+                 id="msg" name="msg" :disabled="disabled"
+                 class="form-control" style="width:100%"></textarea>
+            </div>
+        </div> 
+        <div class="row">        
+            <p>Képek csatolása. Egy-egy feltöltött kép mérete max, {{ UPLOADLIMIT }} Mbyte lehet.</p>
+            <div class="form-outline col-12">
+                <input type="file" id="img0" name="img0" 
+                    class="form-control" :disabled="disabled" />
+            </div>
+            <div class="form-outline col-12">
+                <input type="file" id="img1" name="img1" 
+                    class="form-control" :disabled="disabled" />
+            </div>
+            <div class="form-outline col-12">
+                <input type="file" id="img2" name="img2" 
+                    class="form-control" :disabled="disabled" />
+            </div>
+            <div class="row formBUttons" v-if="loged > 0">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">
+                        <em class="fas fa-check"></em>&nbsp;Tárol
+                    </button>&nbsp;
+                    <a href="#" v-on:click="delClick()" class="btn btn-danger">
+                        <em class="fas fa-eraser"></em>&nbsp;Hozzászólás és csatolt képeinek törlése
+                    </a>&nbsp;
+                    <a v-bind:href="'index.php?task=recept&id='+recept.id" class="btn btn-secondary">
+                        <em class="fas fa-reply"></em>&nbsp;Mégsem
+                    </a>
+                </div>
+            </div>
+            <div class="form-outline col-12">
+                <img v-if="comment.img0 > '0'" v-bind:src="'images/comments/'+comment.img0"  />    
+                <var v-if="((comment.img0 > '0') & (admin | (comment.created_by == loged)))">
+                    <a v-bind:href="'index.php?task=commentimgdel&img=img0&id='+comment.id" class="btn btn-danger">
+                        <em class="fas fa-times"></em>Törölni
+                    </a> 
+                </var>    
+            </div>  
+            <div class="form-outline col-12">
+                <img v-if="comment.img1 > '0'" v-bind:src="'images/comments/'+comment.img1" />    
+                <var v-if="((comment.img1 > '0') & (admin | (comment.created_by == loged)))">
+                    <a v-bind:href="'index.php?task=commentimgdel&img=img1&id='+comment.id" class="btn btn-danger">
+                        <em class="fas fa-times"></em>Törölni
+                    </a> 
+                </var>    
+            </div>    
+            <div class="form-outline col-12">
+                <img v-if="comment.img2 > '0'" v-bind:src="'images/comments/'+comment.img2" />    
+                <var v-if="((comment.img2 > '0') & (admin | (comment.created_by == loged)))">
+                    <a v-bind:href="'index.php?task=commentimgdel&img=img2&id='+comment.id" class="btn btn-danger">
+                        <em class="fas fa-times"></em>Törölni
+                    </a> 
+                </var>    
+            </div>    
+            <div class="row formBUttons" v-if="loged <= 0">
+                <div class="col-12">
+                    <a v-bind:href="'index.php?task=recept&id='+recept.id" class="btn btn-secondary">
+                        <em class="fas fa-reply"></em>&nbsp;Vissza
+                    </a>
+                </div>
+            </div>
+
+        </div>                   
+
+    </form>    
+</div>
+
+<script>
+    methods = {
+        delClick() {
+            popupConfirm('Biztos törölni akarod ezt a hozzászólást és a csatolt képeket?',
+            function() {
+                location='index.php?task=commentdel&id='+app.comment.id;
+                return false;
+            });
+        }
+    }
+</script>

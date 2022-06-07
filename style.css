@@ -9,7 +9,7 @@ body {text-align:center}
 table {background-color:white; padding:5px;
 		border-style:solid; border-width:1px;}
 img {margin:5px}		
-button {margin-top:10px;}
+button, .btn {margin-top:10px;}
 .warning {background-color:red; color:yellow; padding:10px;}
 .warning a {color:yellow;}
 .form-control {display:inline-block; width:auto}
@@ -33,6 +33,14 @@ form {margin:10px 10px 10px 20px}
 .sajat a {color:blue; font-weight:bold}
 .idegen a {color:#a0a0a0}
 
+.comment {border-style:solid; border-width:1px; border-radius:15px;
+  margin:5px; padding:5px; background-color:silver}
+.comment p {margin-bottom:1px}
+.comment .images {text-align:left}
+.comment img {height: 50px; margin:2px 5px 2px 2px}
+.comments a {text-decoration:none}  
+.comments .comentImages img {height:35px}
+#commentForm img {width:50%}
 #osszegzes {padding: 10px 10px 10px 100px}
 #osszegzes table {width:50%}
 #bevasarloLista textarea {width:100%}

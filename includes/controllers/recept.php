@@ -4,6 +4,7 @@ use \RATWEB\DB\Record;
 
 include_once __DIR__.'/../atvesz.php';
 include_once __DIR__.'/../models/receptmodel.php';
+include_once __DIR__.'/../models/commentmodel.php';
 
 class Recept {
 	protected $model;
@@ -115,7 +116,7 @@ class Recept {
 			$target_file = $target_dir.$_POST['nev'].'.'.$imageFileType;		
 			$uploadOk = '';
 			
-		   $check = getimagesize($_FILES["kepfile"]["tmp_name"]);
+		    $check = getimagesize($_FILES["kepfile"]["tmp_name"]);
 			if($check == false) {
 			    $uploadOk = 'nem kép fájl';
 			}
@@ -230,6 +231,20 @@ class Recept {
 			$creator->username = $_SESSION['logedName'];
 		}
 
+		// commentek olvasása
+		if (isset($_GET['page'])) {
+			$page = intval($_GET['page']);
+		} else {
+			$page = 1;
+		}
+		$commentModel = new CommentModel();
+		$comments = $commentModel->getComments($recept->id, $page);
+		$commentsTotal = $commentModel->getCommentsTotal($recept->id);
+		$pages = [];
+		for ($p=1; (($p-1)*20) < $commentsTotal; $p++) {
+			$pages[] = $p;
+		}
+
 		// meglévő recept nevek beolvasása
 		$receptNevek = $this->model->getReceptNevek();
 
@@ -271,7 +286,13 @@ class Recept {
 			"cimkek" => $cimkek,
 			"receptCimkek" => $receptCimkek,
 			"ADMIN" => ADMIN,
-			"creator" => $creator
+			"creator" => $creator,
+			"comments" => $comments,
+			"commentsTotal" => $commentsTotal,
+			"page" => $page,
+			"pages" => $pages,
+			"UPLOADLIMIT" => UPLOADLIMIT
+
 		]);
 		
 	}
