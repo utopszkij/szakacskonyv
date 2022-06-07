@@ -221,6 +221,7 @@ $branch = $upgrade->branch;
 		</a>
 	</div>	
 	<?php endif; ?>	
+	<?php echo '<div style="text-align:right">'.$fileVerzio.'&nbsp;</div>'; ?> 
 	<div class="page">
 	<?php
 		$compName = '';

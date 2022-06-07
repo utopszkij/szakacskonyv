@@ -181,8 +181,8 @@
                     </div>     
                 </div>
             </div>
-            <div v-if="commentsTotal > 0">Összes hozzászólás ehez a recepthez: {{ commentsTotal }}</div>
-            <div v-if="commentsTotal == 0">Még nincs hozzászólás ehez a recepthez</div>
+            <div v-if="commentsTotal > 0">Összes hozzászólás ehhez a recepthez: {{ commentsTotal }}</div>
+            <div v-if="commentsTotal == 0">Még nincs hozzászólás ehhez a recepthez</div>
 
             <ul class="paginator" v-if="pages.length > 1">
                 <li v-for="p in pages" style="display:inline-block; width:auto">
@@ -200,6 +200,7 @@
                     <em class="fas fa-comment"></em> Új hozzászólás beküldése
                 </a>
             </div>
+            <div v-if="loged == 0">Hozzászólás beküldéséhez be kell jelentkezni.</div>
         </div>
     </form>
 </div>
