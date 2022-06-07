@@ -1,10 +1,7 @@
 # Szakácskönyv
- - includes/models/receptmodel.php
-és napi menüket lehet kezelni.
+Recepteket és napi menüket lehet kezelni.
 			
-Ezek alapján a program adott id- includes/models/receptmodel.php
-szak összesített anyagszü- includes/models/receptmodel.php
-kségleteit tudja meghatározni. 
+Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
 Ebből bevásárló listát lehet a program segitségével készíteni.
 			
 ## Tulajdonságok
@@ -19,7 +16,8 @@ alapján megpróbál a net-en képet keresni,
 - napi menübe naponta max. 4 fogás vihető fel, megadható hány főre főzünk aznap,
 - a napi menük módosíthatóak, törölhetőek,			
 - a számított hozzávaló összesítés (bevásárló lista), nyomtatás előtt módosítható
-(pl. törölhető amiből "van a spájzban").			
+(pl. törölhető amiből "van a spájzban").		
+- a receptekhez hozáászólásokat lehet csatolni, a hozzászólások képeket is tartalmazhatnak	
 			
 A program konfigurálható egyfelhasználós vagy többfelhasználós módba.
 			
@@ -27,8 +25,7 @@ Több felhasználós módban mindenki csak a sajátmaga által felvitt napi men�
 látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
 látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
 sajátmaga által felvitteket tudja.
-			- includes/models/receptmodel.php
-ceptek és képek tartalmáért, a kizárólag
+A receptek és képek tartalmáért, a kizárólag
 az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
 ezekkel kapcsolatban semmilyen felelősséget nem vállal.
 
@@ -107,7 +104,7 @@ index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott br
 is tesztelhető/használható az upgrade folyamat.
 
 ## verzió v1.1
-2022.06.??
+2022.06.07
 - újverzió kezelés csak admin számára jelenik meg
 - változott fájlok listája nem a readme.md alapján hanem a files.txt alapján történik,
     a files.txt a fejlesztő környezetben a ./files.sh commanline paranccsal állítható elő
