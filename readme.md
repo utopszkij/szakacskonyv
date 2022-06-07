@@ -31,13 +31,34 @@ sajátmaga által felvitteket tudja.
 ceptek és képek tartalmáért, a kizárólag
 az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
 ezekkel kapcsolatban semmilyen felelősséget nem vállal.
-			
-index.php hívással a "welcome" komponens betöltésével indul a program.
-
-index.php?page=xxxx hívással a "xxxx" vue komponens betöltésével is inditható a program.
 
 ### A programot mindenki csak saját felelősségére használhatja.
-			
+						
+## Lecensz
+
+GNU v3
+
+## Müködő demo:
+
+[http://szakacs.great-site.net](http://szakacs.great-site.net)
+
+## képernyő képek
+
+![napi menük](https://github.com/utopszkij/szakacskonyv/blob/main/images/kezdolap.png?raw=true)
+
+![napi menü](https://github.com/utopszkij/szakacskonyv/blob/main/images/napimenu.png?raw=true)
+
+![receptek](https://github.com/utopszkij/szakacskonyv/blob/main/images/receptek.png?raw=true)
+
+![recept](https://github.com/utopszkij/szakacskonyv/blob/main/images/recept.png?raw=true)
+
+![összesítés](https://github.com/utopszkij/szakacskonyv/blob/main/images/osszesites.png?raw=true)
+
+![bevásárló lista](https://github.com/utopszkij/szakacskonyv/blob/main/images/bevlista.png?raw=true)
+
+
+## Információk informatikusok számára      
+
 ## Szükséges sw környezet
 - apache web szerver
 - php 7+ (mysqli kiegészítéssel)
@@ -46,7 +67,7 @@ index.php?page=xxxx hívással a "xxxx" vue komponens betöltésével is inditha
 ## Telepítés
 
 - adatbázis létrehozása (utf8, magyar rendezéssel),
-- config.php elkészítésa a config-example.php alapján,
+- config.php elkészítése a a config-example.php alapján,
 - az includes/szovegek.php fájl szükség szerinti módosítása (impresszum, adatkezelési leírás),
 - fájlok és könyvtárak feltöltése a szerverre,
 - az images könyvtár legyen irható a web szerver számára, a többi csak olvasható legyen,
@@ -75,33 +96,24 @@ Könyvtár szerkezet
   style.css  - megjelenés
   readme.md  - ez a fájl
   LICENSE    - licensz
+  files.sh   - a files.txt -t előállító command. Csak fejlesztői környezetben kell és szabad        
+               használni!
+  files.txt  - a telepített fájlok felsorolása, az upgrade folyamat használja
 ```  
 
-## Lecensz- includes/models/receptmodel.php
+index.php hívással a "welcome" komponens betöltésével indul a program.
 
-[http://szakacs.great-site.net](http://szakacs.great-site.net)
-
-## képernyő képek
-
-![napi menük](https://github.com/utopszkij/szakacskonyv/blob/main/images/kezdolap.png?raw=true)
-
-![napi menü](https://github.com/utopszkij/szakacskonyv/blob/main/images/napimenu.png?raw=true)
-
-![receptek](https://github.com/utopszkij/szakacskonyv/blob/main/images/receptek.png?raw=true)
-
-![recept](https://github.com/utopszkij/szakacskonyv/blob/main/images/recept.png?raw=true)
-
-![összesítés](https://github.com/utopszkij/szakacskonyv/blob/main/images/osszesites.png?raw=true)
-
-![bevásárló lista](https://github.com/utopszkij/szakacskonyv/blob/main/images/bevlista.png?raw=true)
+index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
+is tesztelhető/használható az upgrade folyamat.
 
 ## verzió v1.1
 2022.06.??
-- újverzió kezelés csak admin számára
+- újverzió kezelés csak admin számára jelenik meg
 - változott fájlok listája nem a readme.md alapján hanem a files.txt alapján történik,
     a files.txt a fejlesztő környezetben a ./files.sh commanline paranccsal állítható elő
-- dbupgrade átkerült az upgrade komponensbe
-- az energia mértékegysége az SI -ben  "kJ"
+- dbupgrade funkció átkerült az upgrade komponensbe
+- az energia mértékegysége az SI -ben Joul, itt "kJ" ez a receptkep.html -ben lett javítva
+- comment rendszer
 ### változott fájlok
 - index.php
 - readme.md
@@ -109,8 +121,12 @@ Könyvtár szerkezet
 - files.sh
 - files.txt
 - includes/controllers/upgrade.php
+- includes/controllers/recept.php
 - includes/controllers/naptar.php
+- includes/controllers/comment.php
+- includes/models/commentModel.php
 - includes/views/receptkep.html
+- includes/views/commentkep.html
 ### ***************************************
 
 ## verzió v1.0

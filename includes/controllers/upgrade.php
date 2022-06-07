@@ -78,13 +78,19 @@ class Upgrade {
 				mkdir(dirname(DOCROOT.'/'.$path),0777);
 			}
 			$lines = file($this->github.$path);		
-			$fp = fopen(DOCROOT.'/'.$path.'.new','w+');
+			$fp = fopen(DOCROOT.'/'.$path,'w+');
 			fwrite($fp, implode("",$lines));
 			fclose($fp);
 		} catch (Exception $e) {	
 			$this->errorCount++;
 			$this->msg .= 'ERROR download '.$path.' '.JSON_encode($e).'<br>';
 		}		
+	}
+
+	protected function delFile($path) {
+		if (file_exists($path)) {
+			unlink($path);
+		}
 	}
 
 	/**
@@ -277,6 +283,24 @@ class Upgrade {
 			$r->verzio = 'v0.3';
 			$q->where('verzio','<>','')->update($r);
 		}
+		if ($dbverzio < 'v1.1') {
+			$q = new Query('receptek');
+			$q->exec('CREATE TABLE IF NOT EXISTS `comments` (
+				`id` int NOT NULL AUTO_INCREMENT,
+				`recept_id` int,
+				`msg` text CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci,
+				`created_by` int DEFAULT NULL,
+				`created_at` date DEFAULT NULL,
+				PRIMARY KEY (`id`),
+				KEY `comments_recept_id` (`recept_id`)
+			  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
+			');
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v1.1';
+			$q->where('verzio','<>','')->update($r);
+
+		}
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 
@@ -377,7 +401,7 @@ class Upgrade {
 				// törölt fájlok  kivéve config.php
 				foreach($myFiles as $myFile => $v) {
 					if (!isset($gitFiles[$myFile]) & ($myFile != 'config.php')) {
-						unlink($myFile); 
+						$this->delFile($myFile); 
 					}
 				}
 			}

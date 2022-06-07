@@ -7,6 +7,9 @@ include_once(__DIR__.'/includes/views/view.php');
 include_once(__DIR__.'/includes/models/model.php');
 
 define('DOCROOT',__DIR__);
+$w1 = (int) str_replace('M', '', ini_get('post_max_size'));
+$w2 = (int) str_replace('M','',ini_get('upload_max_filesize'));
+define('UPLOADLIMIT',min($w1,$w2));
 
 // egy felhasználós módban minen "0" user_id -hez rendelve 
 // szerepel az adatbázisban
@@ -58,6 +61,7 @@ importComponent('naptar');
 importComponent('user');
 importComponent('szovegek');
 importComponent('upgrade');
+importComponent('comment');
 
 // Facebbok/google loginból érkező hívás feldolgozása
 if (isset($_GET['usercode'])) {
@@ -241,7 +245,6 @@ $branch = $upgrade->branch;
 		<a href="https://github.com/utopszkij/szakacskonyv" target="_new">Forrás program</a>&nbsp;&nbsp;&nbsp;
 	</div>
 </div>
-
 </body>
 </html>
 
