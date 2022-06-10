@@ -28,6 +28,9 @@
  * @param array $params
  * @return void
  */
+
+include_once ('vendor/url.php');
+
 function view(string $name,array $params) {
     echo '
     <!-- script src="https://unpkg.com/vue@3"></script -->
@@ -58,6 +61,7 @@ function echoScript() {
 }
 
 function echoEndScript($params) {
+    URL::save();
     echo '
     if (methods == undefined) { var methods = {}; }
     const { createApp } = Vue;
@@ -68,6 +72,8 @@ function echoEndScript($params) {
                 echo $fn.': '.JSON_encode($param).",\n";
             }			
             echo '				
+            previousUrl : "'.URL::previous().'",
+            currentUrl : "'.URL::current().'"
             };
         },
         mounted() {

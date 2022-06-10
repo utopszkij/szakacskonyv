@@ -1,11 +1,13 @@
 <?php
 use \RATWEB\DB\Query;
 use \RATWEB\DB\Record;
+include_once __DIR__.'/controller.php';
 include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
 
-class Comment {
+class Comment extends Controller {
 	function __construct() {
+        parent::__construct();
         $this->model = new CommentModel();
 	}
 
@@ -19,15 +21,15 @@ class Comment {
         if (isset($comment->recept_id)) {
             $receptModel = new ReceptModel();
             $recept = $receptModel->getById($comment->recept_id);
-            $disabled = (($_SESSION['loged'] <= 0) |
-                         (($_SESSION['loged'] != $comment->created_by) & ($_SESSION['logedName'] != ADMIN)));
+            $disabled = (($this->session->input('loged') <= 0) |
+                         (($this->session->input('loged') != $comment->created_by) & ($this->session->input('logedName') != ADMIN)));
             view('commentkep',[
                 "recept" => $recept,
                 "comment" => $comment,
                 "UPLOADLIMIT" => UPLOADLIMIT,
                 "disabled" => $disabled,
-                "loged" => $_SESSION['loged'],
-                "admin" => ($_SESSION['logedName'] == ADMIN)
+                "loged" => $this->session->input('loged'),
+                "admin" => ($this->session->input('logedName') == ADMIN)
             ]);
 
         }
@@ -38,14 +40,14 @@ class Comment {
      * GET receptid = receptId
      */
     public function commentadd() {
-        if ($_SESSION['loged'] > 0) {
-            $receptId = $_GET['receptid'];
+        if ($this->session->input('loged') > 0) {
+            $receptId = $this->request->input('receptid',0,INTEGER);
             $receptModel = new ReceptModel();
             $recept = $receptModel->getById($receptId);
             $comment = new Record();
             $comment->id = 0;
             $comment->recept_id = $receptId;
-            $comment->created_by = $_SESSION['loged'];
+            $comment->created_by = $this->session->input('loged');
             $comment->created_at = date('Y-m-d');
             $comment->msg = '';
             $comment->img0 = "";
@@ -56,8 +58,8 @@ class Comment {
                 "comment" => $comment,
                 "UPLOADLIMIT" => UPLOADLIMIT,
                 "disabled" => false,
-                "loged" => $_SESSION['loged'],
-                "admin" => ($_SESSION['logedName'] == ADMIN)
+                "loged" => $this->session->input('loged'),
+                "admin" => ($this->session->input('logedName') == ADMIN)
             ]);
         }    
     }
@@ -102,18 +104,18 @@ class Comment {
      * jogosultság ellenörzéssel, után redirect a recep képernyőre
      */
     public function commentsave() {
-        if ($_SESSION['loged'] > 0) {
+        if ($this->session->input('loged') > 0) {
             $comment = new Record();
-            $comment->id = intval($_POST['id']);
-            $comment->recept_id = intval($_POST['recept_id']);
-            $comment->msg = $_POST['msg'];
-            $comment->created_by = intval($_POST['created_by']);
-            $comment->created_at = $_POST['created_at'];
+            $comment->id = $this->request->input('id',0,INTEGER);
+            $comment->recept_id = $this->request->input('recept_id',0,INTEGER);
+            $comment->msg = $this->request->input('msg');
+            $comment->created_by = $this->request->input('created_by',0,INTEGER);
+            $comment->created_at = $this->request->input('created_at');
             if ($comment->id == 0) {
                 $comment->created_at = date('Y-m-d');
-                $comment->created_by = $_SESSION['loged'];
+                $comment->created_by = $this->session->input('loged');
             }  
-            if (($_SESSION['logedName'] == ADMIN) | ($_SESSION['loged'] == $comment->created_by)) {
+            if (($this->session->input('logedName') == ADMIN) | ($this->session->input('loged') == $comment->created_by)) {
                 $comment->id = $this->model->save($comment);
                 if ($this->model->errorMsg != '') {
                     echo $this->model->errorMsg; exit();
@@ -144,9 +146,9 @@ class Comment {
      * jogosultság ellenörzéssel, utána vissza a komment képernyőre
      */
     public function commentimgdel() {
-        $comment = $this->model->getById(intval($_GET['id']));
+        $comment = $this->model->getById($this->request->input('id',0,INTEGER));
         if (isset($comment->img0)) {
-            $imgName = $_GET['img'];
+            $imgName = $this->request->input('img');
             $imgFileName = $comment->$imgName;
             if (file_exists('images/comments/'.$imgFileName)) {
                 unlink('images/comments/'.$imgFileName);
@@ -165,7 +167,7 @@ class Comment {
      * jogosultság ellenörzéssel, utána redirekt a recept képernyőre
      */
     public function commentdel() {
-        $comment = $this->model->getById(intval($_GET['id']));
+        $comment = $this->model->getById($this->request->input('id',0,INTEGER));
         if (isset($comment->id)) {
             $imgFileName = $comment->img0;
             if (is_file('images/comments/'.$imgFileName)) {

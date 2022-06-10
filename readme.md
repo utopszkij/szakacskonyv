@@ -7,8 +7,8 @@ Ebből bevásárló listát lehet a program segitségével készíteni.
 ## Tulajdonságok
 
 - Recepthez hozzávalók, elkészítési leírás és kép vihető fel,
-- egy recepthez max 15 hozzávaló adható meg,
-- a program támogatja a mindmegette.hu -ról történő adatátvételt,
+- egy recepthez max 30 hozzávaló adható meg,
+- a program támogatja a mindmegette.hu -ról és a receptneked.hu -ról történő adatátvételt,
 - a receptek módosíthatóak, törölhetőek,
 - ha a recepthez képet nem adunk meg akkor a program a recept neve 
 alapján megpróbál a net-en képet keresni,
@@ -24,8 +24,9 @@ A program konfigurálható egyfelhasználós vagy többfelhasználós módba.
 Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket 
 látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
 látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
-sajátmaga által felvitteket tudja.
-A receptek és képek tartalmáért, a kizárólag
+sajátmaga által felvitteket tudja. A hozzászólásokat mindenki láthatja, módosítani, tötölni 
+csak a felvivő és rendszer adminisztrátor tud.
+A receptek, hozzászólások és képek tartalmáért, a kizárólag
 az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
 ezekkel kapcsolatban semmilyen felelősséget nem vállal.
 
@@ -102,6 +103,27 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
+
+## verzió v1.2
+- recept átvehető a receptneked.hu oldalról is
+### változott fájlok
+- index.php
+- readme.md
+- style.css
+- files.sh
+- files.txt
+- includes/controllers/upgrade.php
+- includes/controllers/recept.php
+- includes/controllers/naptar.php
+- includes/controllers/comment.php
+- includes/models/commentModel.php
+- includes/views/receptkep.html
+- includes/views/commentkep.html
+- includes/atvesz.php
+- includes/atvesz_mindmegette.php
+- includes/atvesz_receptneked.php
+- includes/vendor/url.php
+### ***************************************
 
 ## verzió v1.1
 2022.06.07
