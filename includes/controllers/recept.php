@@ -290,10 +290,11 @@ class Recept extends Controller{
 			"ADMIN" => ADMIN,
 			"creator" => $creator,
 			"comments" => $comments,
-			"commentsTotal" => $commentsTotal,
+			"total" => $commentsTotal,
 			"page" => $page,
 			"pages" => $pages,
-			"UPLOADLIMIT" => UPLOADLIMIT
+			"UPLOADLIMIT" => UPLOADLIMIT,
+			"task" => 'recapt&id='.$recept->id 
 
 		]);
 		
@@ -478,7 +479,8 @@ class Recept extends Controller{
 			"pages" => $pages,
 			"total" => $total,
 			"loged" => $this->session->input('loged'),
-			"cimkek" => $cimkek
+			"cimkek" => $cimkek,
+			"task" => 'receptek'
 		]); 
 
 	}

@@ -26,6 +26,7 @@ class Request {
         if (isset($_POST[$name])) {
             $result = $_POST[$name];
         }
+        $result = urldecode($result);
         switch ($filter) {
             case NOSQLINJECTION:
                 $result = strip_tags($result);

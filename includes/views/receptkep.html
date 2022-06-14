@@ -185,19 +185,7 @@
                     </div>     
                 </div>
             </div>
-            <div v-if="commentsTotal > 0">Összes hozzászólás ehhez a recepthez: {{ commentsTotal }}</div>
-            <div v-if="commentsTotal == 0">Még nincs hozzászólás ehhez a recepthez</div>
-
-            <ul class="paginator" v-if="pages.length > 1">
-                <li v-for="p in pages" style="display:inline-block; width:auto">
-                    <span :class="makePaginatorClass(p,page)">
-                        <a v-bind:href="'index.php?task=recept&id='+recept.id+'&page='+p" v-if="p != page">
-                            {{ p }}
-                        </a>
-                        <strong v-if="p == page">{{ p }}</strong>
-                    </span>&nbsp;
-                </li>
-            </ul>	
+            include paginator
             <div v-if="loged > 0">
                 <a class="btn btn-primary" 
                     v-bind:href="'index.php?task=commentadd&receptid='+recept.id">

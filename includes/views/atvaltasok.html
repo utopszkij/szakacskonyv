@@ -1,0 +1,38 @@
+<div id="atvaltasok">
+    <h2>Átváltások</h2>
+    <ul>
+        <li v-for="record in records">
+            <a v-bind:href="'index.php?task=atvaltas&nev='+encodeURI(record.nev)" 
+            v-bind:style="setColor(record)">{{ record.nev}}</a> 
+        </li>
+    </ul>
+    include paginator
+    <div>
+        <var style="background-color:green">&nbsp;&nbsp;&nbsp;</var> Definiálva van minden szükséges átváltási szorzó
+    </div>
+    <div>
+        <var style="background-color:red">&nbsp;&nbsp;&nbsp;</var> Nincs definiálva minden szükséges átváltási szorzó
+    </div>
+    <div v-if="admin">Modosításhoz kattints a névre!</div>    
+</div>
+
+<script>
+    methods = {
+        setColor(record) {
+            var result = 'color:red';
+            if (parseInt(record.mecount) == (parseInt(record.szmecount) + 1)) {
+                result = 'color:green';
+            }
+            return result;
+        },
+        makePaginatorClass(p,page) {
+            var result = '';
+            if (p == page) {
+                result="actPaginatorItem";
+            } else {
+                result="paginatorItem"
+            }
+            return result;
+        }
+    }
+</script>

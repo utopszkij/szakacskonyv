@@ -106,23 +106,8 @@ is tesztelhető/használható az upgrade folyamat.
 
 ## verzió v1.2
 - recept átvehető a receptneked.hu oldalról is
-### változott fájlok
-- index.php
-- readme.md
-- style.css
-- files.sh
-- files.txt
-- includes/controllers/upgrade.php
-- includes/controllers/recept.php
-- includes/controllers/naptar.php
-- includes/controllers/comment.php
-- includes/models/commentModel.php
-- includes/views/receptkep.html
-- includes/views/commentkep.html
-- includes/atvesz.php
-- includes/atvesz_mindmegette.php
-- includes/atvesz_receptneked.php
-- includes/vendor/url.php
+- lapozó sor fejlesztése (első/utilsó/következő/elözö max 5 szomozott elem)
+- mértékegység átváltás
 ### ***************************************
 
 ## verzió v1.1
@@ -133,19 +118,6 @@ is tesztelhető/használható az upgrade folyamat.
 - dbupgrade funkció átkerült az upgrade komponensbe
 - az energia mértékegysége az SI -ben Joul, itt "kJ" ez a receptkep.html -ben lett javítva
 - comment rendszer
-### változott fájlok
-- index.php
-- readme.md
-- style.css
-- files.sh
-- files.txt
-- includes/controllers/upgrade.php
-- includes/controllers/recept.php
-- includes/controllers/naptar.php
-- includes/controllers/comment.php
-- includes/models/commentModel.php
-- includes/views/receptkep.html
-- includes/views/commentkep.html
 ### ***************************************
 
 ## verzió v1.0

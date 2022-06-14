@@ -44,6 +44,9 @@ function view(string $name,array $params) {
             echoScript();
         } else if (trim($line) == '</script>') {
             echoEndScript($params);
+        } else if (substr(trim($line),0,7) == 'include') {
+            $lines2 = file(__DIR__.'/'.trim(substr(trim($line),7,100)).'.html');
+            echo implode("\n",$lines2);
         } else {
             echo $line."\n";
         } // if
