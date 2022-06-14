@@ -24,11 +24,13 @@
                 </div>
 
                 <div class="form-outline mb-4" v-if="disabled == ''">
-                    A mindmegette.hu -n nyisd meg a recept oldalát, 
-                    a web címét másold az alábbi input mezőbe, majd kattints a "Feldolgoz" gombra!
+                    A <a href="https://mindmegette.hu" target="_new">mindmegette.hu</a> -n vagy a 
+                    <a href="https://receptneked.hu" target="_new">receptneked.hu</a> -n 
+                    nyisd meg a recept oldalát,  a web címét másold az alábbi input mezőbe, 
+                    majd kattints a "Feldolgoz" gombra!
                 </div>
                 <div class="form-outline mb-4" v-if="disabled == ''">
-                    <input type="text" id="paste" class="form-control" />
+                    <input type="text" id="paste" class="form-control" style="width:80%" />
                     <button type="button" class="btn btn-secondary"
                         v-on:click="processPaste()">
                         <em class="fa fa-cogs"></em>Feldolgoz</button>
@@ -77,11 +79,13 @@
                    v-model="hozzavalo.mennyiseg"
                    v-bind:name="makeName('mennyiseg',i)" style="width:23%"
                    v-bind:id="makeName('mennyiseg',i)"  class="form-control"/>			
-                <select style="width:24%;" 
+                <input style="width:24%;" 
                    :disabled="disabled != ''" 
                    v-bind:name="makeName('me',i)"
                    v-bind:id="makeName('me',i)"
-                   v-model="hozzavalo.me" class="form-control">	
+                   v-model="hozzavalo.me" class="form-control"
+                   list="mes" />	
+                <datalist id="mes">
                     <option value="?">?</option>		
                     <option value="db">db</option>		
                     <option value="csomag">csomag</option>		
@@ -104,7 +108,7 @@
                     <option value="fej">fej</option>		
                     <option value="szelet">szelet</option>		
                     <option value=""></option>		
-                </select>
+                </datalist>
             </div>
         </div>
         <div class="row">
@@ -181,19 +185,7 @@
                     </div>     
                 </div>
             </div>
-            <div v-if="commentsTotal > 0">Összes hozzászólás ehhez a recepthez: {{ commentsTotal }}</div>
-            <div v-if="commentsTotal == 0">Még nincs hozzászólás ehhez a recepthez</div>
-
-            <ul class="paginator" v-if="pages.length > 1">
-                <li v-for="p in pages" style="display:inline-block; width:auto">
-                    <span :class="makePaginatorClass(p,page)">
-                        <a v-bind:href="'index.php?task=recept&id='+recept.id+'&page='+p" v-if="p != page">
-                            {{ p }}
-                        </a>
-                        <strong v-if="p == page">{{ p }}</strong>
-                    </span>&nbsp;
-                </li>
-            </ul>	
+            include paginator
             <div v-if="loged > 0">
                 <a class="btn btn-primary" 
                     v-bind:href="'index.php?task=commentadd&receptid='+recept.id">

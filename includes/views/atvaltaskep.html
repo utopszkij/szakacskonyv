@@ -1,0 +1,70 @@
+<div class="alert alert-danger" v-if="loged == 0">
+    Átváltások kezléséhez be kell jelentkezni!
+</div>	
+<div id="atvaltas">
+    <form id="atvaltasForm" action="index.php?task=atvaltassave" method="post" 
+        enctype="multipart/form-data">
+        <input type="hidden" value="atvaltassave" name="task" />			
+        <input type="hidden" v-model="atvaltas.nev" name="nev" />
+        <div class="row">
+            <div class="form-outline col-12">
+                    <h2>{{ atvaltas.nev }}<h2>	
+                    <h3>Mértékegység átváltások</h3>    		
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-outline col-12">
+                <label>Alap mértékegység:</label>
+                <select name="szme" v-model="atvaltas.szme" class="form-control" 
+                    :disabled="disabled" v-on:change="szmeChange()">
+                    <option v-for="(szorzo,key) in atvaltas.szorzok" 
+                        v-bind:value="key">{{ key }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">        
+            <div class="form-outline col-12"
+                v-for="(szorzo,key) in atvaltas.szorzok"
+                v-bind:id="'line'+key">
+                <div v-if="key != atvaltas.szme">
+                    <label v-if="key != atvaltas.szme">1&nbsp;{{ key }}&nbsp;=&nbsp;</label>&nbsp;
+                    <input v-bind:name="'sz'+key" v-bind:id="'sz'+key"
+                        v-model="atvaltas.szorzok[key]" 
+                        type="number" min="0.1" max="9999" step="0.1" :disabled="disabled" />
+                    &nbsp;
+                    <var v-html="atvaltas.szme"></var>    
+                </div>
+            </div>
+        </div> 
+        <div class="row formBUttons" v-if="loged > 0">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                    <em class="fas fa-check"></em>&nbsp;Tárol
+                </button>&nbsp;
+                <a v-bind:href="'index.php?task=atvaltasok'" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Mégsem
+                </a>
+            </div>
+        </div>
+        <div class="row formBUttons" v-if="loged <= 0">
+            <div class="col-12">
+                <a v-bind:href="'index.php?task=atvaltasok'" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Vissza
+                </a>
+            </div>
+    </div>
+</form>    
+</div>
+
+<script>
+    methods = {
+        szmeChange() {
+            var szme = this.atvaltas.szme;
+            console.log('szmeChange',szme);
+            for (key in this.atvaltas.szorzok) {
+                this.atvaltas.szorzok[key] = 0;
+            }
+            this.atvaltas.szorzok[szme] = 1;
+        }
+    }
+</script>

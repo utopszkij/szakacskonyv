@@ -304,6 +304,42 @@ class Upgrade {
 			$q->where('verzio','<>','')->update($r);
 
 		}
+		if ($dbverzio < 'v1.2') {
+			$q = new Query('receptek');
+			$q->exec('alter table hozzavalok 
+				add szme varchar(8) comment "számítási alap me",
+				add szmennyiseg decimal(10,5) comment "számítási mennyiség"
+			');
+			if ($q->error != '') {
+				echo $q->errorMsg; exit();
+			}
+			$q->exec('update hozzavalok 
+			set szme = me, szmennyiseg = mennyiseg');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q->exec('CREATE TABLE IF NOT EXISTS `atvaltasok` (
+				`id` int NOT NULL AUTO_INCREMENT,
+				`nev` varchar(80),
+				`szorzo` decimal(10,5) comment "szorzo * me = 1 szme",
+				`me` varchar(8),
+				`szme` varchar(8),
+				PRIMARY KEY (`id`),
+				KEY `atvaltasok_nev` (`nev`),
+				KEY `atvaltasok_me` (`me`)
+			  )  DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v1.2';
+			$q->where('verzio','<>','')->update($r);
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+		}
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

@@ -28,6 +28,9 @@
  * @param array $params
  * @return void
  */
+
+include_once ('vendor/url.php');
+
 function view(string $name,array $params) {
     echo '
     <!-- script src="https://unpkg.com/vue@3"></script -->
@@ -41,6 +44,9 @@ function view(string $name,array $params) {
             echoScript();
         } else if (trim($line) == '</script>') {
             echoEndScript($params);
+        } else if (substr(trim($line),0,7) == 'include') {
+            $lines2 = file(__DIR__.'/'.trim(substr(trim($line),7,100)).'.html');
+            echo implode("\n",$lines2);
         } else {
             echo $line."\n";
         } // if
@@ -58,6 +64,7 @@ function echoScript() {
 }
 
 function echoEndScript($params) {
+    URL::save();
     echo '
     if (methods == undefined) { var methods = {}; }
     const { createApp } = Vue;
@@ -68,6 +75,8 @@ function echoEndScript($params) {
                 echo $fn.': '.JSON_encode($param).",\n";
             }			
             echo '				
+            previousUrl : "'.URL::previous().'",
+            currentUrl : "'.URL::current().'"
             };
         },
         mounted() {

@@ -119,7 +119,7 @@ class Naptar {
 				</div>
 			</div><!-- .row -->';
 				if ($_SESSION['loged'] >= 0) {
-					$t .= '<p>Kattints a napra a napi menü felviteléhez/mődsításához/törléséhez!</p>';
+					$t .= '<p>Kattints a napra a napi menü felviteléhez/módosításához/törléséhez!</p>';
 				} else {
 					$t .= '<p>Napi menü kezeléshez be kell jelentkezni.</p>';
 				}			

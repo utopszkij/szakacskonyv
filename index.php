@@ -62,6 +62,7 @@ importComponent('user');
 importComponent('szovegek');
 importComponent('upgrade');
 importComponent('comment');
+importComponent('atvaltasok');
 
 // Facebbok/google loginból érkező hívás feldolgozása
 if (isset($_GET['usercode'])) {
@@ -93,7 +94,7 @@ if (isset($_GET['usercode'])) {
 //+ ----------- verzio kezelés start ------------
 
 // -------------------
-$fileVerzio = 'v1.1';
+$fileVerzio = 'v1.2';
 // -------------------
 
 $upgrade = new \Upgrade();
@@ -179,6 +180,10 @@ $branch = $upgrade->branch;
 	        <li class="nav-item">
 	          <a class="nav-link" href="index.php?task=osszeg">
 	          <em class="fas fa-plus"></em>&nbsp;Összesítés</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="index.php?task=atvaltasok">
+	          <em class="fas fa-calculator"></em>&nbsp;Átváltások</a>
 	        </li>
 	      </ul>
 	      <?php if (MULTIUSER) : ?>

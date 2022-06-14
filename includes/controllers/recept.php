@@ -2,14 +2,16 @@
 use \RATWEB\DB\Query;
 use \RATWEB\DB\Record;
 
+include_once __DIR__.'/controller.php';
 include_once __DIR__.'/../atvesz.php';
 include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
 
-class Recept {
+class Recept extends Controller{
 	protected $model;
 
 	function __construct() {
+		parent::__construct();
 		$this->model = new ReceptModel();
 	}	
 	
@@ -17,21 +19,21 @@ class Recept {
 	public function receptdelete() {
 		// normál user csak a saját maga által felvittet törölheti
 		// system admin mindent törölhet
-		$recept = $this->model->getById($_GET['id']);
-		if (($recept->created_by != $_SESSION['loged']) &
-		    ($_SESSION['logedName'] != ADMIN)) {
-		   $this->receptek();
+		$recept = $this->model->getById($this->request->input('id',0,INTEGER));
+		if (($recept->created_by != $this->session->input('loged')) &
+		    ($this->session->input('logedName') != ADMIN)) {
+		    $this->receptek();
 		} else {
-			$this->model->delById($_GET['id']);
-			$this->model->deleteHozzavalok($_GET['id']);
-			$this->model->deleteCimkek($_GET['id']);
+			$this->model->delById($this->request->input('id',0,INTEGER));
+			$this->model->deleteHozzavalok($this->request->input('id'));
+			$this->model->deleteCimkek($this->request->input('id'));
 			$this->receptek();
 		}
 	}
 	
 	public function receptsave() {
 		// get -ben: id, leiras, hozzvalok0, mennyiseg0, me0, hozzavalok1,....
-		if ($_SESSION['loged'] < 0) {
+		if ($this->session->input('loged') < 0) {
 			echo '<div class="alert alert-danger">Recept felviteléhez be kell jelentkezni!</div>';
 			return;	
 		}
@@ -47,8 +49,8 @@ class Recept {
 			$r = new Record();
 			$r->id = 0;
 			$r->nev = $_POST['nev'];
-			if ($_SESSION['loged'] > 0) {
-				$r->created_by = $_SESSION['loged'];
+			if ($this->session->input('loged') > 0) {
+				$r->created_by = $this->session->input('loged');
 			} else {
 				$r->created_by = 0;
 			}	
@@ -56,8 +58,8 @@ class Recept {
 			$receptId = $this->model->save($r);
 		} else {
 			$recept = $this->model->getById($this->model->sqlValue($receptId));
-			if (($recept->created_by != $_SESSION['loged']) & 
-			    ($_SESSION['logedName'] != ADMIN)) {
+			if (($recept->created_by != $this->session->input('loged')) & 
+			    ($this->session->input('logedName') != ADMIN)) {
 				echo '<div class="alert alert-danger">Hozzáférés megtagadva!</div>';
 				return;
 			}
@@ -210,7 +212,7 @@ class Recept {
 			"elkeszites":0
 		}');	
 		$hozzavalok = [];	
-		$receptId = $_GET['id'];
+		$receptId = $this->request->input('id',0,INTEGER);
 		$disable = '';
 	
 		// aktuális recept és hozzávalók beolvasása
@@ -218,8 +220,8 @@ class Recept {
 			$recept = $this->model->getById($receptId);	
 			$hozzavalok = $this->model->getHozzavalok($receptId);
 
-			if (($recept->created_by != $_SESSION['loged']) &
-			    ($_SESSION['logedName'] != ADMIN)) {
+			if (($recept->created_by != $this->session->input('loged')) &
+			    ($this->session->input('logedName') != ADMIN)) {
 				$disable = ' disabled="disabled"';		
 			}	
 			
@@ -227,13 +229,13 @@ class Recept {
 			$creator = $this->model->getCreator($recept);
 		} else {
 			$creator = new Record();
-			$creator->id = $_SESSION['loged'];
-			$creator->username = $_SESSION['logedName'];
+			$creator->id = $this->session->input('loged');
+			$creator->username = $this->session->input('logedName');
 		}
 
 		// commentek olvasása
-		if (isset($_GET['page'])) {
-			$page = intval($_GET['page']);
+		if ($this->request->isset('page')) {
+			$page = $this->request->input('page',0,INTEGER);
 		} else {
 			$page = 1;
 		}
@@ -269,13 +271,13 @@ class Recept {
 
 		$receptCimkek = $this->model->getReceptCimkek($receptId);
 
-		if (isset($_GET['url'])) {
-			atvesz($_GET['url'],$recept,$hozzavalok);	
+		if ($this->request->isset('url')) {
+			atvesz($this->request->input('url'),$recept,$hozzavalok);	
 		}
 
 		view('receptkep',[
-			"loged" => $_SESSION['loged'],
-			"logedName" => $_SESSION['logedName'],
+			"loged" => $this->session->input('loged'),
+			"logedName" => $this->session->input('logedName'),
 			"receptId" => $receptId,
 			"kep" => $kep,
 			"recept" => $recept,
@@ -288,10 +290,11 @@ class Recept {
 			"ADMIN" => ADMIN,
 			"creator" => $creator,
 			"comments" => $comments,
-			"commentsTotal" => $commentsTotal,
+			"total" => $commentsTotal,
 			"page" => $page,
 			"pages" => $pages,
-			"UPLOADLIMIT" => UPLOADLIMIT
+			"UPLOADLIMIT" => UPLOADLIMIT,
+			"task" => 'recapt&id='.$recept->id 
 
 		]);
 		
@@ -304,7 +307,7 @@ class Recept {
 		global $hozzavalok;
 		$recept = JSON_decode('{"id":0, "leiras":"", "nev":""}');	
 		$hozzavalok = [];	
-		$receptId = $_GET['id'];
+		$receptId = $this->request->input('id');
 		$db = new Query('receptek');
 		if ($receptId > '0') {
 			$db->where('id','=',$db->sqlValue($receptId));
@@ -352,17 +355,17 @@ class Recept {
 	
 	protected function getParam(string $name): string {
 		$result = '';
-		if (isset($_SESSION[$name])) {
-			$result = $_SESSION[$name];
+		if ($this->session->isset($name)) {
+			$result = $this->session->input($name);
 		}
-		if (isset($_GET[$name])) {
-			$result = $_GET[$name];
+		if ($this->request->isset($name)) {
+			$result = $this->request->input($name);
 		}
-		$_SESSION[$name] = $result;
+		$this->session->set($name, $result);
 		return $result;
 	}
 	
-	protected function buldQuery():Query {
+	protected function buildQuery():Query {
 		$filterStr = $this->getParam('filterstr');
 		$filterCreator = $this->getParam('filtercreator');
 		$filterCreated = $this->getParam('filtercreated');
@@ -421,17 +424,17 @@ class Recept {
 				$filterCreatorId = 999999999;
 			}
 		}
-		if (isset($_GET['page'])) {
-			$page = $_GET['page'];
+		if ($this->request->isset('page')) {
+			$page = $this->request->input('page');
 			$offset = (20 * $page) - 20;
-		} else if (isset($_SESSION['page'])) {
-			$page = $_SESSION['page'];
+		} else if ($this->session->isset('page')) {
+			$page = $this->session->input('page');
 			$offset = (20 * $page) - 20;
 		} else {
 			$page = 1;
 			$offset = 0;
 		}
-		$_SESSION['page'] = $page;
+		$this->session->set('page',$page);
 		$db = new Query('receptek');
 		$db->exec('CREATE TABLE IF NOT EXISTS receptek (
 			    id int AUTO_INCREMENT,
@@ -450,10 +453,10 @@ class Recept {
 			    PRIMARY KEY (id),
 			    KEY (recept_id)
 			)');
-		$db = $this->buldQuery();
+		$db = $this->buildQuery();
 		$list = $db->all();
 		$total = $db->count();
-		$db = $this->buldQuery();
+		$db = $this->buildQuery();
 		$list = $db->offset($offset)->limit(20)->all();
 
 		$pages = [];
@@ -475,8 +478,9 @@ class Recept {
 			"page" => $page,
 			"pages" => $pages,
 			"total" => $total,
-			"loged" => $_SESSION['loged'],
-			"cimkek" => $cimkek
+			"loged" => $this->session->input('loged'),
+			"cimkek" => $cimkek,
+			"task" => 'receptek'
 		]); 
 
 	}

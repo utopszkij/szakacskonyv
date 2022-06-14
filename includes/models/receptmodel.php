@@ -3,6 +3,8 @@
     use \RATWEB\DB\Query;
     use \RATWEB\DB\Record;
 
+    include_once (__DIR__.'/atvaltasmodel.php');
+    
     class ReceptModel extends Model  {
 
         function __construct() {
@@ -34,10 +36,21 @@
          * felvisz az adatbázisba egy hozzavalok rekordot
          */
         public function insertHozzavalok(Record $record) {
+            $atvaltasModel = new AtvaltasModel();
+            // számítási (alap) mértékegység kiolvasása az adazbázisból
+            $record->szme = $atvaltasModel->getSzme($record);
+            $record->szmennyiseg = $record->mennyiseg; // ideiglenesen, lejebb át lesz számolva
+
 			$db = new Query('hozzavalok');
             $db->insert($record);
             $this->errorMsg = $db->error;
-        }
+            if ($this->errorMsg == '') {
+                // átszámolás az alapmértékegységre
+                $rec = new Record();
+                $atvaltasModel->receptAtszamito($record);
+                $this->errorMsg = $atvaltasModel->errorMsg;
+            }
+        }    
 
         /**
          * Beolvassa az adott recept összes hozzávalóját

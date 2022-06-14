@@ -53,18 +53,7 @@
 				<div class="d-none d-md-inline col-md-4">
 					<img src="images/dekor1.jpg" class="dekorImg" />
 				</div>	
-                <p>Összesen: {{ total }}</p>
-                <ul class="paginator">
-                    <li v-for="p in pages" style="display:inline-block; width:auto">
-                        <span :class="makePaginatorClass(p,page)">
-                            <a v-bind:href="'index.php?task=receptek&page='+p" v-if="p != page">
-                                {{ p }}
-                            </a>
-                            <strong v-if="p == page">{{ p }}</strong>
-                        </span>&nbsp;
-                    </li>
-                </ul>	
-
+				include paginator
 			</div>
 			<p>Kattints a recept nevére a megtekintéséhez, modosításhoz, törléséhez!</p>
 			<div style="text-align:center" v-if="loged > 0">
