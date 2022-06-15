@@ -26,7 +26,8 @@ class Szovegek {
 				<li>PHP v7 (https://php.net)</li>	  
 				<li>MYSQL v5 (https://mysql.com)</li>	  
 				<li>Bootstrap v5.1.3 (https://getbootstrap.com/)</li>	  
-				<li>Font awesome 5.14.4 (https://fontawesome.com)</li>	  
+				<li>Font awesome 5.14.4 (https://fontawesome.com)</li>
+				<li>Vuejs 3.2 (https://vuejs.org/)<li>	  
 		  </ul>	
 		</div>
 		<?php
@@ -39,12 +40,14 @@ class Szovegek {
 		  <h1>Adatkezelési leírás</h1>
 		  <p>A program személyes adatokat nem kezel.</p>	
 		  <p>Kezelt adatok:</p>	
-		  <p>bejelentkezési név, jelszó, recept adatok, napi menük</p>	
+		  <p>bejelentkezési név, jelszó, recept adatok, napi menük, hozzászólások</p>	
 		  <p></p>	
 		  <p>A jelszót magát a program nem tárolja a szerveren, csak annak "hash" kódját tárolja.</p>	
 		  <p></p>	
 		  <p>A recept adatok (név, hozzávalók, leírás, kép) minden a web oldalra 
-		  látogató számára láthatóak.</p>	
+		  	látogató számára láthatóak.</p>	
+		  <p>A hozzászólások (szöveg plusz képek) inden a web oldalra 
+		  	látogató számára láthatóak.</p>
 		  <p>A napi menü adatokat csak az látja aki azokat felvitte.</p>
 		  <p>A recept adatokat csak az azokat felvivő módosíthatja, a rendszergazda és
 		  a felvivő törölheti.</p>

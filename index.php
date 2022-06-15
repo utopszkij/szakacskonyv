@@ -94,7 +94,7 @@ if (isset($_GET['usercode'])) {
 //+ ----------- verzio kezelés start ------------
 
 // -------------------
-$fileVerzio = 'v1.2';
+$fileVerzio = 'v1.3';
 // -------------------
 
 $upgrade = new \Upgrade();
@@ -110,6 +110,7 @@ $branch = $upgrade->branch;
 <head>
   <meta>
     <meta charset="UTF-8">
+	<link rel="icon" type="image/x-icon" href="images/szakacs.png">
     <title>Hetimenü</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	 <!-- bootstrap -->	

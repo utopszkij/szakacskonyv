@@ -135,11 +135,12 @@ class Naptar {
 					<ul>
 						<li>Recepthez hozzávalók, elkészítési leírás és kép vihető fel,</li>
 						<li>egy recepthez max 30 hozzávaló adható meg,</li>
-						<li>a program támogatja a mindmegette.hu -ról történő adatátvételt,</li>
+						<li>a program támogatja a mindmegette.hu -ról és a receptneked.hu -ról 
+							történő adatátvételt,</li>
 						<li>a receptek módosíthatóak, törölhetőek,</li>
 						<li>ha a recepthez képet nem adunk meg akkor a program a recept neve 
 						alapján megpróbál a net-en képet keresni,</li>
-						<li>a receptek kinyomtathatóak,</li>			
+						<li>a receptek kinyomtathatóak,</li>		
 						<li>napi menübe naponta max. 4 fogás vihető fel, megadható hány főre főzünk aznap,</li>
 						<li>a napi menük módosíthatóak, törölhetőek,</li>			
 						<li>a számított hozzávaló összesítés (bevásárló lista), nyomtatás előtt módosítható
@@ -154,7 +155,7 @@ class Naptar {
 					<p>Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket 
 					látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
 					látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
-					sajátmaga által felvitteket tudja.</p>
+					sajátmaga által felvitteket tudja. A hozzászólások mindenki számára láthatóak</p>
 					<p></p>
 					<p><strong>A felhasználók által felvitt receptek, hozzászólások és képek tartalmáért, a kizárólag
 					az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője

@@ -29,7 +29,7 @@ class Comment extends Controller {
                 "UPLOADLIMIT" => UPLOADLIMIT,
                 "disabled" => $disabled,
                 "loged" => $this->session->input('loged'),
-                "admin" => ($this->session->input('logedName') == ADMIN)
+                "admin" => $this->logedAdmin
             ]);
 
         }
@@ -59,7 +59,7 @@ class Comment extends Controller {
                 "UPLOADLIMIT" => UPLOADLIMIT,
                 "disabled" => false,
                 "loged" => $this->session->input('loged'),
-                "admin" => ($this->session->input('logedName') == ADMIN)
+                "admin" => $this->logedAdmin
             ]);
         }    
     }
@@ -115,7 +115,7 @@ class Comment extends Controller {
                 $comment->created_at = date('Y-m-d');
                 $comment->created_by = $this->session->input('loged');
             }  
-            if (($this->session->input('logedName') == ADMIN) | ($this->session->input('loged') == $comment->created_by)) {
+            if ($this->logedAdmin | ($this->session->input('loged') == $comment->created_by)) {
                 $comment->id = $this->model->save($comment);
                 if ($this->model->errorMsg != '') {
                     echo $this->model->errorMsg; exit();

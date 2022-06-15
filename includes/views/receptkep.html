@@ -141,7 +141,7 @@
             <button type="button" class="btn btn-primary"
                 v-if="((recept.id == 0) | 
                 (recept.created_by == loged) |
-                (logedName == ADMIN))" 
+                (logedAdmin))" 
                 lass="btn btn-primary" 
                 v-on:click="okClick()">
             <em class="fas fa-check"></em>&nbsp;Tárolás</button>
@@ -158,7 +158,7 @@
                 <button type="button" class="btn btn-danger"
                     v-if="((loged > 0) &
                     ((recept.created_by == loged) | 
-                     (logedName == ADMIN)))"
+                     (logedAdmin)))"
                     v-on:click="delClick()">
                         <em class="fas fa-ban"></em>&nbsp;Recept törlése 
                 </button>

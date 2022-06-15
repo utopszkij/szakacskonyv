@@ -109,12 +109,14 @@ class Controller {
     protected $session;
     protected $loged = 0;
     protected $logedName = 'Látogató';
+    protected $logedAdmin = false;
     
     function __construct() {
         $this->request = new Request();
         $this->session = new Session();
         $this->loged = $this->session->input('loged',0,INTEGER);
         $this->logedName = $this->session->input('logedName','Látogató');
+        $this->logedAdmin = ($this->logedName == ADMIN);
     }
 
 }

@@ -30,7 +30,26 @@ function atvetel($url = 'https://www.receptneked.hu/....',
 	$elkeszitesiIdo = 0;
 	$energia = 0;
 	$hozza = '';
-	
+
+    // mértékegységek
+    $mes = file(__DIR__.'/mertekegysegek.txt');
+
+    // szinonima értelmezés
+    $lines = file(__DIR__.'/szinonimak.txt');
+    $mit = [];
+    $mire =[];
+    foreach ($lines as $line) {
+        $w2 = explode('=>',$line);
+        if (count($w2) == 2) {
+            $mit[] = trim($w2[0]);
+            $mire[] = trim($w2[1]);
+        }
+    }
+    $mit[] = '    '; $mire[] = ' ';
+    $mit[] = '   '; $mire[] = ' ';
+    $mit[] = '  '; $mire[] = ' ';
+
+    // url feldolgozása
 	$s = implode("\n",file($url));
 	$w = explode('id="mainbar"',$s,2);
 
@@ -38,7 +57,7 @@ function atvetel($url = 'https://www.receptneked.hu/....',
 	if (count($w) > 1) {
         $s = $w[1];
         $cim = kiemel($s,'id="recipe-title">','</h1>');
-        $recept->nev = $cim;
+        $recept->nev = html_entity_decode(str_replace('recept','',$cim));
     }
 
     // kép
@@ -79,17 +98,52 @@ function atvetel($url = 'https://www.receptneked.hu/....',
                 $s1 = $w2[0];
                 $w2 = explode('</a>',$w2[1],2);
                 $s1 .= $w2[1];
-            }    
-            $w = explode(' ',$s1,3);
+            } 
+            $s1 = html_entity_decode($s1);
+            $s1 = str_replace($mit, $mire, $s1);
+
+            echo $s1.'<br>';
+
+
             $hozzavalo = new \stdClass();
             $hozzavalo->mennyiseg = 0;
             $hozzavalo->nev = '';
             $hozzavalo->me = '';
+
+            $w = explode(' ',$s1,3);
+            // alap esetben w[0] = mennyiség, w[1] = me, w[2]= név
+            if (count($w) == 2) {
+                // feltehetőleg a me hiányzik
+                $w[2] = $w[1];
+                $w[1] = '';
+            }
             if (count($w) == 3) {
-                $w2 = explode('-',$w[0]);
-                $hozzavalo->mennyiseg = $w2[0];
-                $hozzavalo->me = $w[1];
-                $hozzavalo->nev = $w[2];
+
+echo JSON_encode($mes).'<br>';
+
+                if (!in_array($w[1]."\n",$mes)) {
+                    // $w[1] nem mértékegység
+                    $w[2] = $w[1].' '.$w[2];
+                    $w[1] = '';
+                }
+                // mennyiség #-# és #/# értelmezéssel
+                $w2 = explode('-',$w[0],2);
+                if (count($w2) == 2) {
+                    $w[0] = ((int)(trim($w2[0])) + (int)(trim($w2[1]))) / 2;
+                }        
+                $w2 = explode('/',$w[0],2);
+                if (count($w2) == 2) {
+                    $w[0] =  (int)(trim($w2[0])) / (int)(trim($w2[1]));
+                }    
+                $w[0] = str_replace(',','.',$w[0]);
+
+                if (is_numeric($w[0])) {
+                    $hozzavalo->mennyiseg = $w[0];
+                    $hozzavalo->me = $w[1];
+                    $hozzavalo->nev = $w[2];
+                } else {
+                    $hozzavalo->nev = $s1;
+                }
             } else {
                 $hozzavalo->nev = $s1;
             }

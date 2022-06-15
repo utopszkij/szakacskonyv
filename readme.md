@@ -104,7 +104,13 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
 
+## verzió v1.3
+2022.06.??
+- receptneked.hu átvétel fejlesztése (szinonima.txt és mertekegysegek.txt kezelése)
+### ***************************************
+
 ## verzió v1.2
+2022.06.14.
 - recept átvehető a receptneked.hu oldalról is
 - lapozó sor fejlesztése (első/utilsó/következő/elözö max 5 szomozott elem)
 - mértékegység átváltás

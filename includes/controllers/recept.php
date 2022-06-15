@@ -21,7 +21,7 @@ class Recept extends Controller{
 		// system admin mindent törölhet
 		$recept = $this->model->getById($this->request->input('id',0,INTEGER));
 		if (($recept->created_by != $this->session->input('loged')) &
-		    ($this->session->input('logedName') != ADMIN)) {
+		    (!$this->logedAdmin)) {
 		    $this->receptek();
 		} else {
 			$this->model->delById($this->request->input('id',0,INTEGER));
@@ -59,7 +59,7 @@ class Recept extends Controller{
 		} else {
 			$recept = $this->model->getById($this->model->sqlValue($receptId));
 			if (($recept->created_by != $this->session->input('loged')) & 
-			    ($this->session->input('logedName') != ADMIN)) {
+			    (!$this->logedAdmin)) {
 				echo '<div class="alert alert-danger">Hozzáférés megtagadva!</div>';
 				return;
 			}
@@ -221,7 +221,7 @@ class Recept extends Controller{
 			$hozzavalok = $this->model->getHozzavalok($receptId);
 
 			if (($recept->created_by != $this->session->input('loged')) &
-			    ($this->session->input('logedName') != ADMIN)) {
+			    (!$this->logedAdmin)) {
 				$disable = ' disabled="disabled"';		
 			}	
 			
@@ -288,6 +288,7 @@ class Recept extends Controller{
 			"cimkek" => $cimkek,
 			"receptCimkek" => $receptCimkek,
 			"ADMIN" => ADMIN,
+			"logedAdmin" => $this->logedAdmin,
 			"creator" => $creator,
 			"comments" => $comments,
 			"total" => $commentsTotal,
