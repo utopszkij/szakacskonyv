@@ -109,7 +109,7 @@ index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott br
 is tesztelhető/használható az upgrade folyamat.
 
 ## verzió v1.3
-2022.06.??
+2022.06.22
 - receptneked.hu átvétel fejlesztése szinonimák és mertekegysegek lista kezelése
 - recept megjelenítés fejlesztése (egész számok, hosszú hozzávaló nevek)
 - user profilok kezelése (avatar kép, jelszó változtatás csoportok: regisztrált, moderátor, admin)
