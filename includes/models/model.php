@@ -64,6 +64,20 @@
         }
 
         /**
+         * rekord(ok) lekérése
+         * @param string $fieldName
+         * @param mixed $value
+         * @return array
+         */
+        public function getBy(string $fieldName, $value): array {
+            $this->errorMsg = '';
+            $q = new Query($this->table);
+            $result = $q->where($fieldName,'=',$value)->all();
+            $this->errorMsg = $q->error;
+            return $result;
+        }
+
+        /**
          * rekord tárolása (id==0 insert, id > 0y update)
          * @param Record $record
          * @return int record ID

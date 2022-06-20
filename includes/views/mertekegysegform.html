@@ -1,0 +1,52 @@
+<div class="alert alert-danger" v-if="loged == 0">
+    Mértékegység kezléséhez be kell jelentkezni!
+</div>	
+
+<div v-if="errorMsg != ''" class="alert alert-danger">
+    <div v-html="errorMsg"></div>
+</div>
+
+<div id="mertekegyseg">
+    <form id="meForm" action="index.php?task=mesave" method="post" 
+        enctype="multipart/form-data">
+        <input type="hidden" value="mesave" name="task" />			
+        <input type="hidden" v-model="record.id" name="id" />
+        <div class="row">
+            <div class="form-outline col-12">
+                    <h2>Mértékegység<h2>	
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-outline col-12">
+                <input name="nev" class="form-control" v-model="record.nev" type="text" />
+            </div>
+        </div>
+        <div class="row formBUttons" v-if="logedAdmin">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                    <em class="fas fa-check"></em>&nbsp;Tárol
+                </button>&nbsp;
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Mégsem
+                </a>&nbsp;
+                <a v-bind:href="'index.php?task=medelete&id='+record.id" 
+                   v-if="record.id > 0"
+                   class="btn btn-danger">
+                    <em class="fas fa-eraser"></em>&nbsp;Töröl
+                </a>
+            </div>
+        </div>
+        <div class="row formBUttons" v-if="! logedAdmin">
+            <div class="col-12">
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Vissza
+                </a>
+            </div>
+    </div>
+</form>    
+</div>
+
+<script>
+    methods = {
+    }
+</script>

@@ -1,7 +1,0 @@
-kiskanál=>kk
-evőkanál=>ek
-teáskanál=>tk
-darab=>db
-piros paprika=>füszerpaprika
-örölt paprika=>füszerpaprika
-késhegynyi=>csipet

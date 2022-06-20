@@ -1,0 +1,51 @@
+<div id="szinonimak">
+    <div v-if="errorMsg != ''" class="alert alert-danger">
+        <div v-html="errorMsg"></div>
+    </div>
+    <div v-if="successMsg != ''" class="alert alert-success">
+        <div v-html="successMsg"></div>
+    </div>
+    
+    <h2>Szinonimák</h2>
+    <p>A külső web oldalakról történő átvételeknél - az egységes kezelhetőség értdekében - 
+        a program a baloldalon szereplő szavakat helyettesíti a jobb oldalon lévő szinonimákkal.
+    </p>
+    <ul>
+        <li v-for="record in items" v-if="logedAdmin">
+            <a v-bind:href="'index.php?task=szinonimaedit&id='+record.id">{{ record.mit }}</a> 
+            &nbsp;=>&nbsp;
+            <a v-bind:href="'index.php?task=szinonimaedit&id='+record.id">{{ record.mire }}</a> 
+        </li>
+        <li v-for="record in items" v-if="!logedAdmin">
+            {{ record.mit }}
+            &nbsp;=>&nbsp;
+            {{ record.mire }}
+        </li>
+    </ul>
+    include paginator
+    <div v-if="logedAdmin">Modosításhoz, törléshez kattints a névre!<br />
+        <a href="index.php?task=szinonimaadd" class="btn btn-primary">
+            <em class="fas fa-plus"></em>&nbsp;Új szinonima</a>
+        </a>
+        <hr />
+        <a href="index.php?task=szinonimaprocess" class="btn btn-danger">
+            <em class="fas fa-cogs"></em>&nbsp;Alkalmaz a teljes recept adatbázisra</a>
+        </a><br />
+            <strong>FIGYELEM! Hibás szinonima definiciók esetén ez a funkció tönkre teheti a teljes recept adatbázist!</strong>
+        <hr />
+    </div>    
+</div>
+
+<script>
+    methods = {
+        makePaginatorClass(p,page) {
+            var result = '';
+            if (p == page) {
+                result="actPaginatorItem";
+            } else {
+                result="paginatorItem"
+            }
+            return result;
+        }
+    }
+</script>

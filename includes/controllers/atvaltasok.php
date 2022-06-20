@@ -62,7 +62,7 @@ class Atvaltasok extends Controller {
      * képernyőről POST -ban érkező adatok tárolása
      */
     public function atvaltassave() {
-        if ($this->loged >= 0) {
+        if ($this->logedAdmin) {
             $szme = $this->request->input('szme');
             $nev = $this->request->input('nev');
             $obj = $this->model->getObject($nev);

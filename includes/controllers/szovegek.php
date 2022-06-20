@@ -49,8 +49,8 @@ class Szovegek {
 		  <p>A hozzászólások (szöveg plusz képek) inden a web oldalra 
 		  	látogató számára láthatóak.</p>
 		  <p>A napi menü adatokat csak az látja aki azokat felvitte.</p>
-		  <p>A recept adatokat csak az azokat felvivő módosíthatja, a rendszergazda és
-		  a felvivő törölheti.</p>
+		  <p>A recept adatokat csak az azokat felvivő, a rendszergazdák és a moderátorok modosíthatják törölhetik.</p>
+		  <p>A hozzászólásokat csak az azokat felvivő, a rendszergazdák és a moderátorok modosíthatják törölhetik.</p>
 		  <p>A napi menü adatokat csak az azokat felvivő módosíthatja, törölheti</p>
 		  <p>Az összesítések eredményeit és az ezekből kialakított bevásárló listákat
 		  a program nem tárolja. Azokat csak az összesítést lekérő felhasználó látja.</p>	
@@ -137,8 +137,8 @@ class Szovegek {
 		<div id="visszaeles">
 			<p style="text-align:right; font-size:64px; margin:10px">§</p>
 			<p>Ha azt észleli, hogy valamely felhasználó jogsértő tartalmat töltött fel
-			valamelyik recept hozzávalói, készítési leírása vagy képei közé;
-			jelezze ezt a 
+			valamelyik recept hozzávalói, készítési leírása vagy képei közé; vagy 
+			hozzászólásban akkor jelezze ezt a 
 			<br><br /><a href="mailto:tibor.fogler@gmail.com">tibor.fogler@gmail.com</a> 
 			<br /><br />címre küldött levélben!		
 			</p>

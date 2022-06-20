@@ -1,0 +1,54 @@
+<div class="alert alert-danger" v-if="loged == 0">
+    Szinonima kezléséhez be kell jelentkezni!
+</div>	
+
+<div v-if="errorMsg != ''" class="alert alert-danger">
+    <div v-html="errorMsg"></div>
+</div>
+
+<div id="szinonima">
+    <form id="szinonimaForm" action="index.php?task=szinonimasave" method="post" 
+        enctype="multipart/form-data">
+        <input type="hidden" value="szinonimasave" name="task" />			
+        <input type="hidden" v-model="record.id" name="id" />
+        <div class="row">
+            <div class="form-outline col-12">
+                    <h2>Szinonima<h2>	
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-outline col-12">
+                <input name="mit" class="form-control" v-model="record.mit" type="text" />
+                &nbsp;=>&nbsp;
+                <input name="mire" class="form-control" v-model="record.mire" type="text" />
+            </div>
+        </div>
+        <div class="row formBUttons" v-if="logedAdmin">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                    <em class="fas fa-check"></em>&nbsp;Tárol
+                </button>&nbsp;
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Mégsem
+                </a>&nbsp;
+                <a v-bind:href="'index.php?task=szinonimadelete&id='+record.id" 
+                   v-if="record.id > 0"
+                   class="btn btn-danger">
+                    <em class="fas fa-eraser"></em>&nbsp;Töröl
+                </a>
+            </div>
+        </div>
+        <div class="row formBUttons" v-if="! logedAdmin">
+            <div class="col-12">
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Vissza
+                </a>
+            </div>
+    </div>
+</form>    
+</div>
+
+<script>
+    methods = {
+    }
+</script>

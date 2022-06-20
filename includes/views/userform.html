@@ -1,0 +1,94 @@
+
+<div v-if="errorMsg != ''" class="alert alert-danger">
+    <div v-html="errorMsg"></div>
+</div>
+
+<div id="user">
+    <form id="userForm" action="index.php?task=usersave" method="post" 
+        enctype="multipart/form-data">
+        <input type="hidden" value="userave" name="task" />			
+        <input type="hidden" v-model="record.id" name="id" />
+        <input type="hidden" v-model="record.realname" name="realname" />
+        <input type="hidden" v-model="record.email" name="email" />
+        <input type="hidden" v-model="record.phone" name="phone" />
+        <input type="hidden" v-model="record.avatar" name="avatar" />
+        <div class="row">
+            <div class="form-outline col-12">
+                    <h2>Felhasználó profil<h2>	
+            </div>
+        </div>
+        <img v-bind:src="'images/users/'+record.avatar" v-if="record.avatar != ''"
+            style="float:right; margin:5px; width:150px" />
+        <div class="row">
+            <div class="form-outline col-12">
+                <label>Nick név:</label>
+                <input name="username" class="form-control" 
+                        v-model="record.username" type="text" disabled="disabled"/>
+            </div>
+        </div>
+        <div class="row" v-if="loged == record.id">
+            <div class="form-outline col-12">
+                <label>Avatar kép:</label>
+                <input name="avatar" class="form-control" 
+                        type="file" />
+            </div>
+        </div>
+        <div class="row" v-if="(logedAdmin | (loged == record.id))">
+            Ha jelszót akarsz változtatni
+        </div>    
+        <div class="row" v-if="(logedAdmin | (loged == record.id))">
+            <div class="form-outline col-12">
+                <label>Új jelszó:</label>
+                <input name="password" class="form-control" 
+                        type="password" value="" />
+            </div>
+        </div>
+        <div class="row" v-if="(logedAdmin | (loged == record.id))">
+            <div class="col-12">
+                <label>Új jelszó ismét:</label>
+                <input name="password2" class="form-control" 
+                        type="password" value="" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label>Csoport:</label>
+                <select name="group" class="form-control" 
+                        v-model="record.group" :disabled="!logedAdmin">
+                        <option value=""></option>
+                        <option value="moderator">moderátor</option>
+                        <option value="admin">admin</option>
+                </select>        
+            </div>
+        </div>
+        
+
+        <div class="row formBUttons" v-if="(logedAdmin | (loged == record.id))">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                    <em class="fas fa-check"></em>&nbsp;Tárol
+                </button>&nbsp;
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Mégsem
+                </a>&nbsp;
+                <a v-bind:href="'index.php?task=szinonimadelete&id='+record.id" 
+                   v-if="record.id > 0"
+                   class="btn btn-danger">
+                    <em class="fas fa-eraser"></em>&nbsp;Töröl
+                </a>
+            </div>
+        </div>
+        <div class="row formBUttons" v-if="((loged != record.id) & !logedAdmin)">
+            <div class="col-12">
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Vissza
+                </a>
+            </div>
+        </div>
+    </form>    
+</div>
+
+<script>
+    methods = {
+    }
+</script>

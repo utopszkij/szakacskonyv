@@ -9,6 +9,7 @@
 */
 function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesztaval.recept/',
     &$recept, &$hozzavalok) {	
+	global $mes, $mit, $mire;
 	$cim = '';
 	$kep = '';
 	$elkeszites = '';
@@ -16,7 +17,7 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 	$elkeszitesiIdo = 0;
 	$energia = 0;
 	$hozza = '';
-	
+
 	$s = implode("\n",file($url));
 	$w = explode('id="recipeAllDetails"',$s);
 	
@@ -42,7 +43,7 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 			}
 
 			$w = explode('</h1>',$w[1]);
-			$recept->nev = trim($w[0]);
+			$recept->nev = html_entity_decode(trim($w[0]));
 
 			if (count($w) > 1) {
 						$w2 = explode('<ul class="shopingCart">',$w[1]);
@@ -95,18 +96,20 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 				copy($kep, $imgFileName);
 			}
 		}
-	}	
-	$w = explode("\n",$hozza);
-	for ($i = 0; ($i < count($w) & $i < 30); $i++) {
-		$w2 = explode(';',$w[$i]);
-		if (count($w2) > 3) {
-			$hozzavalok[$i] = new \stdClass();
-			$hozzavalok[$i]->nev = trim($w2[3]);
-			$hozzavalok[$i]->mennyiseg = trim($w2[0]);
-			$hozzavalok[$i]->me = trim($w2[1]);
+		$w1 = explode("\n",$hozza);
+		$i = 0;
+		foreach ($w1 as $hozzavalo) {
+			$w2 = explode(';',$hozzavalo);
+			if (count($w2) > 3) {
+				$hozzavalok[$i] = new \stdClass();
+				$hozzavalok[$i]->nev = str_replace('&nbsp','',trim($w2[3]));
+				$hozzavalok[$i]->mennyiseg = trim($w2[0]);
+				$hozzavalok[$i]->me = trim($w2[1]);
+				$i++;
+			}
 		}
-	}		
-	
+	}
+
 }	
 
 ?>

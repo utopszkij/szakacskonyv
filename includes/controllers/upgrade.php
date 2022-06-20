@@ -10,7 +10,7 @@ a githubról file elérési példa includes/napimenu.php:
 https://raw.githubusercontent.com/utopszkij/szakacskonyv/main/includes/napimenu.php
 
 a github/readm.md -t használja:
-## erzió v#.#
+## verzió v#.#
 ... 
 ### *************
 
@@ -226,7 +226,7 @@ class Upgrade {
 		$result = [];
 		$lines = file($fileUrl);
 
-		// keresi az új verio sort
+		// keresi az új verzio sort
 		for ($i=0; (($i<count($lines)) & 
 		            (strpos(strtolower($lines[$i]), ' verzió '.strtolower($newVersion)) <= 0)); $i++) {
 		}
@@ -340,6 +340,87 @@ class Upgrade {
 				echo $q->error; exit();
 			}
 		}
+		if ($dbverzio < 'v1.3') {
+			$q = new Query('dbverzio');
+			$q->exec('CREATE TABLE IF NOT EXISTS `szinonimak` (
+				`id` int NOT NULL AUTO_INCREMENT,
+				`mit` varchar(80) comment "ezt cseréli",
+				`mire` varchar(80) comment "erre",
+				PRIMARY KEY (`id`),
+				KEY `szinonimak_mit` (`mit`)
+			  ) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q->exec("INSERT INTO `szinonimak` VALUES 
+			(2,'mokkáskanál','mk'),(3,'mokkás kanál','mk'),(4,'kávéskanál','kk'),
+			(5,'kávés kanál','kk'),(6,'teáskanál','tk'),(7,'teás kanál','tk'),
+			(8,'gyermekkanál','gyk'),(9,'gyermek kanál','gyk'),(10,'evőkanál','ek'),
+			(11,'kávéscsésze','kcs'),(12,'kávés csésze','kcs'),(13,'teáscsésze','tcs'),
+			(14,'teás csésze','tcs'),(15,'cs','csomag'),(16,'mély tányér','mélytányér'),
+			(17,'púpozott evőkanál','púpozott_ek'),(18,'csapott evőkanál','csapott_ek'),
+			(19,'krumpli','burgonya'),(20,'gyökér','fehér répa'),
+			(21,'pirospaprika','fűszerpaprika'),(22,'piros paprika','fűszerpaprika'),
+			(23,'fűszer paprika','fűszerpaprika'),(24,'őrölt paprika','fűszerpaprika'),
+			(25,'kiskanál','tk'),(26,'kis kanál','tk'),(27,'darab','db');
+			");
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+
+			$q->exec('CREATE TABLE IF NOT EXISTS `mertekegysegek` (
+				`id` int NOT NULL AUTO_INCREMENT,
+				`nev` varchar(80) comment "mértékegység neve",
+				PRIMARY KEY (`id`)
+			  )  DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q->exec("INSERT INTO `mertekegysegek` VALUES 
+			(4,'mk'),(5,'kk'),(6,'tk'),(7,'gyk'),(8,'ek'),(9,'kcs'),
+			(10,'tcs'),(11,'csomag'),(12,'db'),(13,'csapott_ek'),
+			(14,'púpozott_ek'),(15,'szál'),(16,'pár'),(17,'szelet'),
+			(18,'csipet'),(19,'késhegynyi'),(20,'újnyi'),(21,'kg'),
+			(22,'dkg'),(23,'g'),(24,'l'),(25,'dl'),(26,'ml'),(27,'bögre'),
+			(28,'csésze'),(29,'kis'),(30,'közepes'),(31,'nagy');
+			");
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v1.3';
+			$q->where('verzio','<>','')->update($r);
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q = new Query('users');
+			$q->exec('CREATE TABLE IF NOT EXISTS `profilok` (
+				`id` int NOT NULL AUTO_INCREMENT,
+				`avatar` varchar(80),
+				`realname` varchar(80),
+				`email` varchar(80),
+				`phone` varchar(32),
+				`group` varchar(80),
+				PRIMARY KEY (`id`)
+			  ) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q = new Query('users');
+			$q->exec('insert into profilok
+			select id,"","","","","admin"
+			from users
+			where username = "'.ADMIN.'"
+			');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+		}	
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

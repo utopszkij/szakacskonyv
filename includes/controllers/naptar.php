@@ -148,7 +148,7 @@ class Naptar {
 						<li>A receptekhez hozzászólást lehet írni (pl: megfőztem, jó ), 
 							a hozzászóláshoz max 3 db kép is csatolható (pl a saját "alkotásom" fényképei).
 						    A hozzászólások és csatolt képek minden látogató számára láthatóak. 
-							Törölni, modosítani csak a feltöltő és a rendszer adminisztrátor tudja őket.
+							Törölni, modosítani csak a feltöltő, a moderátorok és a rendszer adminisztrátorok tudják őket.
 						</li>			
 					</ul>
 					<p>A program konfigurálható egyfelhasználós vagy többfelhasználós módba.</p>

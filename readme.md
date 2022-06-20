@@ -87,8 +87,10 @@ Könyvtár szerkezet
       viewer templates  spec. html fájlok. vue elemeket tartalmaznak
     atvesz.php - átvétel a mindmegette.hu -ról
     cimkek.txt - cimke lista
+    szininima.txt       - szinonimák amiket a recept átvételnél használ
+    mertekegysegek.txt  - mértékegység lista. a recept átvételnél van szerepe
   [vendor]
-    keretrendszer fájlok, harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
+    keretrendszer fájlok és harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
   index.php  - fő program
   config.php - konfigurációs adatok
   style.css  - megjelenés
@@ -106,13 +108,15 @@ is tesztelhető/használható az upgrade folyamat.
 
 ## verzió v1.3
 2022.06.??
-- receptneked.hu átvétel fejlesztése (szinonima.txt és mertekegysegek.txt kezelése)
+- receptneked.hu átvétel fejlesztése szinonimák és mertekegysegek lista kezelése
+- recept megjelenítés fejlesztése (egész számok, hosszú hozzávaló nevek)
+- user profilok kezelése (avatar kép, jelszó változtatás csoportok: regisztrált, moderátor, admin)
 ### ***************************************
 
 ## verzió v1.2
 2022.06.14.
 - recept átvehető a receptneked.hu oldalról is
-- lapozó sor fejlesztése (első/utilsó/következő/elözö max 5 szomozott elem)
+- lapozó sor fejlesztése (első/utolsó/következő/elözö max 5 szomozott elem)
 - mértékegység átváltás
 ### ***************************************
 

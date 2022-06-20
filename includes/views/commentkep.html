@@ -40,7 +40,7 @@
                 <input type="file" id="img2" name="img2" 
                     class="form-control" :disabled="disabled" />
             </div>
-            <div class="row formBUttons" v-if="loged > 0">
+            <div class="row formBUttons" v-if="!disabled">
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">
                         <em class="fas fa-check"></em>&nbsp;Tárol
@@ -55,7 +55,7 @@
             </div>
             <div class="form-outline col-12">
                 <img v-if="comment.img0 > '0'" v-bind:src="'images/comments/'+comment.img0"  />    
-                <var v-if="((comment.img0 > '0') & (admin | (comment.created_by == loged)))">
+                <var v-if="((comment.img0 > '0') & (!disabled))">
                     <a v-bind:href="'index.php?task=commentimgdel&img=img0&id='+comment.id" class="btn btn-danger">
                         <em class="fas fa-times"></em>Törölni
                     </a> 
@@ -63,7 +63,7 @@
             </div>  
             <div class="form-outline col-12">
                 <img v-if="comment.img1 > '0'" v-bind:src="'images/comments/'+comment.img1" />    
-                <var v-if="((comment.img1 > '0') & (admin | (comment.created_by == loged)))">
+                <var v-if="((comment.img1 > '0') & (!disabled))">
                     <a v-bind:href="'index.php?task=commentimgdel&img=img1&id='+comment.id" class="btn btn-danger">
                         <em class="fas fa-times"></em>Törölni
                     </a> 
@@ -71,19 +71,17 @@
             </div>    
             <div class="form-outline col-12">
                 <img v-if="comment.img2 > '0'" v-bind:src="'images/comments/'+comment.img2" />    
-                <var v-if="((comment.img2 > '0') & (admin | (comment.created_by == loged)))">
+                <var v-if="((comment.img2 > '0') & (!disabled))">
                     <a v-bind:href="'index.php?task=commentimgdel&img=img2&id='+comment.id" class="btn btn-danger">
                         <em class="fas fa-times"></em>Törölni
                     </a> 
                 </var>    
             </div>    
-            <div class="row formBUttons" v-if="loged <= 0">
-                <div class="col-12">
-                    <a v-bind:href="'index.php?task=recept&id='+recept.id" class="btn btn-secondary">
-                        <em class="fas fa-reply"></em>&nbsp;Vissza
-                    </a>
-                </div>
-            </div>
+            <div class="col-12 formBUttons" v-if="disabled">
+                <a v-bind:href="'index.php?task=recept&id='+recept.id" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;Vissza
+                </a>
+            </div>    
 
         </div>                   
 

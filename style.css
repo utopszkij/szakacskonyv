@@ -13,6 +13,7 @@ button, .btn {margin-top:10px;}
 .warning {background-color:red; color:yellow; padding:10px;}
 .warning a {color:yellow;}
 .form-control {display:inline-block; width:auto}
+label {display:inéine-blobk; width: 150px; text-align:right}
 
 #popup {position:fixed; z-index:99; top:100px; left:100px; display:none;
   padding:10px; text-align:center; width:auto; height:auto;
@@ -32,6 +33,9 @@ form {margin:10px 10px 10px 20px}
 .receptKep {width:98%}
 .sajat a {color:blue; font-weight:bold}
 .idegen a {color:#a0a0a0}
+
+.admin {color: red}
+.moderator {color:green}
 
 .comment {border-style:solid; border-width:1px; border-radius:15px;
   margin:5px; padding:5px; background-color:silver}

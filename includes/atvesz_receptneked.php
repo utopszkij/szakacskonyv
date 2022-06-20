@@ -23,7 +23,8 @@ function kiemel(string &$s, string $start, string $end): string {
 */
 function atvetel($url = 'https://www.receptneked.hu/....',
     &$recept, &$hozzavalok) {	
-	$cim = '';
+    global $mes, $mit, $mire;
+    $cim = '';
 	$kep = '';
 	$elkeszites = '';
 	$adag = 4;
@@ -31,23 +32,6 @@ function atvetel($url = 'https://www.receptneked.hu/....',
 	$energia = 0;
 	$hozza = '';
 
-    // mértékegységek
-    $mes = file(__DIR__.'/mertekegysegek.txt');
-
-    // szinonima értelmezés
-    $lines = file(__DIR__.'/szinonimak.txt');
-    $mit = [];
-    $mire =[];
-    foreach ($lines as $line) {
-        $w2 = explode('=>',$line);
-        if (count($w2) == 2) {
-            $mit[] = trim($w2[0]);
-            $mire[] = trim($w2[1]);
-        }
-    }
-    $mit[] = '    '; $mire[] = ' ';
-    $mit[] = '   '; $mire[] = ' ';
-    $mit[] = '  '; $mire[] = ' ';
 
     // url feldolgozása
 	$s = implode("\n",file($url));
@@ -88,7 +72,7 @@ function atvetel($url = 'https://www.receptneked.hu/....',
     $w = explode('Hozzávalók:',$s,2);
     if (count($w) > 1) {
         $s = $w[1];
-        $hozzaStr = kiemel($s,'<ul','Elkészítése'); // <li>...</li> -k vannak benne
+        $hozzaStr = kiemel($s,'<ul','Elkészítés'); // <li>...</li> -k vannak benne
         $s1 = kiemel($hozzaStr,"recipeIngredient'>",'</li>');
         while ($s1 != '') {
             $s1 = str_replace('</span>','',$s1);
@@ -100,11 +84,8 @@ function atvetel($url = 'https://www.receptneked.hu/....',
                 $s1 .= $w2[1];
             } 
             $s1 = html_entity_decode($s1);
-            $s1 = str_replace($mit, $mire, $s1);
-
-            echo $s1.'<br>';
-
-
+            $s1 = str_replace($mit, $mire, ' '.$s1.' ');
+            $s1 = trim($s1);
             $hozzavalo = new \stdClass();
             $hozzavalo->mennyiseg = 0;
             $hozzavalo->nev = '';
@@ -118,10 +99,7 @@ function atvetel($url = 'https://www.receptneked.hu/....',
                 $w[1] = '';
             }
             if (count($w) == 3) {
-
-echo JSON_encode($mes).'<br>';
-
-                if (!in_array($w[1]."\n",$mes)) {
+                if (!in_array($w[1],$mes)) {
                     // $w[1] nem mértékegység
                     $w[2] = $w[1].' '.$w[2];
                     $w[1] = '';

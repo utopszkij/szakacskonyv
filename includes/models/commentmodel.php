@@ -22,8 +22,9 @@
             $q = new Query('comments');
             $result = $q->select(['comments.id','comments.msg','comments.created_at',
             'comments.created_by','comments.img0','comments.img1','comments.img2',
-            'u.username'])
-            ->join('left','users','u','u.id','=','comments.created_by')
+            'u.username','p.avatar', 'p.group'])
+            ->join('left outer','users','u','u.id','=','comments.created_by')
+            ->join('left outer','profilok','p','p.id','=','comments.created_by')
             ->where('recept_id','=',$receptId)
             ->orderBy('created_at','DESC')
             ->offset(($page-1)*20)

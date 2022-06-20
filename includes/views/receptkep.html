@@ -64,12 +64,12 @@
                 <strong>Hozzávaló neve / mennyiség / mértékegység</strong>
             </div>				
             <div class="form-outline col-mb-10 hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
-                <input type="text" :disabled="disabled != ''"
+                <textarea cols="60" :disabled="disabled != ''"
                     v-model="hozzavalo.nev" 
                     v-bind:name="makeName('hozzavalo',i)" 
-                    list="alapanyagok"
                     v-bind:id="makeName('hozzavalo',i)"
-                    style="width:49%"  class="form-control" /> 
+                    v-bind:rows="(hozzavalo.nev.length / (innerWidth / 18)) + 1.4"
+                    style="width:49%; margin-bottom:-15px"  class="form-control"></textarea>
                 <datalist id="alapanyagok">
                       <option v-for="nev in nevek">{{ nev.nev }}</option>
                 </datalist>
@@ -133,7 +133,12 @@
         <div class="col-md-6" v-if="recept.id > 0">
             <hr />
             <h3>Recept feltöltési infó</h3>
-            {{ recept.created_at }} {{creator.username }}
+            <img v-bind:src="'images/users/'+creator.avatar" v-if="creator.avatar != ''"
+                style="width:34px" />&nbsp;
+            {{ recept.created_at }}&nbsp;
+            <var v-bind:class="creator.group">
+                 {{ creator.username }} 
+            </var>
             <hr />
         </div>				
             
@@ -141,7 +146,7 @@
             <button type="button" class="btn btn-primary"
                 v-if="((recept.id == 0) | 
                 (recept.created_by == loged) |
-                (logedAdmin))" 
+                (logedAdmin) | (logedGroup == 'moderator'))" 
                 lass="btn btn-primary" 
                 v-on:click="okClick()">
             <em class="fas fa-check"></em>&nbsp;Tárolás</button>
@@ -169,8 +174,15 @@
             
             <div v-for="comment in comments" class="comment">
                 <a v-bind:href="'index.php?task=comment&id='+comment.id">
-                    <p></p><em class="fas fa-hand-point-right"></em>
-                        {{ comment.created_at }} <strong>{{ comment.username }}</strong></p>
+                    <p>
+                        <img v-bind:src="'images/users/'+comment.avatar" 
+                            v-if="comment.avatar != ''"
+                            style="height:32px" />
+                        {{ comment.created_at }} 
+                        <strong v-bind:class="comment.group">
+                            {{ comment.username }}
+                        </strong>
+                    </p>
                     <p>{{ comment.msg }}</p>
                 </a>
                 <div class="commentImages">

@@ -20,7 +20,7 @@
     methods = {
         setColor(record) {
             var result = 'color:red';
-            if (parseInt(record.mecount) == (parseInt(record.szmecount) + 1)) {
+            if (parseInt(record.mecount) <= (parseInt(record.szmecount) + 1)) {
                 result = 'color:green';
             }
             return result;
