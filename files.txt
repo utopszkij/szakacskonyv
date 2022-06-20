@@ -112,7 +112,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-19 views
 -rw-rw-r-- 1 utopszkij utopszkij  3597 2022-06-18 szinonima.php
 -rwxrwxrwx 1 utopszkij www-data  22624 2022-06-19 szovegek.php
 -rwxrwxrwx 1 utopszkij www-data  15577 2022-06-19 upgrade.php
--rwxrwxrwx 1 utopszkij www-data   8394 2022-06-20 user.php
+-rwxrwxrwx 1 utopszkij www-data   8395 2022-06-20 user.php
 
 ./includes/models:
 összesen 48
