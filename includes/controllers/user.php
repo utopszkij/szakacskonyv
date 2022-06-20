@@ -128,13 +128,6 @@ class User extends Controller {
 	
 	public function doregist() {
 		$db = new Query('users');
-		$db->exec('CREATE TABLE IF NOT EXISTS users (
-			    id int AUTO_INCREMENT,
-			    username varchar(32),
-			    password varchar(128),
-			    PRIMARY KEY (id),
-			    KEY (username)
-		)');
 		$userName = $_POST['username'];
 		$password = $_POST['password'];
 		$password2 = $_POST['password2'];
@@ -166,12 +159,16 @@ class User extends Controller {
 				$r->realname = '';
 				$r->email = '';
 				$r->phone = '';
-				$r->group = '';
+				if ($username == ADMIN) {
+					$r->group = 'admin';
+				} else 
+					$r->group = '';
+				}	
 				$userId = $this->model->save($r);
 				$_SESSION['loged'] = $userId;
 				$_SESSION['logedName'] = $userName;
-				$_SESSION['logedAvatar'] = '';
-				$_SESSION['logedGroup'] = '';
+				$_SESSION['logedAvatar'] = $r->avatar;
+				$_SESSION['logedGroup'] = $r->group;
 				?>
 				<script>
 					document.location="index.php";		
@@ -179,7 +176,7 @@ class User extends Controller {
 				<?php			
 			}			
 		}	
-	}
+	
 
 	// === profil kezelés v1.3 ===
   

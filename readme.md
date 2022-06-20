@@ -18,14 +18,16 @@ alapján megpróbál a net-en képet keresni,
 - a számított hozzávaló összesítés (bevásárló lista), nyomtatás előtt módosítható
 (pl. törölhető amiből "van a spájzban").		
 - a receptekhez hozáászólásokat lehet csatolni, a hozzászólások képeket is tartalmazhatnak	
+- az összesítések optimális müködése érdekében a program egy szinonima szótárat és mértékegység
+átváltó táblázatot használ. Ezek tartalmát csak a rendszer adminisztrátorok módosíthatják.
 			
 A program konfigurálható egyfelhasználós vagy többfelhasználós módba.
 			
 Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket 
 látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
 látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
-sajátmaga által felvitteket tudja. A hozzászólásokat mindenki láthatja, módosítani, tötölni 
-csak a felvivő és rendszer adminisztrátor tud.
+sajátmaga által felvitteket tudja. Illetve a rendszergazdák és moderátorok módosíthatják törölhetik a mások által felvitteket is. A hozzászólásokat mindenki láthatja, módosítani, tötölni 
+csak a felvivő és rendszer adminisztrátorok, moderátorok tudnak.
 A receptek, hozzászólások és képek tartalmáért, a kizárólag
 az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
 ezekkel kapcsolatban semmilyen felelősséget nem vállal.

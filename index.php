@@ -23,10 +23,10 @@ if (MULTIUSER) {
    $_SESSION['logedGroup'] = '';
  }
 } else {
-	$_SESSION['loged'] = 0;
-	$_SESSION['logedName'] = 'guest';
+	$_SESSION['loged'] = 1;
+	$_SESSION['logedName'] = 'user';
 	$_SESSION['logedAvatar'] = '';
-	$_SESSION['logedGroup'] = '';
+	$_SESSION['logedGroup'] = 'admin';
 }
 
 $time = time();
@@ -225,10 +225,6 @@ $branch = $upgrade->branch;
 				<li class="nav-item">
 					<a class="nav-link" 
 						href="index.php?task=useredit&id=<?php echo $_SESSION['loged']; ?>">
-						<?php if ($_SESSION['logedAvatar'] != '') : ?>
-							<img src="images/users/<?php echo $_SESSION['logedAvatar']; ?>"
-								style="height:34px; margin:0px" />
-						<?php endif; ?>
 						<em class="fas fa-address-card"></em>	
 						<var class=" <?php echo $_SESSION['logedGroup'] ?>">
 							<?php echo $_SESSION['logedName']; ?>
@@ -244,6 +240,12 @@ $branch = $upgrade->branch;
 	          <a class="nav-link" href="index.php?task=regist">
 	          <em class="fas fa-key"></em>&nbsp;Regisztrálás</a>
 	        </li>
+	        <li class="nav-item">
+				<?php if ($_SESSION['logedAvatar'] != '') : ?>
+					<img src="images/users/<?php echo $_SESSION['logedAvatar']; ?>"
+						style="height:34px; margin:0px" />
+				<?php endif; ?>
+			</li>	
 	      </ul>
 		  <?php endif; ?>
 	      <!-- form class="d-flex">

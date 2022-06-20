@@ -7,9 +7,9 @@
 drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images
 drwxrwxrwx 5 utopszkij www-data   4096 2022-06-18 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
--rw-rw-r-- 1 utopszkij www-data   9720 2022-06-20 index.php
+-rw-rw-r-- 1 utopszkij www-data   9757 2022-06-20 index.php
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  7432 2022-06-20 readme.md
+-rw-r--r-- 1 utopszkij utopszkij  7769 2022-06-20 readme.md
 -rw-r--r-- 1 utopszkij utopszkij  3469 2022-06-19 style.css
 drwxrwxr-x 5 www-data  www-data   4096 2022-06-17 vendor
 
@@ -106,13 +106,13 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-19 views
 -rw-rw-r-- 1 utopszkij utopszkij    30 2022-05-23 index.php
 -rw-rw-r-- 1 utopszkij utopszkij  1969 2022-06-18 mertekegyseg.php
 -rwxrwxrwx 1 utopszkij www-data   2679 2022-06-09 napimenu.php
--rwxrwxrwx 1 utopszkij www-data   6275 2022-06-19 naptar.php
+-rwxrwxrwx 1 utopszkij www-data   6611 2022-06-20 naptar.php
 -rwxrwxrwx 1 utopszkij www-data   6344 2022-05-29 osszegzes.php
 -rwxrwxrwx 1 utopszkij www-data  14410 2022-06-19 recept.php
 -rw-rw-r-- 1 utopszkij utopszkij  3597 2022-06-18 szinonima.php
 -rwxrwxrwx 1 utopszkij www-data  22624 2022-06-19 szovegek.php
 -rwxrwxrwx 1 utopszkij www-data  15577 2022-06-19 upgrade.php
--rwxrwxrwx 1 utopszkij www-data   8395 2022-06-20 user.php
+-rwxrwxrwx 1 utopszkij www-data   8294 2022-06-20 user.php
 
 ./includes/models:
 összesen 48

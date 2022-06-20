@@ -150,12 +150,16 @@ class Naptar {
 						    A hozzászólások és csatolt képek minden látogató számára láthatóak. 
 							Törölni, modosítani csak a feltöltő, a moderátorok és a rendszer adminisztrátorok tudják őket.
 						</li>			
+						<li>Az össesítés optimális müködése érdekében a program egy "szinonima szótárat" és 
+							"átváltási adatbázist" kezel. Ezek tartalmát csak a rendszer adminisztrátorok módosíthatják.
+						</li>
 					</ul>
 					<p>A program konfigurálható egyfelhasználós vagy többfelhasználós módba.</p>
 					<p>Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket 
 					látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
 					látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
-					sajátmaga által felvitteket tudja. A hozzászólások mindenki számára láthatóak</p>
+					sajátmaga által felvitteket tudja. Illetve a rendszer adminisztrátorok és moderátorok 
+					módosíthatják, törölhetik az összes receptet. A hozzászólások mindenki számára láthatóak</p>
 					<p></p>
 					<p><strong>A felhasználók által felvitt receptek, hozzászólások és képek tartalmáért, a kizárólag
 					az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
