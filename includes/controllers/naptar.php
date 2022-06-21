@@ -60,9 +60,13 @@ class Naptar {
 		echo '
 		<div class="row">	
 			<div class="col-md-8 text-center">
-					<a href="?task=elozo" class="btn btn-primary">&lt;</a>&nbsp;&nbsp;
-					<var style="display:inline-block; width:auto">'.$numYear.' '.$strMonth.'</var>
-					<a href="?task=kovetkezo" class="btn btn-primary">&gt;</a>
+					<var style="display:inline-block; width:auto">'.$numYear.' '.$strMonth.'</var>&nbsp;
+					<a href="?task=elozo"><em class="fas fa-arrow-up" 
+						style="color:black"
+						title="elöző hónap"></em></a>&nbsp;
+					<a href="?task=kovetkezo"><em class="fas fa-arrow-down" 
+						style="color:black"
+						title="következő hónap"></em></a>
 			</div>
 		</div>		
 		<div class="row">	

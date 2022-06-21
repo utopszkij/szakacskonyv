@@ -332,6 +332,7 @@ class Upgrade {
 			if ($q->error != '') {
 				echo $q->error; exit();
 			}
+			
 			$q = new Query('dbverzio');
 			$r = new Record();
 			$r->verzio = 'v1.2';

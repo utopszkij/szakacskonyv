@@ -1,0 +1,40 @@
+<div id="regist" class="form">
+    <div class="alert alert-danger" v-if="msg != ''">
+        {{ msg }}
+    </div>
+    <h1>Regisztrálás</h1>
+    <form name="registration" action="index.php?task=doregist" method="post">
+    <input type="hidden" name="task" value="doregist" />
+    <input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
+    <br /><br />
+    <input type="password" name="password" placeholder="Jelszó" required="true" />
+    <br /><br />
+    <input type="password" name="password2" placeholder="Jelszó ismét" required="true" />
+    <br /><br />
+    <button type="submit" class="btn btn-primary" name="submit" style="width:250px">
+        <em class="fas fa-check"></em>&nbsp;Küld
+    </button>    
+    </form>
+    <p><strong>Figyelem! e-mail címet nem tárolunk. 
+    Így a rendszer semmilyen személyes adatot nem kezel, a GDPR hatályán kivül esik.
+    Viszont ennek következtében jelszó emlékeztető küldésére nincs lehetőség,
+    tehát a jelszót jól jegyezd meg!</strong></p>
+    <div>    
+        <a v-bind:href="'https://netpolgar.hu/auth/facebook?state='+SITEURL"
+        class="btn btn-primary" style="width:250px"> 
+        Belépés Facebook -al			
+        </a>
+    </div>
+    <div>
+        <a v-bind:href="'https://netpolgar.hu/auth/google?state='+SITEURL" 
+        class="btn btn-secondary" style="width:250px"> 
+        Belépés Google -al			
+        </a>
+    </div>
+
+    <div class="alert alert-info">
+        Bejelentkezés után a felső menöben lévő belépési nevedre kattintva,  
+        a "profil" képernyőn jelszót változtathatsz, avatar képet tölthetsz fel.
+    </div>
+</div>
+<?php	

@@ -18,36 +18,8 @@ class User extends Controller {
 	}
 
 	public function login() {
-		if (isset($_GET['msg'])) {
-			echo '<div class="alert alert-danger">'.$_GET['msg'].'</div>';	
-		}
-		?>
-		<div class="form">
-			<h1>Bejelentkezés</h1>
-			<form name="login" action="index.php?task=dologin" method="post">
-			<input type="hidden" name="task" value="dologin" />
-			<input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
-			<br /><br />
-			<input type="password" name="password" placeholder="Jelszó" required="true" />
-			<br /><br />
-			<input type="submit" class="btn btn-primary" name="submit" value="Küld" />
-			<br /><br />
-			<a href="https://netpolgar.hu/auth/facebook?state=<?php echo urlencode(SITEURL); ?>" class="btn" 
-			   style="background-color:blue; color:white">
-				<strong>f</strong> Belépés Facebook -al			
-			</a>
-			<br /><br />
-			<a href="https://netpolgar.hu/auth/google?state=<?php echo urlencode(SITEURL); ?>" class="btn" 
-			   style="background-color:blue; color:white">
-				<strong>g</strong> Belépés Google -al			
-			</a>
-			</form>
-			<div class="alert alert-info">
-				Bejelentkezés után a felső menöben lévő belépési nevedre kattintva,  
-				a "profil" képernyőn jelszót változtathatsz, avatar képet tölthetsz fel.
-			</div>
-		</div>
-		<?php	
+		view('login',["msg" => $this->request->input('msg',''),
+						"SITEURL" => SITEURL]);
 	}
 	
 	public function logout() {
@@ -63,32 +35,8 @@ class User extends Controller {
 	}
 	
 	public function regist() {
-		if (isset($_GET['msg'])) {
-			echo '<div class="alert alert-danger">'.$_GET['msg'].'</div>';	
-		}
-		?>
-		<div class="form">
-			<h1>Regisztrálás</h1>
-			<form name="registration" action="index.php?task=doregist" method="post">
-			<input type="hidden" name="task" value="doregist" />
-			<input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
-			<br /><br />
-			<input type="password" name="password" placeholder="Jelszó" required="true" />
-			<br /><br />
-			<input type="password" name="password2" placeholder="Jelszó ismét" required="true" />
-			<br /><br />
-			<input type="submit" class="btn btn-primary" name="submit" value="Küld" />
-			</form>
-			<p><strong>Figyelem! e-mail címet nem tárolunk. 
-			Így a rendszer semmilyen személyes adatot nem kezel, a GDPR hatályán kivül esik.
-			Viszont ennek következtében jelszó emlékeztető küldésére nincs lehetőség,
-			tehát a jelszót jól jegyezd meg!</strong></p>
-			<div class="alert alert-info">
-				Bejelentkezés után a felső menöben lévő belépési nevedre kattintva,  
-				a "profil" képernyőn jelszót változtathatsz, avatar képet tölthetsz fel.
-			</div>
-		</div>
-		<?php	
+		view('regist',["msg" => $this->request->input('msg',''),
+						"SITEURL" => SITEURL]);
 	}
 	
 	public function dologin() {
@@ -96,7 +44,7 @@ class User extends Controller {
 		$password = $_POST['password'];
 		$recs = $this->model->getBy('username',$userName);
 		if (count($recs) == 0) {
-				$error = 'Nincs ilyen néven fiók! '.$db->error;
+				$error = 'Nincs ilyen néven fiók! ';
 				?>
 				<script>
 					document.location="index.php?task=login&msg=<?php echo $error; ?>";		

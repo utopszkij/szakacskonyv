@@ -68,7 +68,7 @@
                     v-model="hozzavalo.nev" 
                     v-bind:name="makeName('hozzavalo',i)" 
                     v-bind:id="makeName('hozzavalo',i)"
-                    v-bind:rows="(hozzavalo.nev.length / (innerWidth / 18)) + 1.4"
+                    v-bind:rows="(hozzavalo.nev.length / (innerWidth / 15)) + 1.4"
                     style="width:49%; margin-bottom:-15px"  class="form-control"></textarea>
                 <datalist id="alapanyagok">
                       <option v-for="nev in nevek">{{ nev.nev }}</option>
@@ -121,7 +121,7 @@
             <button type="button" class="btn btn-secondary" v-on:click="addHozzavalo">+ hozzávaló</button>
         </div>
         <p>Hozzávaló törléshez, töröld ki a nevét!</p>
-        <div class="col-md-6">
+        <div class="col-12">
             <h3>Elkészítés</h3>			
             <textarea name="leiras" id="leiras"
             :disabled="disabled != ''" 
@@ -130,11 +130,11 @@
             <input type="file" name="kepfile" :disabled="disabled != ''" />			
         </div>
         
-        <div class="col-md-6" v-if="recept.id > 0">
+        <div class="col-12" v-if="recept.id > 0">
             <hr />
             <h3>Recept feltöltési infó</h3>
             <img v-bind:src="'images/users/'+creator.avatar" v-if="creator.avatar != ''"
-                style="width:34px" />&nbsp;
+                style="height:32px; width:auto" />&nbsp;
             {{ recept.created_at }}&nbsp;
             <var v-bind:class="creator.group">
                  {{ creator.username }} 
@@ -177,7 +177,7 @@
                     <p>
                         <img v-bind:src="'images/users/'+comment.avatar" 
                             v-if="comment.avatar != ''"
-                            style="height:32px" />
+                            style="height:32px; width:auto" />
                         {{ comment.created_at }} 
                         <strong v-bind:class="comment.group">
                             {{ comment.username }}
