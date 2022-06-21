@@ -23,14 +23,17 @@ function kiemel(string &$s, string $start, string $end): string {
 */
 function atvetel($url = 'https://www.receptneked.hu/....',
     &$recept, &$hozzavalok) {	
-	$cim = '';
+    global $mes, $mit, $mire;
+    $cim = '';
 	$kep = '';
 	$elkeszites = '';
 	$adag = 4;
 	$elkeszitesiIdo = 0;
 	$energia = 0;
 	$hozza = '';
-	
+
+
+    // url feldolgozása
 	$s = implode("\n",file($url));
 	$w = explode('id="mainbar"',$s,2);
 
@@ -38,7 +41,7 @@ function atvetel($url = 'https://www.receptneked.hu/....',
 	if (count($w) > 1) {
         $s = $w[1];
         $cim = kiemel($s,'id="recipe-title">','</h1>');
-        $recept->nev = $cim;
+        $recept->nev = html_entity_decode(str_replace('recept','',$cim));
     }
 
     // kép
@@ -69,7 +72,7 @@ function atvetel($url = 'https://www.receptneked.hu/....',
     $w = explode('Hozzávalók:',$s,2);
     if (count($w) > 1) {
         $s = $w[1];
-        $hozzaStr = kiemel($s,'<ul','Elkészítése'); // <li>...</li> -k vannak benne
+        $hozzaStr = kiemel($s,'<ul','Elkészítés'); // <li>...</li> -k vannak benne
         $s1 = kiemel($hozzaStr,"recipeIngredient'>",'</li>');
         while ($s1 != '') {
             $s1 = str_replace('</span>','',$s1);
@@ -79,17 +82,46 @@ function atvetel($url = 'https://www.receptneked.hu/....',
                 $s1 = $w2[0];
                 $w2 = explode('</a>',$w2[1],2);
                 $s1 .= $w2[1];
-            }    
-            $w = explode(' ',$s1,3);
+            } 
+            $s1 = html_entity_decode($s1);
+            $s1 = str_replace($mit, $mire, ' '.$s1.' ');
+            $s1 = trim($s1);
             $hozzavalo = new \stdClass();
             $hozzavalo->mennyiseg = 0;
             $hozzavalo->nev = '';
             $hozzavalo->me = '';
+
+            $w = explode(' ',$s1,3);
+            // alap esetben w[0] = mennyiség, w[1] = me, w[2]= név
+            if (count($w) == 2) {
+                // feltehetőleg a me hiányzik
+                $w[2] = $w[1];
+                $w[1] = '';
+            }
             if (count($w) == 3) {
-                $w2 = explode('-',$w[0]);
-                $hozzavalo->mennyiseg = $w2[0];
-                $hozzavalo->me = $w[1];
-                $hozzavalo->nev = $w[2];
+                if (!in_array($w[1],$mes)) {
+                    // $w[1] nem mértékegység
+                    $w[2] = $w[1].' '.$w[2];
+                    $w[1] = '';
+                }
+                // mennyiség #-# és #/# értelmezéssel
+                $w2 = explode('-',$w[0],2);
+                if (count($w2) == 2) {
+                    $w[0] = ((int)(trim($w2[0])) + (int)(trim($w2[1]))) / 2;
+                }        
+                $w2 = explode('/',$w[0],2);
+                if (count($w2) == 2) {
+                    $w[0] =  (int)(trim($w2[0])) / (int)(trim($w2[1]));
+                }    
+                $w[0] = str_replace(',','.',$w[0]);
+
+                if (is_numeric($w[0])) {
+                    $hozzavalo->mennyiseg = $w[0];
+                    $hozzavalo->me = $w[1];
+                    $hozzavalo->nev = $w[2];
+                } else {
+                    $hozzavalo->nev = $s1;
+                }
             } else {
                 $hozzavalo->nev = $s1;
             }

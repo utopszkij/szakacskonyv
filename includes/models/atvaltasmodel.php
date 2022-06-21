@@ -101,7 +101,7 @@
             // az objektben lévők tárolása (insert vagy update) 0 és 1 szorzókat nem tárolja
             foreach ($obj->szorzok as $fn => $fv) {
                 if (($fn != '') & ($fn != '?') &
-                    ($fv != 0) & ($fv != 1) & ($fn != $obj->szme)) {
+                    ($fv != 0) & ($fn != $obj->szme)) {
                     $new = new Record();
                     $new->nev = $obj->nev;
                     $new->szme = $obj->szme;
@@ -118,6 +118,12 @@
                     }   else {
                         $db->insert($new);
                     } 
+                }
+                if ($fv == 0) {
+                    $db = new Query('atvaltasok');
+                    $db->where('nev','=',$obj->nev)
+                       ->where('me','=',$fn)
+                       ->delete();
                 }
             }
 
@@ -137,8 +143,6 @@
             set h.szmennyiseg = h.mennyiseg  
             where h.me = h.szme AND h.nev = "'.$obj->nev.'" 
             ');
-            
-            
         }
 
         /**

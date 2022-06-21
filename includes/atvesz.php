@@ -7,6 +7,34 @@
 * @param Rekord $recept
 * @param array $hozzavalok
 */
+use \RATWEB\Model;
+use \RATWEB\DB\Query;
+use \RATWEB\DB\Record;
+
+//include_once __DIR__.'/../vendor/database/db.php';
+global $mes, $mit, $mire;
+
+// mértékegységek
+$db = new Query('mertekegysegek');
+$recs = $db->all();
+$mes = [];
+foreach ($recs as $rec) {
+	$mes[] = trim($rec->nev);
+}
+
+// szinonima értelmezés
+$db = new Query('szinonimak');
+$recs = $db->all();
+$mit = [];
+$mire =[];
+$mit[] = '    '; $mire[] = ' ';
+$mit[] = '   '; $mire[] = ' ';
+$mit[] = '  '; $mire[] = ' ';
+foreach ($recs as $rec) {
+    $mit[] = ' '.trim($rec->mit).' ';
+    $mire[] = ' '.trim($rec->mire).' ';
+}
+
 function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesztaval.recept/',
     &$recept, &$hozzavalok) {	
 

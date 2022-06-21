@@ -4,6 +4,7 @@
     use \RATWEB\DB\Record;
 
     include_once (__DIR__.'/atvaltasmodel.php');
+    include_once (__DIR__.'/usermodel.php');
     
     class ReceptModel extends Model  {
 
@@ -70,10 +71,12 @@
          * @return Record UserRecord
          */
         public function getCreator(Record $recept):Record {		
-			$db = new Query('users');
-			$creator = $db->where('id','=',$recept->created_by)->first();
+			$userModel= new UserModel();
+			$creator = $userModel->getById($recept->created_by);
 			if (!isset($creator->username)) {
 				$creator->username = 'guest';
+                $creator->avatar = '';
+                $creator->group = '';
 			}
 			return $creator;
     	}		

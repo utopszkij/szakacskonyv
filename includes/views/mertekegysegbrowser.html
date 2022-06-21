@@ -1,0 +1,41 @@
+<div id="mertekegysegek">
+    <div v-if="errorMsg != ''" class="alert alert-danger">
+        <div v-html="errorMsg"></div>
+    </div>
+    <div v-if="successMsg != ''" class="alert alert-success">
+        <div v-html="successMsg"></div>
+    </div>
+    
+    <h2>Mértékegységek</h2>
+    <p>A külső recept web oldalakról történő átvételnél gyakran szövegeket kell értelmezni. 
+        A program elöször a definiált szinonimákat behelyettesíti, majd az itt felsorolt 
+        szavakat tekinti mértékegységnek.</p>
+    <ul>
+        <li v-for="record in items" v-if="logedAdmin">
+            <a v-bind:href="'index.php?task=meedit&id='+record.id">{{ record.nev }}</a> 
+        </li>
+        <li v-for="record in items" v-if="!logedAdmin">
+            {{ record.nev }}
+        </li>
+    </ul>
+    include paginator
+    <div v-if="logedAdmin">Modosításhoz, törléshez kattints a névre!<br />
+        <a href="index.php?task=meadd" class="btn btn-primary">
+            <em class="fas fa-plus"></em>&nbsp;Új mértékegység</a>
+        </a>
+    </div>    
+</div>
+
+<script>
+    methods = {
+        makePaginatorClass(p,page) {
+            var result = '';
+            if (p == page) {
+                result="actPaginatorItem";
+            } else {
+                result="paginatorItem"
+            }
+            return result;
+        }
+    }
+</script>

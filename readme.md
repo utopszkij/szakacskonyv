@@ -18,14 +18,16 @@ alapján megpróbál a net-en képet keresni,
 - a számított hozzávaló összesítés (bevásárló lista), nyomtatás előtt módosítható
 (pl. törölhető amiből "van a spájzban").		
 - a receptekhez hozáászólásokat lehet csatolni, a hozzászólások képeket is tartalmazhatnak	
+- az összesítések optimális müködése érdekében a program egy szinonima szótárat és mértékegység
+átváltó táblázatot használ. Ezek tartalmát csak a rendszer adminisztrátorok módosíthatják.
 			
 A program konfigurálható egyfelhasználós vagy többfelhasználós módba.
 			
 Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket 
 látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
 látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
-sajátmaga által felvitteket tudja. A hozzászólásokat mindenki láthatja, módosítani, tötölni 
-csak a felvivő és rendszer adminisztrátor tud.
+sajátmaga által felvitteket tudja. Illetve a rendszergazdák és moderátorok módosíthatják törölhetik a mások által felvitteket is. A hozzászólásokat mindenki láthatja, módosítani, tötölni 
+csak a felvivő és rendszer adminisztrátorok, moderátorok tudnak.
 A receptek, hozzászólások és képek tartalmáért, a kizárólag
 az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
 ezekkel kapcsolatban semmilyen felelősséget nem vállal.
@@ -87,8 +89,10 @@ Könyvtár szerkezet
       viewer templates  spec. html fájlok. vue elemeket tartalmaznak
     atvesz.php - átvétel a mindmegette.hu -ról
     cimkek.txt - cimke lista
+    szininima.txt       - szinonimák amiket a recept átvételnél használ
+    mertekegysegek.txt  - mértékegység lista. a recept átvételnél van szerepe
   [vendor]
-    keretrendszer fájlok, harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
+    keretrendszer fájlok és harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
   index.php  - fő program
   config.php - konfigurációs adatok
   style.css  - megjelenés
@@ -104,9 +108,17 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
 
+## verzió v1.3
+2022.06.22
+- receptneked.hu átvétel fejlesztése szinonimák és mertekegysegek lista kezelése
+- recept megjelenítés fejlesztése (egész számok, hosszú hozzávaló nevek)
+- user profilok kezelése (avatar kép, jelszó változtatás csoportok: regisztrált, moderátor, admin)
+### ***************************************
+
 ## verzió v1.2
+2022.06.14.
 - recept átvehető a receptneked.hu oldalról is
-- lapozó sor fejlesztése (első/utilsó/következő/elözö max 5 szomozott elem)
+- lapozó sor fejlesztése (első/utolsó/következő/elözö max 5 szomozott elem)
 - mértékegység átváltás
 ### ***************************************
 

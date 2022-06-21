@@ -3,46 +3,56 @@
 -rw-rw-r-- 1 utopszkij www-data    603 2021-11-06 config-example.php
 -rw-rw-r-- 1 utopszkij www-data    523 2022-05-31 config.php
 -rwxrwxr-x 1 utopszkij utopszkij    46 2022-05-31 files.sh
--rw-rw-r-- 1 utopszkij utopszkij     0 2022-06-14 files.txt
-drwxrwxrwx 3 utopszkij utopszkij  4096 2022-06-11 images
-drwxrwxrwx 5 utopszkij www-data   4096 2022-06-09 includes
+-rw-rw-r-- 1 utopszkij utopszkij     0 2022-06-20 files.txt
+drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images
+drwxrwxrwx 5 utopszkij www-data   4096 2022-06-18 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
--rw-rw-r-- 1 utopszkij www-data   8380 2022-06-11 index.php
+-rw-rw-r-- 1 utopszkij www-data   9757 2022-06-20 index.php
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  6910 2022-06-14 readme.md
--rw-r--r-- 1 utopszkij utopszkij  3361 2022-06-13 style.css
-drwxrwxr-x 5 www-data  www-data   4096 2022-06-09 vendor
+-rw-r--r-- 1 utopszkij utopszkij  7769 2022-06-20 readme.md
+-rw-r--r-- 1 utopszkij utopszkij  3469 2022-06-19 style.css
+drwxrwxr-x 5 www-data  www-data   4096 2022-06-17 vendor
 
 ./images:
-összesen 5652
+összesen 7432
 -rw-r--r-- 1 www-data  www-data  188270 2022-06-09 Afrikai harcsa sörtésztában medvehagymás burgonyával recept.jpg?v=1633609313
 -rw-r--r-- 1 www-data  www-data    6464 2021-11-07 A legjobb palacsintatészta.jpg
 -rw-r--r-- 1 www-data  www-data    3757 2022-02-22 Almás céklakrémleves.jpg
 -rw-r--r-- 1 www-data  www-data    5444 2022-03-25 Aranygaluska vaníliamártással.jpg
 -rw-r--r-- 1 www-data  www-data  162515 2022-06-11 Babgulyás recept.jpg?v=1607341860
 -rw-rw-r-- 1 utopszkij utopszkij  60278 2021-10-28 Bacon -ba göngyölt máj.jpg
+-rw-r--r-- 1 www-data  www-data   34422 2022-06-16 Baconba tekert csirkemell recept.jpg
 -rw-rw-r-- 1 utopszkij utopszkij  82071 2021-10-29 Bécsi szelet.jpg
 -rw-rw-r-- 1 utopszkij utopszkij 149357 2021-10-31 bevlista.png
 -rw-rw-r-- 1 utopszkij utopszkij  62357 2021-10-29 Brassói apró pecsenye.jpg
 drwxr-xr-x 2 www-data  www-data    4096 2022-06-09 comments
+-rw-r--r-- 1 www-data  www-data  229558 2022-06-15 Cukkínirudak fokhagymás mártogatóssal recept.jpg?v=1633956579
 -rw-r--r-- 1 www-data  www-data    5852 2022-02-11 Darált húsos makaróni.jpg
 -rw-rw-r-- 1 utopszkij utopszkij 126238 2021-11-03 dekor1.jpg
 -rw-rw-r-- 1 utopszkij utopszkij 231564 2021-11-03 dekor2.jpg
 -rw-r--r-- 1 www-data  www-data    5474 2022-05-18 Epres Raffaello.jpg
 -rw-r--r-- 1 www-data  www-data  965767 2022-05-27 Epres-túrókrémes torta (sütés nélküli recept).jpg
 -rw-rw-r-- 1 utopszkij utopszkij  89418 2021-10-28 etkeszlet.png
+-rw-r--r-- 1 www-data  www-data  132892 2022-06-15 Fahéjas babacsinta recept.jpg?v=1632148367
 -rw-rw-r-- 1 utopszkij utopszkij  21923 2021-10-28 fejlec.png
+-rw-r--r-- 1 www-data  www-data  179109 2022-06-15 Foszlós kalács recept.jpg?v=1652105232
 -rw-rw-r-- 1 utopszkij utopszkij  67772 2021-10-28 Főtt burgonya.jpg
+-rw-r--r-- 1 www-data  www-data  162319 2022-06-15 Francia briós (Kontyos kalács) recept.jpg?v=1632317032
 -rw-r--r-- 1 www-data  www-data    4903 2021-11-02 Francia bundás kenyér.jpg
 -rw-rw-r-- 1 utopszkij utopszkij  54548 2021-10-28 Gombóc leves.jpg
 -rw-r--r-- 1 www-data  www-data    6403 2021-11-07 Gulyásleves egyszerűen.jpg
 -rw-r--r-- 1 www-data  www-data    5419 2021-11-03 Gyors túrós pogácsa.jpg
 -rw-rw-r-- 1 utopszkij utopszkij 186946 2021-10-28 Gyümölcs leves.jpg
+-rw-r--r-- 1 www-data  www-data  197174 2022-06-15 Halfilé sajtos-gombás ágyon recept.jpg?v=1635707146
 -rw-rw-r-- 1 utopszkij utopszkij  65682 2021-10-29 Harcsa paprikás.jpg
+-rw-r--r-- 1 www-data  www-data  105213 2022-06-15 Házi szója mentes majonéz &#8216;veganéz&#8217; recept.jpg?v=1648480171
 -rw-rw-r-- 1 utopszkij utopszkij     30 2022-05-23 index.php
+-rw-r--r-- 1 www-data  www-data  190005 2022-06-15 Kapros zöldborsópüré fürjtojással recept.jpg?v=1629724276
 -rw-rw-r-- 1 utopszkij utopszkij 227132 2021-11-02 Karalábé leves.jpg
 -rw-r--r-- 1 www-data  www-data  134875 2022-06-09 Kelkáposzta főzelék recept.jpg?v=1635400819
 -rw-rw-r-- 1 utopszkij utopszkij 278700 2021-10-31 kezdolap.png
+-rw-r--r-- 1 www-data  www-data  170051 2022-06-16 Kukoricafőzelék recept.jpg?v=1619505116
+-rw-r--r-- 1 www-data  www-data  207464 2022-06-15 Legényfogó reggeli recept.jpg?v=1631601917
 -rw-rw-r-- 1 utopszkij utopszkij 127523 2021-10-29 Lekváros tészta.jpg
 -rw-rw-r-- 1 utopszkij utopszkij 206528 2021-10-31 napimenu.png
 -rw-rw-r-- 1 utopszkij utopszkij 205482 2021-10-31 osszesites.png
@@ -56,70 +66,90 @@ drwxr-xr-x 2 www-data  www-data    4096 2022-06-09 comments
 -rw-rw-r-- 1 utopszkij utopszkij 209221 2021-10-31 recept.png
 -rw-r--r-- 1 www-data  www-data    4349 2022-05-24 Rizibizi - alaprecept.jpg
 -rw-r--r-- 1 www-data  www-data    4144 2021-11-02 Ropogós sült oldalas.jpg
+-rw-r--r-- 1 www-data  www-data  152469 2022-06-15 Sárgarépás sütőtökpüré leves recept.jpg?v=1633545989
+-rw-rw-r-- 1 utopszkij utopszkij   4859 2022-06-15 szakacs.ico
+-rw-rw-r-- 1 utopszkij utopszkij  24451 2022-06-15 szakacs.png
 -rw-rw-r-- 1 utopszkij utopszkij  67525 2021-11-02 Székely káposzta.jpg
 -rw-r--r-- 1 www-data  www-data    5211 2022-05-27 Tavaszi zöld minestrone leves.jpg
 -rw-r--r-- 1 www-data  www-data   18821 2021-11-07 Tiszai halászlé alaprecept.png
 -rw-r--r-- 1 www-data  www-data    2572 2022-05-24 Tócsni.jpg
 -rw-r--r-- 1 www-data  www-data    5079 2022-05-24 Töltött csirkecomb sütőzacskóban sütve.jpg
 -rw-r--r-- 1 www-data  www-data  898074 2022-05-28 Ukrán fokhagymás tojás.png
+drwxr-xr-x 2 www-data  www-data    4096 2022-06-19 users
 -rw-r--r-- 1 www-data  www-data    2839 2022-05-29 Vörösboros vaddisznópörkölt.jpg
 
 ./images/comments:
 összesen 0
 
+./images/users:
+összesen 116
+-rw-r--r-- 1 www-data www-data  9195 2022-06-19 1-MOgasz10.jpg
+-rw-r--r-- 1 www-data www-data 45333 2022-06-19 4-IMG_20180405_153150_1.jpg
+-rw-r--r-- 1 www-data www-data 57109 2022-06-19 4-Tibor-2016-08-retusált.jpg
+
 ./includes:
-összesen 32
--rw-rw-r-- 1 utopszkij utopszkij 3030 2022-06-09 atvesz_mindmegette.php
--rwxrwxrwx 1 utopszkij www-data   653 2022-06-09 atvesz.php
--rw-rw-r-- 1 utopszkij utopszkij 3171 2022-06-09 atvesz_receptneked.php
+összesen 36
+-rw-rw-r-- 1 utopszkij utopszkij 3112 2022-06-16 atvesz_mindmegette.php
+-rwxrwxrwx 1 utopszkij www-data  1240 2022-06-18 atvesz.php
+-rw-rw-r-- 1 utopszkij utopszkij 4383 2022-06-16 atvesz_receptneked.php
 -rw-rw-r-- 1 utopszkij utopszkij  137 2022-05-29 cimkek.txt
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-11 controllers
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-18 controllers
 -rw-rw-r-- 1 utopszkij utopszkij   30 2022-05-23 index.php
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-11 models
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-13 views
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-19 models
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-19 views
 
 ./includes/controllers:
-összesen 104
--rw-rw-r-- 1 utopszkij utopszkij  2387 2022-06-14 atvaltasok.php
--rw-rw-r-- 1 utopszkij utopszkij  7861 2022-06-09 comment.php
--rw-rw-r-- 1 utopszkij utopszkij  2937 2022-06-11 controller.php
+összesen 128
+-rw-rw-r-- 1 utopszkij utopszkij  2367 2022-06-17 atvaltasok.php
+-rw-rw-r-- 1 utopszkij utopszkij  8426 2022-06-19 comment.php
+-rw-rw-r-- 1 utopszkij utopszkij 10836 2022-06-19 controller.php
 -rw-rw-r-- 1 utopszkij utopszkij    30 2022-05-23 index.php
+-rw-rw-r-- 1 utopszkij utopszkij  1969 2022-06-18 mertekegyseg.php
 -rwxrwxrwx 1 utopszkij www-data   2679 2022-06-09 napimenu.php
--rwxrwxrwx 1 utopszkij www-data   6171 2022-06-14 naptar.php
+-rwxrwxrwx 1 utopszkij www-data   6611 2022-06-20 naptar.php
 -rwxrwxrwx 1 utopszkij www-data   6344 2022-05-29 osszegzes.php
--rwxrwxrwx 1 utopszkij www-data  14097 2022-06-13 recept.php
--rwxrwxrwx 1 utopszkij www-data  22291 2021-11-03 szovegek.php
--rwxrwxrwx 1 utopszkij www-data  12689 2022-06-10 upgrade.php
--rwxrwxrwx 1 utopszkij www-data   4544 2022-05-19 user.php
+-rwxrwxrwx 1 utopszkij www-data  14410 2022-06-19 recept.php
+-rw-rw-r-- 1 utopszkij utopszkij  3597 2022-06-18 szinonima.php
+-rwxrwxrwx 1 utopszkij www-data  22624 2022-06-19 szovegek.php
+-rwxrwxrwx 1 utopszkij www-data  15577 2022-06-19 upgrade.php
+-rwxrwxrwx 1 utopszkij www-data   8294 2022-06-20 user.php
 
 ./includes/models:
-összesen 32
--rw-rw-r-- 1 utopszkij utopszkij 6272 2022-06-14 atvaltasmodel.php
--rw-rw-r-- 1 utopszkij utopszkij 1502 2022-06-07 commentmodel.php
+összesen 48
+-rw-rw-r-- 1 utopszkij utopszkij 6466 2022-06-15 atvaltasmodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 1611 2022-06-19 commentmodel.php
 -rw-rw-r-- 1 utopszkij utopszkij   30 2022-05-27 index.php
--rw-rw-r-- 1 utopszkij utopszkij 2362 2022-05-25 model.php
+-rw-rw-r-- 1 utopszkij utopszkij 1334 2022-06-18 mertekegysegmodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 2796 2022-06-19 model.php
 -rw-rw-r-- 1 utopszkij utopszkij 1441 2022-05-27 napimenumodel.php
--rw-rw-r-- 1 utopszkij utopszkij 4833 2022-06-11 receptmodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 4949 2022-06-19 receptmodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 3168 2022-06-19 szinonimamodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 5689 2022-06-19 usermodel.php
 
 ./includes/views:
-összesen 52
--rw-rw-r-- 1 utopszkij utopszkij  2843 2022-06-14 atvaltaskep.html
--rw-rw-r-- 1 utopszkij utopszkij  1184 2022-06-13 atvaltasok.html
--rw-rw-r-- 1 utopszkij utopszkij  4833 2022-06-07 commentkep.html
+összesen 76
+-rw-rw-r-- 1 utopszkij utopszkij  2842 2022-06-18 atvaltaskep.html
+-rw-rw-r-- 1 utopszkij utopszkij  1184 2022-06-18 atvaltasok.html
+-rw-rw-r-- 1 utopszkij utopszkij  4682 2022-06-19 commentkep.html
 -rw-rw-r-- 1 utopszkij utopszkij    30 2022-05-27 index.php
+-rw-rw-r-- 1 utopszkij utopszkij  1370 2022-06-19 mertekegysegbrowser.html
+-rw-rw-r-- 1 utopszkij utopszkij  1833 2022-06-18 mertekegysegform.html
 -rw-rw-r-- 1 utopszkij utopszkij  3516 2022-05-27 napimenukep.html
--rw-rw-r-- 1 utopszkij utopszkij  2198 2022-06-14 paginator.html
+-rw-rw-r-- 1 utopszkij utopszkij  2142 2022-06-18 paginator.html
 -rw-rw-r-- 1 utopszkij utopszkij  3187 2022-06-13 receptek.html
--rw-rw-r-- 1 utopszkij utopszkij 12956 2022-06-13 receptkep.html
--rw-rw-r-- 1 utopszkij utopszkij  2455 2022-06-13 view.php
+-rw-rw-r-- 1 utopszkij utopszkij 13533 2022-06-19 receptkep.html
+-rw-rw-r-- 1 utopszkij utopszkij  1864 2022-06-19 szinonimabrowser.html
+-rw-rw-r-- 1 utopszkij utopszkij  1970 2022-06-17 szinonimaform.html
+-rw-rw-r-- 1 utopszkij utopszkij   883 2022-06-19 userbrowser.html
+-rw-rw-r-- 1 utopszkij utopszkij  3808 2022-06-19 userform.html
+-rw-rw-r-- 1 utopszkij utopszkij  2352 2022-06-18 view.php
 
 ./vendor:
-összesen 648
+összesen 644
 drwxr-xr-x  4 utopszkij utopszkij   4096 2021-10-09 bootstrap
-drwxrwxr-x  2 utopszkij utopszkij   4096 2022-05-30 database
+drwxrwxr-x  2 utopszkij utopszkij   4096 2022-06-20 database
 drwxr-xr-x 10 utopszkij utopszkij   4096 2021-10-17 fontawesome
 -rw-rw-r--  1 utopszkij utopszkij     30 2022-05-23 index.php
--rw-rw-r--  1 utopszkij utopszkij   2066 2022-06-09 url.php
 -rw-rw-r--  1 utopszkij utopszkij 640610 2022-05-26 vue.global.js
 
 ./vendor/bootstrap:
@@ -178,8 +208,8 @@ drwxr-xr-x 2 utopszkij utopszkij 4096 2021-10-09 js
 -rw-r--r-- 1 utopszkij utopszkij 219918 2021-10-09 bootstrap.min.js.map
 
 ./vendor/database:
-összesen 80
--rw-rw-r-- 1 utopszkij utopszkij 59016 2022-05-30 dbinit.sql
+összesen 100
+-rw-rw-r-- 1 utopszkij utopszkij 78816 2022-06-20 dbinit.sql
 -rw-rw-r-- 1 utopszkij utopszkij 17773 2022-06-14 db.php
 
 ./vendor/fontawesome:

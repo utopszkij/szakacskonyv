@@ -46,7 +46,7 @@ class Osszegzes {
 		$loged = $_SESSION['loged'];	
 	
 	$union2 = new Query('napimenuk','m');
-	$union2->select(['m.adag','h.nev',['(m.adag / r.adag * h.mennyiseg)','mennyiseg'],'h.me'])
+	$union2->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept2')
 			->join('LEFT OUTER','receptek','r','r.id','=','m.recept2')
 			->where('h.nev','<>',Query::sqlValue(''))
@@ -56,7 +56,7 @@ class Osszegzes {
 			->where('m.created_by','=',Query::sqlValue($loged));
 	
 	$union3 = new Query('napimenuk','m');
-	$union3->select(['m.adag','h.nev',['(m.adag / r.adag * h.mennyiseg)','mennyiseg'],'h.me'])
+	$union3->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept3')
 			->join('LEFT OUTER','receptek','r','r.id','=','m.recept3')
 			->where('h.nev','<>',Query::sqlValue(''))
@@ -66,7 +66,7 @@ class Osszegzes {
 			->where('m.created_by','=',Query::sqlValue($loged));
 	
 	$union4 = new Query('napimenuk','m');
-	$union4->select(['m.adag','h.nev',['(m.adag / r.adag * h.mennyiseg)','mennyiseg'],'h.me'])
+	$union4->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept4')
 			->join('LEFT OUTER','receptek','r','r.id','=','m.recept4')
 			->where('h.nev','<>',Query::sqlValue(''))
@@ -76,7 +76,7 @@ class Osszegzes {
 			->where('m.created_by','=',Query::sqlValue($loged));
 	
 	$subSelect = new Query('napimenuk','m');
-	$subSelect->select(['m.adag','h.nev',['(m.adag / r.adag * h.mennyiseg)','mennyiseg'],'h.me'])
+	$subSelect->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 				->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept1')
 				->join('LEFT OUTER','receptek','r','r.id','=','m.recept1')
 				->where('h.nev','<>',Query::sqlValue(''))
@@ -89,8 +89,8 @@ class Osszegzes {
 				->addUnion($union4);
 	 
 	$db = new Query($subSelect,'s');
-	$db->select(['s.nev',['sum(s.mennyiseg)','mennyiseg'],'s.me'])
-	->groupBy(['s.nev','me'])
+	$db->select(['s.nev',['sum(s.mennyiseg)','mennyiseg'],'s.szme'])
+	->groupBy(['s.nev','szme'])
 	->orderBy('s.nev');
 	$items = $db->all();
 	
@@ -138,7 +138,7 @@ class Osszegzes {
 							<tr>
 								<td><?php echo $item->nev; ?></td>
 								<td style="width:40px"><?php echo $item->mennyiseg; ?></td>
-								<td><?php echo $item->me; ?></td>
+								<td><?php echo $item->szme; ?></td>
 							</tr>	
 						<?php endforeach ?>
 					</tbody>		
@@ -162,7 +162,7 @@ class Osszegzes {
 		</div>
 		<textarea cols="60" rows="20" id="bevLista">
 <?php foreach ($items as $item) : ?>
-<?php echo $item->nev; ?>&nbsp;<?php echo $item->mennyiseg; ?>&nbsp;<?php echo $item->me."\n"; ?>
+<?php echo $item->nev; ?>&nbsp;<?php echo $item->mennyiseg; ?>&nbsp;<?php echo $item->szme."\n"; ?>
 <?php endforeach ?>
 		</textarea>
 		<div class="help">

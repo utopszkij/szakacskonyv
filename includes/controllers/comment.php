@@ -22,14 +22,17 @@ class Comment extends Controller {
             $receptModel = new ReceptModel();
             $recept = $receptModel->getById($comment->recept_id);
             $disabled = (($this->session->input('loged') <= 0) |
-                         (($this->session->input('loged') != $comment->created_by) & ($this->session->input('logedName') != ADMIN)));
+                         (($this->session->input('loged') != $comment->created_by) & 
+                          ($this->logedGroup != 'admin') &
+                          ($this->logedGroup != 'moderator')));
             view('commentkep',[
                 "recept" => $recept,
                 "comment" => $comment,
                 "UPLOADLIMIT" => UPLOADLIMIT,
                 "disabled" => $disabled,
                 "loged" => $this->session->input('loged'),
-                "admin" => ($this->session->input('logedName') == ADMIN)
+                "admin" => $this->logedAdmin,
+                "group" => $this->logedGroup
             ]);
 
         }
@@ -59,7 +62,8 @@ class Comment extends Controller {
                 "UPLOADLIMIT" => UPLOADLIMIT,
                 "disabled" => false,
                 "loged" => $this->session->input('loged'),
-                "admin" => ($this->session->input('logedName') == ADMIN)
+                "admin" => $this->logedAdmin,
+                "group" => $this->logedGroup
             ]);
         }    
     }
@@ -115,7 +119,9 @@ class Comment extends Controller {
                 $comment->created_at = date('Y-m-d');
                 $comment->created_by = $this->session->input('loged');
             }  
-            if (($this->session->input('logedName') == ADMIN) | ($this->session->input('loged') == $comment->created_by)) {
+            if ($this->logedAdmin | 
+                ($this->logedGroup == 'moderator') | 
+                ($this->session->input('loged') == $comment->created_by)) {
                 $comment->id = $this->model->save($comment);
                 if ($this->model->errorMsg != '') {
                     echo $this->model->errorMsg; exit();
@@ -142,21 +148,25 @@ class Comment extends Controller {
     }
 
     /**
-     * kép törlése GET -ben "img" img1 | img1 w| img2 és comment "id"
+     * kép törlése GET -ben "img" img1 | img1 | img2 és comment "id"
      * jogosultság ellenörzéssel, utána vissza a komment képernyőre
      */
     public function commentimgdel() {
         $comment = $this->model->getById($this->request->input('id',0,INTEGER));
-        if (isset($comment->img0)) {
-            $imgName = $this->request->input('img');
-            $imgFileName = $comment->$imgName;
-            if (file_exists('images/comments/'.$imgFileName)) {
-                unlink('images/comments/'.$imgFileName);
-            }
-            $comment->$imgName = '';
-            $this->model->save($comment);
-            if ($this->model->errorMsg != '') {
-                echo $this->model->errorMsg; exit();
+        if ($this->logedAdmin | 
+            ($this->logedGroup == 'moderator') |
+            ($this->loged == $comment->created_by)) {
+            if (isset($comment->img0)) {
+                $imgName = $this->request->input('img');
+                $imgFileName = $comment->$imgName;
+                if (file_exists('images/comments/'.$imgFileName)) {
+                    unlink('images/comments/'.$imgFileName);
+                }
+                $comment->$imgName = '';
+                $this->model->save($comment);
+                if ($this->model->errorMsg != '') {
+                    echo $this->model->errorMsg; exit();
+                }
             }
         }
         echo '<script>location="index.php?task=comment&id='.$comment->id.'";</script>';
@@ -168,22 +178,26 @@ class Comment extends Controller {
      */
     public function commentdel() {
         $comment = $this->model->getById($this->request->input('id',0,INTEGER));
-        if (isset($comment->id)) {
-            $imgFileName = $comment->img0;
-            if (is_file('images/comments/'.$imgFileName)) {
-                unlink('images/comments/'.$imgFileName);
-            }
-            $imgFileName = $comment->img1;
-            if (is_file('images/comments/'.$imgFileName)) {
-                unlink('images/comments/'.$imgFileName);
-            }
-            $imgFileName = $comment->img2;
-            if (is_file('images/comments/'.$imgFileName)) {
-                unlink('images/comments/'.$imgFileName);
-            }
-            $this->model->delById($comment->id);
-            if ($this->model->errorMsg != '') {
-                echo $this->model->errorMsg; exit();
+        if ($this->logedAdmin | 
+            ($this->logedGroup == 'moderator') |
+            ($this->loged == $comment->created_by)) {
+            if (isset($comment->id)) {
+                $imgFileName = $comment->img0;
+                if (is_file('images/comments/'.$imgFileName)) {
+                    unlink('images/comments/'.$imgFileName);
+                }
+                $imgFileName = $comment->img1;
+                if (is_file('images/comments/'.$imgFileName)) {
+                    unlink('images/comments/'.$imgFileName);
+                }
+                $imgFileName = $comment->img2;
+                if (is_file('images/comments/'.$imgFileName)) {
+                    unlink('images/comments/'.$imgFileName);
+                }
+                $this->model->delById($comment->id);
+                if ($this->model->errorMsg != '') {
+                    echo $this->model->errorMsg; exit();
+                }
             }
         }
         echo '<script>window.location="index.php?task=recept&id='.$comment->recept_id.'";</script>';

@@ -2,7 +2,7 @@
                 <p>Összesen: {{ total }}</p>
                 <ul class="paginator" v-if="pages.length > 1">
 					<li style="display:inline-block; width:auto" v-if="page > 2">
-						<span :class="makePaginatorClass(1,page)">
+						<span class="paginatorItem">
                             <a v-bind:href="'index.php?task='+task+'&page=1'"
 								title="Első">
                                 &lt;&lt;
@@ -10,7 +10,7 @@
                         </span>
 					</li>
 					<li style="display:inline-block; width:auto" v-if="page > 1">
-						<span :class="makePaginatorClass(1,page)">
+						<span class="paginatorItem">
                             <a v-bind:href="'index.php?task='+task+'&page='+(parseInt(page) - 1)"
 								title="Elöző">
                                 &lt;
@@ -27,7 +27,7 @@
                         </span>
                     </li>
 					<li style="display:inline-block; width:auto" v-if="page < pages.length">
-						<span :class="makePaginatorClass(1,page)">
+						<span class="paginatorItem">
                             <a v-bind:href="'index.php?task='+task+'&page='+(parseInt(page) + 1)"
 								title="Következő">
                                 &gt;
@@ -35,7 +35,7 @@
                         </span>
 					</li>
 					<li style="display:inline-block; width:auto" v-if="page < (pages.length - 1)" >
-						<span :class="makePaginatorClass(1,page)">
+						<span class="paginatorItem">
                             <a v-bind:href="'index.php?task='+task+'&page='+pages.length"
 								title="Utolsó">
                                 &gt;&gt;

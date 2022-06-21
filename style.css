@@ -1,18 +1,19 @@
 html {font-size:18px}
 body {text-align:center}
-.container {display:inline-block; margin:10px; padding:0px 0px 0px 0px; 
+.container {display:inline-block; margin:1%; padding:0px 0px 0px 0px; 
             border-radius:30px; background-color:#d0f0d0}
-#header {height:100px; margin:20px; background-image:url('images/fejlec.png')}
+#header {height:100px; margin:1%; background-image:url('images/fejlec.png'); cursor:pointer}
 
-.page {min-height:600px; text-align:left; padding:10px}
+.page {min-height:600px; text-align:left; padding:1%}
 .dekorImg {width:98%; }
-table {background-color:white; padding:5px;
+table {background-color:white; padding:0.3%;
 		border-style:solid; border-width:1px;}
-img {margin:5px}		
-button, .btn {margin-top:10px;}
-.warning {background-color:red; color:yellow; padding:10px;}
+img {margin:0.3%}		
+button, .btn {margin-top:0.5%;}
+.warning {background-color:red; color:yellow; padding:1%;}
 .warning a {color:yellow;}
 .form-control {display:inline-block; width:auto}
+label {display:inéine-blobk; width: 30%; text-align:right}
 
 #popup {position:fixed; z-index:99; top:100px; left:100px; display:none;
   padding:10px; text-align:center; width:auto; height:auto;
@@ -21,9 +22,9 @@ button, .btn {margin-top:10px;}
 .popupSuccess {background-color:rgb(80, 156, 96); color:rgb(24, 16, 16)}
 .popupSimple {background-color:silver; color:black;} 
 
-#receptForm {padding: 20px 20px 20px 20px}
+#receptForm {padding: 1% 1% 1% 1%}
 #receptForm textarea {width:100%}
-form {margin:10px 10px 10px 20px}
+form {margin:1% 1% 1% 1%}
 .van {background-color:green; padding:5px}
 .van a {color:white; text-decoration:none }
 .nincs {background-color:white; padding:5px}
@@ -33,15 +34,18 @@ form {margin:10px 10px 10px 20px}
 .sajat a {color:blue; font-weight:bold}
 .idegen a {color:#a0a0a0}
 
-.comment {border-style:solid; border-width:1px; border-radius:15px;
-  margin:5px; padding:5px; background-color:silver}
+.admin {color: red}
+.moderator {color:green}
+
+.comment {border-style:solid; border-width:1px; border-radius:5px;
+  margin:0.5%; padding:0.5%; background-color:silver; height:auto}
 .comment p {margin-bottom:1px}
-.comment .images {text-align:left}
-.comment img {height: 50px; margin:2px 5px 2px 2px}
+.commentImages {text-align:left; height:auto}
+.comment img {width: 4%; margin:1% 1% 1% 1%}
 .comments a {text-decoration:none}  
-.comments .comentImages img {height:35px}
-#commentForm img {width:50%}
-#osszegzes {padding: 10px 10px 10px 100px}
+.comments .comentImages img {height:4%}
+#commentForm img {width:20%}
+#osszegzes {padding: 1% 1% 1% 10%}
 #osszegzes table {width:50%}
 #bevasarloLista textarea {width:100%}
 
@@ -54,12 +58,12 @@ form {margin:10px 10px 10px 20px}
     width:32px; height:32px; text-align:center; margin:0px 2px 0px 0px; padding:2px;
     background-color:silver}
   
-.filterForm {border-style:solid; border-width:1px; padding:5px; width:auto}
+.filterForm {border-style:solid; border-width:1px; padding:0.5%; width:auto}
 .filterForm form, .filterForm div {width:auto}
-.filterForm label {display:inline-block; width:120px; text-align:right;}
+.filterForm label {display:inline-block; width:15%; text-align:right;}
 .filterForm button {margin-top:0px;}
 
-#atvaltasForm label {width:150px;}
+#atvaltasForm label {width:15%}
 
 #footer {background-color:silver; padding:20px; 
   border-radius: 0px 0px 30px 30px; text-align:center}

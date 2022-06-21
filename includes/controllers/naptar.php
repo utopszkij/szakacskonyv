@@ -60,9 +60,13 @@ class Naptar {
 		echo '
 		<div class="row">	
 			<div class="col-md-8 text-center">
-					<a href="?task=elozo" class="btn btn-primary">&lt;</a>&nbsp;&nbsp;
-					<var style="display:inline-block; width:auto">'.$numYear.' '.$strMonth.'</var>
-					<a href="?task=kovetkezo" class="btn btn-primary">&gt;</a>
+					<var style="display:inline-block; width:auto">'.$numYear.' '.$strMonth.'</var>&nbsp;
+					<a href="?task=elozo"><em class="fas fa-arrow-up" 
+						style="color:black"
+						title="elöző hónap"></em></a>&nbsp;
+					<a href="?task=kovetkezo"><em class="fas fa-arrow-down" 
+						style="color:black"
+						title="következő hónap"></em></a>
 			</div>
 		</div>		
 		<div class="row">	
@@ -135,11 +139,12 @@ class Naptar {
 					<ul>
 						<li>Recepthez hozzávalók, elkészítési leírás és kép vihető fel,</li>
 						<li>egy recepthez max 30 hozzávaló adható meg,</li>
-						<li>a program támogatja a mindmegette.hu -ról történő adatátvételt,</li>
+						<li>a program támogatja a mindmegette.hu -ról és a receptneked.hu -ról 
+							történő adatátvételt,</li>
 						<li>a receptek módosíthatóak, törölhetőek,</li>
 						<li>ha a recepthez képet nem adunk meg akkor a program a recept neve 
 						alapján megpróbál a net-en képet keresni,</li>
-						<li>a receptek kinyomtathatóak,</li>			
+						<li>a receptek kinyomtathatóak,</li>		
 						<li>napi menübe naponta max. 4 fogás vihető fel, megadható hány főre főzünk aznap,</li>
 						<li>a napi menük módosíthatóak, törölhetőek,</li>			
 						<li>a számított hozzávaló összesítés (bevásárló lista), nyomtatás előtt módosítható
@@ -147,14 +152,18 @@ class Naptar {
 						<li>A receptekhez hozzászólást lehet írni (pl: megfőztem, jó ), 
 							a hozzászóláshoz max 3 db kép is csatolható (pl a saját "alkotásom" fényképei).
 						    A hozzászólások és csatolt képek minden látogató számára láthatóak. 
-							Törölni, modosítani csak a feltöltő és a rendszer adminisztrátor tudja őket.
+							Törölni, modosítani csak a feltöltő, a moderátorok és a rendszer adminisztrátorok tudják őket.
 						</li>			
+						<li>Az össesítés optimális müködése érdekében a program egy "szinonima szótárat" és 
+							"átváltási adatbázist" kezel. Ezek tartalmát csak a rendszer adminisztrátorok módosíthatják.
+						</li>
 					</ul>
 					<p>A program konfigurálható egyfelhasználós vagy többfelhasználós módba.</p>
 					<p>Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket 
 					látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
 					látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
-					sajátmaga által felvitteket tudja.</p>
+					sajátmaga által felvitteket tudja. Illetve a rendszer adminisztrátorok és moderátorok 
+					módosíthatják, törölhetik az összes receptet. A hozzászólások mindenki számára láthatóak</p>
 					<p></p>
 					<p><strong>A felhasználók által felvitt receptek, hozzászólások és képek tartalmáért, a kizárólag
 					az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője

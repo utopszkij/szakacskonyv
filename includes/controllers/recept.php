@@ -21,7 +21,7 @@ class Recept extends Controller{
 		// system admin mindent törölhet
 		$recept = $this->model->getById($this->request->input('id',0,INTEGER));
 		if (($recept->created_by != $this->session->input('loged')) &
-		    ($this->session->input('logedName') != ADMIN)) {
+		    (!$this->logedAdmin)) {
 		    $this->receptek();
 		} else {
 			$this->model->delById($this->request->input('id',0,INTEGER));
@@ -59,7 +59,7 @@ class Recept extends Controller{
 		} else {
 			$recept = $this->model->getById($this->model->sqlValue($receptId));
 			if (($recept->created_by != $this->session->input('loged')) & 
-			    ($this->session->input('logedName') != ADMIN)) {
+			    (!$this->logedAdmin) & ($this->logedGroup != 'moderator')) {
 				echo '<div class="alert alert-danger">Hozzáférés megtagadva!</div>';
 				return;
 			}
@@ -221,7 +221,8 @@ class Recept extends Controller{
 			$hozzavalok = $this->model->getHozzavalok($receptId);
 
 			if (($recept->created_by != $this->session->input('loged')) &
-			    ($this->session->input('logedName') != ADMIN)) {
+			    (!$this->logedAdmin) &
+				($this->logedGroup != 'moderator')) {
 				$disable = ' disabled="disabled"';		
 			}	
 			
@@ -263,6 +264,14 @@ class Recept extends Controller{
 		while (count($hozzavalok) < 15) {
 			$hozzavalok[] = $this->model->emptyHozzavalo();
 		}
+		foreach($hozzavalok as $hozzavalo) {
+			if (is_numeric($hozzavalo->mennyiseg)) {
+				$hozzavalo->mennyiseg = Round($hozzavalo->mennyiseg * 10) / 10;
+			}
+			if ($hozzavalo->mennyiseg == 0) {
+				$hozzavalo->mennyiseg = '';
+			}
+		}
 
 		$cimkek = file(DOCROOT.'/includes/cimkek.txt');
 		foreach ($cimkek as $fn => $fv) {
@@ -278,6 +287,8 @@ class Recept extends Controller{
 		view('receptkep',[
 			"loged" => $this->session->input('loged'),
 			"logedName" => $this->session->input('logedName'),
+			"logedAdmin" => $this->logedAdmin,
+			"logedGroup" => $this->logedGroup,
 			"receptId" => $receptId,
 			"kep" => $kep,
 			"recept" => $recept,
