@@ -374,7 +374,7 @@ class Upgrade {
 				add szmennyiseg decimal(10,5) comment "számítási mennyiség"
 			');
 			if ($q->error != '') {
-				echo $q->errorMsg; exit();
+				echo $q->error; exit();
 			}
 			$q->exec('update hozzavalok 
 			set szme = me, szmennyiseg = mennyiseg');
@@ -406,7 +406,7 @@ class Upgrade {
 		}
 	}	
 
-	protected function do_v1_1() {	
+	protected function do_v1_1($dbverzio) {	
 		if ($dbverzio < 'v1.1') {
 			$q = new Query('receptek');
 			$q->exec('CREATE TABLE IF NOT EXISTS `comments` (
