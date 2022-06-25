@@ -108,6 +108,14 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
 
+## verzió v1.4
+2022.06.25.
+- cimkek.txt helyett adatbázis
+- cimkék browser/editor a beállítás menübe
+- facebook/google login javítása
+- mobiltelefonos dizájn javítása
+### ************************************
+
 ## verzió v1.3
 2022.06.22
 - receptneked.hu átvétel fejlesztése szinonimák és mertekegysegek lista kezelése

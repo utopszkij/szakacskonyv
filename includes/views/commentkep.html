@@ -29,15 +29,15 @@
         <div class="row">        
             <p>Képek csatolása. Egy-egy feltöltött kép mérete max, {{ UPLOADLIMIT }} Mbyte lehet.</p>
             <div class="form-outline col-12">
-                <input type="file" id="img0" name="img0" 
+                <input type="file" id="img0" name="img0" v-if="comment.img0 <= '0'" 
                     class="form-control" :disabled="disabled" />
             </div>
             <div class="form-outline col-12">
-                <input type="file" id="img1" name="img1" 
+                <input type="file" id="img1" name="img1"  v-if="comment.img1 <= '0'" 
                     class="form-control" :disabled="disabled" />
             </div>
             <div class="form-outline col-12">
-                <input type="file" id="img2" name="img2" 
+                <input type="file" id="img2" name="img2"  v-if="comment.img2 <= '0'" 
                     class="form-control" :disabled="disabled" />
             </div>
             <div class="row formBUttons" v-if="!disabled">
@@ -54,26 +54,26 @@
                 </div>
             </div>
             <div class="form-outline col-12">
-                <img v-if="comment.img0 > '0'" v-bind:src="'images/comments/'+comment.img0"  />    
+                <img v-if="comment.img0 > '0'" v-bind:src="'images/comments/'+comment.img0">  
                 <var v-if="((comment.img0 > '0') & (!disabled))">
-                    <a v-bind:href="'index.php?task=commentimgdel&img=img0&id='+comment.id" class="btn btn-danger">
-                        <em class="fas fa-times"></em>Törölni
+                    <a v-bind:href="'index.php?task=commentimgdel&img=img0&id='+comment.id" 
+                        class="btn btn-danger"><em class="fas fa-times"></em>
                     </a> 
                 </var>    
             </div>  
             <div class="form-outline col-12">
-                <img v-if="comment.img1 > '0'" v-bind:src="'images/comments/'+comment.img1" />    
+                <img v-if="comment.img1 > '0'" v-bind:src="'images/comments/'+comment.img1">     
                 <var v-if="((comment.img1 > '0') & (!disabled))">
-                    <a v-bind:href="'index.php?task=commentimgdel&img=img1&id='+comment.id" class="btn btn-danger">
-                        <em class="fas fa-times"></em>Törölni
+                    <a v-bind:href="'index.php?task=commentimgdel&img=img1&id='+comment.id" 
+                        class="btn btn-danger"><em class="fas fa-times"></em>
                     </a> 
                 </var>    
             </div>    
             <div class="form-outline col-12">
-                <img v-if="comment.img2 > '0'" v-bind:src="'images/comments/'+comment.img2" />    
+                <img v-if="comment.img2 > '0'" v-bind:src="'images/comments/'+comment.img2"> 
                 <var v-if="((comment.img2 > '0') & (!disabled))">
-                    <a v-bind:href="'index.php?task=commentimgdel&img=img2&id='+comment.id" class="btn btn-danger">
-                        <em class="fas fa-times"></em>Törölni
+                    <a v-bind:href="'index.php?task=commentimgdel&img=img2&id='+comment.id"
+                         class="btn btn-danger"><em class="fas fa-times"></em>
                     </a> 
                 </var>    
             </div>    

@@ -41,10 +41,10 @@ form {margin:1% 1% 1% 1%}
   margin:0.5%; padding:0.5%; background-color:silver; height:auto}
 .comment p {margin-bottom:1px}
 .commentImages {text-align:left; height:auto}
-.comment img {width: 4%; margin:1% 1% 1% 1%}
+.comment img {width: 15%; margin:1% 1% 1% 1%}
 .comments a {text-decoration:none}  
 .comments .comentImages img {height:4%}
-#commentForm img {width:20%}
+#commentForm img {width:80%; max-width:600px}
 #osszegzes {padding: 1% 1% 1% 10%}
 #osszegzes table {width:50%}
 #bevasarloLista textarea {width:100%}

@@ -39,9 +39,11 @@ class Recept extends Controller{
 		}
 	
 		// összes cimke listája
-		$cimkek = file(DOCROOT.'/includes/cimkek.txt');
-		foreach ($cimkek as $fn => $fv) {
-			$cimkek[$fn] = trim(str_replace("\n","",$fv));
+		$cimkek = [];
+		$q = new Query('cimkek');
+		$recs = $q->all();
+		foreach ($recs as $rec) {
+			$cimkek[] = $rec->cimke;
 		}
 		
 		$receptId = $_POST['id'];
@@ -273,11 +275,13 @@ class Recept extends Controller{
 			}
 		}
 
-		$cimkek = file(DOCROOT.'/includes/cimkek.txt');
-		foreach ($cimkek as $fn => $fv) {
-			$cimkek[$fn] = trim(str_replace("\n","",$fv));
-		}
-
+		// összes cimke listája
+		$cimkek = [];
+		$q = new Query('cimkek');
+		$recs = $q->all();
+		foreach ($recs as $rec) {
+			$cimkek[] = $rec->cimke;
+		}	
 		$receptCimkek = $this->model->getReceptCimkek($receptId);
 
 		if ($this->request->isset('url')) {
@@ -475,9 +479,12 @@ class Recept extends Controller{
 			$pages[] = $p;
 		}
 
-		$cimkek = file(DOCROOT.'/includes/cimkek.txt');
-		foreach ($cimkek as $fn => $fv) {
-			$cimkek[$fn] = trim(str_replace("\n","",$fv));
+		// összes cimke listája
+		$cimkek = [];
+		$q = new Query('cimkek');
+		$recs = $q->all();
+		foreach ($recs as $rec) {
+			$cimkek[] = $rec->cimke;
 		}
 
 		view('receptek',[
