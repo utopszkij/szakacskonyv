@@ -108,7 +108,7 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
 
-## verzio v1.4.1
+## verzió v1.4.1
 2022.06.25.
 - upgrade modul hiba javitás
 ### *************************************
