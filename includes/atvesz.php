@@ -47,6 +47,11 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 		include_once (__DIR__.'/atvesz_receptneked.php');
 		atvetel($url, $recept, $hozzavalok);
 	}	
+
+	if (strpos($url,'nosalty.hu') > 0) {
+		include_once (__DIR__.'/atvesz_nosalty.php');
+		atvetel($url, $recept, $hozzavalok);
+	}	
 			
 }	
 
