@@ -48,7 +48,9 @@ class Upgrade {
 		// keresi az új verio sort
 		for ($i=0; (($i<count($lines)) & 
 		            (strpos(strtolower($lines[$i]), '# verzió ') <= 0)); $i++) {
+						//echo 'ciklusban '.$lines[$i].'<br>';
 		}
+		// echo 'ciklus után '.$lines[$i].'<br>'; exit();
 		if ($i < count($lines)) {
 			$w = explode(' ', strtolower($lines[$i]));
 			if (count($w) > 2) {

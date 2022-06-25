@@ -8,9 +8,9 @@ drwxrwxrwx 4 utopszkij utopszkij 16384 2022-06-22 images
 drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images-sajat
 drwxrwxrwx 5 utopszkij www-data   4096 2022-06-25 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
--rw-rw-r-- 1 utopszkij www-data  10688 2022-06-23 index.php
+-rw-rw-r-- 1 utopszkij www-data  10743 2022-06-25 index.php
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  8092 2022-06-25 readme.md
+-rw-r--r-- 1 utopszkij utopszkij  8093 2022-06-25 readme.md
 -rw-r--r-- 1 utopszkij utopszkij  3483 2022-06-23 style.css
 drwxrwxr-x 5 www-data  www-data   4096 2022-06-17 vendor
 
@@ -271,7 +271,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 views
 -rwxrwxrwx 1 utopszkij www-data  14421 2022-06-22 recept.php
 -rw-rw-r-- 1 utopszkij utopszkij  3597 2022-06-18 szinonima.php
 -rwxrwxrwx 1 utopszkij www-data  22624 2022-06-19 szovegek.php
--rwxrwxrwx 1 utopszkij www-data  16810 2022-06-25 upgrade.php
+-rwxrwxrwx 1 utopszkij www-data  16913 2022-06-25 upgrade.php
 -rwxrwxrwx 1 utopszkij www-data   6016 2022-06-21 user.php
 
 ./includes/models:
