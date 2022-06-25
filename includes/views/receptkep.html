@@ -44,7 +44,7 @@
 
         <div class="row">
             <div class="col-10">
-            Elkésuitési idő:
+            Elkészítési idő:
             <input type="number" min="1" max="400" 
                 name="elkeszites" id="elkeszites" v-model="recept.elkeszites"
                 style="display:inlne-block; width:100px"  class="form-control"/> perc&nbsp;&nbsp;
@@ -62,24 +62,30 @@
                         style="display:inline-block; width:80px;" placeholder="4"  class="form-control" />
                 adaghoz</h2>
                 <strong>Hozzávaló neve / mennyiség / mértékegység</strong>
-            </div>				
-            <div class="form-outline col-mb-10 hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
+            </div>
+            <table style="width:100%" cellspacing="0" cellpadding="0">
+            <tr class="form-outline col-mb-10 hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
+                <td>
                 <textarea cols="60" :disabled="disabled != ''"
                     v-model="hozzavalo.nev" 
                     v-bind:name="makeName('hozzavalo',i)" 
                     v-bind:id="makeName('hozzavalo',i)"
                     v-bind:rows="(hozzavalo.nev.length / (innerWidth / 15)) + 1.4"
-                    style="width:49%; margin-bottom:-15px"  class="form-control"></textarea>
+                    v-on:change="hozzavaloChange(makename('hozavali',i))"
+                    class="form-control"></textarea>
                 <datalist id="alapanyagok">
                       <option v-for="nev in nevek">{{ nev.nev }}</option>
                 </datalist>
-                    
+                </td>
+                <td style="width:80px">
                 <input type="number" min="0" max="100" step="0.5" 
                    :disabled="disabled != ''"
                    v-model="hozzavalo.mennyiseg"
-                   v-bind:name="makeName('mennyiseg',i)" style="width:23%"
+                   v-bind:name="makeName('mennyiseg',i)" style="width:80px"
                    v-bind:id="makeName('mennyiseg',i)"  class="form-control"/>			
-                <input style="width:24%;" 
+                </td>
+                <td style="width:125px">
+                <input style="width:125px" 
                    :disabled="disabled != ''" 
                    v-bind:name="makeName('me',i)"
                    v-bind:id="makeName('me',i)"
@@ -109,7 +115,9 @@
                     <option value="szelet">szelet</option>		
                     <option value=""></option>		
                 </datalist>
-            </div>
+                </td>
+            </tr>
+            </table>				
         </div>
         <div class="row">
             <div class="cimke" style="display:inline-block; width:auto;" v-for="cimke in cimkek">
@@ -184,19 +192,19 @@
                         </strong>
                     </p>
                     <p>{{ comment.msg }}</p>
+                    <div class="commentImages">
+                        <div v-if="comment.img0 > '0'" style="display:inline-block; width:auto; height:auto">
+                            <img v-bind:src="'images/comments/'+comment.img0" />
+                        </div>     
+                        <div v-if="comment.img1 > '0'" style="display:inline-block; width:auto; height:auto">
+                            <img v-bind:src="'images/comments/'+comment.img1" />
+                        </div>     
+                        <div v-if="comment.img2 > '0'" style="display:inline-block; width:auto; height:auto">
+                            <img v-bind:src="'images/comments/'+comment.img2"  />
+                        </div>     
+                    </div>
                 </a>
-                <div class="commentImages">
-                    <div v-if="comment.img0 > '0'" style="display:inline-block; width:auto; height:auto">
-                        <img v-bind:src="'images/comments/'+comment.img0" />
-                    </div>     
-                    <div v-if="comment.img1 > '0'" style="display:inline-block; width:auto; height:auto">
-                        <img v-bind:src="'images/comments/'+comment.img1" />
-                    </div>     
-                    <div v-if="comment.img2 > '0'" style="display:inline-block; width:auto; height:auto">
-                        <img v-bind:src="'images/comments/'+comment.img2"  />
-                    </div>     
-                </div>
-            </div>
+        </div>
             include paginator
             <div v-if="loged > 0">
                 <a class="btn btn-primary" 
@@ -289,7 +297,11 @@ var methods = {
         },
         afterMount() {
             for (var i=0; i<this.receptCimkek.length; i++) {
-                document.getElementById(this.receptCimkek[i].cimke).checked = true;
+                if (document.getElementById(this.receptCimkek[i].cimke)) {
+                    document.getElementById(this.receptCimkek[i].cimke).checked = true;
+                } else {
+                    console.log(' cimke hiba '+this.receptCimkek[i].cimke);
+                }   
             }
         },
         makePaginatorClass(p,page) {
@@ -301,8 +313,23 @@ var methods = {
             }
             return result;
         },
+        hozzavaloChange(id) {
+            console.log(id);
+            var ta = document.getElementById(id);
+            var h = ta.innerHTML;
+            ta.rows = (h.length / (app.innerWidth / 15)) + 1.4
+            console.log(ta.rows);
+        }
 
 };   
 
-
+function adjust() {
+    for (var i=0; i<30; i++) {
+        var ta = document.getElementById('hozzavalo'+i);
+        if (ta) {
+            ta.style.height = ta.scrollHeight+'px';
+        }
+    }
+}
+window.setTimeout("adjust()",1000);
 </script>

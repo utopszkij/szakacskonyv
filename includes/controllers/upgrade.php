@@ -247,100 +247,42 @@ class Upgrade {
 		return $result;
 	} 
 
-	/**
-	 * szükség szerint adatbázis alterek, új táblák létrehozása
-	 * adatbázisban tárolt dbverzio frissitése
-	 * @param string $dbverzio jelenlegi telepitett adatbázis verzió
-	 */
-	public function dbUpgrade(string $dbverzio) {
-		if ($dbverzio < 'v0.1') {
-			$q = new Query('receptek');
-			$q->exec('alter table receptek 
-				add created_at date
-			');
-			$q = new Query('dbverzio');
-			$r = new Record();
-			$r->verzio = 'v0.1';
-			$q->where('verzio','<>','')->update($r);
-		}
-		if ($dbverzio < 'v0.3') {
-			$q = new Query('receptek');
-			$q->exec('alter table receptek 
-				add energia varchar(32),
-				add elkeszites int,
-				add adag int
-			');
-			$q->exec('update receptek set energia = 0, elkeszites = 0, adag = 4');
-			$q->exec('create table if not exists recept_cimke ( 
-				recept_id int,
-				cimke varchar(64),
-				KEY `recept_cimke_id` (`recept_id`),
-				KEY `recept_cimke_cimke` (`cimke`)
-				) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
-			');
-			$q = new Query('dbverzio');
-			$r = new Record();
-			$r->verzio = 'v0.3';
-			$q->where('verzio','<>','')->update($r);
-		}
-		if ($dbverzio < 'v1.1') {
-			$q = new Query('receptek');
-			$q->exec('CREATE TABLE IF NOT EXISTS `comments` (
+	protected function do_v1_4($dbverzio) {
+		if ($dbverzio < 'v1.4') {
+			$q = new Query('users');
+			$q->exec('CREATE TABLE IF NOT EXISTS `cimkek` (
 				`id` int NOT NULL AUTO_INCREMENT,
-				`recept_id` int,
-				`msg` text CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci,
-				`created_by` int DEFAULT NULL,
-				`created_at` date DEFAULT NULL,
-				`img0` varchar(80),
-				`img1` varchar(80),
-				`img2` varchar(80),
-				PRIMARY KEY (`id`),
-				KEY `comments_recept_id` (`recept_id`)
-			  )  DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+				`cimke` varchar(80),
+				PRIMARY KEY (`id`)
+			  ) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
 			');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q->exec("
+				insert into cimkek (cimke) values
+				('Desszert'),('Diétás'),('Előétel'),
+				('Főétel'),('Főzelék'),('Glutén mentes'),
+				('Hal'),('Italok'),('Köret'),
+				('Leves'),('Reggeli'),('Saláta'),
+				('Sertés'),('Sütemény'),('Szárnyas'),
+				('Tészta'),('Marha'),('Vad'),
+				('Vegán'),('Vegetáriánus');
+			");
+			if (file_exists('includes/cimkek.txt')) {
+				unlink('includes/cimkek.txt');
+			}	
 			$q = new Query('dbverzio');
 			$r = new Record();
-			$r->verzio = 'v1.1';
+			$r->verzio = 'v1.4';
 			$q->where('verzio','<>','')->update($r);
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+		}	
+	}
 
-		}
-		if ($dbverzio < 'v1.2') {
-			$q = new Query('receptek');
-			$q->exec('alter table hozzavalok 
-				add szme varchar(8) comment "számítási alap me",
-				add szmennyiseg decimal(10,5) comment "számítási mennyiség"
-			');
-			if ($q->error != '') {
-				echo $q->errorMsg; exit();
-			}
-			$q->exec('update hozzavalok 
-			set szme = me, szmennyiseg = mennyiseg');
-			if ($q->error != '') {
-				echo $q->error; exit();
-			}
-			$q->exec('CREATE TABLE IF NOT EXISTS `atvaltasok` (
-				`id` int NOT NULL AUTO_INCREMENT,
-				`nev` varchar(80),
-				`szorzo` decimal(10,5) comment "szorzo * me = 1 szme",
-				`me` varchar(8),
-				`szme` varchar(8),
-				PRIMARY KEY (`id`),
-				KEY `atvaltasok_nev` (`nev`),
-				KEY `atvaltasok_me` (`me`)
-			  )  DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
-			');
-			if ($q->error != '') {
-				echo $q->error; exit();
-			}
-			
-			$q = new Query('dbverzio');
-			$r = new Record();
-			$r->verzio = 'v1.2';
-			$q->where('verzio','<>','')->update($r);
-			if ($q->error != '') {
-				echo $q->error; exit();
-			}
-		}
+	protected function do_v1_3($dbverzio) {
 		if ($dbverzio < 'v1.3') {
 			$q = new Query('dbverzio');
 			$q->exec('CREATE TABLE IF NOT EXISTS `szinonimak` (
@@ -422,6 +364,112 @@ class Upgrade {
 				echo $q->error; exit();
 			}
 		}	
+	}
+
+	protected function do_v1_2($dbverzio) {	
+		if ($dbverzio < 'v1.2') {
+			$q = new Query('receptek');
+			$q->exec('alter table hozzavalok 
+				add szme varchar(8) comment "számítási alap me",
+				add szmennyiseg decimal(10,5) comment "számítási mennyiség"
+			');
+			if ($q->error != '') {
+				echo $q->errorMsg; exit();
+			}
+			$q->exec('update hozzavalok 
+			set szme = me, szmennyiseg = mennyiseg');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q->exec('CREATE TABLE IF NOT EXISTS `atvaltasok` (
+				`id` int NOT NULL AUTO_INCREMENT,
+				`nev` varchar(80),
+				`szorzo` decimal(10,5) comment "szorzo * me = 1 szme",
+				`me` varchar(8),
+				`szme` varchar(8),
+				PRIMARY KEY (`id`),
+				KEY `atvaltasok_nev` (`nev`),
+				KEY `atvaltasok_me` (`me`)
+			  )  DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v1.2';
+			$q->where('verzio','<>','')->update($r);
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+		}
+	}	
+
+	protected function do_v1_1() {	
+		if ($dbverzio < 'v1.1') {
+			$q = new Query('receptek');
+			$q->exec('CREATE TABLE IF NOT EXISTS `comments` (
+				`id` int NOT NULL AUTO_INCREMENT,
+				`recept_id` int,
+				`msg` text CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci,
+				`created_by` int DEFAULT NULL,
+				`created_at` date DEFAULT NULL,
+				`img0` varchar(80),
+				`img1` varchar(80),
+				`img2` varchar(80),
+				PRIMARY KEY (`id`),
+				KEY `comments_recept_id` (`recept_id`)
+			  )  DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v1.1';
+			$q->where('verzio','<>','')->update($r);
+
+		}
+	}	
+
+	/**
+	 * szükség szerint adatbázis alterek, új táblák létrehozása
+	 * adatbázisban tárolt dbverzio frissitése
+	 * @param string $dbverzio jelenlegi telepitett adatbázis verzió
+	 */
+	public function dbUpgrade(string $dbverzio) {
+		if ($dbverzio < 'v0.1') {
+			$q = new Query('receptek');
+			$q->exec('alter table receptek 
+				add created_at date
+			');
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v0.1';
+			$q->where('verzio','<>','')->update($r);
+		}
+		if ($dbverzio < 'v0.3') {
+			$q = new Query('receptek');
+			$q->exec('alter table receptek 
+				add energia varchar(32),
+				add elkeszites int,
+				add adag int
+			');
+			$q->exec('update receptek set energia = 0, elkeszites = 0, adag = 4');
+			$q->exec('create table if not exists recept_cimke ( 
+				recept_id int,
+				cimke varchar(64),
+				KEY `recept_cimke_id` (`recept_id`),
+				KEY `recept_cimke_cimke` (`cimke`)
+				) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v0.3';
+			$q->where('verzio','<>','')->update($r);
+		}
+		$this->do_v1_1($dbverzio);
+		$this->do_v1_2($dbverzio);
+		$this->do_v1_3($dbverzio);
+		$this->do_v1_4($dbverzio);
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

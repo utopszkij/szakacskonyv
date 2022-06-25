@@ -17,8 +17,10 @@
                     <h2>Felhasználó profil<h2>	
             </div>
         </div>
-        <img v-bind:src="'images/users/'+record.avatar" v-if="record.avatar != ''"
-            style="float:right; margin:5px; width:150px" />
+        <div class="row">
+            <img v-bind:src="'images/users/'+record.avatar" v-if="record.avatar != ''"
+            style="margin:5px; width:80%; max-width:150px" />
+        </div>    
         <div class="row">
             <div class="form-outline col-12">
                 <label>Nick név:</label>
@@ -33,6 +35,7 @@
                         type="file" />
             </div>
         </div>
+        <hr />
         <div class="row" v-if="(logedAdmin | (loged == record.id))">
             Ha jelszót akarsz változtatni
         </div>    
@@ -50,6 +53,7 @@
                         type="password" value="" />
             </div>
         </div>
+        <hr />
         <div class="row">
             <div class="col-12">
                 <label>Csoport:</label>

@@ -1,5 +1,5 @@
 <?php
-// namespace RATWEB\DB;
+// hibát okoz!   namespace RATWEB\DB;
 session_start();
 include_once 'config.php';
 include_once 'vendor/database/db.php';
@@ -73,6 +73,7 @@ importComponent('comment');
 importComponent('atvaltasok');
 importComponent('szinonima');
 importComponent('mertekegyseg');
+importComponent('cimkek');
 
 // Facebbok/google loginból érkező hívás feldolgozása
 if (isset($_GET['usercode'])) {
@@ -80,14 +81,13 @@ if (isset($_GET['usercode'])) {
 	$userName = 's_'.base64_decode($w[0]);
 	$userId = $w[1];
 	if ($w[2] == md5($userId.FB_SECRET)) {
-
 		// van már ilyen user?
-		$db = new Query('users');
+		$db = new \RATWEB\DB\Query('users');
 		$db->where('username','=','"'.$userName.'"');
 		$rec = $db->first();
 		if ($db->error != '') {
 			// nincs, létrehozzuk és az újra jelentkezünk be
-			$r = new Record();
+			$r = new \RATWEB\DB\Record();
 			$r->username = $userName;
 			$r->password = $w[2];
 			$userId = $db->insert($r);
@@ -95,15 +95,24 @@ if (isset($_GET['usercode'])) {
 			// van erre jelentkezünk be
 			$userId = $rec->id;
 		}
-
 		// bejelentkeztetés
 		$_SESSION['loged'] = $userId;
 		$_SESSION['logedName'] = $userName;
+		$_SESSION['logedAvatar'] = '';
+		$_SESSION['logedGroup'] = '';
+		$db = new \RATWEB\DB\Query('profilok');
+		$profil = $db->where('id','=',$userId)->first();
+		if (isset($profil->avatar)) {
+			$_SESSION['logedAvatar'] = $profil->avatar;
+			$_SESSION['logedGroup'] = $profil->group;
+		}
+	} else {
+		echo 'kodolási hiba userId='.$userId.' userName='.$userName; exit();	
 	}
 }
 //+ ----------- verzio kezelés start ------------
 
-$fileVerzio = 'v1.3';
+$fileVerzio = 'v1.4';
 
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
@@ -184,6 +193,16 @@ $branch = $upgrade->branch;
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
+		<?php if ($_SESSION['logedAvatar'] != '') : ?>
+			<a class="nav-link navbar-toggler" 
+				href="index.php?task=useredit&id=<?php echo $_SESSION['loged']; ?>">
+				<img src="images/users/<?php echo $_SESSION['logedAvatar']; ?>"
+					style="height:34px; margin:0px; float:right" />
+				<var class="<?php echo $_SESSION['logedGroup']; ?>">
+					<?php echo $_SESSION['logedName']; ?>
+				</var>
+			</a>
+		<?php endif; ?>
 	    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item">
@@ -210,6 +229,7 @@ $branch = $upgrade->branch;
 						<a class="dropdown-item" href="index.php?task=atvaltasok">Átváltások</a>
 						<a class="dropdown-item" href="index.php?task=szinonimak">Szinonimák</a>
 						<a class="dropdown-item" href="index.php?task=mertekegysegek">Mértékegységek</a>
+						<a class="dropdown-item" href="index.php?task=cimkek">Cimkék</a>
 					</div>
 			</li>	
 	      </ul>
@@ -228,6 +248,10 @@ $branch = $upgrade->branch;
 						<em class="fas fa-address-card"></em>	
 						<var class=" <?php echo $_SESSION['logedGroup'] ?>">
 							<?php echo $_SESSION['logedName']; ?>
+							<?php if ($_SESSION['logedAvatar'] != '') : ?>
+								<img src="images/users/<?php echo $_SESSION['logedAvatar']; ?>"
+									style="height:34px; margin:0px;" />
+							<?php endif; ?>		
 						</var>	
 					</a>
 				</li>
@@ -240,12 +264,6 @@ $branch = $upgrade->branch;
 	          <a class="nav-link" href="index.php?task=regist">
 	          <em class="fas fa-key"></em>&nbsp;Regisztrálás</a>
 	        </li>
-	        <li class="nav-item">
-				<?php if ($_SESSION['logedAvatar'] != '') : ?>
-					<img src="images/users/<?php echo $_SESSION['logedAvatar']; ?>"
-						style="height:34px; margin:0px" />
-				<?php endif; ?>
-			</li>	
 	      </ul>
 		  <?php endif; ?>
 	      <!-- form class="d-flex">

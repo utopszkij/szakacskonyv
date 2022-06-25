@@ -185,7 +185,7 @@ class Controller {
         $limit = $this->request->input('limit',$limit);
         $filter = $this->session->input($this->name.'filter','');
         $filter = $this->request->input('filter',$filter);
-        $order = $this->session->input($this->name.'order',1);
+        $order = $this->session->input($this->name.'order',$order);
         $order = $this->request->input('order',$order);
         // paraméter tárolás sessionba
         $this->session->set($this->name.'page',$page);
@@ -219,6 +219,7 @@ class Controller {
         ]);
         $this->session->delete('errorMsg');
         $this->session->delete('successMsg');
+        $this->session->delete('oldRecord');
     }
 
     /**

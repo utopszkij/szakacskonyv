@@ -111,6 +111,9 @@ class Comment extends Controller {
         if ($this->session->input('loged') > 0) {
             $comment = new Record();
             $comment->id = $this->request->input('id',0,INTEGER);
+            if ($comment->id > 0) {
+                $comment = $this->model->getById($comment->id);
+            }
             $comment->recept_id = $this->request->input('recept_id',0,INTEGER);
             $comment->msg = $this->request->input('msg');
             $comment->created_by = $this->request->input('created_by',0,INTEGER);
