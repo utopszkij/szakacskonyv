@@ -274,6 +274,9 @@ $branch = $upgrade->branch;
 
 	  </div>
 	</nav>	
+
+<?php echo $lastVerzio.' '.$fileVerzio.'<br>'; ?> 
+
 	<?php if ((trim($lastVerzio) > trim($fileVerzio))  & 
 			  ((MULTIUSER == false) | (isAdmin()))) : ?>
 	<div class="warning">

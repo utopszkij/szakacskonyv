@@ -39,6 +39,9 @@ class Upgrade {
 		$this->githubReadme = $this->github.'readme.md';
 	}
 
+	/**
+	 * last verzio olvasása github readme -ből
+	 */
 	public function getLastVersion() {
 		$result = 'v0.0';
 		$lines = file($this->githubReadme);
@@ -132,7 +135,7 @@ class Upgrade {
  	*/
 	public function upgrade1() {
 		$version = $_GET['version'];
-		// github -on lévő readme.md -ből változott file lista és változás infó olvasása
+		// github -on lévő readme.md -ből változás infó olvasása
 		$files = $this->getNewFilesList($this->githubReadme, $version);
 		
 		?>
@@ -220,7 +223,7 @@ class Upgrade {
 
 
 	/**
-	 * Változott fájl lista és változási infó olvasása a reame.md -ből
+	 * Változott  infó olvasása a redame.md -ből
 	 */
 	protected function getNewFilesList(string $fileUrl, string $newVersion): array {
 		$result = [];
@@ -228,7 +231,7 @@ class Upgrade {
 
 		// keresi az új verzio sort
 		for ($i=0; (($i<count($lines)) & 
-		            (strpos(strtolower($lines[$i]), ' verzió '.strtolower($newVersion)) <= 0)); $i++) {
+		        (strpos(strtolower($lines[$i]), ' verzió '.strtolower($newVersion)) <= 0)); $i++) {
 		}
 
 		// keresi a ### sort
@@ -236,7 +239,7 @@ class Upgrade {
 			$this->info .= $lines[$j].'<br />';
 		}
 
-		// olvassa a változott fájlokat
+		/* olvassa a változott fájlokat
 		for ($k=$j+1; $k<count($lines); $k++) {
 			if (substr($lines[$k],0,1)=='-') {
 				$result[] = trim(substr($lines[$k],1,100));
@@ -244,6 +247,7 @@ class Upgrade {
 				$k = count($lines); // kiléptet a ciklusból
 			}
 		}
+		*/
 		return $result;
 	} 
 
