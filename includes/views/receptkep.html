@@ -25,7 +25,8 @@
 
                 <div class="form-outline mb-4" v-if="disabled == ''">
                     A <a href="https://mindmegette.hu" target="_new">mindmegette.hu</a> -n vagy a 
-                    <a href="https://receptneked.hu" target="_new">receptneked.hu</a> -n 
+                    <a href="https://receptneked.hu" target="_new">receptneked.hu</a> -n  vagy 
+                    <a href="https://nosalty.hu" target="_new">nosalty.hu</a> -n
                     nyisd meg a recept oldalát,  a web címét másold az alábbi input mezőbe, 
                     majd kattints a "Feldolgoz" gombra!
                 </div>
@@ -63,7 +64,7 @@
                 adaghoz</h2>
                 <strong>Hozzávaló neve / mennyiség / mértékegység</strong>
             </div>
-            <table style="width:100%" cellspacing="0" cellpadding="0">
+            <table style="width:100%" cellspacing="0" cellpadding="0" id="hozzavalokTable">
             <tr class="form-outline col-mb-10 hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
                 <td>
                 <textarea cols="60" :disabled="disabled != ''"
@@ -250,50 +251,68 @@ var methods = {
 			document.location='index.php?task=recept&id=0&url='+encodeURI(s);		
 		},
         addHozzavalo() {
-            var divHozzavalok = document.getElementById('hozzavalok');
+            var tableHozzavalok = document.getElementById('hozzavalokTable');
             var i = 0;
-            var divHozzavalo = false;
+            var trHozzavalo = false;
             var newHozzavalo = false;
             var child = false;
             // meglévő hozzávalók megszámolása, első
             // hozzávaló div --> divHozzavalo
-            child = divHozzavalok.firstChild;
+            child = tableHozzavalok.firstChild;
             while (child) {
-                if (child.className == 'form-outline col-mb-10 hozzavalo') {
+                if (child.nodeName == 'TBODY') {
+                    child = child.firstChild;
+                }    
+                if (child.nodeName == 'TR') {
                     i++;
-                    if (!divHozzavalo) {
-                        divHozzavalo = child;
+                    if (!trHozzavalo) {
+                        trHozzavalo = child;
                     }    
                 }
                 child = child.nextSibling;
             }
-            if (!divHozzavalo) {
+            if (!trHozzavalo) {
+                console.log('Fatális hiba');
                 return;  // fatális hiba
             }
-            // új hozzávaló div kialakitása
-            newHozzavalo = divHozzavalo.cloneNode(true);
+            // új hozzávaló tr kialakitása
+            newHozzavalo = trHozzavalo.cloneNode(true);
             child = newHozzavalo.firstChild;
             while (child) {
-                if (child.nodeName == 'INPUT') {
-                    child.value = '';
-                    if (child.id == 'hozzavalo0') {
-                        child.id = 'hozzavalo'+i;
-                        child.name = 'hozzavalo'+i;
-                    }
-                    if (child.id == 'mennyiseg0') {
-                        child.id = 'mennyiseg'+i;
-                        child.name = 'mennyiseg'+i;
-                    }
-                }
-                if (child.nodeName == 'SELECT') {
-                    child.selectedIndex = 0;
-                    child.id = 'me'+i;
-                    child.name = 'me'+i;
+                console.log(child);
+                if (child.nodeName == 'TD') {
+                    child1 = child.firstChild;
+                    while (child1) {
+                        console.log(child1);
+                        if (child1.nodeName == 'TEXTAREA') {
+                            if (child1.id == 'hozzavalo0') {
+                                child1.innerHTML = '';
+                                child1.value = '';
+                                child1.id = 'hozzavalo'+i;
+                                child1.name = 'hozzavalo'+i;
+                             }
+                        }
+                        if (child1.nodeName == 'INPUT') {
+                            if (child1.id == 'mennyiseg0') {
+                                child1.value = '';
+                                child1.id = 'mennyiseg'+i;
+                                child1.name = 'mennyiseg'+i;
+                            }
+                        }
+                        if (child1.nodeName == 'INPUT') {
+                            if (child1.id == 'me0') {
+                                child1.value = '';
+                                child1.id = 'me'+i;
+                                child1.name = 'me'+i;
+                            }    
+                        }
+                        child1 = child1.nextSibling;
+                    }                    
                 }
                 child = child.nextSibling;
             }
-            // új hozzavalo Div beillesztése a DOM -ba
-            divHozzavalok.appendChild(newHozzavalo);
+            // új hozzavalo TR beillesztése a DOM -ba
+            tableHozzavalok.appendChild(newHozzavalo);
         },
         afterMount() {
             for (var i=0; i<this.receptCimkek.length; i++) {
