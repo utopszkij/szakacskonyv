@@ -268,7 +268,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 views
 -rwxrwxrwx 1 utopszkij www-data   2679 2022-06-09 napimenu.php
 -rwxrwxrwx 1 utopszkij www-data   6739 2022-06-21 naptar.php
 -rwxrwxrwx 1 utopszkij www-data   6368 2022-06-20 osszegzes.php
--rwxrwxrwx 1 utopszkij www-data  14421 2022-06-22 recept.php
+-rwxrwxrwx 1 utopszkij www-data  14444 2022-06-28 recept.php
 -rw-rw-r-- 1 utopszkij utopszkij  3597 2022-06-18 szinonima.php
 -rwxrwxrwx 1 utopszkij www-data  22624 2022-06-19 szovegek.php
 -rwxrwxrwx 1 utopszkij www-data  16913 2022-06-25 upgrade.php

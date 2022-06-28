@@ -421,6 +421,7 @@ class Recept extends Controller{
 			$db->where('cimke','=',$filterCimke);
 		}
 		$db->groupBy(['id','nev']);
+		$db->orderBy('nev');
 		return $db;
 	}
 
