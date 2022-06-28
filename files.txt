@@ -3,14 +3,14 @@
 -rw-rw-r-- 1 utopszkij www-data    603 2021-11-06 config-example.php
 -rw-rw-r-- 1 utopszkij www-data    554 2022-06-25 config.php
 -rwxrwxr-x 1 utopszkij utopszkij    46 2022-05-31 files.sh
--rw-rw-r-- 1 utopszkij utopszkij     0 2022-06-25 files.txt
+-rw-rw-r-- 1 utopszkij utopszkij     0 2022-06-28 files.txt
 drwxrwxrwx 4 utopszkij utopszkij 16384 2022-06-22 images
 drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images-sajat
 drwxrwxrwx 5 utopszkij www-data   4096 2022-06-25 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
--rw-rw-r-- 1 utopszkij www-data  10743 2022-06-25 index.php
+-rw-rw-r-- 1 utopszkij www-data  10691 2022-06-27 index.php
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  8093 2022-06-25 readme.md
+-rw-r--r-- 1 utopszkij utopszkij  8127 2022-06-27 readme.md
 -rw-r--r-- 1 utopszkij utopszkij  3483 2022-06-23 style.css
 drwxrwxr-x 5 www-data  www-data   4096 2022-06-17 vendor
 
@@ -248,7 +248,7 @@ drwxr-xr-x 2 www-data  www-data    4096 2022-06-19 users
 ./includes:
 összesen 40
 -rw-rw-r-- 1 utopszkij utopszkij 3112 2022-06-16 atvesz_mindmegette.php
--rw-rw-r-- 1 utopszkij utopszkij 3349 2022-06-25 atvesz_nosalty.php
+-rw-rw-r-- 1 utopszkij utopszkij 3663 2022-06-27 atvesz_nosalty.php
 -rwxrwxrwx 1 utopszkij www-data  1370 2022-06-25 atvesz.php
 -rw-rw-r-- 1 utopszkij utopszkij 4383 2022-06-25 atvesz_receptneked.php
 -rw-rw-r-- 1 utopszkij utopszkij  182 2022-06-22 cimkek.txt
@@ -268,7 +268,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 views
 -rwxrwxrwx 1 utopszkij www-data   2679 2022-06-09 napimenu.php
 -rwxrwxrwx 1 utopszkij www-data   6739 2022-06-21 naptar.php
 -rwxrwxrwx 1 utopszkij www-data   6368 2022-06-20 osszegzes.php
--rwxrwxrwx 1 utopszkij www-data  14421 2022-06-22 recept.php
+-rwxrwxrwx 1 utopszkij www-data  14444 2022-06-28 recept.php
 -rw-rw-r-- 1 utopszkij utopszkij  3597 2022-06-18 szinonima.php
 -rwxrwxrwx 1 utopszkij www-data  22624 2022-06-19 szovegek.php
 -rwxrwxrwx 1 utopszkij www-data  16913 2022-06-25 upgrade.php
@@ -301,7 +301,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 views
 -rw-rw-r-- 1 utopszkij utopszkij  3516 2022-05-27 napimenukep.html
 -rw-rw-r-- 1 utopszkij utopszkij  2142 2022-06-18 paginator.html
 -rw-rw-r-- 1 utopszkij utopszkij  3187 2022-06-13 receptek.html
--rw-rw-r-- 1 utopszkij utopszkij 14550 2022-06-24 receptkep.html
+-rw-rw-r-- 1 utopszkij utopszkij 15548 2022-06-27 receptkep.html
 -rw-rw-r-- 1 utopszkij utopszkij  1683 2022-06-21 regist.html
 -rw-rw-r-- 1 utopszkij utopszkij  1864 2022-06-19 szinonimabrowser.html
 -rw-rw-r-- 1 utopszkij utopszkij  1970 2022-06-17 szinonimaform.html

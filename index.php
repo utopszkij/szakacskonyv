@@ -112,7 +112,7 @@ if (isset($_GET['usercode'])) {
 }
 //+ ----------- verzio kezelés start ------------
 
-$fileVerzio = 'v1.4.1';
+$fileVerzio = 'v1.5.0';
 
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
@@ -274,8 +274,6 @@ $branch = $upgrade->branch;
 
 	  </div>
 	</nav>	
-
-<?php echo $lastVerzio.' '.$fileVerzio.'<br>'; ?> 
 
 	<?php if ((trim($lastVerzio) > trim($fileVerzio))  & 
 			  ((MULTIUSER == false) | (isAdmin()))) : ?>

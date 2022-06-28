@@ -87,11 +87,11 @@ Könyvtár szerkezet
       adat modellek php fájlok
     [views]
       viewer templates  spec. html fájlok. vue elemeket tartalmaznak
-    atvesz.php - átvétel a mindmegette.hu -ról
-    cimkek.txt - cimke lista
-    szininima.txt       - szinonimák amiket a recept átvételnél használ
-    mertekegysegek.txt  - mértékegység lista. a recept átvételnél van szerepe
-  [vendor]
+    atvesz.php - átvétel külső oldalakról
+    atvesz_mindmegette.php
+    atvesz_receptneked.php
+    atvesz_nosalty.php
+   [vendor]
     keretrendszer fájlok és harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
   index.php  - fő program
   config.php - konfigurációs adatok
@@ -108,6 +108,11 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
 
+## verzió v1.5.0
+2022.06.28.
+- recept átvátel a nosalty.hu -ól
+- "+Hozzávaló" funkció hibajavítás
+### *************************************
 ## verzió v1.4.1
 2022.06.25.
 - upgrade modul hiba javitás

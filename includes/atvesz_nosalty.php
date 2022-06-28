@@ -57,7 +57,6 @@ function atvetel($url = 'https://www.nosalty.hu/....',
     $s1 = kiemel($w,'p-recipe__details','Hozzávalók');
     $s1 = kiemel($s1,'Összesen','/time');
     $ido = (int)kiemel($s1,'<time class="mr-2">','<');
-    echo 'ido1='.$ido.'<br>';    
     if ($ido == 0) {
         $w = $s;
         $ido = (int)kiemel($w,'<time class="mr-2">','<');
@@ -74,7 +73,9 @@ function atvetel($url = 'https://www.nosalty.hu/....',
 
     $liStr = kiemel($s1,'<li','</li>');
     while ($liStr != '') {
-        $menny_me = kiemel($liStr,'<span>','</span>');
+        $w = $liStr;
+        $menny_me = kiemel($w,'<span>','</span>');
+        $menny_me = trim(str_replace($mit,$mire,' '.trim($menny_me).' '));
         $w2 = explode(' ',$menny_me,2);
         if (count($w2)==2) {
             $mennyiseg = (float)$w2[0];
@@ -91,11 +92,18 @@ function atvetel($url = 'https://www.nosalty.hu/....',
         $nev = str_replace("\n",'',$nev);
         $nev = str_replace("\r",'',$nev);
         $nev = trim(str_replace($mit, $mire, $nev));
-
+        if (!in_array($me,$mes)) {
+            $nev = $me.' '.$nev;
+            $me = '';            
+        }    
+        if ($mennyiseg == 'islés') {
+            $nev = 'izlés '.$nev;
+            $mennyiseg = 0;
+        }
         $hozzavalo = new \stdClass();
         $hozzavalo->mennyiseg = $mennyiseg;
         $hozzavalo->nev = $nev;
-        $hozzavalo->me = str_replace($mit,$mire,' '.trim($me).' ');
+        $hozzavalo->me = trim(str_replace($mit,$mire,' '.trim($me).' '));
         $hozzavalok[] = $hozzavalo;
 
         $liStr = kiemel($s1,'<li','</li>');
@@ -103,7 +111,7 @@ function atvetel($url = 'https://www.nosalty.hu/....',
 
     // leírás
     $w = $s;
-    $s1 = kiemel($w, 'Elkészítés','</ol>');
+    $s1 = kiemel($w, 'Elkészítés</h3>','<div class="d-print-none');
     $s1 = str_replace('</li>','[br]',$s1);
     $s1 = str_replace("\n",'',$s1);
     $s1 = str_replace("\r",'',$s1);
