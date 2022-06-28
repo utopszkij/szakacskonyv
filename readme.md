@@ -87,11 +87,11 @@ Könyvtár szerkezet
       adat modellek php fájlok
     [views]
       viewer templates  spec. html fájlok. vue elemeket tartalmaznak
-    atvesz.php - átvétel a mindmegette.hu -ról
-    cimkek.txt - cimke lista
-    szininima.txt       - szinonimák amiket a recept átvételnél használ
-    mertekegysegek.txt  - mértékegység lista. a recept átvételnél van szerepe
-  [vendor]
+    atvesz.php - átvétel külső oldalakról
+    atvesz_mindmegette.php
+    atvesz_receptneked.php
+    atvesz_nosalty.php
+   [vendor]
     keretrendszer fájlok és harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
   index.php  - fő program
   config.php - konfigurációs adatok

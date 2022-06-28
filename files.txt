@@ -1,16 +1,16 @@
 .:
-összesen 112
+összesen 108
 -rw-rw-r-- 1 utopszkij www-data    603 2021-11-06 config-example.php
 -rw-rw-r-- 1 utopszkij www-data    554 2022-06-25 config.php
 -rwxrwxr-x 1 utopszkij utopszkij    46 2022-05-31 files.sh
--rw-rw-r-- 1 utopszkij utopszkij     0 2022-06-27 files.txt
+-rw-rw-r-- 1 utopszkij utopszkij     0 2022-06-28 files.txt
 drwxrwxrwx 4 utopszkij utopszkij 16384 2022-06-22 images
 drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images-sajat
 drwxrwxrwx 5 utopszkij www-data   4096 2022-06-25 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
 -rw-rw-r-- 1 utopszkij www-data  10691 2022-06-27 index.php
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  8242 2022-06-27 readme.md
+-rw-r--r-- 1 utopszkij utopszkij  8127 2022-06-27 readme.md
 -rw-r--r-- 1 utopszkij utopszkij  3483 2022-06-23 style.css
 drwxrwxr-x 5 www-data  www-data   4096 2022-06-17 vendor
 
