@@ -64,7 +64,11 @@ function atvetel($url = 'https://www.nosalty.hu/....',
     } 
     $recept->elkeszites = (int)$ido;
     
-    
+    // energia
+    $w = $s;
+    $s1 = kiemel($w,'id="calories-btn"','/span>');
+    $recept->energia = (float)kiemel($s1,'<span>','<') * 4.187; // átszámolja J -ra
+    $recept->energia = round($recept->energia);  // kerekit egészre
 
     // hozzávalók
     $hozzavalok = [];
@@ -119,7 +123,7 @@ function atvetel($url = 'https://www.nosalty.hu/....',
         $s1 = str_replace('  ',' ',$s1);
     }    
     $s1 = strip_tags($s1);
-    $recept->leiras = str_replace('[br]',"\n",$s1);
+    $recept->leiras = str_replace('[br]',"\n\n",trim($s1));
 
     /*
     if ($kep != '') {
