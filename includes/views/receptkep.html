@@ -1,7 +1,8 @@
 <div class="alert alert-danger" v-if="loged == 0">
     Recept felviteléhez, modosításhoz, törléséhez be kell jelentkezni!
 </div>	
-<div id="recept">
+
+<div id="receptEdit" class="edit" style="display:none">
     <form id="receptForm" action="index.php?task=receptsave" method="post" 
         enctype="multipart/form-data">
         <input type="hidden" value="receptsave" name="task" />			
@@ -52,7 +53,7 @@
             Energia:
                 <input type="number" min="1" max="400" 
                     name="energia" id="energia" v-model="recept.energia"
-                    style="display:inlne-block; width:100px"  class="form-control"/> kJ
+                    style="display:inlne-block; width:100px"  class="form-control"/> J/adag
             </div>    
         </div>
         <div class="row" id="hozzavalok">
@@ -177,48 +178,135 @@
                         <em class="fas fa-ban"></em>&nbsp;Recept törlése 
                 </button>
         </div>
-        <hr />
-        <div class="row comments">
-            <h3>Hozzászólások</h3>
-            
-            <div v-for="comment in comments" class="comment">
-                <a v-bind:href="'index.php?task=comment&id='+comment.id">
-                    <p>
-                        <img v-bind:src="'images/users/'+comment.avatar" 
-                            v-if="comment.avatar != ''"
-                            style="height:32px; width:auto" />
-                        {{ comment.created_at }} 
-                        <strong v-bind:class="comment.group">
-                            {{ comment.username }}
-                        </strong>
-                    </p>
-                    <p>{{ comment.msg }}</p>
-                    <div class="commentImages">
-                        <div v-if="comment.img0 > '0'" style="display:inline-block; width:auto; height:auto">
-                            <img v-bind:src="'images/comments/'+comment.img0" />
-                        </div>     
-                        <div v-if="comment.img1 > '0'" style="display:inline-block; width:auto; height:auto">
-                            <img v-bind:src="'images/comments/'+comment.img1" />
-                        </div>     
-                        <div v-if="comment.img2 > '0'" style="display:inline-block; width:auto; height:auto">
-                            <img v-bind:src="'images/comments/'+comment.img2"  />
-                        </div>     
-                    </div>
-                </a>
-        </div>
-            include paginator
-            <div v-if="loged > 0">
-                <a class="btn btn-primary" 
-                    v-bind:href="'index.php?task=commentadd&receptid='+recept.id">
-                    <em class="fas fa-comment"></em> Új hozzászólás beküldése
+    </form>
+</div> <!-- recept edit-->
+
+<div id="receptShow" class="show">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-outline mb-4">
+                <h2>Recept<h2>			
+            </div>
+            <div class="form-outline mb-4 d-inline d-md-none">
+                <img v-if="kep != ''" v-bind:src="kep" class="receptKep" class="receptKep" />				
+            </div>
+            <div class="form-outline mb-4">
+                <h3><em class="fas fa-utensils"></em>&nbsp;{{ recept.nev}}</h3>
+            </div>
+            <div v-if="!disabled">
+                <a href="#" v-on:click="editClick">
+                    <em class="fas fa-edit" title="szerkesztes"></em> Szerkesztés
                 </a>
             </div>
-            <div v-if="loged == 0">Hozzászólás beküldéséhez be kell jelentkezni.</div>
         </div>
-    </form>
+        <div class="d-none d-md-inline col-md-4">
+                <img v-if="kep != ''" v-bind:src="kep" class="receptKep" class="receptKep" />				
+        </div>
+    </div><!-- .row -->
+
+    <div class="row">
+        <div class="col-12  receptInfo">
+            <em class="fas fa-clock"></em>&nbsp;Elkészítési idő: {{ recept.elkeszites }}&nbsp;perc
+            &nbsp;
+            <em class="fas fa-fire"></em>&nbsp;Energia: {{ recept.energia }} J/adag
+            &nbsp;({{ Math.round(recept.energia / 4.187 ) }} cal/adag)
+        </div>    
+    </div>
+    <div class="row" class="hozzavalok">
+        <h4><em class="fas fa-puzzle-piece"></em>&nbsp;Hozzávalók {{ recept.adag }} adaghoz</h4>
+        <table cellspacing="0" cellpadding="0" id="hozzavalokTable">
+        <tr class="hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
+            <td v-if="hozzavalo.nev != ''">{{ hozzavalo.nev }}</td>
+            <td v-if="hozzavalo.nev != ''" style="width:250px; text-align:right">
+                {{ hozzavalo.mennyiseg }} {{ hozzavalo.me }}
+            </td>
+        </tr>
+        </table>				
+    </div>
+    <div class="row cimkek">
+        <div class="col-12">
+            <ul>
+                <li v-for="receptCimke in receptCimkek">{{ receptCimke.cimke }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row leiras">
+        <h3><em class="fas fa-cogs"></em>&nbsp;Elkészítés</h3>
+        <div class="col-12">
+            {{ recept.leiras }}
+        </div>			
+    </div>
+    
+    <div class="row uploadInfo" v-if="recept.id > 0">
+        <h3><em class="fas fa-upload"></em>&nbsp;Recept feltöltési infó</h3>
+        <div class="col-12">
+            <img v-bind:src="'images/users/'+creator.avatar" v-if="creator.avatar != ''"
+                style="height:32px; width:auto" />
+            {{ recept.created_at }} 
+            <span v-bind:class="creator.group+' creatorName'">
+                {{ creator.username }} 
+            </span>
+        </div>
+    </div>				
+    <div class="form-outline mb-4">
+        <a href="index.php?task=receptek" class="btn btn-secondary">
+            <em class="fas fa-reply"></em>Vissza
+        </a>
+        &nbsp;
+        <button type="button" class="btn btn-secondary"
+            v-if="recept.id > 0"
+            v-on:click="printClick(receptId)">
+            <em class="fas fa-print"></em>&nbsp;Nyomtatas</button>
+    </div>
+
+</div><!-- recept show -->
+<hr />
+<div class="row comments">
+    <h3>Hozzászólások</h3>
+    
+    <div v-for="comment in comments" class="col-12 comment">
+        <a v-bind:href="'index.php?task=comment&id='+comment.id">
+            <p>
+                <img v-bind:src="'images/users/'+comment.avatar" 
+                    v-if="comment.avatar != ''"
+                    style="height:32px; width:auto" />
+                {{ comment.created_at }} 
+                <strong v-bind:class="comment.group">
+                    {{ comment.username }}
+                </strong>
+            </p>
+            <p>{{ comment.msg }}</p>
+            <div class="commentImages">
+                <div v-if="comment.img0 > '0'" style="display:inline-block; width:auto; height:auto">
+                    <img v-bind:src="'images/comments/'+comment.img0" />
+                </div>     
+                <div v-if="comment.img1 > '0'" style="display:inline-block; width:auto; height:auto">
+                    <img v-bind:src="'images/comments/'+comment.img1" />
+                </div>     
+                <div v-if="comment.img2 > '0'" style="display:inline-block; width:auto; height:auto">
+                    <img v-bind:src="'images/comments/'+comment.img2"  />
+                </div>     
+            </div>
+        </a>
+    </div>
+    include paginator
+    <div v-if="loged > 0">
+        <a class="btn btn-primary" 
+            v-bind:href="'index.php?task=commentadd&receptid='+recept.id">
+            <em class="fas fa-comment"></em> Új hozzászólás beküldése
+        </a>
+    </div>
+    <div v-if="loged == 0">Hozzászólás beküldéséhez be kell jelentkezni.</div>
 </div>
+
+
 <script>
 var methods = {
+        editClick() {
+            document.getElementById('receptShow').style.display='none';
+            document.getElementById('receptEdit').style.display='block';
+            return false;
+        },
         printClick(receptId) {
            location="index.php?task=receptprint&id="+receptId; 
         },
@@ -315,6 +403,10 @@ var methods = {
             tableHozzavalok.appendChild(newHozzavalo);
         },
         afterMount() {
+            console.log(this.receptCimkek);
+            if (this.recept.id == 0) {
+                this.editClick();
+            }
             for (var i=0; i<this.receptCimkek.length; i++) {
                 if (document.getElementById(this.receptCimkek[i].cimke)) {
                     document.getElementById(this.receptCimkek[i].cimke).checked = true;

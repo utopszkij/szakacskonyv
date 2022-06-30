@@ -112,7 +112,7 @@ if (isset($_GET['usercode'])) {
 }
 //+ ----------- verzio kezelés start ------------
 
-$fileVerzio = 'v1.5.0';
+$fileVerzio = 'v1.5.1';
 
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
