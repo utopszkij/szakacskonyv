@@ -36,7 +36,11 @@ form {margin:1% 1% 1% 1%}
 #receptShow .cimkek ul {list-style:none} 
 #receptShow .cimkek li {display:inline-block; width:auto; margin:10px; padding:3px 10px 3px 10px;
   border-style:solid; border-width:1px; border-radius:18px} 
-
+#receptShow .hozzavalok .button {display:inline-block; width:32px; text-align:center;
+    border-style:solid; border-width:1px; cursor:pointer}  
+#receptShow .hozzavalok .adag {display:inline-block; width:auto; padding:0px 5px 0px 5px; 
+    text-align:center;  border-style:solid; border-width:1px 0px 1px 0px;}  
+      
 .van {background-color:green; padding:5px}
 .van a {color:white; text-decoration:none }
 .nincs {background-color:white; padding:5px}

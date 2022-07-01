@@ -3,15 +3,15 @@
 -rw-rw-r-- 1 utopszkij www-data    603 2021-11-06 config-example.php
 -rw-rw-r-- 1 utopszkij www-data    554 2022-06-25 config.php
 -rwxrwxr-x 1 utopszkij utopszkij    46 2022-05-31 files.sh
--rw-rw-r-- 1 utopszkij utopszkij     0 2022-06-30 files.txt
+-rw-rw-r-- 1 utopszkij utopszkij     0 2022-07-01 files.txt
 drwxrwxrwx 4 utopszkij utopszkij 16384 2022-06-22 images
 drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images-sajat
 drwxrwxrwx 5 utopszkij www-data   4096 2022-06-25 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
--rw-rw-r-- 1 utopszkij www-data  10691 2022-06-30 index.php
+-rw-rw-r-- 1 utopszkij www-data  10691 2022-07-01 index.php
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  8269 2022-06-30 readme.md
--rw-r--r-- 1 utopszkij utopszkij  4113 2022-06-30 style.css
+-rw-r--r-- 1 utopszkij utopszkij  8439 2022-07-01 readme.md
+-rw-r--r-- 1 utopszkij utopszkij  4433 2022-07-01 style.css
 drwxrwxr-x 5 www-data  www-data   4096 2022-06-17 vendor
 
 ./images:
@@ -288,7 +288,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 views
 -rw-rw-r-- 1 utopszkij utopszkij 5689 2022-06-19 usermodel.php
 
 ./includes/views:
-összesen 96
+összesen 100
 -rw-rw-r-- 1 utopszkij utopszkij  2842 2022-06-18 atvaltaskep.html
 -rw-rw-r-- 1 utopszkij utopszkij  1184 2022-06-18 atvaltasok.html
 -rw-rw-r-- 1 utopszkij utopszkij  1106 2022-06-23 cimkebrowser.html
@@ -301,7 +301,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 views
 -rw-rw-r-- 1 utopszkij utopszkij  3516 2022-05-27 napimenukep.html
 -rw-rw-r-- 1 utopszkij utopszkij  2142 2022-06-18 paginator.html
 -rw-rw-r-- 1 utopszkij utopszkij  3187 2022-06-13 receptek.html
--rw-rw-r-- 1 utopszkij utopszkij 18810 2022-06-30 receptkep.html
+-rw-rw-r-- 1 utopszkij utopszkij 20697 2022-07-01 receptkep.html
 -rw-rw-r-- 1 utopszkij utopszkij  1683 2022-06-21 regist.html
 -rw-rw-r-- 1 utopszkij utopszkij  1864 2022-06-19 szinonimabrowser.html
 -rw-rw-r-- 1 utopszkij utopszkij  1970 2022-06-17 szinonimaform.html

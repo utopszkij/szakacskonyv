@@ -108,6 +108,12 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
 
+## verzió v1.5.2
+2022.07.??.
+- recept lekérdező képernyőn az adag szám
+  módosítható (mennyiségek átszámítódnak)
+### *************************************
+
 ## verzió v1.5.1
 2022.06.30.
 - dizájn fejlesztés

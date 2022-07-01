@@ -212,8 +212,18 @@
             &nbsp;({{ Math.round(recept.energia / 4.187 ) }} cal/adag)
         </div>    
     </div>
-    <div class="row" class="hozzavalok">
-        <h4><em class="fas fa-puzzle-piece"></em>&nbsp;Hozzávalók {{ recept.adag }} adaghoz</h4>
+    <div class="row hozzavalok">
+        <h4><em class="fas fa-puzzle-piece"></em>&nbsp;Hozzávalók
+            <div class="button" v-on:click="adagMinusClick()">
+                &nbsp;-&nbsp;
+            </div>    
+            <div class="adag">
+                    {{ recept.adag }} 
+            </div>   
+            <div  class="button" v-on:click="adagPlusClick()">
+                &nbsp;+&nbsp;
+            </div>    
+             adaghoz</h4>
         <table cellspacing="0" cellpadding="0" id="hozzavalokTable">
         <tr class="hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
             <td v-if="hozzavalo.nev != ''">{{ hozzavalo.nev }}</td>
@@ -303,6 +313,14 @@
 <script>
 var methods = {
         editClick() {
+            this.recept.adag = this.origAdag;
+            var i = 0;
+            for (i=0; i < this.hozzavalok.length; i++) {
+                if (parseFloat(this.hozzavalok[i].mennyiseg) > 0) {
+                    this.hozzavalok[i].mennyiseg = 
+                        (parseFloat(this.hozzavalok[i].mennyiseg) * this.recept.adag) / this.oldAdag;
+                }  
+            }
             document.getElementById('receptShow').style.display='none';
             document.getElementById('receptEdit').style.display='block';
             return false;
@@ -403,7 +421,6 @@ var methods = {
             tableHozzavalok.appendChild(newHozzavalo);
         },
         afterMount() {
-            console.log(this.receptCimkek);
             if (this.recept.id == 0) {
                 this.editClick();
             }
@@ -413,6 +430,34 @@ var methods = {
                 } else {
                     console.log(' cimke hiba '+this.receptCimkek[i].cimke);
                 }   
+            }
+            this.oldAdag = this.recept.adag;
+            this.origAdag = this.recept.adag;
+        },
+        adagPlusClick() {
+            if (this.recept.adag > 0) {
+                this.recept.adag = parseInt(this.recept.adag) + 1;
+                var i = 0;
+                for (i=0; i < this.hozzavalok.length; i++) {
+                    if (parseFloat(this.hozzavalok[i].mennyiseg) > 0) {
+                        this.hozzavalok[i].mennyiseg = 
+                            (parseFloat(this.hozzavalok[i].mennyiseg) * this.recept.adag) / this.oldAdag;
+                    }  
+                }
+                this.oldAdag = this.recept.adag;
+            }    
+        },
+        adagMinusClick() {
+            if (this.recept.adag > 1) {
+                this.recept.adag = parseInt(this.recept.adag) - 1;
+                var i = 0;
+                for (i=0; i < this.hozzavalok.length; i++) {
+                    if (parseFloat(this.hozzavalok[i].mennyiseg) > 0) {
+                        this.hozzavalok[i].mennyiseg = 
+                            (parseFloat(this.hozzavalok[i].mennyiseg) * this.recept.adag) / this.oldAdag;
+                    }  
+                }
+                this.oldAdag = this.recept.adag;
             }
         },
         makePaginatorClass(p,page) {
