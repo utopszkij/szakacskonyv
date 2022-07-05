@@ -3,8 +3,6 @@
     use \RATWEB\DB\Query;
     use \RATWEB\DB\Record;
 
-    include_once __DIR__.'/model.php';
-
     class UserModel extends Model  {
 
         function __construct() {

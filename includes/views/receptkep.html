@@ -204,12 +204,16 @@
         </div>
     </div><!-- .row -->
 
-    <div class="row">
+    <div class="row" v-if="((recept.elkeszites > 0) | (recept.energia > 0))">
         <div class="col-12  receptInfo">
-            <em class="fas fa-clock"></em>&nbsp;Elkészítési idő: {{ recept.elkeszites }}&nbsp;perc
+            <span v-if="recept.elkeszites > 0">
+                <em class="fas fa-clock"></em>&nbsp;Elkészítési idő: {{ recept.elkeszites }}&nbsp;perc
+            </span>
             &nbsp;
-            <em class="fas fa-fire"></em>&nbsp;Energia: {{ recept.energia }} J/adag
-            &nbsp;({{ Math.round(recept.energia / 4.187 ) }} cal/adag)
+            <span v-if="recept.energia > 0">
+                <em class="fas fa-fire"></em>&nbsp;Energia: {{ recept.energia }} J/adag
+                &nbsp;({{ Math.round(recept.energia / 4.187 ) }} cal/adag)
+            </span>
         </div>    
     </div>
     <div class="row hozzavalok">
@@ -240,7 +244,7 @@
             </ul>
         </div>
     </div>
-    <div class="row leiras">
+    <div class="row leiras" v-if="recept.leiras != ''">
         <h3><em class="fas fa-cogs"></em>&nbsp;Elkészítés</h3>
         <div class="col-12">
             {{ recept.leiras }}

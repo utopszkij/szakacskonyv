@@ -2,7 +2,20 @@
 use \RATWEB\DB\Query;
 
 class Naptar {
-	
+
+	function __construct() {
+		// a napi menü modul számára szükséges dolgok
+		$time = time();
+		if (isset($_SESSION['numDay'])) {
+			$numDay = $_SESSION['numDay'];
+			$numMonth = $_SESSION['numMonth'];
+			$numYear = $_SESSION['numYear'];
+		} else { 
+			$_SESSION['numDay'] = date('d', $time);
+			$_SESSION['numMonth'] = date('m', $time);
+			$_SESSION['numYear'] = date('Y', $time);
+		}
+	}
 
 	public function elozo() {
 		$numDay = $_SESSION['numDay'];

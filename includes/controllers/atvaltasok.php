@@ -1,6 +1,5 @@
 <?php
 
-include_once (__DIR__.'/controller.php');
 include_once (__DIR__.'/../models/atvaltasmodel.php');
 
 class Atvaltasok extends Controller {
@@ -17,7 +16,7 @@ class Atvaltasok extends Controller {
      * @return array [{"nev":"", "mecount":#, "szorzocount":#},... ]
      */
     public function atvaltasok() {
-        $limit = 20;
+		$limit = round((int)$_SESSION['screen_height'] / 80);
         $page = $this->request->input('page',1,INTEGER);
         $offset = ($page - 1) * $limit;
         $records = $this->model->getNevek($offset,$limit);

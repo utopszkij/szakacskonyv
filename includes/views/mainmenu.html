@@ -1,0 +1,84 @@
+<div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a v-if="logedAvatar != ''" class="nav-link navbar-toggler" 
+                  v-bind:href="'index.php?task=useredit&id='+loged">
+                  <img v-bind:src="'images/users/'+logedAvatar"
+                      style="height:34px; margin:0px; float:right" />
+                  <var v-bind:class="logedGroup">
+                      {{ logedName }}
+                  </var>
+          </a>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.php?task=home">
+                <em class="fas fa-home"></em>&nbsp;Napi menük</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.php?task=receptek&page=1">
+                <em class="fas fa-book"></em>&nbsp;Receptek</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.php?task=osszeg">
+                <em class="fas fa-plus"></em>&nbsp;Összesítés</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#" onclick="submenuToggle()">
+                       <em class="fas fa-tools"></em>&nbsp;Beállítások
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="submenu">
+                          <a class="dropdown-item" href="index.php?task=userek" v-if="MULTIUSER">
+                              Felhasználók
+                          </a>
+                          <a class="dropdown-item" href="index.php?task=atvaltasok">Átváltások</a>
+                          <a class="dropdown-item" href="index.php?task=szinonimak">Szinonimák</a>
+                          <a class="dropdown-item" href="index.php?task=mertekegysegek">Mértékegységek</a>
+                          <a class="dropdown-item" href="index.php?task=cimkek">Cimkék</a>
+                      </div>
+              </li>	
+            </ul>
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0 text-right">
+                  <li class="nav-item" v-if="MULTIUSER & (loged <= 0)">
+                        <a class="nav-link" href="index.php?task=login">
+                            <em class="fas fa-sign-in-alt"></em>&nbsp;Bejelentkezés</a>
+                  </li>
+                  <li class="nav-item" v-if="loged > 0">
+                      <a class="nav-link" 
+                          v-bind:href="'index.php?task=useredit&id='+loged">
+                          <em class="fas fa-address-card"></em>	
+                          <var v-bind:class="logedGroup">
+                              {{ logedName }}
+                              <img v-if="logedAvatar != ''"
+                                   v-bind:src="'images/users/'+logedAvatar"
+                                    style="height:34px; margin:0px;" />
+                          </var>	
+                      </a>
+                  </li>
+                  <li class="nav-item" v-if="MULTIUSER & (loged > 0)">
+                    <a class="nav-link" href="index.php?task=logout">
+                    <em class="fas fa-sign-out-alt"></em>&nbsp;Kijelentkezés</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.php?task=regist">
+                    <em class="fas fa-key"></em>&nbsp;Regisztrálás</a>
+                  </li>
+            </ul>
+          </div>
+      </nav>	
+      <div class="warning" v-if="(lastVerzio > fileVerzio) & (MULTIUSER) & (isAdmin)">
+          <a v-bin:href="'index.php?task=upgrade1&version='+lastVerzio" 
+              class="btn btn-primary">
+              Új verzó érhető el {{ lastVerzio }} 
+          </a>
+      </div>	
+      <div style="text-align:right">{{ fileVerzio }}&nbsp;</div> 
+ 
+</div>
+
+<script>
+
+</script>

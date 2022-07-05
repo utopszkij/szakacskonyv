@@ -2,7 +2,6 @@
 use \RATWEB\DB\Query;
 use \RATWEB\DB\Record;
 
-include_once __DIR__.'/controller.php';
 include_once __DIR__.'/../atvesz.php';
 include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
@@ -426,6 +425,7 @@ class Recept extends Controller{
 	}
 
 	public function receptek() {
+		$pageSize = round((int)$_SESSION['screen_height'] / 80);
 		$filterStr = $this->getParam('filterstr');
 		$filterCreator = $this->getParam('filtercreator');
 		$filterCreated = $this->getParam('filtercreated');
@@ -442,10 +442,10 @@ class Recept extends Controller{
 		}
 		if ($this->request->isset('page')) {
 			$page = $this->request->input('page');
-			$offset = (20 * $page) - 20;
+			$offset = ($pageSize * $page) - $pageSize;
 		} else if ($this->session->isset('page')) {
 			$page = $this->session->input('page');
-			$offset = (20 * $page) - 20;
+			$offset = ($pageSize * $page) - $pageSize;
 		} else {
 			$page = 1;
 			$offset = 0;
@@ -473,10 +473,10 @@ class Recept extends Controller{
 		$list = $db->all();
 		$total = $db->count();
 		$db = $this->buildQuery();
-		$list = $db->offset($offset)->limit(20)->all();
+		$list = $db->offset($offset)->limit($pageSize)->all();
 
 		$pages = [];
-		for ($p=1; (($p - 1)*20) < $total; $p++) {
+		for ($p=1; (($p - 1)*$pageSize) < $total; $p++) {
 			$pages[] = $p;
 		}
 

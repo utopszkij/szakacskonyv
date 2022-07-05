@@ -67,11 +67,12 @@ form {margin:1% 1% 1% 1%}
 
 .paginator {display:inline-block; list-style: none;}
 .paginator li {margin-right:0px;}
-.paginator a {text-decoration:none; color:black;}
+.paginator a {display:inline-block; text-decoration:none; color:black; 
+  margin:0px; width:100%; height:100%} 
 .paginatorItem {display:inline-block; border-style:solid; border-width:1px; 
-  width:32px; height:32px; text-align:center; margin:0px 2px 0px 0px; padding:2px;}
+  width:32px; height:32px; text-align:center; margin:0px 2px 0px 0px; padding:0px;}
 .actPaginatorItem {display:inline-block; border-style:solid; border-width:1px; 
-    width:32px; height:32px; text-align:center; margin:0px 2px 0px 0px; padding:2px;
+    width:32px; height:32px; text-align:center; margin:0px 2px 0px 0px; padding:0px;
     background-color:silver}
   
 .filterForm {border-style:solid; border-width:1px; padding:0.5%; width:auto}
@@ -84,8 +85,17 @@ form {margin:1% 1% 1% 1%}
 #footer {background-color:silver; padding:20px; 
   border-radius: 0px 0px 30px 30px; text-align:center}
 
-@media print {
-	 h1,h2,h3,h4 {font-size:18px; font-weight: bold}
+  @media screen and (max-width: 992px) {
+    #receptList tr {height:40px}
+    #userek li {height:40px}
+    #atvaltasok li {height:40px}
+    #szinonimak li {height:40px}
+    #mertekegysegek li {height:40px}
+    #cimkek li {height:40px}
+  }
+
+  @media print {
+    h1,h2,h3,h4 {font-size:18px; font-weight: bold}
     #header {display:none; height:0px;}
 	 .page {min-height:14px; text-align:left; padding:10px; font-size:14px}
     nav {display:none; height:0px;}
