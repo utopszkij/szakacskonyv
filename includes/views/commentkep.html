@@ -42,12 +42,13 @@
             </div>
             <div class="row formBUttons" v-if="!disabled">
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">
-                        <em class="fas fa-check"></em>&nbsp;Tárol
+                    <button type="submit" class="btn btn-success">
+                        <em class="fas fa-check"></em>&nbsp;Mentés
                     </button>&nbsp;
-                    <a href="#" v-on:click="delClick()" class="btn btn-danger">
+                    <button v-on:click="delClick()" class="btn btn-danger"
+                        type="button" v-if="comment.id > 0">
                         <em class="fas fa-eraser"></em>&nbsp;Hozzászólás és csatolt képeinek törlése
-                    </a>&nbsp;
+                    </button>&nbsp;
                     <a v-bind:href="'index.php?task=recept&id='+recept.id" class="btn btn-secondary">
                         <em class="fas fa-reply"></em>&nbsp;Mégsem
                     </a>
@@ -96,6 +97,7 @@
                 location='index.php?task=commentdel&id='+app.comment.id;
                 return false;
             });
+            return false;
         }
     }
 </script>

@@ -2,29 +2,31 @@
     <div class="alert alert-danger" v-if="msg != ''">
         {{ msg }}
     </div>
-    <h1>Bejelentkezés</h1>
-    <form name="login" action="index.php?task=dologin" method="post">
-    <input type="hidden" name="task" value="dologin" />
-    <input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
-    <br /><br />
-    <input type="password" name="password" placeholder="Jelszó" required="true" />
-    <br /><br />
-    <button type="submit" class="btn btn-primary" style="width:250px" name="submit">
-        <em class="fas fa-check"></em>&nbsp;Küld
-    </button>    
-    <br /><br />
-    <a v-bind:href="'https://netpolgar.hu/auth/facebook?state='+SITEURL"
-        class="btn btn-primary" style="width:250px"> 
-        Belépés Facebook -al			
-    </a>
-    <br /><br />
-    <a v-bind:href="'https://netpolgar.hu/auth/google?state='+SITEURL" 
-        class="btn btn-secondary" style="width:250px"> 
-        Belépés Google -al			
-    </a>
-    </form>
-    <div class="alert alert-info">
-        Bejelentkezés után a felső menüben lévő belépési nevedre kattintva,  
-        a "profil" képernyőn jelszót változtathatsz, avatar képet tölthetsz fel.
+    <div style="text-align:center">
+        <i class="fas fa-sign-in-alt fa-4x"></i><h1>&nbsp;Bejelentkezés</h1>
+        <form name="login" action="index.php?task=dologin" method="post">
+        <input type="hidden" name="task" value="dologin" />
+        <i class="fa fa-user"></i> <input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
+        <br /><br />
+        <i class="fa fa-key"></i> <input type="password" name="password" placeholder="Jelszó" required="true" />
+        <br /><br />
+        <button type="submit" class="btn btn-success" style="width:250px" name="submit">
+            <em class="fas fa-check"></em>&nbsp;Belépés
+        </button>    
+        <br /><br />
+        <a v-bind:href="'https://netpolgar.hu/auth/facebook?state='+SITEURL"
+            class="btn btn-primary" style="width:250px"> 
+            Belépés Facebook -al			
+        </a>
+        <br /><br />
+        <a v-bind:href="'https://netpolgar.hu/auth/google?state='+SITEURL" 
+            class="btn btn-secondary" style="width:250px"> 
+            Belépés Google -al			
+        </a>
+        </form>
+        <div class="alert alert-info">
+            Bejelentkezés után a felső menüben lévő belépési nevedre kattintva,  
+            a "profil" képernyőn jelszót változtathatsz, avatar képet tölthetsz fel.
+        </div>
     </div>
 </div>

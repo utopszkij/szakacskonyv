@@ -40,6 +40,19 @@ class Upgrade {
 	}
 
 	/**
+	 * verzió átalakitása v##.##.## formára (az összehasonlíthatóság kedvéért)
+	 */
+	public static function versionAdjust(string $version):string {
+		$w = explode('.',substr($version,1,100));
+		foreach ($w as $i => $w1) {
+			if (strlen($w1) < 2) {
+				$w[$i] = ' '.$w1;
+			}
+		}
+		return 'v'.implode('.',$w);
+	}
+
+	/**
 	 * last verzio olvasása github readme -ből
 	 */
 	public function getLastVersion() {
@@ -60,7 +73,14 @@ class Upgrade {
 		return $result;
 	}
 	
+	/**
+	 * meglévő fájl felülírása
+	 * images -ben nem csináljuk
+	 */
 	protected function updateFile($path) {
+		if (strpos(' '.$path,'images/') > 0) { 
+			return;
+		}	
 		try {
 			if (!is_dir(dirname(DOCROOT.'/'.$path))) {
 				mkdir(dirname(DOCROOT.'/'.$path),0777);
@@ -71,13 +91,21 @@ class Upgrade {
 			rename(DOCROOT.'/'.$path, 
 			       DOCROOT.'/'.$path.'.old');
 			$this->downloadFile($path);
+			// végül is hiba esetén jól jöhet az old file... unlink(DOCROOT.'/'.$path.'.old');
 		} catch (Exception $e) {	
 			$this->errorCount++;
 			$this->msg .= 'ERROR update '.$path.' '.JSON_encode($e).'<br>';
 		}		
 	}
 
+	/**
+	 * Új fájl letöltése
+	 * images -ben nem csináljuk
+	 */
 	protected function downloadFile($path) {
+		if (strpos(' '.$path,'images/') > 0) { 
+			return;
+		}	
 		try {
 			if (!is_dir(dirname(DOCROOT.'/'.$path))) {
 				mkdir(dirname(DOCROOT.'/'.$path),0777);
@@ -92,8 +120,12 @@ class Upgrade {
 		}		
 	}
 
+	/**
+	 * meglévő fájl törlése
+	 * images -ben nem csináljuk
+	 */
 	protected function delFile($path) {
-		if (file_exists($path)) {
+		if ((strpos($path,'images/') === false) & (file_exists($path))) { 
 			unlink($path);
 		}
 	}
@@ -254,7 +286,7 @@ class Upgrade {
 	} 
 
 	protected function do_v1_4($dbverzio) {
-		if ($dbverzio < 'v1.4') {
+		if ($this->versionAdjust($dbverzio) < 'v 1. 4') {
 			$q = new Query('users');
 			$q->exec('CREATE TABLE IF NOT EXISTS `cimkek` (
 				`id` int NOT NULL AUTO_INCREMENT,
@@ -289,7 +321,7 @@ class Upgrade {
 	}
 
 	protected function do_v1_3($dbverzio) {
-		if ($dbverzio < 'v1.3') {
+		if ($this->versionAdjust($dbverzio) < 'v 1. 3') {
 			$q = new Query('dbverzio');
 			$q->exec('CREATE TABLE IF NOT EXISTS `szinonimak` (
 				`id` int NOT NULL AUTO_INCREMENT,
@@ -373,7 +405,7 @@ class Upgrade {
 	}
 
 	protected function do_v1_2($dbverzio) {	
-		if ($dbverzio < 'v1.2') {
+		if ($this->versionAdjust($dbverzio) < 'v 1. 2') {
 			$q = new Query('receptek');
 			$q->exec('alter table hozzavalok 
 				add szme varchar(8) comment "számítási alap me",
@@ -413,7 +445,7 @@ class Upgrade {
 	}	
 
 	protected function do_v1_1($dbverzio) {	
-		if ($dbverzio < 'v1.1') {
+		if ($this->versionAdjust($dbverzio) < 'v 1. 1') {
 			$q = new Query('receptek');
 			$q->exec('CREATE TABLE IF NOT EXISTS `comments` (
 				`id` int NOT NULL AUTO_INCREMENT,
@@ -442,7 +474,7 @@ class Upgrade {
 	 * @param string $dbverzio jelenlegi telepitett adatbázis verzió
 	 */
 	public function dbUpgrade(string $dbverzio) {
-		if ($dbverzio < 'v0.1') {
+		if ($this->versionAdjust($dbverzio) < 'v 0. 1') {
 			$q = new Query('receptek');
 			$q->exec('alter table receptek 
 				add created_at date
@@ -452,7 +484,7 @@ class Upgrade {
 			$r->verzio = 'v0.1';
 			$q->where('verzio','<>','')->update($r);
 		}
-		if ($dbverzio < 'v0.3') {
+		if ($this->versionAdjust($dbverzio) < 'v 0. 3') {
 			$q = new Query('receptek');
 			$q->exec('alter table receptek 
 				add energia varchar(32),

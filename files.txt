@@ -1,176 +1,278 @@
 .:
-összesen 116
+összesen 104
 -rw-rw-r-- 1 utopszkij www-data    603 2021-11-06 config-example.php
--rw-rw-r-- 1 utopszkij www-data    554 2022-06-25 config.php
--rwxrwxr-x 1 utopszkij utopszkij    46 2022-05-31 files.sh
--rw-rw-r-- 1 utopszkij utopszkij     0 2022-06-30 files.txt
-drwxrwxrwx 4 utopszkij utopszkij 16384 2022-06-22 images
-drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images-sajat
-drwxrwxrwx 5 utopszkij www-data   4096 2022-06-25 includes
+-rw-rw-r-- 1 utopszkij www-data    517 2022-07-03 config.php
+drwxrwxr-x 3 utopszkij utopszkij  4096 2022-07-06 doc
+-rwxrwxr-x 1 utopszkij utopszkij    71 2022-07-06 documentor.sh
+-rwxrwxr-x 1 utopszkij utopszkij    58 2022-07-06 files.sh
+-rw-rw-r-- 1 utopszkij utopszkij     0 2022-07-06 files.txt
+drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images
+drwxrwxrwx 5 utopszkij www-data   4096 2022-07-05 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
--rw-rw-r-- 1 utopszkij www-data  10691 2022-06-30 index.php
+-rw-rw-r-- 1 utopszkij www-data   4473 2022-07-06 index.php
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  8269 2022-06-30 readme.md
--rw-r--r-- 1 utopszkij utopszkij  4113 2022-06-30 style.css
-drwxrwxr-x 5 www-data  www-data   4096 2022-06-17 vendor
+-rw-r--r-- 1 utopszkij utopszkij  8909 2022-07-06 readme.md
+-rw-r--r-- 1 utopszkij utopszkij  4947 2022-07-06 style.css
+drwxrwxr-x 6 www-data  www-data   4096 2022-07-05 vendor
+
+./doc:
+összesen 64
+-rw-rw-r-- 1 utopszkij utopszkij   598 2022-07-06 footer.htm
+drwxrwxr-x 3 utopszkij utopszkij 12288 2022-07-06 html
+-rw-rw-r-- 1 utopszkij utopszkij   164 2022-07-05 olvassel.txt
+-rw-rw-r-- 1 utopszkij utopszkij 25205 2022-07-06 swdoc.html
+-rw-rw-r-- 1 utopszkij utopszkij 12295 2022-07-06 szakacs.cfg
+
+./doc/html:
+összesen 1472
+-rw-rw-r-- 1 utopszkij utopszkij   2162 2022-07-06 annotated_dup.js
+-rw-rw-r-- 1 utopszkij utopszkij  12800 2022-07-06 annotated.html
+-rw-rw-r-- 1 utopszkij utopszkij    676 2022-07-06 bc_s.png
+-rw-rw-r-- 1 utopszkij utopszkij    147 2022-07-06 bdwn.png
+-rw-rw-r-- 1 utopszkij utopszkij   5638 2022-07-06 class_atszamito_object.html
+-rw-rw-r-- 1 utopszkij utopszkij   4987 2022-07-06 class_atszamito_object-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  18422 2022-07-06 class_atvaltas_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    484 2022-07-06 class_atvaltas_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   8724 2022-07-06 class_atvaltas_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  17534 2022-07-06 class_atvaltasok.html
+-rw-rw-r-- 1 utopszkij utopszkij    202 2022-07-06 class_atvaltasok.js
+-rw-rw-r-- 1 utopszkij utopszkij  10928 2022-07-06 class_atvaltasok-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  23302 2022-07-06 class_cimkek.html
+-rw-rw-r-- 1 utopszkij utopszkij    596 2022-07-06 class_cimkek.js
+-rw-rw-r-- 1 utopszkij utopszkij  11277 2022-07-06 class_cimkek-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  14545 2022-07-06 class_cimke_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    199 2022-07-06 class_cimke_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   7873 2022-07-06 class_cimke_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  22453 2022-07-06 class_comment.html
+-rw-rw-r-- 1 utopszkij utopszkij    526 2022-07-06 class_comment.js
+-rw-rw-r-- 1 utopszkij utopszkij  11629 2022-07-06 class_comment-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  13892 2022-07-06 class_comment_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    216 2022-07-06 class_comment_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   7631 2022-07-06 class_comment_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  20473 2022-07-06 class_controller.html
+-rw-rw-r-- 1 utopszkij utopszkij    607 2022-07-06 class_controller.js
+-rw-rw-r-- 1 utopszkij utopszkij  10183 2022-07-06 class_controller-members.html
+-rw-rw-r-- 1 utopszkij utopszkij   7809 2022-07-06 classes.html
+-rw-rw-r-- 1 utopszkij utopszkij   9984 2022-07-06 class_fw.html
+-rw-rw-r-- 1 utopszkij utopszkij   5380 2022-07-06 class_fw-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  23412 2022-07-06 class_mertekegyseg.html
+-rw-rw-r-- 1 utopszkij utopszkij    640 2022-07-06 class_mertekegyseg.js
+-rw-rw-r-- 1 utopszkij utopszkij  11447 2022-07-06 class_mertekegyseg-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  14613 2022-07-06 class_mertekegyseg_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    220 2022-07-06 class_mertekegyseg_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   7999 2022-07-06 class_mertekegyseg_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  16759 2022-07-06 class_napi_menu.html
+-rw-rw-r-- 1 utopszkij utopszkij  10918 2022-07-06 class_napi_menu-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  13358 2022-07-06 class_napimenu_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    213 2022-07-06 class_napimenu_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   7626 2022-07-06 class_napimenu_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij   5605 2022-07-06 class_naptar.html
+-rw-rw-r-- 1 utopszkij utopszkij   5085 2022-07-06 class_naptar-members.html
+-rw-rw-r-- 1 utopszkij utopszkij   6412 2022-07-06 class_osszegzes.html
+-rw-rw-r-- 1 utopszkij utopszkij    189 2022-07-06 class_osszegzes.js
+-rw-rw-r-- 1 utopszkij utopszkij   4867 2022-07-06 class_osszegzes-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  42092 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_query.html
+-rw-rw-r-- 1 utopszkij utopszkij   1981 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_query.js
+-rw-rw-r-- 1 utopszkij utopszkij  14909 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_query-members.html
+-rw-rw-r-- 1 utopszkij utopszkij   4395 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_record.html
+-rw-rw-r-- 1 utopszkij utopszkij  18879 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_union.html
+-rw-rw-r-- 1 utopszkij utopszkij    660 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_union.js
+-rw-rw-r-- 1 utopszkij utopszkij   7842 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_union-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  10520 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_where.html
+-rw-rw-r-- 1 utopszkij utopszkij    344 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_where.js
+-rw-rw-r-- 1 utopszkij utopszkij   5372 2022-07-06 class_r_a_t_w_e_b_1_1_d_b_1_1_where-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  15480 2022-07-06 class_r_a_t_w_e_b_1_1_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    797 2022-07-06 class_r_a_t_w_e_b_1_1_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   7086 2022-07-06 class_r_a_t_w_e_b_1_1_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  18972 2022-07-06 class_recept.html
+-rw-rw-r-- 1 utopszkij utopszkij    106 2022-07-06 class_recept.js
+-rw-rw-r-- 1 utopszkij utopszkij  11902 2022-07-06 class_recept-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  24738 2022-07-06 class_recept_model.html
+-rw-rw-r-- 1 utopszkij utopszkij   1053 2022-07-06 class_recept_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   9965 2022-07-06 class_recept_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij   9506 2022-07-06 class_request.html
+-rw-rw-r-- 1 utopszkij utopszkij    258 2022-07-06 class_request.js
+-rw-rw-r-- 1 utopszkij utopszkij   4905 2022-07-06 class_request-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  10347 2022-07-06 class_session.html
+-rw-rw-r-- 1 utopszkij utopszkij    338 2022-07-06 class_session.js
+-rw-rw-r-- 1 utopszkij utopszkij   5115 2022-07-06 class_session-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  24385 2022-07-06 class_szinonima.html
+-rw-rw-r-- 1 utopszkij utopszkij    732 2022-07-06 class_szinonima.js
+-rw-rw-r-- 1 utopszkij utopszkij  11631 2022-07-06 class_szinonima-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  15964 2022-07-06 class_szinonima_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    303 2022-07-06 class_szinonima_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   8209 2022-07-06 class_szinonima_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij   6011 2022-07-06 class_szovegek.html
+-rw-rw-r-- 1 utopszkij utopszkij   5386 2022-07-06 class_szovegek-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  26738 2022-07-06 class_upgrade.html
+-rw-rw-r-- 1 utopszkij utopszkij   1224 2022-07-06 class_upgrade.js
+-rw-rw-r-- 1 utopszkij utopszkij  11085 2022-07-06 class_upgrade-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  24856 2022-07-06 class_user.html
+-rw-rw-r-- 1 utopszkij utopszkij    498 2022-07-06 class_user.js
+-rw-rw-r-- 1 utopszkij utopszkij  12147 2022-07-06 class_user-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  19251 2022-07-06 class_user_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    533 2022-07-06 class_user_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   7787 2022-07-06 class_user_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij    132 2022-07-06 closed.png
+-rw-rw-r-- 1 utopszkij utopszkij   5086 2022-07-06 dir_09e761304027c904456130627fd4dcf5.html
+-rw-rw-r-- 1 utopszkij utopszkij   4042 2022-07-06 dir_4428fdfe0eb0da98abb7123d472f1d53.html
+-rw-rw-r-- 1 utopszkij utopszkij   4033 2022-07-06 dir_4ffa0a4cb0db482ccd1a2d352354f289.html
+-rw-rw-r-- 1 utopszkij utopszkij   4040 2022-07-06 dir_57dc54e314e1a70febf30cb527d9c1f7.html
+-rw-rw-r-- 1 utopszkij utopszkij   4044 2022-07-06 dir_98cbbc75d1186a1b187134917d39405d.html
+-rw-rw-r-- 1 utopszkij utopszkij   4490 2022-07-06 dir_c5da75fdc1d6c57999112ed830c87a3c.html
+-rw-rw-r-- 1 utopszkij utopszkij   4052 2022-07-06 dir_fae636d715a2826c5bea851a8d3a722f.html
+-rw-rw-r-- 1 utopszkij utopszkij    746 2022-07-06 doc.png
+-rw-rw-r-- 1 utopszkij utopszkij  33676 2022-07-06 doxygen.css
+-rw-rw-r-- 1 utopszkij utopszkij  15382 2022-07-06 doxygen.svg
+-rw-rw-r-- 1 utopszkij utopszkij   4452 2022-07-06 dynsections.js
+-rw-rw-r-- 1 utopszkij utopszkij    616 2022-07-06 folderclosed.png
+-rw-rw-r-- 1 utopszkij utopszkij    597 2022-07-06 folderopen.png
+-rw-rw-r-- 1 utopszkij utopszkij  22089 2022-07-06 functions_func.html
+-rw-rw-r-- 1 utopszkij utopszkij  22196 2022-07-06 functions.html
+-rw-rw-r-- 1 utopszkij utopszkij  12296 2022-07-06 hierarchy.html
+-rw-rw-r-- 1 utopszkij utopszkij   1683 2022-07-06 hierarchy.js
+-rw-rw-r-- 1 utopszkij utopszkij   3958 2022-07-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 176813 2022-07-06 jquery.js
+-rw-rw-r-- 1 utopszkij utopszkij   3413 2022-07-06 menudata.js
+-rw-rw-r-- 1 utopszkij utopszkij   5866 2022-07-06 menu.js
+-rw-rw-r-- 1 utopszkij utopszkij   4645 2022-07-06 namespace_r_a_t_w_e_b.html
+-rw-rw-r-- 1 utopszkij utopszkij    115 2022-07-06 namespace_r_a_t_w_e_b.js
+-rw-rw-r-- 1 utopszkij utopszkij     97 2022-07-06 namespaces_dup.js
+-rw-rw-r-- 1 utopszkij utopszkij   4882 2022-07-06 namespaces.html
+-rw-rw-r-- 1 utopszkij utopszkij    153 2022-07-06 nav_f.png
+-rw-rw-r-- 1 utopszkij utopszkij     95 2022-07-06 nav_g.png
+-rw-rw-r-- 1 utopszkij utopszkij     98 2022-07-06 nav_h.png
+-rw-rw-r-- 1 utopszkij utopszkij   2108 2022-07-06 navtree.css
+-rw-rw-r-- 1 utopszkij utopszkij   1942 2022-07-06 navtreedata.js
+-rw-rw-r-- 1 utopszkij utopszkij  12191 2022-07-06 navtreeindex0.js
+-rw-rw-r-- 1 utopszkij utopszkij  15709 2022-07-06 navtree.js
+-rw-rw-r-- 1 utopszkij utopszkij    123 2022-07-06 open.png
+-rw-rw-r-- 1 utopszkij utopszkij   5518 2022-07-06 resize.js
+drwxrwxr-x 2 utopszkij utopszkij   4096 2022-07-06 search
+-rw-rw-r-- 1 utopszkij utopszkij    314 2022-07-06 splitbar.png
+-rw-rw-r-- 1 utopszkij utopszkij    853 2022-07-06 sync_off.png
+-rw-rw-r-- 1 utopszkij utopszkij    845 2022-07-06 sync_on.png
+-rw-rw-r-- 1 utopszkij utopszkij    142 2022-07-06 tab_a.png
+-rw-rw-r-- 1 utopszkij utopszkij    169 2022-07-06 tab_b.png
+-rw-rw-r-- 1 utopszkij utopszkij    177 2022-07-06 tab_h.png
+-rw-rw-r-- 1 utopszkij utopszkij  10453 2022-07-06 tabs.css
+-rw-rw-r-- 1 utopszkij utopszkij    184 2022-07-06 tab_s.png
+
+./doc/html/search:
+összesen 468
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_0.html
+-rw-rw-r-- 1 utopszkij utopszkij   293 2022-07-06 all_0.js
+-rw-rw-r-- 1 utopszkij utopszkij  1436 2022-07-06 all_10.html
+-rw-rw-r-- 1 utopszkij utopszkij  2571 2022-07-06 all_10.js
+-rw-rw-r-- 1 utopszkij utopszkij  1436 2022-07-06 all_11.html
+-rw-rw-r-- 1 utopszkij utopszkij  1350 2022-07-06 all_11.js
+-rw-rw-r-- 1 utopszkij utopszkij  1436 2022-07-06 all_12.html
+-rw-rw-r-- 1 utopszkij utopszkij   683 2022-07-06 all_12.js
+-rw-rw-r-- 1 utopszkij utopszkij  1436 2022-07-06 all_13.html
+-rw-rw-r-- 1 utopszkij utopszkij   353 2022-07-06 all_13.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_1.html
+-rw-rw-r-- 1 utopszkij utopszkij  1212 2022-07-06 all_1.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_2.html
+-rw-rw-r-- 1 utopszkij utopszkij  1535 2022-07-06 all_2.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_3.html
+-rw-rw-r-- 1 utopszkij utopszkij  1335 2022-07-06 all_3.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_4.html
+-rw-rw-r-- 1 utopszkij utopszkij   597 2022-07-06 all_4.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_5.html
+-rw-rw-r-- 1 utopszkij utopszkij   323 2022-07-06 all_5.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_6.html
+-rw-rw-r-- 1 utopszkij utopszkij  3605 2022-07-06 all_6.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_7.html
+-rw-rw-r-- 1 utopszkij utopszkij   950 2022-07-06 all_7.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_8.html
+-rw-rw-r-- 1 utopszkij utopszkij   261 2022-07-06 all_8.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_9.html
+-rw-rw-r-- 1 utopszkij utopszkij   393 2022-07-06 all_9.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_a.html
+-rw-rw-r-- 1 utopszkij utopszkij   825 2022-07-06 all_a.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_b.html
+-rw-rw-r-- 1 utopszkij utopszkij   319 2022-07-06 all_b.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_c.html
+-rw-rw-r-- 1 utopszkij utopszkij   964 2022-07-06 all_c.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_d.html
+-rw-rw-r-- 1 utopszkij utopszkij   259 2022-07-06 all_d.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_e.html
+-rw-rw-r-- 1 utopszkij utopszkij   108 2022-07-06 all_e.js
+-rw-rw-r-- 1 utopszkij utopszkij  1435 2022-07-06 all_f.html
+-rw-rw-r-- 1 utopszkij utopszkij   604 2022-07-06 all_f.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_0.html
+-rw-rw-r-- 1 utopszkij utopszkij   253 2022-07-06 classes_0.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_1.html
+-rw-rw-r-- 1 utopszkij utopszkij   352 2022-07-06 classes_1.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_2.html
+-rw-rw-r-- 1 utopszkij utopszkij    65 2022-07-06 classes_2.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_3.html
+-rw-rw-r-- 1 utopszkij utopszkij   262 2022-07-06 classes_3.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_4.html
+-rw-rw-r-- 1 utopszkij utopszkij   220 2022-07-06 classes_4.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_5.html
+-rw-rw-r-- 1 utopszkij utopszkij    86 2022-07-06 classes_5.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_6.html
+-rw-rw-r-- 1 utopszkij utopszkij   108 2022-07-06 classes_6.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_7.html
+-rw-rw-r-- 1 utopszkij utopszkij   301 2022-07-06 classes_7.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_8.html
+-rw-rw-r-- 1 utopszkij utopszkij   291 2022-07-06 classes_8.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_9.html
+-rw-rw-r-- 1 utopszkij utopszkij   286 2022-07-06 classes_9.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-07-06 classes_a.html
+-rw-rw-r-- 1 utopszkij utopszkij   108 2022-07-06 classes_a.js
+-rw-rw-r-- 1 utopszkij utopszkij  1284 2022-07-06 close.svg
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_0.html
+-rw-rw-r-- 1 utopszkij utopszkij   293 2022-07-06 functions_0.js
+-rw-rw-r-- 1 utopszkij utopszkij  1442 2022-07-06 functions_10.html
+-rw-rw-r-- 1 utopszkij utopszkij  1080 2022-07-06 functions_10.js
+-rw-rw-r-- 1 utopszkij utopszkij  1442 2022-07-06 functions_11.html
+-rw-rw-r-- 1 utopszkij utopszkij   683 2022-07-06 functions_11.js
+-rw-rw-r-- 1 utopszkij utopszkij  1442 2022-07-06 functions_12.html
+-rw-rw-r-- 1 utopszkij utopszkij   265 2022-07-06 functions_12.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_1.html
+-rw-rw-r-- 1 utopszkij utopszkij   979 2022-07-06 functions_1.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_2.html
+-rw-rw-r-- 1 utopszkij utopszkij  1198 2022-07-06 functions_2.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_3.html
+-rw-rw-r-- 1 utopszkij utopszkij  1335 2022-07-06 functions_3.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_4.html
+-rw-rw-r-- 1 utopszkij utopszkij   597 2022-07-06 functions_4.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_5.html
+-rw-rw-r-- 1 utopszkij utopszkij   278 2022-07-06 functions_5.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_6.html
+-rw-rw-r-- 1 utopszkij utopszkij  3605 2022-07-06 functions_6.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_7.html
+-rw-rw-r-- 1 utopszkij utopszkij   950 2022-07-06 functions_7.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_8.html
+-rw-rw-r-- 1 utopszkij utopszkij   261 2022-07-06 functions_8.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_9.html
+-rw-rw-r-- 1 utopszkij utopszkij   393 2022-07-06 functions_9.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_a.html
+-rw-rw-r-- 1 utopszkij utopszkij   583 2022-07-06 functions_a.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_b.html
+-rw-rw-r-- 1 utopszkij utopszkij   119 2022-07-06 functions_b.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_c.html
+-rw-rw-r-- 1 utopszkij utopszkij   898 2022-07-06 functions_c.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_d.html
+-rw-rw-r-- 1 utopszkij utopszkij   259 2022-07-06 functions_d.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_e.html
+-rw-rw-r-- 1 utopszkij utopszkij   257 2022-07-06 functions_e.js
+-rw-rw-r-- 1 utopszkij utopszkij  1441 2022-07-06 functions_f.html
+-rw-rw-r-- 1 utopszkij utopszkij  2296 2022-07-06 functions_f.js
+-rw-rw-r-- 1 utopszkij utopszkij  2378 2022-07-06 mag_sel.svg
+-rw-rw-r-- 1 utopszkij utopszkij  1442 2022-07-06 namespaces_0.html
+-rw-rw-r-- 1 utopszkij utopszkij    86 2022-07-06 namespaces_0.js
+-rw-rw-r-- 1 utopszkij utopszkij   500 2022-07-06 nomatches.html
+-rw-rw-r-- 1 utopszkij utopszkij  4562 2022-07-06 search.css
+-rw-rw-r-- 1 utopszkij utopszkij   312 2022-07-06 searchdata.js
+-rw-rw-r-- 1 utopszkij utopszkij 23044 2022-07-06 search.js
+-rw-rw-r-- 1 utopszkij utopszkij   567 2022-07-06 search_l.png
+-rw-rw-r-- 1 utopszkij utopszkij   158 2022-07-06 search_m.png
+-rw-rw-r-- 1 utopszkij utopszkij   553 2022-07-06 search_r.png
 
 ./images:
-összesen 16732
--rwxrwxrwx 1 utopszkij utopszkij  23426 2022-06-12 Afrikai harcsa sörtésztában medvehagymás burgonyával.jpg
--rwxrwxrwx 1 utopszkij utopszkij 188270 2022-06-21 Afrikai harcsa sörtésztában medvehagymás burgonyával recept.jpg?v=1633609313
--rwxrwxrwx 1 utopszkij utopszkij   6464 2022-06-21 A legjobb palacsintatészta.jpg
--rwxrwxrwx 1 utopszkij utopszkij   6464 2022-06-08 A legjobb palacsintat├йszta.jpg
--rwxrwxrwx 1 utopszkij utopszkij   3757 2022-06-21 Almás céklakrémleves.jpg
--rwxrwxrwx 1 utopszkij utopszkij   3757 2022-06-08 Alm├бs c├йklakr├йmleves.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5444 2022-06-21 Aranygaluska vaníliamártással.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5444 2022-06-08 Aranygaluska van├нliam├бrt├бssal.jpg
--rwxrwxrwx 1 utopszkij utopszkij 162515 2022-06-21 Babgulyás recept.jpg?v=1607341860
--rwxrwxrwx 1 utopszkij utopszkij  60278 2022-06-08 Bacon -ba g├╢ngy├╢lt m├бj.jpg
--rwxrwxrwx 1 utopszkij utopszkij  60278 2022-06-21 Bacon -ba göngyölt máj.jpg
--rwxrwxrwx 1 utopszkij utopszkij  34422 2022-06-21 Baconba tekert csirkemell recept.jpg
--rwxrwxrwx 1 utopszkij utopszkij  82071 2022-06-21 Bécsi szelet.jpg
--rwxrwxrwx 1 utopszkij utopszkij 149357 2022-06-08 bevlista 2.png
--rwxrwxrwx 1 utopszkij utopszkij 149357 2022-06-21 bevlista.png
--rwxrwxrwx 1 utopszkij utopszkij  84660 2022-06-11 bg.png
--rwxrwxrwx 1 utopszkij utopszkij  62357 2022-06-08 Brass├│i apr├│ pecsenye.jpg
--rwxrwxrwx 1 utopszkij utopszkij  62357 2022-06-21 Brassói apró pecsenye.jpg
--rwxrwxrwx 1 utopszkij utopszkij 828561 2022-06-01 Bulgur gombával és csirkemellel.jpg
--rwxrwxrwx 1 utopszkij utopszkij  22647 2022-06-15 Burgonyapüré.jpg
--rwxrwxrwx 1 utopszkij utopszkij  82071 2022-06-08 B├йcsi szelet.jpg
-drwxrwxrwx 2 utopszkij utopszkij   4096 2022-06-23 comments
--rwxrwxrwx 1 utopszkij utopszkij 229558 2022-06-21 Cukkínirudak fokhagymás mártogatóssal recept.jpg?v=1633956579
--rwxrwxrwx 1 utopszkij utopszkij 157809 2022-06-09 Csirkemell lapcsánkával recept.jpeg
--rwxrwxrwx 1 utopszkij utopszkij   5852 2022-06-21 Darált húsos makaróni.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5852 2022-06-08 Dar├бlt h├║sos makar├│ni.jpg
--rwxrwxrwx 1 utopszkij utopszkij 126238 2022-06-08 dekor11.jpg
--rwxrwxrwx 1 utopszkij utopszkij 497280 2022-06-11 dekor1 2.jpg
--rwxrwxrwx 1 utopszkij utopszkij 126238 2022-06-21 dekor1.jpg
--rwxrwxrwx 1 utopszkij utopszkij 231564 2022-06-08 dekor2 2.jpg
--rwxrwxrwx 1 utopszkij utopszkij 231564 2022-06-21 dekor2.jpg
--rwxrwxrwx 1 utopszkij utopszkij  50625 2022-06-11 Diós-lekváros hókifli.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5474 2022-06-08 Epres Raffaello 2.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5474 2022-06-21 Epres Raffaello.jpg
--rwxrwxrwx 1 utopszkij utopszkij 965767 2022-06-08 Epres-t├║r├│kr├йmes torta (s├╝t├йs n├йlk├╝li recept).jpg
--rwxrwxrwx 1 utopszkij utopszkij 965767 2022-06-21 Epres-túrókrémes torta (sütés nélküli recept).jpg
--rwxrwxrwx 1 utopszkij utopszkij  89418 2022-06-08 etkeszlet 2.png
--rwxrwxrwx 1 utopszkij utopszkij  89418 2022-06-21 etkeszlet.png
--rwxrwxrwx 1 utopszkij utopszkij 132892 2022-06-21 Fahéjas babacsinta recept.jpg?v=1632148367
--rwxrwxrwx 1 utopszkij utopszkij  21923 2022-06-08 fejlec 2.png
--rwxrwxrwx 1 utopszkij utopszkij  21923 2022-06-21 fejlec.png
--rwxrwxrwx 1 utopszkij utopszkij 179109 2022-06-21 Foszlós kalács recept.jpg?v=1652105232
--rwxrwxrwx 1 utopszkij utopszkij  67772 2022-06-21 Főtt burgonya.jpg
--rwxrwxrwx 1 utopszkij utopszkij 162319 2022-06-21 Francia briós (Kontyos kalács) recept.jpg?v=1632317032
--rwxrwxrwx 1 utopszkij utopszkij   4903 2022-06-21 Francia bundás kenyér.jpg
--rwxrwxrwx 1 utopszkij utopszkij   4903 2022-06-08 Francia bund├бs keny├йr.jpg
--rwxrwxrwx 1 utopszkij utopszkij  67772 2022-06-08 F┼Сtt burgonya.jpg
--rwxrwxrwx 1 utopszkij utopszkij  31119 2022-06-15 Galuska (nokedli).jpg
--rwxrwxrwx 1 utopszkij utopszkij  29544 2022-06-15 Gombás párolt rizs.jpg
--rwxrwxrwx 1 utopszkij utopszkij  54548 2022-06-08 Gomb├│c leves.jpg
--rwxrwxrwx 1 utopszkij utopszkij  54548 2022-06-21 Gombóc leves.jpg
--rwxrwxrwx 1 utopszkij utopszkij   6403 2022-06-21 Gulyásleves egyszerűen.jpg
--rwxrwxrwx 1 utopszkij utopszkij   6403 2022-06-08 Guly├бsleves egyszer┼▒en.jpg
--rwxrwxrwx 1 utopszkij utopszkij 186946 2022-06-08 Gy├╝m├╢lcs leves.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5419 2022-06-08 Gyors t├║r├│s pog├бcsa.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5419 2022-06-21 Gyors túrós pogácsa.jpg
--rwxrwxrwx 1 utopszkij utopszkij 186946 2022-06-21 Gyümölcs leves.jpg
--rwxrwxrwx 1 utopszkij utopszkij 205395 2022-06-12 Halfilé sajtos-gombás ágyon.jpg
--rwxrwxrwx 1 utopszkij utopszkij 197174 2022-06-21 Halfilé sajtos-gombás ágyon recept.jpg?v=1635707146
--rwxrwxrwx 1 utopszkij utopszkij  65682 2022-06-21 Harcsa paprikás.jpg
--rwxrwxrwx 1 utopszkij utopszkij  65682 2022-06-08 Harcsa paprik├бs.jpg
--rwxrwxrwx 1 utopszkij utopszkij 685534 2022-06-04 Házi levendulaszörp.jpg
--rwxrwxrwx 1 utopszkij utopszkij 105213 2022-06-21 Házi szója mentes majonéz &#8216;veganéz&#8217; recept.jpg?v=1648480171
--rwxrwxrwx 1 utopszkij utopszkij  75073 2022-06-06 Hústorta.jpeg
--rwxrwxrwx 1 utopszkij utopszkij     30 2022-06-08 index 2.php
--rwxrwxrwx 1 utopszkij utopszkij     30 2022-06-21 index.php
--rwxrwxrwx 1 utopszkij utopszkij 190005 2022-06-21 Kapros zöldborsópüré fürjtojással recept.jpg?v=1629724276
--rwxrwxrwx 1 utopszkij utopszkij 227132 2022-06-21 Karalábé leves.jpg
--rwxrwxrwx 1 utopszkij utopszkij 227132 2022-06-08 Karal├бb├й leves.jpg
--rwxrwxrwx 1 utopszkij utopszkij 134875 2022-06-21 Kelkáposzta főzelék recept.jpg?v=1635400819
--rwxrwxrwx 1 utopszkij utopszkij 278700 2022-06-08 kezdolap 2.png
--rwxrwxrwx 1 utopszkij utopszkij 278700 2022-06-21 kezdolap.png
--rwxrwxrwx 1 utopszkij utopszkij   9953 2022-06-12 Kínai sült hal.jpg
--rwxrwxrwx 1 utopszkij utopszkij 140115 2022-06-08 Klasszik lángos.jpg
--rwxrwxrwx 1 utopszkij utopszkij 170051 2022-06-21 Kukoricafőzelék recept.jpg?v=1619505116
--rwxrwxrwx 1 utopszkij utopszkij 207464 2022-06-15 Legényfogó reggeli recept 2.jpg?v=1631601917
--rwxrwxrwx 1 utopszkij utopszkij 207464 2022-06-21 Legényfogó reggeli recept.jpg?v=1631601917
--rwxrwxrwx 1 utopszkij utopszkij 127523 2022-06-21 Lekváros tészta.jpg
--rwxrwxrwx 1 utopszkij utopszkij 127523 2022-06-08 Lekv├бros t├йszta.jpg
--rwxrwxrwx 1 utopszkij utopszkij  23913 2022-06-15 Lencsefőzelék.jpg
--rwxrwxrwx 1 utopszkij utopszkij 106887 2022-06-12 Mákos intelligens krémes recept.jpg
--rwxrwxrwx 1 utopszkij utopszkij 206528 2022-06-08 napimenu 2.png
--rwxrwxrwx 1 utopszkij utopszkij 206528 2022-06-21 napimenu.png
--rwxrwxrwx 1 utopszkij utopszkij 205482 2022-06-08 osszesites 2.png
--rwxrwxrwx 1 utopszkij utopszkij 205482 2022-06-21 osszesites.png
--rwxrwxrwx 1 utopszkij utopszkij  89241 2022-06-21 Óvári karaj.jpg
--rwxrwxrwx 1 utopszkij utopszkij  34870 2022-06-15 Paprikás krumpli 2.jpg
--rwxrwxrwx 1 utopszkij utopszkij   6320 2022-06-21 Paradicsomos-pesztós mini pite.jpg
--rwxrwxrwx 1 utopszkij utopszkij   6320 2022-06-08 Paradicsomos-peszt├│s mini pite.jpg
--rwxrwxrwx 1 utopszkij utopszkij  78820 2022-06-12 Paradicsomos zöldbableves recept.jpg
--rwxrwxrwx 1 utopszkij utopszkij 181177 2022-06-14 Parasztreggeli recept.jpg
--rwxrwxrwx 1 utopszkij utopszkij 164626 2022-06-14 Parasztreggeli recept.jpg?v=1631811651
--rwxrwxrwx 1 utopszkij utopszkij   3946 2022-06-21 Párolt káposzta.jpg
--rwxrwxrwx 1 utopszkij utopszkij 135337 2022-05-31 Párolt lila káposzta köret.jpeg
--rwxrwxrwx 1 utopszkij utopszkij  26491 2022-06-15 Párolt rizs.jpg
--rwxrwxrwx 1 utopszkij utopszkij  43291 2022-06-15 Párolt szilva.jpg
--rwxrwxrwx 1 utopszkij utopszkij  32132 2022-06-15 Petrezselymes burgonya.jpg
--rwxrwxrwx 1 utopszkij utopszkij  96472 2022-06-08 pr├│ba recept 3.png
--rwxrwxrwx 1 utopszkij utopszkij 112478 2022-06-08 proba recept 2.png
--rwxrwxrwx 1 utopszkij utopszkij 273884 2022-06-21 próba recept 3.jpg
--rwxrwxrwx 1 utopszkij utopszkij 112478 2022-06-21 proba recept.png
--rwxrwxrwx 1 utopszkij utopszkij   3946 2022-06-08 P├бrolt k├бposzta.jpg
--rwxrwxrwx 1 utopszkij utopszkij  10717 2022-06-03 Rakott csirkemell.jpg
--rwxrwxrwx 1 utopszkij utopszkij  16627 2022-06-08 Rakott krumpli 2.jpg
--rwxrwxrwx 1 utopszkij utopszkij  16627 2022-06-21 Rakott krumpli.jpg
--rwxrwxrwx 1 utopszkij utopszkij 209221 2022-06-08 recept 2.png
--rwxrwxrwx 1 utopszkij utopszkij 218186 2022-06-08 receptek 2.png
--rwxrwxrwx 1 utopszkij utopszkij 218186 2022-06-21 receptek.png
--rwxrwxrwx 1 utopszkij utopszkij 209221 2022-06-21 recept.png
--rwxrwxrwx 1 utopszkij utopszkij   4349 2022-06-08 Rizibizi - alaprecept 2.jpg
--rwxrwxrwx 1 utopszkij utopszkij   4349 2022-06-21 Rizibizi - alaprecept.jpg
--rwxrwxrwx 1 utopszkij utopszkij  28946 2022-06-15 Rizibizi.jpg
--rwxrwxrwx 1 utopszkij utopszkij   4144 2022-06-21 Ropogós sült oldalas.jpg
--rwxrwxrwx 1 utopszkij utopszkij   4144 2022-06-08 Ropog├│s s├╝lt oldalas.jpg
--rwxrwxrwx 1 utopszkij utopszkij 152469 2022-06-21 Sárgarépás sütőtökpüré leves recept.jpg?v=1633545989
--rwxrwxrwx 1 utopszkij utopszkij 148864 2022-06-12 Somogyi galuska recept.jpg
--rwxrwxrwx 1 utopszkij utopszkij  21525 2022-06-15 Spenótfőzelék.jpg
--rwxrwxrwx 1 utopszkij utopszkij  27776 2022-06-15 Sült hasábburgonya.jpg
--rwxrwxrwx 1 utopszkij utopszkij   4859 2022-06-21 szakacs.ico
--rwxrwxrwx 1 utopszkij utopszkij  24451 2022-06-21 szakacs.png
--rwxrwxrwx 1 utopszkij utopszkij  67525 2022-06-21 Székely káposzta.jpg
--rwxrwxrwx 1 utopszkij utopszkij  67525 2022-06-08 Sz├йkely k├бposzta.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5211 2022-06-08 Tavaszi z├╢ld minestrone leves.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5211 2022-06-21 Tavaszi zöld minestrone leves.jpg
--rwxrwxrwx 1 utopszkij utopszkij   2572 2022-06-08 T├│csni.jpg
--rwxrwxrwx 1 utopszkij utopszkij  18821 2022-06-21 Tiszai halászlé alaprecept.png
--rwxrwxrwx 1 utopszkij utopszkij  18821 2022-06-08 Tiszai hal├бszl├й alaprecept.png
--rwxrwxrwx 1 utopszkij utopszkij   5079 2022-06-08 T├╢lt├╢tt csirkecomb s├╝t┼Сzacsk├│ban s├╝tve.jpg
--rwxrwxrwx 1 utopszkij utopszkij   2572 2022-06-21 Tócsni.jpg
--rwxrwxrwx 1 utopszkij utopszkij  32756 2022-06-15 Tojásos rizs.jpg
--rwxrwxrwx 1 utopszkij utopszkij   5079 2022-06-21 Töltött csirkecomb sütőzacskóban sütve.jpg
--rwxrwxrwx 1 utopszkij utopszkij 898074 2022-06-21 Ukrán fokhagymás tojás.png
--rwxrwxrwx 1 utopszkij utopszkij 898074 2022-06-08 Ukr├бn fokhagym├бs toj├бs.png
-drwxrwxrwx 2 utopszkij utopszkij   4096 2022-06-23 users
--rwxrwxrwx 1 utopszkij utopszkij   2839 2022-06-21 Vörösboros vaddisznópörkölt.jpg
--rwxrwxrwx 1 utopszkij utopszkij   2839 2022-06-08 V├╢r├╢sboros vaddiszn├│p├╢rk├╢lt.jpg
--rwxrwxrwx 1 utopszkij utopszkij  19125 2022-06-15 Zöldborsófőzelék.jpg
--rwxrwxrwx 1 utopszkij utopszkij 162821 2022-06-12 Zöldséges rizsen sült halfilé .jpg
--rwxrwxrwx 1 utopszkij utopszkij  89241 2022-06-08 ├Уv├бri karaj.jpg
-
-./images/comments:
-összesen 4020
--rwxrwxrwx 1 utopszkij utopszkij 1849010 2022-06-21 14-IMG_20190118_161111.jpg
--rw-r--r-- 1 www-data  www-data   645132 2022-06-23 15-P6220008.JPG
--rw-r--r-- 1 www-data  www-data   774520 2022-06-23 15-P9040068.JPG
--rw-r--r-- 1 www-data  www-data   836117 2022-06-22 15-P9050012.JPG
-
-./images/users:
-összesen 1240
--rwxrwxrwx 1 utopszkij utopszkij    9195 2022-06-21 1-MOgasz10.jpg
--rw-r--r-- 1 www-data  www-data  1150033 2022-06-23 4-Fogler Tibor Vilmos 20180311.jpg
--rwxrwxrwx 1 utopszkij utopszkij   45333 2022-06-21 4-IMG_20180405_153150_1.jpg
--rwxrwxrwx 1 utopszkij utopszkij   57109 2022-06-21 4-Tibor-2016-08-retusált.jpg
-
-./images-sajat:
 összesen 7432
 -rw-r--r-- 1 www-data  www-data  188270 2022-06-09 Afrikai harcsa sörtésztában medvehagymás burgonyával recept.jpg?v=1633609313
 -rw-r--r-- 1 www-data  www-data    6464 2021-11-07 A legjobb palacsintatészta.jpg
@@ -232,18 +334,20 @@ drwxr-xr-x 2 www-data  www-data    4096 2022-06-20 comments
 -rw-r--r-- 1 www-data  www-data    2572 2022-05-24 Tócsni.jpg
 -rw-r--r-- 1 www-data  www-data    5079 2022-05-24 Töltött csirkecomb sütőzacskóban sütve.jpg
 -rw-r--r-- 1 www-data  www-data  898074 2022-05-28 Ukrán fokhagymás tojás.png
-drwxr-xr-x 2 www-data  www-data    4096 2022-06-19 users
+drwxr-xr-x 2 www-data  www-data    4096 2022-07-06 users
 -rw-r--r-- 1 www-data  www-data    2839 2022-05-29 Vörösboros vaddisznópörkölt.jpg
 
-./images-sajat/comments:
+./images/comments:
 összesen 1808
 -rw-r--r-- 1 www-data www-data 1849010 2022-06-20 14-IMG_20190118_161111.jpg
 
-./images-sajat/users:
-összesen 116
--rw-r--r-- 1 www-data www-data  9195 2022-06-19 1-MOgasz10.jpg
--rw-r--r-- 1 www-data www-data 45333 2022-06-19 4-IMG_20180405_153150_1.jpg
--rw-r--r-- 1 www-data www-data 57109 2022-06-19 4-Tibor-2016-08-retusált.jpg
+./images/users:
+összesen 276
+-rw-r--r-- 1 www-data www-data   9195 2022-06-19 1-MOgasz10.jpg
+-rw-r--r-- 1 www-data www-data  45333 2022-06-19 4-IMG_20180405_153150_1.jpg
+-rw-r--r-- 1 www-data www-data 141717 2022-07-06 4-IMG_20180425_094144.jpg
+-rw-r--r-- 1 www-data www-data  17046 2022-07-06 4-Marika3.jpg
+-rw-r--r-- 1 www-data www-data  57109 2022-06-19 4-Tibor-2016-08-retusált.jpg
 
 ./includes:
 összesen 40
@@ -252,70 +356,75 @@ drwxr-xr-x 2 www-data  www-data    4096 2022-06-19 users
 -rwxrwxrwx 1 utopszkij www-data  1370 2022-06-25 atvesz.php
 -rw-rw-r-- 1 utopszkij utopszkij 4383 2022-06-25 atvesz_receptneked.php
 -rw-rw-r-- 1 utopszkij utopszkij  182 2022-06-22 cimkek.txt
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 controllers
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-05 controllers
 -rw-rw-r-- 1 utopszkij utopszkij   30 2022-05-23 index.php
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 models
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-06-23 views
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-05 models
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-05 views
 
 ./includes/controllers:
-összesen 132
--rw-rw-r-- 1 utopszkij utopszkij  2367 2022-06-17 atvaltasok.php
--rw-rw-r-- 1 utopszkij utopszkij  2171 2022-06-23 cimkek.php
--rw-rw-r-- 1 utopszkij utopszkij  8540 2022-06-23 comment.php
--rw-rw-r-- 1 utopszkij utopszkij 10886 2022-06-23 controller.php
+összesen 120
+-rw-rw-r-- 1 utopszkij utopszkij  2360 2022-07-05 atvaltasok.php
+-rw-rw-r-- 1 utopszkij utopszkij  2131 2022-07-05 cimkek.php
+-rw-rw-r-- 1 utopszkij utopszkij  8500 2022-07-05 comment.php
 -rw-rw-r-- 1 utopszkij utopszkij    30 2022-05-23 index.php
--rw-rw-r-- 1 utopszkij utopszkij  1969 2022-06-18 mertekegyseg.php
--rwxrwxrwx 1 utopszkij www-data   2679 2022-06-09 napimenu.php
--rwxrwxrwx 1 utopszkij www-data   6739 2022-06-21 naptar.php
+-rw-rw-r-- 1 utopszkij utopszkij  1929 2022-07-05 mertekegyseg.php
+-rwxrwxrwx 1 utopszkij www-data   2639 2022-07-05 napimenu.php
+-rwxrwxrwx 1 utopszkij www-data   7308 2022-07-06 naptar.php
 -rwxrwxrwx 1 utopszkij www-data   6368 2022-06-20 osszegzes.php
--rwxrwxrwx 1 utopszkij www-data  14444 2022-06-28 recept.php
--rw-rw-r-- 1 utopszkij utopszkij  3597 2022-06-18 szinonima.php
+-rwxrwxrwx 1 utopszkij www-data  14505 2022-07-05 recept.php
+-rw-rw-r-- 1 utopszkij utopszkij  3557 2022-07-05 szinonima.php
 -rwxrwxrwx 1 utopszkij www-data  22624 2022-06-19 szovegek.php
--rwxrwxrwx 1 utopszkij www-data  16913 2022-06-25 upgrade.php
--rwxrwxrwx 1 utopszkij www-data   6016 2022-06-21 user.php
+-rwxrwxrwx 1 utopszkij www-data  17843 2022-07-06 upgrade.php
+-rwxrwxrwx 1 utopszkij www-data   6112 2022-07-06 user.php
 
 ./includes/models:
-összesen 52
+összesen 48
 -rw-rw-r-- 1 utopszkij utopszkij 6466 2022-06-15 atvaltasmodel.php
 -rw-rw-r-- 1 utopszkij utopszkij 1434 2022-06-23 cimkemodel.php
 -rw-rw-r-- 1 utopszkij utopszkij 1611 2022-06-19 commentmodel.php
 -rw-rw-r-- 1 utopszkij utopszkij   30 2022-05-27 index.php
 -rw-rw-r-- 1 utopszkij utopszkij 1334 2022-06-18 mertekegysegmodel.php
--rw-rw-r-- 1 utopszkij utopszkij 2796 2022-06-19 model.php
 -rw-rw-r-- 1 utopszkij utopszkij 1441 2022-05-27 napimenumodel.php
 -rw-rw-r-- 1 utopszkij utopszkij 4949 2022-06-19 receptmodel.php
 -rw-rw-r-- 1 utopszkij utopszkij 3168 2022-06-19 szinonimamodel.php
--rw-rw-r-- 1 utopszkij utopszkij 5689 2022-06-19 usermodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 5653 2022-07-06 usermodel.php
 
 ./includes/views:
-összesen 96
--rw-rw-r-- 1 utopszkij utopszkij  2842 2022-06-18 atvaltaskep.html
--rw-rw-r-- 1 utopszkij utopszkij  1184 2022-06-18 atvaltasok.html
--rw-rw-r-- 1 utopszkij utopszkij  1106 2022-06-23 cimkebrowser.html
--rw-rw-r-- 1 utopszkij utopszkij  2127 2022-06-23 cimkeform.html
--rw-rw-r-- 1 utopszkij utopszkij  4727 2022-06-23 commentkep.html
+összesen 112
+-rw-rw-r-- 1 utopszkij utopszkij  2842 2022-07-06 atvaltaskep.html
+-rw-rw-r-- 1 utopszkij utopszkij  1226 2022-07-06 atvaltasok.html
+-rw-rw-r-- 1 utopszkij utopszkij  1161 2022-07-06 cimkebrowser.html
+-rw-rw-r-- 1 utopszkij utopszkij  2305 2022-07-06 cimkeform.html
+-rw-rw-r-- 1 utopszkij utopszkij  4815 2022-07-06 commentkep.html
+-rw-rw-r-- 1 utopszkij utopszkij   476 2022-07-04 footer.html
 -rw-rw-r-- 1 utopszkij utopszkij    30 2022-05-27 index.php
--rw-rw-r-- 1 utopszkij utopszkij  1242 2022-06-21 login.html
--rw-rw-r-- 1 utopszkij utopszkij  1370 2022-06-19 mertekegysegbrowser.html
--rw-rw-r-- 1 utopszkij utopszkij  1833 2022-06-18 mertekegysegform.html
--rw-rw-r-- 1 utopszkij utopszkij  3516 2022-05-27 napimenukep.html
--rw-rw-r-- 1 utopszkij utopszkij  2142 2022-06-18 paginator.html
+-rw-rw-r-- 1 utopszkij utopszkij  1492 2022-07-06 login.html
+-rw-rw-r-- 1 utopszkij utopszkij  4328 2022-07-06 mainmenu.html
+-rw-rw-r-- 1 utopszkij utopszkij  1413 2022-07-06 mertekegysegbrowser.html
+-rw-rw-r-- 1 utopszkij utopszkij  2033 2022-07-06 mertekegysegform.html
+-rw-rw-r-- 1 utopszkij utopszkij  3515 2022-07-06 napimenukep.html
+-rw-rw-r-- 1 utopszkij utopszkij  2146 2022-07-04 paginator.html
 -rw-rw-r-- 1 utopszkij utopszkij  3187 2022-06-13 receptek.html
--rw-rw-r-- 1 utopszkij utopszkij 18810 2022-06-30 receptkep.html
--rw-rw-r-- 1 utopszkij utopszkij  1683 2022-06-21 regist.html
--rw-rw-r-- 1 utopszkij utopszkij  1864 2022-06-19 szinonimabrowser.html
--rw-rw-r-- 1 utopszkij utopszkij  1970 2022-06-17 szinonimaform.html
--rw-rw-r-- 1 utopszkij utopszkij   883 2022-06-19 userbrowser.html
--rw-rw-r-- 1 utopszkij utopszkij  3889 2022-06-23 userform.html
--rw-rw-r-- 1 utopszkij utopszkij  2352 2022-06-18 view.php
+-rw-rw-r-- 1 utopszkij utopszkij 20911 2022-07-06 receptkep.html
+-rw-r--r-- 1 utopszkij utopszkij  1886 2022-07-06 regist.html
+-rw-r--r-- 1 utopszkij utopszkij  1897 2022-07-01 szinonimabrowser.html
+-rw-rw-r-- 1 utopszkij utopszkij  2175 2022-07-06 szinonimaform.html
+-rw-rw-r-- 1 utopszkij utopszkij   929 2022-07-06 userbrowser.html
+-rw-rw-r-- 1 utopszkij utopszkij  4558 2022-07-06 userform.html
 
 ./vendor:
-összesen 644
-drwxr-xr-x  4 utopszkij utopszkij   4096 2021-10-09 bootstrap
-drwxrwxr-x  2 utopszkij utopszkij   4096 2022-06-20 database
-drwxr-xr-x 10 utopszkij utopszkij   4096 2021-10-17 fontawesome
--rw-rw-r--  1 utopszkij utopszkij     30 2022-05-23 index.php
--rw-rw-r--  1 utopszkij utopszkij 640610 2022-05-26 vue.global.js
+összesen 56
+drwxr-xr-x  4 utopszkij utopszkij  4096 2021-10-09 bootstrap
+-rw-rw-r--  1 utopszkij utopszkij 11547 2022-07-06 controller.php
+drwxrwxr-x  2 utopszkij utopszkij  4096 2022-06-20 database
+-rwxrwxrwx  1 utopszkij utopszkij  3203 2022-07-05 fblogin.php
+drwxr-xr-x 10 utopszkij utopszkij  4096 2021-10-17 fontawesome
+-rw-rw-r--  1 utopszkij utopszkij  3988 2022-07-06 fw.php
+-rwxrwxrwx  1 utopszkij utopszkij  4638 2022-07-05 googlelogin.php
+-rw-rw-r--  1 utopszkij utopszkij    30 2022-05-23 index.php
+-rw-rw-r--  1 utopszkij utopszkij  2817 2022-07-05 model.php
+-rw-rw-r--  1 utopszkij utopszkij  2484 2022-07-05 view.php
+drwxrwxr-x  2 utopszkij utopszkij  4096 2022-07-05 vue
 
 ./vendor/bootstrap:
 összesen 8
@@ -375,7 +484,7 @@ drwxr-xr-x 2 utopszkij utopszkij 4096 2021-10-09 js
 ./vendor/database:
 összesen 100
 -rw-rw-r-- 1 utopszkij utopszkij 79267 2022-06-20 dbinit.sql
--rw-rw-r-- 1 utopszkij utopszkij 17789 2022-06-22 db.php
+-rw-rw-r-- 1 utopszkij utopszkij 17982 2022-07-05 db.php
 
 ./vendor/fontawesome:
 összesen 40
@@ -2124,3 +2233,7 @@ drwxr-xr-x 2 utopszkij utopszkij 49152 2021-08-04 solid
 -rw-r--r-- 1 utopszkij utopszkij 202744 2021-08-04 fa-solid-900.ttf
 -rw-r--r-- 1 utopszkij utopszkij 101648 2021-08-04 fa-solid-900.woff
 -rw-r--r-- 1 utopszkij utopszkij  78268 2021-08-04 fa-solid-900.woff2
+
+./vendor/vue:
+összesen 628
+-rw-rw-r-- 1 utopszkij utopszkij 640610 2022-05-26 vue.global.js

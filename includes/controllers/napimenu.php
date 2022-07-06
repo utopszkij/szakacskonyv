@@ -2,7 +2,6 @@
 use \RATWEB\DB\Query;
 use \RATWEB\DB\Record;
 
-include_once __DIR__.'/controller.php';
 include_once __DIR__.'/../models/napimenumodel.php';
 
 class NapiMenu extends Controller{

@@ -2,17 +2,19 @@
     <div class="alert alert-danger" v-if="msg != ''">
         {{ msg }}
     </div>
-    <h1>Regisztrálás</h1>
+    <center><i class="fa fa-user-plus fa-4x" aria-hidden="true"></i><h1>Regisztrálás</h1>
     <form name="registration" action="index.php?task=doregist" method="post">
     <input type="hidden" name="task" value="doregist" />
-    <input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
+    <i class="fa fa-user"></i> <input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
     <br /><br />
-    <input type="password" name="password" placeholder="Jelszó" required="true" />
+    <i class="fa fa-key"></i> 
+    <input type="password" name="password" placeholder="Jelszó" required="true" class="password"/>
     <br /><br />
-    <input type="password" name="password2" placeholder="Jelszó ismét" required="true" />
+    <i class="fa fa-key"></i> 
+    <input type="password" name="password2" placeholder="Jelszó ismét" required="true" class="password"/>
     <br /><br />
     <button type="submit" class="btn btn-primary" name="submit" style="width:250px">
-        <em class="fas fa-check"></em>&nbsp;Küld
+        <em class="fas fa-check"></em>&nbsp;Regisztrálás
     </button>    
     </form>
     <p><strong>Figyelem! e-mail címet nem tárolunk. 
@@ -36,5 +38,5 @@
         Bejelentkezés után a felső menüben lévő belépési nevedre kattintva,  
         a "profil" képernyőn jelszót változtathatsz, avatar képet tölthetsz fel.
     </div>
-</div>
+</div></center>
 <?php	

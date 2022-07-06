@@ -311,17 +311,20 @@ class Query {
 
 
 	/**
-	* az összeállított sql eredménysorainak száma
+	* az összeállított sql által szolgáltatott eredménysok száma
 	* @return int
 	*/
 	public function count(): int {
-		if (!$this->res) {
-			$this->res = $this->mysqli->query($this->getSql());
-			$this->error = mysqli_error($this->mysqli);
-			$this->errno = mysqli_errno($this->mysqli);
-			$this->cursor = -1;
+		$this->res = $this->mysqli->query('select count(*) cc from ('.$this->getSql().') w');
+		$this->error = mysqli_error($this->mysqli);
+		$this->errno = mysqli_errno($this->mysqli);
+		$this->cursor = -1;
+		$this->cursor = -1;
+		if (($this->errno == 0) & ($this->res->num_rows == 1)) {
+				$this->res->data_seek(0);
+				$rec = $this->res->fetch_object('\RATWEB\DB\Record');			
+				$result = (int)$rec->cc;
 		}
-		$result = $this->res->num_rows;
 		return  $result;	
 	}
 

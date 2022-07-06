@@ -20,6 +20,7 @@ alapján megpróbál a net-en képet keresni,
 - a receptekhez hozáászólásokat lehet csatolni, a hozzászólások képeket is tartalmazhatnak	
 - az összesítések optimális müködése érdekében a program egy szinonima szótárat és mértékegység
 átváltó táblázatot használ. Ezek tartalmát csak a rendszer adminisztrátorok módosíthatják.
+- responsive megjelenés
 			
 A program konfigurálható egyfelhasználós vagy többfelhasználós módba.
 			
@@ -107,6 +108,29 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
+
+## software documentáció
+
+[http://szakacs.great-site.net/doc/swdoc.html](http://szakacs.great-site.net/doc/swdoc.html)
+
+## php dokumentáció előállítása
+telepiteni kell a doxygen dokumentáció krátort.
+
+[https://doxygen.nl/](doxygen)  Köszönet a sw. fejlesztőinek.
+
+A telepitési könyvtárnak megfelelően módosítani kell documentor.sh fájlt.
+
+```
+cd docroot
+./documentor.sh
+```
+
+## verzió v1.5.2
+2022.07.??.
+- recept lekérdező képernyőn az adag szám módosítható (mennyiségek átszámítódnak)
+- refactoring
+- php dokumentáció beillesztése  
+### *************************************
 
 ## verzió v1.5.1
 2022.06.30.

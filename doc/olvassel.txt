@@ -1,0 +1,5 @@
+A html könyvtárban lévő dokumentáció
+a doxygen programmal készült:
+
+cd /var/www/html/phpdocumentor/bin
+./doxygen /var/www/html/szakacskonyv/doc/szakacs.cfg
