@@ -108,6 +108,10 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
 
+software documentáció:
+
+[http://szakacs.great-site.net/doc/swdoc.html](http://szakacs.great-site.net/doc/swdoc.html)
+
 ## verzió v1.5.2
 2022.07.??.
 - recept lekérdező képernyőn az adag szám

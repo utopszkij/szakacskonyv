@@ -111,8 +111,8 @@ $branch = $upgrade->branch;
 				'logedName' => $_SESSION['logedName'],
 				'logedGroup' => $_SESSION['logedGroup'],
 				'isAdmin' => isAdmin(),
-				'lastVerzio' => $lastVerzio,
-				'fileVerzio' => $fileVerzio
+				'lastVerzio' => Upgrade::versionAdjust($lastVerzio),
+				'fileVerzio' => Upgrade::versionAdjust($fileVerzio)
 				],'mainmenu'); 
 		?>
 

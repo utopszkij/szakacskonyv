@@ -1,0 +1,13 @@
+<script>
+	// ez a script a doxygen php dokumentáció kreátort egésziti ki
+	// azzal a funkcióval, hogy a filenévre kattintva a github master branch -re ugrik
+	$(function() { 
+		$('#doc-content li').attr('style','text-decoration:underline; color:blue; cursor:pointer'); 
+		$('#doc-content li').html(function(index, current) { return current.replace('/var/www/html/szakacskonyv/',''); }); 
+		$('#doc-content li').click(function(event) { 
+			var url = event.target.innerHTML;
+			url = 'https://github.com/utopszkij/szakacskonyv/blob/main/'+url;
+			window.open(url,'_source');
+		}); 
+	})
+</script>

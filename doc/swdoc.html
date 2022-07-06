@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 6.4.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2022-07-06T06:43:16.644653127"/>
+	<meta name="" content=""/>
+	<meta name="created" content="00:00:00">
+	<meta name="created" content="00:00:00">
+	<style type="text/css">
+		@page { size: 21cm 29.7cm; margin-left: 2cm; margin-right: 1cm; margin-top: 1cm; margin-bottom: 1cm }
+		p { margin-bottom: 0.25cm; background: transparent; color: #000000; line-height: 115%; background: transparent }
+		h1 { margin-bottom: 0.21cm; background: transparent; color: #000000; background: transparent; page-break-after: avoid }
+		h1.western { font-family: "Liberation Serif", serif; font-size: 24pt; font-weight: bold }
+		h1.cjk { font-family: "Noto Serif CJK SC"; font-size: 24pt; font-weight: bold }
+		h1.ctl { font-family: "Lohit Devanagari"; font-size: 24pt; font-weight: bold }
+		h2 { margin-top: 0.35cm; margin-bottom: 0.21cm; background: transparent; color: #000000; background: transparent; page-break-after: avoid }
+		h2.western { font-family: "Liberation Serif", serif; font-size: 18pt; font-weight: bold }
+		h2.cjk { font-family: "Noto Serif CJK SC"; font-size: 18pt; font-weight: bold }
+		h2.ctl { font-family: "Lohit Devanagari"; font-size: 18pt; font-weight: bold }
+		h3 { margin-top: 0.25cm; margin-bottom: 0.21cm; background: transparent; color: #000000; background: transparent; page-break-after: avoid }
+		h3.western { font-family: "Liberation Serif", serif; font-size: 14pt; font-weight: bold }
+		h3.cjk { font-family: "Noto Serif CJK SC"; font-size: 14pt; font-weight: bold }
+		h3.ctl { font-family: "Lohit Devanagari"; font-size: 14pt; font-weight: bold }
+		h4 { margin-top: 0.21cm; margin-bottom: 0.21cm; background: transparent; color: #000000; background: transparent; page-break-after: avoid }
+		h4.western { font-family: "Liberation Serif", serif; font-size: 12pt; font-weight: bold }
+		h4.cjk { font-family: "Noto Serif CJK SC"; font-size: 12pt; font-weight: bold }
+		h4.ctl { font-family: "Lohit Devanagari"; font-size: 12pt; font-weight: bold }
+		pre { background: transparent; color: #000000; background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "Noto Sans Mono CJK SC", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		strong { font-weight: bold }
+		code.western { font-family: "Liberation Mono", monospace }
+		code.cjk { font-family: "Noto Sans Mono CJK SC", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+		em { font-style: italic }
+		a:link { color: #000080; so-language: zxx; text-decoration: underline }
+		a:visited { color: #800000; so-language: zxx; text-decoration: underline }
+	</style>
+</head>
+<body lang="hu-HU" text="#000000" link="#000080" vlink="#800000" dir="ltr" style="border: none; padding: 2cm"><h1 class="western">
+RATWEB keretrendszer program dokumentáció</h1>
+<div id="Tartalomjegyzék1" dir="ltr">
+	<div id="Tartalomjegyzék1_Head" dir="ltr"><p style="margin-top: 0.42cm; margin-bottom: 0.21cm; background: transparent; line-height: 100%; page-break-after: avoid">
+		<font face="Liberation Sans, sans-serif"><font size="4" style="font-size: 16pt"><b>Tartalomjegyzék</b></font></font></p>
+	</div>
+	<p style="margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc145_953040041">RATWEB keretrendszer
+	program dokumentáció	</a></p>
+	<p style="margin-left: 0.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc147_953040041">1. Általános
+	áttekintés	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc149_953040041">1.1. Adatbázis
+	interfész	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc151_953040041">1.2. Lekérdezések	</a></p>
+	<p style="margin-left: 1.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc153_953040041">1.2.1. Egy táblát
+	érintő adatbázis lekérdezés	</a></p>
+	<p style="margin-left: 1.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc155_953040041">1.2.2. Join -al
+	összekapcsolt táblákat érintő adatbázis lekérdezés	</a></p>
+	<p style="margin-left: 1.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc157_953040041">1.2.3. Union -al
+	összekapcsolt lekérdezés	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc159_953040041">1.3. Adatbázis
+	manipulációk	</a></p>
+	<p style="margin-left: 1.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc161_953040041">1.3.1 Record felvitel	</a></p>
+	<p style="margin-left: 1.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc163_953040041">1.3.2 Record(ok)
+	módosítása	</a></p>
+	<p style="margin-left: 1.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc165_953040041">1.3.3 Record(ok)
+	törlése	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc167_953040041">1.4. SQL script
+	futtatás	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc169_953040041">1.5. Hibakezelés	</a></p>
+	<p style="margin-left: 0.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc171_953040041">2. MVC struktúra	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc173_953040041">2.1. Controller	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc175_953040041">2.2. Model	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc177_953040041">2.3. Viewer	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc179_953040041">2.3.1 paginátor	</a></p>
+	<p style="margin-left: 0.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc181_953040041">3. Taskok	</a></p>
+	<p style="margin-left: 1cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc183_953040041">3.1 SEO barát URL -ek	</a></p>
+	<p style="margin-left: 0.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc185_953040041">4. Megjelenés (css)	</a></p>
+	<p style="margin-left: 0.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___Toc187_953040041">5. Új verzió
+	publikálás	</a></p>
+</div>
+<h2 class="western"><br/>
+<br/>
+
+</h2>
+<h2 class="western"><a name="__RefHeading___Toc147_953040041"></a><a name="1ltalnosttekints"></a><a name="__RefHeading___Toc128_1001536460"></a>
+1. Általános áttekintés</h2>
+<p>A RATWEB egy általános célra készült PHP-MYSQL-VUE
+keretrendszer. A laravel-nél kisebb erőforrás igényű,
+egyszerűbben telepíthető, ennek ellenére annak sok szolgáltatását
+nyújtja, szintaxisa több ponton hasonló ahhoz. Így aki a laravel-t
+ismeri az könnyen megbarátkozik ezzel is, de a laravel ismerete
+nélkül is boldogulni fogsz vele. A keretredszer Model – Viewer –
+Controller struktúra szerint épül fel (MVC). A mysql elérés egy
+egyedi, laravel -re emlékeztető interfészen keresztül történik.
+A web oldalak megjelenítéséhez vuejs -t és bootstrap -ot használ.</p>
+<p>Php class -ok dokumentációja: <a href="html/index.html">doc/html/index.html</a>
+</p>
+<h3 class="western"><a name="__RefHeading___Toc149_953040041"></a><a name="11adatbzisinterfsz"></a><a name="__RefHeading___Toc130_1001536460"></a>
+1.1. Adatbázis interfész</h3>
+<p>Az index.php gondoskodik a betöltéséről
+(vendor/database/db.php) Alap objektuma: <strong>Query(„tableName”)</strong>.
+</p>
+<p>Az interface feltételezei, hogy a rekordokban van egy integer
+<strong>&quot;id&quot;</strong> ami a <strong>primary key</strong> és
+<strong>auto increment</strong>. A használatot példákon keresztül
+szemléltetjük.</p>
+<h3 class="western"><br/>
+<br/>
+
+</h3>
+<h3 class="western" style="page-break-before: always"><a name="__RefHeading___Toc151_953040041"></a><a name="__RefHeading___Toc132_1001536460"></a><a name="12lekrdezsek"></a>
+1.2. Lekérdezések</h3>
+<h4 class="western"><a name="__RefHeading___Toc153_953040041"></a><a name="__RefHeading___Toc134_1001536460"></a><a name="121egytbltrintadatbzislekrdezs"></a>
+1.2.1. Egy táblát érintő adatbázis lekérdezés</h4>
+<pre class="western"><code class="western">$db = new Query(&quot;tableName&quot;);</code>
+<code class="western">$record = $db-&gt;where(&quot;name&quot;,”=”,”valaki”)</code>
+<code class="western">    </code><code class="western">-&gt;where(&quot;state&quot;,&quot;&gt;&quot;,1)</code>
+<code class="western">    </code><code class="western">-&gt;first();</code>
+<code class="western">// result = {&quot;colName&quot;:colValue, ....} vagy {}</code>
+
+<code class="western">$state = 7;</code>
+<code class="western">$records = $db-&gt;select([&quot;name&quot;,[&quot;state&quot;,&quot;s&quot;], [&quot;sum(adat)&quot;,&quot;sadat&quot;]])</code>
+<code class="western">            </code><code class="western">-&gt;where(&quot;name&quot;,&quot;&lt;&gt;&quot;,&quot;&quot;)</code>
+<code class="western">            </code><code class="western">-&gt;orWhere(&quot;state&quot;,&quot;=&quot;,$state)</code>
+<code class="western">            </code><code class="western">-&gt;groupBy([&quot;id&quot;,&quot;name&quot;,&quot;state&quot;])</code>
+<code class="western">            </code><code class="western">-&gt;orderBy(&quot;name&quot;)</code>
+<code class="western">            </code><code class="western">-&gt;offset(12)</code>
+<code class="western">            </code><code class="western">-&gt;limit(20)</code>
+<code class="western">            </code><code class="western">-&gt;all();</code>
+<code class="western">// result = [{&quot;name&quot;:&quot;...&quot;, &quot;s&quot;:&quot;...&quot;, &quot;sadat&quot;:szám},...] vagy []</code>
+
+<code class="western">$count = $db-&gt;where(&quot;name&quot;,&quot;=&quot;,&quot;Gipsz&quot;)</code>
+<code class="western">        </code><code class="western">-&gt;count();</code>
+<code class="western">// result : integer rekordok száma</code></pre><h4 class="western">
+<a name="__RefHeading___Toc155_953040041"></a><a name="__RefHeading___Toc136_1001536460"></a><a name="122joinalsszekapcsolttblkatrintadatbzislekrdezs"></a>
+1.2.2. Join -al összekapcsolt táblákat érintő adatbázis
+lekérdezés</h4>
+<pre class="western"><code class="western">$db = new Query(&quot;table1&quot;,&quot;t1&quot;);</code>
+<code class="western">$records = $db-&gt;select([&quot;t1.id&quot;,&quot;t2.name&quot;])</code>
+<code class="western">        </code><code class="western">-&gt;join(&quot;LEFT OUTER&quot;,&quot;table2&quot;,&quot;t2&quot;,&quot;t2.id&quot;,&quot;=&quot;,&quot;t1.id&quot;)</code>
+<code class="western">        </code><code class="western">-&gt;where(&quot;t1.id&quot;,&quot;&gt;=&quot;,11)</code>
+<code class="western">        </code><code class="western">-&gt;all();</code></pre><h4 class="western">
+<a name="__RefHeading___Toc157_953040041"></a><a name="123unionalsszekapcsoltlekrdezs"></a><a name="__RefHeading___Toc138_1001536460"></a>
+1.2.3. Union -al összekapcsolt lekérdezés</h4>
+<pre class="western"><code class="western">$db1 = new Query(&quot;table1&quot;);</code>
+<code class="western">$db1-&gt;select([&quot;id&quot;,&quot;name&quot;])</code>
+
+<code class="western">$db2 = new Query(&quot;table2&quot;);</code>
+<code class="western">$records = $db2-&gt;select([&quot;id&quot;,&quot;name&quot;])</code>
+<code class="western">            </code><code class="western">-&gt;where(&quot;id&quot;,&quot;&lt;&quot;,20)</code>
+<code class="western">            </code><code class="western">-&gt;union($db1)</code>
+<code class="western">            </code><code class="western">-&gt;orderBy(&quot;nev&quot;)</code>
+<code class="western">            </code><code class="western">-&gt;all();  </code></pre><h3 class="western">
+<a name="__RefHeading___Toc159_953040041"></a><a name="__RefHeading___Toc140_1001536460"></a><a name="13adatbzismanipulcik"></a>
+1.3. Adatbázis manipulációk</h3>
+<h4 class="western"><a name="__RefHeading___Toc161_953040041"></a><a name="__RefHeading___Toc142_1001536460"></a><a name="131recordfelvitel"></a>
+1.3.1 Record felvitel</h4>
+<pre class="western"><code class="western">$record = new Record();</code>
+<code class="western">$record-&gt;id = 0;</code>
+<code class="western">$record-&gt;name = &quot;nev1&quot;;</code>
+<code class="western">$db = new Query(&quot;tabla1&quot;);</code>
+<code class="western">$newId = $db-&gt;insert($record);  // id autoinc primary key)</code></pre><h4 class="western">
+<a name="__RefHeading___Toc163_953040041"></a><a name="__RefHeading___Toc144_1001536460"></a><a name="132recordokmdostsa"></a>
+1.3.2 Record(ok) módosítása</h4>
+<pre class="western"><code class="western">$record = new Record();</code>
+<code class="western">$record-&gt;name = &quot;nev1-modositva&quot;;</code>
+<code class="western">$db = new Query(&quot;tabla1&quot;);</code>
+<code class="western">$bool = $db-&gt;where(&quot;state&quot;,&quot;=&quot;,3)</code>
+<code class="western">    </code><code class="western">-&gt;update($record);  </code></pre><h4 class="western">
+<a name="__RefHeading___Toc165_953040041"></a><a name="__RefHeading___Toc146_1001536460"></a><a name="133recordoktrlse"></a>
+1.3.3 Record(ok) törlése</h4>
+<pre class="western"><code class="western">$db = new Query(&quot;tabla1&quot;);</code>
+<code class="western">$bool = $db-&gt;where(&quot;state&quot;,&quot;=&quot;,3)</code>
+<code class="western">    </code><code class="western">-&gt;delete();  </code></pre><h3 class="western">
+<a name="__RefHeading___Toc167_953040041"></a><a name="__RefHeading___Toc148_1001536460"></a><a name="14sqlscriptfuttats"></a>
+1.4. SQL script futtatás</h3>
+<pre class="western"><code class="western">$db = new Query(&quot;tabla1&quot;);</code>
+<code class="western">$db-&gt;exec(&quot;sql script&quot;);  </code></pre><h3 class="western">
+<a name="__RefHeading___Toc169_953040041"></a><a name="__RefHeading___Toc150_1001536460"></a><a name="15hibakezels"></a>
+1.5. Hibakezelés</h3>
+<p>Minden hívás után ellenőrizhető a <strong>$db-&gt;error</strong>
+public property. Ha ez &quot;&quot; akkor nem volt hiba, ellenkező
+esetben a hibaüzenetet tartalmazza.</p>
+<h2 class="western"><a name="__RefHeading___Toc171_953040041"></a><a name="__RefHeading___Toc152_1001536460"></a><a name="2mvcstruktra"></a>
+2. MVC struktúra</h2>
+<p>Adat modellek: includes/models/{modelName}model.php</p>
+<p>Viewerek: includes/views/{viewName}.html</p>
+<p>Controllerek: includes/controllers/{conrollerName}.php</p>
+<h3 class="western"><a name="__RefHeading___Toc173_953040041"></a><a name="__RefHeading___Toc154_1001536460"></a><a name="21controller"></a>
+2.1. Controller</h3>
+<pre class="western"><code class="western">&lt;?php</code>
+<code class="western">use \RATWEB\DB\Query;</code>
+<code class="western">use \RATWEB\DB\Record;</code>
+
+<code class="western">include_once __DIR__.'/../models/valamimodel.php';</code>
+<code class="western">class Valami extends Controller {</code>
+
+<code class="western">    </code><code class="western">function __construct() {</code>
+<code class="western">        </code><code class="western">parent::__construct();</code>
+<code class="western">        </code><code class="western">$this-&gt;name = &quot;valami&quot;;</code>
+<code class="western">        </code><code class="western">$this-&gt;model = new ValamiModel();</code>
+<code class="western">        </code><code class="western">$this-&gt;browserURL = 'index.php?task=valamik';</code>
+<code class="western">        </code><code class="western">$this-&gt;addURL = 'index.php?task=valamiadd';</code>
+<code class="western">        </code><code class="western">$this-&gt;editURL = 'index.php?task=valamiedit';</code>
+<code class="western">        </code><code class="western">$this-&gt;browserTask = 'valamik';</code>
+<code class="western">    </code><code class="western">}</code>
+
+<code class="western">    </code><code class="western">/**</code>
+<code class="western">     </code><code class="western">* rekord ellenörzés</code>
+<code class="western">     </code><code class="western">* @param Record $record</code>
+<code class="western">     </code><code class="western">* @return string üres vagy hibaüzenet</code>
+<code class="western">     </code><code class="western">*/</code>
+<code class="western">    </code><code class="western">protected function validator($record):string {</code>
+<code class="western">        </code><code class="western">$result = '';</code>
+<code class="western">        </code><code class="western">.....</code>
+<code class="western">        </code><code class="western">return $result;</code>
+<code class="western">    </code><code class="western">}</code>
+
+<code class="western">    </code><code class="western">/**</code>
+<code class="western">     </code><code class="western">* bejelentkezett user jogosult erre?</code>
+<code class="western">     </code><code class="western">* @param string $action new|edit|delete|show</code>
+<code class="western">     </code><code class="western">* @return bool</code>
+<code class="western">     </code><code class="western">*/</code>
+<code class="western">    </code><code class="western">protected function  accessRight(string $action, $record):bool {</code>
+<code class="western">        </code><code class="western">$result = false;</code>
+<code class="western">        </code><code class="western">....</code>
+<code class="western">        </code><code class="western">return $result;</code>
+<code class="western">    </code><code class="western">}</code>
+
+<code class="western">    </code><code class="western">public function task1() {</code>
+<code class="western">        </code><code class="western">....</code>
+<code class="western">    </code><code class="western">}</code>
+
+<code class="western">    </code><code class="western">....</code>
+<code class="western">}</code>
+<code class="western">?&gt;</code></pre><p>
+lásd a vendor/controller.php -t is!</p>
+<h3 class="western"><a name="__RefHeading___Toc175_953040041"></a><a name="__RefHeading___Toc156_1001536460"></a><a name="22model"></a>
+2.2. Model</h3>
+<pre class="western"><code class="western">&lt;?php</code>
+<code class="western">    </code><code class="western">use \RATWEB\Model;</code>
+<code class="western">    </code><code class="western">use \RATWEB\DB\Query;</code>
+<code class="western">    </code><code class="western">use \RATWEB\DB\Record;</code>
+
+<code class="western">    </code><code class="western">class ValamiModel extends Model  {</code>
+
+<code class="western">        </code><code class="western">function __construct() {</code>
+<code class="western">            </code><code class="western">parent::__construct();</code>
+<code class="western">            </code><code class="western">$this-&gt;setTable = 'valami';</code>
+<code class="western">            </code><code class="western">$this-&gt;errorMsg = ''; </code>
+<code class="western">        </code><code class="western">}</code>
+
+<code class="western">        </code><code class="western">// ha böngésző is van akkor kell  definiálni</code>
+<code class="western">        </code><code class="western">// getItems(int $page, int $limit,$filter,int $order):array;</code>
+<code class="western">        </code><code class="western">// getTotal($filter): int; </code>
+<code class="western">        </code><code class="western">// public metodusokat is</code>
+
+<code class="western">    </code><code class="western">}        </code>
+
+<code class="western">?&gt;</code></pre><p>
+Lásd a vendor/model.php -t is!</p>
+<h3 class="western"><a name="__RefHeading___Toc177_953040041"></a><a name="__RefHeading___Toc158_1001536460"></a><a name="23viewer"></a>
+2.3. Viewer</h3>
+<p>A viewer hívása a controllerben:</p>
+<pre class="western"><code class="western">    </code><code class="western">view(&quot;viewName&quot;,</code>
+<code class="western">        </code><code class="western">[&quot;par1&quot;:value1, ....],</code>
+<code class="western">        </code><code class="western">&quot;appname&quot;)</code></pre><p>
+A harmadik paraméter elmaradhat, ez esetben &quot;app&quot; az
+alapértelmezése.</p>
+<p>A html outputon egy 
+</p>
+<pre class="western"><code class="western">&lt;div id=&quot;appName&quot;&gt;...&lt;/div&gt; </code></pre><p>
+fogja tartalmazni a html templatet, és generálva lesz a vuejs hívás
+a megadott paramétereket átadva.</p>
+<p>A viewer fájlok formája:</p>
+<pre class="western"><code class="western">&lt;div&gt;</code>
+<code class="western">.... vue elemeket is tartalmazhat, </code>
+<code class="western">include viewName sorokat is tartalmazhat</code>
+<code class="western">.....</code>
+<code class="western">&lt;/div&gt;</code>
+<code class="western">&lt;script&gt;</code>
+<code class="western">    </code><code class="western">var methods = {</code>
+<code class="western">        </code><code class="western">afterMount() {</code>
+<code class="western">        </code><code class="western">},</code>
+<code class="western">        </code><code class="western">.....</code>
+<code class="western">    </code><code class="western">}</code>
+<code class="western">&lt;/script&gt;</code></pre><p>
+Lásd a vendor/view.php -t is!</p>
+<h3 class="western"><a name="__RefHeading___Toc179_953040041"></a><a name="__RefHeading___Toc160_1001536460"></a><a name="231pagintor"></a>
+2.3.1 paginátor</h3>
+<p>A template -be a 
+</p>
+<pre class="western"><code class="western">include paginator</code></pre><p>
+sort kell elhelyezni és a controllerben a viewer-nek át kell adni a <strong>
+total</strong> (összes rekord szám), <strong>pages</strong> ([1,2,3...] a
+teljes megjelenítéshet szükséges lapok felsorolása), <strong>limit</strong>
+( az egy lapon megjelenített sorok száma), <strong>page</strong> (az éppen
+megjelenített lap száma), <strong>task</strong> (a browser hívás task
+neve) - paramétereket.</p>
+<h2 class="western"><a name="__RefHeading___Toc181_953040041"></a><a name="__RefHeading___Toc162_1001536460"></a><a name="3taskok"></a>
+3. Taskok</h2>
+<p>A taskok hívása az URL -be írt &quot;task=” paraméterrel
+történik. Két módszer támogatott:</p>
+<p>a. task=controllerName.taskName</p>
+<p>b. task=taskName</p>
+<p>A „b” eljárás használata esetén a komponenseket az
+index.php -ban</p>
+<pre class="western"><code class="western">include_once('vendor/fw.php');</code>
+<code class="western">importComponent(„componentName”); </code>
+<code class="western">....</code></pre><p>
+módon importálni kell, és a task neveknek az összes komponenst
+tekintetve egyedieknek kell lenniük. A taskok a controllerek public
+methodusai.</p>
+<h3 class="western"><a name="__RefHeading___Toc183_953040041"></a><a name="__RefHeading___Toc164_1001536460"></a><a name="31seobarturlek"></a>
+3.1 SEO barát URL -ek</h3>
+<p>Ha a .htaccess kezelés és a RewriteEngine a szerveren
+engedélyezett akkor SEO barát URL -ek is használhatóak:</p>
+<pre class="western"><code class="western">http[s]://domain/path/task/taskName/parName1/parValue1/parName2/parValue2.....</code>
+<code class="western">például:</code>
+<code class="western">https://example.hu/task/recept.show/id/13</code></pre><h2 class="western">
+<a name="__RefHeading___Toc185_953040041"></a><a name="__RefHeading___Toc166_1001536460"></a><a name="4megjelenscss"></a>
+4. Megjelenés (css)</h2>
+<p>A documentRoot/style.css -el lehet a dizájnt kialakítani. A task
+outputja</p>
+<pre class="western"><code class="western">&lt;div id=&quot;page&quot;&gt;...&lt;/div&gt;</code></pre><p>
+-ben jelenik meg a html -ben.</p>
+<h2 class="western"><a name="__RefHeading___Toc187_953040041"></a>5.
+Új verzió publikálás</h2>
+<p><br/>
+<br/>
+
+</p>
+<pre class="western">cd {documentroot}
+git checkout -b v#.#.#
+./files.sh
+git add .
+git commit
+git push origin v#.#.#
+</pre>
+</body>
+</html>
