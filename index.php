@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// server infok hozzáférhetővé tétele a php számára
+define('DOCROOT',__DIR__);
+$w1 = (int) str_replace('M', '', ini_get('post_max_size'));
+$w2 = (int) str_replace('M','',ini_get('upload_max_filesize'));
+define('UPLOADLIMIT',min($w1,$w2));
+
 include_once 'config.php';
 include_once 'vendor/database/db.php';
 include_once('vendor/model.php');

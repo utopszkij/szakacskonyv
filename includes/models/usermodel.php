@@ -117,7 +117,7 @@
             if (isset($_FILES['avatar'])) {
                 if (file_exists($_FILES['avatar']['tmp_name'])) { 
                     $target_dir = DOCROOT.'/images/users';
-                    if (!is_dir($target_dir)) {
+                    if (!is_dir($target_dir.'/')) {
                         mkdir($target_dir,0777);
                     }
                     $target_dir .= '/';

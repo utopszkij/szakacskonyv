@@ -355,9 +355,14 @@ outputja</p>
 <br/>
 
 </p>
+<p>1. Az index.php -ban módositsuk a <strong>$fileVerzio</strong> adatot!</p>
+<p>2. A <strong>reame.md</strong> fájlban modosítsuk a változás történet részt!</p>
+<p>3. Szükség esetén az <strong>includes/controllers/upgrade.php</strong> fájlba készitsük el az adatbázist modosító kódot!</p>
+<p>5. linux terminálban:</p>
 <pre class="western">cd {documentroot}
-git checkout -b v#.#.#
+./documentor.sh
 ./files.sh
+git checkout -b v#.#.#
 git add .
 git commit
 git push origin v#.#.#

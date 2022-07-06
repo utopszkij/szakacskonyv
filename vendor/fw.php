@@ -30,13 +30,7 @@ class Fw {
 		} else if(!isset($_SESSION['screen_width']) OR !isset($_SESSION['screen_height'])){
 			echo '<script type="text/javascript">window.location = "' . $_SERVER['PHP_SELF'] . '?width="+screen.width+"&height="+screen.height;</script>';
 		}	
-
-		// server infok hozzáférhetővé tétele a php számára
-		define('DOCROOT',__DIR__);
-		$w1 = (int) str_replace('M', '', ini_get('post_max_size'));
-		$w2 = (int) str_replace('M','',ini_get('upload_max_filesize'));
-		define('UPLOADLIMIT',min($w1,$w2));
-
+		
 		// egy felhasználós módban minen "0" user_id -hez rendelve 
 		// szerepel az adatbázisban
 		// több felhasználós változatban a bejelentkezési folyamatban

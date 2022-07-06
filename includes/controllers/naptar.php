@@ -148,6 +148,7 @@ class Naptar {
 					<p>Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
 					Ebből bevásárló listát lehat a program segitségével készíteni.</p>
 					<p></p>
+                                        <!--
 					<h3>Tulajdonságok</h3>
 					<ul>
 						<li>Recepthez hozzávalók, elkészítési leírás és kép vihető fel,</li>
@@ -177,12 +178,15 @@ class Naptar {
 					látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
 					sajátmaga által felvitteket tudja. Illetve a rendszer adminisztrátorok és moderátorok 
 					módosíthatják, törölhetik az összes receptet. A hozzászólások mindenki számára láthatóak</p>
+                                        -->
 					<p></p>
 					<p><strong>A felhasználók által felvitt receptek, hozzászólások és képek tartalmáért, a kizárólag
 					az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
 					ezekkel kapcsolatban semmilyen felelősséget nem vállal.</strong></p>
 					<p></p>
+                                        <!--
 					<h4>A programot mindenki csak saját felelősségére használhatja.</h4>
+                                        -->
 			</div>
 			<?php
 	}

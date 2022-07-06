@@ -153,13 +153,12 @@
         </div>				
             
         <div class="form-outline mb-4">
-            <button type="button" class="btn btn-primary"
+            <button type="button" class="btn btn-success"
                 v-if="((recept.id == 0) | 
                 (recept.created_by == loged) |
                 (logedAdmin) | (logedGroup == 'moderator'))" 
-                lass="btn btn-primary" 
                 v-on:click="okClick()">
-            <em class="fas fa-check"></em>&nbsp;Tárolás</button>
+            <em class="fas fa-check"></em>&nbsp;Mentés</button>
             &nbsp;
             <a href="index.php?task=receptek" class="btn btn-secondary">
                 <em class="fas fa-reply"></em>Mégsem
@@ -194,9 +193,9 @@
                 <h3><em class="fas fa-utensils"></em>&nbsp;{{ recept.nev}}</h3>
             </div>
             <div v-if="!disabled">
-                <a href="#" v-on:click="editClick">
+                <button type="button" class="btn" v-on:click="editClick">
                     <em class="fas fa-edit" title="szerkesztes"></em> Szerkesztés
-                </a>
+                </button>
             </div>
         </div>
         <div class="d-none d-md-inline col-md-4">

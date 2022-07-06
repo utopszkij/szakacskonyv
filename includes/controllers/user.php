@@ -211,6 +211,7 @@ class User extends Controller {
      * szinonima törlése GET-ben: id
      */
     public function userdelete() {
+		$id = $this->request->input('id',0, INTEGER);
 		$record = $this->model->getById($id);
 		$record->username = 'törölt'.$record->id;
 		$record->password= md5(rand(100000,9999999));
@@ -218,6 +219,8 @@ class User extends Controller {
 		$record->realname = '';
 		$record->phone = '';
 		$record->email = '';
+		$record->password = md5(rand(10000,99000));
+		$record->password2 = $record->password;
         $this->save($record); 
     }    
 

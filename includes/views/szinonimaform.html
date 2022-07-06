@@ -25,13 +25,14 @@
         </div>
         <div class="row formBUttons" v-if="logedAdmin">
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">
-                    <em class="fas fa-check"></em>&nbsp;Tárol
+                <button type="submit" class="btn btn-success">
+                    <em class="fas fa-check"></em>&nbsp;Mentés
                 </button>&nbsp;
                 <a v-bind:href="previous" class="btn btn-secondary">
                     <em class="fas fa-reply"></em>&nbsp;Mégsem
                 </a>&nbsp;
-                <a v-bind:href="'index.php?task=szinonimadelete&id='+record.id" 
+                <button type="button"
+                   v-on:click="delClick()"
                    v-if="record.id > 0"
                    class="btn btn-danger">
                     <em class="fas fa-eraser"></em>&nbsp;Töröl
@@ -50,5 +51,11 @@
 
 <script>
     methods = {
+        delClick() {
+            popupConfirm('Bitos törölni akarod?',
+            function() {
+                location='index.php?task=szinonimadelete&id='+app.record.id;
+            })
+        }    
     }
 </script>

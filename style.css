@@ -1,7 +1,7 @@
 html {font-size:18px}
 body {text-align:center}
-.container {display:inline-block; margin:1%; padding:0px 0px 0px 0px; 
-            border-radius:30px; background-color:#d0f0d0}
+.container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
+            border-radius:30px; background-color:#EEE8AA}
 #header {height:100px; margin:1%; background-image:url('images/fejlec.png'); cursor:pointer}
 h1,h2,h3,h4,h5 {padding:1%}
 span, var {display:inline-block; width:auto}
@@ -16,7 +16,7 @@ button, .btn {margin-top:0.5%;}
 .warning {background-color:red; color:yellow; padding:1%;}
 .warning a {color:yellow;}
 .form-control {display:inline-block; width:auto}
-label {display:inéine-blobk; width: 30%; text-align:right}
+label {display:inline-block; width: 30%; text-align:right}
 
 #popup {position:fixed; z-index:99; top:100px; left:100px; display:none;
   padding:10px; text-align:center; width:auto; height:auto;
@@ -24,6 +24,10 @@ label {display:inéine-blobk; width: 30%; text-align:right}
 .popupError {background-color:red; color:white}
 .popupSuccess {background-color:rgb(80, 156, 96); color:rgb(24, 16, 16)}
 .popupSimple {background-color:silver; color:black;} 
+
+
+nav {background-color:#a57f0d}
+nav #submenu {background-color:darkkhaki}
 
 #receptForm {padding: 1% 1% 1% 1%}
 #receptForm textarea {width:100%}
@@ -79,7 +83,10 @@ form {margin:1% 1% 1% 1%}
 .filterForm form, .filterForm div {width:auto}
 .filterForm label {display:inline-block; width:15%; text-align:right; padding:0px 1% 0px 0px}
 .filterForm button {margin-top:0px;}
+.filterForm #filtercreator {width:180px}
+.filterForm #filtercimke {width:180px}
 
+#userForm input.password {width:40%; max-width:200px}
 #atvaltasForm label {width:15%}
 
 #footer {background-color:silver; padding:20px; 

@@ -73,7 +73,14 @@ class Upgrade {
 		return $result;
 	}
 	
+	/**
+	 * meglévő fájl felülírása
+	 * images -ben nem csináljuk
+	 */
 	protected function updateFile($path) {
+		if (strpos(' '.$path,'images/') > 0) { 
+			return;
+		}	
 		try {
 			if (!is_dir(dirname(DOCROOT.'/'.$path))) {
 				mkdir(dirname(DOCROOT.'/'.$path),0777);
@@ -91,7 +98,14 @@ class Upgrade {
 		}		
 	}
 
+	/**
+	 * Új fájl letöltése
+	 * images -ben nem csináljuk
+	 */
 	protected function downloadFile($path) {
+		if (strpos(' '.$path,'images/') > 0) { 
+			return;
+		}	
 		try {
 			if (!is_dir(dirname(DOCROOT.'/'.$path))) {
 				mkdir(dirname(DOCROOT.'/'.$path),0777);
@@ -106,6 +120,10 @@ class Upgrade {
 		}		
 	}
 
+	/**
+	 * meglévő fájl törlése
+	 * images -ben nem csináljuk
+	 */
 	protected function delFile($path) {
 		if ((strpos($path,'images/') === false) & (file_exists($path))) { 
 			unlink($path);
