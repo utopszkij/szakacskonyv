@@ -269,7 +269,7 @@
         <button type="button" class="btn btn-secondary"
             v-if="recept.id > 0"
             v-on:click="printClick(receptId)">
-            <em class="fas fa-print"></em>&nbsp;Nyomtatas</button>
+            <em class="fas fa-print"></em>&nbsp;Nyomtatás</button>
     </div>
 
 </div><!-- recept show -->
@@ -424,6 +424,9 @@ var methods = {
             tableHozzavalok.appendChild(newHozzavalo);
         },
         afterMount() {
+            if (this.recept == undefined) {
+                return;
+            }
             if (this.recept.id == 0) {
                 this.editClick();
             }

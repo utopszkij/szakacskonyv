@@ -1,26 +1,32 @@
 .:
-összesen 104
+összesen 128
 -rw-rw-r-- 1 utopszkij www-data    603 2021-11-06 config-example.php
--rw-rw-r-- 1 utopszkij www-data    517 2022-07-03 config.php
+-rw-rw-r-- 1 utopszkij www-data    520 2022-07-07 config.php
+-rw-rw-r-- 1 utopszkij utopszkij   522 2022-07-07 config_test.php
 drwxrwxr-x 3 utopszkij utopszkij  4096 2022-07-06 doc
 -rwxrwxr-x 1 utopszkij utopszkij    71 2022-07-06 documentor.sh
 -rwxrwxr-x 1 utopszkij utopszkij    58 2022-07-06 files.sh
--rw-rw-r-- 1 utopszkij utopszkij     0 2022-07-06 files.txt
+-rw-rw-r-- 1 utopszkij utopszkij     0 2022-07-08 files.txt
 drwxrwxrwx 4 utopszkij utopszkij  4096 2022-06-19 images
 drwxrwxrwx 5 utopszkij www-data   4096 2022-07-05 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
--rw-rw-r-- 1 utopszkij www-data   4473 2022-07-06 index.php
+-rw-rw-r-- 1 utopszkij www-data   6129 2022-07-08 index.php
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-07-08 languages
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
--rw-r--r-- 1 utopszkij utopszkij  8909 2022-07-06 readme.md
--rw-r--r-- 1 utopszkij utopszkij  4947 2022-07-06 style.css
-drwxrwxr-x 6 www-data  www-data   4096 2022-07-05 vendor
+-rw-r--r-- 1 utopszkij utopszkij  9494 2022-07-07 readme.md
+-rw-r--r-- 1 utopszkij utopszkij   271 2022-07-07 secure.sh
+-rw-r--r-- 1 utopszkij utopszkij  4959 2022-07-08 style.css
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-07-08 tests
+-rw-r--r-- 1 utopszkij utopszkij   124 2022-07-07 unsecure.sh
+drwxrwxr-x 6 www-data  www-data   4096 2022-07-07 vendor
+-rwxrwxr-x 1 utopszkij utopszkij   325 2022-07-07 viewtest.sh
 
 ./doc:
 összesen 64
 -rw-rw-r-- 1 utopszkij utopszkij   598 2022-07-06 footer.htm
 drwxrwxr-x 3 utopszkij utopszkij 12288 2022-07-06 html
 -rw-rw-r-- 1 utopszkij utopszkij   164 2022-07-05 olvassel.txt
--rw-rw-r-- 1 utopszkij utopszkij 25205 2022-07-06 swdoc.html
+-rw-rw-r-- 1 utopszkij utopszkij 25974 2022-07-07 swdoc.html
 -rw-rw-r-- 1 utopszkij utopszkij 12295 2022-07-06 szakacs.cfg
 
 ./doc/html:
@@ -359,7 +365,7 @@ drwxr-xr-x 2 www-data  www-data    4096 2022-07-06 users
 drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-05 controllers
 -rw-rw-r-- 1 utopszkij utopszkij   30 2022-05-23 index.php
 drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-05 models
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-05 views
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-08 views
 
 ./includes/controllers:
 összesen 120
@@ -369,13 +375,13 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-05 views
 -rw-rw-r-- 1 utopszkij utopszkij    30 2022-05-23 index.php
 -rw-rw-r-- 1 utopszkij utopszkij  1929 2022-07-05 mertekegyseg.php
 -rwxrwxrwx 1 utopszkij www-data   2639 2022-07-05 napimenu.php
--rwxrwxrwx 1 utopszkij www-data   7308 2022-07-06 naptar.php
+-rwxr-xr-x 1 utopszkij www-data   7507 2022-07-08 naptar.php
 -rwxrwxrwx 1 utopszkij www-data   6368 2022-06-20 osszegzes.php
--rwxrwxrwx 1 utopszkij www-data  14505 2022-07-05 recept.php
+-rwxrwxrwx 1 utopszkij www-data  14345 2022-07-08 recept.php
 -rw-rw-r-- 1 utopszkij utopszkij  3557 2022-07-05 szinonima.php
--rwxrwxrwx 1 utopszkij www-data  22624 2022-06-19 szovegek.php
+-rwxrwxrwx 1 utopszkij www-data  22644 2022-07-08 szovegek.php
 -rwxrwxrwx 1 utopszkij www-data  17843 2022-07-06 upgrade.php
--rwxrwxrwx 1 utopszkij www-data   6112 2022-07-06 user.php
+-rwxrwxrwx 1 utopszkij www-data   6325 2022-07-07 user.php
 
 ./includes/models:
 összesen 48
@@ -390,46 +396,60 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-05 views
 -rw-rw-r-- 1 utopszkij utopszkij 5653 2022-07-06 usermodel.php
 
 ./includes/views:
-összesen 112
--rw-rw-r-- 1 utopszkij utopszkij  2842 2022-07-06 atvaltaskep.html
--rw-rw-r-- 1 utopszkij utopszkij  1226 2022-07-06 atvaltasok.html
--rw-rw-r-- 1 utopszkij utopszkij  1161 2022-07-06 cimkebrowser.html
--rw-rw-r-- 1 utopszkij utopszkij  2305 2022-07-06 cimkeform.html
--rw-rw-r-- 1 utopszkij utopszkij  4815 2022-07-06 commentkep.html
--rw-rw-r-- 1 utopszkij utopszkij   476 2022-07-04 footer.html
--rw-rw-r-- 1 utopszkij utopszkij    30 2022-05-27 index.php
--rw-rw-r-- 1 utopszkij utopszkij  1492 2022-07-06 login.html
--rw-rw-r-- 1 utopszkij utopszkij  4328 2022-07-06 mainmenu.html
--rw-rw-r-- 1 utopszkij utopszkij  1413 2022-07-06 mertekegysegbrowser.html
--rw-rw-r-- 1 utopszkij utopszkij  2033 2022-07-06 mertekegysegform.html
--rw-rw-r-- 1 utopszkij utopszkij  3515 2022-07-06 napimenukep.html
--rw-rw-r-- 1 utopszkij utopszkij  2146 2022-07-04 paginator.html
--rw-rw-r-- 1 utopszkij utopszkij  3187 2022-06-13 receptek.html
--rw-rw-r-- 1 utopszkij utopszkij 20911 2022-07-06 receptkep.html
--rw-r--r-- 1 utopszkij utopszkij  1886 2022-07-06 regist.html
--rw-r--r-- 1 utopszkij utopszkij  1897 2022-07-01 szinonimabrowser.html
--rw-rw-r-- 1 utopszkij utopszkij  2175 2022-07-06 szinonimaform.html
--rw-rw-r-- 1 utopszkij utopszkij   929 2022-07-06 userbrowser.html
--rw-rw-r-- 1 utopszkij utopszkij  4558 2022-07-06 userform.html
+összesen 116
+-rw-r--r-- 1 utopszkij utopszkij  2842 2022-07-08 atvaltaskep.html
+-rw-r--r-- 1 utopszkij utopszkij  1226 2022-07-08 atvaltasok.html
+-rw-r--r-- 1 utopszkij utopszkij  1161 2022-07-08 cimkebrowser.html
+-rw-r--r-- 1 utopszkij utopszkij  2305 2022-07-08 cimkeform.html
+-rw-r--r-- 1 utopszkij utopszkij  4815 2022-07-08 commentkep.html
+-rw-r--r-- 1 utopszkij utopszkij   581 2022-07-08 footer.html
+-rw-r--r-- 1 utopszkij utopszkij    30 2022-07-08 index.php
+-rw-r--r-- 1 utopszkij utopszkij  1492 2022-07-08 login.html
+-rw-r--r-- 1 utopszkij utopszkij  4386 2022-07-08 mainmenu.html
+-rw-r--r-- 1 utopszkij utopszkij  1413 2022-07-08 mertekegysegbrowser.html
+-rw-r--r-- 1 utopszkij utopszkij  2033 2022-07-08 mertekegysegform.html
+-rw-r--r-- 1 utopszkij utopszkij  3515 2022-07-08 napimenukep.html
+-rw-r--r-- 1 utopszkij utopszkij  2146 2022-07-08 paginator.html
+-rw-r--r-- 1 utopszkij utopszkij  3187 2022-07-08 receptek.html
+-rw-r--r-- 1 utopszkij utopszkij 20994 2022-07-08 receptkep.html
+-rw-r--r-- 1 utopszkij utopszkij  1895 2022-07-08 regist.html
+-rw-r--r-- 1 utopszkij utopszkij  1897 2022-07-08 szinonimabrowser.html
+-rw-r--r-- 1 utopszkij utopszkij  2175 2022-07-08 szinonimaform.html
+-rw-r--r-- 1 utopszkij utopszkij   929 2022-07-08 userbrowser.html
+-rw-r--r-- 1 utopszkij utopszkij  4558 2022-07-08 userform.html
+-rw-r--r-- 1 utopszkij utopszkij  2352 2022-06-30 view.php
+
+./languages:
+összesen 4
+-rw-rw-r-- 1 utopszkij utopszkij 518 2022-07-08 hu.js
+
+./tests:
+összesen 20
+-rw-rw-r-- 1 utopszkij utopszkij 1321 2022-07-08 exampleTest.js
+-rw-rw-r-- 1 utopszkij utopszkij  605 2022-07-07 mock.php
+-rw-rw-r-- 1 utopszkij utopszkij 1163 2022-07-08 userbrowserTest.js
+-rw-rw-r-- 1 utopszkij utopszkij  730 2022-07-08 userformTest.js
+-rwxrwxrwx 1 utopszkij utopszkij 2630 2022-07-07 userTest.php
 
 ./vendor:
-összesen 56
+összesen 68
 drwxr-xr-x  4 utopszkij utopszkij  4096 2021-10-09 bootstrap
--rw-rw-r--  1 utopszkij utopszkij 11547 2022-07-06 controller.php
+-rw-rw-r--  1 utopszkij utopszkij 11691 2022-07-08 controller.php
 drwxrwxr-x  2 utopszkij utopszkij  4096 2022-06-20 database
 -rwxrwxrwx  1 utopszkij utopszkij  3203 2022-07-05 fblogin.php
 drwxr-xr-x 10 utopszkij utopszkij  4096 2021-10-17 fontawesome
--rw-rw-r--  1 utopszkij utopszkij  3988 2022-07-06 fw.php
+-rw-rw-r--  1 utopszkij utopszkij  3499 2022-07-07 fw.php
 -rwxrwxrwx  1 utopszkij utopszkij  4638 2022-07-05 googlelogin.php
 -rw-rw-r--  1 utopszkij utopszkij    30 2022-05-23 index.php
 -rw-rw-r--  1 utopszkij utopszkij  2817 2022-07-05 model.php
 -rw-rw-r--  1 utopszkij utopszkij  2484 2022-07-05 view.php
+-rw-rw-r--  1 utopszkij utopszkij  9428 2022-07-08 viewTester.js
 drwxrwxr-x  2 utopszkij utopszkij  4096 2022-07-05 vue
 
 ./vendor/bootstrap:
 összesen 8
 drwxr-xr-x 2 utopszkij utopszkij 4096 2021-10-09 css
-drwxr-xr-x 2 utopszkij utopszkij 4096 2021-10-09 js
+drwxr-xr-x 2 utopszkij utopszkij 4096 2022-07-08 js
 
 ./vendor/bootstrap/css:
 összesen 4972
@@ -467,7 +487,7 @@ drwxr-xr-x 2 utopszkij utopszkij 4096 2021-10-09 js
 -rw-r--r-- 1 utopszkij utopszkij 111684 2021-10-09 bootstrap-utilities.rtl.min.css.map
 
 ./vendor/bootstrap/js:
-összesen 2456
+összesen 2468
 -rw-r--r-- 1 utopszkij utopszkij 209719 2021-10-09 bootstrap.bundle.js
 -rw-r--r-- 1 utopszkij utopszkij 427637 2021-10-09 bootstrap.bundle.js.map
 -rw-r--r-- 1 utopszkij utopszkij  78129 2021-10-09 bootstrap.bundle.min.js
@@ -480,6 +500,7 @@ drwxr-xr-x 2 utopszkij utopszkij 4096 2021-10-09 js
 -rw-r--r-- 1 utopszkij utopszkij 290776 2021-10-09 bootstrap.js.map
 -rw-r--r-- 1 utopszkij utopszkij  59219 2021-10-09 bootstrap.min.js
 -rw-r--r-- 1 utopszkij utopszkij 219918 2021-10-09 bootstrap.min.js.map
+-rw-r--r-- 1 utopszkij utopszkij   8314 2022-07-08 name-day.js
 
 ./vendor/database:
 összesen 100

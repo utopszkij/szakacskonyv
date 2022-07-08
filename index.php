@@ -36,10 +36,7 @@ $lastVerzio = $upgrade->getLastVersion();
 $upgrade->dbUpgrade($dbverzio);
 $branch = $upgrade->branch;
 //- ----------- verzio kezelés end ------------
-
-
 ?>
-
 <html lang="en">
 <head>
   <meta>
@@ -49,18 +46,44 @@ $branch = $upgrade->branch;
     <title>Hetimenü</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	 <!-- bootstrap -->	
-	 <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
-    <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+	 <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!-- vue -->
-    <script src="./vendor/vue/vue.global.js"></script>
+    <script src="vendor/vue/vue.global.js"></script>
 	<!-- fontawesome --> 
-	<script src="./vendor/fontawesome/js/all.min.js"></script>
-	<link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css">
+	<script src="vendor/fontawesome/js/all.min.js"></script>
+	<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
 
 	<link rel="stylesheet" href="style.css?t=<?php echo $fileVerzio; ?>">
-	
+	<!-- multi language -->
+	<?php
+		if (defined('LNG')) {
+			if (file_exists(__DIR__.'/languages/'.LNG.'.js')) {
+				echo '<script src="languages/'.LNG.'.js"></script>';
+			} else {
+				echo '<script> tokens = {}; </script>';
+			}	
+		} else {
+			echo '<script> tokens = {}; </script>';
+		}
+	?>
 	<script type="text/javascript">
 	    const { createApp } = Vue; 
+		/**
+		 * csoki beállítás
+		 */
+		function setCookie(name,value,days) {
+			var expires = "";
+			if (days) {
+				var date = new Date();
+				date.setTime(date.getTime() + (days*24*60*60*1000));
+				expires = "; expires=" + date.toUTCString();
+			}
+			document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+		}
+		/**
+		 * user jováhagyás kérés popup ablakban
+		 */
 		function popupConfirm(txt, yesfun) {
 			document.getElementById('popupOkBtn').style.display="inline-block";
 			document.getElementById('popupNoBtn').style.display='inline-block';
@@ -69,9 +92,15 @@ $branch = $upgrade->branch;
 			document.getElementById('popupOkBtn').onclick=yesfun;
 			document.getElementById('popup').style.display='block';
 		}
+		/**
+		 * poup ablak bezárása
+		 */
 		function popupClose() {
 			document.getElementById('popup').style.display='none';
 		}
+		/**
+		 * popup üzenet
+		 */
 		function popupMsg(txt,className) {
 			if (className == undefined) {
 				className = 'popupSimple';
@@ -82,6 +111,23 @@ $branch = $upgrade->branch;
 			document.getElementById('popupTxt').innerHTML = txt;
 			document.getElementById('popup').style.display='block';
 		}
+		/**
+		 * nyelvi fordítás
+		 */
+		function _(token) {
+			var result = token;
+			var w = token.split('<br>');
+			for (var i = 0; i < w.length; i++) {
+				if (tokens[w[i]] != undefined) {
+					w[i] = tokens[w[i]];
+			    }
+			}
+			result = w.join('<br>');	
+			return result;
+		}
+		/**
+		 * felső menüben almenü megjelenés/elrejtés
+		 */
 		function submenuToggle() {
 			var submenu = document.getElementById('submenu');
 			if (submenu.style.display == 'block') {
@@ -90,6 +136,9 @@ $branch = $upgrade->branch;
 				submenu.style.display = 'block';
 			}
 		}
+		// képernyő méretek tárolása csokiba
+		setCookie('screen_width',screen.width,100); 
+		setCookie('screen_height',screen.height,100); 
 	</script>	 
 </head>	 
 <body>
@@ -106,9 +155,23 @@ $branch = $upgrade->branch;
 			<button type="button" id="popupNoBtn"class="btn btn-primary" onclick="popupClose()">Nem</button>
 		</div>
 	</div>
+	<?php	
+	    // képernyő méretek elérése
+		if (isset($_COOKIE['screen_width'])) {
+			$_SESSION['screen_width'] = $_COOKIE['screen_width'];
+		} else {
+			$_SESSION['screen_width'] = 1024;
+		}
+		if (isset($_COOKIE['screen_height'])) {
+			$_SESSION['screen_height'] = $_COOKIE['screen_height'];
+		} else {
+			$_SESSION['screen_height'] = 800;
+		}
+	?>	
 
 	<div class="container">
 		<div class="row" id="header" onclick="document.location='index.php';"></div>
+		
 		<?php 
 			view('mainmenu',[
 				'MULTIUSER' => MULTIUSER,
@@ -139,9 +202,11 @@ $branch = $upgrade->branch;
 				}	
 			?>
 		</div>
+
 		<?php 
 			view('footer',[],'footer'); 
 		?>
 	</div>
+	<p><?php echo $_SESSION['screen_width'].' x '.$_SESSION['screen_height']; ?></p>	
 </body>
 </html>

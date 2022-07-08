@@ -85,18 +85,24 @@ class User extends Controller {
 			<script>
 				document.location="index.php?task=regist&msg=<?php echo $error; ?>";		
 			</script>
-			<?php			
+			<?php
+		} else if (($userName == '') | ($password == '')) {
+			$error = 'Névet és jelszót meg kell adni!';
+			?>
+			<script>
+				document.location="index.php?task=regist&msg=<?php echo $error; ?>";		
+			</script>
+			<?php
 		} else {
 			$db->where('username','=','"'.$userName.'"');
 			$rec = $db->first();
-			if ($db->error == '') {
+			if (isset($rec->id)) {
 				$error = 'Már van ilyen néven fiók!';
 				?>
 				<script>
 					document.location="index.php?task=regist&msg=<?php echo $error; ?>";		
 				</script>
 				<?php			
-			
 			} else {
 				$r = new Record();
 				$r->id = 0;
@@ -106,9 +112,9 @@ class User extends Controller {
 				$r->realname = '';
 				$r->email = '';
 				$r->phone = '';
-				if ($username == ADMIN) {
+				if ($userName == ADMIN) {
 					$r->group = 'admin';
-				} else 
+				} else {
 					$r->group = '';
 				}	
 				$userId = $this->model->save($r);
@@ -123,7 +129,7 @@ class User extends Controller {
 				<?php			
 			}			
 		}	
-	
+	}
 
 	// === profil kezelés v1.3 ===
   

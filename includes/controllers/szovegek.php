@@ -13,8 +13,8 @@ class Szovegek {
 		  <p>Recept és napi menü kezelő, anyagszükséglet számító program</p>
 		  <p></p>
 		  <h2>Szerző</h2>
-		  <p>Fogler Tibor</p>
-		  <p>tibor.fogler@gmail.com</p>
+		  <p>Fogler Tibor - tibor.fogler@gmail.com</p>
+		  <p>Szabolcsi Gergő</p>	
 		  <h2>Adat kezelő</h2>
 		  <p>Fogler Tibor</p>
 		  <p>tibor.fogler@gmail.com</p>

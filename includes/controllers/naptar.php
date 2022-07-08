@@ -71,6 +71,13 @@ class Naptar {
 		
 		
 		echo '
+
+		<center>
+			<p style="border:balck; border-width:1px; border-style:solid; fint-size:16px;">
+				<script type="text/javascript" src="vendor/bootstrap/js/name-day.js"></script>
+			</p>
+		</center>
+
 		<div class="row">	
 			<div class="col-md-8 text-center">
 					<var style="display:inline-block; width:auto">'.$numYear.' '.$strMonth.'</var>&nbsp;

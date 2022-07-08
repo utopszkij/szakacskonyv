@@ -100,9 +100,10 @@ RATWEB keretrendszer program dokumentáció</h1>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
 	<a href="#__RefHeading___Toc185_953040041">4. Megjelenés (css)	</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
-	<a href="#__RefHeading___Toc187_953040041">5. Új verzió
-	publikálás	</a></p>
-</div>
+	<a href="#__RefHeading___Toc187_953040041">5. Új verzió	publikálás	</a></p>
+	<p style="margin-left: 0.5cm; margin-bottom: 0cm; background: transparent; line-height: 100%">
+	<a href="#__RefHeading___multilanguage">6. Több nyelvüség</a></p>
+	</div>
 <h2 class="western"><br/>
 <br/>
 
@@ -349,11 +350,9 @@ engedélyezett akkor SEO barát URL -ek is használhatóak:</p>
 outputja</p>
 <pre class="western"><code class="western">&lt;div id=&quot;page&quot;&gt;...&lt;/div&gt;</code></pre><p>
 -ben jelenik meg a html -ben.</p>
-<h2 class="western"><a name="__RefHeading___Toc187_953040041"></a>5.
-Új verzió publikálás</h2>
+<h2 class="western"><a name="__RefHeading___Toc187_953040041"></a>5. Új verzió publikálás</h2>
 <p><br/>
 <br/>
-
 </p>
 <p>1. Az index.php -ban módositsuk a <strong>$fileVerzio</strong> adatot!</p>
 <p>2. A <strong>reame.md</strong> fájlban modosítsuk a változás történet részt!</p>
@@ -367,5 +366,18 @@ git add .
 git commit
 git push origin v#.#.#
 </pre>
+<h2 class="western"><a name="__RefHeading___multilanguage"></a>6. Több nyelvüség</h2>
+<p>A config.php -ban szerepeljen egy <strong>define("LNG","lngCode");</strong> sor. </li>
+<p>Létezzen  a languages/lngCode.js a következő tartalommal:</p>
+<code><pre>
+	tokens = {
+		"token1":"szöveg1",
+		"token2":"szöveg2",
+		....
+	};
+</pre></code>
+<p>A viewerekben a szövegek  <strong>_("token")</strong> formában szerepeljenek.</p>
+<p>A "token" formája lehet: <strong>token1&lt;br&gt;token2...</strong> is. 
+	Ilyenkor a forditás a &lt;br&gt; -el szeparált szegmensenként külön-külön történik.</p>
 </body>
 </html>
