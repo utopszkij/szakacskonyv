@@ -61,9 +61,15 @@ GNU v3
 ## Információk informatikusok számára      
 
 ## Szükséges sw környezet
+### futtatáshoz
 - apache web szerver
 - php 7+ (mysqli kiegészítéssel)
 - mysql 5+
+### fejlesztéshez
+- phpunit (unit test futtatáshoz)
+- doxygen (php dokumentáció előállításhoz)
+- nodejs (js unittesthez)
+- php és js szintaxist támogató forrás szerkesztő vagy IDE
 
 ## Telepítés
 
@@ -88,20 +94,21 @@ Könyvtár szerkezet
       adat modellek php fájlok
     [views]
       viewer templates  spec. html fájlok. vue elemeket tartalmaznak
-    atvesz.php - átvétel külső oldalakról
-    atvesz_mindmegette.php
-    atvesz_receptneked.php
-    atvesz_nosalty.php
-   [vendor]
+    egyéb inlude fájlok
+  [vendor]
     keretrendszer fájlok és harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
+  [tests]
+    unit testek
   index.php  - fő program
   config.php - konfigurációs adatok
+  config_test.php - konfigurációs adatok unittesthez
   style.css  - megjelenés
   readme.md  - ez a fájl
   LICENSE    - licensz
   files.sh   - a files.txt -t előállító command. Csak fejlesztői környezetben kell és szabad        
                használni!
   files.txt  - a telepített fájlok felsorolása, az upgrade folyamat használja
+  viewtest.sh - view js unittestek futtatása
 ```  
 
 index.php hívással a "welcome" komponens betöltésével indul a program.
@@ -109,16 +116,36 @@ index.php hívással a "welcome" komponens betöltésével indul a program.
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
 
+## unit test
+
+Telepiteni kell a phpunit és a nodejs rendszert.
+
+[https://phpunit.de/](https://phpunit.de/)
+
+[https://nodejs.org/en/](https://nodejs.org/en/)
+
+Létre kell hozni egy test adatbázist, az éles adatbázissal azonos strukturával.
+
+Létre kell hozni egy config_test.php fájlt az éles config.php alapján, a test adatbázishoz beállítva.
+
+Ezután linux terminálban:
+```
+cd docroot
+phpunit tests
+./viewtest.sh
+```
 ## software documentáció
 
 [http://szakacs.great-site.net/doc/swdoc.html](http://szakacs.great-site.net/doc/swdoc.html)
 
-## php dokumentáció előállítása
+## A sw. dokumentáció előállítása
 telepiteni kell a doxygen dokumentáció krátort.
 
 [https://doxygen.nl/](doxygen)  Köszönet a sw. fejlesztőinek.
 
-A telepitési könyvtárnak megfelelően módosítani kell documentor.sh fájlt.
+A telepitési könyvtáraknak megfelelően módosítani kell documentor.sh fájlt.
+
+Ezután linux terminálban:
 
 ```
 cd docroot
@@ -129,7 +156,9 @@ cd docroot
 2022.07.??.
 - recept lekérdező képernyőn az adag szám módosítható (mennyiségek átszámítódnak)
 - refactoring
-- php dokumentáció beillesztése  
+- dizájn fejlesztés
+- php dokumentáció beillesztése 
+- unitt est keretrendszer, unittest examples 
 ### *************************************
 
 ## verzió v1.5.1

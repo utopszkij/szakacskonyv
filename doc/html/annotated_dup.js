@@ -33,5 +33,6 @@ var annotated_dup =
     [ "Szovegek", "class_szovegek.html", null ],
     [ "Upgrade", "class_upgrade.html", "class_upgrade" ],
     [ "User", "class_user.html", "class_user" ],
-    [ "UserModel", "class_user_model.html", "class_user_model" ]
+    [ "UserModel", "class_user_model.html", "class_user_model" ],
+    [ "UserTest", "class_user_test.html", null ]
 ];

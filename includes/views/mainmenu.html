@@ -16,7 +16,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="index.php?task=home">
-                <em class="fas fa-home"></em>&nbsp;Napi menük</a>
+                <em class="fas fa-home"></em>&nbsp;Kezdőlap</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="index.php?task=receptek&page=1">
@@ -44,7 +44,7 @@
             </ul>
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0 text-right">
                   <li class="nav-item" v-if="MULTIUSER & (loged <= 0)">
-                        <a class="nav-link" href="index.php?task=login">
+                    <a href="index.php?task=login" class="btn btn-info" role="button">
                             <em class="fas fa-sign-in-alt"></em>&nbsp;Bejelentkezés</a>
                   </li>
                   <li class="nav-item" v-if="loged > 0">
@@ -60,12 +60,12 @@
                       </a>
                   </li>
                   <li class="nav-item" v-if="MULTIUSER & (loged > 0)">
-                    <a class="nav-link" href="index.php?task=logout">
-                    <em class="fas fa-sign-out-alt"></em>&nbsp;Kijelentkezés</a>
-                  </li>
+                    <a href="index.php?task=logout" class="btn btn-info" role="button">
+                      <em class="fas fa-sign-out-alt"></em>&nbsp;Kijelentkezés</a>
+                  </li>&nbsp;
                   <li class="nav-item">
-                    <a class="nav-link" href="index.php?task=regist">
-                    <em class="fas fa-key"></em>&nbsp;Regisztrálás</a>
+                    <a href="index.php?task=regist" class="btn btn-info" role="button">
+                      <em class="fas fa-key"></em>&nbsp;Regisztrálás</a>
                   </li>
             </ul>
           </div>

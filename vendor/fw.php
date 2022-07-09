@@ -22,15 +22,6 @@ class Fw {
 			$i++;
 		}
 
-		// screen méret hozzáférhetővé tétele a php számára
-		if (isset($_REQUEST['width'])) {
-			$_SESSION['screen_width'] = $_REQUEST['width'];
-			$_SESSION['screen_height'] = $_REQUEST['height'];
-			header('Location: ' . $_SERVER['PHP_SELF']);
-		} else if(!isset($_SESSION['screen_width']) OR !isset($_SESSION['screen_height'])){
-			echo '<script type="text/javascript">window.location = "' . $_SERVER['PHP_SELF'] . '?width="+screen.width+"&height="+screen.height;</script>';
-		}	
-		
 		// egy felhasználós módban minen "0" user_id -hez rendelve 
 		// szerepel az adatbázisban
 		// több felhasználós változatban a bejelentkezési folyamatban

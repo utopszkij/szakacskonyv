@@ -26,8 +26,8 @@ label {display:inline-block; width: 30%; text-align:right}
 .popupSimple {background-color:silver; color:black;} 
 
 
-nav {background-color:#a57f0d}
-nav #submenu {background-color:darkkhaki}
+nav {background-color:#113355}
+nav #submenu {background-color:#587088}
 
 #receptForm {padding: 1% 1% 1% 1%}
 #receptForm textarea {width:100%}
@@ -89,7 +89,7 @@ form {margin:1% 1% 1% 1%}
 #userForm input.password {width:40%; max-width:200px}
 #atvaltasForm label {width:15%}
 
-#footer {background-color:silver; padding:20px; 
+#footer {background-color:#113355; padding:20px; color:silver;
   border-radius: 0px 0px 30px 30px; text-align:center}
 
   @media screen and (max-width: 992px) {

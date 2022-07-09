@@ -31,5 +31,8 @@ var hierarchy =
     [ "Szovegek", "class_szovegek.html", null ],
     [ "Union", "class_r_a_t_w_e_b_1_1_d_b_1_1_union.html", null ],
     [ "Upgrade", "class_upgrade.html", null ],
-    [ "Where", "class_r_a_t_w_e_b_1_1_d_b_1_1_where.html", null ]
+    [ "Where", "class_r_a_t_w_e_b_1_1_d_b_1_1_where.html", null ],
+    [ "TestCase", null, [
+      [ "UserTest", "class_user_test.html", null ]
+    ] ]
 ];

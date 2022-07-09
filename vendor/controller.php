@@ -203,21 +203,29 @@ class Controller {
         $filter = $this->request->input('filter',$filter);
         $order = $this->session->input($this->name.'order',$order);
         $order = $this->request->input('order',$order);
-        // paraméter tárolás sessionba
-        $this->session->set($this->name.'page',$page);
-        $this->session->set($this->name.'limit',$limit);
-        $this->session->set($this->name.'filter',$filter);
-        $this->session->set($this->name.'order',$order);
-        // rekordok és total olvasása az adatbázisból
-        $items = $this->model->getItems($page,$limit,$filter,$order);
         $total = $this->model->getTotal($filter);
-        // paginátor adat képzés
+        if ($page < 1) {
+            $page = 1;
+        }
+        // paginátor számára adat képzés (összes lap tömbbe)
         $pages = [];
         $p = 1;
         while ((($p - 1) * $limit) < $total) {
             $pages[] = $p;
             $p++;
         }
+        $p = $p - 1;
+        if ($page > $p) { 
+            $page = $p; 
+        }
+        // paraméter tárolás sessionba
+        $this->session->set($this->name.'page',$page);
+        $this->session->set($this->name.'limit',$limit);
+        $this->session->set($this->name.'filter',$filter);
+        $this->session->set($this->name.'order',$order);
+        // rekordok  olvasása az adatbázisból
+        $items = $this->model->getItems($page,$limit,$filter,$order);
+
         // megjelenítés
         view($this->name.'browser',[
             "items" => $items,

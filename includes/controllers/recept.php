@@ -450,35 +450,31 @@ class Recept extends Controller{
 			$page = 1;
 			$offset = 0;
 		}
-		$this->session->set('page',$page);
+		if ($page < 1) {
+			$page = 1;
+			$offset = 0;
+		}
 		$db = new Query('receptek');
-		$db->exec('CREATE TABLE IF NOT EXISTS receptek (
-			    id int AUTO_INCREMENT,
-			    nev varchar(80),
-			    leiras text,
-			    PRIMARY KEY (id),
-			    created_by int,
-			    KEY (nev)
-			)');
-		$db->exec('CREATE TABLE IF NOT EXISTS hozzavalok (
-			    id int AUTO_INCREMENT,
-			    recept_id int,
-			    nev varchar(80),
-			    mennyiseg numeric(10,2),
-			    me varchar(8),
-			    PRIMARY KEY (id),
-			    KEY (recept_id)
-			)');
 		$db = $this->buildQuery();
 		$list = $db->all();
 		$total = $db->count();
-		$db = $this->buildQuery();
-		$list = $db->offset($offset)->limit($pageSize)->all();
-
+		// lapok tömb kialakitása a paginátor számáta
 		$pages = [];
 		for ($p=1; (($p - 1)*$pageSize) < $total; $p++) {
 			$pages[] = $p;
 		}
+		// esetleges hibás page korrigálása
+		$p = $p - 1;
+		if ($page > $p ) {
+			$page = $p;
+			$offset = ($p - 1)*$pageSize;
+		}
+		// $page tárolása sessionba
+		$this->session->set('page',$page);
+
+		// rekordok lekérése
+		$db = $this->buildQuery();
+		$list = $db->offset($offset)->limit($pageSize)->all();
 
 		// összes cimke listája
 		$cimkek = [];
