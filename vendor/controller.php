@@ -214,6 +214,7 @@ class Controller {
             $pages[] = $p;
             $p++;
         }
+        $p = $p - 1;
         if ($page > $p) { 
             $page = $p; 
         }

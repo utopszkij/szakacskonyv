@@ -13,5 +13,6 @@ var searchData=
   ['useredit_10',['useredit',['../class_user.html#a0a354d6f2d20ce50f06f49cdd64ca402',1,'User']]],
   ['userek_11',['userek',['../class_user.html#a134bb250043fb6eb60c435c12d165eec',1,'User']]],
   ['usermodel_12',['UserModel',['../class_user_model.html',1,'']]],
-  ['usersave_13',['usersave',['../class_user.html#ad5e7da63aa92212e6297656c60c6df7f',1,'User']]]
+  ['usersave_13',['usersave',['../class_user.html#ad5e7da63aa92212e6297656c60c6df7f',1,'User']]],
+  ['usertest_14',['UserTest',['../class_user_test.html',1,'']]]
 ];

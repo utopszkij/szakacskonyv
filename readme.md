@@ -67,7 +67,7 @@ GNU v3
 - mysql 5+
 ### fejlesztéshez
 - phpunit (unit test futtatáshoz)
-- oxygen (php dokumentáció előállításhoz)
+- doxygen (php dokumentáció előállításhoz)
 - nodejs (js unittesthez)
 - php és js szintaxist támogató forrás szerkesztő vagy IDE
 
@@ -118,15 +118,17 @@ is tesztelhető/használható az upgrade folyamat.
 
 ## unit test
 
-Telepiteni kell a phpunit rendszert.
+Telepiteni kell a phpunit és a nodejs rendszert.
 
 [https://phpunit.de/](https://phpunit.de/)
+
+[https://nodejs.org/en/](https://nodejs.org/en/)
 
 Létre kell hozni egy test adatbázist, az éles adatbázissal azonos strukturával.
 
 Létre kell hozni egy config_test.php fájlt az éles config.php alapján, a test adatbázishoz beállítva.
 
-Ezután:
+Ezután linux terminálban:
 ```
 cd docroot
 phpunit tests
@@ -136,12 +138,14 @@ phpunit tests
 
 [http://szakacs.great-site.net/doc/swdoc.html](http://szakacs.great-site.net/doc/swdoc.html)
 
-## php dokumentáció előállítása
+## A sw. dokumentáció előállítása
 telepiteni kell a doxygen dokumentáció krátort.
 
 [https://doxygen.nl/](doxygen)  Köszönet a sw. fejlesztőinek.
 
-A telepitési könyvtárnak megfelelően módosítani kell documentor.sh fájlt.
+A telepitési könyvtáraknak megfelelően módosítani kell documentor.sh fájlt.
+
+Ezután linux terminálban:
 
 ```
 cd docroot
@@ -152,7 +156,9 @@ cd docroot
 2022.07.??.
 - recept lekérdező képernyőn az adag szám módosítható (mennyiségek átszámítódnak)
 - refactoring
-- php dokumentáció beillesztése  
+- dizájn fejlesztés
+- php dokumentáció beillesztése 
+- unitt est keretrendszer, unittest examples 
 ### *************************************
 
 ## verzió v1.5.1

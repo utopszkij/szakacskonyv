@@ -464,6 +464,7 @@ class Recept extends Controller{
 			$pages[] = $p;
 		}
 		// esetleges hibás page korrigálása
+		$p = $p - 1;
 		if ($page > $p ) {
 			$page = $p;
 			$offset = ($p - 1)*$pageSize;
