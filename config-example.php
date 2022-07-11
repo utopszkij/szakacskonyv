@@ -1,6 +1,7 @@
 <?php 
 declare(strict_types=1);
 DEFINE('SITEURL','https://szakacskonyv.great-site.net');
+DEFINE('REWRITE',true);
 DEFINE('HOST','localhost');
 DEFINE('USER','mysql-user');
 DEFINE('PSW','mysql-user-password');

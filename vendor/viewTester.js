@@ -1,5 +1,11 @@
-
 exports.mock = function() {
+/*
+const parser = new XMLParser();
+const { XMLParser, XMLBuilder, XMLValidator} = require("fxp");
+let jObj = parser.parse(XMLdata);
+const builder = new XMLBuilder();
+const xmlContent = builder.build(jObj);
+*/
 
 window = {
 	setTimeout: function(fun, time) {
@@ -335,7 +341,7 @@ loadView = function(viewFileName, fun) {
     if (err) {
       return console.log(err);
     }
-    
+   
 	// kiemeli a vue elemeket  
 	var vueElements = [];
 	var vueElement = getVueElement(data);  

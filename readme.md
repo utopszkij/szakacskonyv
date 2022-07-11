@@ -62,7 +62,7 @@ GNU v3
 
 ## Szükséges sw környezet
 ### futtatáshoz
-- apache web szerver
+- web szerver   .htacces és rewrite támogatással
 - php 7+ (mysqli kiegészítéssel)
 - mysql 5+
 ### fejlesztéshez
@@ -151,9 +151,13 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
-
+## verzió v1.5.3
+2022.07.11.
+- dizájn fejlesztés
+- facebook megosztás gomb
+### *************************************
 ## verzió v1.5.2
-2022.07.??.
+2022.07.09.
 - recept lekérdező képernyőn az adag szám módosítható (mennyiségek átszámítódnak)
 - refactoring
 - dizájn fejlesztés

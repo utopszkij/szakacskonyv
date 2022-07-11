@@ -6,7 +6,7 @@
         <div v-html="successMsg"></div>
     </div>
     
-    <i class="fa fa-users fa-4x" aria-hidden="true"></i> <h2>Felhasználók</h2>
+    <h2 class="ribbon-banner"><span><em class="fa fa-users" aria-hidden="true"></em>&nbsp;Felhasználók</span></h2>
     <ul>
         <li v-for="record in items">
             <a v-bind:href="'index.php?task=useredit&id='+record.id" v-bind:class="record.group">
