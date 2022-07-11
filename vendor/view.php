@@ -73,7 +73,8 @@ function echoEndScript(array $params, string $appName) {
                 echo $fn.': '.JSON_encode($param).",\n";
             }			
             echo '				
-            innerWidth : window.innerWidth
+            innerWidth : window.innerWidth,
+            HREF: window.HREF
             };
         },
         mounted() {

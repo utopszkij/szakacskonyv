@@ -6,7 +6,6 @@ define('DOCROOT',__DIR__);
 $w1 = (int) str_replace('M', '', ini_get('post_max_size'));
 $w2 = (int) str_replace('M','',ini_get('upload_max_filesize'));
 define('UPLOADLIMIT',min($w1,$w2));
-
 include_once 'config.php';
 include_once 'vendor/database/db.php';
 include_once('vendor/model.php');
@@ -29,7 +28,7 @@ importComponent('cimkek');
 
 //+ ----------- verzio kezelés start ------------
 importComponent('upgrade');
-$fileVerzio = 'v1.5.2';
+$fileVerzio = 'v1.5.3';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -41,6 +40,7 @@ $branch = $upgrade->branch;
 <head>
   <meta>
     <meta charset="UTF-8">
+	<meta property="og:title"  content="Szakácskönyv" />
 	<base href="<?php echo SITEURL; ?>/">
 	<link rel="icon" type="image/x-icon" href="images/szakacs.png">
     <title>Hetimenü</title>
@@ -136,12 +136,37 @@ $branch = $upgrade->branch;
 				submenu.style.display = 'block';
 			}
 		}
+
+		var rewrite = <?php echo (int)REWRITE; ?>;
+        var siteurl = "<?php echo SITEURL; ?>"; 
+
+		/**
+		 * seo barát url képzéshez segéd rutin
+		 * @param string task
+		 * @param object params {name:value,...}
+		 */
+		function HREF(task, params) {
+			var result = siteurl;
+			if (rewrite) {
+				result += '/task/'+task;
+				for (var fn in params) {
+					result += '/'+fn+'/'+params[fn];
+				}
+			} else {
+				result += '?task='+task;
+				for (var fn in params) {
+					result += '&'+fn+'='+params[fn];
+				}
+			}
+			return result;
+		}
 		// képernyő méretek tárolása csokiba
 		setCookie('screen_width',screen.width,100); 
 		setCookie('screen_height',screen.height,100); 
 	</script>	 
 </head>	 
 <body>
+
 	<div id="popup">
 		<div style="text-align:right">
 			<button type="button" onclick="popupClose()" 

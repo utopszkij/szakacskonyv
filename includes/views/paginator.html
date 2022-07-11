@@ -3,7 +3,7 @@
                 <ul class="paginator" v-if="pages.length > 1">
 					<li style="display:inline-block; width:auto" v-if="page > 2">
 						<span class="paginatorItem">
-                            <a v-bind:href="'index.php?task='+task+'&page=1'"
+                            <a v-bind:href="HREF(task,{page:1})"
 								title="Első">
                                 &lt;&lt;
                             </a>
@@ -11,7 +11,7 @@
 					</li>
 					<li style="display:inline-block; width:auto" v-if="page > 1">
 						<span class="paginatorItem">
-                            <a v-bind:href="'index.php?task='+task+'&page='+(parseInt(page) - 1)"
+                            <a v-bind:href="HREF(task,{page:(parseInt(page) - 1)})"
 								title="Elöző">
                                 &lt;
                             </a>
@@ -20,7 +20,7 @@
                     <li v-for="p in pages" style="display:inline-block; width:auto">
                         <span :class="makePaginatorClass(p,page)"
 							v-if="((p >= Math.min((parseInt(page) - 2), (pages.length - 5))) & (p <= Math.max((parseInt(page) + 2), 5)))"> 
-                            <a v-bind:href="'index.php?task='+task+'&page='+p" v-if="p != page">
+                            <a v-bind:href="HREF(task,{page:p})" v-if="p != page">
                                 {{ p }}
                             </a>
                             <strong v-if="p == page">{{ p }}</strong>
@@ -28,7 +28,7 @@
                     </li>
 					<li style="display:inline-block; width:auto" v-if="page < pages.length">
 						<span class="paginatorItem">
-                            <a v-bind:href="'index.php?task='+task+'&page='+(parseInt(page) + 1)"
+                            <a v-bind:href="HREF(task,{page:(parseInt(page) + 1)})"
 								title="Következő">
                                 &gt;
                             </a>
@@ -36,7 +36,7 @@
 					</li>
 					<li style="display:inline-block; width:auto" v-if="page < (pages.length - 1)" >
 						<span class="paginatorItem">
-                            <a v-bind:href="'index.php?task='+task+'&page='+pages.length"
+                            <a v-bind:href="HREF(task,{page:pages.length})"
 								title="Utolsó">
                                 &gt;&gt;
                             </a>

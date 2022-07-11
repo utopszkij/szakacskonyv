@@ -167,7 +167,7 @@
             <button type="button" class="btn btn-secondary"
                 v-if="recept.id > 0"
                 v-on:click="printClick(receptId)">
-                <em class="fas fa-print"></em>&nbsp;Nyomtatas</button>
+                <em class="fas fa-print"></em>&nbsp;Nyomtatás</button>
                 &nbsp;
                 <button type="button" class="btn btn-danger"
                     v-if="((loged > 0) &
@@ -184,7 +184,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-outline mb-4">
-                <h2>Recept<h2>			
+                <h2 class="ribbon-banner"><span>Recept</span></h2>
             </div>
             <div class="form-outline mb-4 d-inline d-md-none">
                 <img v-if="kep != ''" v-bind:src="kep" class="receptKep" class="receptKep" />				
@@ -193,7 +193,7 @@
                 <h3><em class="fas fa-utensils"></em>&nbsp;{{ recept.nev}}</h3>
             </div>
             <div v-if="!disabled">
-                <button type="button" class="btn" v-on:click="editClick">
+                <button type="button" class="btn btn-primary" v-on:click="editClick">
                     <em class="fas fa-edit" title="szerkesztes"></em> Szerkesztés
                 </button>
             </div>
@@ -214,9 +214,9 @@
                 &nbsp;({{ Math.round(recept.energia / 4.187 ) }} cal/adag)
             </span>
         </div>    
-    </div>
+    </div></br>
     <div class="row hozzavalok">
-        <h4><em class="fas fa-puzzle-piece"></em>&nbsp;Hozzávalók
+        <h2 class="ribbon-banner"><span><em class="fas fa-puzzle-piece"></em>&nbsp;Hozzávalók
             <div class="button" v-on:click="adagMinusClick()">
                 &nbsp;-&nbsp;
             </div>    
@@ -226,7 +226,7 @@
             <div  class="button" v-on:click="adagPlusClick()">
                 &nbsp;+&nbsp;
             </div>    
-             adaghoz</h4>
+             adaghoz</span></h2>
         <table cellspacing="0" cellpadding="0" id="hozzavalokTable">
         <tr class="hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
             <td v-if="hozzavalo.nev != ''">{{ hozzavalo.nev }}</td>
@@ -244,14 +244,14 @@
         </div>
     </div>
     <div class="row leiras" v-if="recept.leiras != ''">
-        <h3><em class="fas fa-cogs"></em>&nbsp;Elkészítés</h3>
+        <h2 class="ribbon-banner"><span><em class="fas fa-cogs"></em>&nbsp;Elkészítés</span></h2>
         <div class="col-12">
-            {{ recept.leiras }}
+             {{ recept.leiras }}
         </div>			
     </div>
     
     <div class="row uploadInfo" v-if="recept.id > 0">
-        <h3><em class="fas fa-upload"></em>&nbsp;Recept feltöltési infó</h3>
+        <h2 class="ribbon-banner"><span><em class="fas fa-upload"></em>&nbsp;Recept feltöltési infó</span></h2>
         <div class="col-12">
             <img v-bind:src="'images/users/'+creator.avatar" v-if="creator.avatar != ''"
                 style="height:32px; width:auto" />
@@ -260,22 +260,23 @@
                 {{ creator.username }} 
             </span>
         </div>
-    </div>				
-    <div class="form-outline mb-4">
-        <a href="index.php?task=receptek" class="btn btn-secondary">
-            <em class="fas fa-reply"></em>Vissza
-        </a>
-        &nbsp;
-        <button type="button" class="btn btn-secondary"
-            v-if="recept.id > 0"
-            v-on:click="printClick(receptId)">
-            <em class="fas fa-print"></em>&nbsp;Nyomtatás</button>
+    </div>
+
+    <div class="row">
+        <div class="col-9"></div>    
+        <div class="col-3">
+            <iframe v-bind:src="'https://www.facebook.com/plugins/share_button.php?href='+encodeURI(HREF('recept',{id:recept.id}))+'&layout=button_count&size=large&appId=482318802821364&width=113&height=20'" 
+                width="150" height="30" style="border:none;overflow:hidden" 
+                scrolling="no" frameborder="0" allowfullscreen="true" 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </div>
     </div>
 
 </div><!-- recept show -->
-<hr />
+
 <div class="row comments">
-    <h3>Hozzászólások</h3>
+    <h2 class="ribbon-banner"><span><em class="fas fa-comment"></em>&nbsp;Hozzászólások</span></h2>
     
     <div v-for="comment in comments" class="col-12 comment">
         <a v-bind:href="'index.php?task=comment&id='+comment.id">
@@ -439,6 +440,8 @@ var methods = {
             }
             this.oldAdag = this.recept.adag;
             this.origAdag = this.recept.adag;
+            document.querySelector('meta[property="og:title"]').remove();
+            document.querySelector('head').append('<meta property="og:title" content="'+this.recept.nev+'">');
         },
         adagPlusClick() {
             if (this.recept.adag > 0) {

@@ -17,7 +17,7 @@ var annotated_dup =
     [ "Comment", "class_comment.html", "class_comment" ],
     [ "CommentModel", "class_comment_model.html", "class_comment_model" ],
     [ "Controller", "class_controller.html", "class_controller" ],
-    [ "Fw", "class_fw.html", null ],
+    [ "Fw", "class_fw.html", "class_fw" ],
     [ "Mertekegyseg", "class_mertekegyseg.html", "class_mertekegyseg" ],
     [ "MertekegysegModel", "class_mertekegyseg_model.html", "class_mertekegyseg_model" ],
     [ "NapiMenu", "class_napi_menu.html", null ],

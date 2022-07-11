@@ -1,7 +1,9 @@
 		<div id="receptList">
 			<div class="row">
-				<h2>Receptek</h2>
+				<h1 class="ribbon-banner"><span>Receptek</span></h1>
 			</div>	
+			<div class="row">&nbsp;</div>
+
 			<div class="filterForm">
 				<form method="get" action="index.php" id="filterForm" class="form">
 					<input type="hidden" name="task" value="receptek" />
@@ -13,7 +15,7 @@
 					</div>
 					<div>
 						<label>Cimke:</label>
-						<select name="filtercimke" id="filtercimke" 
+						<select name="filtercimke" id="fi</span>ltercimke" 
 							   v-model="filterCimke" class="form-control">
 							<option value=""></option>	   
 							<option v-for="cimke in cimkek" v-bind:value="cimke">{{ cimke }}</option>
@@ -44,8 +46,8 @@
 						</thead>
 						<tbody>
 							<tr v-for="item in list" class="makeTrClass(item)">
-								<td><a v-bind:href="'?task=recept&id='+item.id">{{ item.id }}</a></td>
-								<td><a v-bind:href="'?task=recept&id='+item.id">{{ item.nev }}</a></td>
+								<td><a v-bind:href="HREF('recep',{id:item.id})">{{ item.id }}</a></td>
+								<td><a v-bind:href="HREF('recept',{id:item.id})">{{ item.nev }}</a></td>
                             </tr>    
 						</tbody>
 					</table>
@@ -57,10 +59,11 @@
 			</div>
 			<p>Kattints a recept nevére a megtekintéséhez, modosításhoz, törléséhez!</p>
 			<div style="text-align:center" v-if="loged > 0">
-				<a href="?task=recept&id=0" class="btn btn-primary">
-					<em class="fas fa-plus"></em>&nbsp;Új recept</a>
+				<a v-bind:href="HREF('recept',{id:0})" class="btn btn-primary">
+					<em class="fas fa-plus-circle"></em>&nbsp;Új recept</a>
 			</div>
 			<div v-if="loged <= 0">Recept felviteléhez be kell jelentkezni.</div>
+
 		</div>	
 
 <script>

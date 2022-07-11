@@ -6,6 +6,8 @@ $components = [];
 class Fw {
 	public $task = '';
 	function __construct() {
+		if (!defined('REWRITE')) { define('REWRITE',true); }
+
 		// SEO barát URL kezelés
 		// url = ....../task/xxx/parname/parValue....
 		$w = explode('/',$_SERVER['REQUEST_URI']);
@@ -89,7 +91,29 @@ class Fw {
 			importComponent($compName); 
 		}
 	}
-	
+
+	/**
+	 *  SEO barát url kezelőshez függvény
+	 * @param string $task
+	 * @param array $params [name => value,...]
+	 * @return string
+	 */ 
+	function HREF(string $task, array $params) {
+		$result = SITEURL;
+		if (REWRITE) {
+			$result .= '/task/'.$task;
+			foreach ($params as $fn => $fv) {
+				$result .= '/'.$fn.'/'.$fv;
+			} 
+		} else {
+			$result .= '?task='.$task;
+			foreach ($params as $fn => $fv) {
+				$result .= '&'.$fn.'='.$fv;
+			} 
+		}
+		return $result;
+	}
+
 	/**
 	* controller betöltése
 	* globalis funkcióként is hívható

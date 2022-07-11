@@ -3,7 +3,13 @@
         {{ msg }}
     </div>
     <div style="text-align:center">
-        <i class="fas fa-sign-in-alt fa-4x"></i><h1>&nbsp;Bejelentkezés</h1>
+        <center>
+            <h1 class="ribbon-banner">
+                <em class="fas fa-sign-in-alt"></em>&nbsp;
+                <span>Bejelentkezés</span>
+            </h1>
+            <br />
+        </center>
         <form name="login" action="index.php?task=dologin" method="post">
         <input type="hidden" name="task" value="dologin" />
         <i class="fa fa-user"></i> <input type="text" name="username" placeholder="Bejelentkezési név" required="true" />

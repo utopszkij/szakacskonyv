@@ -6,7 +6,7 @@
         <div v-html="successMsg"></div>
     </div>
     
-    <i class="fa fa-sitemap fa-4x" aria-hidden="true"></i> <h2>Cimkék</h2>
+    <h2 class="ribbon-banner"><span><em class="fa fa-sitemap" aria-hidden="true"></em>&nbsp;Cimkék</span></h2>
     <ul>
         <li v-for="record in items" v-if="logedAdmin">
             <a v-bind:href="'index.php?task=cimkeedit&id='+record.id">{{ record.cimke }}</a> 
