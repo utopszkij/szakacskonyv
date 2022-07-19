@@ -14,6 +14,17 @@ class Recept extends Controller{
 		$this->model = new ReceptModel();
 	}	
 	
+
+	public function getTitle(string $task) {
+		$result = 'Szakácskönyv';
+		if ($task == 'recept') {
+			$recept = $this->model->getById($this->request->input('id'));
+			if (isset($recept->nev)) {
+				$result = $recept->nev;
+			}
+		}
+		return $result;
+	}
 	// $_GET['id']
 	public function receptdelete() {
 		// normál user csak a saját maga által felvittet törölheti

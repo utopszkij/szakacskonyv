@@ -41,7 +41,7 @@ GNU v3
 
 ## Müködő demo:
 
-[http://szakacs.great-site.net](http://szakacs.great-site.net)
+[https://szakacskonyv.nfx.hu](http://szakacskonyv.nfx.hu)
 
 ## képernyő képek
 
@@ -151,6 +151,12 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v1.5.4
+2022.07.11.
+- dizájn fejlesztés
+- keretrendszer fejlesztése (controller.mustLogin)
+### *************************************
+
 ## verzió v1.5.3
 2022.07.11.
 - dizájn fejlesztés

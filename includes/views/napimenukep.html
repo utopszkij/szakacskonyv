@@ -2,6 +2,9 @@
     Napimenü felviteléhez, modosításhoz, törléséhez be kell jelentkezni!
 </div>	
 <div id="napmenu" v-if="loged > 0">
+
+    <h1 class="ribbon-banner"><span>{{ ev+'.'+ho+'.'+nap }} napi menü</span></h1>
+
     <div class="alert alert-danger" v-if="loged <= 0">Napi menü felviteléhez be kell jelentkezni!</div>	
     <div class="row">
         <div class="col-md-6">
@@ -10,7 +13,6 @@
             <input type="hidden" v-model="nap" name="nap" />
             <input type="hidden" v-model="ho" name="ho" />
             <input type="hidden" v-model="ev" name="ev" />
-            <h2>{{ ev+'.'+ho+'.'+nap }} napi menü</h2>
             <div class="form-outline mb-4">
                 <input type="number" name="adag" class="form-control"
                      v-model="rec.adag" style="display:inline-block; width:60px" /> adag

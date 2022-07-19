@@ -5,12 +5,16 @@ $components = [];
 
 class Fw {
 	public $task = '';
+	public $comp = false;
+
 	function __construct() {
+		global $components;
 		if (!defined('REWRITE')) { define('REWRITE',true); }
 
 		// SEO barát URL kezelés
 		// url = ....../task/xxx/parname/parValue....
-		$w = explode('/',$_SERVER['REQUEST_URI']);
+		$w = explode('?',$_SERVER['REQUEST_URI']);
+		$w = explode('/',$w[0]);
 		$i = 0;
 		while ($i < count($w)) {
 			if ($w[$i] == 'task') {
@@ -89,6 +93,19 @@ class Fw {
 			$compName = $w[0];
 			$this->task = $w[1];
 			importComponent($compName); 
+			$this->comp = new $compName();
+		} else {
+			$compName = '';
+			for ($i=0; $i<count($components); $i++) {
+				if ($components[$i][0] == $this->task) {
+					$compName = $components[$i][1];			
+				}		
+			} 
+			if ($compName != '') {
+				$this->comp = new $compName ();
+			} else {
+				echo 'Fatal error  compName not found!'; exit();
+			}	
 		}
 	}
 

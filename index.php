@@ -1,5 +1,6 @@
 <?php
 session_start();
+global $components;
 
 // server infok hozzáférhetővé tétele a php számára
 define('DOCROOT',__DIR__);
@@ -12,7 +13,6 @@ include_once('vendor/model.php');
 include_once('vendor/view.php');
 include_once('vendor/controller.php');
 include_once('vendor/fw.php');
-$fw = new Fw();
 
 importComponent('osszegzes');
 importComponent('napimenu');
@@ -26,24 +26,46 @@ importComponent('szinonima');
 importComponent('mertekegyseg');
 importComponent('cimkek');
 
+$fw = new Fw();
+
 //+ ----------- verzio kezelés start ------------
 importComponent('upgrade');
-$fileVerzio = 'v1.5.3';
+$fileVerzio = 'v1.5.4';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
 $upgrade->dbUpgrade($dbverzio);
 $branch = $upgrade->branch;
 //- ----------- verzio kezelés end ------------
+
+// képernyő méretek elérése
+if (isset($_COOKIE['screen_width'])) {
+	$_SESSION['screen_width'] = $_COOKIE['screen_width'];
+} else {
+	$_SESSION['screen_width'] = 1024;
+}
+if (isset($_COOKIE['screen_height'])) {
+	$_SESSION['screen_height'] = $_COOKIE['screen_height'];
+} else {
+	$_SESSION['screen_height'] = 800;
+}
+
+$task = $fw->task;
+$comp = $fw->comp;
+$title = 'Szakácskönyv';
+if (method_exists($comp, 'getTitle')) {
+	$title = $comp->getTitle($task);
+} 
+
 ?>
 <html lang="en">
 <head>
   <meta>
     <meta charset="UTF-8">
-	<meta property="og:title"  content="Szakácskönyv" />
+	<meta property="og:title"  content="<?php echo $title; ?>" />
 	<base href="<?php echo SITEURL; ?>/">
 	<link rel="icon" type="image/x-icon" href="images/szakacs.png">
-    <title>Hetimenü</title>
+    <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	 <!-- bootstrap -->	
 	 <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -180,19 +202,6 @@ $branch = $upgrade->branch;
 			<button type="button" id="popupNoBtn"class="btn btn-primary" onclick="popupClose()">Nem</button>
 		</div>
 	</div>
-	<?php	
-	    // képernyő méretek elérése
-		if (isset($_COOKIE['screen_width'])) {
-			$_SESSION['screen_width'] = $_COOKIE['screen_width'];
-		} else {
-			$_SESSION['screen_width'] = 1024;
-		}
-		if (isset($_COOKIE['screen_height'])) {
-			$_SESSION['screen_height'] = $_COOKIE['screen_height'];
-		} else {
-			$_SESSION['screen_height'] = 800;
-		}
-	?>	
 
 	<div class="container">
 		<div class="row" id="header" onclick="document.location='index.php';"></div>
@@ -212,19 +221,7 @@ $branch = $upgrade->branch;
 
 		<div class="page">
 			<?php
-				$task = $fw->task;
-				$compName = '';
-				for ($i=0; $i<count($components); $i++) {
-					if ($components[$i][0] == $task) {
-						$compName = $components[$i][1];			
-					}		
-				} 
-				if ($compName != '') {
-					$comp = new $compName ();
-					$comp->$task ();			
-				} else {
-					$task ();
-				}	
+				$comp->$task ();			
 			?>
 		</div>
 

@@ -7,5 +7,6 @@ var searchData=
   ['mertekegysegek_4',['mertekegysegek',['../class_mertekegyseg.html#ab10004ea3066d966572a1a0d1eaffc67',1,'Mertekegyseg']]],
   ['mertekegysegmodel_5',['MertekegysegModel',['../class_mertekegyseg_model.html',1,'']]],
   ['mesave_6',['mesave',['../class_mertekegyseg.html#a913776a3aefcb857b59a75328f0d3214',1,'Mertekegyseg']]],
-  ['model_7',['Model',['../class_r_a_t_w_e_b_1_1_model.html',1,'RATWEB']]]
+  ['model_7',['Model',['../class_r_a_t_w_e_b_1_1_model.html',1,'RATWEB']]],
+  ['mustlogin_8',['mustLogin',['../class_controller.html#aea3f6dd95902369c47973f1a10d3a964',1,'Controller']]]
 ];

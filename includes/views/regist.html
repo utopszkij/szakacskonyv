@@ -2,48 +2,50 @@
     <div class="alert alert-danger" v-if="msg != ''">
         {{ msg }}
     </div>
-    <center>
+    <div class="text-center">
         <h1 class="ribbon-banner">
             <em class="fa fa-user-plus" aria-hidden="true"></em>&nbsp;
             <span>Regisztrálás</span>
         </h1>
         <br />
-    <form name="registration" action="index.php?task=doregist" method="post">
-    <input type="hidden" name="task" value="doregist" />
-    <i class="fa fa-user"></i> <input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
-    <br /><br />
-    <i class="fa fa-key"></i> 
-    <input type="password" name="password" placeholder="Jelszó" required="true" class="password"/>
-    <br /><br />
-    <i class="fa fa-key"></i> 
-    <input type="password" name="password2" placeholder="Jelszó ismét" required="true" class="password"/>
-    <br /><br />
-    <button type="submit" class="btn btn-primary" name="submit" style="width:250px">
-        <em class="fas fa-check"></em>&nbsp;Regisztrálás
-    </button>    
-    </form>
-    <div class="alert alert-warning">
-    <p><strong>Figyelem! e-mail címet nem tárolunk. 
-    Így a rendszer semmilyen személyes adatot nem kezel, a GDPR hatályán kivül esik.
-    Viszont ennek következtében jelszó emlékeztető küldésére nincs lehetőség,
-    tehát a jelszót jól jegyezd meg!</strong></p>
+        <form name="registration" action="index.php?task=doregist" method="post">
+        <input type="hidden" name="task" value="doregist" />
+        <input type="hidden" name="redirect" v-model="redirect" />
+        <i class="fa fa-user"></i> <input type="text" name="username" placeholder="Bejelentkezési név" required="true" />
+        <br /><br />
+        <i class="fa fa-key"></i> 
+        <input type="password" name="password" placeholder="Jelszó" required="true" class="password"/>
+        <br /><br />
+        <i class="fa fa-key"></i> 
+        <input type="password" name="password2" placeholder="Jelszó ismét" required="true" class="password"/>
+        <br /><br />
+        <button type="submit" class="btn btn-primary" name="submit" style="width:250px">
+            <em class="fas fa-check"></em>&nbsp;Regisztrálás
+        </button>    
+        </form>
+        <div class="alert alert-warning">
+            <p><strong>Figyelem! e-mail címet nem tárolunk. 
+            Így a rendszer semmilyen személyes adatot nem kezel, a GDPR hatályán kivül esik.
+            Viszont ennek következtében jelszó emlékeztető küldésére nincs lehetőség,
+            tehát a jelszót jól jegyezd meg!</strong></p>
+        </div>
+        <div>    
+            <a v-bind:href="'https://netpolgar.hu/auth/facebook?state='+SITEURL"
+            class="btn btn-primary" style="width:250px"> 
+            Belépés Facebook -al			
+            </a>
+        </div>
+        <div>
+            <a v-bind:href="'https://netpolgar.hu/auth/google?state='+SITEURL" 
+            class="btn btn-secondary" style="width:250px"> 
+            Belépés Google -al			
+            </a>
+        </div>
+        <br />
+        <div class="alert alert-info">
+            Bejelentkezés után a felső menüben lévő belépési nevedre kattintva,  
+            a "profil" képernyőn jelszót változtathatsz, avatar képet tölthetsz fel.
+        </div>
     </div>
-    <div>    
-        <a v-bind:href="'https://netpolgar.hu/auth/facebook?state='+SITEURL"
-        class="btn btn-primary" style="width:250px"> 
-        Belépés Facebook -al			
-        </a>
-    </div>
-    <div>
-        <a v-bind:href="'https://netpolgar.hu/auth/google?state='+SITEURL" 
-        class="btn btn-secondary" style="width:250px"> 
-        Belépés Google -al			
-        </a>
-    </div><br>
+</div>
 
-    <div class="alert alert-info">
-        Bejelentkezés után a felső menüben lévő belépési nevedre kattintva,  
-        a "profil" képernyőn jelszót változtathatsz, avatar képet tölthetsz fel.
-    </div>
-</div></center>
-<?php	
