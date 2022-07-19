@@ -76,7 +76,7 @@
           </div>
       </nav>	
       <div class="warning" v-if="(lastVerzio > fileVerzio) & (MULTIUSER) & (isAdmin)">
-          <a v-bin:href="HREF('upgrade1',{version:lastVerzio})" 
+          <a v-bind:href="HREF('upgrade1',{version:lastVerzio})" 
               class="btn btn-primary">
               Új verzó érhető el {{ lastVerzio }} 
           </a>
