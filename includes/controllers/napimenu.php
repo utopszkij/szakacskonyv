@@ -71,7 +71,7 @@ class NapiMenu extends Controller{
 	public function napimenu() {
 		// get nap
 		// sessionban a numYear és numMonth
-		$nap = $this->request->input('nap',0,INTEGER);
+		$nap = $this->request->input('nap',1,INTEGER);
 		$ho = $this->session->input('numMonth',0);
 		$ev = $this->session->input('numYear',0);
 	

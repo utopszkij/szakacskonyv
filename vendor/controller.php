@@ -376,4 +376,19 @@ class Controller {
             echo $this->model->errorMsg; exit();
         }
     }
+
+    /**
+     * bejelentkezés kieröltetése
+     * @param string current 'task/taskName' vagy 'task/taskName/parName/value....'
+     */
+    protected function mustLogin(string $current) {
+		if ($this->session->input('loged') <= 0) {
+			$url = SITEURL.'/task/login/redirect/'.base64_encode($current);
+			echo '<script>
+			location="'.$url.'";
+			</script>';
+			return;
+		}
+    }    
+
 }

@@ -18,7 +18,8 @@ class User extends Controller {
 
 	public function login() {
 		view('login',["msg" => $this->request->input('msg',''),
-						"SITEURL" => SITEURL]);
+					  "SITEURL" => SITEURL,
+					  "redirect" => $this->request->input('redirect','')]);
 	}
 	
 	public function logout() {
@@ -35,18 +36,20 @@ class User extends Controller {
 	
 	public function regist() {
 		view('regist',["msg" => $this->request->input('msg',''),
-						"SITEURL" => SITEURL]);
+					   "SITEURL" => SITEURL,
+					   "redirect" => $this->request->input('redirect','')]);
 	}
 	
 	public function dologin() {
 		$userName = $_POST['username'];
 		$password = $_POST['password'];
+		$redirect = $_POST['redirect'];
 		$recs = $this->model->getBy('username',$userName);
 		if (count($recs) == 0) {
 				$error = 'Nincs ilyen néven fiók! ';
 				?>
 				<script>
-					document.location="index.php?task=login&msg=<?php echo $error; ?>";		
+					document.location="index.php?task=login&msg=<?php echo $error; ?>&redirect=<?php echo urlencode($redirect) ?>";		
 				</script>
 				<?php			
 		} else {
@@ -55,7 +58,7 @@ class User extends Controller {
 				$error = 'Nem jó jelszó!';
 				?>
 				<script>
-					document.location="index.php?task=login&msg=<?php echo $error; ?>";		
+					document.location="index.php?task=login&msg=<?php echo $error; ?>&redirect=<?php echo urlencode($redirect) ?>";		
 				</script>
 				<?php			
 			} else {
@@ -66,7 +69,7 @@ class User extends Controller {
 				$_SESSION['logedGroup'] = $rec->group;
 				?>
 				<script>
-					document.location="index.php";		
+					document.location="<?php echo SITEURL.'/'.base64_decode($redirect); ?>";		
 				</script>
 				<?php			
 			} 
@@ -78,19 +81,20 @@ class User extends Controller {
 		$userName = $_POST['username'];
 		$password = $_POST['password'];
 		$password2 = $_POST['password2'];
+		$redirect = base64_decode($_POST['redirect']);
 		$error = '';
 		if ($password != $password2) {
 			$error = 'A két jelszó nem azonos!';
 			?>
 			<script>
-				document.location="index.php?task=regist&msg=<?php echo $error; ?>";		
+				document.location="index.php?task=regist&msg=<?php echo $error; ?>&redirect=<?php echo urlencode($redirect) ?>";		
 			</script>
 			<?php
 		} else if (($userName == '') | ($password == '')) {
 			$error = 'Névet és jelszót meg kell adni!';
 			?>
 			<script>
-				document.location="index.php?task=regist&msg=<?php echo $error; ?>";		
+				document.location="index.php?task=regist&msg=<?php echo $error; ?>&redirect=<?php echo urlencode($redirect) ?>";		
 			</script>
 			<?php
 		} else {
@@ -100,7 +104,7 @@ class User extends Controller {
 				$error = 'Már van ilyen néven fiók!';
 				?>
 				<script>
-					document.location="index.php?task=regist&msg=<?php echo $error; ?>";		
+					document.location="index.php?task=regist&msg=<?php echo $error; ?>&redirect=<?php echo urlencode($redirect) ?>";		
 				</script>
 				<?php			
 			} else {
@@ -124,7 +128,7 @@ class User extends Controller {
 				$_SESSION['logedGroup'] = $r->group;
 				?>
 				<script>
-					document.location="index.php";		
+					document.location="<?php echo SITEURL.'/'.base64_decode($redirect); ?>";		
 				</script>
 				<?php			
 			}			

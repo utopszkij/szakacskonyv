@@ -10,11 +10,13 @@ class Osszegzes {
 	*/
 	public function osszeg() {
 		?>
+		<center>
+			<h1 class="ribbon-banner"><span>Összegzés</span></h1>
+		</center>  
 		<div class="row">
 			<div class="col-md-12 text-center">
 			<form action="index.php" class d-inline text-left>
 				<input type="hidden" name="task" value="szamol" />
-				<h2>Összegzés</h2>
 				<p>Időszak: éééé-hh-nn -tól éééé-hh-nn -ig</p>
 				<p>
 					<input type="date" name="datum1" 

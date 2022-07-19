@@ -46,8 +46,8 @@
 						</thead>
 						<tbody>
 							<tr v-for="item in list" class="makeTrClass(item)">
-								<td><a v-bind:href="HREF('recep',{id:item.id})">{{ item.id }}</a></td>
-								<td><a v-bind:href="HREF('recept',{id:item.id})">{{ item.nev }}</a></td>
+								<td><a v-bind:href="HREF('recep',{id:item.id,title:item.nev})">{{ item.id }}</a></td>
+								<td><a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">{{ item.nev }}</a></td>
                             </tr>    
 						</tbody>
 					</table>
