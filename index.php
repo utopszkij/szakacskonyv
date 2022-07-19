@@ -25,11 +25,11 @@ importComponent('atvaltasok');
 importComponent('szinonima');
 importComponent('mertekegyseg');
 importComponent('cimkek');
+importComponent('upgrade');
 
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-importComponent('upgrade');
 $fileVerzio = 'v1.5.4';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();

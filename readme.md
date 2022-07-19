@@ -152,7 +152,7 @@ cd docroot
 ./documentor.sh
 ```
 ## verzió v1.5.4
-2022.07.11.
+2022.07.19.
 - dizájn fejlesztés
 - keretrendszer fejlesztése (controller.mustLogin)
 ### *************************************
