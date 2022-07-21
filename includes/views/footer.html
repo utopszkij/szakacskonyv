@@ -1,8 +1,9 @@
 <div>
     <a v-bind:href="HREF('impresszum',{})">Imresszum</a>&nbsp;&nbsp;&nbsp;
-    <a v-bind:href="HREF('adatkezeles',{})" style="color:white;">Adatkezelési leírás</a>&nbsp;&nbsp;&nbsp;
-    <a v-bind:href="HREF('visszaeles',{})" style="color:white;">Visszélés jelzése</a>&nbsp;&nbsp;&nbsp;
-    <a v-bind:href="HREF('licensz',{})" style="color:white;">Licensz</a>&nbsp;&nbsp;&nbsp;
-    <a href="https://github.com/utopszkij/szakacskonyv" target="_new" style="color:white;">Forrás program</a>&nbsp;&nbsp;&nbsp;
-    <div style="color:white;">Ⓒ 2022 Minden jog fenntartva.</div>
+    <a v-bind:href="HREF('adatkezeles',{})" style="color:white;">{{ lng('POLICY') }}</a>&nbsp;&nbsp;&nbsp;
+    <a v-bind:href="HREF('visszaeles',{})" style="color:white;">{{ lng('PROTEST') }}</a>&nbsp;&nbsp;&nbsp;
+    <a v-bind:href="HREF('licensz',{})" style="color:white;">{{ lng('LICENCE') }}</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/utopszkij/szakacskonyv" target="_new" style="color:white;">
+        {{ lng('SOURCE') }}&nbsp;&nbsp;&nbsp;
+    <div style="color:white;">Ⓒ 2022 {{ lng('COPYRIGHT') }}.</div>
 </div>

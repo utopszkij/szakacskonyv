@@ -34,10 +34,15 @@
  */
 
 function view(string $name,array $params, string $appName = 'app') {
-    echo '
-    <div id="'.$appName.'" style="display:none">'."\n";  
     $scriptExist = false;
-    $lines = file(__DIR__.'/../includes/views/'.$name.'.html');
+    if (file_exists(__DIR__.'/../includes/views/'.$name.'_'.LNG.'.html')) {
+        $lines = file(__DIR__.'/../includes/views/'.$name.'_'.LNG.'.html');
+    } else if (file_exists(__DIR__.'/../includes/views/'.$name.'.html')) {
+        $lines = file(__DIR__.'/../includes/views/'.$name.'.html');
+    } else {
+        echo 'Fatal error '.$name.' view not found.'; exit();
+    }    
+    echo '<div id="'.$appName.'" style="display:none">'."\n";  
     foreach ($lines as $line) {
         if (trim($line) == '<script>') {
             $scriptExist = true;
@@ -74,7 +79,8 @@ function echoEndScript(array $params, string $appName) {
             }			
             echo '				
             innerWidth : window.innerWidth,
-            HREF: window.HREF
+            HREF: window.HREF,
+            lng: window.lng
             };
         },
         mounted() {

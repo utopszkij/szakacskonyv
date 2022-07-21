@@ -1,10 +1,10 @@
 <!-- paginator include használt VUE változók: pages, page, total ,task  -->
-                <p>Összesen: {{ total }} sor</p>
+                <p>{{ lng('TOTAL') }}: {{ total }} {{ lng('LINES') }}</p>
                 <ul class="paginator" v-if="pages.length > 1">
 					<li style="display:inline-block; width:auto" v-if="page > 2">
 						<span class="paginatorItem">
                             <a v-bind:href="HREF(task,{page:1})"
-								title="Első">
+								v-bind:title="lng('FIRST')">
                                 &lt;&lt;
                             </a>
                         </span>
@@ -12,7 +12,7 @@
 					<li style="display:inline-block; width:auto" v-if="page > 1">
 						<span class="paginatorItem">
                             <a v-bind:href="HREF(task,{page:(parseInt(page) - 1)})"
-								title="Elöző">
+								v-bind:title="lng('PREVIOUS')">
                                 &lt;
                             </a>
                         </span>
@@ -29,7 +29,7 @@
 					<li style="display:inline-block; width:auto" v-if="page < pages.length">
 						<span class="paginatorItem">
                             <a v-bind:href="HREF(task,{page:(parseInt(page) + 1)})"
-								title="Következő">
+								v-bind:title="lng('NEXT')">
                                 &gt;
                             </a>
                         </span>
@@ -37,7 +37,7 @@
 					<li style="display:inline-block; width:auto" v-if="page < (pages.length - 1)" >
 						<span class="paginatorItem">
                             <a v-bind:href="HREF(task,{page:pages.length})"
-								title="Utolsó">
+								v-bind:title="lng('LAST')">
                                 &gt;&gt;
                             </a>
                         </span>

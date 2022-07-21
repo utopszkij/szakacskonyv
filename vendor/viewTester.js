@@ -12,7 +12,25 @@ window = {
 		if ((typeof fun) == 'function') {
          fun();
       }   
-	}
+	},
+   lng: function(s) {
+      return s;
+   },
+   HREF: function(task, params) {
+      var result = siteurl;
+      if (rewrite) {
+         result += '/task/'+task;
+         for (var fn in params) {
+            result += '/'+fn+'/'+params[fn];
+         }
+      } else {
+         result += '?task='+task;
+         for (var fn in params) {
+            result += '&'+fn+'='+params[fn];
+         }
+      }
+      return result;
+   }
 };
 comp = {};
 vueTest = function() {};
@@ -363,8 +381,26 @@ loadView = function(viewFileName, fun) {
     var v = { "vueElement" : vueElement };
     if (methods != undefined) {
       v = methods;
-	  v.vueElements = vueElements;	
+	   v.vueElements = vueElements;	
     } 
+    v.HREF = function(task, params) {
+      var result = siteurl;
+      if (rewrite) {
+         result += '/task/'+task;
+         for (var fn in params) {
+            result += '/'+fn+'/'+params[fn];
+         }
+      } else {
+         result += '?task='+task;
+         for (var fn in params) {
+            result += '&'+fn+'='+params[fn];
+         }
+      }
+      return result;
+    };
+    v.lng = function(s) {
+      return s;
+    }
 	  
 	// call tester function  
     fun(v);

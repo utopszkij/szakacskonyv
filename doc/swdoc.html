@@ -248,11 +248,18 @@ esetben a hibaüzenetet tartalmazza.</p>
 <code class="western">     </code><code class="western">* @return bool</code>
 <code class="western">     </code><code class="western">*/</code>
 <code class="western">    </code><code class="western">protected function  accessRight(string $action, $record):bool {</code>
-<code class="western">        </code><code class="western">$result = false;</code>
-<code class="western">        </code><code class="western">....</code>
-<code class="western">        </code><code class="western">return $result;</code>
-<code class="western">    </code><code class="western">}</code>
-
+	<code class="western">        </code><code class="western">$result = false;</code>
+	<code class="western">        </code><code class="western">....</code>
+	<code class="western">        </code><code class="western">return $result;</code>
+	<code class="western">    </code><code class="western">}</code>
+	
+<code class="western">
+    /**
+	* Bejelentkezés kieröltetése
+    * string $act 'task/taskname[/parName/parValue....]'
+    */
+    protected function  mustLogin(string $act)
+</code><br />
 <code class="western">    </code><code class="western">public function task1() {</code>
 <code class="western">        </code><code class="western">....</code>
 <code class="western">    </code><code class="western">}</code>
@@ -312,6 +319,8 @@ a megadott paramétereket átadva.</p>
 <code class="western">    </code><code class="western">}</code>
 <code class="western">&lt;/script&gt;</code></pre><p>
 Lásd a vendor/view.php -t is!</p>
+<p>Ha létezik a <strong>views</strong> könyvtárban <strong>{viewName}_{lng}.html</strong> akkor ezt használja,
+	 ha nem akkor a <strong>{viewName}.html</strong> -t.</p>
 <h3 class="western"><a name="__RefHeading___Toc179_953040041"></a><a name="__RefHeading___Toc160_1001536460"></a><a name="231pagintor"></a>
 2.3.1 paginátor</h3>
 <p>A template -be a 
@@ -376,7 +385,7 @@ git push origin v#.#.#
 		....
 	};
 </pre></code>
-<p>A viewerekben a szövegek  <strong>_("token")</strong> formában szerepeljenek.</p>
+<p>A viewerekben a szövegek  <strong>lng("token")</strong> formában szerepeljenek.</p>
 <p>A "token" formája lehet: <strong>token1&lt;br&gt;token2...</strong> is. 
 	Ilyenkor a forditás a &lt;br&gt; -el szeparált szegmensenként külön-külön történik.</p>
 </body>

@@ -1,5 +1,5 @@
 <div class="alert alert-danger" v-if="loged == 0">
-    Recept felviteléhez, modosításhoz, törléséhez be kell jelentkezni!
+   {{ lng('UPDATE_MUST_LOGIN') }}
 </div>	
 
 <div id="receptEdit" class="edit" style="display:none">
@@ -10,13 +10,13 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="form-outline mb-4">
-                    <h2>Recept<h2>			
+                    <h2>{{ lng('RECEPT') }}<h2>			
                 </div>
                 <div class="form-outline mb-4 d-inline d-md-none">
                     <img v-if="kep != ''" v-bind:src="kep" class="receptKep" class="receptKep" />				
                 </div>
                 <div class="form-outline mb-4">
-                    <label>Recept megnevezése:</label>			
+                    <label>{{ lng('NAME') }}:</label>			
                 </div>
                 <div class="form-outline mb-4">
                     <input type="text" v-model="recept.nev"
@@ -25,17 +25,16 @@
                 </div>
 
                 <div class="form-outline mb-4" v-if="disabled == ''">
-                    A <a href="https://mindmegette.hu" target="_new">mindmegette.hu</a> -n vagy a 
-                    <a href="https://receptneked.hu" target="_new">receptneked.hu</a> -n  vagy 
-                    <a href="https://nosalty.hu" target="_new">nosalty.hu</a> -n
-                    nyisd meg a recept oldalát,  a web címét másold az alábbi input mezőbe, 
-                    majd kattints a "Feldolgoz" gombra!
+                    <a href="https://mindmegette.hu" target="_new">mindmegette.hu</a> {{ lng('OR') }} 
+                    <a href="https://receptneked.hu" target="_new">receptneked.hu</a> {{ lng('OR') }} 
+                    <a href="https://nosalty.hu" target="_new">nosalty.hu</a> 
+                    {{ lng('TRANSVER') }}
                 </div>
                 <div class="form-outline mb-4" v-if="disabled == ''">
                     <input type="text" id="paste" class="form-control" style="width:80%" />
                     <button type="button" class="btn btn-secondary"
                         v-on:click="processPaste()">
-                        <em class="fa fa-cogs"></em>Feldolgoz</button>
+                        <em class="fa fa-cogs"></em>&nbsp;{{ lng('PROCESS') }}</button>
                 </div>
                 
             </div>
@@ -46,26 +45,29 @@
 
         <div class="row">
             <div class="col-10">
-            Elkészítési idő:
+            {{ lng('BUILDTIME') }}:    
             <input type="number" min="1" max="400" 
                 name="elkeszites" id="elkeszites" v-model="recept.elkeszites"
                 style="display:inlne-block; width:100px"  class="form-control"/> perc&nbsp;&nbsp;
-            Energia:
+            {{ lng('ENERGY') }}:
                 <input type="number" min="1" max="400" 
                     name="energia" id="energia" v-model="recept.energia"
-                    style="display:inlne-block; width:100px"  class="form-control"/> J/adag
+                    style="display:inlne-block; width:100px"  class="form-control"/> J/{{ lng('PORCIO') }}
             </div>    
         </div>
         <div class="row" id="hozzavalok">
             <div class="form-outline col-mb-10">
-                <h2>Hozzávalók 
+                <h2>{{ lng('INGREDIENTS') }}     
                     <input type="number" min="1" max="20" 
                         name="adag" id="adag" v-model="recept.adag" 
                         style="display:inline-block; width:80px;" placeholder="4"  class="form-control" />
                 adaghoz</h2>
-                <strong>Hozzávaló neve / mennyiség / mértékegység</strong>
             </div>
             <table style="width:100%" cellspacing="0" cellpadding="0" id="hozzavalokTable">
+            <thead>
+            <tr><th>{{ lng('NAME') }}</th><th>{{ lng('QUANTITY') }}</th><th>{{ lng('UNIT') }}</th></tr>    
+            </thead>    
+            <tbody>
             <tr class="form-outline col-mb-10 hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
                 <td>
                 <textarea cols="60" :disabled="disabled != ''"
@@ -79,11 +81,11 @@
                       <option v-for="nev in nevek">{{ nev.nev }}</option>
                 </datalist>
                 </td>
-                <td style="width:80px">
+                <td style="width:90px">
                 <input type="number" min="0" max="100" step="0.5" 
                    :disabled="disabled != ''"
                    v-model="hozzavalo.mennyiseg"
-                   v-bind:name="makeName('mennyiseg',i)" style="width:80px"
+                   v-bind:name="makeName('mennyiseg',i)" style="width:90px"
                    v-bind:id="makeName('mennyiseg',i)"  class="form-control"/>			
                 </td>
                 <td style="width:125px">
@@ -119,6 +121,7 @@
                 </datalist>
                 </td>
             </tr>
+            </tbody>
             </table>				
         </div>
         <div class="row">
@@ -128,21 +131,22 @@
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-secondary" v-on:click="addHozzavalo">+ hozzávaló</button>
+            <button type="button" class="btn btn-secondary" v-on:click="addHozzavalo">
+                + {{ lng('INGREDIENT') }}</button>
         </div>
-        <p>Hozzávaló törléshez, töröld ki a nevét!</p>
+        <p>{{ lng('RECEPTHELP1') }}</p>
         <div class="col-12">
-            <h3>Elkészítés</h3>			
+            <h3>{{ lng('BUILDING') }}</h3>			
             <textarea name="leiras" id="leiras"
             :disabled="disabled != ''" 
             cols="40" rows="15" v-model="recept.leiras"></textarea>
-            <p>Kép fájl (jpg vagy png, nem kötelező)</p>
+            <p>{{ lng('IMGFILE') }}</p>
             <input type="file" name="kepfile" :disabled="disabled != ''" />			
         </div>
         
         <div class="col-12" v-if="recept.id > 0">
             <hr />
-            <h3>Recept feltöltési infó</h3>
+            <h3>{{ lng('UPLOADINFO') }}</h3>
             <img v-bind:src="'images/users/'+creator.avatar" v-if="creator.avatar != ''"
                 style="height:32px; width:auto" />&nbsp;
             {{ recept.created_at }}&nbsp;
@@ -158,23 +162,23 @@
                 (recept.created_by == loged) |
                 (logedAdmin) | (logedGroup == 'moderator'))" 
                 v-on:click="okClick()">
-            <em class="fas fa-check"></em>&nbsp;Mentés</button>
+            <em class="fas fa-check"></em>&nbsp;{{ lng('SAVE') }}</button>
             &nbsp;
             <a href="index.php?task=receptek" class="btn btn-secondary">
-                <em class="fas fa-reply"></em>Mégsem
+                <em class="fas fa-reply"></em>&nbsp;{{ lng('CANCEL') }}
             </a>
             &nbsp;
             <button type="button" class="btn btn-secondary"
                 v-if="recept.id > 0"
                 v-on:click="printClick(receptId)">
-                <em class="fas fa-print"></em>&nbsp;Nyomtatás</button>
+                <em class="fas fa-print"></em>&nbsp;{{ lng('PRINT') }}</button>
                 &nbsp;
                 <button type="button" class="btn btn-danger"
                     v-if="((loged > 0) &
                     ((recept.created_by == loged) | 
                      (logedAdmin)))"
                     v-on:click="delClick()">
-                        <em class="fas fa-ban"></em>&nbsp;Recept törlése 
+                        <em class="fas fa-ban"></em>&nbsp;{{ lng('DELETE') }} 
                 </button>
         </div>
     </form>
@@ -184,7 +188,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-outline mb-4">
-                <h2 class="ribbon-banner"><span>Recept</span></h2>
+                <h2 class="ribbon-banner"><span>{{ lng('RECEPT') }}</span></h2>
             </div>
             <div class="form-outline mb-4 d-inline d-md-none">
                 <img v-if="kep != ''" v-bind:src="kep" class="receptKep" class="receptKep" />				
@@ -194,7 +198,7 @@
             </div>
             <div v-if="!disabled">
                 <button type="button" class="btn btn-primary" v-on:click="editClick">
-                    <em class="fas fa-edit" title="szerkesztes"></em> Szerkesztés
+                    <em class="fas fa-edit" title="szerkesztes"></em>&nbsp;{{ lng('EDIT') }}
                 </button>
             </div>
         </div>
@@ -206,17 +210,17 @@
     <div class="row" v-if="((recept.elkeszites > 0) | (recept.energia > 0))">
         <div class="col-12  receptInfo">
             <span v-if="recept.elkeszites > 0">
-                <em class="fas fa-clock"></em>&nbsp;Elkészítési idő: {{ recept.elkeszites }}&nbsp;perc
+                <em class="fas fa-clock"></em>&nbsp;{{ lng('BUILDTIME') }}: {{ recept.elkeszites }}&nbsp;perc
             </span>
             &nbsp;
             <span v-if="recept.energia > 0">
-                <em class="fas fa-fire"></em>&nbsp;Energia: {{ recept.energia }} J/adag
-                &nbsp;({{ Math.round(recept.energia / 4.187 ) }} cal/adag)
+                <em class="fas fa-fire"></em>&nbsp;{{ lng('ENERGY') }}: {{ recept.energia }} J/{{ lng('PORCIO') }}
+                &nbsp;({{ Math.round(recept.energia / 4.187 ) }} cal/{{ lng('PORCIO') }})
             </span>
         </div>    
     </div></br>
     <div class="row hozzavalok">
-        <h2 class="ribbon-banner"><span><em class="fas fa-puzzle-piece"></em>&nbsp;Hozzávalók
+        <h2 class="ribbon-banner"><span><em class="fas fa-puzzle-piece"></em>&nbsp;{{ lng('INGREDIENTS') }}
             <div class="button" v-on:click="adagMinusClick()">
                 &nbsp;-&nbsp;
             </div>    
@@ -226,7 +230,7 @@
             <div  class="button" v-on:click="adagPlusClick()">
                 &nbsp;+&nbsp;
             </div>    
-             adaghoz</span></h2>
+             {{ lng('PORCIO') }}</span></h2>
         <table cellspacing="0" cellpadding="0" id="hozzavalokTable">
         <tr class="hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
             <td v-if="hozzavalo.nev != ''">{{ hozzavalo.nev }}</td>
@@ -244,14 +248,14 @@
         </div>
     </div>
     <div class="row leiras" v-if="recept.leiras != ''">
-        <h2 class="ribbon-banner"><span><em class="fas fa-cogs"></em>&nbsp;Elkészítés</span></h2>
+        <h2 class="ribbon-banner"><span><em class="fas fa-cogs"></em>&nbsp;{{ lng('BUILDING') }}</span></h2>
         <div class="col-12">
              {{ recept.leiras }}
         </div>			
     </div>
     
     <div class="row uploadInfo" v-if="recept.id > 0">
-        <h2 class="ribbon-banner"><span><em class="fas fa-upload"></em>&nbsp;Recept feltöltési infó</span></h2>
+        <h2 class="ribbon-banner"><span><em class="fas fa-upload"></em>&nbsp;{{ lng('UPLOADINFO') }}</span></h2>
         <div class="col-12">
             <img v-bind:src="'images/users/'+creator.avatar" v-if="creator.avatar != ''"
                 style="height:32px; width:auto" />
@@ -276,7 +280,7 @@
 </div><!-- recept show -->
 
 <div class="row comments">
-    <h2 class="ribbon-banner"><span><em class="fas fa-comment"></em>&nbsp;Hozzászólások</span></h2>
+    <h2 class="ribbon-banner"><span><em class="fas fa-comment"></em>&nbsp;{{ lng('COMMENTS') }}</span></h2>
     
     <div v-for="comment in comments" class="col-12 comment">
         <a v-bind:href="'index.php?task=comment&id='+comment.id">
@@ -307,10 +311,10 @@
     <div v-if="loged > 0">
         <a class="btn btn-primary" 
             v-bind:href="'index.php?task=commentadd&receptid='+recept.id">
-            <em class="fas fa-comment"></em> Új hozzászólás beküldése
+            +<em class="fas fa-comment"></em>&nbsp;{{ lng('ADD') }}
         </a>
     </div>
-    <div v-if="loged == 0">Hozzászólás beküldéséhez be kell jelentkezni.</div>
+    <div v-if="loged <= 0">{{ lng('ADD_MUST_LOGIN') }}</div>
 </div>
 
 

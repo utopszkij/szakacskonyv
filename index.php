@@ -86,7 +86,11 @@ if (method_exists($comp, 'getTitle')) {
 				echo '<script> tokens = {}; </script>';
 			}	
 		} else {
-			echo '<script> tokens = {}; </script>';
+			if (file_exists(__DIR__.'/languages/hu.js')) {
+				echo '<script src="languages/hu.js"></script>';
+			} else {
+				echo '<script> tokens = {}; </script>';
+			}	
 		}
 	?>
 	<script type="text/javascript">
@@ -136,7 +140,7 @@ if (method_exists($comp, 'getTitle')) {
 		/**
 		 * nyelvi fordítás
 		 */
-		function _(token) {
+		function lng(token) {
 			var result = token;
 			var w = token.split('<br>');
 			for (var i = 0; i < w.length; i++) {

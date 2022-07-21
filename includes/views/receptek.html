@@ -1,6 +1,6 @@
 		<div id="receptList">
 			<div class="row">
-				<h1 class="ribbon-banner"><span>Receptek</span></h1>
+				<h1 class="ribbon-banner"><span>{{ lng('RECEPTS') }}</span></h1>
 			</div>	
 			<div class="row">&nbsp;</div>
 
@@ -9,12 +9,12 @@
 					<input type="hidden" name="task" value="receptek" />
 					<input type="hidden" name="page" value="1" />
 					<div>
-						<label>Név részlet:</label>
+						<label>{{ lng('NAME_SUBSTR') }}:</label>
 						<input type="text" name="filterstr" id="filterstr" 
 							   v-model="filterStr" class="form-control"/>
 					</div>
 					<div>
-						<label>Cimke:</label>
+						<label>{{ lng('LABEL') }}:</label>
 						<select name="filtercimke" id="fi</span>ltercimke" 
 							   v-model="filterCimke" class="form-control">
 							<option value=""></option>	   
@@ -23,18 +23,18 @@
 					</div>
 					
 					<div>
-						<label>Csak</label>
+						<label></label>
 						<input type="text" name="filtercreator" id="filtercreator"
-							v-model="filterCreator" class="form-control" /> által feltöltöttek
+							v-model="filterCreator" class="form-control" /> {{ lng('UPLOADER') }}
 					</div>		
 					<div>
-						<label>Csak</label>
+						<label></label>
 						<input type="date" name="filtercreated" id="filtercreated"
-							v-model="filterCreated" class="form-control" /> után feltöltöttek
-							<button type="submit" class="btn btn-primary">
-								<em class="fa fa-search"></em>Keresés</button>
-							<button type="button" v-on:click="delFilter()" 
-								title="szürés törlése" class="btn btn-secondary">X</button>
+							v-model="filterCreated" class="form-control" /> {{ lng('AFTER_UPLOAD') }}
+						<button type="submit" class="btn btn-primary">
+								<em class="fa fa-search"></em>&nbsp;{{ lng('SEARCH') }}</button>
+						<button type="button" v-on:click="delFilter()" 
+								v-bind:title="lng('CLEARFILTER')" class="btn btn-secondary">X</button>
 					</div>	
 				</form>
 			</div>	
@@ -42,7 +42,7 @@
 				<div id="receptListTable" class="col-md-8">
 					<table style="width:100%">
 						<thead>
-							<tr><td>ID</td><td>Megnevezés</td></tr>		
+							<tr><td>ID</td><td>{{ lng('NAME') }}</td></tr>		
 						</thead>
 						<tbody>
 							<tr v-for="item in list" class="makeTrClass(item)">
@@ -57,12 +57,12 @@
 				</div>	
 				include paginator
 			</div>
-			<p>Kattints a recept nevére a megtekintéséhez, modosításhoz, törléséhez!</p>
+			<p>{{ lng('RECEPTSHELP') }}</p>
 			<div style="text-align:center" v-if="loged > 0">
 				<a v-bind:href="HREF('recept',{id:0})" class="btn btn-primary">
-					<em class="fas fa-plus-circle"></em>&nbsp;Új recept</a>
+					<em class="fas fa-plus-circle"></em>&nbsp;{{ lng('ADD') }}</a>
 			</div>
-			<div v-if="loged <= 0">Recept felviteléhez be kell jelentkezni.</div>
+			<div v-if="loged <= 0">{{ lng('ADD_MUST_LOGIN') }}</div>
 
 		</div>	
 
