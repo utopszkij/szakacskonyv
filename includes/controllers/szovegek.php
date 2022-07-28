@@ -19,6 +19,10 @@ class Szovegek {
 	public function visszaeles() {
 		view('protest',[]);
 	}
+	
+	public function sponzor() {
+		view('sponzor',[]);
+	}
 }
 
 ?>
