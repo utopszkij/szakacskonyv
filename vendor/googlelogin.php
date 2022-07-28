@@ -4,7 +4,7 @@
 * google konfigurálás: 
 *   https://console.cloud.google.com/apis/dashboard?pli=1
 *
-* sikeres login után a SITEURL -t hivja meg, usercode url paraméterben
+* sikeres login után a state -t hivja meg, usercode url paraméterben
 * küldve a user adatokat
 * $userCode = base64_encode($guser->name).'-'.
 *				$guser->id.'-'.md5($guser->id.FB_SECRET).'-'. !!! FIGYELEM FB_SECRET !!!
@@ -126,10 +126,14 @@ if (isset($_GET['code'])) {
 			$guser->id.'-'.md5($guser->id.FB_SECRET).'-'.
 			base64_encode($guser->email).'-'.
 			base64_encode($guser->picture);
+		if (strpos($state,'?') > 0) {
+				$url = $state.'&usercode='.$usercode;
+		} else {
+				$url = $state.'?usercode='.$usercode;
+		}	
 		?>
 		<script>
-			document.location = '<?php echo $state; ?>'+
-			'?usercode=<?php echo $userCode; ?>';						
+			document.location = "<?php echo $url; ?>";
 		</script>
 		<?php
 	} else {

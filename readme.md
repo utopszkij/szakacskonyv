@@ -75,14 +75,14 @@ GNU v3
 
 - adatbázis létrehozása (utf8, magyar rendezéssel),
 - config.php elkészítése a a config-example.php alapján,
-- az includes/szovegek.php fájl szükség szerinti módosítása (impresszum, adatkezelési leírás),
+- a views/impressum, policy, fájlok szükség szerinti módosítása
 - fájlok és könyvtárak feltöltése a szerverre,
 - az images könyvtár legyen irható a web szerver számára, a többi csak olvasható legyen,
 - adatbázis kezdeti feltöltése a vendor/database/dbinit.sql segitségével,
 - többfelhasználós üzemmód esetén; a program "Regisztrálás" menüpontjában hozzuk létre a
   a system adminisztrátor fiokot (a config.php -ban beállított bejelentkezési névvel).
 
-Könyvtár szerkezet
+Könyvtár szerkezet a futtató web szerveren:
 ```
 [document_root]
   [images]
@@ -97,20 +97,12 @@ Könyvtár szerkezet
     egyéb inlude fájlok
   [vendor]
     keretrendszer fájlok és harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
-  [tests]
-    unit testek
   index.php  - fő program
   config.php - konfigurációs adatok
-  config_test.php - konfigurációs adatok unittesthez
   style.css  - megjelenés
-  readme.md  - ez a fájl
-  LICENSE    - licensz
-  files.sh   - a files.txt -t előállító command. Csak fejlesztői környezetben kell és szabad        
-               használni!
   files.txt  - a telepített fájlok felsorolása, az upgrade folyamat használja
-  viewtest.sh - view js unittestek futtatása
-```  
 
+```  
 index.php hívással a "welcome" komponens betöltésével indul a program.
 
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
@@ -136,7 +128,7 @@ phpunit tests
 ```
 ## software documentáció
 
-[http://szakacs.great-site.net/doc/swdoc.html](http://szakacs.great-site.net/doc/swdoc.html)
+[http://szakacskonyv.nfx.hu/doc/swdoc.html](http://szakacskonyv.nfx.hu/doc/swdoc.html)
 
 ## A sw. dokumentáció előállítása
 telepiteni kell a doxygen dokumentáció krátort.
@@ -151,6 +143,12 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v1.5.5
+2022.07.28
+- dizájn fejlesztés
+- apróbb javítások
+- támogatási lehetőség
+### *************************************
 ## verzió v1.5.4
 2022.07.19.
 - dizájn fejlesztés

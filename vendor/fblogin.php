@@ -1,7 +1,15 @@
 <?php
 
-// lásd: https://www.cloudways.com/blog/add-facebook-login-in-php/
-
+/** 
+* facebbok login
+* lásd: https://www.cloudways.com/blog/add-facebook-login-in-php/
+* sikeres login után a state paraméterben lévő oldalt hívja be, 
+* usercode url paraméterben küldve a user adatokat
+* $userCode = base64_encode($guser->name).'-'.
+*				$guser->id.'-'.md5($guser->id.FB_SECRET).'-'. !!! FIGYELEM FB_SECRET !!!
+*				base64_encode($guser->email).'-'.
+*				base64_encode($guser->picture);
+*/
 
 if (file_exists(__DIR__.'/config.php')) {
 	include_once (__DIR__.'/config.php');
@@ -80,10 +88,14 @@ if (isset($_GET['code'])) {
 			// sikeres fb login fbuser:{id, name, picture, email}
 			$userCode = base64_encode($fbuser->name).'-'.
 				$fbuser->id.'-'.md5($fbuser->id.FB_SECRET);
+			if (strpos($state,'?') > 0) {
+				$url = $state.'&usercode='.$usercode;
+			} else {
+				$url = $state.'?usercode='.$usercode;
+			}	
 			?>
 			<script>
-				document.location = '<?php echo $state; ?>'+
-				'?usercode=<?php echo $userCode; ?>';						
+				document.location = "<?php echo $url; ?>";
 			</script>
 			<?php
 		} else {

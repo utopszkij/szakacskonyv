@@ -10,6 +10,7 @@ class Fw {
 	function __construct() {
 		global $components;
 		if (!defined('REWRITE')) { define('REWRITE',true); }
+		if (!defined('LNG')) { define('LNG','hu'); }
 
 		// SEO barát URL kezelés
 		// url = ....../task/xxx/parname/parValue....
@@ -21,7 +22,11 @@ class Fw {
 				$_GET['task'] = $w[$i+1];
 				$i = $i + 2;
 				while ($i < count($w)) {
-					$_GET[$w[$i]] = $w[$i+1];
+					if (isset($w[$i+1])) { 
+						$_GET[$w[$i]] = $w[$i+1];
+					} else {
+						$_GET[$w[$i]] = '';
+					}	
 					$i = $i + 2;
 				}
 			}
@@ -85,6 +90,8 @@ class Fw {
 		// task kezelés
 		if (isset($_GET['task'])) {
 			$this->task = $_GET['task'];
+		} else if (isset($_POST['task'])) {
+			$this->task = $_POST['task'];
 		} else {
 			$this->task = 'home';
 		}
