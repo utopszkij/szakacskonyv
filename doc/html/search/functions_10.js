@@ -8,7 +8,7 @@ var searchData=
   ['settable_5',['setTable',['../class_r_a_t_w_e_b_1_1_model.html#a72982a0e56f1191575fec555badfa18b',1,'RATWEB::Model']]],
   ['sqlname_6',['sqlName',['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#acdc7e10399042d89b45fad8d527d431a',1,'RATWEB::DB::Query']]],
   ['sqlvalue_7',['sqlValue',['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#a118498dc3fe9db7d7b79291370156d43',1,'RATWEB\DB\Query\sqlValue()'],['../class_r_a_t_w_e_b_1_1_model.html#ade441dfa6283a851c8a6b80cac9dbf99',1,'RATWEB\Model\sqlValue()']]],
-  ['szamol_8',['szamol',['../class_osszegzes.html#ae747ff60cb464fe1c84da3695b8b73ef',1,'Osszegzes']]],
+  ['szamol_8',['szamol',['../class_osszegzes.html#ae747ff60cb464fe1c84da3695b8b73ef',1,'Osszegzes\szamol()'],['../class_osszegzes.html#ae747ff60cb464fe1c84da3695b8b73ef',1,'Osszegzes\szamol()']]],
   ['szinonimaadd_9',['szinonimaadd',['../class_szinonima.html#acadd609835500e57da2d27aa596012b9',1,'Szinonima']]],
   ['szinonimadelete_10',['szinonimadelete',['../class_szinonima.html#a8f92090e3663a16650f0cafe368661c7',1,'Szinonima']]],
   ['szinonimaedit_11',['szinonimaedit',['../class_szinonima.html#a7d8794bdbf066287c978f93c0729b4f6',1,'Szinonima']]],
