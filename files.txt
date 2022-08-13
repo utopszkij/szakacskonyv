@@ -17,7 +17,7 @@ drwxrwxr-x 2 utopszkij utopszkij  4096 2022-07-08 languages
 -rw-rw-r-- 1 utopszkij utopszkij  1528 2022-07-10 package-lock.json
 -rw-r--r-- 1 utopszkij utopszkij  9900 2022-08-13 readme.md
 -rw-r--r-- 1 utopszkij utopszkij   271 2022-07-07 secure.sh
--rw-r--r-- 1 utopszkij utopszkij  7244 2022-07-11 style.css
+-rw-r--r-- 1 utopszkij utopszkij  7246 2022-08-07 style.css
 drwxrwxr-x 2 utopszkij utopszkij  4096 2022-07-08 tests
 -rw-r--r-- 1 utopszkij utopszkij   124 2022-07-07 unsecure.sh
 drwxrwxr-x 6 www-data  www-data   4096 2022-07-07 vendor
@@ -342,7 +342,7 @@ drwxr-xr-x 2 www-data  www-data    4096 2022-06-20 comments
 -rw-r--r-- 1 www-data  www-data    4349 2022-05-24 Rizibizi - alaprecept.jpg
 -rw-r--r-- 1 www-data  www-data    4144 2021-11-02 Ropogós sült oldalas.jpg
 -rw-r--r-- 1 www-data  www-data  152469 2022-06-15 Sárgarépás sütőtökpüré leves recept.jpg?v=1633545989
--rw-r--r-- 1 utopszkij utopszkij   3035 2022-07-28 sponzor.png
+-rw-r--r-- 1 utopszkij utopszkij   3035 2022-08-13 sponzor.png
 -rw-rw-r-- 1 utopszkij utopszkij   4859 2022-06-15 szakacs.ico
 -rw-rw-r-- 1 utopszkij utopszkij  24451 2022-06-15 szakacs.png
 -rw-rw-r-- 1 utopszkij utopszkij  67525 2021-11-02 Székely káposzta.jpg
@@ -430,7 +430,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-28 views
 -rw-r--r-- 1 utopszkij utopszkij  3313 2022-07-28 receptek.html
 -rw-r--r-- 1 utopszkij utopszkij 21741 2022-07-28 receptkep.html
 -rw-r--r-- 1 utopszkij utopszkij  1981 2022-07-28 regist.html
--rw-r--r-- 1 utopszkij utopszkij  1112 2022-08-13 sponzor_hu.html
+-rw-r--r-- 1 utopszkij utopszkij  1375 2022-08-13 sponzor_hu.html
 -rw-r--r-- 1 utopszkij utopszkij  1933 2022-07-28 szinonimabrowser.html
 -rw-r--r-- 1 utopszkij utopszkij  2210 2022-07-28 szinonimaform.html
 -rw-r--r-- 1 utopszkij utopszkij   995 2022-08-11 userbrowser.html
