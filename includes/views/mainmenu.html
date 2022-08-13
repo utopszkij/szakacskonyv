@@ -4,14 +4,14 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a v-if="logedAvatar != ''" class="nav-link navbar-toggler" 
+          <!-- a v-if="logedAvatar != ''" class="nav-link navbar-toggler"
                   v-bind:href="HREF('useredit',{id:loged})">
                   <img v-bind:src="'images/users/'+logedAvatar"
                       style="height:34px; margin:0px; float:right" />
                   <var v-bind:class="logedGroup">
                       {{ logedName }}
                   </var>
-          </a>
+          </a -->
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -42,27 +42,11 @@
                           <a class="dropdown-item" v-bind:href="HREF('cimkek',{})">{{ lng('LABELS') }}</a>
                       </div>
               </li>	
-
-
-
-
             </ul>
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0 text-right">
                   <li class="nav-item" v-if="MULTIUSER & (loged <= 0)">
                     <a v-bind:href="HREF('login',{})" class="btn btn-info" role="button">
                             <em class="fas fa-sign-in-alt"></em>&nbsp;{{ lng('LOGIN') }}</a>
-                  </li>
-                  <li class="nav-item" v-if="loged > 0">
-                      <a class="nav-link" 
-                          v-bind:href="HREF('useredit',{id:loged})">
-                          <em class="fas fa-address-card"></em>	
-                          <var v-bind:class="logedGroup">
-                              {{ logedName }}
-                              <img v-if="logedAvatar != ''"
-                                   v-bind:src="'images/users/'+logedAvatar"
-                                    style="height:34px; margin:0px;" />
-                          </var>	
-                      </a>
                   </li>
                   <li class="nav-item" v-if="MULTIUSER & (loged > 0)">
                     <a v-bind:href="HREF('logout',{})" class="btn btn-info" role="button">
@@ -74,7 +58,21 @@
                   </li>
             </ul>
           </div>
-      </nav>	
+          <ul class="navbar-nav mr-auto mb-2 mb-lg-0 text-right">
+                  <li class="nav-item" v-if="loged > 0">
+                      <a class="nav-link"
+                          v-bind:href="HREF('useredit',{id:loged})">
+                          <em class="fas fa-address-card"></em>
+                          <var v-bind:class="logedGroup" style="color:white">
+                              {{ logedName }}
+                              <img v-if="logedAvatar != ''"
+                                   v-bind:src="'images/users/'+logedAvatar"
+                                    style="height:34px; margin:0px;" />
+                          </var>
+                      </a>
+                  </li>
+          </ul>
+      </nav>
       <div class="warning" v-if="(lastVerzio > fileVerzio) & (MULTIUSER) & (isAdmin)">
           <a v-bind:href="HREF('upgrade1',{version:lastVerzio})" 
               class="btn btn-primary">
