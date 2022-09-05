@@ -6,7 +6,7 @@
 drwxrwxr-x 3 utopszkij utopszkij  4096 2022-07-06 doc
 -rwxrwxr-x 1 utopszkij utopszkij    71 2022-07-06 documentor.sh
 -rwxrwxr-x 1 utopszkij utopszkij    58 2022-07-06 files.sh
--rw-rw-r-- 1 utopszkij utopszkij     0 2022-08-13 files.txt
+-rw-rw-r-- 1 utopszkij utopszkij     0 2022-09-05 files.txt
 drwxrwxrwx 4 utopszkij utopszkij  4096 2022-07-28 images
 drwxrwxrwx 5 utopszkij www-data   4096 2022-07-28 includes
 -rw-rw-r-- 1 utopszkij utopszkij  5706 2022-05-22 index2.html
@@ -15,9 +15,9 @@ drwxrwxr-x 2 utopszkij utopszkij  4096 2022-07-08 languages
 -rw-rw-r-- 1 utopszkij www-data  35149 2021-10-31 LICENSE
 -rw-rw-r-- 1 utopszkij utopszkij    60 2022-07-10 package.json
 -rw-rw-r-- 1 utopszkij utopszkij  1528 2022-07-10 package-lock.json
--rw-r--r-- 1 utopszkij utopszkij  9900 2022-08-13 readme.md
+-rw-r--r-- 1 utopszkij utopszkij 10010 2022-09-05 readme.md
 -rw-r--r-- 1 utopszkij utopszkij   271 2022-07-07 secure.sh
--rw-r--r-- 1 utopszkij utopszkij  7246 2022-08-07 style.css
+-rw-r--r-- 1 utopszkij utopszkij  7884 2022-09-05 style.css
 drwxrwxr-x 2 utopszkij utopszkij  4096 2022-07-08 tests
 -rw-r--r-- 1 utopszkij utopszkij   124 2022-07-07 unsecure.sh
 drwxrwxr-x 6 www-data  www-data   4096 2022-07-07 vendor
@@ -390,7 +390,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-28 views
 -rwxrwxrwx 1 utopszkij www-data   2639 2022-07-19 napimenu.php
 -rwxr-xr-x 1 utopszkij www-data   7507 2022-07-08 naptar.php
 -rwxrwxrwx 1 utopszkij www-data   6427 2022-07-12 osszegzes.php
--rwxrwxrwx 1 utopszkij www-data  14613 2022-07-19 recept.php
+-rwxrwxrwx 1 utopszkij www-data  14692 2022-09-05 recept.php
 -rw-rw-r-- 1 utopszkij utopszkij  3557 2022-07-05 szinonima.php
 -rwxrwxrwx 1 utopszkij www-data    351 2022-07-28 szovegek.php
 -rwxrwxrwx 1 utopszkij www-data  17843 2022-07-06 upgrade.php
@@ -427,7 +427,7 @@ drwxrwxr-x 2 utopszkij utopszkij 4096 2022-07-28 views
 -rw-r--r-- 1 utopszkij utopszkij  2148 2022-07-28 paginator.html
 -rw-r--r-- 1 utopszkij utopszkij  1227 2022-07-28 policy_hu.html
 -rw-r--r-- 1 utopszkij utopszkij   450 2022-07-28 protest_hu.html
--rw-r--r-- 1 utopszkij utopszkij  3313 2022-07-28 receptek.html
+-rw-r--r-- 1 utopszkij utopszkij  3439 2022-09-05 receptek.html
 -rw-r--r-- 1 utopszkij utopszkij 21741 2022-07-28 receptkep.html
 -rw-r--r-- 1 utopszkij utopszkij  1981 2022-07-28 regist.html
 -rw-r--r-- 1 utopszkij utopszkij  1375 2022-08-13 sponzor_hu.html
