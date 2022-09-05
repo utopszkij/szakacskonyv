@@ -46,15 +46,19 @@
 						</thead>
 						<tbody>
 							<tr v-for="item in list" class="makeTrClass(item)">
-								<td><a v-bind:href="HREF('recep',{id:item.id,title:item.nev})">{{ item.id }}</a></td>
-								<td><a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">{{ item.nev }}</a></td>
+								<td>
+									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
+										<img v-bind:src="item.image" /><span class="id">{{ item.id }}</span>
+									</a>
+								</td>
+								<td><a class="name" v-bind:href="HREF('recept',{id:item.id,title:item.nev})">{{ item.nev }}</a></td>
                             </tr>    
 						</tbody>
 					</table>
+					<div class="d-none d-md-inline col-md-4">
+						<img class="dekor" src="images/dekor1.jpg" class="dekorImg" />
+					</div>	
 				</div>
-				<div class="d-none d-md-inline col-md-4">
-					<img src="images/dekor1.jpg" class="dekorImg" />
-				</div>	
 				include paginator
 			</div>
 			<p>{{ lng('RECEPTSHELP') }}</p>

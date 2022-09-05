@@ -486,6 +486,9 @@ class Recept extends Controller{
 		// rekordok lekérése
 		$db = $this->buildQuery();
 		$list = $db->offset($offset)->limit($pageSize)->all();
+		foreach ($list as $list1) {
+			$list1->image = $this->receptkep($list1);
+		}
 
 		// összes cimke listája
 		$cimkek = [];
