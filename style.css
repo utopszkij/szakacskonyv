@@ -96,15 +96,16 @@ form {margin:1% 1% 1% 1%}
 #atvaltasForm label {width:15%}
 
 #receptList #receptListTable {width:100%}
+#receptList .tdName {display:none}
 #receptList #receptListTable table {display:block; width:100%; padding:5px;}
 #receptList #receptListTable thead {display:none}
 #receptList #receptListTable tbody {text-align:center}
-#receptList #receptListTable tr {display:inline-block; width:200px; height:250px; padding:5px;
-  border-style:solid; border-width:1px; margin:5px; text-align:center; overflow:hidden}
+#receptList #receptListTable tr {display:inline-block; width:180px; height:250px; padding:5px;
+  border-style:solid; border-width:1px; margin:5px; text-align:center; overflow:hidden; border-radius: 8px;}
 #receptList #receptListTable td {display:block;}
 #receptList #receptListTable .id {display:none}
 #receptList #receptListTable .dekor {display:none}
-#receptList #receptListTable img {height:190px; max-width:190px; overflow:hidden}
+#receptList #receptListTable img {height:150px; max-width:150px; overflow:hidden; border-radius: 8px;}
 
 #footer {background-color:#113355; padding:20px; 
   border-radius: 0px 0px 30px 30px; text-align:center}

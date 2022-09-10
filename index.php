@@ -30,7 +30,7 @@ importComponent('upgrade');
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v1.5.6';
+$fileVerzio = 'v1.5.8';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -56,6 +56,12 @@ $title = 'Szakácskönyv';
 if (method_exists($comp, 'getTitle')) {
 	$title = $comp->getTitle($task);
 } 
+
+// axios backend
+if ($task == 'getImage') {
+	$comp->$task ();
+    exit();
+}
 
 ?>
 <html lang="en">

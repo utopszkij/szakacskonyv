@@ -143,6 +143,11 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v1.5.8
+2022.09.10
+- csempe dizájn fejlesztése
+- megosztás gombok
+### ************************************
 ## verzió v1.5.7
 2022.09.05
 - csempe dizájn a recept lista helyett

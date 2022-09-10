@@ -1,4 +1,6 @@
-		<div id="receptList">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <div id="receptList">
 			<div class="row">
 				<h1 class="ribbon-banner"><span>{{ lng('RECEPTS') }}</span></h1>
 			</div>	
@@ -48,11 +50,12 @@
 							<tr v-for="item in list" class="makeTrClass(item)">
 								<td>
 									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
-										<img v-bind:src="item.image" /><span class="id">{{ item.id }}</span>
+										<img v-bind:_src="loadImg(item.id)" v-bind:id="'img'+item.id" />
+                                        <span class="id">{{ item.id }}</span>
+                                        <div class="name">{{ item.nev }}</div>
 									</a>
 								</td>
-								<td><a class="name" v-bind:href="HREF('recept',{id:item.id,title:item.nev})">{{ item.nev }}</a></td>
-                            </tr>    
+                            </tr>
 						</tbody>
 					</table>
 					<div class="d-none d-md-inline col-md-4">
@@ -96,7 +99,15 @@
 					document.getElementById('filtercreated').value = '';
 					document.getElementById('filtercimke').value = '';
 					document.getElementById('filterForm').submit();
-		}
+		},
+        loadImg(id) {
+                axios.get('index.php?task=getImage&id='+id)
+                .then(function(response) {
+                    console.log(id);
+                    console.log(response.data);
+                    document.getElementById('img'+id).src = response.data.replace('\n','');
+                })
+        }
     }
 
  </script>       

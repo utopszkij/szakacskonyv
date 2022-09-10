@@ -1,11 +1,49 @@
 <div>
-    <a v-bind:href="HREF('impresszum',{})">Imresszum</a>&nbsp;&nbsp;&nbsp;
+<section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1"
+         v-bind:href="'https://www.facebook.com/sharer/sharer.php?u='+location"
+         role="button" target="_new"><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1"
+         v-bind:href="'https://twitter.com/intent/tweet?&url='+location"
+         role="button" target="_new"><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1"
+         v-bind:href="'https://mail.google.com/mail/?view=cm&body='+location"
+         role="button" target="_new"><i class="fa fa-envelope"></i
+      ></a>
+
+      <!-- Instagram
+      <a class="btn btn-outline-light btn-floating m-1"
+         v-bind:href="'https://www.instagram.com/sharer.php?u='+location"
+         role="button" target="_new"><i class="fab fa-instagram"></i
+      ></a>
+      -->
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1"
+         v-bind:href="'https://www.linkedin.com/cws/share?url='+location"
+         role="button" target="_new"><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1"
+          href="https://github.com/utopszkij/szakacskonyv"
+          role="button" target="_new"><i class="fab fa-github"></i
+      ></a>
+    </section><hr>
+    <a v-bind:href="HREF('impresszum',{})" style="color:white;">Imresszum</a>&nbsp;&nbsp;&nbsp;
     <a v-bind:href="HREF('adatkezeles',{})" style="color:white;">{{ lng('POLICY') }}</a>&nbsp;&nbsp;&nbsp;
     <a v-bind:href="HREF('visszaeles',{})" style="color:white;">{{ lng('PROTEST') }}</a>&nbsp;&nbsp;&nbsp;
     <a v-bind:href="HREF('licensz',{})" style="color:white;">{{ lng('LICENCE') }}</a>&nbsp;&nbsp;&nbsp;
     <a href="https://github.com/utopszkij/szakacskonyv" target="_new" style="color:white;">
 		{{ lng('SOURCE') }}</a>&nbsp;&nbsp;&nbsp;
+		<a v-bind:href="HREF('sponzor',{})" style="color:white;">Támogatás</a>
     <div style="color:white;">Ⓒ 2022 {{ lng('COPYRIGHT') }}.&nbsp;&nbsp;&nbsp;
-		<a v-bind:href="HREF('sponzor',{})">Támogatás</a>
 	</div>
 </div>
