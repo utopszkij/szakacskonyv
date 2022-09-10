@@ -486,9 +486,12 @@ class Recept extends Controller{
 		// rekordok lekérése
 		$db = $this->buildQuery();
 		$list = $db->offset($offset)->limit($pageSize)->all();
+
+        /*
 		foreach ($list as $list1) {
 			$list1->image = $this->receptkep($list1);
 		}
+        */
 
 		// összes cimke listája
 		$cimkek = [];
@@ -513,6 +516,17 @@ class Recept extends Controller{
 		]); 
 
 	}
+
+    /**
+    * recpt kép url id alapján (axios backend)
+    */
+    public function getImage() {
+		$id = $this->getParam('id');
+        $q = new \RATWEB\DB\Query('receptek');
+        $rec = $q->where('id','=',$id)->first();
+        $imgurl = $this->receptkep($rec);
+        echo $imgurl;
+    }
 } // class
 
 ?>

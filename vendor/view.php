@@ -80,6 +80,7 @@ function echoEndScript(array $params, string $appName) {
             echo '				
             innerWidth : window.innerWidth,
             HREF: window.HREF,
+            location: encodeURI(window.location),
             lng: window.lng
             };
         },
