@@ -113,6 +113,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac72dbcff6c1c28e2d29f9928f96c33b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a4fa8e962694ea07c07a52728414549"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recept_model.html#a1a4fa8e962694ea07c07a52728414549">delReceptCimke</a> (int $receptId, string $cimke)</td></tr>
 <tr class="separator:a1a4fa8e962694ea07c07a52728414549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a818fa25ff44ad95e0a7b416129db25bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recept_model.html#a818fa25ff44ad95e0a7b416129db25bb">isFavorit</a> (int $user_id, int $recept_id)</td></tr>
+<tr class="separator:a818fa25ff44ad95e0a7b416129db25bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d11c0a1045e387dbb947ad39d6c395"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recept_model.html#a07d11c0a1045e387dbb947ad39d6c395">addToFavorit</a> (int $user_id, int $recept_id)</td></tr>
+<tr class="separator:a07d11c0a1045e387dbb947ad39d6c395"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1482b18519fe7e910ab1ce4181f1c13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_recept_model.html#ae1482b18519fe7e910ab1ce4181f1c13">delFromFavorit</a> (int $user_id, int $recept_id)</td></tr>
+<tr class="separator:ae1482b18519fe7e910ab1ce4181f1c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_r_a_t_w_e_b_1_1_model"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_r_a_t_w_e_b_1_1_model')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_r_a_t_w_e_b_1_1_model.html">Model</a></td></tr>
 <tr class="memitem:a72982a0e56f1191575fec555badfa18b inherit pub_methods_class_r_a_t_w_e_b_1_1_model"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_a_t_w_e_b_1_1_model.html#a72982a0e56f1191575fec555badfa18b">setTable</a> (string $table)</td></tr>
 <tr class="separator:a72982a0e56f1191575fec555badfa18b inherit pub_methods_class_r_a_t_w_e_b_1_1_model"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,6 +168,41 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a07d11c0a1045e387dbb947ad39d6c395" name="a07d11c0a1045e387dbb947ad39d6c395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07d11c0a1045e387dbb947ad39d6c395">&#9670;&nbsp;</a></span>addToFavorit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">addToFavorit </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>$user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>$recept_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >recept hozzá adása a kedvencekhez </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">int</td><td class="paramname">$user_id</td><td></td></tr>
+    <tr><td class="paramtype">int</td><td class="paramname">$recept_id</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a75af03d86a57d04e81cdb1a7aa2841ee" name="a75af03d86a57d04e81cdb1a7aa2841ee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a75af03d86a57d04e81cdb1a7aa2841ee">&#9670;&nbsp;</a></span>deleteCimkek()</h2>
 
@@ -204,6 +245,41 @@ Additional Inherited Members</h2></td></tr>
 <p >törli az adott recept összes hozzávalóját </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramtype">int</td><td class="paramname">$id</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae1482b18519fe7e910ab1ce4181f1c13" name="ae1482b18519fe7e910ab1ce4181f1c13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1482b18519fe7e910ab1ce4181f1c13">&#9670;&nbsp;</a></span>delFromFavorit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delFromFavorit </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>$user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>$recept_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >recept törlése a kedvencek közül </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">int</td><td class="paramname">$user_id</td><td></td></tr>
+    <tr><td class="paramtype">int</td><td class="paramname">$recept_id</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -390,6 +466,42 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >felvisz az adatbázisba egy hozzavalok rekordot </p>
+
+</div>
+</div>
+<a id="a818fa25ff44ad95e0a7b416129db25bb" name="a818fa25ff44ad95e0a7b416129db25bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a818fa25ff44ad95e0a7b416129db25bb">&#9670;&nbsp;</a></span>isFavorit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">isFavorit </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>$user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>$recept_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >az "id" recpet szerepel a kedvencek között? </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">int</td><td class="paramname">$user_id</td><td></td></tr>
+    <tr><td class="paramtype">int</td><td class="paramname">$recept_id</td><td></td></tr>
+    <tr><td class="paramtype"></td><td class="paramname">bool</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

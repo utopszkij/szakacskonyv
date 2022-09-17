@@ -30,7 +30,7 @@ importComponent('upgrade');
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v1.5.8';
+$fileVerzio = 'v1.6';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -217,6 +217,9 @@ if ($task == 'getImage') {
 		<div class="row" id="header" onclick="document.location='index.php';"></div>
 		
 		<?php 
+			if (($_SESSION['loged'] > 0) & ($_SESSION['logedAvatar'] == '')) {
+				$_SESSION['logedAvatar'] = 'noavatar.png';
+			}
 			view('mainmenu',[
 				'MULTIUSER' => MULTIUSER,
 				'loged' => $_SESSION['loged'],

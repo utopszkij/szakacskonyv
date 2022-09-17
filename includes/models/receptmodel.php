@@ -155,6 +155,50 @@
                 ->delete();
         }
 
+        /**
+         * az "id" recpet szerepel a kedvencek között?
+         * @param int $user_id
+         * @param int $recept_id
+         * @param bool
+         */
+        public function isFavorit(int $user_id, int $recept_id) {
+            $q = new Query('kedvencek');
+            $rec = $q->where('user_id','=',$user_id)
+                    ->where('recept_id','=',$recept_id)
+                    ->first();
+            return isset($rec->id);        
+        }
+
+        /**
+         * recept hozzá adása a kedvencekhez
+         * @param int $user_id
+         * @param int $recept_id
+         */
+        public function addToFavorit(int $user_id, int $recept_id) {
+            $record = new Record();
+            $record->id = 0;
+            $record->user_id = $user_id;
+            $record->recept_id = $recept_id;
+            $record->pozicio = 0;
+            $q = new Query('kedvencek');
+            $q->insert($record);
+            if ($q->error != '') {
+                echo $q->error(); exit();
+            }
+        }
+  
+        /**
+         * recept törlése a kedvencek közül
+         * @param int $user_id
+         * @param int $recept_id
+         */
+        public function delFromFavorit(int $user_id, int $recept_id) {
+            $q = new Query('kedvencek');
+            $q->where('user_id','=',$user_id)->where('recept_id','=',$recept_id)->delete();
+            if ($q->error != '') {
+                echo $q->error(); exit();
+            }
+        }
     
     }		
 

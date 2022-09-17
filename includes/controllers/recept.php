@@ -186,7 +186,7 @@ class Recept extends Controller{
 	 * 2. ha nincs megpróbál név alapján  net-től keresni
 	 */
 	private function receptKep($recept) {
-		$kep = 'images/etkeszlet.png'; 
+		$kep = 'images/noimage.png'; 
 		if (file_exists('images/'.$recept->nev.'.png')) {
 			$kep = 'images/'.$recept->nev.'.png';
 		} else if (file_exists('images/'.$recept->nev.'.jpg')) {
@@ -204,13 +204,21 @@ class Recept extends Controller{
 			$te=explode('https://encrypted-tbn0.gstatic.com/images?q=tbn:', $r,2);
 			for($i=1;$i<count($te);$i++) {
 				$tedd=explode('"', $te[$i], 2);
-				$url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:".$tedd[0];
-				$image = @file_get_contents($url);
-				if(!$image)
-					break;
-				$kep = HtmlSpecialChars($url);
+				if (isset($tedd[0])) {
+					$url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:".$tedd[0];
+					$image = @file_get_contents($url);
+					if(!$image) {
+						$kep = 'images/noimage.png';
+					} else {
+						$kep = HtmlSpecialChars($url);
+						// kép mentése az images könyvtárba
+						$kep = 'images/'.$recept->nev.'.png';
+						$fp = fopen($kep,'w+');
+						fwrite($fp, $image);
+						fclose($fp);
+					}
+				}	
 			}
-
 		}
 		return $kep;
 	}
@@ -240,8 +248,10 @@ class Recept extends Controller{
 			
 			// creator hozzáolvasása
 			$creator = $this->model->getCreator($recept);
+			// kedvenc?
+			$isFavorit = $this->model->isFavorit($this->session->input('loged'), $receptId);
 		} else {
-			$creator = new Record();
+			$creator = new Record($this->session->input('loged'));
 			$creator->id = $this->session->input('loged');
 			$creator->username = $this->session->input('logedName');
 		}
@@ -306,6 +316,7 @@ class Recept extends Controller{
 			"receptId" => $receptId,
 			"kep" => $kep,
 			"recept" => $recept,
+			"isFavorit" => $isFavorit,
 			"disabled" => $disable,
 			"hozzavalok" => $hozzavalok,
 			"nevek" => $nevek,
@@ -408,7 +419,7 @@ class Recept extends Controller{
 		$db = new Query('receptek');
 		$db->select(['id','nev'])
 			->join('left outer','recept_cimke','c','c.recept_id','=','receptek.id')
-			->where('nev','<>','');	
+			->where('nev','<>','');
 		if ($filterStr != '') {
 			$db->where('nev','like','%'.$filterStr.'%');
 		}
@@ -442,6 +453,10 @@ class Recept extends Controller{
 		$filterCreated = $this->getParam('filtercreated');
 		$filterCimke = $this->getParam('filtercimke');
 		$filterCreatorId = -1;
+		
+		$q = new Query('receptek');
+		$news = $q->orderBy('id')->orderDir('DESC')->limit(8)->all();
+		
 		if ($filterCreator != '') {
 			$db = new Query('users');
 			$r = $db->where('username','=',$filterCreator)->first();
@@ -468,6 +483,7 @@ class Recept extends Controller{
 		$db = new Query('receptek');
 		$db = $this->buildQuery();
 		$list = $db->all();
+
 		$total = $db->count();
 		// lapok tömb kialakitása a paginátor számáta
 		$pages = [];
@@ -486,6 +502,9 @@ class Recept extends Controller{
 		// rekordok lekérése
 		$db = $this->buildQuery();
 		$list = $db->offset($offset)->limit($pageSize)->all();
+		foreach ($list as $item) {
+			$item->favorit = $this->model->isFavorit($this->session->input('loged',0), $item->id);
+		}
 
         /*
 		foreach ($list as $list1) {
@@ -507,6 +526,7 @@ class Recept extends Controller{
 			"filterCreated" => $filterCreated,
 			"filterCimke" => $filterCimke,
 			"list" => $list,
+			"news" => $news,
 			"page" => $page,
 			"pages" => $pages,
 			"total" => $total,
@@ -515,6 +535,67 @@ class Recept extends Controller{
 			"task" => 'receptek'
 		]); 
 
+	}
+
+	/**
+	 * kedvencek megjelenítése
+	 */
+	public function favorites() {
+		$pageSize = round((int)$_SESSION['screen_height'] / 80);
+		if ($this->request->isset('page')) {
+			$page = $this->request->input('page');
+			$offset = ($pageSize * $page) - $pageSize;
+		} else if ($this->session->isset('page')) {
+			$page = $this->session->input('page');
+			$offset = ($pageSize * $page) - $pageSize;
+		} else {
+			$page = 1;
+			$offset = 0;
+		}
+		if ($page < 1) {
+			$page = 1;
+			$offset = 0;
+		}
+		$db = new Query('kedvencek','k');
+		$db->select(['r.id, r.nev'])
+			->where('k.user_id','=',$this->session->input('loged',0))
+			->join('LEFT','receptek','r','r.id','=','k.recept_id')
+			->orderBy('r.nev');
+		$list = $db->all();
+
+		$total = $db->count();
+		// lapok tömb kialakitása a paginátor számáta
+		$pages = [];
+		for ($p=1; (($p - 1)*$pageSize) < $total; $p++) {
+			$pages[] = $p;
+		}
+		// esetleges hibás page korrigálása
+		$p = $p - 1;
+		if ($page > $p ) {
+			$page = $p;
+			$offset = ($p - 1)*$pageSize;
+		}
+		// $page tárolása sessionba
+		$this->session->set('page',$page);
+
+		// rekordok lekérése
+		$db = new Query('kedvencek','k');
+		$db->select(['r.id, r.nev'])
+			->where('user_id','=',$this->session->input('loged',0))
+			->join('LEFT','receptek','r','r.id','=','k.recept_id')
+			->orderBy('r.nev');
+		$list = $db->offset($offset)->limit($pageSize)->all();
+		foreach ($list as $item) {
+			$item->favorit = true;
+		}
+		view('kedvencek',[
+			"list" => $list,
+			"page" => $page,
+			"pages" => $pages,
+			"total" => $total,
+			"loged" => $this->session->input('loged'),
+			"task" => 'favorites'
+		]); 
 	}
 
     /**
@@ -527,6 +608,28 @@ class Recept extends Controller{
         $imgurl = $this->receptkep($rec);
         echo $imgurl;
     }
+
+	/**
+	 * recept hozzáadása a kedvencekhez
+	 */
+	public function addtofavorit() {
+		$id = $this->getParam('recept_id');
+		$this->model->addToFavorit($this->session->input('loged'), $id);
+		$this->request->set('id',$id);
+		$this->recept();
+	}
+
+	/**
+	 * recept törlése a kedvencek közül
+	 */
+	public function delfromfavorit() {
+		$id = $this->getParam('recept_id');
+		$this->model->delfromFavorit($this->session->input('loged'), $id);
+		$this->request->set('id',$id);
+		$this->recept();
+	}
+
+
 } // class
 
 ?>

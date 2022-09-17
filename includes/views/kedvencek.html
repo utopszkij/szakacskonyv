@@ -1,0 +1,84 @@
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <div id="receptList">
+			<div class="row">
+				<h1 class="ribbon-banner"><span>Kedvenc receptek</span></h1>
+			</div>	
+			<div class="row">&nbsp;</div>
+
+
+			<div class="filterForm">
+				<form method="get" action="index.php" id="filterForm" class="form">
+					<input type="hidden" name="task" value="receptek" />
+					<input type="hidden" name="page" value="1" />
+					<div>
+						<a v-bind:href="HREF('receptek',{'page':1})" 
+							class="btn btn-primary">
+							<em class="fa fa-table"></em>&nbsp;Összes recept</a>		
+					</div>	
+				</form>
+			</div>
+			<div class="row">
+				<h5>Kedvenc receptek ABC sorrendben</h5>	
+				<div id="receptListTable" class="col-md-8">
+					<table style="width:100%">
+						<thead>
+							<tr><td>ID</td><td>{{ lng('NAME') }}</td></tr>		
+						</thead>
+						<tbody>
+							<tr v-for="item in list" class="makeTrClass(item)">
+								<td>
+									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
+										<img v-bind:_src="loadImg(item.id)" v-bind:id="'img'+item.id" />
+										<em v-if="item.favorit" 
+											style="margin-top:-20px; padding:2px; color:green; background-color:white; z-index:10"
+											class="fas fa-heart"></em>
+                                        <span class="id">{{ item.id }}</span>
+                                        <div class="name">
+											{{ item.nev }}
+										</div>	
+									</a>
+								</td>
+                            </tr>
+						</tbody>
+					</table>
+					<div class="d-none d-md-inline col-md-4">
+						<img class="dekor" src="images/dekor1.jpg" class="dekorImg" />
+					</div>	
+				</div>
+				include paginator
+			</div>
+			<p>{{ lng('RECEPTSHELP') }}</p>
+		</div>	
+
+<script>
+    var methods = {
+        makeTrClass(item) {
+            trClass = '';
+			if (item.created_by == this.loged) {
+				trClass = 'sajat';
+			} else {
+				trClass = 'idegen';
+			}
+            return trClass;    
+        },
+        makePaginatorClass(p,page) {
+            var result = '';
+            if (p == page) {
+                result="actPaginatorItem";
+            } else {
+                result="paginatorItem"
+            }
+            return result;
+        },
+        loadImg(id) {
+                axios.get('index.php?task=getImage&id='+id)
+                .then(function(response) {
+                    console.log(id);
+                    console.log(response.data);
+                    document.getElementById('img'+id).src = response.data.replace('\n','');
+                })
+        }
+    }
+
+ </script>       

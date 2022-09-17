@@ -1,7 +1,9 @@
 var class_recept_model =
 [
+    [ "addToFavorit", "class_recept_model.html#a07d11c0a1045e387dbb947ad39d6c395", null ],
     [ "deleteCimkek", "class_recept_model.html#a75af03d86a57d04e81cdb1a7aa2841ee", null ],
     [ "deleteHozzavalok", "class_recept_model.html#a1a07f1dcdc6c127878fab90a0e473a7f", null ],
+    [ "delFromFavorit", "class_recept_model.html#ae1482b18519fe7e910ab1ce4181f1c13", null ],
     [ "delReceptCimke", "class_recept_model.html#a1a4fa8e962694ea07c07a52728414549", null ],
     [ "emptyHozzavalo", "class_recept_model.html#a9ef395ade5a1ad87b554332903054d73", null ],
     [ "getCreator", "class_recept_model.html#afb4b470b7f231644422e4fc9367cf6c8", null ],
@@ -10,5 +12,6 @@ var class_recept_model =
     [ "getReceptCimkek", "class_recept_model.html#a7802e5d6f7d91ecace8c0ee169672211", null ],
     [ "getReceptNevek", "class_recept_model.html#af5a60f3ddfac61f672a699b51b835aea", null ],
     [ "insertHozzavalok", "class_recept_model.html#af526597717a527d9c212ad189798f1bf", null ],
+    [ "isFavorit", "class_recept_model.html#a818fa25ff44ad95e0a7b416129db25bb", null ],
     [ "saveReceptCimke", "class_recept_model.html#ac72dbcff6c1c28e2d29f9928f96c33b5", null ]
 ];

@@ -188,13 +188,21 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-outline mb-4">
-                <h2 class="ribbon-banner"><span>{{ lng('RECEPT') }}</span></h2>
+                <h2 class="ribbon-banner">
+					<span>{{ lng('RECEPT') }}</span>&nbsp;
+                </h2>
             </div>
             <div class="form-outline mb-4 d-inline d-md-none">
                 <img v-if="kep != ''" v-bind:src="kep" class="receptKep" class="receptKep" />				
+        </button>
+
             </div>
             <div class="form-outline mb-4">
-                <h3><em class="fas fa-utensils"></em>&nbsp;{{ recept.nev}}</h3>
+                <h3><em class="fas fa-utensils"></em>&nbsp;{{ recept.nev}}
+                    <var id="favorit" style="display:none; color:green"> 
+                        <em class="fas fa-heart"></em>
+                    </var>        
+                </h3>
             </div>
             <div v-if="!disabled">
                 <button type="button" class="btn btn-primary" v-on:click="editClick">
@@ -266,6 +274,21 @@
         </div>
     </div>
 
+    <div class="form-outline mb-4">
+        <button type="button" class="btn btn-secondary"
+        v-if="recept.id > 0"
+        v-on:click="printClick(receptId)">
+        <em class="fas fa-print"></em>&nbsp;{{ lng('PRINT') }}</button>&nbsp;
+        <a class="btn btn-success" id="addFavorit" style="display:none"
+        v-bind:href="HREF('addtofavorit',{'recept_id':recept.id})">
+            <em class="fas fa-heart"></em>&nbsp;Kedvencekhez adom 
+        </a>
+        <a class="btn btn-danger" id="delFavorit" style="display:none"
+            v-bind:href="HREF('delfromfavorit',{'recept_id':recept.id})">
+            <em class="fas fa-heart"></em>&nbsp;Kedvencekből törlöm 
+        </a>
+    </div>
+
     <div class="row">
         <div class="col-9"></div>    
         <div class="col-3">
@@ -317,6 +340,13 @@
     <div v-if="loged <= 0">{{ lng('ADD_MUST_LOGIN') }}</div>
 </div>
 
+<div class="row">
+    <div class="col-12">
+        <a class="btn btn-secondary" v-bind:href="HREF('receptek',{'page':1})">
+            <em class="fa fa-table"></em>&nbsp;Receptek listája
+        </a>		
+    </div>
+</div>
 
 <script>
 var methods = {
@@ -499,6 +529,14 @@ function adjust() {
             ta.style.height = ta.scrollHeight+'px';
         }
     }
+    if (app.loged > 0) {
+        if (app.isFavorit) {
+           document.getElementById('favorit').style.display='inline-block';
+		   document.getElementById('delFavorit').style.display='inline-block';
+        } else {
+		    document.getElementById('addFavorit').style.display='inline-block';
+        }    
+	}
 }
 window.setTimeout("adjust()",1000);
 </script>
