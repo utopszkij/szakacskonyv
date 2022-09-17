@@ -117,6 +117,7 @@ form {margin:1% 1% 1% 1%}
     #szinonimak li {height:40px}
     #mertekegysegek li {height:40px}
     #cimkek li {height:40px}
+    .searchBtn span {display:none}
   }
 
   @media print {

@@ -284,6 +284,34 @@ class Upgrade {
 		*/
 		return $result;
 	} 
+	
+	protected function do_v1_6($dbverzio) {
+		if ($this->versionAdjust($dbverzio) < 'v 1. 6') {
+			$q = new Query('users');
+			$q->exec('CREATE TABLE IF NOT EXISTS `kedvencek` (
+				`id` int NOT NULL AUTO_INCREMENT,
+				`user_id` int,
+				`pozicio` int,
+				`recept_id` int,
+				PRIMARY KEY (`id`),
+				KEY `user_id_idx` (`user_id`),
+				KEY `recept_id_idx` (`recept_id`)
+			  ) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
+			');
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+			$q = new Query('dbverzio');
+			$q->exec('SET SQL_SAFE_UPDATES = 0');	
+			$q = new Query('dbverzio');
+			$r = new Record();
+			$r->verzio = 'v1.6';
+			$q->where('verzio','<>','')->update($r);
+			if ($q->error != '') {
+				echo $q->error; exit();
+			}
+		}
+	}
 
 	protected function do_v1_4($dbverzio) {
 		if ($this->versionAdjust($dbverzio) < 'v 1. 4') {
@@ -309,7 +337,10 @@ class Upgrade {
 			");
 			if (file_exists('includes/cimkek.txt')) {
 				unlink('includes/cimkek.txt');
-			}	
+			}
+				
+			$q = new Query('dbverzio');
+			$q->exec('SET SQL_SAFE_UPDATES = 0');	
 			$q = new Query('dbverzio');
 			$r = new Record();
 			$r->verzio = 'v1.4';
@@ -508,6 +539,7 @@ class Upgrade {
 		$this->do_v1_2($dbverzio);
 		$this->do_v1_3($dbverzio);
 		$this->do_v1_4($dbverzio);
+		$this->do_v1_6($dbverzio);
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

@@ -143,6 +143,14 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v1.6
+2022.09.17
+- új receptek kiemelése,
+- kedvenc receptek kezelése
+- user avatar alapértelmezése
+- net-ről keresett recept képek mentése az image könyvtárba (az új verzó telepítése után ez átmenetileg lassulást okoz, de utána gyorsabb lesz a megjelenítés
+)
+### ************************************
 ## verzió v1.5.8
 2022.09.10
 - csempe dizájn fejlesztése

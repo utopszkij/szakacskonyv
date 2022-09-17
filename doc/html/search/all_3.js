@@ -6,7 +6,9 @@ var searchData=
   ['deletecimkek_3',['deleteCimkek',['../class_recept_model.html#a75af03d86a57d04e81cdb1a7aa2841ee',1,'ReceptModel']]],
   ['deletehozzavalok_4',['deleteHozzavalok',['../class_recept_model.html#a1a07f1dcdc6c127878fab90a0e473a7f',1,'ReceptModel']]],
   ['delfile_5',['delFile',['../class_upgrade.html#a26f7bf2ecc84dfaea73d7f4759a8a892',1,'Upgrade']]],
-  ['delreceptcimke_6',['delReceptCimke',['../class_recept_model.html#a1a4fa8e962694ea07c07a52728414549',1,'ReceptModel']]],
-  ['doupload_7',['doUpload',['../class_comment.html#a58c7259d02966432a46303311c997c99',1,'Comment']]],
-  ['downloadfile_8',['downloadFile',['../class_upgrade.html#af1740b110a1c43b6219fa157fd4a3ebe',1,'Upgrade']]]
+  ['delfromfavorit_6',['delFromFavorit',['../class_recept_model.html#ae1482b18519fe7e910ab1ce4181f1c13',1,'ReceptModel']]],
+  ['delfromfavorit_7',['delfromfavorit',['../class_recept.html#a1ab9d4cfb7abc0eda9472fdc97ad6995',1,'Recept']]],
+  ['delreceptcimke_8',['delReceptCimke',['../class_recept_model.html#a1a4fa8e962694ea07c07a52728414549',1,'ReceptModel']]],
+  ['doupload_9',['doUpload',['../class_comment.html#a58c7259d02966432a46303311c997c99',1,'Comment']]],
+  ['downloadfile_10',['downloadFile',['../class_upgrade.html#af1740b110a1c43b6219fa157fd4a3ebe',1,'Upgrade']]]
 ];
