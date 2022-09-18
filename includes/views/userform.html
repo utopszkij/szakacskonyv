@@ -28,6 +28,8 @@
                         <div class="card-body text-center">
                             <img v-bind:src="'images/users/'+record.avatar" v-if="record.avatar != ''"
                             style="margin:5px; width:80%; max-width:150px" />
+                            <img src="images/users/noavatar.png" v-if="record.avatar == ''"
+                            style="margin:5px; width:80%; max-width:150px" />
                         </div>
                     </div>
                 </div>

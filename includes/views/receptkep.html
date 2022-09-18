@@ -75,14 +75,14 @@
                     v-bind:name="makeName('hozzavalo',i)" 
                     v-bind:id="makeName('hozzavalo',i)"
                     v-bind:rows="(hozzavalo.nev.length / (innerWidth / 15)) + 1.4"
-                    v-on:change="hozzavaloChange(makename('hozavali',i))"
+                    v-on:change="hozzavaloChange(makename('hozavalo',i))"
                     class="form-control"></textarea>
                 <datalist id="alapanyagok">
                       <option v-for="nev in nevek">{{ nev.nev }}</option>
                 </datalist>
                 </td>
                 <td style="width:90px">
-                <input type="number" min="0" max="100" step="0.5" 
+                <input type="number" min="0" max="100000" step="0.1" 
                    :disabled="disabled != ''"
                    v-model="hozzavalo.mennyiseg"
                    v-bind:name="makeName('mennyiseg',i)" style="width:90px"
@@ -289,7 +289,7 @@
         </a>
     </div>
 
-    <div class="row">
+    <!-- div class="row">
         <div class="col-9"></div>    
         <div class="col-3">
             <iframe v-bind:src="'https://www.facebook.com/plugins/share_button.php?href='+encodeURI(HREF('recept',{id:recept.id}))+'&layout=button_count&size=large&appId=482318802821364&width=113&height=20'" 
@@ -298,7 +298,7 @@
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
             </iframe>
         </div>
-    </div>
+    </div -->
 
 </div><!-- recept show -->
 
@@ -423,11 +423,9 @@ var methods = {
             newHozzavalo = trHozzavalo.cloneNode(true);
             child = newHozzavalo.firstChild;
             while (child) {
-                console.log(child);
                 if (child.nodeName == 'TD') {
                     child1 = child.firstChild;
                     while (child1) {
-                        console.log(child1);
                         if (child1.nodeName == 'TEXTAREA') {
                             if (child1.id == 'hozzavalo0') {
                                 child1.innerHTML = '';
@@ -513,11 +511,9 @@ var methods = {
             return result;
         },
         hozzavaloChange(id) {
-            console.log(id);
             var ta = document.getElementById(id);
             var h = ta.innerHTML;
             ta.rows = (h.length / (app.innerWidth / 15)) + 1.4
-            console.log(ta.rows);
         }
 
 };   
@@ -528,6 +524,10 @@ function adjust() {
         if (ta) {
             ta.style.height = ta.scrollHeight+'px';
         }
+    }
+    // fogalmam sincs róla miért, de a mennyiseg mezőt valami NaN -re irja át ?????
+    for (var i=0; i<app.hozzavalok.length; i++) {
+        app.hozzavalok[i].mennyiseg = app.hozzavalok[i].menny;
     }
     if (app.loged > 0) {
         if (app.isFavorit) {

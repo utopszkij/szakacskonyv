@@ -38,6 +38,7 @@
             $db = new Query('users','u');
             $result = $db->select(['u.id','u.username','p.avatar','p.group'])
                     ->join('LEFT OUTER','profilok','p','p.id','=','u.id')
+                    ->where('u.username','not like','törölt%')
                     ->offset((($page - 1) * $limit))
                     ->limit($limit)
                     ->orderBy('username')

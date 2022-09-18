@@ -289,12 +289,12 @@ class Recept extends Controller{
 		foreach($hozzavalok as $hozzavalo) {
 			if (is_numeric($hozzavalo->mennyiseg)) {
 				$hozzavalo->mennyiseg = Round($hozzavalo->mennyiseg * 10) / 10;
+				$hozzavalo->menny = Round($hozzavalo->mennyiseg * 10) / 10;
 			}
 			if ($hozzavalo->mennyiseg == 0) {
-				$hozzavalo->mennyiseg = '';
+				$hozzavalo->menny = '';
 			}
 		}
-
 		// összes cimke listája
 		$cimkek = [];
 		$q = new Query('cimkek');
@@ -306,8 +306,11 @@ class Recept extends Controller{
 
 		if ($this->request->isset('url')) {
 			atvesz($this->request->input('url'),$recept,$hozzavalok);	
+			// fogalmam sincs róla miért, de a mennyiseg nevü memzőt NaN -re cseréli valami ????
+			foreach ($hozzavalok as $hozzavalo) {
+				$hozzavalo->menny = $hozzavalo->mennyiseg;
+			}
 		}
-
 		view('receptkep',[
 			"loged" => $this->session->input('loged'),
 			"logedName" => $this->session->input('logedName'),
