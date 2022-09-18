@@ -6,9 +6,9 @@ body {
 }
 body.dark {
   color:white;
-  background-color:#21292c;
+  background-color:#1f1f11;
   --text-color: #ffffff;
-  --bkg-color: #21292c;
+  --bkg-color: #1f1f11;
 }
 body.light {
   color:black;
@@ -21,7 +21,7 @@ body.light {
   /* defaults to dark theme */
   body {
     --text-color: #eee;
-    --bkg-color: #21292c;
+    --bkg-color: #1f1f11;
   }
   body.light {
     --text-color: #222;
@@ -38,7 +38,7 @@ body {
 }
 
 .light h1,
-.light p {color: #21292c}
+.light p {color: #1f1f11}
 .dark h1
 .dark p {color: white}
 
@@ -47,27 +47,27 @@ body {text-align:center}
 .light .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
   border-radius:30px; background-color:#EEE8AA}
 .dark .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
-    border-radius:30px; background-color:#21292c}
+    border-radius:30px; background-color:#1f1f11}
 
 #header {height:100px; margin:1%; background-image:url('images/fejlec.png'); cursor:pointer}
 h1,h2,h3,h4,h5 {padding:1%}
 span, var {display:inline-block; width:auto}
 .row {--bs-gutter-x: 0px }
 
-.dark input {background-color:#21292c; color:white}
-.dark input:focus {background-color:#21292c; color:white}
-.dark select {background-color:#21292c; color:white}
-.dark select:focus {background-color:#21292c; color:white}
-.dark .form-control {background-color:#21292c; color:white}
-.dark textarea {background-color:#21292c; color:white}
+.dark input {background-color:#1f1f11; color:white}
+.dark input:focus {background-color:#1f1f11; color:white}
+.dark select {background-color:#1f1f11; color:white}
+.dark select:focus {background-color:#1f1f11; color:white}
+.dark .form-control {background-color:#1f1f11; color:white}
+.dark textarea {background-color:#1f1f11; color:white}
 .dark a  {background-color:inherit; color:white}
 .dark a:hover {background-color:inherit; color:white}
-.dark .alert-warning {color:#21292c;}
+.dark .alert-warning {color:#1f1f11;}
 .dark .btn-primary {background-color:blue; color:white}
-.dark .btn-secondary {background-color:silver; color:#21292c}
-.dark .btn-success {background-color:green; color:#21292c}
-.dark .btn-danger {background-color:red; color:#21292c}
-.dark .card {background-color:transparent}
+.dark .btn-secondary {background-color:silver; color:#1f1f11}
+.dark .btn-success {background-color:green; color:#1f1f11}
+.dark .btn-danger {background-color:red; color:#1f1f11}
+.dark .card {background-color:transparent; border-style:solid; border-color:white}
 
 .light .ribbon-banner {color:white}
 
@@ -75,7 +75,7 @@ span, var {display:inline-block; width:auto}
 .dekorImg {width:98%; }
 .light table {background-color:silver; padding:0.3%;
   border-style:solid; border-width:1px;}
-.dark table {background-color:#21292c; padding:0.3%;
+.dark table {background-color:#1f1f11; padding:0.3%;
 		border-style:solid; border-width:1px;}
 img {margin:0.3%}		
 button, .btn {margin-top:0.5%;}
@@ -89,10 +89,10 @@ label {display:inline-block; width: 30%; text-align:right}
   border-radius:5px;}
 .popupError {background-color:red; color:white}
 .popupSuccess {background-color:rgb(80, 156, 96); color:rgb(24, 16, 16)}
-.popupSimple {background-color:silver; color:#21292c;} 
+.popupSimple {background-color:silver; color:#1f1f11;} 
 
 
-nav {background-color:#113355}
+nav {background-color:#1a4d80}
 nav #submenu {background-color:#587088}
 
 #receptForm {padding: 1% 1% 1% 1%}
@@ -113,7 +113,7 @@ form {margin:1% 1% 1% 1%}
 
 .receptKep {width:100%}
 
-/* naptár */    
+/* naptĂĄr */    
 .light .van {background-color:green; padding:5px}
 .light .van a {color:white; text-decoration:none }
 .light .nincs {background-color:white; padding:5px}
@@ -191,7 +191,7 @@ form {margin:1% 1% 1% 1%}
 #receptList #receptListTable .dekor {display:none}
 #receptList #receptListTable img {height:150px; max-width:150px; overflow:hidden; border-radius: 8px;}
 
-#footer {background-color:#113355; padding:20px; 
+#footer {background-color:#1a4d80; padding:20px; 
   border-radius: 0px 0px 30px 30px; text-align:center}
 #footer a {background-color:inherit}  
 #footer a:hover {background-color:inherit}  
@@ -206,23 +206,24 @@ form {margin:1% 1% 1% 1%}
     .searchBtn span {display:none}
   }
 
+  
 .ribbon-banner {
   display: table;
   width: auto;
   font-size: 24px;
   line-height: 1.1;
   position: relative;
-  background: #113355;
+  background: #1a4d80;
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzkyOTI5MiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODA4MDgwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOTI5MjkyIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #113355), color-stop(50%, #113355), color-stop(100%, #113355));
-  background: -moz-linear-gradient(left, #113355, #113355, #113355);
-  background: -webkit-linear-gradient(left, #113355, #113355, #113355);
-  background: linear-gradient(to right, #113355, #113355, #113355);
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #1a4d80), color-stop(50%, #1a4d80), color-stop(100%, #1a4d80));
+  background: -moz-linear-gradient(left, #1a4d80, #1a4d80, #1a4d80);
+  background: -webkit-linear-gradient(left, #1a4d80, #1a4d80, #1a4d80);
+  background: linear-gradient(to right, #1a4d80, #1a4d80, #1a4d80);
   color: #fff;
   text-align: center;
   padding: .3em 1em .3em;
   
-  text-shadow: 0 1px 3px #113355;
+  text-shadow: 0 1px 3px #1a4d80;
 }
 .ribbon-banner:before, .ribbon-banner:after {
   content: "";
@@ -231,7 +232,7 @@ form {margin:1% 1% 1% 1%}
   bottom: -0.35em;
   border-width: 0.85em;
   
-  border-color: #113355;
+  border-color: #1a4d80;
   z-index: -1;
 }
 .ribbon-banner:before {
@@ -252,7 +253,7 @@ form {margin:1% 1% 1% 1%}
   position: absolute;
   display: block;
   border-style: solid;
-  border-color: #113355 transparent transparent transparent;
+  border-color: #1a4d80 transparent transparent transparent;
   bottom: -0.35em;
 }
 .ribbon-banner span:before {
@@ -268,10 +269,11 @@ form {margin:1% 1% 1% 1%}
   --b: 6px;   /* control the border thickness */
   --w: 350px;  /* control the width of the line*/
   --g: 15px;  /* control the gap */
-  --c: #113355;
+  --c: #1a4d80;
  
   width: fit-content;
   padding: 0 1em;
+  margin-top: 5px;
   line-height: 1.6em;
   border: 1px solid;
   color: #fff;
@@ -291,6 +293,7 @@ form {margin:1% 1% 1% 1%}
 }
 
 @media print {
+    .dark body, .light body, body {background-color:white; color:black}
     h1,h2,h3,h4 {font-size:18px; font-weight: bold}
     #header {display:none; height:0px;}
 	 .page {min-height:14px; text-align:left; padding:10px; font-size:14px}
@@ -301,9 +304,8 @@ form {margin:1% 1% 1% 1%}
     .warning {display:none; height:0px;}
     textarea {border-style:none; }
 	.receptKep {height:100px; width:auto; float:right}
-	#footer, #footer div {display:none}
+	#footer, #footer section, #footer div {display:none}
 	.btn-toggle {display:none}
-	
 	#osszegzes {display:block; width:50%; margin:0px; padding:0px; float:right}
 	#bevasarloLista {display:block; width:50%; margin:0px; padding:0px; float:left}
 }
