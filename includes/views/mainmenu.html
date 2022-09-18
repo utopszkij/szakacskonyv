@@ -63,7 +63,7 @@
                       <a class="nav-link"
                           v-bind:href="HREF('useredit',{id:loged})">
                           <em class="fas fa-address-card"></em>
-                          <var v-bind:class="logedGroup" style="color:white">
+                          <var v-bind:class="logedGroup"> 
                               {{ logedName }}
                               <img v-if="logedAvatar != ''"
                                    v-bind:src="'images/users/'+logedAvatar"
@@ -79,8 +79,6 @@
               {{ lng('NEWVERSION') }} {{ lastVerzio }} 
           </a>
       </div>	
-      <div style="text-align:right">{{ fileVerzio }}&nbsp;</div>
- 
 </div>
 
 <script>

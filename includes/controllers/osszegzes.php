@@ -95,6 +95,9 @@ class Osszegzes {
 	->groupBy(['s.nev','szme'])
 	->orderBy('s.nev');
 	$items = $db->all();
+	foreach ($items as $item) {
+		$item->mennyiseg = Round($item->mennyiseg * 10) / 10;
+	}
 	
 	/* időszak napimenük */
 	$db = new Query('napimenuk','m');

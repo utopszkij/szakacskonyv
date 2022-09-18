@@ -73,7 +73,7 @@ class Naptar {
 		echo '
 
 		<center>
-			<p style="border:balck; border-width:1px; border-style:solid; fint-size:16px;">
+			<p style="background-color:silver; border:balck; border-width:1px; border-style:solid; fint-size:16px;">
 				<script type="text/javascript" src="vendor/bootstrap/js/name-day.js"></script>
 			</p>
 		</center>

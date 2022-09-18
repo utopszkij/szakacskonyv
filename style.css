@@ -1,15 +1,81 @@
 html {font-size:18px}
+
+body {
+  --text-color: #222;
+  --bkg-color: #fff;
+}
+body.dark {
+  color:white;
+  background-color:#21292c;
+  --text-color: #ffffff;
+  --bkg-color: #21292c;
+}
+body.light {
+  color:black;
+  background-color:white;
+  --text-color: #000000;
+  --bkg-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* defaults to dark theme */
+  body {
+    --text-color: #eee;
+    --bkg-color: #21292c;
+  }
+  body.light {
+    --text-color: #222;
+    --bkg-color: #fff;
+  }
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--bkg-color);
+}
+
+.light h1,
+.light p {color: #21292c}
+.dark h1
+.dark p {color: white}
+
+
 body {text-align:center}
-.container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
-            border-radius:30px; background-color:#EEE8AA}
+.light .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
+  border-radius:30px; background-color:#EEE8AA}
+.dark .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
+    border-radius:30px; background-color:#21292c}
+
 #header {height:100px; margin:1%; background-image:url('images/fejlec.png'); cursor:pointer}
 h1,h2,h3,h4,h5 {padding:1%}
 span, var {display:inline-block; width:auto}
 .row {--bs-gutter-x: 0px }
 
+.dark input {background-color:#21292c; color:white}
+.dark input:focus {background-color:#21292c; color:white}
+.dark select {background-color:#21292c; color:white}
+.dark select:focus {background-color:#21292c; color:white}
+.dark .form-control {background-color:#21292c; color:white}
+.dark textarea {background-color:#21292c; color:white}
+.dark a  {background-color:inherit; color:white}
+.dark a:hover {background-color:inherit; color:white}
+.dark .alert-warning {color:#21292c;}
+.dark .btn-primary {background-color:blue; color:white}
+.dark .btn-secondary {background-color:silver; color:#21292c}
+.dark .btn-success {background-color:green; color:#21292c}
+.dark .btn-danger {background-color:red; color:#21292c}
+.dark .card {background-color:transparent}
+
+.light .ribbon-banner {color:white}
+
 .page {min-height:600px; text-align:left; padding:1%}
 .dekorImg {width:98%; }
-table {background-color:white; padding:0.3%;
+.light table {background-color:silver; padding:0.3%;
+  border-style:solid; border-width:1px;}
+.dark table {background-color:#21292c; padding:0.3%;
 		border-style:solid; border-width:1px;}
 img {margin:0.3%}		
 button, .btn {margin-top:0.5%;}
@@ -23,7 +89,7 @@ label {display:inline-block; width: 30%; text-align:right}
   border-radius:5px;}
 .popupError {background-color:red; color:white}
 .popupSuccess {background-color:rgb(80, 156, 96); color:rgb(24, 16, 16)}
-.popupSimple {background-color:silver; color:black;} 
+.popupSimple {background-color:silver; color:#21292c;} 
 
 
 nav {background-color:#113355}
@@ -44,21 +110,34 @@ form {margin:1% 1% 1% 1%}
     border-style:solid; border-width:1px; cursor:pointer}  
 #receptShow .hozzavalok .adag {display:inline-block; width:auto; padding:0px 5px 0px 5px; 
     text-align:center;  border-style:solid; border-width:1px 0px 1px 0px;}  
-      
-.van {background-color:green; padding:5px}
-.van a {color:white; text-decoration:none }
-.nincs {background-color:white; padding:5px}
-.nincs a {color:blue; text-decoration:none }
-.mainap {border-style:solid; border-width:2px; border-color:black}
-.receptKep {width:100%}
-.sajat a {color:blue; font-weight:bold}
-.idegen a {color:#a0a0a0}
 
-.admin {color: red}
-.moderator {color:green}
+.receptKep {width:100%}
+
+/* naptár */    
+.light .van {background-color:green; padding:5px}
+.light .van a {color:white; text-decoration:none }
+.light .nincs {background-color:white; padding:5px}
+.light .nincs a {color:blue; text-decoration:none }
+.light .mainap {border-style:solid; border-width:2px; border-color:black}
+.light .sajat a {color:blue; font-weight:bold}
+.light .idegen a {color:#a0a0a0}
+.dark .van {background-color:green; color: #21292c; padding:5px}
+.dark .van a {color:white; text-decoration:none }
+.dark .nincs {background-color:#21292c; color:white; padding:5px}
+.dark .nincs a {color:blue; text-decoration:none }
+.dark .mainap {border-style:solid; border-width:2px; border-color:white}
+.dark .sajat a {color:blue; font-weight:bold}
+.dark .idegen a {color:#a0a0a0}
+
+
+/* user goups */
+.light .admin {color: red}
+.light .moderator {color:green}
+.dark .admin {color: red}
+.dark .moderator {color:green}
 
 .comment {border-style:solid; border-width:1px; border-radius:5px;
-   padding:0.5%; background-color:silver; height:auto}
+   padding:0.5%; background-color:silver; color: black; height:auto}
 .comment p {margin-bottom:1px}
 .commentImages {text-align:left; height:auto}
 .comment img {width: 15%; margin:1% 1% 1% 1%}
@@ -71,14 +150,19 @@ form {margin:1% 1% 1% 1%}
 
 .paginator {display:inline-block; list-style: none;}
 .paginator li {margin-right:0px;}
-.paginator a {display:inline-block; text-decoration:none; color:black; 
+.light .paginator a {display:inline-block; text-decoration:none; color:black; 
   margin:0px; width:100%; height:100%} 
+.dark .paginator a {display:inline-block; text-decoration:none; color:white; 
+    margin:0px; width:100%; height:100%} 
 .paginatorItem {display:inline-block; border-style:solid; border-width:1px; 
   width:32px; height:32px; text-align:center; margin:0px 2px 0px 0px; padding:0px;}
-.actPaginatorItem {display:inline-block; border-style:solid; border-width:1px; 
+.light .actPaginatorItem {display:inline-block; border-style:solid; border-width:1px; 
     width:32px; height:32px; text-align:center; margin:0px 2px 0px 0px; padding:0px;
     background-color:silver}
-
+.dark .actPaginatorItem {display:inline-block; border-style:solid; border-width:1px; 
+      width:32px; height:32px; text-align:center; margin:0px 2px 0px 0px; padding:0px;
+      background-color:orange}
+  
 .share a {display:inline-block; width:auto;
   background-color:blue; color:white; font-size:14px; font-weight:bolder; 
   border-radius:5px; padding:5px;}  
@@ -109,6 +193,8 @@ form {margin:1% 1% 1% 1%}
 
 #footer {background-color:#113355; padding:20px; 
   border-radius: 0px 0px 30px 30px; text-align:center}
+#footer a {background-color:inherit}  
+#footer a:hover {background-color:inherit}  
 
   @media screen and (max-width: 992px) {
     #receptList tr {height:40px}
@@ -119,23 +205,6 @@ form {margin:1% 1% 1% 1%}
     #cimkek li {height:40px}
     .searchBtn span {display:none}
   }
-
-  @media print {
-    h1,h2,h3,h4 {font-size:18px; font-weight: bold}
-    #header {display:none; height:0px;}
-	 .page {min-height:14px; text-align:left; padding:10px; font-size:14px}
-    nav {display:none; height:0px;}
-    /* img {display:none; height:0px;} */
-    button {display:none; height:0px;}
-    .help {display:none; height:0px;}
-    .warning {display:none; height:0px;}
-    textarea {border-style:none; }
-	.receptKep {height:100px; width:auto; float:right}
-	#footer {display:none}
-	
-	#osszegzes {display:block; width:50%; margin:0px; padding:0px; float:right}
-	#bevasarloLista {display:block; width:50%; margin:0px; padding:0px; float:left}
-}
 
 .ribbon-banner {
   display: table;
@@ -195,3 +264,46 @@ form {margin:1% 1% 1% 1%}
   border-width: 0.35em 1em 0 0;
 }
 
+.fancy {
+  --b: 6px;   /* control the border thickness */
+  --w: 350px;  /* control the width of the line*/
+  --g: 15px;  /* control the gap */
+  --c: #113355;
+ 
+  width: fit-content;
+  padding: 0 1em;
+  line-height: 1.6em;
+  border: 1px solid;
+  color: #fff;
+  background: 
+    conic-gradient(from   45deg at left ,var(--c) 25%,#0000 0) 0,
+    conic-gradient(from -135deg at right,var(--c) 25%,#0000 0) 100%;
+  background-size: 51% 100%;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  border-image: 
+     linear-gradient(
+       #0000      calc(50% - var(--b)/2),
+       var(--c) 0 calc(50% + var(--b)/2),
+       #0000    0) 
+    1/0 var(--w)/calc(var(--w) + var(--g));
+  margin-inline: auto;
+}
+
+@media print {
+    h1,h2,h3,h4 {font-size:18px; font-weight: bold}
+    #header {display:none; height:0px;}
+	 .page {min-height:14px; text-align:left; padding:10px; font-size:14px}
+    nav {display:none; height:0px;}
+    /* img {display:none; height:0px;} */
+    button {display:none; height:0px;}
+    .help {display:none; height:0px;}
+    .warning {display:none; height:0px;}
+    textarea {border-style:none; }
+	.receptKep {height:100px; width:auto; float:right}
+	#footer, #footer div {display:none}
+	.btn-toggle {display:none}
+	
+	#osszegzes {display:block; width:50%; margin:0px; padding:0px; float:right}
+	#bevasarloLista {display:block; width:50%; margin:0px; padding:0px; float:left}
+}

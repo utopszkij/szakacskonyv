@@ -30,7 +30,7 @@ importComponent('upgrade');
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v1.6';
+$fileVerzio = 'v1.6.1';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -78,6 +78,8 @@ if ($task == 'getImage') {
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!-- vue -->
     <script src="vendor/vue/vue.global.js"></script>
+	<!-- axios -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<!-- fontawesome --> 
 	<script src="vendor/fontawesome/js/all.min.js"></script>
 	<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
@@ -113,6 +115,23 @@ if ($task == 'getImage') {
 			}
 			document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 		}
+		
+		function getCookie(cname) {
+		  let name = cname + "=";
+		  let decodedCookie = decodeURIComponent(document.cookie);
+		  let ca = decodedCookie.split(';');
+		  for(let i = 0; i <ca.length; i++) {
+			let c = ca[i];
+			while (c.charAt(0) == ' ') {
+			  c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+			  return c.substring(name.length, c.length);
+			}
+		  }
+		  return "";
+		}
+
 		/**
 		 * user jováhagyás kérés popup ablakban
 		 */
@@ -195,6 +214,7 @@ if ($task == 'getImage') {
 		// képernyő méretek tárolása csokiba
 		setCookie('screen_width',screen.width,100); 
 		setCookie('screen_height',screen.height,100); 
+
 	</script>	 
 </head>	 
 <body>
@@ -239,9 +259,45 @@ if ($task == 'getImage') {
 		</div>
 
 		<?php 
-			view('footer',[],'footer'); 
+			view('footer',[
+				'fileVerzio' => Upgrade::versionAdjust($fileVerzio)
+			],'footer'); 
 		?>
+		<p>
+			<button class="btn btn-toggle btn-secondary" 
+				type="button" onclick="themeTogle()">
+				<em class="fas fa-adjust"></em>&nbsp;
+				Világos/sötét mód váltás
+			</button>
+		</p>
 	</div>
-	<p><?php echo $_SESSION['screen_width'].' x '.$_SESSION['screen_height']; ?></p>	
 </body>
+<script type="text/javascript">
+		// világos/sötét téma
+		
+		function themeTogle() {
+			const currentTheme = getCookie("theme");
+			var theme = getCookie("theme");
+			if (currentTheme == "dark") {
+				document.body.className = 'light';
+				theme = 'light';
+			} else if (currentTheme == "light") {
+				document.body.className = 'dark';
+				theme = 'dark';
+			} else {
+				document.body.className = 'dark';
+				theme = 'dark';
+			}
+			setCookie("theme", theme);
+		}
+
+		const currentTheme = getCookie("theme");
+		if (currentTheme == "dark") {
+	  		document.body.className = 'dark';
+		} else if (currentTheme == "light") {
+			document.body.className = 'light';
+		} else {
+			document.body.className = 'light';
+		}
+</script>
 </html>

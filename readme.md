@@ -143,6 +143,12 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v1.6.1
+2022.09.17
+- Hiba javítások,
+- Világos/sötét mód
+)
+### ************************************
 ## verzió v1.6
 2022.09.17
 - új receptek kiemelése,
