@@ -270,6 +270,13 @@ if ($task == 'getImage') {
 				Világos/sötét mód váltás
 			</button>
 		</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
 	</div>
 </body>
 <script type="text/javascript">
