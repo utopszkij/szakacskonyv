@@ -475,6 +475,10 @@ var methods = {
             document.querySelector('meta[property="og:title"]').remove();
             document.querySelector('head').append('<meta property="og:title" content="'+this.recept.nev+'">');
         },
+        round1(n) {
+			// kerekités 1 tizedesjegyre
+			return Math.round(n*10)/10;
+		},
         adagPlusClick() {
             if (this.recept.adag > 0) {
                 this.recept.adag = parseInt(this.recept.adag) + 1;
@@ -482,7 +486,7 @@ var methods = {
                 for (i=0; i < this.hozzavalok.length; i++) {
                     if (parseFloat(this.hozzavalok[i].mennyiseg) > 0) {
                         this.hozzavalok[i].mennyiseg = 
-                            (parseFloat(this.hozzavalok[i].mennyiseg) * this.recept.adag) / this.oldAdag;
+                            this.round1((parseFloat(this.hozzavalok[i].mennyiseg) * this.recept.adag) / this.oldAdag);
                     }  
                 }
                 this.oldAdag = this.recept.adag;
@@ -495,7 +499,7 @@ var methods = {
                 for (i=0; i < this.hozzavalok.length; i++) {
                     if (parseFloat(this.hozzavalok[i].mennyiseg) > 0) {
                         this.hozzavalok[i].mennyiseg = 
-                            (parseFloat(this.hozzavalok[i].mennyiseg) * this.recept.adag) / this.oldAdag;
+                            this.round1((parseFloat(this.hozzavalok[i].mennyiseg) * this.recept.adag) / this.oldAdag);
                     }  
                 }
                 this.oldAdag = this.recept.adag;
@@ -525,10 +529,20 @@ function adjust() {
             ta.style.height = ta.scrollHeight+'px';
         }
     }
+    
     // fogalmam sincs róla miért, de a mennyiseg mezőt valami NaN -re irja át ?????
+    // ezért van itt ez a buherálás
     for (var i=0; i<app.hozzavalok.length; i++) {
         app.hozzavalok[i].mennyiseg = app.hozzavalok[i].menny;
     }
+    
+    // az esetleges 0 recept.adag a számításokban bajt okozna
+    if (app.recept.adag <= 0) {
+		app.recept.adag = 4;
+		app.oldAdag = 4;
+	}
+	
+	// bejelentkezett user a kedvencekhez adhat, onnan törölhet
     if (app.loged > 0) {
         if (app.isFavorit) {
            document.getElementById('favorit').style.display='inline-block';

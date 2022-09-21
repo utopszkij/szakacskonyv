@@ -143,6 +143,11 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v1.6.2
+2022.09.21
+- Hiba javítások,
+)
+### ************************************
 ## verzió v1.6.1
 2022.09.17
 - Hiba javítások,

@@ -47,6 +47,7 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 			$w = explode('</h1>',$w[1]);
 			$recept->nev = html_entity_decode(trim($w[0]));
 
+
 			if (count($w) > 1) {
 						$w2 = explode('<ul class="shopingCart">',$w[1]);
 						if (count($w2) > 1) {

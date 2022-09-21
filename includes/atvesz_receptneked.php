@@ -69,7 +69,7 @@ function atvetel($url = 'https://www.receptneked.hu/....',
 
     // hozzávalók
     $hozzavalok = [];
-    $w = explode('Hozzávalók:',$s,2);
+    $w = explode('Hozzávalók',$s,2);
     if (count($w) > 1) {
         $s = $w[1];
         $hozzaStr = kiemel($s,'<ul','Elkészítés'); // <li>...</li> -k vannak benne

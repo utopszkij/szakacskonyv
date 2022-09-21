@@ -17,7 +17,7 @@
 					</div>
 					<div>
 						<label>{{ lng('LABEL') }}:</label>
-						<select name="filtercimke" id="fi</span>ltercimke" 
+						<select name="filtercimke" id="filtercimke" 
 							   v-model="filterCimke" class="form-control">
 							<option value=""></option>	   
 							<option v-for="cimke in cimkek" v-bind:value="cimke">{{ cimke }}</option>
@@ -142,8 +142,6 @@
         loadImg(id) {
                 axios.get('index.php?task=getImage&id='+id)
                 .then(function(response) {
-                    console.log(id);
-                    console.log(response.data);
                     var w = document.getElementById('img'+id)
 					if (w) {
 						w.src = response.data.replace('\n','');
