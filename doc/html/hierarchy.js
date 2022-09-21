@@ -33,6 +33,7 @@ var hierarchy =
     [ "Upgrade", "class_upgrade.html", null ],
     [ "Where", "class_r_a_t_w_e_b_1_1_d_b_1_1_where.html", null ],
     [ "TestCase", null, [
+      [ "BlogTest", "class_blog_test.html", null ],
       [ "UserTest", "class_user_test.html", null ]
     ] ]
 ];

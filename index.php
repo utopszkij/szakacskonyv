@@ -30,7 +30,7 @@ importComponent('upgrade');
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v1.6.1';
+$fileVerzio = 'v1.6.2';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -57,7 +57,7 @@ if (method_exists($comp, 'getTitle')) {
 	$title = $comp->getTitle($task);
 } 
 
-// axios backend
+// execute API backends
 if ($task == 'getImage') {
 	$comp->$task ();
     exit();
@@ -233,6 +233,13 @@ if ($task == 'getImage') {
 		</div>
 	</div>
 
+	<?php
+	// extra html -ek betöltése (pl extra js -ek belodolása)
+	if (file_exists(__DIR__.'/includes/extras/'.$task.'.html')) {
+		include __DIR__.'/includes/extras/'.$task.'.html';
+	}
+	?>
+
 	<div class="container">
 		<div class="row" id="header" onclick="document.location='index.php';"></div>
 		
@@ -278,6 +285,9 @@ if ($task == 'getImage') {
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
 	</div>
+	<!--
+	<textarea style="position:fixed; top:780px; left:50px; z-index:10; width:600px; height:100px; background-color:orange; opacity:0.5"></textarea>
+	-->
 </body>
 <script type="text/javascript">
 		// világos/sötét téma
@@ -295,16 +305,21 @@ if ($task == 'getImage') {
 				document.body.className = 'dark';
 				theme = 'dark';
 			}
-			setCookie("theme", theme);
+			setCookie("theme", theme,100);
 		}
 
 		const currentTheme = getCookie("theme");
+		var theme = '';
 		if (currentTheme == "dark") {
 	  		document.body.className = 'dark';
+	  		theme = 'dark';
 		} else if (currentTheme == "light") {
 			document.body.className = 'light';
+	  		theme = 'light';
 		} else {
 			document.body.className = 'light';
+	  		theme = 'light';
 		}
+		setCookie("theme", theme,100);
 </script>
 </html>

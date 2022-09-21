@@ -12,6 +12,7 @@ var annotated_dup =
     [ "AtszamitoObject", "class_atszamito_object.html", null ],
     [ "AtvaltasModel", "class_atvaltas_model.html", "class_atvaltas_model" ],
     [ "Atvaltasok", "class_atvaltasok.html", "class_atvaltasok" ],
+    [ "BlogTest", "class_blog_test.html", "class_blog_test" ],
     [ "Cimkek", "class_cimkek.html", "class_cimkek" ],
     [ "CimkeModel", "class_cimke_model.html", "class_cimke_model" ],
     [ "Comment", "class_comment.html", "class_comment" ],

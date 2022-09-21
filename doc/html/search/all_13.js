@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['validator_0',['validator',['../class_cimkek.html#afd7c7ee7f7f8fddd3479190355647168',1,'Cimkek\validator()'],['../class_mertekegyseg.html#afd7c7ee7f7f8fddd3479190355647168',1,'Mertekegyseg\validator()'],['../class_szinonima.html#afd7c7ee7f7f8fddd3479190355647168',1,'Szinonima\validator()'],['../class_user.html#afd7c7ee7f7f8fddd3479190355647168',1,'User\validator()'],['../class_controller.html#afd7c7ee7f7f8fddd3479190355647168',1,'Controller\validator()']]],
-  ['versionadjust_1',['versionAdjust',['../class_upgrade.html#a20c57625aee8822d170bad3329049544',1,'Upgrade']]],
-  ['view_2',['view',['../class_fw.html#a9e089e0183bf3dd0b1c7a479bc6b0012',1,'Fw']]]
+  ['test_5fblogcommentdelete_0',['test_blogcommentdelete',['../class_blog_test.html#a4154e00a98bf1068b407c3af4703adb5',1,'BlogTest']]],
+  ['test_5fblogcommentsave_1',['test_blogcommentsave',['../class_blog_test.html#aad871b70d45f9dbc0edd46f02b082de0',1,'BlogTest']]],
+  ['test_5fblogdelete_2',['test_blogdelete',['../class_blog_test.html#a5d03c26864bc0144815dd36c90d5fe54',1,'BlogTest']]],
+  ['test_5fblogsave_3',['test_blogsave',['../class_blog_test.html#ac6d5ff33d12b24edb641dbb3f3ba3dd0',1,'BlogTest\test_blogsave()'],['../class_blog_test.html#ac6d5ff33d12b24edb641dbb3f3ba3dd0',1,'BlogTest\test_blogsave()']]]
 ];
