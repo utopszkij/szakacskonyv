@@ -23,16 +23,14 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 	
 	if (count($w) > 1) {
 		$w = explode('<h1 class="title">',$w[1]);
-		if (count($w) > 1) {
 
+		if (count($w) > 1) {
 			// adag
-			echo ' adag ';
 			$i = strpos($w[1],'adag</strong>');
 			if ($i > 0) {
 				$s = substr($w[1],$i-3,3);
 				$s = trim(str_replace('>','',$s));
 				$recept->adag = intval($s);
-				echo $s.' / '.$recept->adag; 
 			}
 
 			// elkészítési idő
@@ -112,7 +110,6 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 			}
 		}
 	}
-
 }	
 
 ?>

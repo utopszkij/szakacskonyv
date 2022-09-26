@@ -1,0 +1,88 @@
+    <div id="blog">
+			<div class="row">
+				<h1 class="ribbon-banner"><span>{{ lng('BLOG') }}</span></h1>
+			</div>	
+			<div class="row">
+                <div class="col-12"class="ribbon-banner">
+                    <h2>{{ blog.title }}</h2>
+                    <p><img v-bind:src="blog.creator.avatar" class="avatar" />
+                        &nbsp;
+                        {{ blog.createdAt }} {{ blog.creator.name }} 
+                    </p>
+                    <div class="blogBody" v-html="blog.body"></div>
+                    <p><a v-bind:href="HREF('like',{'type':'blog','id':blog.id})"
+                        v-bind:class="'userlike_'+blog.userLike">
+                        <em class="fas fa-thumbs-up"></em>
+                    </a>
+                    &nbsp; 
+                    <a v-bind:href="HREF('likes',{'type':'blog','id':blog.id})">
+                        {{ blog.likeCount }} 
+                    </a>
+                 </p>
+                </div>
+                <div class="row" v-if="((logedGroup == 'admin') | (logedGroup == 'moderator'))">
+                    <div class="col-12">
+                        <a class="btn btn-secondary" v-bind:href="HREF('editblog',{'blog_id':blog.id})">
+                            <em class="fas fa-edit"></em>
+                            {{ lng('EDIT') }}
+                        </a>
+                        &nbsp;
+                        <button class="btn btn-danger" v-on:click="delClick()">
+                            <em class="fas fa-eraser"></em>
+                            {{ lng('DELETE') }}
+                        </button>
+                    </div>
+                </div>        
+                <div class="row comments">
+                    <h3 class="ribbon-banner">
+                        <em class="fas fa-comment"></em>
+                        {{ lng('COMMENTS') }}
+                    </h3>
+                    <div class="blogCommentList col-md-12" v-for="comment in comments">
+                        <p><img v-bind:src="comment.creator.avatar" class="avatar" />
+                        {{ comment.creator.name }} {{ comment.createdAt }}
+                        </p>
+                        <div class="commentBody" v-html="comment.body"></div>
+                    </div> 
+			        include paginator
+                    <form class="addComment" method="post" action="index.php">
+                        <input type="hidden" name="task" value="addblogcomment" />
+                        <input type="hidden" name="blog_id" v-model="blog.id" />
+                        <textarea cols="80" rows="5" name="commentbody"></textarea>
+                        <p>
+                            <button type="submit" class="btn btn-primary">
+                                <em class="fas fa-check"></em>
+                                {{ lng('SEND') }}
+                            </button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-secondary" v-bind:href="HREF('blogs',{})">
+                        <em class="fas fa-reply"></em>
+                        {{ lng('BLOGS') }}
+                    </a>
+                </div>
+            </div>        
+
+    </div>    
+    <script>
+        methods = {
+            makePaginatorClass(p,page) {
+                var result = '';
+                if (p == page) {
+                    result="actPaginatorItem";
+                } else {
+                    result="paginatorItem"
+                }
+                return result;
+            },
+            delClick() {
+                popupConfirm('Biztos törölni akarod?', function() {
+                    location='index.php?task=delblog&blog_id='+app.blog.id;
+                });
+            }
+        };
+    </script>       

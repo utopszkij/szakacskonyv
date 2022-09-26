@@ -1,0 +1,86 @@
+        <div id="blogs">
+			<div class="row">
+				<h1 class="ribbon-banner"><span>{{ lng('BLOGS') }}</span></h1>
+			</div>	
+			<div class="row">&nbsp;</div>
+
+			<div class="filterForm">
+				<form method="get" action="index.php" id="filterForm" class="form">
+					<input type="hidden" name="task" value="blogs" />
+					<input type="hidden" name="page" value="1" />
+					<div>
+						<label>{{ lng('TITLE_SUBSTR') }}:</label>
+						<input type="text" name="titleStr" id="titleStr" 
+							   v-model="filter.titleStr" class="form-control"/>
+					</div>
+					<div>
+						<label>{{ lng('BODY_SUBSTR') }}:</label>
+						<input type="text" name="bodyStr" id="bodyStr" 
+							   v-model="filter.bodyStr" class="form-control"/>
+					</div>
+					<div>
+						<label>{{ lng('CREATOR_NAME') }}:</label>
+						<input type="text" name="creatorName" id="creatorName" 
+							   v-model="filter.creatorName" class="form-control"/>
+					</div>
+					<div>
+						<label>{{ lng('CREATED_BY_GE') }}:</label>
+						<input type="date" name="createdAt" id="createdAt" 
+							   v-model="filter.createdAt" class="form-control"/>
+                        &nbsp;&nbsp;       
+                        <div style="display:inline-block; width:auto">
+						    <button type="submit" class="btn btn-primary searchBtn">
+								<em class="fa fa-search"></em>&nbsp;<span>{{ lng('SEARCH') }}</span></button>
+						    <button type="button" v-on:click="delFilter()" 
+								v-bind:title="lng('CLEARFILTER')" class="btn btn-secondary">X</button>&nbsp;
+                        </div>               
+					</div>	
+				</form>
+			</div>
+			<div class="row">
+				<div id="blogList" class="col-md-12">
+                    <div class="bloghead" v-for="blog in blogs">
+                        <a v-bind:href="HREF('blog',{blog_id:blog.id})">
+                            <h3>{{ blog.title }}</h3>
+                            <p><img v-bind:src="blog.creator.avatar" class="avatar" />
+                                &nbsp;
+                                {{ blog.createdAt }} {{ blog.creator.name }} 
+                            </p>
+                            <div class="blogBody" v-html="blog.body"></div>
+                        </a>
+                        <p>{{ lng('COMMENT_COUNT') }}: {{ blog.commentCount }}
+                           <em class="fas fa-thumbs-up"></em>&nbsp; {{ blog.likeCount }} 
+                        </p>
+                    </div>
+                <div>    
+				include paginator
+			</div>
+			<div style="text-align:center" v-if="loged > 0">
+				<a v-bind:href="HREF('addblog',{id:0})" class="btn btn-primary">
+					<em class="fas fa-plus-circle"></em>&nbsp;{{ lng('ADD') }}</a>
+			</div>
+		</div>	
+
+<script>
+    var methods = {
+        makePaginatorClass(p,page) {
+            var result = '';
+            if (p == page) {
+                result="actPaginatorItem";
+            } else {
+                result="paginatorItem"
+            }
+            return result;
+        },
+		delFilter() {
+            document.getElementById('titleStr').value = '';
+            document.getElementById('bodyeStr').value = '';
+			document.getElementById('creatorName').value = '';
+			document.getElementById('createdAt').value = '';
+			document.getElementById('filterForm').submit();
+		},
+        afterMount() {
+        }
+    }
+
+ </script>       

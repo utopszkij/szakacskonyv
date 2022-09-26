@@ -22,11 +22,15 @@
                 <a class="nav-link" v-bind:href="HREF('receptek',{page:1})">
                 <em class="fas fa-book"></em>&nbsp;{{ lng('RECEPTS') }}</a>
               </li>
-
               <li class="nav-item">
                 <a class="nav-link" v-bind:href="HREF('osszeg',{})">
                 <em class="fas fa-plus"></em>&nbsp;{{ lng('DOTOTAL') }}</a>
               </li>
+              <!-- li class="nav-item">
+                <a class="nav-link" __v-bind:__href="HREF('blogs',{'page':1})">
+                <em class="fas fa-feather"></em>&nbsp;{{ lng('BLOGS') }}</a>
+              </li -->
+              
               <li class="nav-item">
                   <var class="nav-link" onclick="submenuToggle()" 
                       style="cursor:pointer">

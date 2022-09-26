@@ -26,11 +26,12 @@ importComponent('szinonima');
 importComponent('mertekegyseg');
 importComponent('cimkek');
 importComponent('upgrade');
+// importComponent('blog');
 
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v1.6.2';
+$fileVerzio = 'v1.6.3';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -270,7 +271,7 @@ if ($task == 'getImage') {
 				'fileVerzio' => Upgrade::versionAdjust($fileVerzio)
 			],'footer'); 
 		?>
-		<p>
+		<p style="text-align:center">
 			<button class="btn btn-toggle btn-secondary" 
 				type="button" onclick="themeTogle()">
 				<em class="fas fa-adjust"></em>&nbsp;

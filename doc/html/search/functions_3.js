@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['dbupgrade_0',['dbUpgrade',['../class_upgrade.html#a4d0863072ede543387ca14a6a3c201c8',1,'Upgrade']]],
-  ['delbyid_1',['delById',['../class_user_model.html#a7733e739c8821d0a8b86bb30ba84c861',1,'UserModel\delById()'],['../class_r_a_t_w_e_b_1_1_model.html#a7733e739c8821d0a8b86bb30ba84c861',1,'RATWEB\Model\delById()']]],
-  ['delete_2',['delete',['../class_session.html#ad5070b43b963e1a7315072cfdfe6522f',1,'Session\delete()'],['../class_controller.html#a13bdffdd926f26b825ea57066334ff01',1,'Controller\delete()'],['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#a13bdffdd926f26b825ea57066334ff01',1,'RATWEB\DB\Query\delete()']]],
-  ['deletecimkek_3',['deleteCimkek',['../class_recept_model.html#a75af03d86a57d04e81cdb1a7aa2841ee',1,'ReceptModel']]],
-  ['deletehozzavalok_4',['deleteHozzavalok',['../class_recept_model.html#a1a07f1dcdc6c127878fab90a0e473a7f',1,'ReceptModel']]],
-  ['delfile_5',['delFile',['../class_upgrade.html#a26f7bf2ecc84dfaea73d7f4759a8a892',1,'Upgrade']]],
-  ['delfromfavorit_6',['delFromFavorit',['../class_recept_model.html#ae1482b18519fe7e910ab1ce4181f1c13',1,'ReceptModel']]],
-  ['delfromfavorit_7',['delfromfavorit',['../class_recept.html#a1ab9d4cfb7abc0eda9472fdc97ad6995',1,'Recept']]],
-  ['delreceptcimke_8',['delReceptCimke',['../class_recept_model.html#a1a4fa8e962694ea07c07a52728414549',1,'ReceptModel']]],
-  ['doupload_9',['doUpload',['../class_comment.html#a58c7259d02966432a46303311c997c99',1,'Comment']]],
-  ['downloadfile_10',['downloadFile',['../class_upgrade.html#af1740b110a1c43b6219fa157fd4a3ebe',1,'Upgrade']]]
+  ['cimkeadd_0',['cimkeadd',['../class_cimkek.html#a5381fd5d5177d58d69f6da85650b7237',1,'Cimkek']]],
+  ['cimkedelete_1',['cimkedelete',['../class_cimkek.html#a4148076669069cebf6b95df080cd4aad',1,'Cimkek']]],
+  ['cimkeedit_2',['cimkeedit',['../class_cimkek.html#ac2cea9e4a945b5418c39f056871c6a1c',1,'Cimkek']]],
+  ['cimkek_3',['cimkek',['../class_cimkek.html#a88993c3af69b619a4f5c74963fc0ffff',1,'Cimkek']]],
+  ['cimkesave_4',['cimkesave',['../class_cimkek.html#a42f54b046e36dcddf65df0e2294c7523',1,'Cimkek']]],
+  ['comment_5',['comment',['../class_comment.html#ae2095edae4e260d028c208cead4e5c9a',1,'Comment']]],
+  ['commentadd_6',['commentadd',['../class_comment.html#a9aaa06795a50e5bb9ca7064d26e9d2df',1,'Comment']]],
+  ['commentdel_7',['commentdel',['../class_comment.html#a2bfab0652d5ccc04da98bacfe0a05fed',1,'Comment']]],
+  ['commentimgdel_8',['commentimgdel',['../class_comment.html#a0443519238d83160aa7e3ba65ab5224b',1,'Comment']]],
+  ['commentsave_9',['commentsave',['../class_comment.html#a4dce3abea7ee37a8b586557bd08b1e1f',1,'Comment']]],
+  ['count_10',['count',['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#ac751e87b3d4c4bf2feb03bee8b092755',1,'RATWEB::DB::Query']]]
 ];

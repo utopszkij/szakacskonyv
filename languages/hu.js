@@ -1,5 +1,6 @@
 tokens = {
     "OK":"Rendben",
+    "SEND":"Küld",
     "CANCEL":"Mégsem",
     "BACK":"VIssza",
     "SAVE":"Tárolás",
@@ -34,6 +35,7 @@ tokens = {
     "LABELS":"Cimkék",
     "LOGOUT":"Kijelentkezés",
     "NEWVERSION":"Új verzió érhető el",
+    "BLOGS":"Cikkek",
 
     "POLICY":"Adatkezelési tájékoztató",
     "PROTEST":"Visszaélés jelzése",
@@ -79,6 +81,15 @@ tokens = {
     "INGREDIENT":"Hozzávaló",
 
     "COMMENTS":"Hozzászólások",
+    "BLOG":"Cikk",
+    "TITLE":"Cím",
+    "BODY":"Szöveg",
+
+    "COMMENT_COUNT":"Hozzászólások",
+    "TITLE_SUBSTR":"Cím (részlet)",
+    "BODY_SUBSTR":"Szöveg (részlet)",
+    "CREATOR_NAME":"Szerző neve",
+    "CREATED_BY_GE":"Csak az ennél frissebbek",
     
     "END":"Vége"
 

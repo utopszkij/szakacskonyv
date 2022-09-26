@@ -1,306 +1,316 @@
 .:
-összesen 156
--rwxrwxrwx 1 root root   627 2022-07-11 config-example.php
--rwxrwxrwx 1 root root   545 2022-09-12 config.php
--rwxrwxrwx 1 root root   546 2022-07-11 config_test.php
-drwxrwxrwx 3 root root  4096 2022-07-06 doc
--rwxrwxrwx 1 root root    71 2022-07-06 documentor.sh
--rwxrwxrwx 1 root root    58 2022-07-06 files.sh
--rwxrwxrwx 1 root root     0 2022-09-21 files.txt
-drwxrwxrwx 4 root root 12288 2022-09-19 images
-drwxrwxrwx 6 root root  4096 2022-09-21 includes
--rwxrwxrwx 1 root root  5706 2022-05-22 index2.html
--rwxrwxrwx 1 root root  8881 2022-09-21 index.php
-drwxrwxrwx 2 root root  4096 2022-07-08 languages
--rwxrwxrwx 1 root root 35149 2021-10-31 LICENSE
--rwxrwxrwx 1 root root    97 2022-09-20 package.json
--rwxrwxrwx 1 root root  7262 2022-09-20 package-lock.json
--rwxrwxrwx 1 root root 10669 2022-09-21 readme.md
--rwxrwxrwx 1 root root   271 2022-07-07 secure.sh
--rw-rw-rw- 1 root root 11525 2022-09-18 style.css
-drwxrwxrwx 2 root root  4096 2022-09-20 tests
--rwxrwxrwx 1 root root   124 2022-07-07 unsecure.sh
-drwxrwxrwx 6 root root  4096 2022-07-07 vendor
--rwxrwxrwx 1 root root   325 2022-07-07 viewtest.sh
+összesen 160
+-rwxrwxrwx 1 root      root        627 2022-07-11 config-example.php
+-rwxrwxrwx 1 root      root        545 2022-09-12 config.php
+-rwxrwxrwx 1 root      root        546 2022-07-11 config_test.php
+drwxrwxrwx 3 root      root       4096 2022-07-06 doc
+-rwxrwxrwx 1 root      root         71 2022-07-06 documentor.sh
+-rwxrwxrwx 1 root      root         58 2022-07-06 files.sh
+-rwxrwxrwx 1 root      root          0 2022-09-26 files.txt
+drwxrwxrwx 4 root      root      12288 2022-09-26 images
+drwxrwxrwx 6 root      root       4096 2022-09-21 includes
+-rwxrwxrwx 1 root      root       5706 2022-05-22 index2.html
+-rwxrwxrwx 1 root      root       8935 2022-09-26 index.php
+drwxrwxrwx 2 root      root       4096 2022-07-08 languages
+-rwxrwxrwx 1 root      root      35149 2021-10-31 LICENSE
+-rwxrwxrwx 1 root      root         97 2022-09-20 package.json
+-rwxrwxrwx 1 root      root       7262 2022-09-20 package-lock.json
+-rwxrwxrwx 1 root      root      10776 2022-09-26 readme.md
+-rwxrwxrwx 1 root      root        271 2022-07-07 secure.sh
+-rw-rw-rw- 1 root      root      12219 2022-09-23 style.css
+drwxrwxrwx 2 root      root       4096 2022-09-20 tests
+-rwxrwxrwx 1 root      root        124 2022-07-07 unsecure.sh
+-rw-rw-r-- 1 utopszkij utopszkij   722 2022-09-23 upload.php
+drwxrwxrwx 7 root      root       4096 2022-09-23 vendor
+-rwxrwxrwx 1 root      root        325 2022-07-07 viewtest.sh
 
 ./doc:
 összesen 64
 -rwxrwxrwx 1 root root   598 2022-07-06 footer.htm
-drwxrwxrwx 3 root root 12288 2022-09-21 html
+drwxrwxrwx 3 root root 12288 2022-09-26 html
 -rwxrwxrwx 1 root root   164 2022-07-05 olvassel.txt
 -rwxrwxrwx 1 root root 26343 2022-07-20 swdoc.html
 -rwxrwxrwx 1 root root 12295 2022-07-06 szakacs.cfg
 
 ./doc/html:
-összesen 1560
--rwxrwxrwx 1 root      root        2281 2022-09-21 annotated_dup.js
--rwxrwxrwx 1 root      root       13315 2022-09-21 annotated.html
--rwxrwxrwx 1 root      root         676 2022-09-21 bc_s.png
--rwxrwxrwx 1 root      root         147 2022-09-21 bdwn.png
--rwxrwxrwx 1 root      root        5638 2022-09-21 class_atszamito_object.html
--rwxrwxrwx 1 root      root        4987 2022-09-21 class_atszamito_object-members.html
--rwxrwxrwx 1 root      root       18422 2022-09-21 class_atvaltas_model.html
--rwxrwxrwx 1 root      root         484 2022-09-21 class_atvaltas_model.js
--rwxrwxrwx 1 root      root        8724 2022-09-21 class_atvaltas_model-members.html
--rwxrwxrwx 1 root      root       17994 2022-09-21 class_atvaltasok.html
--rwxrwxrwx 1 root      root         202 2022-09-21 class_atvaltasok.js
--rwxrwxrwx 1 root      root       11223 2022-09-21 class_atvaltasok-members.html
--rw-rw-r-- 1 utopszkij utopszkij  13020 2022-09-21 class_blog_test.html
+összesen 1692
+-rwxrwxrwx 1 root      root        2470 2022-09-26 annotated_dup.js
+-rwxrwxrwx 1 root      root       14103 2022-09-26 annotated.html
+-rwxrwxrwx 1 root      root         676 2022-09-26 bc_s.png
+-rwxrwxrwx 1 root      root         147 2022-09-26 bdwn.png
+-rwxrwxrwx 1 root      root        5638 2022-09-26 class_atszamito_object.html
+-rwxrwxrwx 1 root      root        4987 2022-09-26 class_atszamito_object-members.html
+-rwxrwxrwx 1 root      root       18422 2022-09-26 class_atvaltas_model.html
+-rwxrwxrwx 1 root      root         484 2022-09-26 class_atvaltas_model.js
+-rwxrwxrwx 1 root      root        8724 2022-09-26 class_atvaltas_model-members.html
+-rwxrwxrwx 1 root      root       17994 2022-09-26 class_atvaltasok.html
+-rwxrwxrwx 1 root      root         202 2022-09-26 class_atvaltasok.js
+-rwxrwxrwx 1 root      root       11223 2022-09-26 class_atvaltasok-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  20525 2022-09-26 class_blogcomment_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    597 2022-09-26 class_blogcomment_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   8624 2022-09-26 class_blogcomment_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  26923 2022-09-26 class_blog.html
+-rw-rw-r-- 1 utopszkij utopszkij    595 2022-09-26 class_blog.js
+-rw-rw-r-- 1 utopszkij utopszkij  12924 2022-09-26 class_blog-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  20375 2022-09-26 class_blog_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    554 2022-09-26 class_blog_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   8396 2022-09-26 class_blog_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij   9754 2022-09-26 class_blog_test.html
 -rw-rw-r-- 1 utopszkij utopszkij    488 2022-09-21 class_blog_test.js
--rw-rw-r-- 1 utopszkij utopszkij   7700 2022-09-21 class_blog_test-members.html
--rwxrwxrwx 1 root      root       23762 2022-09-21 class_cimkek.html
--rwxrwxrwx 1 root      root         596 2022-09-21 class_cimkek.js
--rwxrwxrwx 1 root      root       11572 2022-09-21 class_cimkek-members.html
--rwxrwxrwx 1 root      root       14545 2022-09-21 class_cimke_model.html
--rwxrwxrwx 1 root      root         199 2022-09-21 class_cimke_model.js
--rwxrwxrwx 1 root      root        7873 2022-09-21 class_cimke_model-members.html
--rwxrwxrwx 1 root      root       22913 2022-09-21 class_comment.html
--rwxrwxrwx 1 root      root         526 2022-09-21 class_comment.js
--rwxrwxrwx 1 root      root       11923 2022-09-21 class_comment-members.html
--rwxrwxrwx 1 root      root       13892 2022-09-21 class_comment_model.html
--rwxrwxrwx 1 root      root         216 2022-09-21 class_comment_model.js
--rwxrwxrwx 1 root      root        7631 2022-09-21 class_comment_model-members.html
--rwxrwxrwx 1 root      root       21877 2022-09-21 class_controller.html
--rwxrwxrwx 1 root      root         693 2022-09-21 class_controller.js
--rwxrwxrwx 1 root      root       10477 2022-09-21 class_controller-members.html
--rwxrwxrwx 1 root      root        8088 2022-09-21 classes.html
--rwxrwxrwx 1 root      root       12226 2022-09-21 class_fw.html
--rwxrwxrwx 1 root      root          91 2022-09-21 class_fw.js
--rwxrwxrwx 1 root      root        5840 2022-09-21 class_fw-members.html
--rwxrwxrwx 1 root      root       23872 2022-09-21 class_mertekegyseg.html
--rwxrwxrwx 1 root      root         640 2022-09-21 class_mertekegyseg.js
--rwxrwxrwx 1 root      root       11742 2022-09-21 class_mertekegyseg-members.html
--rwxrwxrwx 1 root      root       14613 2022-09-21 class_mertekegyseg_model.html
--rwxrwxrwx 1 root      root         220 2022-09-21 class_mertekegyseg_model.js
--rwxrwxrwx 1 root      root        7999 2022-09-21 class_mertekegyseg_model-members.html
--rwxrwxrwx 1 root      root       17219 2022-09-21 class_napi_menu.html
--rwxrwxrwx 1 root      root       11213 2022-09-21 class_napi_menu-members.html
--rwxrwxrwx 1 root      root       13358 2022-09-21 class_napimenu_model.html
--rwxrwxrwx 1 root      root         213 2022-09-21 class_napimenu_model.js
--rwxrwxrwx 1 root      root        7626 2022-09-21 class_napimenu_model-members.html
--rwxrwxrwx 1 root      root        5605 2022-09-21 class_naptar.html
--rwxrwxrwx 1 root      root        5085 2022-09-21 class_naptar-members.html
--rwxrwxrwx 1 root      root        8495 2022-09-21 class_osszegzes.html
--rwxrwxrwx 1 root      root         353 2022-09-21 class_osszegzes.js
--rwxrwxrwx 1 root      root        5595 2022-09-21 class_osszegzes-members.html
--rwxrwxrwx 1 root      root       42092 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_query.html
--rwxrwxrwx 1 root      root        1981 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_query.js
--rwxrwxrwx 1 root      root       14909 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_query-members.html
--rwxrwxrwx 1 root      root        4395 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_record.html
--rwxrwxrwx 1 root      root       18879 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_union.html
--rwxrwxrwx 1 root      root         660 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_union.js
--rwxrwxrwx 1 root      root        7842 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_union-members.html
--rwxrwxrwx 1 root      root       10520 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_where.html
--rwxrwxrwx 1 root      root         344 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_where.js
--rwxrwxrwx 1 root      root        5372 2022-09-21 class_r_a_t_w_e_b_1_1_d_b_1_1_where-members.html
--rwxrwxrwx 1 root      root       15480 2022-09-21 class_r_a_t_w_e_b_1_1_model.html
--rwxrwxrwx 1 root      root         797 2022-09-21 class_r_a_t_w_e_b_1_1_model.js
--rwxrwxrwx 1 root      root        7086 2022-09-21 class_r_a_t_w_e_b_1_1_model-members.html
--rwxrwxrwx 1 root      root       23550 2022-09-21 class_recept.html
--rwxrwxrwx 1 root      root         441 2022-09-21 class_recept.js
--rwxrwxrwx 1 root      root       13378 2022-09-21 class_recept-members.html
--rwxrwxrwx 1 root      root       29525 2022-09-21 class_recept_model.html
--rwxrwxrwx 1 root      root        1325 2022-09-21 class_recept_model.js
--rwxrwxrwx 1 root      root       10800 2022-09-21 class_recept_model-members.html
--rwxrwxrwx 1 root      root        9506 2022-09-21 class_request.html
--rwxrwxrwx 1 root      root         258 2022-09-21 class_request.js
--rwxrwxrwx 1 root      root        4905 2022-09-21 class_request-members.html
--rwxrwxrwx 1 root      root       10347 2022-09-21 class_session.html
--rwxrwxrwx 1 root      root         338 2022-09-21 class_session.js
--rwxrwxrwx 1 root      root        5115 2022-09-21 class_session-members.html
--rwxrwxrwx 1 root      root       24845 2022-09-21 class_szinonima.html
--rwxrwxrwx 1 root      root         732 2022-09-21 class_szinonima.js
--rwxrwxrwx 1 root      root       11925 2022-09-21 class_szinonima-members.html
--rwxrwxrwx 1 root      root       15964 2022-09-21 class_szinonima_model.html
--rwxrwxrwx 1 root      root         303 2022-09-21 class_szinonima_model.js
--rwxrwxrwx 1 root      root        8209 2022-09-21 class_szinonima_model-members.html
--rwxrwxrwx 1 root      root        6394 2022-09-21 class_szovegek.html
--rwxrwxrwx 1 root      root        5633 2022-09-21 class_szovegek-members.html
--rwxrwxrwx 1 root      root       27130 2022-09-21 class_upgrade.html
--rwxrwxrwx 1 root      root        1224 2022-09-21 class_upgrade.js
--rwxrwxrwx 1 root      root       11375 2022-09-21 class_upgrade-members.html
--rwxrwxrwx 1 root      root       25316 2022-09-21 class_user.html
--rwxrwxrwx 1 root      root         498 2022-09-21 class_user.js
--rwxrwxrwx 1 root      root       12442 2022-09-21 class_user-members.html
--rwxrwxrwx 1 root      root       19251 2022-09-21 class_user_model.html
--rwxrwxrwx 1 root      root         533 2022-09-21 class_user_model.js
--rwxrwxrwx 1 root      root        7787 2022-09-21 class_user_model-members.html
--rwxrwxrwx 1 root      root        9388 2022-09-21 class_user_test.html
--rwxrwxrwx 1 root      root        7527 2022-09-21 class_user_test-members.html
--rwxrwxrwx 1 root      root         132 2022-09-21 closed.png
--rwxrwxrwx 1 root      root        5086 2022-09-21 dir_09e761304027c904456130627fd4dcf5.html
--rwxrwxrwx 1 root      root        4042 2022-09-21 dir_4428fdfe0eb0da98abb7123d472f1d53.html
--rwxrwxrwx 1 root      root        4033 2022-09-21 dir_4ffa0a4cb0db482ccd1a2d352354f289.html
--rwxrwxrwx 1 root      root        4040 2022-09-21 dir_57dc54e314e1a70febf30cb527d9c1f7.html
--rwxrwxrwx 1 root      root        4031 2022-09-21 dir_59425e443f801f1f2fd8bbe4959a3ccf.html
--rwxrwxrwx 1 root      root        4044 2022-09-21 dir_98cbbc75d1186a1b187134917d39405d.html
--rwxrwxrwx 1 root      root        4490 2022-09-21 dir_c5da75fdc1d6c57999112ed830c87a3c.html
--rwxrwxrwx 1 root      root        4052 2022-09-21 dir_fae636d715a2826c5bea851a8d3a722f.html
--rwxrwxrwx 1 root      root         746 2022-09-21 doc.png
--rwxrwxrwx 1 root      root       33676 2022-09-21 doxygen.css
--rwxrwxrwx 1 root      root       15382 2022-09-21 doxygen.svg
--rwxrwxrwx 1 root      root        4452 2022-09-21 dynsections.js
--rwxrwxrwx 1 root      root         616 2022-09-21 folderclosed.png
--rwxrwxrwx 1 root      root         597 2022-09-21 folderopen.png
--rwxrwxrwx 1 root      root       23831 2022-09-21 functions_func.html
--rwxrwxrwx 1 root      root       23938 2022-09-21 functions.html
--rwxrwxrwx 1 root      root       13101 2022-09-21 hierarchy.html
--rwxrwxrwx 1 root      root        1821 2022-09-21 hierarchy.js
--rwxrwxrwx 1 root      root        3958 2022-09-21 index.html
--rwxrwxrwx 1 root      root      176813 2022-09-21 jquery.js
--rwxrwxrwx 1 root      root        3587 2022-09-21 menudata.js
--rwxrwxrwx 1 root      root        5866 2022-09-21 menu.js
--rwxrwxrwx 1 root      root        4645 2022-09-21 namespace_r_a_t_w_e_b.html
--rwxrwxrwx 1 root      root         115 2022-09-21 namespace_r_a_t_w_e_b.js
--rwxrwxrwx 1 root      root          97 2022-09-21 namespaces_dup.js
--rwxrwxrwx 1 root      root        4882 2022-09-21 namespaces.html
--rwxrwxrwx 1 root      root         153 2022-09-21 nav_f.png
--rwxrwxrwx 1 root      root          95 2022-09-21 nav_g.png
--rwxrwxrwx 1 root      root          98 2022-09-21 nav_h.png
--rwxrwxrwx 1 root      root        2108 2022-09-21 navtree.css
--rwxrwxrwx 1 root      root        1942 2022-09-21 navtreedata.js
--rwxrwxrwx 1 root      root       13349 2022-09-21 navtreeindex0.js
--rwxrwxrwx 1 root      root       15709 2022-09-21 navtree.js
--rwxrwxrwx 1 root      root         123 2022-09-21 open.png
--rwxrwxrwx 1 root      root        5518 2022-09-21 resize.js
+-rw-rw-r-- 1 utopszkij utopszkij   7759 2022-09-26 class_blog_test-members.html
+-rwxrwxrwx 1 root      root       23762 2022-09-26 class_cimkek.html
+-rwxrwxrwx 1 root      root         596 2022-09-26 class_cimkek.js
+-rwxrwxrwx 1 root      root       11572 2022-09-26 class_cimkek-members.html
+-rwxrwxrwx 1 root      root       14545 2022-09-26 class_cimke_model.html
+-rwxrwxrwx 1 root      root         199 2022-09-26 class_cimke_model.js
+-rwxrwxrwx 1 root      root        7873 2022-09-26 class_cimke_model-members.html
+-rwxrwxrwx 1 root      root       22913 2022-09-26 class_comment.html
+-rwxrwxrwx 1 root      root         526 2022-09-26 class_comment.js
+-rwxrwxrwx 1 root      root       11923 2022-09-26 class_comment-members.html
+-rwxrwxrwx 1 root      root       13892 2022-09-26 class_comment_model.html
+-rwxrwxrwx 1 root      root         216 2022-09-26 class_comment_model.js
+-rwxrwxrwx 1 root      root        7631 2022-09-26 class_comment_model-members.html
+-rwxrwxrwx 1 root      root       22039 2022-09-26 class_controller.html
+-rwxrwxrwx 1 root      root         693 2022-09-26 class_controller.js
+-rwxrwxrwx 1 root      root       10477 2022-09-26 class_controller-members.html
+-rwxrwxrwx 1 root      root        8286 2022-09-26 classes.html
+-rwxrwxrwx 1 root      root       12226 2022-09-26 class_fw.html
+-rwxrwxrwx 1 root      root          91 2022-09-26 class_fw.js
+-rwxrwxrwx 1 root      root        5840 2022-09-26 class_fw-members.html
+-rwxrwxrwx 1 root      root       23872 2022-09-26 class_mertekegyseg.html
+-rwxrwxrwx 1 root      root         640 2022-09-26 class_mertekegyseg.js
+-rwxrwxrwx 1 root      root       11742 2022-09-26 class_mertekegyseg-members.html
+-rwxrwxrwx 1 root      root       14613 2022-09-26 class_mertekegyseg_model.html
+-rwxrwxrwx 1 root      root         220 2022-09-26 class_mertekegyseg_model.js
+-rwxrwxrwx 1 root      root        7999 2022-09-26 class_mertekegyseg_model-members.html
+-rwxrwxrwx 1 root      root       17219 2022-09-26 class_napi_menu.html
+-rwxrwxrwx 1 root      root       11213 2022-09-26 class_napi_menu-members.html
+-rwxrwxrwx 1 root      root       13358 2022-09-26 class_napimenu_model.html
+-rwxrwxrwx 1 root      root         213 2022-09-26 class_napimenu_model.js
+-rwxrwxrwx 1 root      root        7626 2022-09-26 class_napimenu_model-members.html
+-rwxrwxrwx 1 root      root        5605 2022-09-26 class_naptar.html
+-rwxrwxrwx 1 root      root        5085 2022-09-26 class_naptar-members.html
+-rwxrwxrwx 1 root      root        8495 2022-09-26 class_osszegzes.html
+-rwxrwxrwx 1 root      root         353 2022-09-26 class_osszegzes.js
+-rwxrwxrwx 1 root      root        5595 2022-09-26 class_osszegzes-members.html
+-rwxrwxrwx 1 root      root       42092 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_query.html
+-rwxrwxrwx 1 root      root        1981 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_query.js
+-rwxrwxrwx 1 root      root       14909 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_query-members.html
+-rwxrwxrwx 1 root      root        4395 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_record.html
+-rwxrwxrwx 1 root      root       18879 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_union.html
+-rwxrwxrwx 1 root      root         660 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_union.js
+-rwxrwxrwx 1 root      root        7842 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_union-members.html
+-rwxrwxrwx 1 root      root       10520 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_where.html
+-rwxrwxrwx 1 root      root         344 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_where.js
+-rwxrwxrwx 1 root      root        5372 2022-09-26 class_r_a_t_w_e_b_1_1_d_b_1_1_where-members.html
+-rwxrwxrwx 1 root      root       15682 2022-09-26 class_r_a_t_w_e_b_1_1_model.html
+-rwxrwxrwx 1 root      root         797 2022-09-26 class_r_a_t_w_e_b_1_1_model.js
+-rwxrwxrwx 1 root      root        7086 2022-09-26 class_r_a_t_w_e_b_1_1_model-members.html
+-rwxrwxrwx 1 root      root       23550 2022-09-26 class_recept.html
+-rwxrwxrwx 1 root      root         441 2022-09-26 class_recept.js
+-rwxrwxrwx 1 root      root       13378 2022-09-26 class_recept-members.html
+-rwxrwxrwx 1 root      root       29525 2022-09-26 class_recept_model.html
+-rwxrwxrwx 1 root      root        1325 2022-09-26 class_recept_model.js
+-rwxrwxrwx 1 root      root       10800 2022-09-26 class_recept_model-members.html
+-rwxrwxrwx 1 root      root        9506 2022-09-26 class_request.html
+-rwxrwxrwx 1 root      root         258 2022-09-26 class_request.js
+-rwxrwxrwx 1 root      root        4905 2022-09-26 class_request-members.html
+-rwxrwxrwx 1 root      root       10347 2022-09-26 class_session.html
+-rwxrwxrwx 1 root      root         338 2022-09-26 class_session.js
+-rwxrwxrwx 1 root      root        5115 2022-09-26 class_session-members.html
+-rwxrwxrwx 1 root      root       24845 2022-09-26 class_szinonima.html
+-rwxrwxrwx 1 root      root         732 2022-09-26 class_szinonima.js
+-rwxrwxrwx 1 root      root       11925 2022-09-26 class_szinonima-members.html
+-rwxrwxrwx 1 root      root       15964 2022-09-26 class_szinonima_model.html
+-rwxrwxrwx 1 root      root         303 2022-09-26 class_szinonima_model.js
+-rwxrwxrwx 1 root      root        8209 2022-09-26 class_szinonima_model-members.html
+-rwxrwxrwx 1 root      root        6394 2022-09-26 class_szovegek.html
+-rwxrwxrwx 1 root      root        5633 2022-09-26 class_szovegek-members.html
+-rwxrwxrwx 1 root      root       27522 2022-09-26 class_upgrade.html
+-rwxrwxrwx 1 root      root        1224 2022-09-26 class_upgrade.js
+-rwxrwxrwx 1 root      root       11664 2022-09-26 class_upgrade-members.html
+-rwxrwxrwx 1 root      root       25316 2022-09-26 class_user.html
+-rwxrwxrwx 1 root      root         498 2022-09-26 class_user.js
+-rwxrwxrwx 1 root      root       12442 2022-09-26 class_user-members.html
+-rwxrwxrwx 1 root      root       19251 2022-09-26 class_user_model.html
+-rwxrwxrwx 1 root      root         533 2022-09-26 class_user_model.js
+-rwxrwxrwx 1 root      root        7787 2022-09-26 class_user_model-members.html
+-rwxrwxrwx 1 root      root        9388 2022-09-26 class_user_test.html
+-rwxrwxrwx 1 root      root        7527 2022-09-26 class_user_test-members.html
+-rwxrwxrwx 1 root      root         132 2022-09-26 closed.png
+-rwxrwxrwx 1 root      root        5086 2022-09-26 dir_09e761304027c904456130627fd4dcf5.html
+-rwxrwxrwx 1 root      root        4042 2022-09-26 dir_4428fdfe0eb0da98abb7123d472f1d53.html
+-rwxrwxrwx 1 root      root        4033 2022-09-26 dir_4ffa0a4cb0db482ccd1a2d352354f289.html
+-rwxrwxrwx 1 root      root        4040 2022-09-26 dir_57dc54e314e1a70febf30cb527d9c1f7.html
+-rwxrwxrwx 1 root      root        4031 2022-09-26 dir_59425e443f801f1f2fd8bbe4959a3ccf.html
+-rwxrwxrwx 1 root      root        4044 2022-09-26 dir_98cbbc75d1186a1b187134917d39405d.html
+-rwxrwxrwx 1 root      root        4490 2022-09-26 dir_c5da75fdc1d6c57999112ed830c87a3c.html
+-rwxrwxrwx 1 root      root        4052 2022-09-26 dir_fae636d715a2826c5bea851a8d3a722f.html
+-rwxrwxrwx 1 root      root         746 2022-09-26 doc.png
+-rwxrwxrwx 1 root      root       33676 2022-09-26 doxygen.css
+-rwxrwxrwx 1 root      root       15382 2022-09-26 doxygen.svg
+-rwxrwxrwx 1 root      root        4452 2022-09-26 dynsections.js
+-rwxrwxrwx 1 root      root         616 2022-09-26 folderclosed.png
+-rwxrwxrwx 1 root      root         597 2022-09-26 folderopen.png
+-rwxrwxrwx 1 root      root       25413 2022-09-26 functions_func.html
+-rwxrwxrwx 1 root      root       25520 2022-09-26 functions.html
+-rwxrwxrwx 1 root      root       13879 2022-09-26 hierarchy.html
+-rwxrwxrwx 1 root      root        1986 2022-09-26 hierarchy.js
+-rwxrwxrwx 1 root      root        3958 2022-09-26 index.html
+-rwxrwxrwx 1 root      root      176813 2022-09-26 jquery.js
+-rwxrwxrwx 1 root      root        3587 2022-09-26 menudata.js
+-rwxrwxrwx 1 root      root        5866 2022-09-26 menu.js
+-rwxrwxrwx 1 root      root        4645 2022-09-26 namespace_r_a_t_w_e_b.html
+-rwxrwxrwx 1 root      root         115 2022-09-26 namespace_r_a_t_w_e_b.js
+-rwxrwxrwx 1 root      root          97 2022-09-26 namespaces_dup.js
+-rwxrwxrwx 1 root      root        4882 2022-09-26 namespaces.html
+-rwxrwxrwx 1 root      root         153 2022-09-26 nav_f.png
+-rwxrwxrwx 1 root      root          95 2022-09-26 nav_g.png
+-rwxrwxrwx 1 root      root          98 2022-09-26 nav_h.png
+-rwxrwxrwx 1 root      root        2108 2022-09-26 navtree.css
+-rwxrwxrwx 1 root      root        1942 2022-09-26 navtreedata.js
+-rwxrwxrwx 1 root      root       14439 2022-09-26 navtreeindex0.js
+-rwxrwxrwx 1 root      root       15709 2022-09-26 navtree.js
+-rwxrwxrwx 1 root      root         123 2022-09-26 open.png
+-rwxrwxrwx 1 root      root        5518 2022-09-26 resize.js
 drwxrwxrwx 2 root      root        4096 2022-09-21 search
--rwxrwxrwx 1 root      root         314 2022-09-21 splitbar.png
--rwxrwxrwx 1 root      root         853 2022-09-21 sync_off.png
--rwxrwxrwx 1 root      root         845 2022-09-21 sync_on.png
--rwxrwxrwx 1 root      root         142 2022-09-21 tab_a.png
--rwxrwxrwx 1 root      root         169 2022-09-21 tab_b.png
--rwxrwxrwx 1 root      root         177 2022-09-21 tab_h.png
--rwxrwxrwx 1 root      root       10453 2022-09-21 tabs.css
--rwxrwxrwx 1 root      root         184 2022-09-21 tab_s.png
+-rwxrwxrwx 1 root      root         314 2022-09-26 splitbar.png
+-rwxrwxrwx 1 root      root         853 2022-09-26 sync_off.png
+-rwxrwxrwx 1 root      root         845 2022-09-26 sync_on.png
+-rwxrwxrwx 1 root      root         142 2022-09-26 tab_a.png
+-rwxrwxrwx 1 root      root         169 2022-09-26 tab_b.png
+-rwxrwxrwx 1 root      root         177 2022-09-26 tab_h.png
+-rwxrwxrwx 1 root      root       10453 2022-09-26 tabs.css
+-rwxrwxrwx 1 root      root         184 2022-09-26 tab_s.png
 
 ./doc/html/search:
-összesen 516
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_0.html
--rwxrwxrwx 1 root      root        293 2022-09-21 all_0.js
--rwxrwxrwx 1 root      root       1436 2022-09-21 all_10.html
--rwxrwxrwx 1 root      root        108 2022-09-21 all_10.js
--rwxrwxrwx 1 root      root       1436 2022-09-21 all_11.html
--rwxrwxrwx 1 root      root        604 2022-09-21 all_11.js
--rwxrwxrwx 1 root      root       1436 2022-09-21 all_12.html
--rwxrwxrwx 1 root      root       2665 2022-09-21 all_12.js
--rwxrwxrwx 1 root      root       1436 2022-09-21 all_13.html
--rwxrwxrwx 1 root      root        635 2022-09-21 all_13.js
--rwxrwxrwx 1 root      root       1436 2022-09-21 all_14.html
--rwxrwxrwx 1 root      root       1415 2022-09-21 all_14.js
--rw-rw-r-- 1 utopszkij utopszkij  1436 2022-09-21 all_15.html
--rw-rw-r-- 1 utopszkij utopszkij   683 2022-09-21 all_15.js
+összesen 524
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_0.html
+-rwxrwxrwx 1 root      root        293 2022-09-26 all_0.js
+-rwxrwxrwx 1 root      root       1436 2022-09-26 all_10.html
+-rwxrwxrwx 1 root      root        108 2022-09-26 all_10.js
+-rwxrwxrwx 1 root      root       1436 2022-09-26 all_11.html
+-rwxrwxrwx 1 root      root        604 2022-09-26 all_11.js
+-rwxrwxrwx 1 root      root       1436 2022-09-26 all_12.html
+-rwxrwxrwx 1 root      root       2665 2022-09-26 all_12.js
+-rwxrwxrwx 1 root      root       1436 2022-09-26 all_13.html
+-rwxrwxrwx 1 root      root       1645 2022-09-26 all_13.js
+-rwxrwxrwx 1 root      root       1436 2022-09-26 all_14.html
+-rwxrwxrwx 1 root      root        761 2022-09-26 all_14.js
+-rw-rw-r-- 1 utopszkij utopszkij  1436 2022-09-26 all_15.html
+-rw-rw-r-- 1 utopszkij utopszkij   353 2022-09-26 all_15.js
 -rw-rw-r-- 1 utopszkij utopszkij  1436 2022-09-21 all_16.html
 -rw-rw-r-- 1 utopszkij utopszkij   353 2022-09-21 all_16.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_1.html
--rwxrwxrwx 1 root      root       1441 2022-09-21 all_1.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_2.html
--rwxrwxrwx 1 root      root         84 2022-09-21 all_2.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_3.html
--rwxrwxrwx 1 root      root       1535 2022-09-21 all_3.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_4.html
--rwxrwxrwx 1 root      root       1573 2022-09-21 all_4.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_5.html
--rwxrwxrwx 1 root      root        597 2022-09-21 all_5.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_6.html
--rwxrwxrwx 1 root      root        426 2022-09-21 all_6.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_7.html
--rwxrwxrwx 1 root      root       3707 2022-09-21 all_7.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_8.html
--rwxrwxrwx 1 root      root        105 2022-09-21 all_8.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_9.html
--rwxrwxrwx 1 root      root       1064 2022-09-21 all_9.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_a.html
--rwxrwxrwx 1 root      root        261 2022-09-21 all_a.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_b.html
--rwxrwxrwx 1 root      root        393 2022-09-21 all_b.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_c.html
--rwxrwxrwx 1 root      root        936 2022-09-21 all_c.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_d.html
--rwxrwxrwx 1 root      root        319 2022-09-21 all_d.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_e.html
--rwxrwxrwx 1 root      root       1058 2022-09-21 all_e.js
--rwxrwxrwx 1 root      root       1435 2022-09-21 all_f.html
--rwxrwxrwx 1 root      root        259 2022-09-21 all_f.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_0.html
--rwxrwxrwx 1 root      root        253 2022-09-21 classes_0.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_1.html
--rwxrwxrwx 1 root      root         84 2022-09-21 classes_1.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_2.html
--rwxrwxrwx 1 root      root        352 2022-09-21 classes_2.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_3.html
--rwxrwxrwx 1 root      root         65 2022-09-21 classes_3.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_4.html
--rwxrwxrwx 1 root      root        262 2022-09-21 classes_4.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_5.html
--rwxrwxrwx 1 root      root        220 2022-09-21 classes_5.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_6.html
--rwxrwxrwx 1 root      root         86 2022-09-21 classes_6.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_7.html
--rwxrwxrwx 1 root      root        108 2022-09-21 classes_7.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_8.html
--rwxrwxrwx 1 root      root        301 2022-09-21 classes_8.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_9.html
--rwxrwxrwx 1 root      root        291 2022-09-21 classes_9.js
--rwxrwxrwx 1 root      root       1439 2022-09-21 classes_a.html
--rwxrwxrwx 1 root      root        350 2022-09-21 classes_a.js
--rw-rw-r-- 1 utopszkij utopszkij  1439 2022-09-21 classes_b.html
--rw-rw-r-- 1 utopszkij utopszkij   108 2022-09-21 classes_b.js
--rwxrwxrwx 1 root      root       1284 2022-09-21 close.svg
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_0.html
--rwxrwxrwx 1 root      root        293 2022-09-21 functions_0.js
--rwxrwxrwx 1 root      root       1442 2022-09-21 functions_10.html
--rwxrwxrwx 1 root      root       2390 2022-09-21 functions_10.js
--rwxrwxrwx 1 root      root       1442 2022-09-21 functions_11.html
--rwxrwxrwx 1 root      root        635 2022-09-21 functions_11.js
--rwxrwxrwx 1 root      root       1442 2022-09-21 functions_12.html
--rwxrwxrwx 1 root      root       1080 2022-09-21 functions_12.js
--rwxrwxrwx 1 root      root       1442 2022-09-21 functions_13.html
--rwxrwxrwx 1 root      root        683 2022-09-21 functions_13.js
--rw-rw-r-- 1 utopszkij utopszkij  1442 2022-09-21 functions_14.html
--rw-rw-r-- 1 utopszkij utopszkij   265 2022-09-21 functions_14.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_1.html
--rwxrwxrwx 1 root      root       1208 2022-09-21 functions_1.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_2.html
--rwxrwxrwx 1 root      root       1198 2022-09-21 functions_2.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_3.html
--rwxrwxrwx 1 root      root       1573 2022-09-21 functions_3.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_4.html
--rwxrwxrwx 1 root      root        597 2022-09-21 functions_4.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_5.html
--rwxrwxrwx 1 root      root        381 2022-09-21 functions_5.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_6.html
--rwxrwxrwx 1 root      root       3707 2022-09-21 functions_6.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_7.html
--rwxrwxrwx 1 root      root        105 2022-09-21 functions_7.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_8.html
--rwxrwxrwx 1 root      root       1064 2022-09-21 functions_8.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_9.html
--rwxrwxrwx 1 root      root        261 2022-09-21 functions_9.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_a.html
--rwxrwxrwx 1 root      root        393 2022-09-21 functions_a.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_b.html
--rwxrwxrwx 1 root      root        694 2022-09-21 functions_b.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_c.html
--rwxrwxrwx 1 root      root        119 2022-09-21 functions_c.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_d.html
--rwxrwxrwx 1 root      root        992 2022-09-21 functions_d.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_e.html
--rwxrwxrwx 1 root      root        259 2022-09-21 functions_e.js
--rwxrwxrwx 1 root      root       1441 2022-09-21 functions_f.html
--rwxrwxrwx 1 root      root        257 2022-09-21 functions_f.js
--rwxrwxrwx 1 root      root       2378 2022-09-21 mag_sel.svg
--rwxrwxrwx 1 root      root       1442 2022-09-21 namespaces_0.html
--rwxrwxrwx 1 root      root         86 2022-09-21 namespaces_0.js
--rwxrwxrwx 1 root      root        500 2022-09-21 nomatches.html
--rwxrwxrwx 1 root      root       4562 2022-09-21 search.css
--rwxrwxrwx 1 root      root        318 2022-09-21 searchdata.js
--rwxrwxrwx 1 root      root      23044 2022-09-21 search.js
--rwxrwxrwx 1 root      root        567 2022-09-21 search_l.png
--rwxrwxrwx 1 root      root        158 2022-09-21 search_m.png
--rwxrwxrwx 1 root      root        553 2022-09-21 search_r.png
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_1.html
+-rwxrwxrwx 1 root      root       1521 2022-09-26 all_1.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_2.html
+-rwxrwxrwx 1 root      root        714 2022-09-26 all_2.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_3.html
+-rwxrwxrwx 1 root      root       1535 2022-09-26 all_3.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_4.html
+-rwxrwxrwx 1 root      root       1573 2022-09-26 all_4.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_5.html
+-rwxrwxrwx 1 root      root        807 2022-09-26 all_5.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_6.html
+-rwxrwxrwx 1 root      root        426 2022-09-26 all_6.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_7.html
+-rwxrwxrwx 1 root      root       4344 2022-09-26 all_7.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_8.html
+-rwxrwxrwx 1 root      root        105 2022-09-26 all_8.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_9.html
+-rwxrwxrwx 1 root      root       1064 2022-09-26 all_9.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_a.html
+-rwxrwxrwx 1 root      root        261 2022-09-26 all_a.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_b.html
+-rwxrwxrwx 1 root      root        490 2022-09-26 all_b.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_c.html
+-rwxrwxrwx 1 root      root        936 2022-09-26 all_c.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_d.html
+-rwxrwxrwx 1 root      root        319 2022-09-26 all_d.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_e.html
+-rwxrwxrwx 1 root      root       1058 2022-09-26 all_e.js
+-rwxrwxrwx 1 root      root       1435 2022-09-26 all_f.html
+-rwxrwxrwx 1 root      root        517 2022-09-26 all_f.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_0.html
+-rwxrwxrwx 1 root      root        253 2022-09-26 classes_0.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_1.html
+-rwxrwxrwx 1 root      root        290 2022-09-26 classes_1.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_2.html
+-rwxrwxrwx 1 root      root        352 2022-09-26 classes_2.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_3.html
+-rwxrwxrwx 1 root      root         65 2022-09-26 classes_3.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_4.html
+-rwxrwxrwx 1 root      root        262 2022-09-26 classes_4.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_5.html
+-rwxrwxrwx 1 root      root        220 2022-09-26 classes_5.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_6.html
+-rwxrwxrwx 1 root      root         86 2022-09-26 classes_6.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_7.html
+-rwxrwxrwx 1 root      root        108 2022-09-26 classes_7.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_8.html
+-rwxrwxrwx 1 root      root        301 2022-09-26 classes_8.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_9.html
+-rwxrwxrwx 1 root      root        291 2022-09-26 classes_9.js
+-rwxrwxrwx 1 root      root       1439 2022-09-26 classes_a.html
+-rwxrwxrwx 1 root      root        350 2022-09-26 classes_a.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-09-26 classes_b.html
+-rw-rw-r-- 1 utopszkij utopszkij   108 2022-09-26 classes_b.js
+-rwxrwxrwx 1 root      root       1284 2022-09-26 close.svg
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_0.html
+-rwxrwxrwx 1 root      root        293 2022-09-26 functions_0.js
+-rwxrwxrwx 1 root      root       1442 2022-09-26 functions_10.html
+-rwxrwxrwx 1 root      root        257 2022-09-26 functions_10.js
+-rwxrwxrwx 1 root      root       1442 2022-09-26 functions_11.html
+-rwxrwxrwx 1 root      root       2390 2022-09-26 functions_11.js
+-rwxrwxrwx 1 root      root       1442 2022-09-26 functions_12.html
+-rwxrwxrwx 1 root      root       1310 2022-09-26 functions_12.js
+-rwxrwxrwx 1 root      root       1442 2022-09-26 functions_13.html
+-rwxrwxrwx 1 root      root        761 2022-09-26 functions_13.js
+-rw-rw-r-- 1 utopszkij utopszkij  1442 2022-09-26 functions_14.html
+-rw-rw-r-- 1 utopszkij utopszkij   265 2022-09-26 functions_14.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_1.html
+-rwxrwxrwx 1 root      root       1288 2022-09-26 functions_1.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_2.html
+-rwxrwxrwx 1 root      root        444 2022-09-26 functions_2.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_3.html
+-rwxrwxrwx 1 root      root       1198 2022-09-26 functions_3.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_4.html
+-rwxrwxrwx 1 root      root       1573 2022-09-26 functions_4.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_5.html
+-rwxrwxrwx 1 root      root        807 2022-09-26 functions_5.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_6.html
+-rwxrwxrwx 1 root      root        381 2022-09-26 functions_6.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_7.html
+-rwxrwxrwx 1 root      root       4344 2022-09-26 functions_7.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_8.html
+-rwxrwxrwx 1 root      root        105 2022-09-26 functions_8.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_9.html
+-rwxrwxrwx 1 root      root       1064 2022-09-26 functions_9.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_a.html
+-rwxrwxrwx 1 root      root        261 2022-09-26 functions_a.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_b.html
+-rwxrwxrwx 1 root      root        490 2022-09-26 functions_b.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_c.html
+-rwxrwxrwx 1 root      root        694 2022-09-26 functions_c.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_d.html
+-rwxrwxrwx 1 root      root        119 2022-09-26 functions_d.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_e.html
+-rwxrwxrwx 1 root      root        992 2022-09-26 functions_e.js
+-rwxrwxrwx 1 root      root       1441 2022-09-26 functions_f.html
+-rwxrwxrwx 1 root      root        517 2022-09-26 functions_f.js
+-rwxrwxrwx 1 root      root       2378 2022-09-26 mag_sel.svg
+-rwxrwxrwx 1 root      root       1442 2022-09-26 namespaces_0.html
+-rwxrwxrwx 1 root      root         86 2022-09-26 namespaces_0.js
+-rwxrwxrwx 1 root      root        500 2022-09-26 nomatches.html
+-rwxrwxrwx 1 root      root       4562 2022-09-26 search.css
+-rwxrwxrwx 1 root      root        317 2022-09-26 searchdata.js
+-rwxrwxrwx 1 root      root      23044 2022-09-26 search.js
+-rwxrwxrwx 1 root      root        567 2022-09-26 search_l.png
+-rwxrwxrwx 1 root      root        158 2022-09-26 search_m.png
+-rwxrwxrwx 1 root      root        553 2022-09-26 search_r.png
 
 ./images:
-összesen 8176
+összesen 8220
 -rwxrwxrwx 1 root      root      188270 2022-06-09 Afrikai harcsa sörtésztában medvehagymás burgonyával recept.jpg?v=1633609313
 -rw-r--r-- 1 www-data  www-data    3488 2022-09-17 A legegyszerűbb muffin.png
 -rwxrwxrwx 1 root      root        6464 2021-11-07 A legjobb palacsintatészta.jpg
@@ -319,6 +329,8 @@ drwxrwxrwx 2 root      root        4096 2022-09-21 search
 -rwxrwxrwx 1 root      root       34422 2022-06-16 Baconba tekert csirkemell recept.jpg
 -rwxrwxrwx 1 root      root       82071 2021-10-29 Bécsi szelet.jpg
 -rwxrwxrwx 1 root      root      149357 2021-10-31 bevlista.png
+-rw-r--r-- 1 www-data  www-data    4403 2022-09-26 Birsalmasajt tartósítószer-mentesen2.png
+-rw-r--r-- 1 www-data  www-data    4403 2022-09-26 Birsalmasajt tartósítószer-mentesen.png
 -rw-r--r-- 1 www-data  www-data    6201 2022-09-17 Bolognai spagetti.png
 -rwxrwxrwx 1 root      root       62357 2021-10-29 Brassói apró pecsenye.jpg
 drwxrwxrwx 2 root      root        4096 2022-06-20 comments
@@ -367,6 +379,7 @@ drwxrwxrwx 2 root      root        4096 2022-06-20 comments
 -rw-r--r-- 1 www-data  www-data    6735 2022-09-17 Mandulás sütemény.png
 -rw-r--r-- 1 www-data  www-data    4620 2022-09-17 Marhahúsleves zöldségesen.png
 -rw-r--r-- 1 www-data  www-data    6330 2022-09-17 Marha pörkölt.png
+-rw-r--r-- 1 www-data  www-data    1929 2022-09-23 myavatar_80x80.jpg
 -rwxrwxrwx 1 root      root      206528 2021-10-31 napimenu.png
 -rwxrwxrwx 1 utopszkij utopszkij  31252 2022-02-20 noimage.png
 -rw-r--r-- 1 www-data  www-data    3567 2022-09-17 Nokedli köret.png
@@ -380,6 +393,7 @@ drwxrwxrwx 2 root      root        4096 2022-06-20 comments
 -rwxrwxrwx 1 root      root        6320 2022-05-18 Paradicsomos-pesztós mini pite.jpg
 -rwxrwxrwx 1 root      root        3946 2021-11-02 Párolt káposzta.jpg
 -rw-r--r-- 1 www-data  www-data    6065 2022-09-17 Párolt lila káposzta köret.png
+-rw-r--r-- 1 www-data  www-data    5607 2022-09-26 próba recept 2002..09.26.png
 -rwxrwxrwx 1 root      root      273884 2022-06-09 próba recept 3.jpg
 -rwxrwxrwx 1 root      root      112478 2022-05-27 proba recept.png
 -rw-r--r-- 1 www-data  www-data    5790 2022-09-17 Púlyka Fasirt.png
@@ -389,6 +403,8 @@ drwxrwxrwx 2 root      root        4096 2022-06-20 comments
 -rw-r--r-- 1 www-data  www-data    2989 2022-09-17 Rántott csirke mell .png
 -rw-r--r-- 1 www-data  www-data    4907 2022-09-17 Rántott halrudacskák.png
 -rw-r--r-- 1 www-data  www-data    3245 2022-09-17 Rántott sajt .png
+-rw-r--r-- 1 www-data  www-data    5607 2022-09-26 recept147.png
+-rw-r--r-- 1 www-data  www-data    6244 2022-09-26 recept148.png
 -rwxrwxrwx 1 root      root      218186 2021-10-31 receptek.png
 -rwxrwxrwx 1 root      root      209221 2021-10-31 recept.png
 -rwxrwxrwx 1 root      root        4349 2022-05-24 Rizibizi - alaprecept.jpg
@@ -435,54 +451,61 @@ drwxrwxrwx 2 root      root        4096 2022-09-17 users
 
 ./includes:
 összesen 52
--rwxrwxrwx 1 root      root      3166 2022-09-19 atvesz_mindmegette.php
+-rwxrwxrwx 1 root      root      3113 2022-09-26 atvesz_mindmegette.php
 -rwxrwxrwx 1 root      root      3900 2022-06-30 atvesz_nosalty.php
--rwxrwxrwx 1 root      root      1370 2022-06-25 atvesz.php
+-rwxrwxrwx 1 root      root      1366 2022-09-26 atvesz.php
 -rwxrwxrwx 1 root      root      4383 2022-09-19 atvesz_receptneked.php
 -rwxrwxrwx 1 root      root       182 2022-06-22 cimkek.txt
-drwxrwxrwx 2 root      root      4096 2022-09-16 controllers
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-20 extras
+drwxrwxrwx 2 root      root      4096 2022-09-21 controllers
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-23 extras
 -rwxrwxrwx 1 root      root        30 2022-05-23 index.php
-drwxrwxrwx 2 root      root      4096 2022-09-18 models
+drwxrwxrwx 2 root      root      4096 2022-09-23 models
 -rwxrwxrwx 1 root      root      6427 2022-07-28 osszegzes.php
-drwxrwxrwx 2 root      root      4096 2022-09-21 views
+drwxrwxrwx 2 root      root      4096 2022-09-23 views
 
 ./includes/controllers:
-összesen 108
--rwxrwxrwx 1 root root  2360 2022-07-05 atvaltasok.php
--rwxrwxrwx 1 root root  2131 2022-07-05 cimkek.php
--rwxrwxrwx 1 root root  8500 2022-07-05 comment.php
--rwxrwxrwx 1 root root    30 2022-05-23 index.php
--rwxrwxrwx 1 root root  1992 2022-07-19 login.html
--rwxrwxrwx 1 root root  1929 2022-07-05 mertekegyseg.php
--rwxrwxrwx 1 root root  2639 2022-07-19 napimenu.php
--rwxrwxrwx 1 root root  7532 2022-09-17 naptar.php
--rwxrwxrwx 1 root root  6515 2022-09-18 osszegzes.php
--rwxrwxrwx 1 root root 18023 2022-09-17 recept.php
--rwxrwxrwx 1 root root  3557 2022-07-05 szinonima.php
--rwxrwxrwx 1 root root   351 2022-07-28 szovegek.php
--rwxrwxrwx 1 root root 18703 2022-09-16 upgrade.php
--rwxrwxrwx 1 root root  6834 2022-07-18 user.php
+összesen 120
+-rwxrwxrwx 1 root      root       2360 2022-07-05 atvaltasok.php
+-rw-rw-r-- 1 utopszkij utopszkij 10056 2022-09-23 blog.php
+-rwxrwxrwx 1 root      root       2131 2022-07-05 cimkek.php
+-rwxrwxrwx 1 root      root       8500 2022-07-05 comment.php
+-rwxrwxrwx 1 root      root         30 2022-05-23 index.php
+-rwxrwxrwx 1 root      root       1992 2022-07-19 login.html
+-rwxrwxrwx 1 root      root       1929 2022-07-05 mertekegyseg.php
+-rwxrwxrwx 1 root      root       2639 2022-07-19 napimenu.php
+-rwxrwxrwx 1 root      root       7532 2022-09-17 naptar.php
+-rwxrwxrwx 1 root      root       6515 2022-09-18 osszegzes.php
+-rwxrwxrwx 1 root      root      18329 2022-09-26 recept.php
+-rwxrwxrwx 1 root      root       3557 2022-07-05 szinonima.php
+-rwxrwxrwx 1 root      root        351 2022-07-28 szovegek.php
+-rwxrwxrwx 1 root      root      20163 2022-09-22 upgrade.php
+-rwxrwxrwx 1 root      root       6834 2022-07-18 user.php
 
 ./includes/extras:
-összesen 0
+összesen 4
+-rw-rw-r-- 1 utopszkij utopszkij 2751 2022-09-23 addblog.html
 
 ./includes/models:
-összesen 48
--rwxrwxrwx 1 root root 6466 2022-06-15 atvaltasmodel.php
--rwxrwxrwx 1 root root 1434 2022-06-23 cimkemodel.php
--rwxrwxrwx 1 root root 1611 2022-06-19 commentmodel.php
--rwxrwxrwx 1 root root   30 2022-05-27 index.php
--rwxrwxrwx 1 root root 1334 2022-06-18 mertekegysegmodel.php
--rwxrwxrwx 1 root root 1441 2022-05-27 napimenumodel.php
--rwxrwxrwx 1 root root 6427 2022-09-16 receptmodel.php
--rwxrwxrwx 1 root root 3168 2022-06-19 szinonimamodel.php
--rwxrwxrwx 1 root root 5719 2022-09-18 usermodel.php
+összesen 64
+-rwxrwxrwx 1 root      root      6466 2022-06-15 atvaltasmodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 4500 2022-09-23 blogcommentmodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 6728 2022-09-23 blogmodel.php
+-rwxrwxrwx 1 root      root      1434 2022-06-23 cimkemodel.php
+-rwxrwxrwx 1 root      root      1611 2022-06-19 commentmodel.php
+-rwxrwxrwx 1 root      root        30 2022-05-27 index.php
+-rwxrwxrwx 1 root      root      1334 2022-06-18 mertekegysegmodel.php
+-rwxrwxrwx 1 root      root      1441 2022-05-27 napimenumodel.php
+-rwxrwxrwx 1 root      root      6427 2022-09-16 receptmodel.php
+-rwxrwxrwx 1 root      root      3168 2022-06-19 szinonimamodel.php
+-rwxrwxrwx 1 root      root      5719 2022-09-18 usermodel.php
 
 ./includes/views:
-összesen 156
+összesen 168
 -rwxrwxrwx 1 root      root       2877 2022-09-08 atvaltaskep.html
 -rwxrwxrwx 1 root      root       1262 2022-09-08 atvaltasok.html
+-rw-rw-r-- 1 utopszkij utopszkij  2773 2022-09-23 blogform.html
+-rw-rw-r-- 1 utopszkij utopszkij  3865 2022-09-23 blog.html
+-rw-rw-r-- 1 utopszkij utopszkij  3322 2022-09-22 blogs.html
 -rwxrwxrwx 1 root      root       1197 2022-09-08 cimkebrowser.html
 -rwxrwxrwx 1 root      root       2340 2022-09-08 cimkeform.html
 -rwxrwxrwx 1 root      root       4850 2022-09-08 commentkep.html
@@ -492,7 +515,7 @@ drwxrwxrwx 2 root      root      4096 2022-09-21 views
 -rw-rw-r-- 1 utopszkij utopszkij  2610 2022-09-16 kedvencek.html
 -rwxrwxrwx 1 root      root      19919 2022-09-08 licence_hu.html
 -rwxrwxrwx 1 root      root       2028 2022-09-08 login.html
--rwxrwxrwx 1 root      root       4487 2022-09-18 mainmenu.html
+-rwxrwxrwx 1 root      root       4721 2022-09-26 mainmenu.html
 -rwxrwxrwx 1 root      root       1449 2022-09-08 mertekegysegbrowser.html
 -rwxrwxrwx 1 root      root       2068 2022-09-08 mertekegysegform.html
 -rwxrwxrwx 1 root      root       3544 2022-09-08 napimenukep.html
@@ -500,7 +523,7 @@ drwxrwxrwx 2 root      root      4096 2022-09-21 views
 -rwxrwxrwx 1 root      root       1227 2022-09-08 policy_hu.html
 -rwxrwxrwx 1 root      root        438 2022-09-08 protest_hu.html
 -rw-r--r-- 1 utopszkij utopszkij  5563 2022-09-21 receptek.html
--rwxrwxrwx 1 root      root      23650 2022-09-19 receptkep.html
+-rwxrwxrwx 1 root      root      24053 2022-09-26 receptkep.html
 -rwxrwxrwx 1 root      root       1981 2022-09-08 regist.html
 -rwxrwxrwx 1 root      root       1375 2022-09-08 sponzor_hu.html
 -rwxrwxrwx 1 root      root       1933 2022-09-08 szinonimabrowser.html
@@ -510,11 +533,11 @@ drwxrwxrwx 2 root      root      4096 2022-09-21 views
 
 ./languages:
 összesen 4
--rwxrwxrwx 1 root root 3008 2022-07-19 hu.js
+-rwxrwxrwx 1 root root 3314 2022-09-23 hu.js
 
 ./tests:
-összesen 28
--rw-rw-r-- 1 utopszkij utopszkij 4869 2022-09-20 blogTest.php
+összesen 24
+-rw-rw-r-- 1 utopszkij utopszkij 2408 2022-09-23 blogTest.php
 -rwxrwxrwx 1 root      root      1321 2022-07-08 exampleTest.js
 -rwxrwxrwx 1 root      root       605 2022-07-07 mock.php
 -rwxrwxrwx 1 root      root      1163 2022-07-08 userbrowserTest.js
@@ -522,19 +545,20 @@ drwxrwxrwx 2 root      root      4096 2022-09-21 views
 -rwxrwxrwx 1 root      root      2973 2022-07-19 userTest.php
 
 ./vendor:
-összesen 72
-drwxrwxrwx  4 root root  4096 2021-10-09 bootstrap
--rwxrwxrwx  1 root root 12097 2022-07-19 controller.php
-drwxrwxrwx  2 root root  4096 2022-06-20 database
--rwxrwxrwx  1 root root  3635 2022-07-19 fblogin.php
-drwxrwxrwx 10 root root  4096 2021-10-17 fontawesome
--rwxrwxrwx  1 root root  4637 2022-07-20 fw.php
--rwxrwxrwx  1 root root  4719 2022-07-19 googlelogin.php
--rwxrwxrwx  1 root root    30 2022-05-23 index.php
--rwxrwxrwx  1 root root  2817 2022-07-05 model.php
--rwxrwxrwx  1 root root  2905 2022-09-10 view.php
--rwxrwxrwx  1 root root 10495 2022-07-19 viewTester.js
-drwxrwxrwx  2 root root  4096 2022-07-05 vue
+összesen 76
+drwxrwxrwx  4 root      root       4096 2021-10-09 bootstrap
+drwxrwxr-x  3 utopszkij utopszkij  4096 2022-09-23 ckeditor
+-rwxrwxrwx  1 root      root      12097 2022-07-19 controller.php
+drwxrwxrwx  2 root      root       4096 2022-06-20 database
+-rwxrwxrwx  1 root      root       3635 2022-07-19 fblogin.php
+drwxrwxrwx 10 root      root       4096 2021-10-17 fontawesome
+-rwxrwxrwx  1 root      root       4637 2022-07-20 fw.php
+-rwxrwxrwx  1 root      root       4719 2022-07-19 googlelogin.php
+-rwxrwxrwx  1 root      root         30 2022-05-23 index.php
+-rwxrwxrwx  1 root      root       2817 2022-07-05 model.php
+-rwxrwxrwx  1 root      root       2905 2022-09-10 view.php
+-rwxrwxrwx  1 root      root      10495 2022-07-19 viewTester.js
+drwxrwxrwx  2 root      root       4096 2022-07-05 vue
 
 ./vendor/bootstrap:
 összesen 8
@@ -591,6 +615,84 @@ drwxrwxrwx 2 root root 4096 2022-07-08 js
 -rwxrwxrwx 1 root root  59219 2021-10-09 bootstrap.min.js
 -rwxrwxrwx 1 root root 219918 2021-10-09 bootstrap.min.js.map
 -rwxrwxrwx 1 root root   8314 2022-07-08 name-day.js
+
+./vendor/ckeditor:
+összesen 6364
+-rw-r--r-- 1 utopszkij utopszkij  998809 2022-08-03 ckeditor.js
+-rw-r--r-- 1 utopszkij utopszkij 5492820 2022-08-03 ckeditor.js.map
+-rw-r--r-- 1 utopszkij utopszkij    1298 2022-08-03 LICENSE.md
+-rw-r--r-- 1 utopszkij utopszkij    9675 2022-08-03 sample.css
+drwxr-xr-x 2 utopszkij utopszkij    4096 2022-08-03 translations
+
+./vendor/ckeditor/translations:
+összesen 452
+-rw-r--r-- 1 utopszkij utopszkij  768 2022-08-03 af.js
+-rw-r--r-- 1 utopszkij utopszkij 5439 2022-08-03 ar.js
+-rw-r--r-- 1 utopszkij utopszkij 1338 2022-08-03 ast.js
+-rw-r--r-- 1 utopszkij utopszkij 4167 2022-08-03 az.js
+-rw-r--r-- 1 utopszkij utopszkij 6360 2022-08-03 bg.js
+-rw-r--r-- 1 utopszkij utopszkij 7153 2022-08-03 bn.js
+-rw-r--r-- 1 utopszkij utopszkij 1534 2022-08-03 bs.js
+-rw-r--r-- 1 utopszkij utopszkij 4613 2022-08-03 ca.js
+-rw-r--r-- 1 utopszkij utopszkij 4493 2022-08-03 cs.js
+-rw-r--r-- 1 utopszkij utopszkij 4153 2022-08-03 da.js
+-rw-r--r-- 1 utopszkij utopszkij 3840 2022-08-03 de-ch.js
+-rw-r--r-- 1 utopszkij utopszkij 4477 2022-08-03 de.js
+-rw-r--r-- 1 utopszkij utopszkij 6731 2022-08-03 el.js
+-rw-r--r-- 1 utopszkij utopszkij 3925 2022-08-03 en-au.js
+-rw-r--r-- 1 utopszkij utopszkij 3438 2022-08-03 en-gb.js
+-rw-r--r-- 1 utopszkij utopszkij 1591 2022-08-03 eo.js
+-rw-r--r-- 1 utopszkij utopszkij 4643 2022-08-03 es.js
+-rw-r--r-- 1 utopszkij utopszkij 4288 2022-08-03 et.js
+-rw-r--r-- 1 utopszkij utopszkij 1751 2022-08-03 eu.js
+-rw-r--r-- 1 utopszkij utopszkij 4959 2022-08-03 fa.js
+-rw-r--r-- 1 utopszkij utopszkij 4349 2022-08-03 fi.js
+-rw-r--r-- 1 utopszkij utopszkij 4643 2022-08-03 fr.js
+-rw-r--r-- 1 utopszkij utopszkij 4474 2022-08-03 gl.js
+-rw-r--r-- 1 utopszkij utopszkij  458 2022-08-03 gu.js
+-rw-r--r-- 1 utopszkij utopszkij 5109 2022-08-03 he.js
+-rw-r--r-- 1 utopszkij utopszkij 4374 2022-08-03 hi.js
+-rw-r--r-- 1 utopszkij utopszkij 4242 2022-08-03 hr.js
+-rw-r--r-- 1 utopszkij utopszkij 4440 2022-08-03 hu.js
+-rw-r--r-- 1 utopszkij utopszkij 4153 2022-08-03 id.js
+-rw-r--r-- 1 utopszkij utopszkij 4677 2022-08-03 it.js
+-rw-r--r-- 1 utopszkij utopszkij 4834 2022-08-03 ja.js
+-rw-r--r-- 1 utopszkij utopszkij 1381 2022-08-03 jv.js
+-rw-r--r-- 1 utopszkij utopszkij 2254 2022-08-03 km.js
+-rw-r--r-- 1 utopszkij utopszkij 2211 2022-08-03 kn.js
+-rw-r--r-- 1 utopszkij utopszkij 4333 2022-08-03 ko.js
+-rw-r--r-- 1 utopszkij utopszkij 5254 2022-08-03 ku.js
+-rw-r--r-- 1 utopszkij utopszkij 4681 2022-08-03 lt.js
+-rw-r--r-- 1 utopszkij utopszkij 4516 2022-08-03 lv.js
+-rw-r--r-- 1 utopszkij utopszkij 4249 2022-08-03 ms.js
+-rw-r--r-- 1 utopszkij utopszkij 2527 2022-08-03 nb.js
+-rw-r--r-- 1 utopszkij utopszkij 6515 2022-08-03 ne.js
+-rw-r--r-- 1 utopszkij utopszkij 4313 2022-08-03 nl.js
+-rw-r--r-- 1 utopszkij utopszkij 4270 2022-08-03 no.js
+-rw-r--r-- 1 utopszkij utopszkij  313 2022-08-03 oc.js
+-rw-r--r-- 1 utopszkij utopszkij 4608 2022-08-03 pl.js
+-rw-r--r-- 1 utopszkij utopszkij 4456 2022-08-03 pt-br.js
+-rw-r--r-- 1 utopszkij utopszkij 4543 2022-08-03 pt.js
+-rw-r--r-- 1 utopszkij utopszkij 4456 2022-08-03 ro.js
+-rw-r--r-- 1 utopszkij utopszkij 6450 2022-08-03 ru.js
+-rw-r--r-- 1 utopszkij utopszkij 1072 2022-08-03 si.js
+-rw-r--r-- 1 utopszkij utopszkij 4402 2022-08-03 sk.js
+-rw-r--r-- 1 utopszkij utopszkij 1402 2022-08-03 sl.js
+-rw-r--r-- 1 utopszkij utopszkij 2905 2022-08-03 sq.js
+-rw-r--r-- 1 utopszkij utopszkij 5631 2022-08-03 sr.js
+-rw-r--r-- 1 utopszkij utopszkij 4170 2022-08-03 sr-latn.js
+-rw-r--r-- 1 utopszkij utopszkij 4167 2022-08-03 sv.js
+-rw-r--r-- 1 utopszkij utopszkij 6879 2022-08-03 th.js
+-rw-r--r-- 1 utopszkij utopszkij 4126 2022-08-03 tk.js
+-rw-r--r-- 1 utopszkij utopszkij 4318 2022-08-03 tr.js
+-rw-r--r-- 1 utopszkij utopszkij  332 2022-08-03 tt.js
+-rw-r--r-- 1 utopszkij utopszkij 3113 2022-08-03 ug.js
+-rw-r--r-- 1 utopszkij utopszkij 6439 2022-08-03 uk.js
+-rw-r--r-- 1 utopszkij utopszkij 4252 2022-08-03 ur.js
+-rw-r--r-- 1 utopszkij utopszkij 4157 2022-08-03 uz.js
+-rw-r--r-- 1 utopszkij utopszkij 4653 2022-08-03 vi.js
+-rw-r--r-- 1 utopszkij utopszkij 4005 2022-08-03 zh-cn.js
+-rw-r--r-- 1 utopszkij utopszkij 3939 2022-08-03 zh.js
 
 ./vendor/database:
 összesen 100
