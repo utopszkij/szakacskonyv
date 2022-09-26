@@ -191,6 +191,8 @@ class Recept extends Controller{
 			$kep = 'images/'.$recept->nev.'.png';
 		} else if (file_exists('images/'.$recept->nev.'.jpg')) {
 			$kep = 'images/'.$recept->nev.'.jpg';
+		} else if (file_exists('images/recept_'.$recept->id.'.png')) {
+			$kep = 'images/recept'.$recept->id.'.png';
 		} else {
 		// adat lekérés a google -ról	
 			$receptNev = urlencode($recept->nev);
@@ -212,10 +214,14 @@ class Recept extends Controller{
 					} else {
 						$kep = HtmlSpecialChars($url);
 						// kép mentése az images könyvtárba
-						$kep = 'images/'.$recept->nev.'.png';
-						$fp = fopen($kep,'w+');
-						fwrite($fp, $image);
-						fclose($fp);
+						$kep = 'images/recept'.$recept->id.'.png';
+						try {
+							$fp = fopen($kep,'w+');
+							fwrite($fp, $image);
+							fclose($fp);
+						} catch(exception $e) {
+							$kep = 'images/noimage.png';
+						}	
 					}
 				}	
 			}
@@ -254,6 +260,7 @@ class Recept extends Controller{
 			$creator = new Record($this->session->input('loged'));
 			$creator->id = $this->session->input('loged');
 			$creator->username = $this->session->input('logedName');
+			$isFavorit = false;
 		}
 
 		// commentek olvasása
@@ -307,6 +314,8 @@ class Recept extends Controller{
 		if ($this->request->isset('url')) {
 			atvesz($this->request->input('url'),$recept,$hozzavalok);	
 			// fogalmam sincs róla miért, de a mennyiseg nevü memzőt NaN -re cseréli valami ????
+			// ugyamigy az adag mező is elromlik ????
+			$recept->a = $recept->adag;
 			foreach ($hozzavalok as $hozzavalo) {
 				$hozzavalo->menny = $hozzavalo->mennyiseg;
 			}

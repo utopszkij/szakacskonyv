@@ -1,0 +1,74 @@
+<div id="blog" class="edit">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{ lng('BLOG') }}</h2>			
+        </div>
+    </div>
+    <form id="blogForm" action="index.php" method="post">
+        <input type="hidden" value="blogsave" name="task" />			
+        <input type="hidden" v-model="blog.id" name="id" />
+        <div class="row">
+                <div class="col-md-3 col-sd-12">
+                    <label>{{ lng('TITLE') }}:</label>			
+                </div>
+                <div class="col-md-8 col-sd-12">
+                    <input type="text" required="required" v-model="blog.title"
+                     id="title" name="title" 
+                     class="form-control" style="width:100%" />
+                     <br /><br />
+                </div>
+                <div class="col-md-3 col-sd-12">
+                    <label>{{ lng('BODY') }}:</label>			
+                </div>
+                <div class="col-md-8 col-sd-12">
+                    <textarea required="required" v-model="blog.body"
+                     id="body" name="body" style="height:600px"></textarea> 
+                </div>
+                <div class="col-12">
+                    <img v-bind:src="blog.creator.avatar" class="avatar" />
+                    &nbsp;{{ blog.createdAt }}
+                    &nbsp;{{ blog.creator.name }}
+                </div>
+        </div><!-- .row -->
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-success">
+                    <em class="fas fa-check"></em>&nbsp;{{ lng('SAVE') }}
+                </button>
+                &nbsp;
+                <a href="index.php?task=blogs" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;{{ lng('CANCEL') }}
+                </a>
+            </div>
+        </div>
+           
+    </form>
+
+</div> <!-- blogForm-->
+
+<script>
+var methods = {
+        delClick() {
+			popupConfirm('Bitos, törölni akarod ezt a cikket? ('+this.blog.id+')', function() {
+				document.location = 'index.php?task=delblog&blog_id='+app.blog.id;		
+			});
+		},
+        afterMount() {
+            if (window.editor == undefined) {
+                ClassicEditor
+                .create( document.querySelector( 'textarea#body' ), {
+                    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link']
+                    language: 'hu',
+                    extraPlugins: [ MyCustomUploadAdapterPlugin ],
+                } )
+                .then( editor => {
+                    window.editor = editor;
+                    console.log(editor);
+                } )
+                .catch( err => {
+                    console.error( err.stack );
+                } );            
+            }
+        }
+};   
+</script>

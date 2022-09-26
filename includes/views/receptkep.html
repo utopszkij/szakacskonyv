@@ -460,6 +460,18 @@ var methods = {
             if (this.recept == undefined) {
                 return;
             }
+            // fogalmam sincs róla miért, de az adag időnként undefined ?????
+            if (this.recept.adag == undefined) {
+                this.oldAdag = this.a;
+                this.origAdag = this.a;
+            } else {
+                this.oldAdag = this.recept.adag;
+                this.origAdag = this.recept.adag;
+            }
+            if (this.oldAdag == undefined) {
+                this.oldAdag = 4;
+                this.origAdag = 4;
+            }
             if (this.recept.id == 0) {
                 this.editClick();
             }
@@ -470,14 +482,12 @@ var methods = {
                     console.log(' cimke hiba '+this.receptCimkek[i].cimke);
                 }   
             }
-            this.oldAdag = this.recept.adag;
-            this.origAdag = this.recept.adag;
             document.querySelector('meta[property="og:title"]').remove();
             document.querySelector('head').append('<meta property="og:title" content="'+this.recept.nev+'">');
         },
         round1(n) {
-			// kerekités 1 tizedesjegyre
-			return Math.round(n*10)/10;
+			// kerekités 2 tizedesjegyre
+			return Math.round(n*100)/100;
 		},
         adagPlusClick() {
             if (this.recept.adag > 0) {
@@ -540,6 +550,7 @@ function adjust() {
     if (app.recept.adag <= 0) {
 		app.recept.adag = 4;
 		app.oldAdag = 4;
+		app.origAdag = 4;
 	}
 	
 	// bejelentkezett user a kedvencekhez adhat, onnan törölhet

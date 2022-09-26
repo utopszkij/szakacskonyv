@@ -3,6 +3,7 @@ var hierarchy =
     [ "AtszamitoObject", "class_atszamito_object.html", null ],
     [ "Controller", "class_controller.html", [
       [ "Atvaltasok", "class_atvaltasok.html", null ],
+      [ "Blog", "class_blog.html", null ],
       [ "Cimkek", "class_cimkek.html", null ],
       [ "Comment", "class_comment.html", null ],
       [ "Mertekegyseg", "class_mertekegyseg.html", null ],
@@ -14,6 +15,8 @@ var hierarchy =
     [ "Fw", "class_fw.html", null ],
     [ "Model", "class_r_a_t_w_e_b_1_1_model.html", [
       [ "AtvaltasModel", "class_atvaltas_model.html", null ],
+      [ "BlogModel", "class_blog_model.html", null ],
+      [ "BlogcommentModel", "class_blogcomment_model.html", null ],
       [ "CimkeModel", "class_cimke_model.html", null ],
       [ "CommentModel", "class_comment_model.html", null ],
       [ "MertekegysegModel", "class_mertekegyseg_model.html", null ],

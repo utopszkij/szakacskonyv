@@ -143,6 +143,12 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+
+## verzió v1.6.3
+2022.09.21
+- Recept átvétel hiba javítás
+)
+### ************************************
 ## verzió v1.6.2
 2022.09.21
 - Hiba javítások,
