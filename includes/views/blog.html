@@ -7,7 +7,7 @@
                     <h2>{{ blog.title }}</h2>
                     <p><img v-bind:src="blog.creator.avatar" class="avatar" />
                         &nbsp;
-                        {{ blog.createdAt }} {{ blog.creator.name }} 
+                        {{ blog.createdAt }} <span v-bind:class="blog.creator.group">{{ blog.creator.name }}</span> 
                     </p>
                     <div class="blogBody" v-html="blog.body"></div>
                     
