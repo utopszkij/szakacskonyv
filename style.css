@@ -68,6 +68,7 @@ span, var {display:inline-block; width:auto}
 .dark .btn-success {background-color:green; color:#1f1f11}
 .dark .btn-danger {background-color:red; color:#1f1f11}
 .dark .card {background-color:transparent; border-style:solid; border-color:white}
+.dark .ck {color:black}
 
 .light .ribbon-banner {color:white}
 

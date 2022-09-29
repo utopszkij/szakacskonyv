@@ -95,15 +95,32 @@ class Blog extends Controller {
         }
 
         foreach ($blogs as $fn => $fv) {
-            if (strlen($fv->body) > 255) {
-                $blogs[$fn]->body = mb_substr(strip_tags($fv->body),0,255).'...<strong>Olvass tovább: kattints!</strong>...';
-            }    
+                // bevezető szöeg (max.4 sor) kiemelése
+                $s = str_replace('<',' <',$fv->body);
+                $s = str_replace('</p>','¤',$s);
+                $s = str_replace('</div>','¤',$s);
+                $s = str_replace('</li>','¤',$s);
+                $s = str_replace('<br>','¤',$s);
+                $s = str_replace('<br />','¤',$s);
+                $lines = explode('¤',strip_tags($s));
+                $s = '';
+                $i = 0;
+                while ((strlen($s) < 128) & ($i < count($lines)) & ($i < 4)) {
+                    if ($i > 0) {
+                        $s .= '<br />';
+                    }
+                    $s .= $lines[$i];
+                    $i++;
+                }
+                $s = mb_substr($s,0,125);
+                $blogs[$fn]->body = str_replace('¤','<br />',$s).
+                '<button class="btn btn-secondary" type="button">&gt;&gt;&gt;</button>';
         }
         
 
         view('blogs',[
             "loged" => $this->session->input('loged',0),
-            "logedGroup" => $this->session->input('logedGroup',0),
+            "logedGroup" => $this->session->input('logedGroup',''),
             "blogs" => $blogs,
             "total" => $total,
             "page" => $page,

@@ -59,8 +59,10 @@
             $result = 'images/users/noavatar.png';
             $q = new Query('profilok');
             $p = $q->where('id','=',$user_id)->first();
-            if ($p->avatar != '') {
-                $result = 'images/users/'.$p->avatar;
+            if (isset($p->id)) {
+                if ($p->avatar != '') {
+                    $result = 'images/users/'.$p->avatar;
+                }
             }
             return $result;
         }
@@ -87,18 +89,24 @@
                     ->all();
 
             foreach ($result as $res) {
-                $q2 = new Query('users');
-                $user = $q2->where('id','=',$res->created_by)->first();
+                $q2 = new Query('users','u');
+                $user = $q2->select(['u.id','u.username','p.group'])
+                ->join('LEFT OUTER','profilok','p','p.id','=','u.id')
+                ->where('u.id','=',$res->created_by)->first();
                 $res->creator = new \stdClass();
                 if (isset($user->id)) {
                     $res->creator->id = $user->id;
                     $res->creator->name = $user->username;
                     $res->creator->avatar = $this->userAvatar($user->id);
+                    $res->creator->group = $user->group;
                 } else {
                     $res->creator->id = 0;
                     $res->creator->name = '';
                     $res->creator->avatar = 'images/users/noavatar.png';
+                    $res->creator->group = '';
                 }
+                // userGroup TEST
+
                 $q2 = new Query('blogcomments');
                 $res->commentCount = count(
                     $q2->select(['id'])
@@ -136,18 +144,24 @@
             $q = new Query('blogs');
             $result = $q->where('id','=',$id)->first();
             if (isset($result->id)) {
-                $q2 = new Query('users');
-                $user = $q2->where('id','=',$result->created_by)->first();
+                $q2 = new Query('users','u');
+                $user = $q2->select(['u.id','u.username','p.group'])
+                ->join('LEFT OUTER','profilok','p','p.id','=','u.id')
+                ->where('u.id','=',$result->created_by)->first();
                 $result->creator = new \stdClass();
                 if (isset($user->id)) {
                     $result->creator->id = $user->id;
                     $result->creator->name = $user->username;
                     $result->creator->avatar = $this->userAvatar($user->id);
+                    $result->creator->group = $user->group;
                 } else {
                     $result->creator->id = 0;
                     $result->creator->name = '';
                     $result->creator->avatar = 'images/users/noavatar.png';
+                    $result->creator->group = '';
                 }
+                // usergroup   TEST
+
                 $q2 = new Query('blogcomments');
                 $result->commentCount = count(
                     $q2->select(['id'])
