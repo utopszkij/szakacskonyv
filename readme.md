@@ -144,6 +144,10 @@ cd docroot
 ./documentor.sh
 ```
 
+## verzió v2.0.0
+2022.10.???
+- Cikkek (blog) rendszer commenttel és like -al.
+### ************************************
 ## verzió v1.6.3
 2022.09.21
 - Recept átvétel hiba javítás

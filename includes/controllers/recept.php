@@ -5,6 +5,7 @@ use \RATWEB\DB\Record;
 include_once __DIR__.'/../atvesz.php';
 include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
+include_once __DIR__.'/../models/likemodel.php';
 
 class Recept extends Controller{
 	protected $model;
@@ -37,6 +38,8 @@ class Recept extends Controller{
 			$this->model->delById($this->request->input('id',0,INTEGER));
 			$this->model->deleteHozzavalok($this->request->input('id'));
 			$this->model->deleteCimkek($this->request->input('id'));
+			$likeModel = new LikeModel();
+			$likeModel->deleteLikes('recept',$this->request->input('id'));
 			$this->receptek();
 		}
 	}
@@ -320,6 +323,12 @@ class Recept extends Controller{
 				$hozzavalo->menny = $hozzavalo->mennyiseg;
 			}
 		}
+
+		// likes infok a $recept -be
+		$likeModel = new LikeModel();
+		$recept->likeCount = $likeModel->getLikesTotal('recept', $recept->id);
+		$recept->userLiked = $likeModel->userLiked('recept',$recept->id, $this->session->input('loged'));
+
 		view('receptkep',[
 			"loged" => $this->session->input('loged'),
 			"logedName" => $this->session->input('logedName'),
@@ -514,15 +523,13 @@ class Recept extends Controller{
 		// rekordok lekérése
 		$db = $this->buildQuery();
 		$list = $db->offset($offset)->limit($pageSize)->all();
+		$likeModel = new LikeModel();
 		foreach ($list as $item) {
 			$item->favorit = $this->model->isFavorit($this->session->input('loged',0), $item->id);
+			// likes infok a $recept -be
+			$item->likeCount = $likeModel->getLikesTotal('recept', $item->id);
+			$item->userLiked = $likeModel->userLiked('recept',$item->id, $this->session->input('loged'));
 		}
-
-        /*
-		foreach ($list as $list1) {
-			$list1->image = $this->receptkep($list1);
-		}
-        */
 
 		// összes cimke listája
 		$cimkek = [];
@@ -597,8 +604,12 @@ class Recept extends Controller{
 			->join('LEFT','receptek','r','r.id','=','k.recept_id')
 			->orderBy('r.nev');
 		$list = $db->offset($offset)->limit($pageSize)->all();
+		$likeModel = new LikeModel();
 		foreach ($list as $item) {
 			$item->favorit = true;
+			// likes infok a $recept -be
+			$item->likeCount = $likeModel->getLikesTotal('recept', $item->id);
+			$item->userLiked = $likeModel->userLiked('recept',$item->id, $this->session->input('loged'));
 		}
 		view('kedvencek',[
 			"list" => $list,

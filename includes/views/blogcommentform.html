@@ -1,0 +1,52 @@
+    <div id="blog">
+			<div class="row">
+				<h1 class="ribbon-banner"><span><em class="fas fa-feather"></em>&nbsp;{{ lng('BLOG') }}</span></h1>
+			</div>	
+			<div class="row">
+                <div class="col-12"class="ribbon-banner">
+                    <h2>{{ blog.title }}</h2>
+                    <p><img v-bind:src="blog.creator.avatar" class="avatar" />
+                        &nbsp;
+                        {{ blog.createdAt }} {{ blog.creator.name }} 
+                    </p>
+                    <div class="blogBody" v-html="blog.body"></div>
+                 </p>
+                </div>
+                <div class="row comments">
+                    <h3 class="ribbon-banner">
+                        <em class="fas fa-comment"></em>
+                        {{ lng('COMMENTS') }}
+                    </h3>
+                    <form class="editComment" method="post" action="index.php">
+                        <input type="hidden" name="task" value="blogcommentsave" />
+                        <input type="hidden" name="blog_id" v-model="blog.id" />
+                        <input type="hidden" name="id" v-model="comment.id" />
+                        <textarea cols="80" rows="5" name="commentbody" v-model="comment.body"></textarea>
+                        <p>
+                            <button type="submit" class="btn btn-primary">
+                                <em class="fas fa-check"></em>
+                                {{ lng('OK') }}
+                            </button>
+                            &nbsp;
+                            <a class="btn btn-secondary" v-bind:href="HREF('blog',{'blog_id':blog.id})">
+                                <em class="fas fa-reply"></em>
+                                {{ lng('CANCEL') }}
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a v-on:click="commentDelClick" class="btn btn-danger">
+                                <em class="fas fa-eraser"></em>{{ lng('DELETE') }}
+                            </a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+    </div>    
+    <script>
+        methods = {
+            commentDelClick(id) {
+                popupConfirm('Biztos törölni akarod?', function() {
+                    location='index.php?task=blogcommentdelete&comment_id='+id+'&blog_id='+app.blog.id;
+                });
+            }
+        };
+    </script>       

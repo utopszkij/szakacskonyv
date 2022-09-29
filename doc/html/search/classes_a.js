@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['union_0',['Union',['../class_r_a_t_w_e_b_1_1_d_b_1_1_union.html',1,'RATWEB::DB']]],
-  ['upgrade_1',['Upgrade',['../class_upgrade.html',1,'']]],
-  ['user_2',['User',['../class_user.html',1,'']]],
-  ['usermodel_3',['UserModel',['../class_user_model.html',1,'']]],
-  ['usertest_4',['UserTest',['../class_user_test.html',1,'']]]
+  ['session_0',['Session',['../class_session.html',1,'']]],
+  ['szinonima_1',['Szinonima',['../class_szinonima.html',1,'']]],
+  ['szinonimamodel_2',['SzinonimaModel',['../class_szinonima_model.html',1,'']]],
+  ['szovegek_3',['Szovegek',['../class_szovegek.html',1,'']]]
 ];

@@ -1,7 +1,12 @@
+
 <div id="blog" class="edit">
+    <div class="alert alert-danger" v-if="errorMsg != ''" v-html="lng(errorMsg)"></div>
+    <div class="alert alert-success" v-if="successMsg != ''" v-html="lng(successMsg)"></div>
     <div class="row">
         <div class="col-12">
-            <h2>{{ lng('BLOG') }}</h2>			
+            <h2>{{ lng('BLOG') }}</h2>	
+            <h3 v-if="blog.id == 0">{{ lng('ADD')}}</h3>		
+            <h3 v-if="blog.id > 0">{{ lng('EDIT')}}</h3>		
         </div>
     </div>
     <form id="blogForm" action="index.php" method="post">
@@ -21,7 +26,7 @@
                     <label>{{ lng('BODY') }}:</label>			
                 </div>
                 <div class="col-md-8 col-sd-12">
-                    <textarea required="required" v-model="blog.body"
+                    <textarea v-model="blog.body"
                      id="body" name="body" style="height:600px"></textarea> 
                 </div>
                 <div class="col-12">
@@ -32,7 +37,7 @@
         </div><!-- .row -->
         <div class="row">
             <div class="col-12">
-                <button type="submit" class="btn btn-success">
+                <button type="button" class="btn btn-success" v-on:click="okClick()">
                     <em class="fas fa-check"></em>&nbsp;{{ lng('SAVE') }}
                 </button>
                 &nbsp;
@@ -68,6 +73,20 @@ var methods = {
                 .catch( err => {
                     console.error( err.stack );
                 } );            
+            }
+        },
+        okClick() {
+            var errorMsg = '';
+            if (document.getElementById('title').value == '') {
+                errorMsg += lng('TITLE_REQUESTED')+'<br>';
+            }
+            if (window.editor.getData() == '') {
+                errorMsg += lng('BODY_REQUESTED')+'<br>';
+            }
+            if (errorMsg != '') {
+                popupMsg(errorMsg,'popupError');
+            } else {
+                document.getElementById('blogForm').submit();
             }
         }
 };   

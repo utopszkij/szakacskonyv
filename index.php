@@ -26,12 +26,13 @@ importComponent('szinonima');
 importComponent('mertekegyseg');
 importComponent('cimkek');
 importComponent('upgrade');
-// importComponent('blog');
+importComponent('blog');
+importComponent('like');
 
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v1.6.3';
+$fileVerzio = 'v2.0.0';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
