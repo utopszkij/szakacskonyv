@@ -75,9 +75,9 @@ class BlogTest extends TestCase {
        	$this->assertEquals(checkView()['name'],'blog');
 	}
 	
-	public function test_blogdelete() {
+	public function test_delblog() {
 		$_GET['redirect'] = '';
-		$this->controller->blogdelete();
+		$this->controller->delblog();
        	$this->assertEquals(checkView()['name'],'blogs');
 	}
 

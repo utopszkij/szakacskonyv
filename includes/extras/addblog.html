@@ -8,9 +8,8 @@ class MyUploadAdapter {
         this.loader = loader;
 
         // URL ahol a file upload feldolgozo php van
-        this.url = window.location.origin+
-                   window.location.pathname+
-                   '/upload.php';
+        this.url = 'upload.php';
+        console.log(this.url);           
     }
 
     // Starts the upload process.
@@ -48,7 +47,6 @@ class MyUploadAdapter {
         xhr.addEventListener( 'abort', () => reject() );
         xhr.addEventListener( 'load', () => {
             const response = xhr.response;
-
             if ( !response || response.error ) {
                 return reject( response && response.error ? response.error.message : genericErrorText );
             }

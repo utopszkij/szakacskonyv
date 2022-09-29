@@ -1,0 +1,60 @@
+		
+		<div id="likes">
+			<div class="alert alert-danger" v-if="errorMsg != ''" v-html="lng(errorMsg)"></div>
+			<div class="alert alert-success" v-if="successMsg != ''" v-html="lng(successMsg)"></div>
+			<div class="row">
+                <div class="col-12" v-if="target_type == 'blog'">
+					{{ target.title }}
+				</div>
+                <div class="col-12" v-if="target_type == 'recept'">
+					{{ target.nev }}
+				</div>
+            </div>
+            <div class="row">
+				<h1 class="ribbon-banner"><span>Tetszik jelzések</span></h1>
+			</div>	
+			<div class="row">&nbsp;</div>
+
+			<div class="row">
+				<div id="likesList" class="col-md-12">
+                    <div class="likeitem" v-for="like in likes">
+                        <img v-bind:src="like.avatar" class="avatar" />&nbsp; 
+						{{ like.username }} 
+                    </div>
+                </div>    
+				include paginator
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<a class="btn btn-secondary" 
+						v-if="target_type == 'blog'" 
+						v-bind:href="HREF('blog',{'blog_id':target.id})">
+						<em class="fas fa-reply"></em>&nbsp; {{ lng('BACK') }}
+					</a>
+					<a class="btn btn-secondary" 
+						v-if="target_type == 'recept'" 
+						v-bind:href="HREF('recept',{'id':target.id})">
+						<em class="fas fa-reply"></em>&nbsp; {{ lng('BACK') }}
+					</a>
+				</div>
+			</div>	
+		</div>	
+
+<script>
+    var methods = {
+        makePaginatorClass(p,page) {
+            var result = '';
+            if (p == page) {
+                result="actPaginatorItem";
+            } else {
+                result="paginatorItem"
+            }
+            return result;
+        },
+        afterMount() {
+			if (this.errorMsg == undefined) this.errorMsg = '';
+			if (this.successMsg == undefined) this.successMsg = '';
+        }
+    }
+
+ </script>       

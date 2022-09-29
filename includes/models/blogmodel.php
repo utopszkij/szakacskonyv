@@ -55,22 +55,18 @@
          * @param string $name
          * @return string
          */
-        public function userAvatar(string $name): string {
+        public function userAvatar(int $user_id): string {
             $result = 'images/users/noavatar.png';
-            if (file_exists('images/users/'.$name.'.png')) {
-                $result = 'images/users/'.$name.'.png';
-            }
-            if (file_exists('images/users/'.$name.'.jpg')) {
-                $result = 'images/users/'.$name.'.jpg';
-            }
-            if (file_exists('images/users/'.$name.'.gif')) {
-                $result = 'images/users/'.$name.'.gif';
+            $q = new Query('profilok');
+            $p = $q->where('id','=',$user_id)->first();
+            if ($p->avatar != '') {
+                $result = 'images/users/'.$p->avatar;
             }
             return $result;
         }
 
         /**
-         * bloh böngésző számára rekord set
+         * blogg böngésző számára rekord set
          * @param int $page
          * @param object $filter {titleStr, bodyStr, creatorName, createdAt}
          * @param int $limit
@@ -97,7 +93,7 @@
                 if (isset($user->id)) {
                     $res->creator->id = $user->id;
                     $res->creator->name = $user->username;
-                    $res->creator->avatar = $this->userAvatar($user->username);
+                    $res->creator->avatar = $this->userAvatar($user->id);
                 } else {
                     $res->creator->id = 0;
                     $res->creator->name = '';
@@ -105,13 +101,13 @@
                 }
                 $q2 = new Query('blogcomments');
                 $res->commentCount = count(
-                    $q2->select['id']
+                    $q2->select(['id'])
                     ->where('blog_id','=',$res->id)
                     ->all()
                 );
                 $q2 = new Query('likes');
                 $res->likeCount = count(
-                    $q2->select['id']
+                    $q2->select(['id'])
                     ->where('target_id','=',$res->id)
                     ->where('target_type','=','blog')
                     ->all()
@@ -146,7 +142,7 @@
                 if (isset($user->id)) {
                     $result->creator->id = $user->id;
                     $result->creator->name = $user->username;
-                    $result->creator->avatar = $this->userAvatar($user->username);
+                    $result->creator->avatar = $this->userAvatar($user->id);
                 } else {
                     $result->creator->id = 0;
                     $result->creator->name = '';
@@ -154,13 +150,13 @@
                 }
                 $q2 = new Query('blogcomments');
                 $result->commentCount = count(
-                    $q2->select['id']
+                    $q2->select(['id'])
                     ->where('blog_id','=',$result->id)
                     ->all()
                 );
                 $q2 = new Query('likes');
                 $result->likeCount = count(
-                    $q2->select['id']
+                    $q2->select(['id'])
                     ->where('target_id','=',$result->id)
                     ->where('target_type','=','blog')
                     ->all()
@@ -168,7 +164,7 @@
                 $q2 = new Query('likes');
                 $result->userLike = (
                     count(
-                        $q2->select['id']
+                        $q2->select(['id'])
                         ->where('target_id','=',$result->id)
                         ->where('target_type','=','blog')
                         ->where('user_id','=',$_SESSION['loged'])
@@ -177,6 +173,24 @@
                 );
             }
             return $result;
+        }
+
+        /**
+         * id alapján blog rekord és alrekordjainak törlése
+         * @param int $id
+         * @return bool
+        */
+        public function delById(int $id):bool {
+            $result = true;
+            $q = new Query('blogs');
+            $q->where('id','=',$id)->delete();
+            $q2 = new Query('blogcomments');
+            $q2->where('blog_id','=',$id)->delete();
+            $q2 = new Query('likes');
+            $q2->where('target_id','=',$id)
+            ->where('target_type','=','blog')
+            ->delete();
+            return ($q->error == '');
         }
 
 }    

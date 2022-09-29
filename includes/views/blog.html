@@ -1,6 +1,6 @@
     <div id="blog">
 			<div class="row">
-				<h1 class="ribbon-banner"><span>{{ lng('BLOG') }}</span></h1>
+				<h1 class="ribbon-banner"><span><em class="fas fa-feather"></em>&nbsp;{{ lng('BLOG') }}</span></h1>
 			</div>	
 			<div class="row">
                 <div class="col-12"class="ribbon-banner">
@@ -10,15 +10,26 @@
                         {{ blog.createdAt }} {{ blog.creator.name }} 
                     </p>
                     <div class="blogBody" v-html="blog.body"></div>
-                    <p><a v-bind:href="HREF('like',{'type':'blog','id':blog.id})"
-                        v-bind:class="'userlike_'+blog.userLike">
-                        <em class="fas fa-thumbs-up"></em>
-                    </a>
-                    &nbsp; 
-                    <a v-bind:href="HREF('likes',{'type':'blog','id':blog.id})">
-                        {{ blog.likeCount }} 
-                    </a>
-                 </p>
+                    
+                    <div class="row likeLine">
+                        <div class="col-12">
+                            <a v-bind:href="HREF('likesave',{'type':'blog','id':blog.id})"
+                                v-bind:class="'userlike_'+blog.userLike"
+                                v-if="((blog.userLike == false) & (loged > 0))">
+                                <em class="fas fa-thumbs-up"></em>&nbsp;Tetszik 
+                            </a>
+                            <a v-bind:href="HREF('likesave',{'type':'blog','id':blog.id})"
+                                v-bind:class="'userlike_'+blog.userLike"
+                                v-if="((blog.userLike == true) & (loged > 0))">
+                                <em class="fas fa-thumbs-down"></em>&nbsp;Mégsem tetszik 
+                            </a>
+                            &nbsp; 
+                            <a v-bind:href="HREF('likes',{'type':'blog','id':blog.id})"
+                                vlass="likeCount" v-if="blog.likeCount > 0">
+                                {{ blog.likeCount }} embernek tetszik
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="row" v-if="((logedGroup == 'admin') | (logedGroup == 'moderator'))">
                     <div class="col-12">
@@ -43,11 +54,21 @@
                         {{ comment.creator.name }} {{ comment.createdAt }}
                         </p>
                         <div class="commentBody" v-html="comment.body"></div>
+                        <div v-if="((logedGroup == 'admin') | (logedGroup == 'moderator'))">
+                            <a class="btn btn-secondary" v-bind:href="HREF('editblogcomment',{'id': comment.id,'blog_id':blog.id})">
+                                <em class="fas fa-edit"></em>
+                            </a>&nbsp;
+                            <button class="btn btn-danger" v-on:click="commentDelClick(comment.id)">
+                                <em class="fas fa-eraser"></em>
+                            </button>&nbsp;
+                            
+                        </div>
                     </div> 
 			        include paginator
                     <form class="addComment" method="post" action="index.php">
-                        <input type="hidden" name="task" value="addblogcomment" />
+                        <input type="hidden" name="task" value="blogcommentsave" />
                         <input type="hidden" name="blog_id" v-model="blog.id" />
+                        <input type="hidden" name="id" value="0" />
                         <textarea cols="80" rows="5" name="commentbody"></textarea>
                         <p>
                             <button type="submit" class="btn btn-primary">
@@ -82,6 +103,11 @@
             delClick() {
                 popupConfirm('Biztos törölni akarod?', function() {
                     location='index.php?task=delblog&blog_id='+app.blog.id;
+                });
+            },
+            commentDelClick(id) {
+                popupConfirm('Biztos törölni akarod?', function() {
+                    location='index.php?task=blogcommentdelete&comment_id='+id+'&blog_id='+app.blog.id;
                 });
             }
         };

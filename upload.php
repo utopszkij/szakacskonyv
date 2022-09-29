@@ -1,7 +1,10 @@
 <?php 
     //process the ckedior image upload 
-    $uploadDir = __DIR__.'/images/';
-    $uploadUrl = 'images/'; 
+    $uploadDir = __DIR__.'/images/uploads/';
+    $uploadUrl = 'images/uploads/'; 
+	if (!is_dir($uploadDir)) {
+		mkdir($uploadDir);
+	}
     foreach ($_FILES as $fn => $fv) {
 		$uploadFile = $uploadDir . basename($_FILES[$fn]['name']);	
 		if (strpos($uploadFile,'.php') > 0) {

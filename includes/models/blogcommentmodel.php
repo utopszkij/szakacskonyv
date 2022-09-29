@@ -65,15 +65,14 @@
         public function getComments(int $page, int $blog_id,
                  int $limit, string $order, string $orderDir):array {
             $q = new Query('blogcomments');
-            $this->processFilter($q, $filter); 
             $result = $q->select(['id','body',
                                'created_by','created_at createdAt'])
+                    ->where('blog_id','=',$blog_id)           
                     ->offset(($page-1)*$limit)
                     ->limit($limit)
                     ->orderBy($order)
                     ->orderDir($orderDir)
                     ->all();
-
             foreach ($result as $res) {
                 $q2 = new Query('users');
                 $user = $q2->where('id','=',$res->created_by)->first();
@@ -98,7 +97,7 @@
          */
         public function getTotal(int $blog_id):int {
             $q = new Query('blogcomments');
-            $this->processBlogFilter($q,$blog_id); 
+            $q->where('blog_id','=',$blog_id);
             return count($q->select(['id'])->all());
         }
 

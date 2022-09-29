@@ -4,7 +4,7 @@ use \RATWEB\DB\Record;
 
 include_once __DIR__.'/../models/blogmodel.php';
 include_once __DIR__.'/../models/blogcommentmodel.php';
-// include_once __DIR__.'/../models/likemodel.php';
+include_once __DIR__.'/../models/likemodel.php';
 
 class Blog extends Controller {
 
@@ -25,6 +25,12 @@ class Blog extends Controller {
      */
     protected function validator($record):string {
         $result = '';
+        if ($record->title == '') {
+            $result = 'TITLE_REQUESTED<br>';
+        }
+        if ($record->body == '') {
+            $result .= 'BODY_REQUESTED<br>';
+        }
         return $result;
     }
 
@@ -79,18 +85,6 @@ class Blog extends Controller {
         $blogs = $this->model->getBlogs($page,$filter,$limit,'b.created_at','DESC');
         $total = $this->model->getBlogsTotal($filter);
 
-// TEST
-        $blog = new \stdClass();
-        $blog->id = 1;
-        $blog->title = 'blog bejegyzés';
-        $blog->body = 'Ez egy elég hosszú blog bejegyzés szöveg ami html elemeket is tartalmaz <strong>kiemelt szöveg</strong> 1234 5678 91011 ....';
-        $blog->commentCount = 0;
-        $blog->likeCount = 0;
-        $blog->createdAt = "2022.07.07";
-        $blog->creator = JSON_decode('{"name":"user1", "avatar":"nincs"}');        
-        $blogs = [$blog, $blog, $blog];
-        $total = 28;
-
         $pages = [];
         $p = 0;
         $w = 0;
@@ -102,7 +96,7 @@ class Blog extends Controller {
 
         foreach ($blogs as $fn => $fv) {
             if (strlen($fv->body) > 255) {
-                $blogs[$fn]->body = mb_substr(strip_tags($fv->body),0,255).'...';
+                $blogs[$fn]->body = mb_substr(strip_tags($fv->body),0,255).'...<strong>Olvass tovább: kattints!</strong>...';
             }    
         }
         
@@ -115,8 +109,12 @@ class Blog extends Controller {
             "page" => $page,
             "pages" => $pages,
             "task" => 'blogs',
-            "filter" => $filter
+            "filter" => $filter,
+            "errorMsg" => $this->session->input('errorMsg',''),
+            "successMsg" => $this->session->input('successMsg','')
         ]);
+        $this->session->set('errorMsg','');
+        $this->session->set('successMsg','');
 	}
 
    /*
@@ -133,30 +131,12 @@ class Blog extends Controller {
     
         $commentModel = new BlogcommentModel();
         if (isset($blog->id)) {
-            $comments = $commentModel->getComments($blog->id, $page, $limit, 'created_at','DESC');
+            $comments = $commentModel->getComments($page, $blog->id, $limit, 'created_at','DESC');
             $total = $commentModel->getTotal($blog_id);
         } else {
             $comments = [];
             $total = 0;
         }    
-
-// TEST
-$blog = new \stdClass();
-$blog->id = 1;
-$blog->title = 'blog bejegyzés';
-$blog->body = 'Ez egy elég hosszú blog bejegyzés szöveg ami html elemeket is tartalmaz <strong>kiemelt szöveg</strong> 1234 5678 91011 ....';
-$blog->commentCount = 0;
-$blog->likeCount = 0;
-$blog->createdAt = "2022.07.07";
-$blog->creator = JSON_decode('{"name":"user1", "avatar":"nincs"}');        
-$blog->userLike = 0;
-$comment = new \stdClass();
-$comment->id = 1;
-$comment->body = 'proba comment';
-$comment->createdAt = "2022.06.07";
-$comment->creator = JSON_decode('{"name":"Gipszjakab", "avatar":"nincs"}');
-$comments = [$comment, $comment];
-$total = 30;
 
         $pages = [];
         $p = 0;
@@ -175,25 +155,10 @@ $total = 30;
             "total" => $total,
             "page" => $page,
             "pages" => $pages,
-            "task" => 'blog'
+            "task" => 'blog',
+            "errorMsg" => $this->session->input('errorMsg',''),
+            "successMsg" => $this->session->input('successMsg','')
         ]);
-	}
-
-
-   /*
-    * Blog bejegyzés komment like lista
-	* GET: blog_id
-	* session/GET: page
-    * paraméterek a viewernek: blog, comment, loged, logedGroup, likes, page, total
-    *    blog: {id,title, descripton, commentCount, creator, created_at, like_count} 
-	*        creator:{id,name, avatar}
-    *    likes:[{id, name, avatar},...]
-	* session/GET page
-    * akciok
-    *    blogcomments 
-    */
-	public function bloglikes() {
-        view('nincskesz',[]);
 	}
 
    /*
@@ -207,18 +172,28 @@ $total = 30;
     *    cancel --> blogs
     */
 	public function addblog() {
-        if ($_SESSION['loged'] <= 0) {
-            echo 'not enabled'; exit();
+        if ($this->session->input('loged') <= 0) {
+            $this->session->set('errorMsg', 'ACCESS_DENIED');
+            view('blogs',[]);
         }
         $q = new Query('users');
-        $user = $q->where('id','=',$_SESSION['loged'])->first();
+        $user = $q->where('id','=',$this->session->input('loged'))->first();
+        if (!isset($user->id)) {
+            $user->id = 0;
+            $user->username = '';
+        }
         $blog = $this->model->emptyRecord();
         $blog->commentCount = 0;
         $blog->likeCount = 0;
         $blog->createdAt = date('Y.m.d H:i');
-        $blog->creator = JSON_decode('{"name":"'.$user->username.'", "avatar":"'.$this->model->userAvatar($user->username).'"}');        
+        $blog->creator = JSON_decode('{"name":"'.$user->username.'", "avatar":"'.$this->model->userAvatar($user->id).'"}');        
         $blog->userLike = 0;
-        view('blogform',['blog' => $blog]);
+        $this->session->set('errorMsg', '');
+        $this->session->set('successMsg', '');
+        view('blogform',['blog' => $blog,
+            "errorMsg" => $this->session->input('errorMsg',''),
+            "successMsg" => $this->session->input('successMsg','')
+        ]);
 	}
 
 	/*
@@ -233,7 +208,31 @@ $total = 30;
     *    cancel --> blogs
     */
 	public function editblog() {
-        view('nincskesz',[]);
+        if ($this->session->input('loged') <= 0) {
+            $this->session->set('errorMsg', 'ACCESS_DENIED');
+            view('blogs',[]);
+        }
+        $q = new Query('users');
+        $user = $q->where('id','=',$this->session->input('loged'))->first();
+        if (!isset($user->id)) {
+            $user->id = 0;
+            $user->username = '';
+        }
+        $id = $this->request->input('blog_id',0);
+        $blog = $this->model->getById($id);
+        if (isset($blog->id)) {
+            $this->session->set('errorMsg', '');
+            $this->session->set('successMsg', '');
+            view('blogform',['blog' => $blog,
+                "errorMsg" => $this->session->input('errorMsg',''),
+                "successMsg" => $this->session->input('successMsg','')
+            ]);
+        } else {
+            $this->session->set('errorMsg', 'NOT_FOUND');
+            $this->session->set('successMsg', '');
+            $this->blogs();
+            $this->session->set('errorMsg', '');
+        }    
 	}
 
    /*
@@ -251,7 +250,33 @@ $total = 30;
     *    delete  --> deleteblogcomment
     */
 	public function editblogcomment() {
-        view('nincskesz',[]);
+        if (($this->session->input('logedGroup') == 'admin') |
+            ($this->session->input('logedGroup') == 'moderator')) {
+            $id = $this->request->input('id');
+            $commentModel = new BlogcommentModel();
+            $comment = $commentModel->getById($id);
+            if (isset($comment->id)) {
+                $blog_id = $comment->blog_id;
+                $blog = $this->model->getById($blog_id);
+                if (isset($blog->id)) {
+                    if (strlen($blog->body) > 128) {
+                        $blog->body = substr(strip_tags($blog->body),0,128).'....';
+                    }
+                    $blog->body =
+                    view('blogcommentform',['blog' => $blog, 
+                                            'comment' => $comment,
+                                            'loged' => $this->session->input('loged'),
+                                            'logedGroup' => $this->session->input('logedGroup')]);
+                }
+            }
+            $this->session->set('errorMsg','NOT_FOUND');
+            view('blogs',[]);
+            $this->session->set('errorMsg', '');
+        } else {
+            $this->session->set('errorMsg', 'ACCESS_DENIED');
+            view('blogs',[]);
+            $this->session->set('errorMsg', '');
+        }    
 	}
 	
 	/**
@@ -261,7 +286,42 @@ $total = 30;
      * tárolás után --> blogs
 	 */ 
 	public function blogsave() {
-        view('nincskesz',[]);
+        if ($this->session->input('loged') >= 0) {
+            $id = $this->request->input('id',0);
+            $record = $this->model->emptyRecord();
+            if ($id > 0) {
+                $oldRecord = $this->model->getById($id);
+                $record->id = $id;
+                $record->created_by = $oldRecord->created_by;
+                $record->created_at = $oldRecord->created_at;
+            } else {
+                $q = new Query('users');
+                $record->created_at = date('Y.m.d H:i');
+                $record->created_by = $this->session->input('loged');        
+            }    
+            $record->title = $this->request->input('title','');
+            $record->body = $this->request->input('body','',HTML);
+            $errorMsg = ($this->validator($record));
+            if ($errorMsg == '') {    
+                $this->model->save($record);
+                $errorMsg = $this->model->errorMsg;
+            }    
+            if ($errorMsg == '') {    
+                $this->session->set('successMsg', 'SAVED');
+                $this->session->set('errorMsg', '');
+                $this->blogs();
+            } else {
+                $this->session->set('successMsg', '');
+                $this->session->set('errorMsg', $errorMsg);
+                $this->blogs();
+            }
+        } else {
+            $this->session->set('errorMsg', 'ACCESS_DENIED');
+            $this->session->set('successMsg', '');
+            $this->blogs();
+            $this->session->set('successMsg', '');
+            $this->session->set('errorMsg', '');
+        }
 	}
 
 	/**
@@ -272,20 +332,33 @@ $total = 30;
 	 * tárolás után --> blogcomments
 	 */ 
 	public function blogcommentsave() {
-        view('nincskesz',[]);
+        if ($this->session->input('loged') > 0) {
+            $record = new \RATWEB\DB\Record();
+            $record->blog_id = $this->request->input('blog_id',0);
+            $record->id = $this->request->input('id',0);
+            $record->body = $this->request->input('commentbody',0);
+            if ($record->id == 0) {
+                $record->created_at = date('Y.m.d');
+                $record->created_by = $this->session->input('loged',0);
+            }
+            $commentModel = new BlogcommentModel();
+            $commentModel->save($record);
+
+            $this->session->set('errorMsg', '');
+            $this->session->set('successMsg', 'SAVED');
+            $this->blog();
+            $this->session->set('successMsg', '');
+            $this->session->set('errorMsg', '');
+        } else {
+            $this->session->set('errorMsg', 'ACCESS_DENIED');
+            $this->session->set('successMsg', '');
+            $this->blog();
+            $this->session->set('successMsg', '');
+            $this->session->set('errorMsg', '');
+        }    
 	}
 	
-	/**
-	 * blog like click feldolgozása (like vagy dislike)
-	 * GET: blog_id, like_type 
-	 * SESSIONban loged, logedGroup
-	 * Jogosultság ellenörzés!
-     * tárolás után --> blog
-	 */ 
-	public function likesave() {
-        view('nincskesz',[]);
-	}
-	
+
 	/**
 	 * blog bejegyzés és kommentjei, like -jai törlése
 	 * GET param: blog_id 
@@ -294,20 +367,52 @@ $total = 30;
 	 * Jogosultság ellenörzés!
      * törlések után --> blogs
 	 */ 
-	public function blogdelete() {
-        view('nincskesz',[]);
+	public function delblog() {
+        if (($this->session->input('logedGroup') == 'admin') |
+            ($this->session->input('logedGroup') == 'moderator')) {
+            $id = $this->request->input('blog_id',0);
+            $this->model->delById($id);
+            $this->session->set('successMsg','DELETED');
+            $this->session->set('errorMsg','');
+            $this->blogs();    
+            $this->session->set('successMsg','');
+            $this->session->set('errorMsg','');
+        } else {
+            $this->session->set('successMsg','');
+            $this->session->set('errorMsg','ACCESS_DENIED');
+            $this->blogs();    
+            $this->session->set('successMsg','');
+            $this->session->set('errorMsg','');
+        }
 	}
 
 	/**
-	 * blog bejegyzés és kommentjei, like -jai törlése
-	 * GET param: comment_id jogosultság ellenörzés!
+	 * blog komment törlése
+	 * GET param: comment_id, blog_id jogosultság ellenörzés!
 	 * SESSIONban loged, logedGroup
 	 * Jogosultság ellenörzés!
-     * törlés után --> blogcomments
+     * törlés után --> blog
 	 */ 
 	public function blogcommentdelete() {
-        view('nincskesz',[]);
-	}
+        if (($this->session->input('logedGroup') == 'admin') |
+        ($this->session->input('logedGroup') == 'moderator')) {
+            $blog_id = $this->request->input('blog_id',0);
+            $comment_id = $this->request->input('comment_id',0);
+            $commentModel = new BlogcommentModel();
+            $commentModel->delById($comment_id);
+            $this->session->set('successMsg','DELETED');
+            $this->session->set('errorMsg','');
+            $this->blog();    
+            $this->session->set('successMsg','');
+            $this->session->set('errorMsg','');
+        } else {
+            $this->session->set('successMsg','');
+            $this->session->set('errorMsg','ACCESS_DENIED');
+            $this->blog();    
+            $this->session->set('successMsg','');
+            $this->session->set('errorMsg','');
+        }
+  	}
 
 
 }

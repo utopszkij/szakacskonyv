@@ -285,15 +285,16 @@ class Upgrade {
 		return $result;
 	} 
 	
-	protected function do_v1_7($dbverzio) {
-		if ($this->versionAdjust($dbverzio) < 'v 1. 7') {
+	protected function do_v2_0($dbverzio) {
+		if ($this->versionAdjust($dbverzio) < 'v 2. 0') {
 			$q = new Query('users');
+			$q->exec('DROP TABLE IF EXISTS `blogs`');
 			$q->exec('CREATE TABLE IF NOT EXISTS `blogs` (
 				`id` int NOT NULL AUTO_INCREMENT,
 				`title` varchar(128),
 				`body` text,
 				`created_by` int,
-				`created_at` int,
+				`created_at` date,
 				PRIMARY KEY (`id`)
 			  ) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
 			');
@@ -301,12 +302,13 @@ class Upgrade {
 				echo $q->error; exit();
 			}
 
+			$q->exec('DROP TABLE IF EXISTS `blogcomments`');
 			$q->exec('CREATE TABLE IF NOT EXISTS `blogcomments` (
 				`id` int NOT NULL AUTO_INCREMENT,
 				`blog_id` int,
 				`body` text,
 				`created_by` int,
-				`created_at` int,
+				`created_at` date,
 				PRIMARY KEY (`id`),
 				KEY `blog_id_idx` (`blog_id`)
 			  ) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
@@ -315,12 +317,13 @@ class Upgrade {
 				echo $q->error; exit();
 			}
 
+			$q->exec('DROP TABLE IF EXISTS `likes`');
 			$q->exec('CREATE TABLE IF NOT EXISTS `likes` (
 				`id` int NOT NULL AUTO_INCREMENT,
 				`target_type` varchar(32),
 				`target_id` int,
 				`user_id` int,
-				`created_at` int,
+				`created_at` date,
 				PRIMARY KEY (`id`),
 				KEY `target_id_idx` (`target_id`)
 			  ) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
@@ -334,7 +337,7 @@ class Upgrade {
 			$q->exec('SET SQL_SAFE_UPDATES = 0');	
 			$q = new Query('dbverzio');
 			$r = new Record();
-			$r->verzio = 'v1.7';
+			$r->verzio = 'v2.0';
 			$q->where('verzio','<>','')->update($r);
 			if ($q->error != '') {
 				echo $q->error; exit();
@@ -599,7 +602,7 @@ class Upgrade {
 		$this->do_v1_3($dbverzio);
 		$this->do_v1_4($dbverzio);
 		$this->do_v1_6($dbverzio);
-		$this->do_v1_7($dbverzio);
+		$this->do_v2_0($dbverzio);
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

@@ -1,6 +1,9 @@
-        <div id="blogs">
+		
+		<div id="blogs">
+			<div class="alert alert-danger" v-if="errorMsg != ''" v-html="lng(errorMsg)"></div>
+			<div class="alert alert-success" v-if="successMsg != ''" v-html="lng(successMsg)"></div>
 			<div class="row">
-				<h1 class="ribbon-banner"><span>{{ lng('BLOGS') }}</span></h1>
+				<h1 class="ribbon-banner"><span><em class="fas fa-feather"></em>&nbsp;{{ lng('BLOGS') }}</span></h1>
 			</div>	
 			<div class="row">&nbsp;</div>
 
@@ -49,10 +52,11 @@
                             <div class="blogBody" v-html="blog.body"></div>
                         </a>
                         <p>{{ lng('COMMENT_COUNT') }}: {{ blog.commentCount }}
+							&nbsp;&nbsp;&nbsp;		
                            <em class="fas fa-thumbs-up"></em>&nbsp; {{ blog.likeCount }} 
                         </p>
                     </div>
-                <div>    
+                </div>    
 				include paginator
 			</div>
 			<div style="text-align:center" v-if="loged > 0">
@@ -80,6 +84,8 @@
 			document.getElementById('filterForm').submit();
 		},
         afterMount() {
+			if (this.errorMsg == undefined) this.errorMsg = '';
+			if (this.successMsg == undefined) this.successMsg = '';
         }
     }
 

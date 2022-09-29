@@ -288,17 +288,26 @@
             <em class="fas fa-heart"></em>&nbsp;Kedvencekből törlöm 
         </a>
     </div>
-
-    <!-- div class="row">
-        <div class="col-9"></div>    
-        <div class="col-3">
-            <iframe v-bind:src="'https://www.facebook.com/plugins/share_button.php?href='+encodeURI(HREF('recept',{id:recept.id}))+'&layout=button_count&size=large&appId=482318802821364&width=113&height=20'" 
-                width="150" height="30" style="border:none;overflow:hidden" 
-                scrolling="no" frameborder="0" allowfullscreen="true" 
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-            </iframe>
+    <div class="row likeLine">
+        <hr />
+        <div class="col-6" v-if="((recept.userLiked == true) & (loged > 0))">
+            <a v-bind:href="HREF('likesave',{'type':'recept','id':recept.id})" 
+                class="userlike_true">
+                <em class="fas fa-thumbs-down"></em>&nbsp;Mégsem tetszik
+            </a>
         </div>
-    </div -->
+        <div class="col-6" v-if="((recept.userLiked == false) & (loged > 0))">
+            <a v-bind:href="HREF('likesave',{'type':'recept','id':recept.id})" class="userlike_false">
+                <em class="fas fa-thumbs-up"></em>&nbsp;Tetszik
+            </a>
+        </div>
+        <div class="col-6" v-if="recept.likeCount > 0">
+            <a v-bind:href="HREF('likes',{'type':'recept','id':recept.id})">
+                {{ recept.likeCount }} Embernek tetszik
+            </a>
+        </div>
+        <hr />
+    </div>
 
 </div><!-- recept show -->
 

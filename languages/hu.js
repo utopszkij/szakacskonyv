@@ -16,6 +16,8 @@ tokens = {
     "NODATA":"Nincs adat",
     "SEARCH":"Keresés",
     "CLEARFILTER":"Szűrés törlése",
+    "SAVED": "Tárolva",
+    "DELETED": "Törölve",
 
     "TOTAL":"Osszesen",
     "LINES":"sor",
@@ -84,6 +86,8 @@ tokens = {
     "BLOG":"Cikk",
     "TITLE":"Cím",
     "BODY":"Szöveg",
+    "TITLE_REQUESTED":"Címet meg kell adni",
+    "BODY_REQUESTED":"Szöveget meg kell adni",
 
     "COMMENT_COUNT":"Hozzászólások",
     "TITLE_SUBSTR":"Cím (részlet)",
