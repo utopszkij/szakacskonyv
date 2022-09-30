@@ -35,7 +35,8 @@ class User extends Controller {
 	}
 	
 	public function regist() {
-		view('regist',["msg" => $this->request->input('msg',''),
+		view('regist',["flowKey" => $this->newFlowKey(),
+						"msg" => $this->request->input('msg',''),
 					   "SITEURL" => SITEURL,
 					   "redirect" => $this->request->input('redirect','')]);
 	}
@@ -83,6 +84,9 @@ class User extends Controller {
 		$password2 = $_POST['password2'];
 		$redirect = base64_decode($_POST['redirect']);
 		$error = '';
+		if (!$this->checkFlowKey($redirect)) {
+			echo 'flowKey error'; exit();
+		}
 		if ($password != $password2) {
 			$error = 'A két jelszó nem azonos!';
 			?>
@@ -191,6 +195,9 @@ class User extends Controller {
 	 * - password adatokat admin és a record->id user modosithatja
      */
     public function usersave() {
+		if (!$this->checkFlowKey('index.php')) {
+			echo 'flowKey error'; exit();
+		}
 		$id = $this->request->input('id',0);
 		if ($id > 0) {
 			$record = $this->model->getById($id);
@@ -218,7 +225,7 @@ class User extends Controller {
     }
   
     /**
-     * szinonima törlése GET-ben: id
+     * user törlése GET-ben: id
      */
     public function userdelete() {
 		$id = $this->request->input('id',0, INTEGER);

@@ -48,6 +48,7 @@ class Atvaltasok extends Controller {
         $atvaltoObject = $this->model->getObject($nev);
 
         view('atvaltaskep',[
+            "flowKey" => $this->newFlowKey(),
             "atvaltas" => $atvaltoObject,
             "loged" => $this->loged,
             "logedName" => $this->logedName,
@@ -61,6 +62,9 @@ class Atvaltasok extends Controller {
      * képernyőről POST -ban érkező adatok tárolása
      */
     public function atvaltassave() {
+        if (!$this->checkFlowKey('index.php?task=atvaltasok')) {
+            echo 'flowKey híba. Túl hosszú várakozás miatt lejárt a munkamenet'; exit();
+        }
         if ($this->logedAdmin) {
             $szme = $this->request->input('szme');
             $nev = $this->request->input('nev');

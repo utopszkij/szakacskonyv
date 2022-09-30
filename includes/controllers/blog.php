@@ -165,6 +165,7 @@ class Blog extends Controller {
         }
 
         view('blog',[
+            "flowKey" => $this->newFlowKey(),
             "loged" => $this->session->input('loged',0),
             "logedGroup" => $this->session->input('logedGroup',0),
             "blog" => $blog,
@@ -207,7 +208,8 @@ class Blog extends Controller {
         $blog->userLike = 0;
         $this->session->set('errorMsg', '');
         $this->session->set('successMsg', '');
-        view('blogform',['blog' => $blog,
+        view('blogform',["flowKey" => $this->newFlowKey(),
+            'blog' => $blog,
             "errorMsg" => $this->session->input('errorMsg',''),
             "successMsg" => $this->session->input('successMsg','')
         ]);
@@ -240,7 +242,8 @@ class Blog extends Controller {
         if (isset($blog->id)) {
             $this->session->set('errorMsg', '');
             $this->session->set('successMsg', '');
-            view('blogform',['blog' => $blog,
+            view('blogform',["flowKey" => $this->newFlowKey(),
+                'blog' => $blog,
                 "errorMsg" => $this->session->input('errorMsg',''),
                 "successMsg" => $this->session->input('successMsg','')
             ]);
@@ -280,7 +283,8 @@ class Blog extends Controller {
                         $blog->body = substr(strip_tags($blog->body),0,128).'....';
                     }
                     $blog->body =
-                    view('blogcommentform',['blog' => $blog, 
+                    view('blogcommentform',["flowKey" => $this->newFlowKey(),
+                                            'blog' => $blog, 
                                             'comment' => $comment,
                                             'loged' => $this->session->input('loged'),
                                             'logedGroup' => $this->session->input('logedGroup')]);
@@ -303,6 +307,9 @@ class Blog extends Controller {
      * tárolás után --> blogs
 	 */ 
 	public function blogsave() {
+        if (!$this->checkFlowKey('index.php?task=blogs')) {
+            echo 'flowKey error.'; exit();
+        }
         if ($this->session->input('loged') >= 0) {
             $id = $this->request->input('id',0);
             $record = $this->model->emptyRecord();
@@ -357,6 +364,9 @@ class Blog extends Controller {
             if ($record->id == 0) {
                 $record->created_at = date('Y.m.d');
                 $record->created_by = $this->session->input('loged',0);
+            }
+            if (!$this->checkFlowKey('index.php?task=blog&blog_id='.$record->blog_id)) {
+                echo 'flowKey error. Lehet hogy túl hosszú várakozás miatt lejárt a munkamenet, vagy a böngésző frissitést használtad.'; exit(); 
             }
             $commentModel = new BlogcommentModel();
             $commentModel->save($record);

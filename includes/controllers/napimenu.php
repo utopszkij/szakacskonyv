@@ -26,6 +26,9 @@ class NapiMenu extends Controller{
 	// napimenü képernyő adatainak tárolása
 	// $_GET['ev', 'ho', 'nap', .... képernyő mezők .... ] 
 	public function menusave() {
+		if (!$this->checkFlowKey('index.php')) {
+			echo 'flowKey hiba'; exit();
+		}		
 		$ev = $this->request->input('ev',0,INTEGER);
 		$ho = $this->request->input('ho',0,INTEGER);
 		$nap = $this->request->input('nap',0,INTEGER);
@@ -84,7 +87,7 @@ class NapiMenu extends Controller{
 		// összes meglévő recept
 		$receptek = $this->model->getAllRecept();
 
-		view('napimenukep',[
+		view('napimenukep',["flowKey" => $this->newFlowKey(),
 			"loged" => $this->loged,
 			"nap" => $nap,
 			"ho" => $ho,

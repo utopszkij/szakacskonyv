@@ -143,9 +143,14 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.0.1
+2022.10.30
+- Mobil megjelenés javítása, 
+- "Böngésző refresh esetenként felvitt adatott dupláz" hiba javítása
+### ************************************
 
 ## verzió v2.0.0
-2022.10.???
+2022.10.28
 - Cikkek (blog) rendszer commenttel és like -al.
 ### ************************************
 ## verzió v1.6.3
