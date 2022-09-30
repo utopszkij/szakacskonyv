@@ -25,6 +25,7 @@ class Comment extends Controller {
                           ($this->logedGroup != 'admin') &
                           ($this->logedGroup != 'moderator')));
             view('commentkep',[
+                "flowKey" => $this->newFlowKey(),
                 "recept" => $recept,
                 "comment" => $comment,
                 "UPLOADLIMIT" => UPLOADLIMIT,
@@ -56,6 +57,7 @@ class Comment extends Controller {
             $comment->img1 = "";
             $comment->img2 = "";
             view('commentkep',[
+                "flowKey" => $this->newFlowKey(),
                 "recept" => $recept,
                 "comment" => $comment,
                 "UPLOADLIMIT" => UPLOADLIMIT,
@@ -112,6 +114,10 @@ class Comment extends Controller {
             $comment->id = $this->request->input('id',0,INTEGER);
             if ($comment->id > 0) {
                 $comment = $this->model->getById($comment->id);
+            }
+            if (!$this->checkFlowKey('index.php?task=recept&id='.$comment->recept_id)) {
+                echo 'flowKey error. Lehet, hogy túl hosszú várakozás miatt lejárt a munkamenet.'; 
+                exit();
             }
             $comment->recept_id = $this->request->input('recept_id',0,INTEGER);
             $comment->msg = $this->request->input('msg');

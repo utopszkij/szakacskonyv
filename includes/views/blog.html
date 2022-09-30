@@ -65,18 +65,21 @@
                         </div>
                     </div> 
 			        include paginator
-                    <form class="addComment" method="post" action="index.php">
-                        <input type="hidden" name="task" value="blogcommentsave" />
-                        <input type="hidden" name="blog_id" v-model="blog.id" />
-                        <input type="hidden" name="id" value="0" />
-                        <textarea cols="80" rows="5" name="commentbody"></textarea>
-                        <p>
-                            <button type="submit" class="btn btn-primary">
-                                <em class="fas fa-check"></em>
-                                {{ lng('SEND') }}
-                            </button>
-                        </p>
-                    </form>
+                    <div class="col-12">
+                        <form class="addComment" method="post" action="index.php">
+                            <input type="hidden" name="task" value="blogcommentsave" />
+                            <input type="hidden" name="blog_id" v-model="blog.id" />
+                            <input type="hidden" name="id" value="0" />
+                            <input type="hidden" name="flowKey" v-model="flowKey" />
+                            <textarea style="height:100px; width:100%" name="commentbody"></textarea>
+                            <p>
+                                <button type="submit" class="btn btn-primary">
+                                    <em class="fas fa-check"></em>
+                                    {{ lng('SEND') }}
+                                </button>
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row">

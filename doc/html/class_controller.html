@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('class_controller.html',''); initResiza
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_controller-members.html">List of all members</a>  </div>
@@ -90,6 +91,13 @@ $(document).ready(function(){initNavTree('class_controller.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ac474f1d9eebfbba77ee1a304687437d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#ac474f1d9eebfbba77ee1a304687437d7">newFlowKey</a> ()</td></tr>
+<tr class="separator:ac474f1d9eebfbba77ee1a304687437d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8791c852d108c3f4c05466e9ed690c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#af8791c852d108c3f4c05466e9ed690c2">checkFlowKey</a> (string $url)</td></tr>
+<tr class="separator:af8791c852d108c3f4c05466e9ed690c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a03ee42b33a00a8d0fb5a0fb5c1521731"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_controller.html#a03ee42b33a00a8d0fb5a0fb5c1521731">accessRight</a> (string $action, $record)</td></tr>
@@ -198,6 +206,33 @@ Protected Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_blog.html#a03ee42b33a00a8d0fb5a0fb5c1521731">Blog</a>, <a class="el" href="class_cimkek.html#a03ee42b33a00a8d0fb5a0fb5c1521731">Cimkek</a>, <a class="el" href="class_mertekegyseg.html#a03ee42b33a00a8d0fb5a0fb5c1521731">Mertekegyseg</a>, <a class="el" href="class_szinonima.html#a03ee42b33a00a8d0fb5a0fb5c1521731">Szinonima</a>, and <a class="el" href="class_user.html#a03ee42b33a00a8d0fb5a0fb5c1521731">User</a>.</p>
+
+</div>
+</div>
+<a id="af8791c852d108c3f4c05466e9ed690c2" name="af8791c852d108c3f4c05466e9ed690c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8791c852d108c3f4c05466e9ed690c2">&#9670;&nbsp;</a></span>checkFlowKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">checkFlowKey </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>$url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >flowKey ellenörzés, és átirás 'used' -re. ha 'used' van a sessionban ez azt jelenti browser refrest csinált a user ilyenkor hibajelzés nélkül a $url -re ugrik. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramtype">string</td><td class="paramname">$url</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="class_atvaltasok.html#a6961e0a4abf7660196fea5681113d7fb">Atvaltasok\atvaltassave()</a>.</p>
 
 </div>
 </div>
@@ -335,6 +370,26 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p >Új item felvivő képernyő </p>
+
+</div>
+</div>
+<a id="ac474f1d9eebfbba77ee1a304687437d7" name="ac474f1d9eebfbba77ee1a304687437d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac474f1d9eebfbba77ee1a304687437d7">&#9670;&nbsp;</a></span>newFlowKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">newFlowKey </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >"folyamat integritás" kezelés új flowKey -t képez, tárol sessionba ezt el kell helyezni a formokban controllerben: view('...',['flowKey'] =&gt; $this-&gt;<a class="el" href="class_controller.html#ac474f1d9eebfbba77ee1a304687437d7">newFlowKey()</a>, ....]) form html -ben: &lt;input type="hidden" name="flowKey" v-model="flowKey" &gt; </p><dl class="section return"><dt>Returns</dt><dd>string; </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="class_comment.html#ae2095edae4e260d028c208cead4e5c9a">Comment\comment()</a>, and <a class="el" href="class_comment.html#a9aaa06795a50e5bb9ca7064d26e9d2df">Comment\commentadd()</a>.</p>
 
 </div>
 </div>

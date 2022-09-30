@@ -21,6 +21,7 @@
                         <input type="hidden" name="task" value="blogcommentsave" />
                         <input type="hidden" name="blog_id" v-model="blog.id" />
                         <input type="hidden" name="id" v-model="comment.id" />
+                        <input type="hidden" name="flowKey" v-model="flowKey" />
                         <textarea cols="80" rows="5" name="commentbody" v-model="comment.body"></textarea>
                         <p>
                             <button type="submit" class="btn btn-primary">

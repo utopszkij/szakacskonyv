@@ -45,7 +45,13 @@ class Recept extends Controller{
 	}
 	
 	public function receptsave() {
-		// get -ben: id, leiras, hozzvalok0, mennyiseg0, me0, hozzavalok1,....
+        if (!$this->checkFlowKey('index.php?task=receptek')) {
+            $this->session->set('flowKey','used');
+            echo 'flowKey error! Lehet, hogy túl hosszú várakotzás miatt lejárt a munkamenet?'; exit();
+			$this->receptek();
+        }
+		$this->session->set('flowKey','used');
+		// get -ben: id, leiras, hozzvalok, mennyiseg0, me0, hozzavalok1,....
 		if ($this->session->input('loged') < 0) {
 			echo '<div class="alert alert-danger">Recept felviteléhez be kell jelentkezni!</div>';
 			return;	
@@ -330,6 +336,7 @@ class Recept extends Controller{
 		$recept->userLiked = $likeModel->userLiked('recept',$recept->id, $this->session->input('loged'));
 
 		view('receptkep',[
+			"flowKey" => $this->newFlowKey(),
 			"loged" => $this->session->input('loged'),
 			"logedName" => $this->session->input('logedName'),
 			"logedAdmin" => $this->logedAdmin,

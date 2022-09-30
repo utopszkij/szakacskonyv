@@ -12,6 +12,7 @@
     <form id="blogForm" action="index.php" method="post">
         <input type="hidden" value="blogsave" name="task" />			
         <input type="hidden" v-model="blog.id" name="id" />
+        <input type="hidden" name="flowKey" v-model="flowKey" />
         <div class="row">
                 <div class="col-md-3 col-sd-12">
                     <label>{{ lng('TITLE') }}:</label>			

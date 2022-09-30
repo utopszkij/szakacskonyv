@@ -262,6 +262,7 @@ class Controller {
             $item = $this->session->input('oldRecord');
         }
         view($this->name.'form',[
+            "flowKey" => $this->newFlowKey(),
             "record" => $item,
             "loged" => $this->loged,
             "logedName" => $this->loged,
@@ -291,6 +292,7 @@ class Controller {
             $record = $this->session->input('oldRecord');
         }
         view($this->name.'form',[
+            "flowKey" => $this->newFlowKey(),
             "record" => $record,
             "logedAdmin" => $this->logedAdmin,
             "loged" => $this->loged,
@@ -304,6 +306,16 @@ class Controller {
      * edit vagy new form tárolása
      */
     protected function save($record) {
+        if (!$this->checkFlowKey($this->browserURL)) {
+            $this->session->set('flowKey','used');
+            $this->session->set('errorMsg','flowKey error. Lehet, hogy túl hosszú várakozás miatt lejárt a munkamenet.');
+            echo '<script>
+            location="'.$this->browserURL.'";
+            </script>
+            ';
+            return;
+        }
+        $this->session->set('flowKey','used');
         $this->session->set('oldRecord',$record);
         if ($record->id == 0) {
             if (!$this->accessRight('new',$record)) {
@@ -389,6 +401,43 @@ class Controller {
 			</script>';
 			return;
 		}
-    }    
+    }  
+    
+    /**
+     * "folyamat integritás" kezelés új flowKey -t képez, tárol sessionba 
+     * ezt el kell helyezni a formokban 
+     * controllerben:
+     * view('...',['flowKey'] => $this->newFlowKey(), ....])
+     * form html -ben:
+     * <input type="hidden" name="flowKey" v-model="flowKey" />
+     * @return string;
+     */
+    public function newFlowKey(): string {
+        $key = random_int(100000,999999);
+        $this->session->set('flowKey',$key);
+        return $key;
+    }
+
+    /**
+     * flowKey ellenörzés, és átirás 'used' -re.
+     * ha 'used' van a sessionban ez azt jelenti browser refrest csinált a user
+     * ilyenkor hibajelzés nélkül a $url -re ugrik.
+     * @param string $url
+     * @return bool
+     */
+    public function checkFlowKey(string $url): bool {
+        if ($this->session->input('flowKey') == 'used') {
+            $this->session->set('flowKey','used');
+			echo '<script>
+			location="'.$url.'";
+			</script>
+            </body></html>';
+            exit();
+            return true;
+        }
+        $result = ($this->request->input('flowKey') == $this->session->input('flowKey')); 
+        $this->session->set('flowKey','used');
+        return $result;
+    }
 
 }
