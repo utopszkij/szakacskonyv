@@ -413,20 +413,24 @@ class Controller {
      * @return string;
      */
     public function newFlowKey(): string {
-        $key = random_int(100000,999999);
+        $key = random_int(100000,999999).time();
         $this->session->set('flowKey',$key);
         return $key;
     }
 
     /**
-     * flowKey ellenörzés, és átirás 'used' -re.
-     * ha 'used' van a sessionban ez azt jelenti browser refrest csinált a user
-     * ilyenkor hibajelzés nélkül a $url -re ugrik.
+     * flowKey ellenörzés, tárolás sessionba oldFlowKey -be, és átirás 'used' -re.
+     * Ha 'used' van a sessionban vagy
+     *    a requestben érkező flowKey == sessionban lévő oldFlowKey
+     *    ez azt jelenti browser refrest csinált a user
+     *   ilyenkor hibajelzés nélkül a $url -re ugrik.
      * @param string $url
      * @return bool
      */
     public function checkFlowKey(string $url): bool {
-        if ($this->session->input('flowKey') == 'used') {
+        if (($this->session->input('flowKey') == 'used') |
+            ($this->request->input('flowKey') == $this->session->input('oldFlowKey')))  {
+            $this->session->set('oldFlowKey', $this->session->input('flowKey','none'));
             $this->session->set('flowKey','used');
 			echo '<script>
 			location="'.$url.'";
@@ -436,6 +440,7 @@ class Controller {
             return true;
         }
         $result = ($this->request->input('flowKey') == $this->session->input('flowKey')); 
+        $this->session->set('oldFlowKey', $this->session->input('flowKey','none'));
         $this->session->set('flowKey','used');
         return $result;
     }
