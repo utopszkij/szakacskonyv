@@ -5,6 +5,7 @@ use \RATWEB\DB\Record;
 include_once __DIR__.'/../models/blogmodel.php';
 include_once __DIR__.'/../models/blogcommentmodel.php';
 include_once __DIR__.'/../models/likemodel.php';
+include_once __DIR__.'/../urlprocess.php';
 
 class Blog extends Controller {
 
@@ -145,7 +146,8 @@ class Blog extends Controller {
         $blog = $this->model->getById($blog_id);
         $page = $this->request->input('page', $this->session->input($name.'page',1));
         $this->session->set($name.'page',$page);
-    
+        $blog->bodyHtml = urlprocess($blog->body);
+
         $commentModel = new BlogcommentModel();
         if (isset($blog->id)) {
             $comments = $commentModel->getComments($page, $blog->id, $limit, 'created_at','DESC');

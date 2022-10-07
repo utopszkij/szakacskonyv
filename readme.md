@@ -94,6 +94,8 @@ Könyvtár szerkezet a futtató web szerveren:
       adat modellek php fájlok
     [views]
       viewer templates  spec. html fájlok. vue elemeket tartalmaznak
+    [extras]
+      extra includok  
     egyéb inlude fájlok
   [vendor]
     keretrendszer fájlok és harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
@@ -142,6 +144,12 @@ Ezután linux terminálban:
 ```
 cd docroot
 ./documentor.sh
+```
+## verzió v2.0.2
+2022.10.30
+- Regisztrálási hiba javítása, 
+- Cikekbe és recept leírásokba youtube és vimeo videó illeszthető be
+### ************************************
 ```
 ## verzió v2.0.1
 2022.10.30

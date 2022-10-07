@@ -6,6 +6,7 @@ include_once __DIR__.'/../atvesz.php';
 include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
 include_once __DIR__.'/../models/likemodel.php';
+include_once __DIR__.'/../urlprocess.php';
 
 class Recept extends Controller{
 	protected $model;
@@ -97,6 +98,7 @@ class Recept extends Controller{
 		$r->elkeszites = intval($_POST['elkeszites']);
 		$r->energia = intval($_POST['energia']);
 		
+	
 		$this->model->save($r);
 		
 		// meglévő hozzávalók törlése
@@ -271,6 +273,9 @@ class Recept extends Controller{
 			$creator->username = $this->session->input('logedName');
 			$isFavorit = false;
 		}
+
+		// a $recept->leiras -banlévő url -eket feldolgozza
+		$recept->leirasHtml = urlprocess($recept->leiras);
 
 		// commentek olvasása
 		if ($this->request->isset('page')) {
