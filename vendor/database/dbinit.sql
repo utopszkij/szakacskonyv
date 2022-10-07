@@ -1,14 +1,173 @@
 DROP TABLE IF EXISTS `atvaltasok`;
 CREATE TABLE `atvaltasok` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nev` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `nev` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
   `szorzo` decimal(10,5) DEFAULT NULL COMMENT 'szorzo * me = 1 szme',
-  `me` varchar(8) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `szme` varchar(8) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `me` varchar(8) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `szme` varchar(8) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `atvaltasok_nev` (`nev`),
   KEY `atvaltasok_me` (`me`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `blogcomments`;
+CREATE TABLE `blogcomments` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `blog_id` int DEFAULT NULL,
+  `body` text COLLATE utf8mb3_hungarian_ci,
+  `created_by` int DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `blog_id_idx` (`blog_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `blogs`;
+CREATE TABLE `blogs` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb3_hungarian_ci,
+  `created_by` int DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `cimkek`;
+CREATE TABLE `cimkek` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cimke` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `recept_id` int DEFAULT NULL,
+  `msg` text CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci,
+  `created_by` int DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `img0` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `img1` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `img2` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `comments_recept_id` (`recept_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `dbverzio`;
+CREATE TABLE `dbverzio` (
+  `verzio` varchar(32) COLLATE utf8mb3_hungarian_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `hozzavalok`;
+CREATE TABLE `hozzavalok` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `recept_id` int DEFAULT NULL,
+  `nev` varchar(80) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `mennyiseg` decimal(10,2) DEFAULT NULL,
+  `me` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `szme` varchar(8) COLLATE utf8mb3_hungarian_ci DEFAULT NULL COMMENT 'számítási alap me',
+  `szmennyiseg` decimal(10,5) DEFAULT NULL COMMENT 'számítási mennyiség',
+  PRIMARY KEY (`id`),
+  KEY `recept_id` (`recept_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `kedvencek`;
+CREATE TABLE `kedvencek` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `pozicio` int DEFAULT NULL,
+  `recept_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id_idx` (`user_id`),
+  KEY `recept_id_idx` (`recept_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `likes`;
+CREATE TABLE `likes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `target_type` varchar(32) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `target_id` int DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `target_id_idx` (`target_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `mertekegysegek`;
+CREATE TABLE `mertekegysegek` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nev` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL COMMENT 'mértékegység neve',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `napimenuk`;
+CREATE TABLE `napimenuk` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `ev` int DEFAULT NULL,
+  `ho` int DEFAULT NULL,
+  `nap` int DEFAULT NULL,
+  `recept1` int DEFAULT NULL,
+  `recept2` int DEFAULT NULL,
+  `recept3` int DEFAULT NULL,
+  `recept4` int DEFAULT NULL,
+  `adag` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `datum` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `created_by` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `profilok`;
+CREATE TABLE `profilok` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `avatar` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `realname` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `email` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `phone` varchar(32) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `group` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `recept_cimke`;
+CREATE TABLE `recept_cimke` (
+  `recept_id` int DEFAULT NULL,
+  `cimke` varchar(64) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  KEY `recept_cimke_id` (`recept_id`),
+  KEY `recept_cimke_cimke` (`cimke`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `receptek`;
+CREATE TABLE `receptek` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nev` varchar(80) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `leiras` text CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci,
+  `created_by` int DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `energia` varchar(32) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `elkeszites` int DEFAULT NULL,
+  `adag` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `nev` (`nev`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `szinonimak`;
+CREATE TABLE `szinonimak` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `mit` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL COMMENT 'ezt cseréli',
+  `mire` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL COMMENT 'erre',
+  PRIMARY KEY (`id`),
+  KEY `szinonimak_mit` (`mit`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(32) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `password` varchar(128) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+
+INSERT INTO dbverzio VALUES ('v2.0');
+
 INSERT INTO `atvaltasok` VALUES (4,'ecet',0.30000,'ek','dl'),
 (5,'ételizesítő',0.30000,'csipet','tk'),
 (6,'fahéj',2.00000,'db','csipet'),
@@ -77,38 +236,7 @@ INSERT INTO `atvaltasok` VALUES (4,'ecet',0.30000,'ek','dl'),
 (77,'füszerpaprika',2.00000,'tk','csipet'),
 (78,'kömény',2.00000,'tk','csipet'),
 (79,'víz',3.00000,'dl','ek');
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE `comments` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `recept_id` int DEFAULT NULL,
-  `msg` text CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci,
-  `created_by` int DEFAULT NULL,
-  `created_at` date DEFAULT NULL,
-  `img0` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `img1` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `img2` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `comments_recept_id` (`recept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
 
-DROP TABLE IF EXISTS `dbverzio`;
-CREATE TABLE `dbverzio` (
-  `verzio` varchar(32) COLLATE utf8_hungarian_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
-INSERT INTO `dbverzio` VALUES ('v1.3');
-
-DROP TABLE IF EXISTS `hozzavalok`;
-CREATE TABLE `hozzavalok` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `recept_id` int DEFAULT NULL,
-  `nev` varchar(80) CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `mennyiseg` decimal(10,2) DEFAULT NULL,
-  `me` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `szme` varchar(8) COLLATE utf8_hungarian_ci DEFAULT NULL COMMENT 'számítási alap me',
-  `szmennyiseg` decimal(10,5) DEFAULT NULL COMMENT 'számítási mennyiség',
-  PRIMARY KEY (`id`),
-  KEY `recept_id` (`recept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3354 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
 INSERT INTO `hozzavalok` VALUES (1717,37,'burgonya',1.50,'kg','dkg',150.00000),
 (1718,37,'só',1.00,'csipet','csipet',1.00000),
 (1719,37,'vaj',5.00,'dkg','dkg',5.00000),
@@ -860,12 +988,6 @@ INSERT INTO `hozzavalok` VALUES (1717,37,'burgonya',1.50,'kg','dkg',150.00000),
 (3352,13,'olaj',3.00,'dl','dl',3.00000),
 (3353,13,'citrom',4.00,'szelet','db',0.80000);
 
-DROP TABLE IF EXISTS `mertekegysegek`;
-CREATE TABLE `mertekegysegek` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nev` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL COMMENT 'mértékegység neve',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
 INSERT INTO `mertekegysegek` VALUES (4,'mk'),
 (5,'kk'),
 (6,'tk'),
@@ -895,40 +1017,6 @@ INSERT INTO `mertekegysegek` VALUES (4,'mk'),
 (30,'közepes'),
 (31,'nagy');
 
-DROP TABLE IF EXISTS `napimenuk`;
-CREATE TABLE `napimenuk` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `ev` int DEFAULT NULL,
-  `ho` int DEFAULT NULL,
-  `nap` int DEFAULT NULL,
-  `recept1` int DEFAULT NULL,
-  `recept2` int DEFAULT NULL,
-  `recept3` int DEFAULT NULL,
-  `recept4` int DEFAULT NULL,
-  `adag` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `datum` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `created_by` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
-
-DROP TABLE IF EXISTS `profilok`;
-CREATE TABLE `profilok` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `avatar` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `realname` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `email` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `phone` varchar(32) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `group` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
-
-DROP TABLE IF EXISTS `recept_cimke`;
-CREATE TABLE `recept_cimke` (
-  `recept_id` int DEFAULT NULL,
-  `cimke` varchar(64) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  KEY `recept_cimke_id` (`recept_id`),
-  KEY `recept_cimke_cimke` (`cimke`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
 INSERT INTO `recept_cimke` VALUES (13,'Főétel'),
 (13,'Marha'),
 (116,'Előétel'),
@@ -1112,20 +1200,6 @@ INSERT INTO `recept_cimke` VALUES (13,'Főétel'),
 (136,'Sertés'),
 (136,'Szárnyas');
 
-DROP TABLE IF EXISTS `receptek`;
-CREATE TABLE `receptek` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nev` varchar(80) CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `leiras` text CHARACTER SET utf8mb3 COLLATE utf8_hungarian_ci,
-  `created_by` int DEFAULT NULL,
-  `created_at` date DEFAULT NULL,
-  `energia` varchar(32) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `elkeszites` int DEFAULT NULL,
-  `adag` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `nev` (`nev`)
-) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
-
 INSERT INTO `receptek` VALUES (1,'Zöldségleves','',0,NULL,'0',0,4),
 (2,'Rakott krumpli','1. krumplit egészben héjában megfőzni, megpucolni\r\n2. tojásokat keményre főzni\r\n3. tepsit vagy jénait kivajazni\r\n4. egy réteg szeletelt krumpli\r\n5. egy réteg szeletelt tojás\r\n6. egy réteg szeletelt kolbász\r\n.... és igy tovább\r\n7. tetejére tejföl\r\n8. megsüt\r\n',0,NULL,'0',0,4),
 (4,'Rántott sajt ','',0,NULL,'0',0,4),
@@ -1213,15 +1287,6 @@ INSERT INTO `receptek` VALUES (1,'Zöldségleves','',0,NULL,'0',0,4),
 (135,'Fűszeres hagymatócsni joghurtos mártogatóssal','A fűszeres hagymatócsnihoz hagymát megtisztítjuk és félkarikára vágjuk. Egy serpenyőben vajat olvasztunk egy evőkanálnyi olajjal és lassú tűzön barnára pirítjuk benne a hagymát, amit közben meg is sózunk.\r\n   Egy tálban összekeverjük a lisztet, a fokhagymával és a fűszerekkel, majd a tejjel és a tojással együtt sima tésztává keverjük. Végül hozzáadjuk a hagymát is.\r\n   Egy mélyebb serpenyőben olajat melegítünk és két kanál segítségével kis adagokat szaggatunk bele. Aranybarnára sütjük, majd papírtörlőn lecsepegtetjük.\r\n   Tálaláskor adunk mellé friss mentával ízesített joghurtot.',4,'2022-06-16','0',30,4),
 (136,'Baconba tekert csirkemell ','A csirkemellet vékony szeletekre vágjuk, kiklopfoljuk, sózzuk, borsozzuk, majd a baconre ráfektetünk 1 csirkemellet, és feltekerjük.\r\n\r\nTűzálló tálba fektetjük a feltekert húsokat, ráöntjük a főzőtejszínt, tetejét megszórjuk majorannával, majd előmelegített sütőben készre sütjük. Burgonyapürével és káposztasalátával tálaljuk.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n',4,'2022-06-16','0',60,0);
 
-DROP TABLE IF EXISTS `szinonimak`;
-CREATE TABLE `szinonimak` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `mit` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL COMMENT 'ezt cseréli',
-  `mire` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL COMMENT 'erre',
-  PRIMARY KEY (`id`),
-  KEY `szinonimak_mit` (`mit`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
-
 INSERT INTO `szinonimak` VALUES (2,'mokkáskanál','mk'),
 (3,'mokkás kanál','mk'),
 (4,'kávéskanál','kk'),
@@ -1248,13 +1313,3 @@ INSERT INTO `szinonimak` VALUES (2,'mokkáskanál','mk'),
 (25,'kiskanál','tk'),
 (26,'kis kanál','tk'),
 (27,'darab','db');
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(32) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `password` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci;
-

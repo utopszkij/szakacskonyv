@@ -11,6 +11,7 @@
         <form name="registration" action="index.php?task=doregist" method="post">
         <input type="hidden" name="task" value="doregist" />
         <input type="hidden" name="redirect" v-model="redirect" />
+        <input type="hidden" name="flowKey" v-model="flowKey" />
         <i class="fa fa-user"></i> <input type="text" name="username" 
             v-bind:placeholder="lng('NICKNAME')" required="true" />
         <br /><br />

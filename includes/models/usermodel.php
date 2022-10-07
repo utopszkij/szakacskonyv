@@ -143,7 +143,6 @@
                     }
                 } 
             }
-              
             $p = new Record();
             $p->id = $id;
             $p->avatar = $record->avatar;

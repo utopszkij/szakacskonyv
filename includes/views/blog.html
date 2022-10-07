@@ -9,7 +9,7 @@
                         &nbsp;
                         {{ blog.createdAt }} <span v-bind:class="blog.creator.group">{{ blog.creator.name }}</span> 
                     </p>
-                    <div class="blogBody" v-html="blog.body"></div>
+                    <div class="blogBody" v-html="blog.bodyHtml"></div>
                     
                     <div class="row likeLine">
                         <div class="col-12">

@@ -7,13 +7,43 @@
     </div>
     
     <h2 class="ribbon-banner"><span><em class="fa fa-users" aria-hidden="true"></em>&nbsp;Felhasználók</span></h2>
-    <ul>
-        <li v-for="record in items">
-            <a v-bind:href="'index.php?task=useredit&id='+record.id" v-bind:class="record.group">
-                {{ record.username }} | {{ record.group }}</a>
-        </li>
-    </ul>
-    include paginator
+    <div class="row">
+        <div class="col-md-2">&nbsp;</div>
+        <div id="receptListTable" class="col-md-8">
+            <table style="width:100%">
+                <thead>
+                    <tr><td>Profilkép</td><td>{{ lng('NAME') }}</td><td>Csoport</td></tr>		
+                </thead>
+                <tbody>
+                    <tr v-for="record in items" class="makeTrClass(item)"
+                        style="border-type:solid; border-width:0px 0px 1px 0px">
+                        <td>
+                            <a v-bind:href="'index.php?task=useredit&id='+record.id">
+                                <img v-bind:src="'images/users/'+record.avatar" 
+                                    v-if="(record.avatar != '') & (record.avatar != null)"
+                                    style="margin:5px; width:80%; max-width:90px; border-radius: 8px;" />
+                                <img src="images/users/noavatar.png" 
+                                    v-if="(record.avatar == '') | (record.avatar == null)"
+                                    style="margin:5px; width:80%; max-width:90px; border-radius: 8px;" />
+                            </a>
+                        </td>
+                        <td>    
+                            <a v-bind:href="'index.php?task=useredit&id='+record.id" v-bind:class="record.group">
+                                {{ record.username }}
+                            </a>
+                        </td>
+                        <td>
+                            <a v-bind:href="'index.php?task=useredit&id='+record.id" v-bind:class="record.group">
+                                {{ record.group }}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            include paginator
+        </div>
+    <div class="col-md-2">&nbsp;</div>
+   </div> 
 </div>
 <p>További lehetőségekért kattints a névre!</p>
 
@@ -27,6 +57,9 @@
                 result="paginatorItem"
             }
             return result;
+        },
+        makeTrClass(item) {
+            return '';
         }
     }
 </script>

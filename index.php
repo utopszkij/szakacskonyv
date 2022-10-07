@@ -32,7 +32,7 @@ importComponent('like');
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.0.1';
+$fileVerzio = 'v2.0.2';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();

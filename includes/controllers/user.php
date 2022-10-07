@@ -148,7 +148,7 @@ class User extends Controller {
      */
     protected function validator($record):string {
         $result = '';
-		if ($record->password == '') {
+		if (($record->password == '') & ($record->id == 0)) {
 			$result = 'A jelszó nem lehet üres';
 		} else if ($record->password != $record->password2) {
 			$result = 'A két jelszó nem egyforma';
@@ -195,9 +195,6 @@ class User extends Controller {
 	 * - password adatokat admin és a record->id user modosithatja
      */
     public function usersave() {
-		if (!$this->checkFlowKey('index.php')) {
-			echo 'flowKey error'; exit();
-		}
 		$id = $this->request->input('id',0);
 		if ($id > 0) {
 			$record = $this->model->getById($id);
@@ -219,6 +216,7 @@ class User extends Controller {
         $record->realname = trim($this->request->input('realname',$record->realname));
         $record->email = trim($this->request->input('email',$record->email));
         $record->phone = trim($this->request->input('phone',$record->phone));
+
 		if ((isAdmin() | $this->loged == $record->id)) {
         	$this->save($record); 
 		}	

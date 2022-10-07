@@ -135,9 +135,10 @@
             <button type="button" class="btn btn-secondary" v-on:click="addHozzavalo">
                 + {{ lng('INGREDIENT') }}</button>
         </div>
-        <p>{{ lng('RECEPTHELP1') }}</p>
+        <p>{{ lng('RECEPTHELP1') }} </p>
         <div class="col-12">
             <h3>{{ lng('BUILDING') }}</h3>			
+            <p>Támogatott video linkek: https://youtu.be/code és https://vimeo.com/code</p>
             <textarea name="leiras" id="leiras"
             :disabled="disabled != ''" 
             cols="40" rows="15" v-model="recept.leiras"></textarea>
@@ -258,9 +259,7 @@
     </div>
     <div class="row leiras" v-if="recept.leiras != ''">
         <h2 class="ribbon-banner"><span><em class="fas fa-cogs"></em>&nbsp;{{ lng('BUILDING') }}</span></h2>
-        <div class="col-12">
-             {{ recept.leiras }}
-        </div>			
+        <div class="col-12" v-html="recept.leirasHtml"></div>
     </div>
     
     <div class="row uploadInfo" v-if="recept.id > 0">
