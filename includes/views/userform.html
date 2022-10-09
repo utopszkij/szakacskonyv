@@ -125,7 +125,7 @@
         delClick() {
             popupConfirm(' Biztos törölni akarod ?', 
             function() {
-                location='index.php?task=userdelete&id='+app.record.id; 
+                location='index.php?task=userdelete&id='+app.record.id+'&flowKey='+app.flowKey; 
             })
         }    
     }

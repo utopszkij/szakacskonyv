@@ -145,12 +145,19 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.0.3
+2022.10.30
+- delete hiba javítása, 
+- Cikekbe és recept leírásokba youtube,vimeo és tiktok videó illeszthető be
+- Cikkk editoron lehetőség van a html kód modosítására
+### ************************************
+
 ## verzió v2.0.2
 2022.10.30
 - Regisztrálási hiba javítása, 
 - Cikekbe és recept leírásokba youtube és vimeo videó illeszthető be
 ### ************************************
-```
+
 ## verzió v2.0.1
 2022.10.30
 - Mobil megjelenés javítása, 

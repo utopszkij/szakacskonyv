@@ -31,7 +31,7 @@
                      id="body" name="body" style="height:600px"></textarea> 
                 </div>
                 <div class="col-12">
-                    Támogatott video linkek: https://youtu.be/code és https://vimeo.com/code
+                    Támogatott video linkek: youtube,vimeo,tiktok
                 </div>
                 
                 <div class="col-12">
@@ -64,20 +64,48 @@ var methods = {
 			});
 		},
         afterMount() {
+            console.log(ClassicEditor);
             if (window.editor == undefined) {
+
                 ClassicEditor
                 .create( document.querySelector( 'textarea#body' ), {
                     // toolbar: [ 'heading', '|', 'bold', 'italic', 'link']
                     language: 'hu',
                     extraPlugins: [ MyCustomUploadAdapterPlugin ],
+                    mediaEmbed: {
+                        extraProviders: [
+                        {
+                                name: 'tiktok',
+                                url: /^tiktok\.com\/(.+)/,
+                                html: match => `video: https://tiktok.com/${ match[ 1 ] }`
+                            },
+                            {
+                                name: 'fb_watch',
+                                url: /^fb\.watch\/(.+)/,
+                                html: match => `fb.watch video`
+                            },
+                            {
+                                name: 'facebook',
+                                url: /^facebook\.com\/(.+)/,
+                                html: match => `facebook video`
+                            },
+                            {
+                                name: 'other',
+                                url: /(.+)/,
+                                html: match => `other video`
+                            }
+                            
+                        ]
+            		}
                 } )
                 .then( editor => {
+
                     window.editor = editor;
                     console.log(editor);
                 } )
                 .catch( err => {
                     console.error( err.stack );
-                } );            
+                } );
             }
         },
         okClick() {
