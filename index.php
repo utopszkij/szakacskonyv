@@ -32,7 +32,7 @@ importComponent('like');
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.0.2';
+$fileVerzio = 'v2.0.3';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -323,5 +323,15 @@ if ($task == 'getImage') {
 	  		theme = 'light';
 		}
 		setCookie("theme", theme,100);
+
+/*
+terv:  tiktok embed képzés
+- megkeressük azokat a "aˇ elemeket ahol tiktok.com szerepel a href -ben
+- modositjuk a style attributumok és a href attributumot (axios hivással)
+
+lásd: https://developers.tiktok.com/doc/embed-videos/
+
+*/
+
 </script>
 </html>
