@@ -210,6 +210,14 @@
                 <button type="button" class="btn btn-primary" v-on:click="editClick">
                     <em class="fas fa-edit" title="szerkesztes"></em>&nbsp;{{ lng('EDIT') }}
                 </button>
+                &nbsp;
+                <button type="button" class="btn btn-danger"
+                    v-if="((loged > 0) &
+                    ((recept.created_by == loged) | 
+                     (logedAdmin)))"
+                    v-on:click="delClick()">
+                        <em class="fas fa-ban"></em>&nbsp;{{ lng('DELETE') }} 
+                </button>
             </div>
         </div>
         <div class="d-none d-md-inline col-md-4">
