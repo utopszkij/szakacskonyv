@@ -103,7 +103,7 @@ class Upgrade {
 	 * images -ben nem csináljuk
 	 */
 	protected function downloadFile($path) {
-		if (strpos(' '.$path,'images/') > 0) { 
+		if ((strpos(' '.$path,'images/') > 0) & (strpos('loader.gif'.$path,'images/') <= 0)) { 
 			return;
 		}	
 		try {
