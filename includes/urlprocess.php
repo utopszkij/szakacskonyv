@@ -65,4 +65,10 @@ function urlprocess(string $string):string {
 	return $string;
 }
 
+function tiktokProcess($url) {
+	$lines = file('https://www.tiktok.com/oembed?url='.urlencode($url));
+	$res = JSON_decode(implode('',$lines));
+	return $res->html;
+}
+
 ?>

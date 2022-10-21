@@ -32,7 +32,7 @@ importComponent('like');
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.0.3';
+$fileVerzio = 'v2.0.4';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -60,7 +60,8 @@ if (method_exists($comp, 'getTitle')) {
 } 
 
 // execute API backends
-if ($task == 'getImage') {
+if (in_array($fw->compName.'.'.$fw->task,
+    ['Recept.getImage'])) {
 	$comp->$task ();
     exit();
 }
@@ -104,123 +105,15 @@ if ($task == 'getImage') {
 		}
 	?>
 	<script type="text/javascript">
-	    const { createApp } = Vue; 
-		/**
-		 * csoki beállítás
-		 */
-		function setCookie(name,value,days) {
-			var expires = "";
-			if (days) {
-				var date = new Date();
-				date.setTime(date.getTime() + (days*24*60*60*1000));
-				expires = "; expires=" + date.toUTCString();
-			}
-			document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-		}
-		
-		function getCookie(cname) {
-		  let name = cname + "=";
-		  let decodedCookie = decodeURIComponent(document.cookie);
-		  let ca = decodedCookie.split(';');
-		  for(let i = 0; i <ca.length; i++) {
-			let c = ca[i];
-			while (c.charAt(0) == ' ') {
-			  c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-			  return c.substring(name.length, c.length);
-			}
-		  }
-		  return "";
-		}
-
-		/**
-		 * user jováhagyás kérés popup ablakban
-		 */
-		function popupConfirm(txt, yesfun) {
-			document.getElementById('popupOkBtn').style.display="inline-block";
-			document.getElementById('popupNoBtn').style.display='inline-block';
-			document.getElementById('popup').className='popupSimple';
-			document.getElementById('popupTxt').innerHTML = txt;
-			document.getElementById('popupOkBtn').onclick=yesfun;
-			document.getElementById('popup').style.display='block';
-		}
-		/**
-		 * poup ablak bezárása
-		 */
-		function popupClose() {
-			document.getElementById('popup').style.display='none';
-		}
-		/**
-		 * popup üzenet
-		 */
-		function popupMsg(txt,className) {
-			if (className == undefined) {
-				className = 'popupSimple';
-			}
-			document.getElementById('popupOkBtn').style.display="none";
-			document.getElementById('popupNoBtn').style.display='none';
-			document.getElementById('popup').className=className;
-			document.getElementById('popupTxt').innerHTML = txt;
-			document.getElementById('popup').style.display='block';
-		}
-		/**
-		 * nyelvi fordítás
-		 */
-		function lng(token) {
-			var result = token;
-			var w = token.split('<br>');
-			for (var i = 0; i < w.length; i++) {
-				if (tokens[w[i]] != undefined) {
-					w[i] = tokens[w[i]];
-			    }
-			}
-			result = w.join('<br>');	
-			return result;
-		}
-		/**
-		 * felső menüben almenü megjelenés/elrejtés
-		 */
-		function submenuToggle() {
-			var submenu = document.getElementById('submenu');
-			if (submenu.style.display == 'block') {
-				submenu.style.display = 'none';
-			} else {
-				submenu.style.display = 'block';
-			}
-		}
-
 		var rewrite = <?php echo (int)REWRITE; ?>;
         var siteurl = "<?php echo SITEURL; ?>"; 
-
-		/**
-		 * seo barát url képzéshez segéd rutin
-		 * @param string task
-		 * @param object params {name:value,...}
-		 */
-		function HREF(task, params) {
-			var result = siteurl;
-			if (rewrite) {
-				result += '/task/'+task;
-				for (var fn in params) {
-					result += '/'+fn+'/'+params[fn];
-				}
-			} else {
-				result += '?task='+task;
-				for (var fn in params) {
-					result += '&'+fn+'='+params[fn];
-				}
-			}
-			return result;
-		}
-		// képernyő méretek tárolása csokiba
-		setCookie('screen_width',screen.width,100); 
-		setCookie('screen_height',screen.height,100); 
-
-	</script>	 
+	</script>	
+	<script src="index.js"></script>
 </head>	 
 <body>
-
+	<button onclick="topFunction()" id="scrolltotop" title="Fel a tetejére">
+		<em class="fa fa-arrow-up"></em>
+	</button>
 	<div id="popup">
 		<div style="text-align:right">
 			<button type="button" onclick="popupClose()" 
@@ -287,9 +180,6 @@ if ($task == 'getImage') {
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
 	</div>
-	<!--
-	<textarea style="position:fixed; top:780px; left:50px; z-index:10; width:600px; height:100px; background-color:orange; opacity:0.5"></textarea>
-	-->
 </body>
 <script type="text/javascript">
 		// világos/sötét téma
@@ -324,14 +214,6 @@ if ($task == 'getImage') {
 		}
 		setCookie("theme", theme,100);
 
-/*
-terv:  tiktok embed képzés
-- megkeressük azokat a "aˇ elemeket ahol tiktok.com szerepel a href -ben
-- modositjuk a style attributumok és a href attributumot (axios hivással)
-
-lásd: https://developers.tiktok.com/doc/embed-videos/
-
-*/
 
 </script>
 </html>

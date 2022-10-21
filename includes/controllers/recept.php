@@ -525,6 +525,9 @@ class Recept extends Controller{
 		}
 		// esetleges hibás page korrigálása
 		$p = $p - 1;
+		if ($p < 1) {
+			$p = 1;
+		}
 		if ($page > $p ) {
 			$page = $p;
 			$offset = ($p - 1)*$pageSize;
@@ -542,7 +545,6 @@ class Recept extends Controller{
 			$item->likeCount = $likeModel->getLikesTotal('recept', $item->id);
 			$item->userLiked = $likeModel->userLiked('recept',$item->id, $this->session->input('loged'));
 		}
-
 		// összes cimke listája
 		$cimkek = [];
 		$q = new Query('cimkek');
@@ -550,12 +552,12 @@ class Recept extends Controller{
 		foreach ($recs as $rec) {
 			$cimkek[] = $rec->cimke;
 		}
-
 		view('receptek',[
 			"filterStr" => $filterStr,
 			"filterCreator" => $filterCreator,
 			"filterCreated" => $filterCreated,
 			"filterCimke" => $filterCimke,
+			"newsOpened" => false,
 			"list" => $list,
 			"news" => $news,
 			"page" => $page,

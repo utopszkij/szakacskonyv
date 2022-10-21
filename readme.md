@@ -145,11 +145,19 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.0.4
+2022.10.21
+- fizájn fejlesztés, 
+- recept böngésző kép betöltés gyorsítása
+- recept böngésző "új receptek" összecsukható/kinyitható
+- recept törlés gomb a recept megjelenitő képernyőn
+### ************************************
+
 ## verzió v2.0.3
 2022.10.30
 - delete hiba javítása, 
 - Cikekbe és recept leírásokba youtube,vimeo és tiktok videó illeszthető be
-- Cikkk editoron lehetőség van a html kód modosítására
+- Cikkk editoron lehetőség van a html kód modosítására./files.s
 ### ************************************
 
 ## verzió v2.0.2

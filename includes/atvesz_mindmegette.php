@@ -17,7 +17,6 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 	$elkeszitesiIdo = 0;
 	$energia = 0;
 	$hozza = '';
-
 	$s = implode("\n",file($url));
 	$w = explode('id="recipeAllDetails"',$s);
 	
@@ -47,15 +46,26 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 
 
 			if (count($w) > 1) {
-						$w2 = explode('<ul class="shopingCart">',$w[1]);
-						if (count($w2) > 1) {
-							$w2 = explode('</ul>',$w2[1]);
-							$hozza = $w2[0];	
-							$hozza = str_replace("<span class='comment'>",';;;',$hozza);
-							$hozza = str_replace('</span>',';',$hozza);
-							$hozza = str_replace('</li>',"\n",$hozza);
-							$hozza = strip_tags($hozza,['br']);
-						}				
+				$w2 = explode('<ul class="shopingCart">',$w[1]);
+				if (count($w2) > 1) {
+					$w2 = explode('</ul>',$w2[1]);
+					$hozza = $w2[0];	
+					$hozza = str_replace("<span class='comment'>",';;;',$hozza);
+					$hozza = str_replace('</span>',';',$hozza);
+					$hozza = str_replace('</li>',"\n",$hozza);
+					$hozza = strip_tags($hozza,['br']);
+				}	
+				// 2022.10.17 másik formátum
+				$w2 = explode('<ul class="egyszeru-hozzavalok-lista">',$w[1]);
+				if (count($w2) > 1) {
+					$w2 = explode('</ul>',$w2[1]);
+					$hozza = $w2[0];	
+					$hozza = str_replace("<span class='comment'>",';;;',$hozza);
+					$hozza = str_replace('</span>',';',$hozza);
+					$hozza = str_replace('</li>',"\n",$hozza);
+					$hozza = strip_tags($hozza,['br']);
+				}	
+							
 			}
 
 			if (count($w) > 1) {
@@ -97,15 +107,43 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 				copy($kep, $imgFileName);
 			}
 		}
+		
 		$w1 = explode("\n",$hozza);
 		$i = 0;
 		foreach ($w1 as $hozzavalo) {
-			$w2 = explode(';',$hozzavalo);
-			if (count($w2) > 3) {
-				$hozzavalok[$i] = new \stdClass();
-				$hozzavalok[$i]->nev = str_replace('&nbsp','',trim($w2[3]));
-				$hozzavalok[$i]->mennyiseg = trim($w2[0]);
-				$hozzavalok[$i]->me = trim($w2[1]);
+			$hozzavalo = str_replace("\r;",'',$hozzavalo);
+            $hozzavalo = html_entity_decode($hozzavalo);
+            $hozzavalo = trim(str_replace($mit, $mire, ' '.$hozzavalo.' '));
+			if (strpos($hozzavalo,':') <= 0) {
+				$w2 = explode(';',$hozzavalo);
+				$w2[] = ' ';
+				if (count($w2) > 3) {
+					if (!in_array($w2[1],$mes)) {
+						$w2[3] = $w2[1].' '.$w2[3];
+						$w2[1] = '';
+					}	
+					$w2[0] = str_replace('1/2','0.5',$w2[0]);
+					$hozzavalok[$i] = new \stdClass();
+					$hozzavalok[$i]->nev = str_replace('&nbsp','',trim($w2[3]));
+					$hozzavalok[$i]->mennyiseg = trim($w2[0]);
+					$hozzavalok[$i]->me = trim($w2[1]);
+				} else {	
+					// 2022.10.17 másik formátum
+						$hozzavalo = str_replace(';',' ',$hozzavalo);
+						$w2 = explode(' ',$hozzavalo,3);
+						$w2[] = ' ';
+						if (count($w2) > 2) {
+							if (!in_array($w2[1],$mes)) {
+								$w2[2] = $w2[1].' '.$w2[2];
+								$w2[1] = '';
+							}	
+							$hozzavalok[$i] = new \stdClass();
+							$hozzavalok[$i]->nev = str_replace('&nbsp','',trim($w2[2]));
+							$w2[0] = str_replace('1/2','0.5',$w2[0]);
+							$hozzavalok[$i]->mennyiseg = trim($w2[0]);
+							$hozzavalok[$i]->me = trim($w2[1]);
+						}
+				}	
 				$i++;
 			}
 		}

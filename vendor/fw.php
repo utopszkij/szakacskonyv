@@ -6,6 +6,7 @@ $components = [];
 class Fw {
 	public $task = '';
 	public $comp = false;
+	public $compName = '';
 
 	function __construct() {
 		global $components;
@@ -99,8 +100,10 @@ class Fw {
 			$w = explode('.',$this->task);
 			$compName = $w[0];
 			$this->task = $w[1];
-			importComponent($compName); 
+			importComponent($compName);
+			$compName = ucFirst($compName); 
 			$this->comp = new $compName();
+			$this->compName = $compName;
 		} else {
 			$compName = '';
 			for ($i=0; $i<count($components); $i++) {
@@ -110,6 +113,7 @@ class Fw {
 			} 
 			if ($compName != '') {
 				$this->comp = new $compName ();
+				$this->compName = $compName;
 			} else {
 				echo 'Fatal error  compName not found!'; exit();
 			}	

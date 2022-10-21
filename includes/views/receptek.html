@@ -1,5 +1,3 @@
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
         <div id="receptList">
 			<div class="row">
 				<h1 class="ribbon-banner"><span>{{ lng('RECEPTS') }}</span></h1>
@@ -45,9 +43,18 @@
 					</div>	
 				</form>
 			</div>
-			<div class="row" v-if="page == 1">	
-				<h5 class="fancy"><em class="fas fa-clock"></em>&nbsp;Új receptek</h5>
-				<div id="receptListTable" class="col-md-8">
+			<div class="row">	
+				<h5 class="fancy">
+					<em class="fas fa-clock"></em>&nbsp;Új receptek
+					&nbsp;
+					<var style="cursor:pointer" v-if="newsOpened" v-on:click="newsTogle()">
+						<em class="fas fa-sort-up"></em>
+					</var> 
+					<var style="cursor:pointer" href="#" v-if="!newsOpened" v-on:click="newsTogle()">
+						<em class="fas fa-sort-down"></em>
+					</var> 
+				</h5>
+				<div id="receptListTable" class="col-md-8" v-if="newsOpened" v-on:click="newsTogle">
 					<table style="width:100%">
 						<thead>
 							<tr><td>ID</td><td>{{ lng('NAME') }}</td></tr>		
@@ -56,7 +63,7 @@
 							<tr v-for="item in news" class="makeTrClass(item)">
 								<td>
 									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
-										<img v-bind:_src="loadImg(item.id)" v-bind:id="'img_'+item.id" />
+										<img v-bind:id="'img_'+item.id" />
                                         <span class="id">{{ item.id }}</span>
                                         <div class="name">{{ item.nev }}</div>
 									</a>
@@ -66,13 +73,6 @@
 					</table>
 			   </div>		
 			</div>
-			<div class="row" v-if="page > 1">	
-				<a type="button" class="btn btn-secondary" 
-					v-bind:href="HREF('receptek',{page:1})"
-					style="width:auto">
-					<em class="fas fa-clock"></em>Új receptek
-				</a>
-			</div>	
 			<div class="row">
 				<h5 class="fancy">Receptek ABC sorrendben</h5>	
 				<div id="receptListTable" class="col-md-8">
@@ -84,7 +84,7 @@
 							<tr v-for="item in list" class="makeTrClass(item)">
 								<td>
 									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
-										<img v-bind:_src="loadImg(item.id)" v-bind:id="'img'+item.id" />
+										<img v-bind:id="'img'+item.id" />
 										<em v-if="item.favorit" 
 											style="margin-top:-20px; padding:2px; color:green; background-color:white; z-index:10"
 											class="fas fa-heart"></em>
@@ -114,7 +114,26 @@
 
 <script>
     var methods = {
-        makeTrClass(item) {
+		afterMount() {
+			if ((this.page == 1) &
+			    (this.filterStr == '') &
+				(this.filterCimke == '') &
+				(this.filterCreated == '') &
+				(this.filterCreator <= 0)) {
+				this.newsOpened = true;
+ 			} else {
+				this.newsOpened = false;
+			}	
+			// window.receptImages = [];
+			window.onscroll = function() {window.scrollFunction(); app.scrollFunction()};
+			window.setTimeout('app.scrollFunction()',1000);
+		},
+		newsTogle() {
+			this.newsOpened = !this.newsOpened;
+			window.setTimeout('app.scrollFunction()',1000);
+			return false;
+		},
+		makeTrClass(item) {
             trClass = '';
 			if (item.created_by == this.loged) {
 				trClass = 'sajat';
@@ -139,19 +158,44 @@
 					document.getElementById('filtercimke').value = '';
 					document.getElementById('filterForm').submit();
 		},
-        loadImg(id) {
-                axios.get('index.php?task=getImage&id='+id)
-                .then(function(response) {
-                    var w = document.getElementById('img'+id)
-					if (w) {
-						w.src = response.data.replace('\n','');
-					}	
-					w = document.getElementById('img_'+id)
-					if (w) {
-						w.src = response.data.replace('\n','');
-					}	
-                })
-        }
+		loadImg1(id) {
+			// window.scroll esemény hívja 
+			// az app.receptImages -ből a még nem betöltött, 
+			// és az adott scroll pozicióban látszó képeket tölri be
+			console.log('loadImg1');
+			var w = document.getElementById('img'+id);
+			if (!w) {
+				w = document.getElementById('img_'+id);
+			}
+			if (w) {
+				console.log('vizsgál ', w.getBoundingClientRect().top, w.src);
+				if ((w.src == '') & (w.getBoundingClientRect().top <= window.innerHeight)) {
+					console.log('betölt');
+					w.src = 'images/loader.gif';
+					axios.get('index.php?task=getImage&id='+id)
+					.then(function(response) {
+						var w = document.getElementById('img'+id)
+						if (w) {
+							w.src = response.data.replace('\n','');
+						}	
+						w = document.getElementById('img_'+id)
+						if (w) {
+							w.src = response.data.replace('\n','');
+						}	
+					})
+				}
+			}
+		},
+		scrollFunction() {
+			// a recept képek betöltése
+			imgs = document.images;
+			for (var i = 0; i < imgs.length; i++) {
+				if (imgs[i].id.substr(0,3) == 'img') {
+					var id = imgs[i].id.substr(3,100).replace('_','');
+			 		app.loadImg1(id);
+				}	
+			}
+		}
     }
 
  </script>       
