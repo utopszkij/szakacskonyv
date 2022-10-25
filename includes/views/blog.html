@@ -6,26 +6,28 @@
                 <div class="col-12"class="ribbon-banner">
                     <h2>{{ blog.title }}</h2>
                     <p><img v-bind:src="blog.creator.avatar" class="avatar" />
-                        &nbsp;
-                        {{ blog.createdAt }} <span v-bind:class="blog.creator.group">{{ blog.creator.name }}</span> 
+                        <span v-bind:class="blog.creator.group">{{ blog.creator.name }}</span> 
+                        &nbsp;{{ blog.created_at }} 
                     </p>
                     <div class="blogBody" v-html="blog.bodyHtml"></div>
                     
                     <div class="row likeLine">
                         <div class="col-12">
-                            <a v-bind:href="HREF('likesave',{'type':'blog','id':blog.id})"
+                            <var 
                                 v-bind:class="'userlike_'+blog.userLike"
-                                v-if="((blog.userLike == false) & (loged > 0))">
-                                <em class="fas fa-thumbs-up"></em>&nbsp;Tetszik 
-                            </a>
-                            <a v-bind:href="HREF('likesave',{'type':'blog','id':blog.id})"
+                                v-if="((blog.userLike == false) & (loged > 0))"
+                                v-on:click="likeClick()">
+                                <em class="fas fa-thumbs-up" style="cursor:pointer"></em>&nbsp;Tetszik 
+                            </var>
+                            <var 
                                 v-bind:class="'userlike_'+blog.userLike"
-                                v-if="((blog.userLike == true) & (loged > 0))">
-                                <em class="fas fa-thumbs-down"></em>&nbsp;Mégsem tetszik 
-                            </a>
+                                v-if="((blog.userLike == true) & (loged > 0))"
+                                v-on:click="dislikeClick()">
+                                <em class="fas fa-thumbs-down" style="cursor:pointer"></em>&nbsp;Mégsem tetszik 
+                            </var>
                             &nbsp; 
                             <a v-bind:href="HREF('likes',{'type':'blog','id':blog.id})"
-                                vlass="likeCount" v-if="blog.likeCount > 0">
+                                class="likeCount" v-if="blog.likeCount > 0">
                                 {{ blog.likeCount }} embernek tetszik
                             </a>
                         </div>
@@ -90,7 +92,9 @@
                     </a>
                 </div>
             </div>        
-
+            <div style="display:none">
+                <iframe id="hideIframe"></iframe>
+            </div>
     </div>    
     <script>
         methods = {
@@ -102,6 +106,21 @@
                     result="paginatorItem"
                 }
                 return result;
+            },
+            likeClick() {
+                if ((app.loged > 0) & (!app.blog.userLike)) {
+                    app.blog.likeCount = app.blog.likeCount + 1;
+                    app.blog.userLike = true;
+                    console.log('likeClick ',app.loged, app.blog.userLike);
+                    document.getElementById('hideIframe').src = HREF('likesave',{'type':'blog','id':app.blog.id});
+                }
+            },
+            dislikeClick() {
+                if ((app.loged > 0) & app.blog.userLike) {
+                    app.blog.likeCount = app.blog.likeCount - 1;
+                    app.blog.userLike = false;
+                    document.getElementById('hideIframe').src = HREF('likesave',{'type':'blog','id':app.blog.id});
+                }
             },
             delClick() {
                 popupConfirm('Biztos törölni akarod?', function() {

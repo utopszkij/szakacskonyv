@@ -19,6 +19,30 @@ class Blog extends Controller {
         $this->browserTask = 'blogs';
 	}
 
+    /**
+     * HTML string páratlan tagok lezárása
+     * @param string $html
+     */
+    function closeHtmlTags(string $html): string {
+        preg_match_all('#<(?!meta|img|br|hr|input\b)\b([a-z]+)(?: .*)?(?<![/|/ ])>#iU', $html, $result);
+        $openedtags = $result[1];
+        preg_match_all('#</([a-z]+)>#iU', $html, $result);
+        $closedtags = $result[1];
+        $len_opened = count($openedtags);
+        if (count($closedtags) == $len_opened) {
+            return $html;
+        }
+        $openedtags = array_reverse($openedtags);
+        for ($i=0; $i < $len_opened; $i++) {
+            if (!in_array($openedtags[$i], $closedtags)) {
+                $html .= '</'.$openedtags[$i].'>';
+            } else {
+                unset($closedtags[array_search($openedtags[$i], $closedtags)]);
+            }
+        }
+        return $html;
+    } 
+
 	/**
      * rekord ellenörzés felvitelnél, modosításnál van hivva
      * @param Record $record
@@ -97,13 +121,14 @@ class Blog extends Controller {
 
         foreach ($blogs as $fn => $fv) {
                 // bevezető szöeg (max.4 sor) kiemelése
+                /*
                 $s = str_replace('<',' <',$fv->body);
                 $s = str_replace('</p>','¤',$s);
                 $s = str_replace('</div>','¤',$s);
                 $s = str_replace('</li>','¤',$s);
                 $s = str_replace('<br>','¤',$s);
                 $s = str_replace('<br />','¤',$s);
-                $lines = explode('¤',strip_tags($s));
+                $lines = explode('¤',strip_tags($s,['img']));
                 $s = '';
                 $i = 0;
                 while ((strlen($s) < 128) & ($i < count($lines)) & ($i < 4)) {
@@ -115,7 +140,20 @@ class Blog extends Controller {
                 }
                 $s = mb_substr($s,0,125);
                 $blogs[$fn]->body = str_replace('¤','<br />',$s).
-                '<button class="btn btn-secondary" type="button">&gt;&gt;&gt;</button>';
+                */
+
+                if (strlen($fv->body) > 500) {
+                    $w = explode('>',$fv->body);
+                    $s = '';
+                    $i = 0;
+                    while (($i < count($w)) & (strlen($s) < 500)) {
+                        $s .= $w[$i].'>';
+                    }
+                    $s = urlprocess($this->closeHtmlTags($s));
+                    $fv->body = $s.'<button class="btn btn-secondary" type="button">&gt;&gt;&gt;</button>';
+                } else {
+                    $fv->body = urlprocess($this->closeHtmlTags($fv->body));
+                }
         }
         
 
@@ -146,7 +184,7 @@ class Blog extends Controller {
         $blog = $this->model->getById($blog_id);
         $page = $this->request->input('page', $this->session->input($name.'page',1));
         $this->session->set($name.'page',$page);
-        $blog->bodyHtml = urlprocess($blog->body);
+        $blog->bodyHtml = urlprocess($this->closeHtmlTags($blog->body));
 
         $commentModel = new BlogcommentModel();
         if (isset($blog->id)) {

@@ -1,0 +1,74 @@
+<div id="likewinners">
+    <h2 class="ribbon-banner"><span><em class="fas fa-signal"></em>&nbsp;Like najnokság gyöztesei</span></h2>
+    <h3>{{ datum }}</h3>
+    <table>
+        <tbody>
+            <tr v-for="item in items">
+                <td>
+                    <strong v-bind:id="'position_'+item.id"></strong>
+                    &nbsp;
+                    <em v-bind:class="'fas fa-medal'" v-bind:id="'medal_'+item.id"
+                        style="font-size:32px;"></em> 
+                    &nbsp;{{ item.cc }} like 
+                </td>
+                <td>
+                    <img v-bind:id="'img_'+item.id" style="height:100px" />
+                </td>
+                <td>
+                    <a v-bind:href="HREF('recept',{'id':item.id})"> 
+                        &nbsp; {{ item.nev }}
+                    </a>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+    <div class="alert alert-warning" v-if="items.length == 0">Nincs egyetlen like sem.</div>
+</div>
+
+<script>
+    methods = {
+		afterMount() {
+            window.setTimeout('app.loadImages()',1000);
+            var position = 1;
+            document.getElementById('medal_'+this.items[0].id).className =
+                'fas fa-medal medal'+position;
+            document.getElementById('position_'+this.items[0].id).innerHTML = position+'.';
+            for (var i=1; i < this.items.length; i++) {
+                if (this.items[i].cc < this.items[i-1].cc) {
+                    position++;
+                }
+                document.getElementById('medal_'+this.items[i].id).className = 
+                    'fas fa-medal medal'+position;
+                document.getElementById('position_'+this.items[i].id).innerHTML = position+'.';
+            }
+		},
+        loadImg1(id) {
+			console.log('loadImg1');
+			var w = document.getElementById('img'+id);
+			if (!w) {
+				w = document.getElementById('img_'+id);
+			}
+			if (w) {
+				if (w.src == '') {
+					w.src = 'images/loader.gif';
+					axios.get('index.php?task=getImage&id='+id)
+					.then(function(response) {
+						var w = document.getElementById('img'+id)
+						if (w) {
+							w.src = response.data.replace('\n','');
+						}	
+						w = document.getElementById('img_'+id)
+						if (w) {
+							w.src = response.data.replace('\n','');
+						}	
+					})
+				}
+			}
+	    },
+        loadImages() {
+            for (var i = 0; i < document.images.length; i++) {
+                app.loadImg1(document.images[i].id.substr(4,100));
+            }
+        }
+    }    
+</script>

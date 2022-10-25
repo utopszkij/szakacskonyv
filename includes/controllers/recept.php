@@ -338,7 +338,7 @@ class Recept extends Controller{
 		// likes infok a $recept -be
 		$likeModel = new LikeModel();
 		$recept->likeCount = $likeModel->getLikesTotal('recept', $recept->id);
-		$recept->userLiked = $likeModel->userLiked('recept',$recept->id, $this->session->input('loged'));
+		$recept->userLike = $likeModel->userLiked('recept',$recept->id, $this->session->input('loged'));
 
 		view('receptkep',[
 			"flowKey" => $this->newFlowKey(),
@@ -545,6 +545,12 @@ class Recept extends Controller{
 			$item->likeCount = $likeModel->getLikesTotal('recept', $item->id);
 			$item->userLiked = $likeModel->userLiked('recept',$item->id, $this->session->input('loged'));
 		}
+		foreach ($news as $new) {
+			// likes infok a $recept -be
+			$new->likeCount = $likeModel->getLikesTotal('recept', $new->id);
+		}
+
+
 		// összes cimke listája
 		$cimkek = [];
 		$q = new Query('cimkek');

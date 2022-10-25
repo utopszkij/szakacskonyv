@@ -145,9 +145,14 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.0.5
+2022.10.25
+- receptek is like-olhatóak
+- recept like bajnokság
+- friss hír a kezdő lapon 
 ## verzió v2.0.4
 2022.10.21
-- fizájn fejlesztés, 
+- dizájn fejlesztés, 
 - recept böngésző kép betöltés gyorsítása
 - recept böngésző "új receptek" összecsukható/kinyitható
 - recept törlés gomb a recept megjelenitő képernyőn

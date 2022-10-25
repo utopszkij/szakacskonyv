@@ -8,13 +8,14 @@ var searchData=
   ['cimkek_5',['cimkek',['../class_cimkek.html#a88993c3af69b619a4f5c74963fc0ffff',1,'Cimkek']]],
   ['cimkemodel_6',['CimkeModel',['../class_cimke_model.html',1,'']]],
   ['cimkesave_7',['cimkesave',['../class_cimkek.html#a42f54b046e36dcddf65df0e2294c7523',1,'Cimkek']]],
-  ['comment_8',['Comment',['../class_comment.html',1,'']]],
-  ['comment_9',['comment',['../class_comment.html#ae2095edae4e260d028c208cead4e5c9a',1,'Comment']]],
-  ['commentadd_10',['commentadd',['../class_comment.html#a9aaa06795a50e5bb9ca7064d26e9d2df',1,'Comment']]],
-  ['commentdel_11',['commentdel',['../class_comment.html#a2bfab0652d5ccc04da98bacfe0a05fed',1,'Comment']]],
-  ['commentimgdel_12',['commentimgdel',['../class_comment.html#a0443519238d83160aa7e3ba65ab5224b',1,'Comment']]],
-  ['commentmodel_13',['CommentModel',['../class_comment_model.html',1,'']]],
-  ['commentsave_14',['commentsave',['../class_comment.html#a4dce3abea7ee37a8b586557bd08b1e1f',1,'Comment']]],
-  ['controller_15',['Controller',['../class_controller.html',1,'']]],
-  ['count_16',['count',['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#ac751e87b3d4c4bf2feb03bee8b092755',1,'RATWEB::DB::Query']]]
+  ['closehtmltags_8',['closeHtmlTags',['../class_blog.html#a8f132d84d13420d7930bc725294841ee',1,'Blog']]],
+  ['comment_9',['Comment',['../class_comment.html',1,'']]],
+  ['comment_10',['comment',['../class_comment.html#ae2095edae4e260d028c208cead4e5c9a',1,'Comment']]],
+  ['commentadd_11',['commentadd',['../class_comment.html#a9aaa06795a50e5bb9ca7064d26e9d2df',1,'Comment']]],
+  ['commentdel_12',['commentdel',['../class_comment.html#a2bfab0652d5ccc04da98bacfe0a05fed',1,'Comment']]],
+  ['commentimgdel_13',['commentimgdel',['../class_comment.html#a0443519238d83160aa7e3ba65ab5224b',1,'Comment']]],
+  ['commentmodel_14',['CommentModel',['../class_comment_model.html',1,'']]],
+  ['commentsave_15',['commentsave',['../class_comment.html#a4dce3abea7ee37a8b586557bd08b1e1f',1,'Comment']]],
+  ['controller_16',['Controller',['../class_controller.html',1,'']]],
+  ['count_17',['count',['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#ac751e87b3d4c4bf2feb03bee8b092755',1,'RATWEB::DB::Query']]]
 ];
