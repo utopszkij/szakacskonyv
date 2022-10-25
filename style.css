@@ -235,7 +235,7 @@ figure.image-style-side img {float:right; width:40%}
  .dark .userlike_false:hover {color:white}
 
 #likewinners {text-align:center}
-#likewinners table {display:inline-block; width:auto; background-color:#2392d6; padding:20px}
+#likewinners table {display:inline-block; width:auto; background-color:#2392d6; padding:20px; border-radius:10px}
 #likewinners td {padding:10px;}
 #likewinners a {color:white; text-decoration:none}
 #likewinners .medal1 {color:#fcfc55}

@@ -1,13 +1,13 @@
 <div id="likewinners">
-    <h2 class="ribbon-banner"><span><em class="fas fa-signal"></em>&nbsp;Like najnokság gyöztesei</span></h2>
+    <h2 class="ribbon-banner"><span><em class="fas fa-trophy"></em>&nbsp;Like najnokság gyöztesei</span></h2>
     <h3>{{ datum }}</h3>
     <table>
         <tbody>
             <tr v-for="item in items">
                 <td>
-                    <strong v-bind:id="'position_'+item.id"></strong>
+                    <strong v-bind:id="'position_'+item.id">{{ item.position }}.</strong>
                     &nbsp;
-                    <em v-bind:class="'fas fa-medal'" v-bind:id="'medal_'+item.id"
+                    <em v-bind:class="'fas fa-medal medal'+item.position" v-bind:id="'medal_'+item.id"
                         style="font-size:32px;"></em> 
                     &nbsp;{{ item.cc }} like 
                 </td>
@@ -28,22 +28,10 @@
 <script>
     methods = {
 		afterMount() {
+            console.log(this.items);
             window.setTimeout('app.loadImages()',1000);
-            var position = 1;
-            document.getElementById('medal_'+this.items[0].id).className =
-                'fas fa-medal medal'+position;
-            document.getElementById('position_'+this.items[0].id).innerHTML = position+'.';
-            for (var i=1; i < this.items.length; i++) {
-                if (this.items[i].cc < this.items[i-1].cc) {
-                    position++;
-                }
-                document.getElementById('medal_'+this.items[i].id).className = 
-                    'fas fa-medal medal'+position;
-                document.getElementById('position_'+this.items[i].id).innerHTML = position+'.';
-            }
 		},
         loadImg1(id) {
-			console.log('loadImg1');
 			var w = document.getElementById('img'+id);
 			if (!w) {
 				w = document.getElementById('img_'+id);

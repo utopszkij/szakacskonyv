@@ -140,7 +140,7 @@
 
             $db = new Query('likes','l');
             if ($type == 'recept') {
-                $items = $db->select([['count(l.id)','cc'],'r.id','r.nev'])
+                $result = $db->select([['count(l.id)','cc'],'r.id','r.nev'])
                 ->join('LEFT OUTER','receptek','r','r.id','=','l.target_id')
                 ->groupBy(['r.id'])
                 ->where('l.target_type','=','recept')
@@ -149,8 +149,16 @@
                 ->orderDir('DESC')
                 ->limit($limit)
                 ->all();
-                // $result = array_merge($items,$items0);
-                $result = $items;
+            }
+            $position = 1;
+            $result[0]->position = 1;
+            for ($i = 1; $i < count($result); $i++) {
+                $j = $i - 1 ;
+                if ($result[$i]->cc < 
+                    $result[$j]->cc) {
+                    $position++;
+                }    
+                $result[$i]->position = $position;
             }
             return $result;
         }
