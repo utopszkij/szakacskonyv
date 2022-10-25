@@ -298,17 +298,22 @@
     </div>
     <div class="row likeLine">
         <hr />
-        <div class="col-6" v-if="((recept.userLiked == true) & (loged > 0))">
-            <a v-bind:href="HREF('likesave',{'type':'recept','id':recept.id})" 
-                class="userlike_true">
-                <em class="fas fa-thumbs-down"></em>&nbsp;Mégsem tetszik
-            </a>
+        <div class="col-6" v-if="((recept.userLike == true) & (loged > 0))">
+            <var 
+                v-bind:class="'userlike_'+recept.userLike"
+                v-if="((recept.userLike == true) & (loged > 0))"
+                v-on:click="dislikeClick()">
+                <em class="fas fa-thumbs-down" style="cursor:pointer"></em>&nbsp;Mégsem tetszik 
+            </var>
         </div>
-        <div class="col-6" v-if="((recept.userLiked == false) & (loged > 0))">
-            <a v-bind:href="HREF('likesave',{'type':'recept','id':recept.id})" class="userlike_false">
-                <em class="fas fa-thumbs-up"></em>&nbsp;Tetszik
-            </a>
-        </div>
+        <div class="col-6" v-if="((recept.userLike == false) & (loged > 0))">
+            <var 
+                v-bind:class="'userlike_'+recept.userLike"
+                v-if="((recept.userLike == false) & (loged > 0))"
+                v-on:click="likeClick()">
+                <em class="fas fa-thumbs-up" style="cursor:pointer"></em>&nbsp;Tetszik 
+            </var>
+    </div>
         <div class="col-6" v-if="recept.likeCount > 0">
             <a v-bind:href="HREF('likes',{'type':'recept','id':recept.id})">
                 {{ recept.likeCount }} Embernek tetszik
@@ -316,7 +321,9 @@
         </div>
         <hr />
     </div>
-
+    <div style="display:none">
+        <iframe id="hideIframe"></iframe>
+    </div>
 </div><!-- recept show -->
 
 <div class="row comments">
@@ -545,8 +552,21 @@ var methods = {
             var ta = document.getElementById(id);
             var h = ta.innerHTML;
             ta.rows = (h.length / (app.innerWidth / 15)) + 1.4
+        },
+        likeClick() {
+                if ((app.loged > 0) & (!app.recept.userLike)) {
+                    app.recept.likeCount = app.recept.likeCount + 1;
+                    app.recept.userLike = true;
+                    document.getElementById('hideIframe').src = HREF('likesave',{'type':'recept','id':app.recept.id});
+                }
+        },
+        dislikeClick() {
+                if ((app.loged > 0) & app.recept.userLike) {
+                    app.recept.likeCount = app.recept.likeCount - 1;
+                    app.recept.userLike = false;
+                    document.getElementById('hideIframe').src = HREF('likesave',{'type':'recept','id':app.recept.id});
+                }
         }
-
 };   
 
 function adjust() {

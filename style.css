@@ -6,9 +6,9 @@ body {
 }
 body.dark {
   color:white;
-  background-color:#1f1f11;
+  background-color:#1f2029;
   --text-color: #ffffff;
-  --bkg-color: #1f1f11;
+  --bkg-color: #1f2029;
 }
 body.light {
   color:black;
@@ -21,7 +21,7 @@ body.light {
   /* defaults to dark theme */
   body {
     --text-color: #eee;
-    --bkg-color: #1f1f11;
+    --bkg-color: #1f2029;
   }
   body.light {
     --text-color: #222;
@@ -44,7 +44,7 @@ body {
 }
 
 .light h1,
-.light p {color: #1f1f11}
+.light p {color: #1f2029}
 .dark h1
 .dark p {color: white}
 
@@ -53,26 +53,26 @@ body {text-align:center}
 .light .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
   border-radius:30px; background-color:#EEE8AA}
 .dark .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
-    border-radius:30px; background-color:#1f1f11}
+    border-radius:30px; background-color:#1f2029}
 
 #header {height:100px; margin:1%; background-image:url('images/fejlec.png'); cursor:pointer}
 h1,h2,h3,h4,h5 {padding:1%}
 span, var {display:inline-block; width:auto}
 .row {--bs-gutter-x: 0px }
 
-.dark input {background-color:#1f1f11; color:white}
-.dark input:focus {background-color:#1f1f11; color:white}
-.dark select {background-color:#1f1f11; color:white}
-.dark select:focus {background-color:#1f1f11; color:white}
-.dark .form-control {background-color:#1f1f11; color:white}
-.dark textarea {background-color:#1f1f11; color:white}
+.dark input {background-color:#1f2029; color:white}
+.dark input:focus {background-color:#1f2029; color:white}
+.dark select {background-color:#1f2029; color:white}
+.dark select:focus {background-color:#1f2029; color:white}
+.dark .form-control {background-color:#1f2029; color:white}
+.dark textarea {background-color:#1f2029; color:white}
 .dark a  {background-color:inherit; color:white}
 .dark a:hover {background-color:inherit; color:white}
-.dark .alert-warning {color:#1f1f11;}
+.dark .alert-warning {color:#1f2029;}
 .dark .btn-primary {background-color:blue; color:white}
-.dark .btn-secondary {background-color:silver; color:#1f1f11}
-.dark .btn-success {background-color:green; color:#1f1f11}
-.dark .btn-danger {background-color:red; color:#1f1f11}
+.dark .btn-secondary {background-color:silver; color:#1f2029}
+.dark .btn-success {background-color:green; color:#1f2029}
+.dark .btn-danger {background-color:red; color:#1f2029}
 .dark .card {background-color:transparent; border-style:solid; border-color:white}
 .dark .ck {color:black}
 
@@ -83,7 +83,7 @@ span, var {display:inline-block; width:auto}
 .avatar {height:32px}
 .light table {background-color:#edd79c; padding:0.3%;
   border-style:solid; border-width:1px;}
-.dark table {background-color:#1f1f11; padding:0.3%;
+.dark table {background-color:#1f2029; padding:0.3%;
 		border-style:solid; border-width:1px;}
 img {margin:0.3%}		
 button, .btn {margin-top:0.5%;}
@@ -94,11 +94,11 @@ label {display:inline-block; width: 30%; text-align:right}
 
 #popup {position:fixed; z-index:99; top:100px; left:100px; display:none;
   padding:10px; text-align:center; width:auto; height:auto;
-  border-radius:5px;}
+  border-radius:5px;
+  cursor: move}
 .popupError {background-color:red; color:white}
 .popupSuccess {background-color:rgb(80, 156, 96); color:rgb(24, 16, 16)}
-.popupSimple {background-color:silver; color:#1f1f11;} 
-
+.popupSimple {background-color:silver; color:#1f2029;}
 
 nav {background-color:#1a4d80}
 nav #submenu {background-color:#587088}
@@ -136,10 +136,15 @@ form {margin:1% 1% 1% 1%}
 .dark .mainap {border-style:solid; border-width:2px; border-color:white}
 .dark .sajat a {color:blue; font-weight:bold}
 .dark .idegen a {color:#a0a0a0}
+.light .frisshir {background-color:orange; padding:10px; margin:5px; border-radius:10px}
+.dark .frisshir {background-color:silver; padding:10px; margin:5px; border-radius:10px}
 
 /* ckeditor included image */
 figure.image {text-align:center}
 figure.image-style-side img {float:right; width:40%}
+#bloglist figure.image img,
+#bloglist .blogBody img {width:300px}
+#bloglist p,ul.ol,div {margin-bottom:0px;} }
 
 /* user goups */
 .light .admin {color: red}
@@ -148,15 +153,16 @@ figure.image-style-side img {float:right; width:40%}
 .dark .moderator {color:green}
 
 .light .comment {border-style:solid; border-width:1px; border-radius:5px;
-  padding:0.5%; background-color:silver; color: black; height:auto}
+  padding:0.5%; margin:0.3% 0.8% 0.3% 0%; background-color:#eee2a9; color: black; height:auto}
 .dark .comment {border-style:solid; border-width:1px; border-radius:5px;
-    padding:0.5%; background-color:silver; color: black; height:auto}
+    padding:0.5%; margin:0.5% 0.8%, 0.3% 0%; background-color:rgb(44, 43, 43); color: black; height:auto}
  .comment p {margin-bottom:1px}
 .commentImages {text-align:left; height:auto}
 .comment img {width: 15%; margin:1% 1% 1% 1%}
 .comments a {text-decoration:none}  
 .comments .comentImages img {height:4%}
 #commentForm img {width:80%; max-width:600px}
+
 #osszegzes {padding: 1% 1% 1% 10%}
 #osszegzes table {width:50%}
 #bevasarloLista textarea {width:100%}
@@ -227,6 +233,20 @@ figure.image-style-side img {float:right; width:40%}
  .dark .userlike_true:hover {color:red}
  .dark .userlike_false {color:white}
  .dark .userlike_false:hover {color:white}
+
+#likewinners {text-align:center}
+#likewinners table {display:inline-block; width:auto; background-color:#2392d6; padding:20px}
+#likewinners td {padding:10px;}
+#likewinners a {color:white; text-decoration:none}
+#likewinners .medal1 {color:#fcfc55}
+#likewinners .medal2 {color:#e8e5d3}
+#likewinners .medal3 {color:#8c8024}
+#likewinners .medal4 {color:#60604b}
+#likewinners .medal5 {color:#60604b}
+#likewinners .medal6 {color:#60604b}
+#likewinners .medal7 {color:#60604b}
+#likewinners .medal8 {color:#60604b}
+#likewinners .medal9 {color:#60604b}
 
 #footer {background-color:#1a4d80; padding:20px; margin-top:5px;
   border-radius: 0px 0px 30px 30px; text-align:center}

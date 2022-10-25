@@ -104,8 +104,17 @@ class Like extends Controller {
             <script>location="index.php";</script>
             ';
         }
-	}
+    }
 
+    public function likewinners() {
+        $type = $this->request->input('type');
+        $items = $this->model->getWinners($type,9);
+        view('likewinners',[
+            'datum' => date('Y.m.d H:i:s'),
+            'type' => $type,
+            'items' => $items
+        ]);
+    }
 }
 
 

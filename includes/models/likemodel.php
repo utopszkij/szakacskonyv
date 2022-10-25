@@ -129,5 +129,30 @@
             ->where('target_type','=',$target_type)
             ->delete();
         }
+
+        /**
+         * like bajnokság első helyezetjei
+         * @param string $type
+         * @param int $limit
+         */
+        public function getWinners(string $type,int $limit=10) {
+            $result = [];
+
+            $db = new Query('likes','l');
+            if ($type == 'recept') {
+                $items = $db->select([['count(l.id)','cc'],'r.id','r.nev'])
+                ->join('LEFT OUTER','receptek','r','r.id','=','l.target_id')
+                ->groupBy(['r.id'])
+                ->where('l.target_type','=','recept')
+                ->where('r.nev','<>','')
+                ->orderBy('cc')
+                ->orderDir('DESC')
+                ->limit($limit)
+                ->all();
+                // $result = array_merge($items,$items0);
+                $result = $items;
+            }
+            return $result;
+        }
 }    
 ?>

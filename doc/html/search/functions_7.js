@@ -22,9 +22,10 @@ var searchData=
   ['getobject_19',['getObject',['../class_atvaltas_model.html#a7b00b25c5d868dc6b7ec42f8ad07c03a',1,'AtvaltasModel']]],
   ['getreceptcimkek_20',['getReceptCimkek',['../class_recept_model.html#a7802e5d6f7d91ecace8c0ee169672211',1,'ReceptModel']]],
   ['getreceptnevek_21',['getReceptNevek',['../class_recept_model.html#af5a60f3ddfac61f672a699b51b835aea',1,'ReceptModel']]],
-  ['getsql_22',['getSql',['../class_r_a_t_w_e_b_1_1_d_b_1_1_where.html#ad53d6d06affd7337d46e4efce0f6b2a1',1,'RATWEB\DB\Where\getSql()'],['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#ad53d6d06affd7337d46e4efce0f6b2a1',1,'RATWEB\DB\Query\getSql()'],['../class_r_a_t_w_e_b_1_1_d_b_1_1_union.html#ad53d6d06affd7337d46e4efce0f6b2a1',1,'RATWEB\DB\Union\getSql()']]],
+  ['getsql_22',['getSql',['../class_r_a_t_w_e_b_1_1_d_b_1_1_union.html#ad53d6d06affd7337d46e4efce0f6b2a1',1,'RATWEB\DB\Union\getSql()'],['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#ad53d6d06affd7337d46e4efce0f6b2a1',1,'RATWEB\DB\Query\getSql()'],['../class_r_a_t_w_e_b_1_1_d_b_1_1_where.html#ad53d6d06affd7337d46e4efce0f6b2a1',1,'RATWEB\DB\Where\getSql()']]],
   ['getszme_23',['getSzme',['../class_atvaltas_model.html#a241da84d1fd2ace8ad70e0c2b69f0a6f',1,'AtvaltasModel']]],
   ['gettable_24',['getTable',['../class_r_a_t_w_e_b_1_1_model.html#aa0dd4bf57d57bc2a3697e40c9f6bddce',1,'RATWEB::Model']]],
   ['gettotal_25',['getTotal',['../class_blogcomment_model.html#a178698f9c2e0bcfaaae6a83182a2b0e6',1,'BlogcommentModel\getTotal()'],['../class_cimke_model.html#ae5c70ccdf55b2957c314d98a85babd7d',1,'CimkeModel\getTotal()'],['../class_mertekegyseg_model.html#ae5c70ccdf55b2957c314d98a85babd7d',1,'MertekegysegModel\getTotal()'],['../class_szinonima_model.html#ae5c70ccdf55b2957c314d98a85babd7d',1,'SzinonimaModel\getTotal()'],['../class_user_model.html#ae5c70ccdf55b2957c314d98a85babd7d',1,'UserModel\getTotal()']]],
-  ['groupby_26',['groupBy',['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#aabd8656d8ca6e1181d50d3613516f69e',1,'RATWEB::DB::Query']]]
+  ['getwinners_26',['getWinners',['../class_like_model.html#afec11e888f7a77be796e6337032c2911',1,'LikeModel']]],
+  ['groupby_27',['groupBy',['../class_r_a_t_w_e_b_1_1_d_b_1_1_query.html#aabd8656d8ca6e1181d50d3613516f69e',1,'RATWEB::DB::Query']]]
 ];

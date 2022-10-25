@@ -32,7 +32,7 @@ importComponent('like');
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.0.4';
+$fileVerzio = 'v2.0.5';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -165,20 +165,6 @@ if (in_array($fw->compName.'.'.$fw->task,
 				'fileVerzio' => Upgrade::versionAdjust($fileVerzio)
 			],'footer'); 
 		?>
-		<p style="text-align:center">
-			<button class="btn btn-toggle btn-secondary" 
-				type="button" onclick="themeTogle()">
-				<em class="fas fa-adjust"></em>&nbsp;
-				Világos/sötét mód váltás
-			</button>
-		</p>
-		<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		<p>&nbsp;</p>
 	</div>
 </body>
 <script type="text/javascript">
@@ -214,6 +200,9 @@ if (in_array($fw->compName.'.'.$fw->task,
 		}
 		setCookie("theme", theme,100);
 
+		dragElement(document.getElementById("popup"));
+
+		window.sessionId = "<?php echo session_id(); ?>";
 
 </script>
 </html>

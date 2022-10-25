@@ -1,6 +1,15 @@
         <div id="receptList">
 			<div class="row">
-				<h1 class="ribbon-banner"><span>{{ lng('RECEPTS') }}</span></h1>
+				<div class="col-md-10">
+					<h1 class="ribbon-banner"><span>{{ lng('RECEPTS') }}</span></h1>
+				</div>
+				<div class="col-md-2">
+					<a v-bind:href="HREF('likewinners',{'type':'recept'})" 
+						class="btn btn-primary"
+						style="display:inline-block; width:auto; text-decoration:none">
+						<em class="fas fa-signal"></em>&nbsp;Like bajnokság
+					</a>
+				</div>
 			</div>	
 			<div class="row">&nbsp;</div>
 
@@ -66,6 +75,9 @@
 										<img v-bind:id="'img_'+item.id" />
                                         <span class="id">{{ item.id }}</span>
                                         <div class="name">{{ item.nev }}</div>
+										<div class="likeLine">
+											<em class="fas fa-thumbs-up"></em>&nbsp;{{ item.likeCount}}
+										</div>
 									</a>
 								</td>
                             </tr>
@@ -92,6 +104,9 @@
                                         <div class="name">
 											{{ item.nev }}
 										</div>	
+										<div class="likeLine">
+											<em class="fas fa-thumbs-up"></em>&nbsp;{{ item.likeCount}}
+										</div>
 									</a>
 								</td>
                             </tr>
@@ -162,15 +177,12 @@
 			// window.scroll esemény hívja 
 			// az app.receptImages -ből a még nem betöltött, 
 			// és az adott scroll pozicióban látszó képeket tölri be
-			console.log('loadImg1');
 			var w = document.getElementById('img'+id);
 			if (!w) {
 				w = document.getElementById('img_'+id);
 			}
 			if (w) {
-				console.log('vizsgál ', w.getBoundingClientRect().top, w.src);
 				if ((w.src == '') & (w.getBoundingClientRect().top <= window.innerHeight)) {
-					console.log('betölt');
 					w.src = 'images/loader.gif';
 					axios.get('index.php?task=getImage&id='+id)
 					.then(function(response) {

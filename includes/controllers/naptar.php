@@ -1,6 +1,8 @@
 <?php
 use \RATWEB\DB\Query;
 
+include_once 'includes/models/blogmodel.php';
+include_once 'includes/urlprocess.php';
 class Naptar {
 
 	function __construct() {
@@ -68,8 +70,17 @@ class Naptar {
 		->where('ho','=', $db->sqlValue($numMonth))
 		->where('created_by','=',$db->sqlValue($_SESSION['loged']));
 		$menuk = $db->all();
-		
-		
+				
+		$frissHir = '';
+		$blogModel = new BlogModel();
+		$recs = $blogModel->getBy('title','Friss hír');
+		if (count($recs) > 0) {
+			$frissHir = urlprocess($recs[0]->body);
+			$frissHir = str_replace('<img','<img style="width:80%"',$frissHir);
+		} else {
+			$frissHir = 'nincs friss hír';
+		}
+
 		echo '
 
 		<center>
@@ -90,7 +101,7 @@ class Naptar {
 			</div>
 		</div>		
 		<div class="row">	
-			<div class="col-md-8 text-center">
+			<div class="col-md-6 text-center">
 			';
 			$t	= '
 			<table style="display:inline-block">
@@ -138,7 +149,10 @@ class Naptar {
 				    </tbody>
 				    </table>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
+						<div class="frisshir">
+						'.$frissHir.'
+						</div>
 					 	<img src="images/dekor1.jpg" class="dekorImg" />
 				</div>
 			</div><!-- .row -->';
