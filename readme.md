@@ -150,6 +150,8 @@ cd docroot
 - receptek is like-olhatóak
 - recept like bajnokság
 - friss hír a kezdő lapon 
+### *************************************
+
 ## verzió v2.0.4
 2022.10.21
 - dizájn fejlesztés, 
