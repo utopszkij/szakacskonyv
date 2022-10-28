@@ -1,322 +1,330 @@
 .:
-összesen 168
+összesen 172
+-rw-rw-r-- 1 utopszkij utopszkij  2159 2022-10-27 admin.css
 -rwxrwxrwx 1 root      root        627 2022-07-11 config-example.php
 -rwxrwxrwx 1 root      root        544 2022-09-27 config.php
 -rwxrwxrwx 1 root      root        546 2022-07-11 config_test.php
 drwxrwxrwx 3 root      root       4096 2022-07-06 doc
 -rwxrwxrwx 1 root      root         71 2022-07-06 documentor.sh
 -rwxrwxrwx 1 root      root         58 2022-07-06 files.sh
--rwxrwxrwx 1 root      root          0 2022-10-25 files.txt
+-rwxrwxrwx 1 root      root          0 2022-10-28 files.txt
 drwxrwxrwx 5 root      root      12288 2022-10-22 images
 drwxrwxrwx 6 root      root       4096 2022-10-09 includes
 -rwxrwxrwx 1 root      root       5706 2022-05-22 index2.html
 -rw-rw-r-- 1 utopszkij utopszkij  4750 2022-10-21 index.js
--rwxrwxrwx 1 root      root       5827 2022-10-25 index.php
+-rwxrwxrwx 1 root      root       7967 2022-10-28 index.php
 drwxrwxrwx 2 root      root       4096 2022-07-08 languages
 -rwxrwxrwx 1 root      root      35149 2021-10-31 LICENSE
 -rwxrwxrwx 1 root      root         97 2022-09-20 package.json
 -rwxrwxrwx 1 root      root       7262 2022-09-20 package-lock.json
--rwxrwxrwx 1 root      root      11921 2022-10-25 readme.md
+-rwxrwxrwx 1 root      root      12079 2022-10-28 readme.md
 -rwxrwxrwx 1 root      root        271 2022-07-07 secure.sh
--rw-rw-rw- 1 root      root      13944 2022-10-25 style.css
+-rw-rw-rw- 1 root      root      14063 2022-10-28 style.css
 drwxrwxrwx 2 root      root       4096 2022-09-20 tests
 -rwxrwxrwx 1 root      root        124 2022-07-07 unsecure.sh
 -rw-rw-r-- 1 utopszkij utopszkij   790 2022-09-28 upload.php
-drwxrwxrwx 7 root      root       4096 2022-09-23 vendor
+drwxrwxrwx 8 root      root       4096 2022-10-26 vendor
 -rwxrwxrwx 1 root      root        325 2022-07-07 viewtest.sh
 
 ./doc:
 összesen 64
 -rwxrwxrwx 1 root root   598 2022-07-06 footer.htm
-drwxrwxrwx 3 root root 12288 2022-09-29 html
+drwxrwxrwx 3 root root 12288 2022-10-28 html
 -rwxrwxrwx 1 root root   164 2022-07-05 olvassel.txt
 -rwxrwxrwx 1 root root 26343 2022-07-20 swdoc.html
 -rwxrwxrwx 1 root root 12295 2022-07-06 szakacs.cfg
 
 ./doc/html:
-összesen 1800
--rwxrwxrwx 1 root      root        2585 2022-10-25 annotated_dup.js
--rwxrwxrwx 1 root      root       14611 2022-10-25 annotated.html
--rwxrwxrwx 1 root      root         676 2022-10-25 bc_s.png
--rwxrwxrwx 1 root      root         147 2022-10-25 bdwn.png
--rwxrwxrwx 1 root      root        5638 2022-10-25 class_atszamito_object.html
--rwxrwxrwx 1 root      root        4987 2022-10-25 class_atszamito_object-members.html
--rwxrwxrwx 1 root      root       18422 2022-10-25 class_atvaltas_model.html
--rwxrwxrwx 1 root      root         484 2022-10-25 class_atvaltas_model.js
--rwxrwxrwx 1 root      root        8724 2022-10-25 class_atvaltas_model-members.html
--rwxrwxrwx 1 root      root       19182 2022-10-25 class_atvaltasok.html
--rwxrwxrwx 1 root      root         202 2022-10-25 class_atvaltasok.js
--rwxrwxrwx 1 root      root       11723 2022-10-25 class_atvaltasok-members.html
--rw-rw-r-- 1 utopszkij utopszkij  20525 2022-10-25 class_blogcomment_model.html
--rw-rw-r-- 1 utopszkij utopszkij    597 2022-10-25 class_blogcomment_model.js
--rw-rw-r-- 1 utopszkij utopszkij   8624 2022-10-25 class_blogcomment_model-members.html
--rw-rw-r-- 1 utopszkij utopszkij  27841 2022-10-25 class_blog.html
--rw-rw-r-- 1 utopszkij utopszkij    597 2022-10-25 class_blog.js
--rw-rw-r-- 1 utopszkij utopszkij  13204 2022-10-25 class_blog-members.html
--rw-rw-r-- 1 utopszkij utopszkij  21747 2022-10-25 class_blog_model.html
--rw-rw-r-- 1 utopszkij utopszkij    638 2022-10-25 class_blog_model.js
--rw-rw-r-- 1 utopszkij utopszkij   8378 2022-10-25 class_blog_model-members.html
--rw-rw-r-- 1 utopszkij utopszkij   9751 2022-10-25 class_blog_test.html
+összesen 1884
+-rwxrwxrwx 1 root      root        2763 2022-10-28 annotated_dup.js
+-rwxrwxrwx 1 root      root       15386 2022-10-28 annotated.html
+-rwxrwxrwx 1 root      root         676 2022-10-28 bc_s.png
+-rwxrwxrwx 1 root      root         147 2022-10-28 bdwn.png
+-rw-rw-r-- 1 utopszkij utopszkij  17007 2022-10-28 class_admin.html
+-rw-rw-r-- 1 utopszkij utopszkij  11171 2022-10-28 class_admin-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  14320 2022-10-28 class_admin_model.html
+-rw-rw-r-- 1 utopszkij utopszkij   9316 2022-10-28 class_admin_model-members.html
+-rwxrwxrwx 1 root      root        5638 2022-10-28 class_atszamito_object.html
+-rwxrwxrwx 1 root      root        4987 2022-10-28 class_atszamito_object-members.html
+-rwxrwxrwx 1 root      root       18422 2022-10-28 class_atvaltas_model.html
+-rwxrwxrwx 1 root      root         484 2022-10-28 class_atvaltas_model.js
+-rwxrwxrwx 1 root      root        8724 2022-10-28 class_atvaltas_model-members.html
+-rwxrwxrwx 1 root      root       19182 2022-10-28 class_atvaltasok.html
+-rwxrwxrwx 1 root      root         202 2022-10-28 class_atvaltasok.js
+-rwxrwxrwx 1 root      root       11723 2022-10-28 class_atvaltasok-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  20525 2022-10-28 class_blogcomment_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    597 2022-10-28 class_blogcomment_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   8624 2022-10-28 class_blogcomment_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  27841 2022-10-28 class_blog.html
+-rw-rw-r-- 1 utopszkij utopszkij    597 2022-10-28 class_blog.js
+-rw-rw-r-- 1 utopszkij utopszkij  13204 2022-10-28 class_blog-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  21747 2022-10-28 class_blog_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    638 2022-10-28 class_blog_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   8378 2022-10-28 class_blog_model-members.html
+-rw-rw-r-- 1 utopszkij utopszkij   9751 2022-10-28 class_blog_test.html
 -rw-rw-r-- 1 utopszkij utopszkij    488 2022-09-21 class_blog_test.js
--rw-rw-r-- 1 utopszkij utopszkij   7756 2022-10-25 class_blog_test-members.html
--rwxrwxrwx 1 root      root       24950 2022-10-25 class_cimkek.html
--rwxrwxrwx 1 root      root         596 2022-10-25 class_cimkek.js
--rwxrwxrwx 1 root      root       12072 2022-10-25 class_cimkek-members.html
--rwxrwxrwx 1 root      root       14545 2022-10-25 class_cimke_model.html
--rwxrwxrwx 1 root      root         199 2022-10-25 class_cimke_model.js
--rwxrwxrwx 1 root      root        7873 2022-10-25 class_cimke_model-members.html
--rwxrwxrwx 1 root      root       24101 2022-10-25 class_comment.html
--rwxrwxrwx 1 root      root         526 2022-10-25 class_comment.js
--rwxrwxrwx 1 root      root       12423 2022-10-25 class_comment-members.html
--rwxrwxrwx 1 root      root       13892 2022-10-25 class_comment_model.html
--rwxrwxrwx 1 root      root         216 2022-10-25 class_comment_model.js
--rwxrwxrwx 1 root      root        7631 2022-10-25 class_comment_model-members.html
--rwxrwxrwx 1 root      root       25457 2022-10-25 class_controller.html
--rwxrwxrwx 1 root      root         869 2022-10-25 class_controller.js
--rwxrwxrwx 1 root      root       10977 2022-10-25 class_controller-members.html
--rwxrwxrwx 1 root      root        8559 2022-10-25 classes.html
--rwxrwxrwx 1 root      root       12613 2022-10-25 class_fw.html
--rwxrwxrwx 1 root      root          91 2022-10-25 class_fw.js
--rwxrwxrwx 1 root      root        6063 2022-10-25 class_fw-members.html
--rw-rw-r-- 1 utopszkij utopszkij  18490 2022-10-25 class_like.html
--rw-rw-r-- 1 utopszkij utopszkij     99 2022-10-25 class_like.js
--rw-rw-r-- 1 utopszkij utopszkij  11618 2022-10-25 class_like-members.html
--rw-rw-r-- 1 utopszkij utopszkij  22777 2022-10-25 class_like_model.html
--rw-rw-r-- 1 utopszkij utopszkij    633 2022-10-25 class_like_model.js
--rw-rw-r-- 1 utopszkij utopszkij   9002 2022-10-25 class_like_model-members.html
--rwxrwxrwx 1 root      root       25060 2022-10-25 class_mertekegyseg.html
--rwxrwxrwx 1 root      root         640 2022-10-25 class_mertekegyseg.js
--rwxrwxrwx 1 root      root       12242 2022-10-25 class_mertekegyseg-members.html
--rwxrwxrwx 1 root      root       14613 2022-10-25 class_mertekegyseg_model.html
--rwxrwxrwx 1 root      root         220 2022-10-25 class_mertekegyseg_model.js
--rwxrwxrwx 1 root      root        7999 2022-10-25 class_mertekegyseg_model-members.html
--rwxrwxrwx 1 root      root       18407 2022-10-25 class_napi_menu.html
--rwxrwxrwx 1 root      root       11713 2022-10-25 class_napi_menu-members.html
--rwxrwxrwx 1 root      root       13358 2022-10-25 class_napimenu_model.html
--rwxrwxrwx 1 root      root         213 2022-10-25 class_napimenu_model.js
--rwxrwxrwx 1 root      root        7626 2022-10-25 class_napimenu_model-members.html
--rwxrwxrwx 1 root      root        5605 2022-10-25 class_naptar.html
--rwxrwxrwx 1 root      root        5085 2022-10-25 class_naptar-members.html
--rwxrwxrwx 1 root      root        8495 2022-10-25 class_osszegzes.html
--rwxrwxrwx 1 root      root         353 2022-10-25 class_osszegzes.js
--rwxrwxrwx 1 root      root        5595 2022-10-25 class_osszegzes-members.html
--rwxrwxrwx 1 root      root       42092 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_query.html
--rwxrwxrwx 1 root      root        1981 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_query.js
--rwxrwxrwx 1 root      root       14909 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_query-members.html
--rwxrwxrwx 1 root      root        4395 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_record.html
--rwxrwxrwx 1 root      root       18879 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_union.html
--rwxrwxrwx 1 root      root         660 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_union.js
--rwxrwxrwx 1 root      root        7842 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_union-members.html
--rwxrwxrwx 1 root      root       10520 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_where.html
--rwxrwxrwx 1 root      root         344 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_where.js
--rwxrwxrwx 1 root      root        5372 2022-10-25 class_r_a_t_w_e_b_1_1_d_b_1_1_where-members.html
--rwxrwxrwx 1 root      root       15778 2022-10-25 class_r_a_t_w_e_b_1_1_model.html
--rwxrwxrwx 1 root      root         797 2022-10-25 class_r_a_t_w_e_b_1_1_model.js
--rwxrwxrwx 1 root      root        7086 2022-10-25 class_r_a_t_w_e_b_1_1_model-members.html
--rwxrwxrwx 1 root      root       24738 2022-10-25 class_recept.html
--rwxrwxrwx 1 root      root         441 2022-10-25 class_recept.js
--rwxrwxrwx 1 root      root       13878 2022-10-25 class_recept-members.html
--rwxrwxrwx 1 root      root       29525 2022-10-25 class_recept_model.html
--rwxrwxrwx 1 root      root        1325 2022-10-25 class_recept_model.js
--rwxrwxrwx 1 root      root       10800 2022-10-25 class_recept_model-members.html
--rwxrwxrwx 1 root      root        9506 2022-10-25 class_request.html
--rwxrwxrwx 1 root      root         258 2022-10-25 class_request.js
--rwxrwxrwx 1 root      root        4905 2022-10-25 class_request-members.html
--rwxrwxrwx 1 root      root       10347 2022-10-25 class_session.html
--rwxrwxrwx 1 root      root         338 2022-10-25 class_session.js
--rwxrwxrwx 1 root      root        5115 2022-10-25 class_session-members.html
--rwxrwxrwx 1 root      root       26033 2022-10-25 class_szinonima.html
--rwxrwxrwx 1 root      root         732 2022-10-25 class_szinonima.js
--rwxrwxrwx 1 root      root       12425 2022-10-25 class_szinonima-members.html
--rwxrwxrwx 1 root      root       15964 2022-10-25 class_szinonima_model.html
--rwxrwxrwx 1 root      root         303 2022-10-25 class_szinonima_model.js
--rwxrwxrwx 1 root      root        8209 2022-10-25 class_szinonima_model-members.html
--rwxrwxrwx 1 root      root        6394 2022-10-25 class_szovegek.html
--rwxrwxrwx 1 root      root        5633 2022-10-25 class_szovegek-members.html
--rwxrwxrwx 1 root      root       27522 2022-10-25 class_upgrade.html
--rwxrwxrwx 1 root      root        1224 2022-10-25 class_upgrade.js
--rwxrwxrwx 1 root      root       11664 2022-10-25 class_upgrade-members.html
--rwxrwxrwx 1 root      root       26499 2022-10-25 class_user.html
--rwxrwxrwx 1 root      root         498 2022-10-25 class_user.js
--rwxrwxrwx 1 root      root       12942 2022-10-25 class_user-members.html
--rwxrwxrwx 1 root      root       19251 2022-10-25 class_user_model.html
--rwxrwxrwx 1 root      root         533 2022-10-25 class_user_model.js
--rwxrwxrwx 1 root      root        7787 2022-10-25 class_user_model-members.html
--rwxrwxrwx 1 root      root        9388 2022-10-25 class_user_test.html
--rwxrwxrwx 1 root      root        7527 2022-10-25 class_user_test-members.html
--rwxrwxrwx 1 root      root         132 2022-10-25 closed.png
--rwxrwxrwx 1 root      root        5086 2022-10-25 dir_09e761304027c904456130627fd4dcf5.html
--rwxrwxrwx 1 root      root        4042 2022-10-25 dir_4428fdfe0eb0da98abb7123d472f1d53.html
--rwxrwxrwx 1 root      root        4033 2022-10-25 dir_4ffa0a4cb0db482ccd1a2d352354f289.html
--rwxrwxrwx 1 root      root        4040 2022-10-25 dir_57dc54e314e1a70febf30cb527d9c1f7.html
--rwxrwxrwx 1 root      root        4031 2022-10-25 dir_59425e443f801f1f2fd8bbe4959a3ccf.html
--rwxrwxrwx 1 root      root        4044 2022-10-25 dir_98cbbc75d1186a1b187134917d39405d.html
--rwxrwxrwx 1 root      root        4490 2022-10-25 dir_c5da75fdc1d6c57999112ed830c87a3c.html
--rwxrwxrwx 1 root      root        4052 2022-10-25 dir_fae636d715a2826c5bea851a8d3a722f.html
--rwxrwxrwx 1 root      root         746 2022-10-25 doc.png
--rwxrwxrwx 1 root      root       33676 2022-10-25 doxygen.css
--rwxrwxrwx 1 root      root       15382 2022-10-25 doxygen.svg
--rwxrwxrwx 1 root      root        4452 2022-10-25 dynsections.js
--rwxrwxrwx 1 root      root         616 2022-10-25 folderclosed.png
--rwxrwxrwx 1 root      root         597 2022-10-25 folderopen.png
--rwxrwxrwx 1 root      root       26712 2022-10-25 functions_func.html
--rwxrwxrwx 1 root      root       26819 2022-10-25 functions.html
--rwxrwxrwx 1 root      root       14390 2022-10-25 hierarchy.html
--rwxrwxrwx 1 root      root        2083 2022-10-25 hierarchy.js
--rwxrwxrwx 1 root      root        3958 2022-10-25 index.html
--rwxrwxrwx 1 root      root      176813 2022-10-25 jquery.js
--rwxrwxrwx 1 root      root        3587 2022-10-25 menudata.js
--rwxrwxrwx 1 root      root        5866 2022-10-25 menu.js
--rwxrwxrwx 1 root      root        4645 2022-10-25 namespace_r_a_t_w_e_b.html
--rwxrwxrwx 1 root      root         115 2022-10-25 namespace_r_a_t_w_e_b.js
--rwxrwxrwx 1 root      root          97 2022-10-25 namespaces_dup.js
--rwxrwxrwx 1 root      root        4882 2022-10-25 namespaces.html
--rwxrwxrwx 1 root      root         153 2022-10-25 nav_f.png
--rwxrwxrwx 1 root      root          95 2022-10-25 nav_g.png
--rwxrwxrwx 1 root      root          98 2022-10-25 nav_h.png
--rwxrwxrwx 1 root      root        2108 2022-10-25 navtree.css
--rwxrwxrwx 1 root      root        1942 2022-10-25 navtreedata.js
--rwxrwxrwx 1 root      root       15264 2022-10-25 navtreeindex0.js
--rwxrwxrwx 1 root      root       15709 2022-10-25 navtree.js
--rwxrwxrwx 1 root      root         123 2022-10-25 open.png
--rwxrwxrwx 1 root      root        5518 2022-10-25 resize.js
+-rw-rw-r-- 1 utopszkij utopszkij   7756 2022-10-28 class_blog_test-members.html
+-rwxrwxrwx 1 root      root       24950 2022-10-28 class_cimkek.html
+-rwxrwxrwx 1 root      root         596 2022-10-28 class_cimkek.js
+-rwxrwxrwx 1 root      root       12072 2022-10-28 class_cimkek-members.html
+-rwxrwxrwx 1 root      root       14545 2022-10-28 class_cimke_model.html
+-rwxrwxrwx 1 root      root         199 2022-10-28 class_cimke_model.js
+-rwxrwxrwx 1 root      root        7873 2022-10-28 class_cimke_model-members.html
+-rwxrwxrwx 1 root      root       24101 2022-10-28 class_comment.html
+-rwxrwxrwx 1 root      root         526 2022-10-28 class_comment.js
+-rwxrwxrwx 1 root      root       12423 2022-10-28 class_comment-members.html
+-rwxrwxrwx 1 root      root       13892 2022-10-28 class_comment_model.html
+-rwxrwxrwx 1 root      root         216 2022-10-28 class_comment_model.js
+-rwxrwxrwx 1 root      root        7631 2022-10-28 class_comment_model-members.html
+-rwxrwxrwx 1 root      root       25457 2022-10-28 class_controller.html
+-rwxrwxrwx 1 root      root         869 2022-10-28 class_controller.js
+-rwxrwxrwx 1 root      root       10977 2022-10-28 class_controller-members.html
+-rwxrwxrwx 1 root      root        8757 2022-10-28 classes.html
+-rwxrwxrwx 1 root      root       12613 2022-10-28 class_fw.html
+-rwxrwxrwx 1 root      root          91 2022-10-28 class_fw.js
+-rwxrwxrwx 1 root      root        6063 2022-10-28 class_fw-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  18490 2022-10-28 class_like.html
+-rw-rw-r-- 1 utopszkij utopszkij     99 2022-10-28 class_like.js
+-rw-rw-r-- 1 utopszkij utopszkij  11618 2022-10-28 class_like-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  22777 2022-10-28 class_like_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    633 2022-10-28 class_like_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   9002 2022-10-28 class_like_model-members.html
+-rwxrwxrwx 1 root      root       25060 2022-10-28 class_mertekegyseg.html
+-rwxrwxrwx 1 root      root         640 2022-10-28 class_mertekegyseg.js
+-rwxrwxrwx 1 root      root       12242 2022-10-28 class_mertekegyseg-members.html
+-rwxrwxrwx 1 root      root       14613 2022-10-28 class_mertekegyseg_model.html
+-rwxrwxrwx 1 root      root         220 2022-10-28 class_mertekegyseg_model.js
+-rwxrwxrwx 1 root      root        7999 2022-10-28 class_mertekegyseg_model-members.html
+-rwxrwxrwx 1 root      root       18407 2022-10-28 class_napi_menu.html
+-rwxrwxrwx 1 root      root       11713 2022-10-28 class_napi_menu-members.html
+-rwxrwxrwx 1 root      root       13358 2022-10-28 class_napimenu_model.html
+-rwxrwxrwx 1 root      root         213 2022-10-28 class_napimenu_model.js
+-rwxrwxrwx 1 root      root        7626 2022-10-28 class_napimenu_model-members.html
+-rwxrwxrwx 1 root      root        5605 2022-10-28 class_naptar.html
+-rwxrwxrwx 1 root      root        5085 2022-10-28 class_naptar-members.html
+-rwxrwxrwx 1 root      root        8495 2022-10-28 class_osszegzes.html
+-rwxrwxrwx 1 root      root         353 2022-10-28 class_osszegzes.js
+-rwxrwxrwx 1 root      root        5595 2022-10-28 class_osszegzes-members.html
+-rwxrwxrwx 1 root      root       42092 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_query.html
+-rwxrwxrwx 1 root      root        1981 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_query.js
+-rwxrwxrwx 1 root      root       14909 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_query-members.html
+-rwxrwxrwx 1 root      root        4395 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_record.html
+-rwxrwxrwx 1 root      root       18879 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_union.html
+-rwxrwxrwx 1 root      root         660 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_union.js
+-rwxrwxrwx 1 root      root        7842 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_union-members.html
+-rwxrwxrwx 1 root      root       10520 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_where.html
+-rwxrwxrwx 1 root      root         344 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_where.js
+-rwxrwxrwx 1 root      root        5372 2022-10-28 class_r_a_t_w_e_b_1_1_d_b_1_1_where-members.html
+-rwxrwxrwx 1 root      root       15778 2022-10-28 class_r_a_t_w_e_b_1_1_model.html
+-rwxrwxrwx 1 root      root         797 2022-10-28 class_r_a_t_w_e_b_1_1_model.js
+-rwxrwxrwx 1 root      root        7086 2022-10-28 class_r_a_t_w_e_b_1_1_model-members.html
+-rwxrwxrwx 1 root      root       24754 2022-10-28 class_recept.html
+-rwxrwxrwx 1 root      root         441 2022-10-28 class_recept.js
+-rwxrwxrwx 1 root      root       13894 2022-10-28 class_recept-members.html
+-rwxrwxrwx 1 root      root       29525 2022-10-28 class_recept_model.html
+-rwxrwxrwx 1 root      root        1325 2022-10-28 class_recept_model.js
+-rwxrwxrwx 1 root      root       10800 2022-10-28 class_recept_model-members.html
+-rwxrwxrwx 1 root      root        9506 2022-10-28 class_request.html
+-rwxrwxrwx 1 root      root         258 2022-10-28 class_request.js
+-rwxrwxrwx 1 root      root        4905 2022-10-28 class_request-members.html
+-rwxrwxrwx 1 root      root       10347 2022-10-28 class_session.html
+-rwxrwxrwx 1 root      root         338 2022-10-28 class_session.js
+-rwxrwxrwx 1 root      root        5115 2022-10-28 class_session-members.html
+-rw-rw-r-- 1 utopszkij utopszkij  12006 2022-10-28 class_statistic_model.html
+-rw-rw-r-- 1 utopszkij utopszkij    126 2022-10-28 class_statistic_model.js
+-rw-rw-r-- 1 utopszkij utopszkij   7358 2022-10-28 class_statistic_model-members.html
+-rwxrwxrwx 1 root      root       26033 2022-10-28 class_szinonima.html
+-rwxrwxrwx 1 root      root         732 2022-10-28 class_szinonima.js
+-rwxrwxrwx 1 root      root       12425 2022-10-28 class_szinonima-members.html
+-rwxrwxrwx 1 root      root       15964 2022-10-28 class_szinonima_model.html
+-rwxrwxrwx 1 root      root         303 2022-10-28 class_szinonima_model.js
+-rwxrwxrwx 1 root      root        8209 2022-10-28 class_szinonima_model-members.html
+-rwxrwxrwx 1 root      root        6394 2022-10-28 class_szovegek.html
+-rwxrwxrwx 1 root      root        5633 2022-10-28 class_szovegek-members.html
+-rwxrwxrwx 1 root      root       27914 2022-10-28 class_upgrade.html
+-rwxrwxrwx 1 root      root        1224 2022-10-28 class_upgrade.js
+-rwxrwxrwx 1 root      root       11954 2022-10-28 class_upgrade-members.html
+-rwxrwxrwx 1 root      root       26499 2022-10-28 class_user.html
+-rwxrwxrwx 1 root      root         498 2022-10-28 class_user.js
+-rwxrwxrwx 1 root      root       12942 2022-10-28 class_user-members.html
+-rwxrwxrwx 1 root      root       19251 2022-10-28 class_user_model.html
+-rwxrwxrwx 1 root      root         533 2022-10-28 class_user_model.js
+-rwxrwxrwx 1 root      root        7787 2022-10-28 class_user_model-members.html
+-rwxrwxrwx 1 root      root        9388 2022-10-28 class_user_test.html
+-rwxrwxrwx 1 root      root        7527 2022-10-28 class_user_test-members.html
+-rwxrwxrwx 1 root      root         132 2022-10-28 closed.png
+-rwxrwxrwx 1 root      root        5086 2022-10-28 dir_09e761304027c904456130627fd4dcf5.html
+-rwxrwxrwx 1 root      root        4042 2022-10-28 dir_4428fdfe0eb0da98abb7123d472f1d53.html
+-rwxrwxrwx 1 root      root        4033 2022-10-28 dir_4ffa0a4cb0db482ccd1a2d352354f289.html
+-rwxrwxrwx 1 root      root        4040 2022-10-28 dir_57dc54e314e1a70febf30cb527d9c1f7.html
+-rwxrwxrwx 1 root      root        4031 2022-10-28 dir_59425e443f801f1f2fd8bbe4959a3ccf.html
+-rwxrwxrwx 1 root      root        4044 2022-10-28 dir_98cbbc75d1186a1b187134917d39405d.html
+-rwxrwxrwx 1 root      root        4490 2022-10-28 dir_c5da75fdc1d6c57999112ed830c87a3c.html
+-rwxrwxrwx 1 root      root        4052 2022-10-28 dir_fae636d715a2826c5bea851a8d3a722f.html
+-rwxrwxrwx 1 root      root         746 2022-10-28 doc.png
+-rwxrwxrwx 1 root      root       33676 2022-10-28 doxygen.css
+-rwxrwxrwx 1 root      root       15382 2022-10-28 doxygen.svg
+-rwxrwxrwx 1 root      root        4452 2022-10-28 dynsections.js
+-rwxrwxrwx 1 root      root         616 2022-10-28 folderclosed.png
+-rwxrwxrwx 1 root      root         597 2022-10-28 folderopen.png
+-rwxrwxrwx 1 root      root       26850 2022-10-28 functions_func.html
+-rwxrwxrwx 1 root      root       26957 2022-10-28 functions.html
+-rwxrwxrwx 1 root      root       15184 2022-10-28 hierarchy.html
+-rwxrwxrwx 1 root      root        2248 2022-10-28 hierarchy.js
+-rwxrwxrwx 1 root      root        3958 2022-10-28 index.html
+-rwxrwxrwx 1 root      root      176813 2022-10-28 jquery.js
+-rwxrwxrwx 1 root      root        3587 2022-10-28 menudata.js
+-rwxrwxrwx 1 root      root        5866 2022-10-28 menu.js
+-rwxrwxrwx 1 root      root        4645 2022-10-28 namespace_r_a_t_w_e_b.html
+-rwxrwxrwx 1 root      root         115 2022-10-28 namespace_r_a_t_w_e_b.js
+-rwxrwxrwx 1 root      root          97 2022-10-28 namespaces_dup.js
+-rwxrwxrwx 1 root      root        4882 2022-10-28 namespaces.html
+-rwxrwxrwx 1 root      root         153 2022-10-28 nav_f.png
+-rwxrwxrwx 1 root      root          95 2022-10-28 nav_g.png
+-rwxrwxrwx 1 root      root          98 2022-10-28 nav_h.png
+-rwxrwxrwx 1 root      root        2108 2022-10-28 navtree.css
+-rwxrwxrwx 1 root      root        1942 2022-10-28 navtreedata.js
+-rwxrwxrwx 1 root      root       15451 2022-10-28 navtreeindex0.js
+-rwxrwxrwx 1 root      root       15709 2022-10-28 navtree.js
+-rwxrwxrwx 1 root      root         123 2022-10-28 open.png
+-rwxrwxrwx 1 root      root        5518 2022-10-28 resize.js
 drwxrwxrwx 2 root      root        4096 2022-09-29 search
--rwxrwxrwx 1 root      root         314 2022-10-25 splitbar.png
--rwxrwxrwx 1 root      root         853 2022-10-25 sync_off.png
--rwxrwxrwx 1 root      root         845 2022-10-25 sync_on.png
--rwxrwxrwx 1 root      root         142 2022-10-25 tab_a.png
--rwxrwxrwx 1 root      root         169 2022-10-25 tab_b.png
--rwxrwxrwx 1 root      root         177 2022-10-25 tab_h.png
--rwxrwxrwx 1 root      root       10453 2022-10-25 tabs.css
--rwxrwxrwx 1 root      root         184 2022-10-25 tab_s.png
+-rwxrwxrwx 1 root      root         314 2022-10-28 splitbar.png
+-rwxrwxrwx 1 root      root         853 2022-10-28 sync_off.png
+-rwxrwxrwx 1 root      root         845 2022-10-28 sync_on.png
+-rwxrwxrwx 1 root      root         142 2022-10-28 tab_a.png
+-rwxrwxrwx 1 root      root         169 2022-10-28 tab_b.png
+-rwxrwxrwx 1 root      root         177 2022-10-28 tab_h.png
+-rwxrwxrwx 1 root      root       10453 2022-10-28 tabs.css
+-rwxrwxrwx 1 root      root         184 2022-10-28 tab_s.png
 
 ./doc/html/search:
 összesen 532
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_0.html
--rwxrwxrwx 1 root      root        293 2022-10-25 all_0.js
--rwxrwxrwx 1 root      root       1436 2022-10-25 all_10.html
--rwxrwxrwx 1 root      root        108 2022-10-25 all_10.js
--rwxrwxrwx 1 root      root       1436 2022-10-25 all_11.html
--rwxrwxrwx 1 root      root        604 2022-10-25 all_11.js
--rwxrwxrwx 1 root      root       1436 2022-10-25 all_12.html
--rwxrwxrwx 1 root      root       2665 2022-10-25 all_12.js
--rwxrwxrwx 1 root      root       1436 2022-10-25 all_13.html
--rwxrwxrwx 1 root      root       1756 2022-10-25 all_13.js
--rwxrwxrwx 1 root      root       1436 2022-10-25 all_14.html
--rwxrwxrwx 1 root      root        761 2022-10-25 all_14.js
--rw-rw-r-- 1 utopszkij utopszkij  1436 2022-10-25 all_15.html
--rw-rw-r-- 1 utopszkij utopszkij   353 2022-10-25 all_15.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_0.html
+-rwxrwxrwx 1 root      root        293 2022-10-28 all_0.js
+-rwxrwxrwx 1 root      root       1436 2022-10-28 all_10.html
+-rwxrwxrwx 1 root      root        108 2022-10-28 all_10.js
+-rwxrwxrwx 1 root      root       1436 2022-10-28 all_11.html
+-rwxrwxrwx 1 root      root        604 2022-10-28 all_11.js
+-rwxrwxrwx 1 root      root       1436 2022-10-28 all_12.html
+-rwxrwxrwx 1 root      root       2877 2022-10-28 all_12.js
+-rwxrwxrwx 1 root      root       1436 2022-10-28 all_13.html
+-rwxrwxrwx 1 root      root       1756 2022-10-28 all_13.js
+-rwxrwxrwx 1 root      root       1436 2022-10-28 all_14.html
+-rwxrwxrwx 1 root      root        761 2022-10-28 all_14.js
+-rw-rw-r-- 1 utopszkij utopszkij  1436 2022-10-28 all_15.html
+-rw-rw-r-- 1 utopszkij utopszkij   353 2022-10-28 all_15.js
 -rw-rw-r-- 1 utopszkij utopszkij  1436 2022-09-21 all_16.html
 -rw-rw-r-- 1 utopszkij utopszkij   353 2022-09-21 all_16.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_1.html
--rwxrwxrwx 1 root      root       1521 2022-10-25 all_1.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_2.html
--rwxrwxrwx 1 root      root        613 2022-10-25 all_2.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_3.html
--rwxrwxrwx 1 root      root       1761 2022-10-25 all_3.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_4.html
--rwxrwxrwx 1 root      root       1976 2022-10-25 all_4.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_5.html
--rwxrwxrwx 1 root      root        898 2022-10-25 all_5.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_6.html
--rwxrwxrwx 1 root      root        426 2022-10-25 all_6.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_7.html
--rwxrwxrwx 1 root      root       4711 2022-10-25 all_7.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_8.html
--rwxrwxrwx 1 root      root        105 2022-10-25 all_8.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_9.html
--rwxrwxrwx 1 root      root       1064 2022-10-25 all_9.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_a.html
--rwxrwxrwx 1 root      root        261 2022-10-25 all_a.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_b.html
--rwxrwxrwx 1 root      root        608 2022-10-25 all_b.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_c.html
--rwxrwxrwx 1 root      root        936 2022-10-25 all_c.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_d.html
--rwxrwxrwx 1 root      root        432 2022-10-25 all_d.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_e.html
--rwxrwxrwx 1 root      root       1058 2022-10-25 all_e.js
--rwxrwxrwx 1 root      root       1435 2022-10-25 all_f.html
--rwxrwxrwx 1 root      root        517 2022-10-25 all_f.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_0.html
--rwxrwxrwx 1 root      root        253 2022-10-25 classes_0.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_1.html
--rwxrwxrwx 1 root      root        290 2022-10-25 classes_1.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_2.html
--rwxrwxrwx 1 root      root        352 2022-10-25 classes_2.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_3.html
--rwxrwxrwx 1 root      root         65 2022-10-25 classes_3.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_4.html
--rwxrwxrwx 1 root      root        138 2022-10-25 classes_4.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_5.html
--rwxrwxrwx 1 root      root        262 2022-10-25 classes_5.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_6.html
--rwxrwxrwx 1 root      root        220 2022-10-25 classes_6.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_7.html
--rwxrwxrwx 1 root      root         86 2022-10-25 classes_7.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_8.html
--rwxrwxrwx 1 root      root        108 2022-10-25 classes_8.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_9.html
--rwxrwxrwx 1 root      root        301 2022-10-25 classes_9.js
--rwxrwxrwx 1 root      root       1439 2022-10-25 classes_a.html
--rwxrwxrwx 1 root      root        291 2022-10-25 classes_a.js
--rw-rw-r-- 1 utopszkij utopszkij  1439 2022-10-25 classes_b.html
--rw-rw-r-- 1 utopszkij utopszkij   350 2022-10-25 classes_b.js
--rw-rw-r-- 1 utopszkij utopszkij  1439 2022-10-25 classes_c.html
--rw-rw-r-- 1 utopszkij utopszkij   108 2022-10-25 classes_c.js
--rwxrwxrwx 1 root      root       1284 2022-10-25 close.svg
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_0.html
--rwxrwxrwx 1 root      root        293 2022-10-25 functions_0.js
--rwxrwxrwx 1 root      root       1442 2022-10-25 functions_10.html
--rwxrwxrwx 1 root      root        257 2022-10-25 functions_10.js
--rwxrwxrwx 1 root      root       1442 2022-10-25 functions_11.html
--rwxrwxrwx 1 root      root       2390 2022-10-25 functions_11.js
--rwxrwxrwx 1 root      root       1442 2022-10-25 functions_12.html
--rwxrwxrwx 1 root      root       1421 2022-10-25 functions_12.js
--rwxrwxrwx 1 root      root       1442 2022-10-25 functions_13.html
--rwxrwxrwx 1 root      root        761 2022-10-25 functions_13.js
--rw-rw-r-- 1 utopszkij utopszkij  1442 2022-10-25 functions_14.html
--rw-rw-r-- 1 utopszkij utopszkij   265 2022-10-25 functions_14.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_1.html
--rwxrwxrwx 1 root      root       1288 2022-10-25 functions_1.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_2.html
--rwxrwxrwx 1 root      root        343 2022-10-25 functions_2.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_3.html
--rwxrwxrwx 1 root      root       1424 2022-10-25 functions_3.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_4.html
--rwxrwxrwx 1 root      root       1976 2022-10-25 functions_4.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_5.html
--rwxrwxrwx 1 root      root        898 2022-10-25 functions_5.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_6.html
--rwxrwxrwx 1 root      root        381 2022-10-25 functions_6.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_7.html
--rwxrwxrwx 1 root      root       4711 2022-10-25 functions_7.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_8.html
--rwxrwxrwx 1 root      root        105 2022-10-25 functions_8.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_9.html
--rwxrwxrwx 1 root      root       1064 2022-10-25 functions_9.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_a.html
--rwxrwxrwx 1 root      root        261 2022-10-25 functions_a.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_b.html
--rwxrwxrwx 1 root      root        490 2022-10-25 functions_b.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_c.html
--rwxrwxrwx 1 root      root        694 2022-10-25 functions_c.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_d.html
--rwxrwxrwx 1 root      root        232 2022-10-25 functions_d.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_e.html
--rwxrwxrwx 1 root      root        992 2022-10-25 functions_e.js
--rwxrwxrwx 1 root      root       1441 2022-10-25 functions_f.html
--rwxrwxrwx 1 root      root        517 2022-10-25 functions_f.js
--rwxrwxrwx 1 root      root       2378 2022-10-25 mag_sel.svg
--rwxrwxrwx 1 root      root       1442 2022-10-25 namespaces_0.html
--rwxrwxrwx 1 root      root         86 2022-10-25 namespaces_0.js
--rwxrwxrwx 1 root      root        500 2022-10-25 nomatches.html
--rwxrwxrwx 1 root      root       4562 2022-10-25 search.css
--rwxrwxrwx 1 root      root        318 2022-10-25 searchdata.js
--rwxrwxrwx 1 root      root      23044 2022-10-25 search.js
--rwxrwxrwx 1 root      root        567 2022-10-25 search_l.png
--rwxrwxrwx 1 root      root        158 2022-10-25 search_m.png
--rwxrwxrwx 1 root      root        553 2022-10-25 search_r.png
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_1.html
+-rwxrwxrwx 1 root      root       1647 2022-10-28 all_1.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_2.html
+-rwxrwxrwx 1 root      root        613 2022-10-28 all_2.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_3.html
+-rwxrwxrwx 1 root      root       1761 2022-10-28 all_3.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_4.html
+-rwxrwxrwx 1 root      root       1976 2022-10-28 all_4.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_5.html
+-rwxrwxrwx 1 root      root        898 2022-10-28 all_5.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_6.html
+-rwxrwxrwx 1 root      root        426 2022-10-28 all_6.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_7.html
+-rwxrwxrwx 1 root      root       4711 2022-10-28 all_7.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_8.html
+-rwxrwxrwx 1 root      root        105 2022-10-28 all_8.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_9.html
+-rwxrwxrwx 1 root      root       1064 2022-10-28 all_9.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_a.html
+-rwxrwxrwx 1 root      root        261 2022-10-28 all_a.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_b.html
+-rwxrwxrwx 1 root      root        608 2022-10-28 all_b.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_c.html
+-rwxrwxrwx 1 root      root        936 2022-10-28 all_c.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_d.html
+-rwxrwxrwx 1 root      root        432 2022-10-28 all_d.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_e.html
+-rwxrwxrwx 1 root      root       1058 2022-10-28 all_e.js
+-rwxrwxrwx 1 root      root       1435 2022-10-28 all_f.html
+-rwxrwxrwx 1 root      root        517 2022-10-28 all_f.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_0.html
+-rwxrwxrwx 1 root      root        377 2022-10-28 classes_0.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_1.html
+-rwxrwxrwx 1 root      root        290 2022-10-28 classes_1.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_2.html
+-rwxrwxrwx 1 root      root        352 2022-10-28 classes_2.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_3.html
+-rwxrwxrwx 1 root      root         65 2022-10-28 classes_3.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_4.html
+-rwxrwxrwx 1 root      root        138 2022-10-28 classes_4.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_5.html
+-rwxrwxrwx 1 root      root        262 2022-10-28 classes_5.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_6.html
+-rwxrwxrwx 1 root      root        220 2022-10-28 classes_6.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_7.html
+-rwxrwxrwx 1 root      root         86 2022-10-28 classes_7.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_8.html
+-rwxrwxrwx 1 root      root        108 2022-10-28 classes_8.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_9.html
+-rwxrwxrwx 1 root      root        301 2022-10-28 classes_9.js
+-rwxrwxrwx 1 root      root       1439 2022-10-28 classes_a.html
+-rwxrwxrwx 1 root      root        373 2022-10-28 classes_a.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-10-28 classes_b.html
+-rw-rw-r-- 1 utopszkij utopszkij   350 2022-10-28 classes_b.js
+-rw-rw-r-- 1 utopszkij utopszkij  1439 2022-10-28 classes_c.html
+-rw-rw-r-- 1 utopszkij utopszkij   108 2022-10-28 classes_c.js
+-rwxrwxrwx 1 root      root       1284 2022-10-28 close.svg
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_0.html
+-rwxrwxrwx 1 root      root        293 2022-10-28 functions_0.js
+-rwxrwxrwx 1 root      root       1442 2022-10-28 functions_10.html
+-rwxrwxrwx 1 root      root        257 2022-10-28 functions_10.js
+-rwxrwxrwx 1 root      root       1442 2022-10-28 functions_11.html
+-rwxrwxrwx 1 root      root       2519 2022-10-28 functions_11.js
+-rwxrwxrwx 1 root      root       1442 2022-10-28 functions_12.html
+-rwxrwxrwx 1 root      root       1421 2022-10-28 functions_12.js
+-rwxrwxrwx 1 root      root       1442 2022-10-28 functions_13.html
+-rwxrwxrwx 1 root      root        761 2022-10-28 functions_13.js
+-rw-rw-r-- 1 utopszkij utopszkij  1442 2022-10-28 functions_14.html
+-rw-rw-r-- 1 utopszkij utopszkij   265 2022-10-28 functions_14.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_1.html
+-rwxrwxrwx 1 root      root       1288 2022-10-28 functions_1.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_2.html
+-rwxrwxrwx 1 root      root        343 2022-10-28 functions_2.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_3.html
+-rwxrwxrwx 1 root      root       1424 2022-10-28 functions_3.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_4.html
+-rwxrwxrwx 1 root      root       1976 2022-10-28 functions_4.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_5.html
+-rwxrwxrwx 1 root      root        898 2022-10-28 functions_5.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_6.html
+-rwxrwxrwx 1 root      root        381 2022-10-28 functions_6.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_7.html
+-rwxrwxrwx 1 root      root       4711 2022-10-28 functions_7.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_8.html
+-rwxrwxrwx 1 root      root        105 2022-10-28 functions_8.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_9.html
+-rwxrwxrwx 1 root      root       1064 2022-10-28 functions_9.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_a.html
+-rwxrwxrwx 1 root      root        261 2022-10-28 functions_a.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_b.html
+-rwxrwxrwx 1 root      root        490 2022-10-28 functions_b.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_c.html
+-rwxrwxrwx 1 root      root        694 2022-10-28 functions_c.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_d.html
+-rwxrwxrwx 1 root      root        232 2022-10-28 functions_d.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_e.html
+-rwxrwxrwx 1 root      root        992 2022-10-28 functions_e.js
+-rwxrwxrwx 1 root      root       1441 2022-10-28 functions_f.html
+-rwxrwxrwx 1 root      root        517 2022-10-28 functions_f.js
+-rwxrwxrwx 1 root      root       2378 2022-10-28 mag_sel.svg
+-rwxrwxrwx 1 root      root       1442 2022-10-28 namespaces_0.html
+-rwxrwxrwx 1 root      root         86 2022-10-28 namespaces_0.js
+-rwxrwxrwx 1 root      root        500 2022-10-28 nomatches.html
+-rwxrwxrwx 1 root      root       4562 2022-10-28 search.css
+-rwxrwxrwx 1 root      root        318 2022-10-28 searchdata.js
+-rwxrwxrwx 1 root      root      23044 2022-10-28 search.js
+-rwxrwxrwx 1 root      root        567 2022-10-28 search_l.png
+-rwxrwxrwx 1 root      root        158 2022-10-28 search_m.png
+-rwxrwxrwx 1 root      root        553 2022-10-28 search_r.png
 
 ./images:
 összesen 8560
@@ -417,7 +425,7 @@ drwxrwxrwx 2 root      root        4096 2022-06-20 comments
 -rwxrwxrwx 1 www-data  www-data    5607 2022-09-29 recept147.png
 -rwxrwxrwx 1 www-data  www-data    6244 2022-09-29 recept148.png
 -rw-r--r-- 1 www-data  www-data    3456 2022-09-30 recept149.png
--rw-r--r-- 1 www-data  www-data    3750 2022-10-22 recept14.png
+-rw-r--r-- 1 www-data  www-data    3750 2022-10-27 recept14.png
 -rw-r--r-- 1 www-data  www-data    3456 2022-09-30 recept150.png
 -rw-r--r-- 1 www-data  www-data    5268 2022-09-30 recept151.png
 -rw-r--r-- 1 www-data  www-data    5735 2022-09-30 recept152.png
@@ -427,20 +435,20 @@ drwxrwxrwx 2 root      root        4096 2022-06-20 comments
 -rw-r--r-- 1 www-data  www-data    5735 2022-09-30 recept156.png
 -rw-r--r-- 1 www-data  www-data    2440 2022-09-30 recept157.png
 -rw-r--r-- 1 www-data  www-data    3926 2022-09-30 recept158.png
--rw-r--r-- 1 www-data  www-data    4698 2022-10-25 recept159.png
--rw-r--r-- 1 www-data  www-data    4371 2022-10-22 recept17.png
+-rw-r--r-- 1 www-data  www-data    4698 2022-10-28 recept159.png
+-rw-r--r-- 1 www-data  www-data    4371 2022-10-27 recept17.png
 -rw-r--r-- 1 www-data  www-data    3777 2022-10-19 recept18.png
--rw-r--r-- 1 www-data  www-data    3977 2022-10-22 recept23.png
--rw-r--r-- 1 www-data  www-data    4767 2022-10-19 recept24.png
+-rw-r--r-- 1 www-data  www-data    3977 2022-10-27 recept23.png
+-rw-r--r-- 1 www-data  www-data    4767 2022-10-27 recept24.png
 -rw-r--r-- 1 www-data  www-data    5042 2022-10-19 recept26.png
 -rw-r--r-- 1 www-data  www-data    4706 2022-10-22 recept28.png
 -rw-r--r-- 1 www-data  www-data    5281 2022-10-22 recept29.png
--rw-r--r-- 1 www-data  www-data    3985 2022-10-22 recept38.png
+-rw-r--r-- 1 www-data  www-data    3985 2022-10-27 recept38.png
 -rw-r--r-- 1 www-data  www-data    4494 2022-10-22 recept46.png
 -rw-r--r-- 1 www-data  www-data    5279 2022-10-22 recept48.png
--rw-r--r-- 1 www-data  www-data    3837 2022-10-19 recept50.png
+-rw-r--r-- 1 www-data  www-data    3837 2022-10-27 recept50.png
 -rw-r--r-- 1 www-data  www-data    5147 2022-10-22 recept51.png
--rw-r--r-- 1 www-data  www-data    5197 2022-10-22 recept61.png
+-rw-r--r-- 1 www-data  www-data    5197 2022-10-27 recept61.png
 -rwxrwxrwx 1 root      root      218186 2021-10-31 receptek.png
 -rwxrwxrwx 1 root      root      209221 2021-10-31 recept.png
 -rwxrwxrwx 1 root      root        4349 2022-05-24 Rizibizi - alaprecept.jpg
@@ -504,90 +512,107 @@ drwxrwxrwx 2 root      root        4096 2022-09-30 users
 -rwxrwxrwx 1 root      root      1366 2022-09-26 atvesz.php
 -rwxrwxrwx 1 root      root      4383 2022-09-19 atvesz_receptneked.php
 -rwxrwxrwx 1 root      root       182 2022-06-22 cimkek.txt
-drwxrwxrwx 2 root      root      4096 2022-09-28 controllers
-drwxrwxr-x 2 utopszkij utopszkij 4096 2022-10-25 extras
+drwxrwxrwx 2 root      root      4096 2022-10-28 controllers
+drwxrwxrwx 2 utopszkij utopszkij 4096 2022-10-25 extras
 -rwxrwxrwx 1 root      root        30 2022-05-23 index.php
-drwxrwxrwx 2 root      root      4096 2022-09-28 models
+drwxrwxrwx 2 root      root      4096 2022-10-26 models
 -rwxrwxrwx 1 root      root      6427 2022-07-28 osszegzes.php
--rw-rw-rw- 1 utopszkij utopszkij 2585 2022-10-10 urlprocess.php
+-rwxrwxrwx 1 utopszkij utopszkij 2585 2022-10-10 urlprocess.php
 drwxrwxrwx 2 root      root      4096 2022-10-25 views
 
 ./includes/controllers:
-összesen 132
--rwxr-xr-x 1 root      root       2576 2022-10-21 atvaltasok.php
--rw-rw-r-- 1 utopszkij utopszkij 18344 2022-10-22 blog.php
--rwxr-xr-x 1 root      root       2131 2022-10-21 cimkek.php
--rwxr-xr-x 1 root      root       8832 2022-10-21 comment.php
--rwxr-xr-x 1 root      root         30 2022-10-21 index.php
--rw-r--r-- 1 utopszkij utopszkij  3776 2022-10-25 like.php
--rwxr-xr-x 1 root      root       1992 2022-10-21 login.html
--rwxr-xr-x 1 root      root       1929 2022-10-21 mertekegyseg.php
--rwxr-xr-x 1 root      root       2753 2022-10-21 napimenu.php
+összesen 204
+-rw-rw-r-- 1 utopszkij utopszkij   297 2022-10-28 adminatvaltasok.php
+-rw-rw-r-- 1 utopszkij utopszkij  2338 2022-10-28 adminblog.php
+-rw-rw-r-- 1 utopszkij utopszkij   285 2022-10-28 adminblogs.php
+-rw-rw-r-- 1 utopszkij utopszkij   286 2022-10-28 admincimkek.php
+-rw-rw-r-- 1 utopszkij utopszkij  4372 2022-10-27 adminhome.php
+-rw-rw-r-- 1 utopszkij utopszkij  2356 2022-10-27 adminmenu.php
+-rw-rw-r-- 1 utopszkij utopszkij   302 2022-10-28 adminmertekegysegek.php
+-rw-rw-r-- 1 utopszkij utopszkij  7810 2022-10-28 admin.php
+-rw-rw-r-- 1 utopszkij utopszkij   340 2022-10-28 adminprofil.php
+-rw-rw-r-- 1 utopszkij utopszkij   290 2022-10-28 adminreceptek.php
+-rw-rw-r-- 1 utopszkij utopszkij  2378 2022-10-26 adminrecept.php
+-rw-rw-r-- 1 utopszkij utopszkij  2371 2022-10-28 adminregist.php
+-rw-rw-r-- 1 utopszkij utopszkij   297 2022-10-28 adminszinonimak.php
+-rw-rw-r-- 1 utopszkij utopszkij   286 2022-10-28 adminuserek.php
+-rw-rw-r-- 1 utopszkij utopszkij  2666 2022-10-28 adminvisit.php
+-rwxrwxrwx 1 root      root       2576 2022-10-21 atvaltasok.php
+-rwxrwxrwx 1 utopszkij utopszkij 18344 2022-10-22 blog.php
+-rwxrwxrwx 1 root      root       2131 2022-10-21 cimkek.php
+-rwxrwxrwx 1 root      root       8832 2022-10-21 comment.php
+-rwxrwxrwx 1 root      root         30 2022-10-21 index.php
+-rwxrwxrwx 1 utopszkij utopszkij  3776 2022-10-25 like.php
+-rwxrwxrwx 1 root      root       1992 2022-10-21 login.html
+-rwxrwxrwx 1 root      root       1929 2022-10-21 mertekegyseg.php
+-rwxrwxrwx 1 root      root       2753 2022-10-21 napimenu.php
 -rwxrwxrwx 1 root      root       7971 2022-10-24 naptar.php
--rwxr-xr-x 1 root      root       6515 2022-10-21 osszegzes.php
--rwxrwxrwx 1 root      root      19750 2022-10-24 recept.php
--rwxr-xr-x 1 root      root       3557 2022-10-21 szinonima.php
--rwxr-xr-x 1 root      root        351 2022-10-21 szovegek.php
--rwxrwxrwx 1 root      root      20356 2022-10-21 upgrade.php
--rwxr-xr-x 1 root      root       6971 2022-10-21 user.php
+-rwxrwxrwx 1 root      root       6515 2022-10-21 osszegzes.php
+-rwxrwxrwx 1 root      root      19763 2022-10-27 recept.php
+-rwxrwxrwx 1 root      root       3557 2022-10-21 szinonima.php
+-rwxrwxrwx 1 root      root        351 2022-10-21 szovegek.php
+-rwxrwxrwx 1 root      root      21785 2022-10-28 upgrade.php
+-rwxrwxrwx 1 root      root       6971 2022-10-21 user.php
 
 ./includes/extras:
 összesen 20
--rw-rw-r-- 1 utopszkij utopszkij 2705 2022-10-08 addblog.html
--rw-rw-r-- 1 utopszkij utopszkij   77 2022-10-23 blog.html
--rw-rw-r-- 1 utopszkij utopszkij 2662 2022-09-28 editblog.html
--rw-rw-r-- 1 utopszkij utopszkij   77 2022-10-25 likewinners.html
--rw-rw-r-- 1 utopszkij utopszkij   77 2022-10-18 receptek.html
+-rwxrwxrwx 1 utopszkij utopszkij 2705 2022-10-08 addblog.html
+-rwxrwxrwx 1 utopszkij utopszkij   77 2022-10-23 blog.html
+-rwxrwxrwx 1 utopszkij utopszkij 2662 2022-09-28 editblog.html
+-rwxrwxrwx 1 utopszkij utopszkij   77 2022-10-25 likewinners.html
+-rwxrwxrwx 1 utopszkij utopszkij   77 2022-10-18 receptek.html
 
 ./includes/models:
-összesen 72
+összesen 84
+-rw-rw-r-- 1 utopszkij utopszkij 7076 2022-10-28 adminmodel.php
 -rwxrwxrwx 1 root      root      6466 2022-06-15 atvaltasmodel.php
--rw-rw-r-- 1 utopszkij utopszkij 4509 2022-09-27 blogcommentmodel.php
--rw-rw-r-- 1 utopszkij utopszkij 7743 2022-09-29 blogmodel.php
+-rwxrwxrwx 1 utopszkij utopszkij 4509 2022-09-27 blogcommentmodel.php
+-rwxrwxrwx 1 utopszkij utopszkij 7743 2022-09-29 blogmodel.php
 -rwxrwxrwx 1 root      root      1434 2022-06-23 cimkemodel.php
 -rwxrwxrwx 1 root      root      1611 2022-06-19 commentmodel.php
 -rwxrwxrwx 1 root      root        30 2022-05-27 index.php
--rw-rw-r-- 1 utopszkij utopszkij 5319 2022-10-25 likemodel.php
+-rwxrwxrwx 1 utopszkij utopszkij 5575 2022-10-25 likemodel.php
 -rwxrwxrwx 1 root      root      1334 2022-06-18 mertekegysegmodel.php
 -rwxrwxrwx 1 root      root      1441 2022-05-27 napimenumodel.php
 -rwxrwxrwx 1 root      root      6427 2022-10-24 receptmodel.php
+-rw-rw-r-- 1 utopszkij utopszkij 1665 2022-10-27 statisticmodel.php
 -rwxrwxrwx 1 root      root      3168 2022-06-19 szinonimamodel.php
 -rwxrwxrwx 1 root      root      5704 2022-10-07 usermodel.php
 
 ./includes/views:
 összesen 192
--rwxr-xr-x 1 root      root       2942 2022-10-21 atvaltaskep.html
--rwxr-xr-x 1 root      root       1262 2022-10-21 atvaltasok.html
--rwxr-xr-x 1 utopszkij utopszkij  2538 2022-10-21 blogcommentform.html
+-rwxrwxrwx 1 root      root       2942 2022-10-21 atvaltaskep.html
+-rwxrwxrwx 1 root      root       1262 2022-10-21 atvaltasok.html
+-rwxrwxrwx 1 utopszkij utopszkij  2538 2022-10-21 blogcommentform.html
 -rwxrwxrwx 1 utopszkij utopszkij  4896 2022-10-09 blogform.html
--rwxrwxrwx 1 utopszkij utopszkij  6777 2022-10-24 blog.html
+-rwxrwxrwx 1 utopszkij utopszkij  7369 2022-10-25 blog.html
 -rwxrwxrwx 1 utopszkij utopszkij  3727 2022-09-29 blogs.html
--rwxr-xr-x 1 root      root       1197 2022-10-21 cimkebrowser.html
--rwxr-xr-x 1 root      root       2405 2022-10-21 cimkeform.html
--rwxr-xr-x 1 root      root       4915 2022-10-21 commentkep.html
--rwxr-xr-x 1 root      root       2831 2022-10-22 footer.html
--rwxr-xr-x 1 root      root        809 2022-10-21 impressum_hu.html
--rwxr-xr-x 1 root      root         30 2022-10-21 index.php
--rwxr-xr-x 1 utopszkij utopszkij  2610 2022-10-21 kedvencek.html
--rwxr-xr-x 1 root      root      19919 2022-10-21 licence_hu.html
--rwxr-xr-x 1 utopszkij utopszkij  1830 2022-10-21 likes.html
--rw-rw-r-- 1 utopszkij utopszkij  2526 2022-10-25 likewinners.html
--rwxr-xr-x 1 root      root       2028 2022-10-21 login.html
--rwxr-xr-x 1 root      root       4710 2022-10-22 mainmenu.html
--rwxr-xr-x 1 root      root       1449 2022-10-21 mertekegysegbrowser.html
--rwxr-xr-x 1 root      root       2133 2022-10-21 mertekegysegform.html
--rwxr-xr-x 1 root      root       3613 2022-10-21 napimenukep.html
--rwxr-xr-x 1 root      root       2148 2022-10-21 paginator.html
--rwxr-xr-x 1 root      root       1227 2022-10-21 policy_hu.html
--rwxr-xr-x 1 root      root        438 2022-10-21 protest_hu.html
+-rwxrwxrwx 1 root      root       1197 2022-10-21 cimkebrowser.html
+-rwxrwxrwx 1 root      root       2405 2022-10-21 cimkeform.html
+-rwxrwxrwx 1 root      root       4915 2022-10-21 commentkep.html
+-rwxrwxrwx 1 root      root       2831 2022-10-22 footer.html
+-rwxrwxrwx 1 root      root        918 2022-10-28 impressum_hu.html
+-rwxrwxrwx 1 root      root         30 2022-10-21 index.php
+-rwxrwxrwx 1 utopszkij utopszkij  2610 2022-10-21 kedvencek.html
+-rwxrwxrwx 1 root      root      19919 2022-10-21 licence_hu.html
+-rwxrwxrwx 1 utopszkij utopszkij  1830 2022-10-21 likes.html
+-rwxrwxrwx 1 utopszkij utopszkij  1923 2022-10-25 likewinners.html
+-rwxrwxrwx 1 root      root       2104 2022-10-25 login.html
+-rwxrwxrwx 1 root      root       4516 2022-10-27 mainmenu.html
+-rwxrwxrwx 1 root      root       1449 2022-10-21 mertekegysegbrowser.html
+-rwxrwxrwx 1 root      root       2133 2022-10-21 mertekegysegform.html
+-rwxrwxrwx 1 root      root       3613 2022-10-21 napimenukep.html
+-rwxrwxrwx 1 root      root       2148 2022-10-21 paginator.html
+-rwxrwxrwx 1 root      root       1227 2022-10-21 policy_hu.html
+-rwxrwxrwx 1 root      root        438 2022-10-21 protest_hu.html
 -rwxrwxrwx 1 utopszkij utopszkij  7217 2022-10-25 receptek.html
--rwxrwxrwx 1 root      root      25815 2022-10-24 receptkep.html
--rwxr-xr-x 1 root      root       2046 2022-10-21 regist.html
--rwxr-xr-x 1 root      root       1375 2022-10-21 sponzor_hu.html
--rwxr-xr-x 1 root      root       1933 2022-10-21 szinonimabrowser.html
--rwxr-xr-x 1 root      root       2275 2022-10-21 szinonimaform.html
--rwxr-xr-x 1 utopszkij utopszkij  2725 2022-10-21 userbrowser.html
--rwxr-xr-x 1 root      root       6557 2022-10-21 userform.html
+-rwxrwxrwx 1 root      root      26142 2022-10-25 receptkep.html
+-rwxrwxrwx 1 root      root       2122 2022-10-25 regist.html
+-rwxrwxrwx 1 root      root       1375 2022-10-21 sponzor_hu.html
+-rwxrwxrwx 1 root      root       1933 2022-10-21 szinonimabrowser.html
+-rwxrwxrwx 1 root      root       2275 2022-10-21 szinonimaform.html
+-rwxrwxrwx 1 utopszkij utopszkij  2725 2022-10-21 userbrowser.html
+-rwxrwxrwx 1 root      root       6557 2022-10-21 userform.html
 
 ./languages:
 összesen 4
@@ -603,8 +628,9 @@ drwxrwxrwx 2 root      root      4096 2022-10-25 views
 -rwxrwxrwx 1 root      root      2973 2022-07-19 userTest.php
 
 ./vendor:
-összesen 80
+összesen 84
 drwxrwxrwx  4 root      root       4096 2021-10-09 bootstrap
+drwxrwxr-x  6 utopszkij utopszkij  4096 2022-09-06 chart.js
 drwxrwxr-x  3 utopszkij utopszkij  4096 2022-10-09 ckeditor
 -rwxrwxrwx  1 root      root      14217 2022-10-07 controller.php
 drwxrwxrwx  2 root      root       4096 2022-06-20 database
@@ -673,6 +699,818 @@ drwxrwxrwx 2 root root 4096 2022-07-08 js
 -rwxrwxrwx 1 root root  59219 2021-10-09 bootstrap.min.js
 -rwxrwxrwx 1 root root 219918 2021-10-09 bootstrap.min.js.map
 -rwxrwxrwx 1 root root   8314 2022-07-08 name-day.js
+
+./vendor/chart.js:
+összesen 28
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 auto
+drwxrwxr-x 4 utopszkij utopszkij 4096 2022-09-06 dist
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 helpers
+-rw-rw-r-- 1 utopszkij utopszkij 1093 2022-09-06 LICENSE.md
+-rw-rw-r-- 1 utopszkij utopszkij 3604 2022-09-06 package.json
+-rw-rw-r-- 1 utopszkij utopszkij 2561 2022-09-06 README.md
+drwxrwxr-x 4 utopszkij utopszkij 4096 2022-09-06 types
+
+./vendor/chart.js/auto:
+összesen 16
+-rw-rw-r-- 1 utopszkij utopszkij  43 2022-09-06 auto.js
+-rw-rw-r-- 1 utopszkij utopszkij 114 2022-09-06 auto.mjs
+-rw-rw-r-- 1 utopszkij utopszkij 103 2022-09-06 auto.mts
+-rw-rw-r-- 1 utopszkij utopszkij 174 2022-09-06 package.json
+
+./vendor/chart.js/dist:
+összesen 1296
+-rw-rw-r--  1 utopszkij utopszkij 342819 2022-09-06 chart.esm.js
+-rw-rw-r--  1 utopszkij utopszkij 418415 2022-09-06 chart.js
+-rw-rw-r--  1 utopszkij utopszkij 199560 2022-09-06 chart.min.js
+-rw-rw-r--  1 utopszkij utopszkij 342821 2022-09-06 chart.mjs
+drwxrwxr-x  2 utopszkij utopszkij   4096 2022-09-06 chunks
+drwxrwxr-x 11 utopszkij utopszkij   4096 2022-09-06 docs
+-rw-rw-r--  1 utopszkij utopszkij   2543 2022-09-06 helpers.esm.js
+-rw-rw-r--  1 utopszkij utopszkij   2544 2022-09-06 helpers.mjs
+
+./vendor/chart.js/dist/chunks:
+összesen 152
+-rw-rw-r-- 1 utopszkij utopszkij 76468 2022-09-06 helpers.segment.js
+-rw-rw-r-- 1 utopszkij utopszkij 76468 2022-09-06 helpers.segment.mjs
+
+./vendor/chart.js/dist/docs:
+összesen 148
+-rw-rw-r--  1 utopszkij utopszkij 17869 2022-09-06 404.html
+drwxrwxr-x  5 utopszkij utopszkij  4096 2022-09-06 api
+drwxrwxr-x  5 utopszkij utopszkij  4096 2022-09-06 assets
+drwxrwxr-x  4 utopszkij utopszkij  4096 2022-09-06 axes
+drwxrwxr-x  2 utopszkij utopszkij  4096 2022-09-06 charts
+drwxrwxr-x  2 utopszkij utopszkij  4096 2022-09-06 configuration
+drwxrwxr-x  2 utopszkij utopszkij  4096 2022-09-06 developers
+-rw-rw-r--  1 utopszkij utopszkij 32988 2022-09-06 favicon.ico
+drwxrwxr-x  2 utopszkij utopszkij  4096 2022-09-06 general
+drwxrwxr-x  2 utopszkij utopszkij  4096 2022-09-06 getting-started
+-rw-rw-r--  1 utopszkij utopszkij 41036 2022-09-06 index.html
+-rw-rw-r--  1 utopszkij utopszkij  4895 2022-09-06 logo.png
+-rw-rw-r--  1 utopszkij utopszkij  1249 2022-09-06 logo.svg
+drwxrwxr-x 16 utopszkij utopszkij  4096 2022-09-06 samples
+
+./vendor/chart.js/dist/docs/api:
+összesen 192
+drwxrwxr-x 2 utopszkij utopszkij   4096 2022-09-06 classes
+drwxrwxr-x 2 utopszkij utopszkij   4096 2022-09-06 enums
+-rw-rw-r-- 1 utopszkij utopszkij 183917 2022-09-06 index.html
+drwxrwxr-x 2 utopszkij utopszkij   4096 2022-09-06 interfaces
+
+./vendor/chart.js/dist/docs/api/classes:
+összesen 576
+-rw-rw-r-- 1 utopszkij utopszkij  35042 2022-09-06 Animation.html
+-rw-rw-r-- 1 utopszkij utopszkij  33083 2022-09-06 Animations.html
+-rw-rw-r-- 1 utopszkij utopszkij  41412 2022-09-06 Animator.html
+-rw-rw-r-- 1 utopszkij utopszkij  45888 2022-09-06 BasePlatform.html
+-rw-rw-r-- 1 utopszkij utopszkij  48171 2022-09-06 BasicPlatform.html
+-rw-rw-r-- 1 utopszkij utopszkij 100656 2022-09-06 Chart.html
+-rw-rw-r-- 1 utopszkij utopszkij  91404 2022-09-06 DatasetController.html
+-rw-rw-r-- 1 utopszkij utopszkij  48169 2022-09-06 DomPlatform.html
+-rw-rw-r-- 1 utopszkij utopszkij 126204 2022-09-06 Scale.html
+
+./vendor/chart.js/dist/docs/api/enums:
+összesen 68
+-rw-rw-r-- 1 utopszkij utopszkij 29593 2022-09-06 DecimationAlgorithm.html
+-rw-rw-r-- 1 utopszkij utopszkij 34133 2022-09-06 UpdateModeEnum.html
+
+./vendor/chart.js/dist/docs/api/interfaces:
+összesen 6064
+-rw-rw-r-- 1 utopszkij utopszkij  41409 2022-09-06 ActiveDataPoint.html
+-rw-rw-r-- 1 utopszkij utopszkij  42960 2022-09-06 ActiveElement.html
+-rw-rw-r-- 1 utopszkij utopszkij  43372 2022-09-06 AnimationEvent.html
+-rw-rw-r-- 1 utopszkij utopszkij  43012 2022-09-06 ArcBorderRadius.html
+-rw-rw-r-- 1 utopszkij utopszkij  60702 2022-09-06 ArcElement.html
+-rw-rw-r-- 1 utopszkij utopszkij  44326 2022-09-06 ArcHoverOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  48409 2022-09-06 ArcOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  45722 2022-09-06 ArcProps.html
+-rw-rw-r-- 1 utopszkij utopszkij  40406 2022-09-06 BarControllerChartOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  78149 2022-09-06 BarControllerDatasetOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  60726 2022-09-06 BarElement.html
+-rw-rw-r-- 1 utopszkij utopszkij  44437 2022-09-06 BarHoverOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  47682 2022-09-06 BarOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  44705 2022-09-06 BarProps.html
+-rw-rw-r-- 1 utopszkij utopszkij  43028 2022-09-06 BorderRadius.html
+-rw-rw-r-- 1 utopszkij utopszkij  67791 2022-09-06 BubbleControllerDatasetOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  42123 2022-09-06 BubbleDataPoint.html
+-rw-rw-r-- 1 utopszkij utopszkij  86446 2022-09-06 CartesianScaleOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  46333 2022-09-06 CartesianScaleTypeRegistry.html
+-rw-rw-r-- 1 utopszkij utopszkij  44716 2022-09-06 ChartArea.html
+-rw-rw-r-- 1 utopszkij utopszkij  46913 2022-09-06 ChartComponent.html
+-rw-rw-r-- 1 utopszkij utopszkij  44094 2022-09-06 ChartConfigurationCustomTypesPerDataset.html
+-rw-rw-r-- 1 utopszkij utopszkij  44915 2022-09-06 ChartConfiguration.html
+-rw-rw-r-- 1 utopszkij utopszkij  42253 2022-09-06 ChartDataCustomTypesPerDataset.html
+-rw-rw-r-- 1 utopszkij utopszkij  42344 2022-09-06 ChartData.html
+-rw-rw-r-- 1 utopszkij utopszkij  41826 2022-09-06 ChartDatasetPropertiesCustomTypesPerDataset.html
+-rw-rw-r-- 1 utopszkij utopszkij  41846 2022-09-06 ChartDatasetProperties.html
+-rw-rw-r-- 1 utopszkij utopszkij  43374 2022-09-06 ChartEvent.html
+-rw-rw-r-- 1 utopszkij utopszkij  57300 2022-09-06 ChartTypeRegistry.html
+-rw-rw-r-- 1 utopszkij utopszkij  42691 2022-09-06 CommonElementOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  42877 2022-09-06 CommonHoverOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  42468 2022-09-06 ComplexFillTarget.html
+-rw-rw-r-- 1 utopszkij utopszkij  49507 2022-09-06 ControllerDatasetOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  75025 2022-09-06 CoreChartOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  44053 2022-09-06 CoreInteractionOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  67642 2022-09-06 CoreScaleOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  49347 2022-09-06 DatasetControllerChartComponent.html
+-rw-rw-r-- 1 utopszkij utopszkij  56847 2022-09-06 DateAdapter.html
+-rw-rw-r-- 1 utopszkij utopszkij 105018 2022-09-06 Defaults.html
+-rw-rw-r-- 1 utopszkij utopszkij  41539 2022-09-06 DoughnutAnimationOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  47063 2022-09-06 DoughnutControllerChartOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  75858 2022-09-06 DoughnutControllerDatasetOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij 116669 2022-09-06 DoughnutController.html
+-rw-rw-r-- 1 utopszkij utopszkij  40304 2022-09-06 DoughnutMetaExtensions.html
+-rw-rw-r-- 1 utopszkij utopszkij  48064 2022-09-06 Element.html
+-rw-rw-r-- 1 utopszkij utopszkij  44912 2022-09-06 ElementOptionsByType.html
+-rw-rw-r-- 1 utopszkij utopszkij  45828 2022-09-06 ExtendedPlugin.html
+-rw-rw-r-- 1 utopszkij utopszkij  40650 2022-09-06 FillerControllerDatasetOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  41266 2022-09-06 FillerOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  44738 2022-09-06 FontSpec.html
+-rw-rw-r-- 1 utopszkij utopszkij  57977 2022-09-06 GridLineOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  42190 2022-09-06 InteractionItem.html
+-rw-rw-r-- 1 utopszkij utopszkij  45969 2022-09-06 InteractionModeMap.html
+-rw-rw-r-- 1 utopszkij utopszkij  42186 2022-09-06 InteractionOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  55083 2022-09-06 LayoutItem.html
+-rw-rw-r-- 1 utopszkij utopszkij  71400 2022-09-06 LegendElement.html
+-rw-rw-r-- 1 utopszkij utopszkij  55884 2022-09-06 LegendItem.html
+-rw-rw-r-- 1 utopszkij utopszkij  63545 2022-09-06 LegendOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  41678 2022-09-06 LineControllerChartOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij 105540 2022-09-06 LineControllerDatasetOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  71687 2022-09-06 LineElement.html
+-rw-rw-r-- 1 utopszkij utopszkij  47248 2022-09-06 LineHoverOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  57604 2022-09-06 LineOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  40283 2022-09-06 LineProps.html
+-rw-rw-r-- 1 utopszkij utopszkij  42001 2022-09-06 ParsingOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  41046 2022-09-06 PluginChartOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij 142630 2022-09-06 Plugin.html
+-rw-rw-r-- 1 utopszkij utopszkij  45681 2022-09-06 PluginOptionsByType.html
+-rw-rw-r-- 1 utopszkij utopszkij  62574 2022-09-06 PointElement.html
+-rw-rw-r-- 1 utopszkij utopszkij  44425 2022-09-06 PointHoverOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  41082 2022-09-06 Point.html
+-rw-rw-r-- 1 utopszkij utopszkij  48487 2022-09-06 PointOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  43500 2022-09-06 PointPrefixedHoverOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  46414 2022-09-06 PointPrefixedOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  41126 2022-09-06 PointProps.html
+-rw-rw-r-- 1 utopszkij utopszkij  41550 2022-09-06 PolarAreaControllerChartOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  80148 2022-09-06 PolarAreaControllerDatasetOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij 113442 2022-09-06 PolarAreaController.html
+-rw-rw-r-- 1 utopszkij utopszkij 111734 2022-09-06 RadarControllerDatasetOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij 161819 2022-09-06 RadialLinearScale.html
+-rw-rw-r-- 1 utopszkij utopszkij  41007 2022-09-06 RadialScaleTypeRegistry.html
+-rw-rw-r-- 1 utopszkij utopszkij  60811 2022-09-06 Registry.html
+-rw-rw-r-- 1 utopszkij utopszkij  49571 2022-09-06 ScaleTypeRegistry.html
+-rw-rw-r-- 1 utopszkij utopszkij  41165 2022-09-06 ScatterDataPoint.html
+-rw-rw-r-- 1 utopszkij utopszkij  41336 2022-09-06 ScriptableCartesianScaleContext.html
+-rw-rw-r-- 1 utopszkij utopszkij  41612 2022-09-06 ScriptableChartContext.html
+-rw-rw-r-- 1 utopszkij utopszkij  48769 2022-09-06 ScriptableContext.html
+-rw-rw-r-- 1 utopszkij utopszkij  45316 2022-09-06 ScriptableLineSegmentContext.html
+-rw-rw-r-- 1 utopszkij utopszkij  43633 2022-09-06 ScriptableScaleContext.html
+-rw-rw-r-- 1 utopszkij utopszkij  44496 2022-09-06 ScriptableScalePointLabelContext.html
+-rw-rw-r-- 1 utopszkij utopszkij  43052 2022-09-06 ScriptableTooltipContext.html
+-rw-rw-r-- 1 utopszkij utopszkij  42014 2022-09-06 Segment.html
+-rw-rw-r-- 1 utopszkij utopszkij  42062 2022-09-06 Tick.html
+-rw-rw-r-- 1 utopszkij utopszkij  54383 2022-09-06 TickOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij 151459 2022-09-06 TimeScale.html
+-rw-rw-r-- 1 utopszkij utopszkij  47928 2022-09-06 TitleOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  60966 2022-09-06 TooltipCallbacks.html
+-rw-rw-r-- 1 utopszkij utopszkij 152044 2022-09-06 Tooltip.html
+-rw-rw-r-- 1 utopszkij utopszkij  49390 2022-09-06 TooltipItem.html
+-rw-rw-r-- 1 utopszkij utopszkij  45494 2022-09-06 TooltipLabelStyle.html
+-rw-rw-r-- 1 utopszkij utopszkij  68572 2022-09-06 TooltipModel.html
+-rw-rw-r-- 1 utopszkij utopszkij  97158 2022-09-06 TooltipOptions.html
+-rw-rw-r-- 1 utopszkij utopszkij  41561 2022-09-06 TooltipPositionerMap.html
+-rw-rw-r-- 1 utopszkij utopszkij  43109 2022-09-06 TooltipPosition.html
+-rw-rw-r-- 1 utopszkij utopszkij  43901 2022-09-06 TypedRegistry.html
+-rw-rw-r-- 1 utopszkij utopszkij  49278 2022-09-06 VisualElement.html
+
+./vendor/chart.js/dist/docs/assets:
+összesen 24
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 css
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 img
+drwxrwxr-x 2 utopszkij utopszkij 16384 2022-09-06 js
+
+./vendor/chart.js/dist/docs/assets/css:
+összesen 44
+-rw-rw-r-- 1 utopszkij utopszkij 44488 2022-09-06 0.styles.7d07a4d1.css
+
+./vendor/chart.js/dist/docs/assets/img:
+összesen 348
+-rw-rw-r-- 1 utopszkij utopszkij  18626 2022-09-06 destroy_flowchart.10814816.png
+-rw-rw-r-- 1 utopszkij utopszkij  38182 2022-09-06 event_flowchart.83015c7a.png
+-rw-rw-r-- 1 utopszkij utopszkij  25160 2022-09-06 init_flowchart.ee5be600.png
+-rw-rw-r-- 1 utopszkij utopszkij 102359 2022-09-06 render_flowchart.41a98316.png
+-rw-rw-r-- 1 utopszkij utopszkij  58555 2022-09-06 scale_flowchart.fa1ab63e.png
+-rw-rw-r-- 1 utopszkij utopszkij    216 2022-09-06 search.83621669.svg
+-rw-rw-r-- 1 utopszkij utopszkij  97217 2022-09-06 update_flowchart.0556691d.png
+
+./vendor/chart.js/dist/docs/assets/js:
+összesen 6012
+-rw-rw-r-- 1 utopszkij utopszkij  119335 2022-09-06 100.f7a12d8b.js
+-rw-rw-r-- 1 utopszkij utopszkij    2248 2022-09-06 101.15c56dbb.js
+-rw-rw-r-- 1 utopszkij utopszkij   21894 2022-09-06 102.33b746ea.js
+-rw-rw-r-- 1 utopszkij utopszkij   10922 2022-09-06 103.850a4486.js
+-rw-rw-r-- 1 utopszkij utopszkij    1775 2022-09-06 104.8b4f368b.js
+-rw-rw-r-- 1 utopszkij utopszkij    1961 2022-09-06 105.1a3d6c41.js
+-rw-rw-r-- 1 utopszkij utopszkij    2338 2022-09-06 106.d8f8b4c1.js
+-rw-rw-r-- 1 utopszkij utopszkij    7721 2022-09-06 107.38cf9b4f.js
+-rw-rw-r-- 1 utopszkij utopszkij    4848 2022-09-06 108.a30da8c9.js
+-rw-rw-r-- 1 utopszkij utopszkij    3783 2022-09-06 109.6d56b7d1.js
+-rw-rw-r-- 1 utopszkij utopszkij    7075 2022-09-06 10.edbecfa9.js
+-rw-rw-r-- 1 utopszkij utopszkij    4354 2022-09-06 110.c44e533c.js
+-rw-rw-r-- 1 utopszkij utopszkij    3722 2022-09-06 111.ccb9a835.js
+-rw-rw-r-- 1 utopszkij utopszkij    2373 2022-09-06 112.2d2a2890.js
+-rw-rw-r-- 1 utopszkij utopszkij    2504 2022-09-06 113.5ac0921f.js
+-rw-rw-r-- 1 utopszkij utopszkij   13739 2022-09-06 114.90ef8814.js
+-rw-rw-r-- 1 utopszkij utopszkij  107824 2022-09-06 115.12a72d27.js
+-rw-rw-r-- 1 utopszkij utopszkij    7297 2022-09-06 116.6b780970.js
+-rw-rw-r-- 1 utopszkij utopszkij  137620 2022-09-06 117.79604442.js
+-rw-rw-r-- 1 utopszkij utopszkij   22932 2022-09-06 118.7752bc89.js
+-rw-rw-r-- 1 utopszkij utopszkij    8659 2022-09-06 119.d8e76ef0.js
+-rw-rw-r-- 1 utopszkij utopszkij    5471 2022-09-06 11.b98e8151.js
+-rw-rw-r-- 1 utopszkij utopszkij    5274 2022-09-06 120.ed76595e.js
+-rw-rw-r-- 1 utopszkij utopszkij   24887 2022-09-06 121.cc3d56f2.js
+-rw-rw-r-- 1 utopszkij utopszkij   52180 2022-09-06 122.c8651871.js
+-rw-rw-r-- 1 utopszkij utopszkij    3202 2022-09-06 123.f7d5f223.js
+-rw-rw-r-- 1 utopszkij utopszkij   14710 2022-09-06 12.433f0c7e.js
+-rw-rw-r-- 1 utopszkij utopszkij    2283 2022-09-06 124.88ce07a4.js
+-rw-rw-r-- 1 utopszkij utopszkij    5175 2022-09-06 125.a9572036.js
+-rw-rw-r-- 1 utopszkij utopszkij   11233 2022-09-06 126.879447b3.js
+-rw-rw-r-- 1 utopszkij utopszkij    4488 2022-09-06 127.3b8478f3.js
+-rw-rw-r-- 1 utopszkij utopszkij    4860 2022-09-06 128.87d67ad7.js
+-rw-rw-r-- 1 utopszkij utopszkij    2991 2022-09-06 129.f6241700.js
+-rw-rw-r-- 1 utopszkij utopszkij    5258 2022-09-06 130.a9cb856a.js
+-rw-rw-r-- 1 utopszkij utopszkij   32360 2022-09-06 131.45e904c9.js
+-rw-rw-r-- 1 utopszkij utopszkij   43475 2022-09-06 132.abd9e4c2.js
+-rw-rw-r-- 1 utopszkij utopszkij   24493 2022-09-06 133.d5aa1db6.js
+-rw-rw-r-- 1 utopszkij utopszkij   18595 2022-09-06 134.4bfa3b5a.js
+-rw-rw-r-- 1 utopszkij utopszkij   35671 2022-09-06 135.8c7630ad.js
+-rw-rw-r-- 1 utopszkij utopszkij    3774 2022-09-06 136.f813e062.js
+-rw-rw-r-- 1 utopszkij utopszkij   38619 2022-09-06 137.6cab2863.js
+-rw-rw-r-- 1 utopszkij utopszkij   10894 2022-09-06 138.03ec5265.js
+-rw-rw-r-- 1 utopszkij utopszkij    5070 2022-09-06 139.924812c0.js
+-rw-rw-r-- 1 utopszkij utopszkij   19663 2022-09-06 13.b6743084.js
+-rw-rw-r-- 1 utopszkij utopszkij   34754 2022-09-06 140.a7967a5d.js
+-rw-rw-r-- 1 utopszkij utopszkij   14718 2022-09-06 141.34a018bb.js
+-rw-rw-r-- 1 utopszkij utopszkij   21363 2022-09-06 142.c5bfcdd4.js
+-rw-rw-r-- 1 utopszkij utopszkij   39888 2022-09-06 143.05e388ba.js
+-rw-rw-r-- 1 utopszkij utopszkij   22923 2022-09-06 14.422fec10.js
+-rw-rw-r-- 1 utopszkij utopszkij   15043 2022-09-06 144.a98bdbcc.js
+-rw-rw-r-- 1 utopszkij utopszkij   22169 2022-09-06 145.826b73e0.js
+-rw-rw-r-- 1 utopszkij utopszkij   35416 2022-09-06 146.001afadf.js
+-rw-rw-r-- 1 utopszkij utopszkij   14946 2022-09-06 147.fcadaef3.js
+-rw-rw-r-- 1 utopszkij utopszkij   17197 2022-09-06 148.604863a4.js
+-rw-rw-r-- 1 utopszkij utopszkij   28589 2022-09-06 149.6509ed9f.js
+-rw-rw-r-- 1 utopszkij utopszkij   66384 2022-09-06 15.09a69fc3.js
+-rw-rw-r-- 1 utopszkij utopszkij    5177 2022-09-06 150.fd8575ca.js
+-rw-rw-r-- 1 utopszkij utopszkij   24144 2022-09-06 151.67ecd4a3.js
+-rw-rw-r-- 1 utopszkij utopszkij    3628 2022-09-06 152.481a7bd4.js
+-rw-rw-r-- 1 utopszkij utopszkij    5741 2022-09-06 153.dbf3f3aa.js
+-rw-rw-r-- 1 utopszkij utopszkij    1835 2022-09-06 154.2aa9c67d.js
+-rw-rw-r-- 1 utopszkij utopszkij   16818 2022-09-06 155.e3367ebc.js
+-rw-rw-r-- 1 utopszkij utopszkij   16453 2022-09-06 156.a5bb942d.js
+-rw-rw-r-- 1 utopszkij utopszkij   51855 2022-09-06 157.09caef4e.js
+-rw-rw-r-- 1 utopszkij utopszkij    1623 2022-09-06 158.1f82587f.js
+-rw-rw-r-- 1 utopszkij utopszkij   38886 2022-09-06 159.4cebd9d3.js
+-rw-rw-r-- 1 utopszkij utopszkij   65252 2022-09-06 16.0414f390.js
+-rw-rw-r-- 1 utopszkij utopszkij    2444 2022-09-06 160.47df8215.js
+-rw-rw-r-- 1 utopszkij utopszkij   15915 2022-09-06 161.fac79692.js
+-rw-rw-r-- 1 utopszkij utopszkij    4503 2022-09-06 162.9f2f870f.js
+-rw-rw-r-- 1 utopszkij utopszkij   11998 2022-09-06 163.4f1604f9.js
+-rw-rw-r-- 1 utopszkij utopszkij   86508 2022-09-06 164.7f8d8643.js
+-rw-rw-r-- 1 utopszkij utopszkij   35379 2022-09-06 165.fe2baa69.js
+-rw-rw-r-- 1 utopszkij utopszkij   23264 2022-09-06 166.c82b3c76.js
+-rw-rw-r-- 1 utopszkij utopszkij   25326 2022-09-06 167.3c3f2ff1.js
+-rw-rw-r-- 1 utopszkij utopszkij   13370 2022-09-06 168.8d2e8e83.js
+-rw-rw-r-- 1 utopszkij utopszkij    4233 2022-09-06 169.b10c84bd.js
+-rw-rw-r-- 1 utopszkij utopszkij    4013 2022-09-06 170.b9db8312.js
+-rw-rw-r-- 1 utopszkij utopszkij   21272 2022-09-06 171.2480fc36.js
+-rw-rw-r-- 1 utopszkij utopszkij   10379 2022-09-06 172.81c5206a.js
+-rw-rw-r-- 1 utopszkij utopszkij   14826 2022-09-06 173.477dcbae.js
+-rw-rw-r-- 1 utopszkij utopszkij   41591 2022-09-06 174.05398ca3.js
+-rw-rw-r-- 1 utopszkij utopszkij    7984 2022-09-06 175.84ab69d0.js
+-rw-rw-r-- 1 utopszkij utopszkij   17857 2022-09-06 176.f48183c3.js
+-rw-rw-r-- 1 utopszkij utopszkij   10424 2022-09-06 177.d0d35403.js
+-rw-rw-r-- 1 utopszkij utopszkij   34260 2022-09-06 178.55d433fd.js
+-rw-rw-r-- 1 utopszkij utopszkij   22913 2022-09-06 17.8dfcb176.js
+-rw-rw-r-- 1 utopszkij utopszkij   13415 2022-09-06 179.9442c138.js
+-rw-rw-r-- 1 utopszkij utopszkij    4221 2022-09-06 180.5c15d5d4.js
+-rw-rw-r-- 1 utopszkij utopszkij   25199 2022-09-06 181.911f367b.js
+-rw-rw-r-- 1 utopszkij utopszkij   16920 2022-09-06 182.72f663e8.js
+-rw-rw-r-- 1 utopszkij utopszkij   76514 2022-09-06 183.22b2258c.js
+-rw-rw-r-- 1 utopszkij utopszkij   15525 2022-09-06 184.15b21065.js
+-rw-rw-r-- 1 utopszkij utopszkij    3613 2022-09-06 185.894ea40b.js
+-rw-rw-r-- 1 utopszkij utopszkij   25781 2022-09-06 186.f6394459.js
+-rw-rw-r-- 1 utopszkij utopszkij   11559 2022-09-06 187.7bd9b3fe.js
+-rw-rw-r-- 1 utopszkij utopszkij    3895 2022-09-06 188.3baa9bcd.js
+-rw-rw-r-- 1 utopszkij utopszkij    3818 2022-09-06 189.18e63b11.js
+-rw-rw-r-- 1 utopszkij utopszkij   88153 2022-09-06 18.c331029e.js
+-rw-rw-r-- 1 utopszkij utopszkij    5207 2022-09-06 190.b7ffb54a.js
+-rw-rw-r-- 1 utopszkij utopszkij    3904 2022-09-06 191.13061aba.js
+-rw-rw-r-- 1 utopszkij utopszkij    1857 2022-09-06 19.13bdd658.js
+-rw-rw-r-- 1 utopszkij utopszkij    3012 2022-09-06 192.1bf9bd61.js
+-rw-rw-r-- 1 utopszkij utopszkij    4471 2022-09-06 193.8fa44455.js
+-rw-rw-r-- 1 utopszkij utopszkij    4937 2022-09-06 194.49c9a3c0.js
+-rw-rw-r-- 1 utopszkij utopszkij    5880 2022-09-06 195.eb1e8802.js
+-rw-rw-r-- 1 utopszkij utopszkij    3900 2022-09-06 196.9b925823.js
+-rw-rw-r-- 1 utopszkij utopszkij    3447 2022-09-06 197.adca6c8c.js
+-rw-rw-r-- 1 utopszkij utopszkij    4999 2022-09-06 198.2ae0961a.js
+-rw-rw-r-- 1 utopszkij utopszkij    3537 2022-09-06 199.cd9dca80.js
+-rw-rw-r-- 1 utopszkij utopszkij    5142 2022-09-06 200.2eb9437f.js
+-rw-rw-r-- 1 utopszkij utopszkij    4182 2022-09-06 201.6dba10c3.js
+-rw-rw-r-- 1 utopszkij utopszkij    2492 2022-09-06 202.9c5057c6.js
+-rw-rw-r-- 1 utopszkij utopszkij    2431 2022-09-06 203.98a3c2b8.js
+-rw-rw-r-- 1 utopszkij utopszkij    3731 2022-09-06 204.50d5cf2e.js
+-rw-rw-r-- 1 utopszkij utopszkij    4837 2022-09-06 20.5d11c294.js
+-rw-rw-r-- 1 utopszkij utopszkij    2830 2022-09-06 205.e56e820b.js
+-rw-rw-r-- 1 utopszkij utopszkij    2210 2022-09-06 206.6ce5c41e.js
+-rw-rw-r-- 1 utopszkij utopszkij    3464 2022-09-06 207.8aa83d91.js
+-rw-rw-r-- 1 utopszkij utopszkij    2162 2022-09-06 208.296ee160.js
+-rw-rw-r-- 1 utopszkij utopszkij    2322 2022-09-06 209.13279349.js
+-rw-rw-r-- 1 utopszkij utopszkij    4892 2022-09-06 210.63e30420.js
+-rw-rw-r-- 1 utopszkij utopszkij    2786 2022-09-06 211.0b325f23.js
+-rw-rw-r-- 1 utopszkij utopszkij    2405 2022-09-06 212.be671e2e.js
+-rw-rw-r-- 1 utopszkij utopszkij    2583 2022-09-06 213.81d2e607.js
+-rw-rw-r-- 1 utopszkij utopszkij    2533 2022-09-06 214.ba403b5c.js
+-rw-rw-r-- 1 utopszkij utopszkij    3419 2022-09-06 215.2efcec5f.js
+-rw-rw-r-- 1 utopszkij utopszkij    2952 2022-09-06 216.e01d3100.js
+-rw-rw-r-- 1 utopszkij utopszkij    3859 2022-09-06 217.906c8d54.js
+-rw-rw-r-- 1 utopszkij utopszkij    2195 2022-09-06 21.7b54d7d8.js
+-rw-rw-r-- 1 utopszkij utopszkij    2461 2022-09-06 218.94e33827.js
+-rw-rw-r-- 1 utopszkij utopszkij    2770 2022-09-06 219.21c5e01f.js
+-rw-rw-r-- 1 utopszkij utopszkij    2462 2022-09-06 220.3ba160e4.js
+-rw-rw-r-- 1 utopszkij utopszkij    3293 2022-09-06 221.5c17138c.js
+-rw-rw-r-- 1 utopszkij utopszkij    3605 2022-09-06 222.aea004ce.js
+-rw-rw-r-- 1 utopszkij utopszkij    3477 2022-09-06 223.cbb7b883.js
+-rw-rw-r-- 1 utopszkij utopszkij    3748 2022-09-06 224.b130b37f.js
+-rw-rw-r-- 1 utopszkij utopszkij    3102 2022-09-06 225.32f90319.js
+-rw-rw-r-- 1 utopszkij utopszkij    3276 2022-09-06 226.8c102c21.js
+-rw-rw-r-- 1 utopszkij utopszkij    2693 2022-09-06 227.b3d60339.js
+-rw-rw-r-- 1 utopszkij utopszkij    2874 2022-09-06 228.72f0ad18.js
+-rw-rw-r-- 1 utopszkij utopszkij    3343 2022-09-06 229.3daa3b7e.js
+-rw-rw-r-- 1 utopszkij utopszkij    3694 2022-09-06 22.c2daedd0.js
+-rw-rw-r-- 1 utopszkij utopszkij    4294 2022-09-06 230.7e5a85b1.js
+-rw-rw-r-- 1 utopszkij utopszkij    3296 2022-09-06 231.b83d12f1.js
+-rw-rw-r-- 1 utopszkij utopszkij    3546 2022-09-06 23.2c668e20.js
+-rw-rw-r-- 1 utopszkij utopszkij    4164 2022-09-06 232.e902f42d.js
+-rw-rw-r-- 1 utopszkij utopszkij    2432 2022-09-06 233.b4f254c0.js
+-rw-rw-r-- 1 utopszkij utopszkij    2550 2022-09-06 234.d975df48.js
+-rw-rw-r-- 1 utopszkij utopszkij    2879 2022-09-06 235.71a7be7d.js
+-rw-rw-r-- 1 utopszkij utopszkij    2821 2022-09-06 236.05d87a5e.js
+-rw-rw-r-- 1 utopszkij utopszkij    3711 2022-09-06 237.d518e28b.js
+-rw-rw-r-- 1 utopszkij utopszkij    3790 2022-09-06 238.eb60e397.js
+-rw-rw-r-- 1 utopszkij utopszkij    3190 2022-09-06 239.81fecfed.js
+-rw-rw-r-- 1 utopszkij utopszkij  115838 2022-09-06 2.3e2307f3.js
+-rw-rw-r-- 1 utopszkij utopszkij    2411 2022-09-06 240.c0869bc2.js
+-rw-rw-r-- 1 utopszkij utopszkij    2122 2022-09-06 241.59dc896f.js
+-rw-rw-r-- 1 utopszkij utopszkij    4528 2022-09-06 242.6d423d39.js
+-rw-rw-r-- 1 utopszkij utopszkij    2333 2022-09-06 243.a355eaa8.js
+-rw-rw-r-- 1 utopszkij utopszkij    2478 2022-09-06 244.ad729cf8.js
+-rw-rw-r-- 1 utopszkij utopszkij    2755 2022-09-06 245.c3cd6bbe.js
+-rw-rw-r-- 1 utopszkij utopszkij    3192 2022-09-06 246.d0708528.js
+-rw-rw-r-- 1 utopszkij utopszkij    3702 2022-09-06 247.13d65d78.js
+-rw-rw-r-- 1 utopszkij utopszkij    2539 2022-09-06 248.1d222543.js
+-rw-rw-r-- 1 utopszkij utopszkij    3206 2022-09-06 249.2d7a9bf1.js
+-rw-rw-r-- 1 utopszkij utopszkij    3071 2022-09-06 24.af200d5b.js
+-rw-rw-r-- 1 utopszkij utopszkij    2810 2022-09-06 250.09ef38e2.js
+-rw-rw-r-- 1 utopszkij utopszkij    2471 2022-09-06 251.0cb90e8a.js
+-rw-rw-r-- 1 utopszkij utopszkij    2297 2022-09-06 252.2ff0def4.js
+-rw-rw-r-- 1 utopszkij utopszkij    2715 2022-09-06 253.61c7c505.js
+-rw-rw-r-- 1 utopszkij utopszkij    2091 2022-09-06 254.20137eeb.js
+-rw-rw-r-- 1 utopszkij utopszkij   23010 2022-09-06 25.4f97f63f.js
+-rw-rw-r-- 1 utopszkij utopszkij    2283 2022-09-06 255.49c937e9.js
+-rw-rw-r-- 1 utopszkij utopszkij    2486 2022-09-06 256.8d709dae.js
+-rw-rw-r-- 1 utopszkij utopszkij    5647 2022-09-06 257.b3ebdce7.js
+-rw-rw-r-- 1 utopszkij utopszkij    4006 2022-09-06 258.792f66d1.js
+-rw-rw-r-- 1 utopszkij utopszkij    3147 2022-09-06 259.98c809e9.js
+-rw-rw-r-- 1 utopszkij utopszkij    3401 2022-09-06 260.54ff10d2.js
+-rw-rw-r-- 1 utopszkij utopszkij   54744 2022-09-06 261.928afea4.js
+-rw-rw-r-- 1 utopszkij utopszkij    4861 2022-09-06 26.d1bb645c.js
+-rw-rw-r-- 1 utopszkij utopszkij    7934 2022-09-06 27.2d5c4a6b.js
+-rw-rw-r-- 1 utopszkij utopszkij    4866 2022-09-06 28.72dee0f1.js
+-rw-rw-r-- 1 utopszkij utopszkij    1370 2022-09-06 29.8820be26.js
+-rw-rw-r-- 1 utopszkij utopszkij   34628 2022-09-06 30.343676b8.js
+-rw-rw-r-- 1 utopszkij utopszkij   23010 2022-09-06 31.cff089f1.js
+-rw-rw-r-- 1 utopszkij utopszkij    4999 2022-09-06 32.56d8546e.js
+-rw-rw-r-- 1 utopszkij utopszkij    7588 2022-09-06 33.6b642a06.js
+-rw-rw-r-- 1 utopszkij utopszkij    4175 2022-09-06 34.360a9ea9.js
+-rw-rw-r-- 1 utopszkij utopszkij    3062 2022-09-06 35.205d7fac.js
+-rw-rw-r-- 1 utopszkij utopszkij   26376 2022-09-06 36.f2765bae.js
+-rw-rw-r-- 1 utopszkij utopszkij    2488 2022-09-06 37.6c33435e.js
+-rw-rw-r-- 1 utopszkij utopszkij   46894 2022-09-06 38.a778a6a2.js
+-rw-rw-r-- 1 utopszkij utopszkij  155292 2022-09-06 3.947b8d98.js
+-rw-rw-r-- 1 utopszkij utopszkij    7081 2022-09-06 39.7dda160f.js
+-rw-rw-r-- 1 utopszkij utopszkij    4149 2022-09-06 40.bd778eac.js
+-rw-rw-r-- 1 utopszkij utopszkij    6725 2022-09-06 41.b79220f6.js
+-rw-rw-r-- 1 utopszkij utopszkij    5628 2022-09-06 42.c3157beb.js
+-rw-rw-r-- 1 utopszkij utopszkij    5138 2022-09-06 43.097368d1.js
+-rw-rw-r-- 1 utopszkij utopszkij    3370 2022-09-06 44.2515f16e.js
+-rw-rw-r-- 1 utopszkij utopszkij    3312 2022-09-06 45.d5b4b7c3.js
+-rw-rw-r-- 1 utopszkij utopszkij    2659 2022-09-06 46.bbab8d6e.js
+-rw-rw-r-- 1 utopszkij utopszkij    2683 2022-09-06 47.79aa575e.js
+-rw-rw-r-- 1 utopszkij utopszkij    3433 2022-09-06 48.45785af9.js
+-rw-rw-r-- 1 utopszkij utopszkij   20235 2022-09-06 49.0569a6eb.js
+-rw-rw-r-- 1 utopszkij utopszkij   29011 2022-09-06 4.ee88d25a.js
+-rw-rw-r-- 1 utopszkij utopszkij     485 2022-09-06 5.00f814ac.js
+-rw-rw-r-- 1 utopszkij utopszkij    3231 2022-09-06 50.14bd3ba2.js
+-rw-rw-r-- 1 utopszkij utopszkij    3453 2022-09-06 51.e0968711.js
+-rw-rw-r-- 1 utopszkij utopszkij    2879 2022-09-06 52.fe65ddf8.js
+-rw-rw-r-- 1 utopszkij utopszkij    9142 2022-09-06 53.faa1ff3f.js
+-rw-rw-r-- 1 utopszkij utopszkij   33468 2022-09-06 54.fcfed2c5.js
+-rw-rw-r-- 1 utopszkij utopszkij    4376 2022-09-06 55.7db1d28a.js
+-rw-rw-r-- 1 utopszkij utopszkij   27231 2022-09-06 56.8b0e82b7.js
+-rw-rw-r-- 1 utopszkij utopszkij   10172 2022-09-06 57.9de2d983.js
+-rw-rw-r-- 1 utopszkij utopszkij   19214 2022-09-06 58.b0f8ad0c.js
+-rw-rw-r-- 1 utopszkij utopszkij   69699 2022-09-06 59.f1ff4935.js
+-rw-rw-r-- 1 utopszkij utopszkij    2275 2022-09-06 60.ac08de9a.js
+-rw-rw-r-- 1 utopszkij utopszkij   81731 2022-09-06 61.ea4fad75.js
+-rw-rw-r-- 1 utopszkij utopszkij    6574 2022-09-06 62.5c85853b.js
+-rw-rw-r-- 1 utopszkij utopszkij     589 2022-09-06 6.2bc86161.js
+-rw-rw-r-- 1 utopszkij utopszkij   32869 2022-09-06 63.5ac99656.js
+-rw-rw-r-- 1 utopszkij utopszkij    1226 2022-09-06 64.c6838e95.js
+-rw-rw-r-- 1 utopszkij utopszkij    8531 2022-09-06 65.4c1b089e.js
+-rw-rw-r-- 1 utopszkij utopszkij    5535 2022-09-06 66.379a6b45.js
+-rw-rw-r-- 1 utopszkij utopszkij    8585 2022-09-06 67.15703e17.js
+-rw-rw-r-- 1 utopszkij utopszkij    1643 2022-09-06 68.ffdefd7d.js
+-rw-rw-r-- 1 utopszkij utopszkij    1896 2022-09-06 69.bdeb7b9b.js
+-rw-rw-r-- 1 utopszkij utopszkij    4723 2022-09-06 70.3dadb5ed.js
+-rw-rw-r-- 1 utopszkij utopszkij   14603 2022-09-06 71.2c97fe38.js
+-rw-rw-r-- 1 utopszkij utopszkij    2578 2022-09-06 72.dc778e17.js
+-rw-rw-r-- 1 utopszkij utopszkij    5590 2022-09-06 73.d88fcb57.js
+-rw-rw-r-- 1 utopszkij utopszkij    2585 2022-09-06 74.bba2165e.js
+-rw-rw-r-- 1 utopszkij utopszkij   13591 2022-09-06 75.15562a81.js
+-rw-rw-r-- 1 utopszkij utopszkij   30484 2022-09-06 76.21f5a94e.js
+-rw-rw-r-- 1 utopszkij utopszkij   13131 2022-09-06 77.0725268e.js
+-rw-rw-r-- 1 utopszkij utopszkij    1689 2022-09-06 7.74f2ce90.js
+-rw-rw-r-- 1 utopszkij utopszkij   25441 2022-09-06 78.d6f610d1.js
+-rw-rw-r-- 1 utopszkij utopszkij    2399 2022-09-06 79.60d67faa.js
+-rw-rw-r-- 1 utopszkij utopszkij   60846 2022-09-06 80.99d71ee0.js
+-rw-rw-r-- 1 utopszkij utopszkij   33343 2022-09-06 81.f1500469.js
+-rw-rw-r-- 1 utopszkij utopszkij    6887 2022-09-06 82.69f363a6.js
+-rw-rw-r-- 1 utopszkij utopszkij   16537 2022-09-06 83.f1fbcb2c.js
+-rw-rw-r-- 1 utopszkij utopszkij    1265 2022-09-06 84.b76e3156.js
+-rw-rw-r-- 1 utopszkij utopszkij    2895 2022-09-06 85.efc4bd54.js
+-rw-rw-r-- 1 utopszkij utopszkij  124878 2022-09-06 86.85011b24.js
+-rw-rw-r-- 1 utopszkij utopszkij    2325 2022-09-06 87.6a88d571.js
+-rw-rw-r-- 1 utopszkij utopszkij    5421 2022-09-06 88.0f45cfe0.js
+-rw-rw-r-- 1 utopszkij utopszkij     692 2022-09-06 8.8928eb8b.js
+-rw-rw-r-- 1 utopszkij utopszkij    1737 2022-09-06 89.e67ddb59.js
+-rw-rw-r-- 1 utopszkij utopszkij   24330 2022-09-06 90.96ebfa9b.js
+-rw-rw-r-- 1 utopszkij utopszkij    4995 2022-09-06 91.cdde4d3f.js
+-rw-rw-r-- 1 utopszkij utopszkij    8016 2022-09-06 92.dc3f06d2.js
+-rw-rw-r-- 1 utopszkij utopszkij    3633 2022-09-06 93.aaa04d52.js
+-rw-rw-r-- 1 utopszkij utopszkij    5716 2022-09-06 94.2af5650c.js
+-rw-rw-r-- 1 utopszkij utopszkij    1760 2022-09-06 95.1d44ec16.js
+-rw-rw-r-- 1 utopszkij utopszkij  149880 2022-09-06 9.63ebb16b.js
+-rw-rw-r-- 1 utopszkij utopszkij   77392 2022-09-06 96.9545127d.js
+-rw-rw-r-- 1 utopszkij utopszkij    2209 2022-09-06 97.8b18f487.js
+-rw-rw-r-- 1 utopszkij utopszkij   37629 2022-09-06 98.cb259cd0.js
+-rw-rw-r-- 1 utopszkij utopszkij   66094 2022-09-06 99.6251650a.js
+-rw-rw-r-- 1 utopszkij utopszkij 1569543 2022-09-06 app.7e0dc8c8.js
+
+./vendor/chart.js/dist/docs/axes:
+összesen 204
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 cartesian
+-rw-rw-r-- 1 utopszkij utopszkij 30211 2022-09-06 _common.html
+-rw-rw-r-- 1 utopszkij utopszkij 30369 2022-09-06 _common_ticks.html
+-rw-rw-r-- 1 utopszkij utopszkij 53427 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 35296 2022-09-06 labelling.html
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 radial
+-rw-rw-r-- 1 utopszkij utopszkij 39156 2022-09-06 styling.html
+
+./vendor/chart.js/dist/docs/axes/cartesian:
+összesen 384
+-rw-rw-r-- 1 utopszkij utopszkij 50256 2022-09-06 category.html
+-rw-rw-r-- 1 utopszkij utopszkij 29162 2022-09-06 _common.html
+-rw-rw-r-- 1 utopszkij utopszkij 30914 2022-09-06 _common_ticks.html
+-rw-rw-r-- 1 utopszkij utopszkij 89886 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 51677 2022-09-06 linear.html
+-rw-rw-r-- 1 utopszkij utopszkij 42281 2022-09-06 logarithmic.html
+-rw-rw-r-- 1 utopszkij utopszkij 52774 2022-09-06 time.html
+-rw-rw-r-- 1 utopszkij utopszkij 31087 2022-09-06 timeseries.html
+
+./vendor/chart.js/dist/docs/axes/radial:
+összesen 112
+-rw-rw-r-- 1 utopszkij utopszkij 54922 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 54112 2022-09-06 linear.html
+
+./vendor/chart.js/dist/docs/charts:
+összesen 480
+-rw-rw-r-- 1 utopszkij utopszkij 42413 2022-09-06 area.html
+-rw-rw-r-- 1 utopszkij utopszkij 69972 2022-09-06 bar.html
+-rw-rw-r-- 1 utopszkij utopszkij 43272 2022-09-06 bubble.html
+-rw-rw-r-- 1 utopszkij utopszkij 53721 2022-09-06 doughnut.html
+-rw-rw-r-- 1 utopszkij utopszkij   815 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 66807 2022-09-06 line.html
+-rw-rw-r-- 1 utopszkij utopszkij 44312 2022-09-06 mixed.html
+-rw-rw-r-- 1 utopszkij utopszkij 46058 2022-09-06 polar.html
+-rw-rw-r-- 1 utopszkij utopszkij 58596 2022-09-06 radar.html
+-rw-rw-r-- 1 utopszkij utopszkij 37884 2022-09-06 scatter.html
+
+./vendor/chart.js/dist/docs/configuration:
+összesen 644
+-rw-rw-r-- 1 utopszkij utopszkij 60502 2022-09-06 animations.html
+-rw-rw-r-- 1 utopszkij utopszkij 49674 2022-09-06 canvas-background.html
+-rw-rw-r-- 1 utopszkij utopszkij 34104 2022-09-06 decimation.html
+-rw-rw-r-- 1 utopszkij utopszkij 30183 2022-09-06 device-pixel-ratio.html
+-rw-rw-r-- 1 utopszkij utopszkij 43319 2022-09-06 elements.html
+-rw-rw-r-- 1 utopszkij utopszkij 39944 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 61546 2022-09-06 interactions.html
+-rw-rw-r-- 1 utopszkij utopszkij 29877 2022-09-06 layout.html
+-rw-rw-r-- 1 utopszkij utopszkij 54290 2022-09-06 legend.html
+-rw-rw-r-- 1 utopszkij utopszkij 31582 2022-09-06 locale.html
+-rw-rw-r-- 1 utopszkij utopszkij 42209 2022-09-06 responsive.html
+-rw-rw-r-- 1 utopszkij utopszkij 31700 2022-09-06 subtitle.html
+-rw-rw-r-- 1 utopszkij utopszkij 36350 2022-09-06 title.html
+-rw-rw-r-- 1 utopszkij utopszkij 85299 2022-09-06 tooltip.html
+
+./vendor/chart.js/dist/docs/developers:
+összesen 348
+-rw-rw-r-- 1 utopszkij utopszkij 52585 2022-09-06 api.html
+-rw-rw-r-- 1 utopszkij utopszkij 43526 2022-09-06 axes.html
+-rw-rw-r-- 1 utopszkij utopszkij 44403 2022-09-06 charts.html
+-rw-rw-r-- 1 utopszkij utopszkij 46680 2022-09-06 contributing.html
+-rw-rw-r-- 1 utopszkij utopszkij 35963 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 48912 2022-09-06 plugins.html
+-rw-rw-r-- 1 utopszkij utopszkij 31424 2022-09-06 publishing.html
+-rw-rw-r-- 1 utopszkij utopszkij 41902 2022-09-06 updates.html
+
+./vendor/chart.js/dist/docs/general:
+összesen 300
+-rw-rw-r-- 1 utopszkij utopszkij 35474 2022-09-06 accessibility.html
+-rw-rw-r-- 1 utopszkij utopszkij 40037 2022-09-06 colors.html
+-rw-rw-r-- 1 utopszkij utopszkij 54239 2022-09-06 data-structures.html
+-rw-rw-r-- 1 utopszkij utopszkij 36044 2022-09-06 fonts.html
+-rw-rw-r-- 1 utopszkij utopszkij   827 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 39541 2022-09-06 options.html
+-rw-rw-r-- 1 utopszkij utopszkij 34575 2022-09-06 padding.html
+-rw-rw-r-- 1 utopszkij utopszkij 52340 2022-09-06 performance.html
+
+./vendor/chart.js/dist/docs/getting-started:
+összesen 248
+-rw-rw-r-- 1 utopszkij utopszkij 42293 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 36752 2022-09-06 installation.html
+-rw-rw-r-- 1 utopszkij utopszkij 44724 2022-09-06 integration.html
+-rw-rw-r-- 1 utopszkij utopszkij 38632 2022-09-06 usage.html
+-rw-rw-r-- 1 utopszkij utopszkij 83694 2022-09-06 v3-migration.html
+
+./vendor/chart.js/dist/docs/samples:
+összesen 156
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 advanced
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 animations
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 area
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 bar
+-rw-rw-r-- 1 utopszkij utopszkij   823 2022-09-06 index.html
+-rw-rw-r-- 1 utopszkij utopszkij 30436 2022-09-06 information.html
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 legend
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 line
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 other-charts
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 plugins
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 scale-options
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 scales
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 scriptable
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 subtitle
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 title
+drwxrwxr-x 2 utopszkij utopszkij  4096 2022-09-06 tooltip
+-rw-rw-r-- 1 utopszkij utopszkij 61819 2022-09-06 utils.html
+
+./vendor/chart.js/dist/docs/samples/advanced:
+összesen 372
+-rw-rw-r-- 1 utopszkij utopszkij 51282 2022-09-06 data-decimation.html
+-rw-rw-r-- 1 utopszkij utopszkij 52523 2022-09-06 derived-axis-type.html
+-rw-rw-r-- 1 utopszkij utopszkij 43933 2022-09-06 derived-chart-type.html
+-rw-rw-r-- 1 utopszkij utopszkij 53378 2022-09-06 linear-gradient.html
+-rw-rw-r-- 1 utopszkij utopszkij 51011 2022-09-06 programmatic-events.html
+-rw-rw-r-- 1 utopszkij utopszkij 60410 2022-09-06 progress-bar.html
+-rw-rw-r-- 1 utopszkij utopszkij 55154 2022-09-06 radial-gradient.html
+
+./vendor/chart.js/dist/docs/samples/animations:
+összesen 276
+-rw-rw-r-- 1 utopszkij utopszkij 45679 2022-09-06 delay.html
+-rw-rw-r-- 1 utopszkij utopszkij 57249 2022-09-06 drop.html
+-rw-rw-r-- 1 utopszkij utopszkij 57545 2022-09-06 loop.html
+-rw-rw-r-- 1 utopszkij utopszkij 64429 2022-09-06 progressive-line-easing.html
+-rw-rw-r-- 1 utopszkij utopszkij 48747 2022-09-06 progressive-line.html
+
+./vendor/chart.js/dist/docs/samples/area:
+összesen 288
+-rw-rw-r-- 1 utopszkij utopszkij 51978 2022-09-06 line-boundaries.html
+-rw-rw-r-- 1 utopszkij utopszkij 63082 2022-09-06 line-datasets.html
+-rw-rw-r-- 1 utopszkij utopszkij 51432 2022-09-06 line-drawtime.html
+-rw-rw-r-- 1 utopszkij utopszkij 65290 2022-09-06 line-stacked.html
+-rw-rw-r-- 1 utopszkij utopszkij 56666 2022-09-06 radar.html
+
+./vendor/chart.js/dist/docs/samples/bar:
+összesen 292
+-rw-rw-r-- 1 utopszkij utopszkij 44593 2022-09-06 border-radius.html
+-rw-rw-r-- 1 utopszkij utopszkij 44732 2022-09-06 floating.html
+-rw-rw-r-- 1 utopszkij utopszkij 56231 2022-09-06 horizontal.html
+-rw-rw-r-- 1 utopszkij utopszkij 45141 2022-09-06 stacked-groups.html
+-rw-rw-r-- 1 utopszkij utopszkij 43684 2022-09-06 stacked.html
+-rw-rw-r-- 1 utopszkij utopszkij 54947 2022-09-06 vertical.html
+
+./vendor/chart.js/dist/docs/samples/legend:
+összesen 236
+-rw-rw-r-- 1 utopszkij utopszkij 42839 2022-09-06 events.html
+-rw-rw-r-- 1 utopszkij utopszkij 57733 2022-09-06 html.html
+-rw-rw-r-- 1 utopszkij utopszkij 41304 2022-09-06 point-style.html
+-rw-rw-r-- 1 utopszkij utopszkij 42348 2022-09-06 position.html
+-rw-rw-r-- 1 utopszkij utopszkij 43692 2022-09-06 title.html
+
+./vendor/chart.js/dist/docs/samples/line:
+összesen 336
+-rw-rw-r-- 1 utopszkij utopszkij 44193 2022-09-06 interpolation.html
+-rw-rw-r-- 1 utopszkij utopszkij 54774 2022-09-06 line.html
+-rw-rw-r-- 1 utopszkij utopszkij 47001 2022-09-06 multi-axis.html
+-rw-rw-r-- 1 utopszkij utopszkij 56767 2022-09-06 point-styling.html
+-rw-rw-r-- 1 utopszkij utopszkij 40646 2022-09-06 segments.html
+-rw-rw-r-- 1 utopszkij utopszkij 47807 2022-09-06 stepped.html
+-rw-rw-r-- 1 utopszkij utopszkij 44314 2022-09-06 styling.html
+
+./vendor/chart.js/dist/docs/samples/other-charts:
+összesen 664
+-rw-rw-r-- 1 utopszkij utopszkij 56417 2022-09-06 bubble.html
+-rw-rw-r-- 1 utopszkij utopszkij 56179 2022-09-06 combo-bar-line.html
+-rw-rw-r-- 1 utopszkij utopszkij 57885 2022-09-06 doughnut.html
+-rw-rw-r-- 1 utopszkij utopszkij 50749 2022-09-06 multi-series-pie.html
+-rw-rw-r-- 1 utopszkij utopszkij 54098 2022-09-06 pie.html
+-rw-rw-r-- 1 utopszkij utopszkij 51522 2022-09-06 polar-area-center-labels.html
+-rw-rw-r-- 1 utopszkij utopszkij 49655 2022-09-06 polar-area.html
+-rw-rw-r-- 1 utopszkij utopszkij 54769 2022-09-06 radar.html
+-rw-rw-r-- 1 utopszkij utopszkij 49295 2022-09-06 radar-skip-points.html
+-rw-rw-r-- 1 utopszkij utopszkij 56453 2022-09-06 scatter.html
+-rw-rw-r-- 1 utopszkij utopszkij 61129 2022-09-06 scatter-multi-axis.html
+-rw-rw-r-- 1 utopszkij utopszkij 56632 2022-09-06 stacked-bar-line.html
+
+./vendor/chart.js/dist/docs/samples/plugins:
+összesen 136
+-rw-rw-r-- 1 utopszkij utopszkij 43903 2022-09-06 chart-area-border.html
+-rw-rw-r-- 1 utopszkij utopszkij 42645 2022-09-06 doughnut-empty-state.html
+-rw-rw-r-- 1 utopszkij utopszkij 45753 2022-09-06 quadrants.html
+
+./vendor/chart.js/dist/docs/samples/scale-options:
+összesen 192
+-rw-rw-r-- 1 utopszkij utopszkij 46670 2022-09-06 center.html
+-rw-rw-r-- 1 utopszkij utopszkij 49019 2022-09-06 grid.html
+-rw-rw-r-- 1 utopszkij utopszkij 48282 2022-09-06 ticks.html
+-rw-rw-r-- 1 utopszkij utopszkij 45943 2022-09-06 titles.html
+
+./vendor/chart.js/dist/docs/samples/scales:
+összesen 392
+-rw-rw-r-- 1 utopszkij utopszkij 40878 2022-09-06 linear-min-max.html
+-rw-rw-r-- 1 utopszkij utopszkij 41471 2022-09-06 linear-min-max-suggested.html
+-rw-rw-r-- 1 utopszkij utopszkij 58178 2022-09-06 linear-step-size.html
+-rw-rw-r-- 1 utopszkij utopszkij 44616 2022-09-06 log.html
+-rw-rw-r-- 1 utopszkij utopszkij 44431 2022-09-06 stacked.html
+-rw-rw-r-- 1 utopszkij utopszkij 47418 2022-09-06 time-combo.html
+-rw-rw-r-- 1 utopszkij utopszkij 53534 2022-09-06 time-line.html
+-rw-rw-r-- 1 utopszkij utopszkij 56139 2022-09-06 time-max-span.html
+
+./vendor/chart.js/dist/docs/samples/scriptable:
+összesen 288
+-rw-rw-r-- 1 utopszkij utopszkij 43023 2022-09-06 bar.html
+-rw-rw-r-- 1 utopszkij utopszkij 53665 2022-09-06 bubble.html
+-rw-rw-r-- 1 utopszkij utopszkij 45489 2022-09-06 line.html
+-rw-rw-r-- 1 utopszkij utopszkij 45207 2022-09-06 pie.html
+-rw-rw-r-- 1 utopszkij utopszkij 43865 2022-09-06 polar.html
+-rw-rw-r-- 1 utopszkij utopszkij 46794 2022-09-06 radar.html
+
+./vendor/chart.js/dist/docs/samples/subtitle:
+összesen 40
+-rw-rw-r-- 1 utopszkij utopszkij 39511 2022-09-06 basic.html
+
+./vendor/chart.js/dist/docs/samples/title:
+összesen 44
+-rw-rw-r-- 1 utopszkij utopszkij 41710 2022-09-06 alignment.html
+
+./vendor/chart.js/dist/docs/samples/tooltip:
+összesen 264
+-rw-rw-r-- 1 utopszkij utopszkij 42626 2022-09-06 content.html
+-rw-rw-r-- 1 utopszkij utopszkij 64730 2022-09-06 html.html
+-rw-rw-r-- 1 utopszkij utopszkij 55229 2022-09-06 interactions.html
+-rw-rw-r-- 1 utopszkij utopszkij 46634 2022-09-06 point-style.html
+-rw-rw-r-- 1 utopszkij utopszkij 49167 2022-09-06 position.html
+
+./vendor/chart.js/helpers:
+összesen 16
+-rw-rw-r-- 1 utopszkij utopszkij  40 2022-09-06 helpers.js
+-rw-rw-r-- 1 utopszkij utopszkij  37 2022-09-06 helpers.mjs
+-rw-rw-r-- 1 utopszkij utopszkij  34 2022-09-06 helpers.mts
+-rw-rw-r-- 1 utopszkij utopszkij 175 2022-09-06 package.json
+
+./vendor/chart.js/types:
+összesen 152
+-rw-rw-r-- 1 utopszkij utopszkij   2683 2022-09-06 adapters.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij    950 2022-09-06 animation.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij     99 2022-09-06 basic.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij     61 2022-09-06 color.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij    493 2022-09-06 element.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij    558 2022-09-06 geometric.d.ts
+drwxrwxr-x 2 utopszkij utopszkij   4096 2022-09-06 helpers
+-rw-rw-r-- 1 utopszkij utopszkij 113603 2022-09-06 index.esm.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij   1634 2022-09-06 layout.d.ts
+drwxrwxr-x 9 utopszkij utopszkij   4096 2022-09-06 tests
+-rw-rw-r-- 1 utopszkij utopszkij    818 2022-09-06 utils.d.ts
+
+./vendor/chart.js/types/helpers:
+összesen 64
+-rw-rw-r-- 1 utopszkij utopszkij 2699 2022-09-06 helpers.canvas.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  857 2022-09-06 helpers.collection.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij 1193 2022-09-06 helpers.color.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij 6363 2022-09-06 helpers.core.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  992 2022-09-06 helpers.curve.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  779 2022-09-06 helpers.dom.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  187 2022-09-06 helpers.easing.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  809 2022-09-06 helpers.extras.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij   11 2022-09-06 helpers.interpolation.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  313 2022-09-06 helpers.intl.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  767 2022-09-06 helpers.math.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij 2581 2022-09-06 helpers.options.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  553 2022-09-06 helpers.rtl.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij   11 2022-09-06 helpers.segment.d.ts
+-rw-rw-r-- 1 utopszkij utopszkij  509 2022-09-06 index.d.ts
+
+./vendor/chart.js/types/tests:
+összesen 88
+-rw-rw-r-- 1 utopszkij utopszkij 1072 2022-09-06 animation.ts
+-rw-rw-r-- 1 utopszkij utopszkij  576 2022-09-06 autogen.js
+-rw-rw-r-- 1 utopszkij utopszkij 1366 2022-09-06 chart_types.ts
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 controllers
+-rw-rw-r-- 1 utopszkij utopszkij  328 2022-09-06 dataset_null_data.ts
+-rw-rw-r-- 1 utopszkij utopszkij  459 2022-09-06 data_types.ts
+-rw-rw-r-- 1 utopszkij utopszkij  629 2022-09-06 defaults.ts
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 elements
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 extensions
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 helpers
+-rw-rw-r-- 1 utopszkij utopszkij  433 2022-09-06 interaction.ts
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 layout
+-rw-rw-r-- 1 utopszkij utopszkij  524 2022-09-06 options.ts
+-rw-rw-r-- 1 utopszkij utopszkij  301 2022-09-06 overrides.ts
+-rw-rw-r-- 1 utopszkij utopszkij  457 2022-09-06 parsed.data.type.ts
+drwxrwxr-x 5 utopszkij utopszkij 4096 2022-09-06 plugins
+-rw-rw-r-- 1 utopszkij utopszkij  833 2022-09-06 register.ts
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 scales
+-rw-rw-r-- 1 utopszkij utopszkij  274 2022-09-06 scriptable_core_chart_options.ts
+-rw-rw-r-- 1 utopszkij utopszkij  906 2022-09-06 scriptable.ts
+-rw-rw-r-- 1 utopszkij utopszkij  453 2022-09-06 test_instance_assignment.ts
+-rw-rw-r-- 1 utopszkij utopszkij  210 2022-09-06 tsconfig.json
+
+./vendor/chart.js/types/tests/controllers:
+összesen 36
+-rw-rw-r-- 1 utopszkij utopszkij 324 2022-09-06 bubble_chart_options.ts
+-rw-rw-r-- 1 utopszkij utopszkij 384 2022-09-06 doughnut_meta_total.ts
+-rw-rw-r-- 1 utopszkij utopszkij 240 2022-09-06 doughnut_offset.ts
+-rw-rw-r-- 1 utopszkij utopszkij 238 2022-09-06 doughnut_outer_radius.ts
+-rw-rw-r-- 1 utopszkij utopszkij 267 2022-09-06 line_scriptable_parsed_data.ts
+-rw-rw-r-- 1 utopszkij utopszkij 391 2022-09-06 line_segments.ts
+-rw-rw-r-- 1 utopszkij utopszkij 444 2022-09-06 line_span_gaps.ts
+-rw-rw-r-- 1 utopszkij utopszkij 250 2022-09-06 line_styling_array.ts
+-rw-rw-r-- 1 utopszkij utopszkij 825 2022-09-06 radar_dataset_indexable_options.ts
+
+./vendor/chart.js/types/tests/elements:
+összesen 4
+-rw-rw-r-- 1 utopszkij utopszkij 729 2022-09-06 scriptable_element_options.ts
+
+./vendor/chart.js/types/tests/extensions:
+összesen 8
+-rw-rw-r-- 1 utopszkij utopszkij 441 2022-09-06 plugin.ts
+-rw-rw-r-- 1 utopszkij utopszkij 815 2022-09-06 scale.ts
+
+./vendor/chart.js/types/tests/helpers:
+összesen 4
+-rw-rw-r-- 1 utopszkij utopszkij 454 2022-09-06 options.ts
+
+./vendor/chart.js/types/tests/layout:
+összesen 4
+-rw-rw-r-- 1 utopszkij utopszkij 362 2022-09-06 position.ts
+
+./vendor/chart.js/types/tests/plugins:
+összesen 16
+-rw-rw-r-- 1 utopszkij utopszkij  286 2022-09-06 defaults.ts
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 plugin.decimation
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 plugin.filler
+drwxrwxr-x 2 utopszkij utopszkij 4096 2022-09-06 plugin.tooltip
+
+./vendor/chart.js/types/tests/plugins/plugin.decimation:
+összesen 4
+-rw-rw-r-- 1 utopszkij utopszkij 984 2022-09-06 decimation_algorithm.ts
+
+./vendor/chart.js/types/tests/plugins/plugin.filler:
+összesen 4
+-rw-rw-r-- 1 utopszkij utopszkij 113 2022-09-06 fill_target_true.ts
+
+./vendor/chart.js/types/tests/plugins/plugin.tooltip:
+összesen 20
+-rw-rw-r-- 1 utopszkij utopszkij 255 2022-09-06 chart.tooltip.ts
+-rw-rw-r-- 1 utopszkij utopszkij 356 2022-09-06 tooltip_dataset_type.ts
+-rw-rw-r-- 1 utopszkij utopszkij 332 2022-09-06 tooltip_parsed_data_chart_defaults.ts
+-rw-rw-r-- 1 utopszkij utopszkij 350 2022-09-06 tooltip_parsed_data.ts
+-rw-rw-r-- 1 utopszkij utopszkij 273 2022-09-06 tooltip_scriptable_background_color.ts
+
+./vendor/chart.js/types/tests/scales:
+összesen 12
+-rw-rw-r-- 1 utopszkij utopszkij  192 2022-09-06 chart_options.ts
+-rw-rw-r-- 1 utopszkij utopszkij 1342 2022-09-06 options.ts
+-rw-rw-r-- 1 utopszkij utopszkij  470 2022-09-06 time_string_max.ts
 
 ./vendor/ckeditor:
 összesen 1080

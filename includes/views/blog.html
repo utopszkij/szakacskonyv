@@ -13,22 +13,30 @@
                     
                     <div class="row likeLine">
                         <div class="col-12">
-                            <var 
+                            <var title="Tetszik"
                                 v-bind:class="'userlike_'+blog.userLike"
                                 v-if="((blog.userLike == false) & (loged > 0))"
                                 v-on:click="likeClick()">
-                                <em class="fas fa-thumbs-up" style="cursor:pointer"></em>&nbsp;Tetszik 
+                                <em class="fas fa-thumbs-up" style="cursor:pointer"></em> 
                             </var>
-                            <var 
+                            <var title="Mégsem tetszik"
                                 v-bind:class="'userlike_'+blog.userLike"
                                 v-if="((blog.userLike == true) & (loged > 0))"
                                 v-on:click="dislikeClick()">
-                                <em class="fas fa-thumbs-down" style="cursor:pointer"></em>&nbsp;Mégsem tetszik 
+                                <em class="fas fa-thumbs-up" style="cursor:pointer"></em> 
                             </var>
                             &nbsp; 
                             <a v-bind:href="HREF('likes',{'type':'blog','id':blog.id})"
-                                class="likeCount" v-if="blog.likeCount > 0">
+                                class="likeCount" v-if="((blog.likeCount > 0) & !blog.userLike)">
                                 {{ blog.likeCount }} embernek tetszik
+                            </a>
+                            <a v-bind:href="HREF('likes',{'type':'blog','id':blog.id})"
+                                class="likeCount" v-if="((blog.likeCount > 1) & blog.userLike)">
+                                Neked és még {{ blog.likeCount }} embernek tetszik
+                            </a>
+                            <a v-bind:href="HREF('likes',{'type':'blog','id':blog.id})"
+                                class="likeCount" v-if="((blog.likeCount == 1) & blog.userLike)">
+                                Neked  tetszik
                             </a>
                         </div>
                     </div>

@@ -4,14 +4,6 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <!-- a v-if="logedAvatar != ''" class="nav-link navbar-toggler"
-                  v-bind:href="HREF('useredit',{id:loged})">
-                  <img v-bind:src="'images/users/'+logedAvatar"
-                      style="height:34px; margin:0px; float:right" />
-                  <var v-bind:class="logedGroup">
-                      {{ logedName }}
-                  </var>
-          </a -->
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -30,8 +22,12 @@
                 <a class="nav-link" v-bind:href="HREF('blogs',{'page':1})">
                 <em class="fas fa-feather"></em>&nbsp;{{ lng('BLOGS') }}</a>
               </li>
-              
               <li class="nav-item">
+                <a class="nav-link" v-bind:href="HREF('admin',{})">
+                <em class="fas fa-tools"></em>&nbsp;{{ lng('SETUP') }}</a>
+              </li>
+              
+              <!-- li class="nav-item">
                   <var class="nav-link" onclick="submenuToggle()" 
                       style="cursor:pointer">
                        <em class="fas fa-tools"></em>&nbsp;{{ lng('SETUP') }}
@@ -45,7 +41,8 @@
                           <a class="dropdown-item" v-bind:href="HREF('mertekegysegek',{})">{{ lng('UNITS') }}</a>
                           <a class="dropdown-item" v-bind:href="HREF('cimkek',{})">{{ lng('LABELS') }}</a>
                       </div>
-              </li>	
+              </li -->
+
             </ul>
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0 text-right">
                   <li class="nav-item" v-if="MULTIUSER & (loged <= 0)">

@@ -1,0 +1,62 @@
+#admin {background-color: #343A40; padding: 0px 0px 0px 0px}
+#adminLeftBar {background-color:#343A40; color:#D6D8D9;
+    border-style:solid; border-width:0px; 10px; 0px 0px; 
+    border-color:#DADADA;}
+#adminLeftBar a,
+#adminLeftBar a:hover {color:#D6D8D9; text-decoration:none}
+#adminLeftBar ul {list-style: none; padding:1% 1% 1% 1%}
+#adminLeftBar li {padding:2%; border-style:solid; border-width:0px 0px 1px 0px; display:block}
+#adminLeftBar li:hover {background-color:#545A60;}
+
+#adminBody {background-color: white; color:#212444; text-align:center;
+   border-style:solid; border-width:0px 0px 0px 5px; border-color:#EEEEEE}
+
+#adminNavBar {border-style:solid; border-width:1px 0px 1px; padding:10px; text-align:left}
+#adminNavBar a,
+#adminNavBar a:hover {color:#76b5c5; text-decoration:none}
+
+.adminBox {border-radius:10px; display:block; text-align:left;
+    min-height:160px; margin:2%; padding:5%}
+#adminBody .adminBox p {color:white}
+#adminBody .adminBox3 p {color:black}
+#adminBody .adminBox0 p {color:black}
+
+.adminBox h2,
+.adminBox h3,
+.adminBox h2:hover,
+.adminBox h3:hover {color:white}    
+.adminBox a,
+.adminBox a:hover {color:white; text-decoration:none}
+
+.adminBox3 h2,
+.adminBox3 h3,
+.adminBox3 h2:hover,
+.adminBox3 h3:hover {color:black}    
+.adminBox3 a,
+.adminBox3 a:hover {color:black; text-decoration:none}
+
+.adminBox5 h2,
+.adminBox5 h3,
+.adminBox5 h2:hover,
+.adminBox5 h3:hover {color:black}    
+.adminBox5 a,
+.adminBox5 a:hover {color:black; text-decoration:none}
+
+.adminBox0 h2,
+.adminBox0 h3,
+.adminBox0 h2:hover,
+.adminBox0 h3:hover {color:black}    
+.adminBox0 a,
+.adminBox0 a:hover {color:black; text-decoration:none}
+
+.adminBox0 {border-style:solid; border-width:1px; border-color:#212444; min-height:460px}
+.adminBox1 {background-color:#17A2B8; color: white;}
+.adminBox2 {background-color:#28A745; color: white;}
+.adminBox3 {background-color:#FFC107; color: black;}
+.adminBox4 {background-color:#DC3545; color: white;}
+.adminBox5 {background-color:#89f4f3; color: black; min-height:460px}
+.adminBox6 {background-color:#4da0a7; color: white; min-height:460px}
+
+#admin .current {color:blue}
+
+#adminBody .fancy {border-image:none}

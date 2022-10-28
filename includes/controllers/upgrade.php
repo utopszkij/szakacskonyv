@@ -285,7 +285,52 @@ class Upgrade {
 		return $result;
 	} 
 	
-	protected function do_v2_0($dbverzio) {
+		protected function do_v2_1($dbverzio) {
+			if ($this->versionAdjust($dbverzio) < 'v 2. 1') {
+				$q = new Query('users');
+				$q->exec('DROP TABLE IF EXISTS `events`');
+				$q->exec('CREATE TABLE `events` (
+					`created_at` varchar(10) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+					`event` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+					`data` varchar(80) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+					KEY `created_by` (`created_at`),
+					KEY `combo` (`created_at`,`event`),
+					KEY `combo2` (`created_at`,`event`,`data`)
+				  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+				');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+
+				$q = new Query('users');
+				$q->exec('ALTER TABLE `users` ADD `created_at` DATE NOT NULL DEFAULT (CURRENT_DATE)');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+
+				$q = new Query('users');
+				$q->exec('UPDATE users SET created_at = DATE_ADD("2022-01-01", INTERVAL RAND()*150 DAY)');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+
+				$q = new Query('dbverzio');
+				$q->exec('SET SQL_SAFE_UPDATES = 0');	
+				$q = new Query('dbverzio');
+				$r = new Record();
+				$r->verzio = 'v2.1';
+				$q->where('verzio','<>','')->update($r);
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+	
+			}	
+		}	
+
+		protected function do_v2_0($dbverzio) {
 		if ($this->versionAdjust($dbverzio) < 'v 2. 0') {
 			$q = new Query('users');
 			$q->exec('DROP TABLE IF EXISTS `blogs`');
@@ -603,6 +648,7 @@ class Upgrade {
 		$this->do_v1_4($dbverzio);
 		$this->do_v1_6($dbverzio);
 		$this->do_v2_0($dbverzio);
+		$this->do_v2_1($dbverzio);
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

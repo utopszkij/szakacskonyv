@@ -145,6 +145,12 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.1.0
+2022.10.28
+- Új admin felület
+- dizájn javítások
+### *************************************
+
 ## verzió v2.0.5
 2022.10.25
 - receptek is like-olhatóak
