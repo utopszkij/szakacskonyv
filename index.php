@@ -1,4 +1,7 @@
 <?php
+if (isset($_COOKIE['sid'])) {
+	session_id($_COOKIE['sid']);
+}
 session_start();
 global $components;
 
@@ -13,6 +16,7 @@ include_once('vendor/model.php');
 include_once('vendor/view.php');
 include_once('vendor/controller.php');
 include_once('vendor/fw.php');
+include_once('includes/models/statisticmodel.php');
 
 importComponent('osszegzes');
 importComponent('napimenu');
@@ -28,11 +32,16 @@ importComponent('cimkek');
 importComponent('upgrade');
 importComponent('blog');
 importComponent('like');
+importComponent('admin');
+
+// statisztikai adatgyüjtés
+$statisticModel = new StatisticModel();
+$statisticModel->saveStatistic();
 
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.0.5';
+$fileVerzio = 'v2.1';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -87,6 +96,7 @@ if (in_array($fw->compName.'.'.$fw->task,
 	<script src="vendor/fontawesome/js/all.min.js"></script>
 	<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
 
+	<link rel="stylesheet" href="admin.css?t=<?php echo $fileVerzio; ?>">
 	<link rel="stylesheet" href="style.css?t=<?php echo $fileVerzio; ?>">
 	<!-- multi language -->
 	<?php
@@ -135,7 +145,7 @@ if (in_array($fw->compName.'.'.$fw->task,
 	}
 	?>
 
-	<div class="container">
+	<div class="container" id="container">
 		<div class="row" id="header" onclick="document.location='index.php';"></div>
 		
 		<?php 
@@ -166,10 +176,50 @@ if (in_array($fw->compName.'.'.$fw->task,
 			],'footer'); 
 		?>
 	</div>
+	<script>
+		if (document.cookie.search('cookieEnabled=2') >= 0) {
+			document.write('<p id="cookieEnabled">Csoki kezelés engedélyezve van. Letiltásához kattints ide:'+
+			'<a href="index.php" onclick="setCookie(\'cookieEnabled\',0,100);">Letilt</a></p>');
+		} else if (document.location.href.search('adatkezeles') < 0) {
+			popupConfirm('Ennek a web oldalnak a használatához un. "munkamenet csokik" használtata szükséges.'+
+			'<br />Lásd: <a href="index.php?task=adatkezeles">Adatkezelési leírás</a>'+
+			'<br />Kérjük engedélyezd a csokik kezelését!',
+			function() {
+				setCookie('cookieEnabled',2,100);
+				document.location='index.php';
+			})
+		}
+	</script>	
 </body>
 <script type="text/javascript">
-		// világos/sötét téma
-		
+		// check in iframe 
+		// az admin oldalon vannak iframe -be hivva, itt mindig a lift téma kell és
+		// apage header, footer nem kell
+		if (window.self !== window.top) {
+			document.body.className = 'light';
+			document.getElementById('header').style.display="none";
+			document.getElementById('mainmenu').style.display="none";
+			document.getElementById('footer').style.display="none";
+			document.getElementById('scrolltotop').style.display="none";
+			document.getElementById('cookieEnabled').style.display="none";
+			document.getElementById('container').className="inIframe";
+		} else {
+			const currentTheme = getCookie("theme");
+			var theme = '';
+			if (currentTheme == "dark") {
+				document.body.className = 'dark';
+				theme = 'dark';
+			} else if (currentTheme == "light") {
+				document.body.className = 'light';
+				theme = 'light';
+			} else {
+				document.body.className = 'light';
+				theme = 'light';
+			}
+			setCookie("theme", theme,100);
+		}
+
+		// világos/sötét téma váltás
 		function themeTogle() {
 			const currentTheme = getCookie("theme");
 			var theme = getCookie("theme");
@@ -186,23 +236,23 @@ if (in_array($fw->compName.'.'.$fw->task,
 			setCookie("theme", theme,100);
 		}
 
-		const currentTheme = getCookie("theme");
-		var theme = '';
-		if (currentTheme == "dark") {
-	  		document.body.className = 'dark';
-	  		theme = 'dark';
-		} else if (currentTheme == "light") {
-			document.body.className = 'light';
-	  		theme = 'light';
-		} else {
-			document.body.className = 'light';
-	  		theme = 'light';
-		}
-		setCookie("theme", theme,100);
-
+		// mozgatható elemek
 		dragElement(document.getElementById("popup"));
 
+		// sessionId csokiba
 		window.sessionId = "<?php echo session_id(); ?>";
+		setCookie("sid","<?php echo session_id(); ?>", 500);
 
+		// iframe elemek átméretezése a parent div mérethez
+		var frames = document.getElementsByTagName("iframe");
+		var sz = 0, max = 0;
+		for (var i = 0; i < frames.length; i++) {
+			max = frames[i].parentNode.getBoundingClientRect().width * 0.9;
+			if (frames[i].width > max) {
+				sz = max / frames[i].width;
+				frames[i].width = Math.round(max);
+				frames[i].height = Math.round(frames[i].height * sz);
+			}
+		}
 </script>
 </html>

@@ -225,12 +225,12 @@ figure.image-style-side img {float:right; width:40%}
 
  .likeLine a {text-decoration:none}
   
- .light .userlike_true {color:red}
- .light .userlike_true:hover {color:red}
- .light .userlike_false {color:blue}
- .light .userlike_false:hover {color:blue}
- .dark .userlike_true {color:red}
- .dark .userlike_true:hover {color:red}
+ .light .userlike_true {color:blue}
+ .light .userlike_true:hover {color:blue}
+ .light .userlike_false {color:rgb(86, 142, 146)}
+ .light .userlike_false:hover {color:rgb(86, 142, 146)}
+ .dark .userlike_true {color:blue}
+ .dark .userlike_true:hover {color:blue}
  .dark .userlike_false {color:white}
  .dark .userlike_false:hover {color:white}
 
@@ -349,6 +349,9 @@ figure.image-style-side img {float:right; width:40%}
     1/0 var(--w)/calc(var(--w) + var(--g));
   margin-inline: auto;
 }
+/* admin felület */
+.inIframe table {background-color:transparent}
+
 
 @media print {
     .dark body, .light body, body {background-color:white; color:black}

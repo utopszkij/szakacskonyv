@@ -479,7 +479,7 @@ class Recept extends Controller{
 		return $db;
 	}
 
-	public function receptek() {
+	public function receptek($task = 'receptek') {
 		$pageSize = round((int)$_SESSION['screen_height'] / 80);
 		$filterStr = $this->getParam('filterstr');
 		$filterCreator = $this->getParam('filtercreator');
@@ -571,7 +571,7 @@ class Recept extends Controller{
 			"total" => $total,
 			"loged" => $this->session->input('loged'),
 			"cimkek" => $cimkek,
-			"task" => 'receptek'
+			"task" => $task
 		]); 
 
 	}

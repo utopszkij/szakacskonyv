@@ -9,6 +9,8 @@ var annotated_dup =
       ] ],
       [ "Model", "class_r_a_t_w_e_b_1_1_model.html", "class_r_a_t_w_e_b_1_1_model" ]
     ] ],
+    [ "Admin", "class_admin.html", null ],
+    [ "AdminModel", "class_admin_model.html", null ],
     [ "AtszamitoObject", "class_atszamito_object.html", null ],
     [ "AtvaltasModel", "class_atvaltas_model.html", "class_atvaltas_model" ],
     [ "Atvaltasok", "class_atvaltasok.html", "class_atvaltasok" ],
@@ -34,6 +36,7 @@ var annotated_dup =
     [ "ReceptModel", "class_recept_model.html", "class_recept_model" ],
     [ "Request", "class_request.html", "class_request" ],
     [ "Session", "class_session.html", "class_session" ],
+    [ "StatisticModel", "class_statistic_model.html", "class_statistic_model" ],
     [ "Szinonima", "class_szinonima.html", "class_szinonima" ],
     [ "SzinonimaModel", "class_szinonima_model.html", "class_szinonima_model" ],
     [ "Szovegek", "class_szovegek.html", null ],

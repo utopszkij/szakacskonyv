@@ -23,12 +23,12 @@
         <br /><br />
         <a v-bind:href="'https://netpolgar.hu/auth/facebook?state='+SITEURL+'/'+atob(redirect)"
             class="btn btn-primary" style="width:250px"> 
-            {{ lng('FBLOGIN') }}			
+            <em class="fab fa-facebook"></em>&nbsp;{{ lng('FBLOGIN') }}			
         </a>
         <br /><br />
         <a v-bind:href="'https://netpolgar.hu/auth/google?state='+SITEURL+'/'+atob(redirect)" 
             class="btn btn-secondary" style="width:250px"> 
-            {{ lng('GOOGLELOGIN') }}			
+            <em class="fab fa-google"></em>&nbsp;{{ lng('GOOGLELOGIN') }}			
         </a>
         </form>
         <div class="alert alert-info">{{ lng('REGISTHELP2') }}</div>

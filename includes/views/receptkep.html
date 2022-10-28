@@ -298,25 +298,30 @@
     </div>
     <div class="row likeLine">
         <hr />
-        <div class="col-6" v-if="((recept.userLike == true) & (loged > 0))">
-            <var 
+        <div class="col-6">
+            <var title="Mégsem tetszik"
                 v-bind:class="'userlike_'+recept.userLike"
                 v-if="((recept.userLike == true) & (loged > 0))"
                 v-on:click="dislikeClick()">
-                <em class="fas fa-thumbs-down" style="cursor:pointer"></em>&nbsp;Mégsem tetszik 
+                <em class="fas fa-thumbs-up" style="cursor:pointer"></em> 
             </var>
-        </div>
-        <div class="col-6" v-if="((recept.userLike == false) & (loged > 0))">
-            <var 
+            <var title="Tetszik"
                 v-bind:class="'userlike_'+recept.userLike"
                 v-if="((recept.userLike == false) & (loged > 0))"
                 v-on:click="likeClick()">
-                <em class="fas fa-thumbs-up" style="cursor:pointer"></em>&nbsp;Tetszik 
+                <em class="fas fa-thumbs-up" style="cursor:pointer"></em> 
             </var>
-    </div>
-        <div class="col-6" v-if="recept.likeCount > 0">
-            <a v-bind:href="HREF('likes',{'type':'recept','id':recept.id})">
+
+            &nbsp;
+
+            <a v-bind:href="HREF('likes',{'type':'recept','id':recept.id})" v-if="!recept.userLike & recept.likeCount > 0">
                 {{ recept.likeCount }} Embernek tetszik
+            </a>
+            <a v-bind:href="HREF('likes',{'type':'recept','id':recept.id})" v-if="(recept.userLike & (recept.likeCount > 1))">
+                Neked és még {{ likeCount1() }} embernek tetszik
+            </a>
+            <a v-bind:href="HREF('likes',{'type':'recept','id':recept.id})" v-if="(recept.userLike & (recept.likeCount <= 1))">
+                Neked tetszik
             </a>
         </div>
         <hr />
@@ -513,6 +518,9 @@ var methods = {
 			// kerekités 2 tizedesjegyre
 			return Math.round(n*100)/100;
 		},
+        likeCount1() {
+            return this.recept.likeCount - 1;
+        },
         adagPlusClick() {
             if (this.recept.adag > 0) {
                 this.recept.adag = parseInt(this.recept.adag) + 1;
