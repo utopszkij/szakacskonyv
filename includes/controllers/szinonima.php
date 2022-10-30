@@ -9,10 +9,10 @@ class Szinonima extends Controller {
         parent::__construct();
         $this->name = "szinonima";
         $this->model = new SzinonimaModel();
-        $this->browserURL = 'index.php?task=szinonimak';
+        $this->browserURL = 'index.php?task=admin&act=adminszinonimak';
         $this->addURL = 'index.php?task=szinonimaadd';
         $this->editURL = 'index.php?task=szinonimaedit';
-        $this->browserTask = 'szinonimak';
+        $this->browserTask = 'admin/act/adminszinonimak';
 	}
 	
     /**

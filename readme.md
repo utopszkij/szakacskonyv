@@ -145,10 +145,16 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
-## verzió v2.1.0
-2022.10.28
+## verzió v2.1.1
+2022.10.30
 - Új admin felület
 - dizájn javítások
+### *************************************
+
+## verzió v2.1.0
+2022.10.27
+- Új admin felület dizájn javítások
+- cikk keresés hiba javítás
 ### *************************************
 
 ## verzió v2.0.5

@@ -253,16 +253,6 @@ figure.image-style-side img {float:right; width:40%}
 #footer a {background-color:inherit}  
 #footer a:hover {background-color:inherit}  
 
-  @media screen and (max-width: 992px) {
-    #receptList tr {height:40px}
-    #userek li {height:40px}
-    #atvaltasok li {height:40px}
-    #szinonimak li {height:40px}
-    #mertekegysegek li {height:40px}
-    #cimkek li {height:40px}
-    .searchBtn span {display:none}
-  }
-
   
 .ribbon-banner {
   display: table;
@@ -350,7 +340,32 @@ figure.image-style-side img {float:right; width:40%}
   margin-inline: auto;
 }
 /* admin felület */
+
 .inIframe table {background-color:transparent}
+.inIframe #receptList #receptListTable tbody {display:block; width:100%}
+.inIframe #receptList #receptListTable tr {display:block; width:100%; height:auto; 
+    margin:1px 10px 1px 1px; text-align:left}
+.inIframe #receptList #receptListTable td {border-style:none; height:auto; text-align:left;}
+.inIframe #receptList #receptListTable td .imgContainer {height:46px; width:100px}
+.inIframe #receptList #receptListTable td img {height:42px;}
+.inIframe #receptList #receptListTable td div {display:inline-block; width:auto;}
+.inIframe #receptList #receptListTable td div.likeLine {display:inline-block; width:auto; margin-left:10px}
+.inIframe #blogList {border-style:solid; border-width:1px; padding:5px}
+.inIframe #blogList .blogBody {display:none}
+
+/* phone */
+@media screen and (max-width: 992px) {
+  label,
+  .filterForm label {display:block; width:100%; float:left; text-align:left}
+  h5.fancy {width:80%} 
+  #receptList tr {height:40px}
+  #userek li {height:40px}
+  #atvaltasok li {height:40px}
+  #szinonimak li {height:40px}
+  #mertekegysegek li {height:40px}
+  #cimkek li {height:40px}
+  .searchBtn span {display:none}
+}
 
 
 @media print {

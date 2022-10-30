@@ -52,7 +52,7 @@
          */
         public function getTotal($filter): int {
             $db = new Query('users');
-            $recs = $db->all();
+            $recs = $db->where('username','not like','törölt%')->all();
             return count($recs);
         }
 
@@ -81,6 +81,9 @@
                     $result->group = '';
                 }
             }
+
+            // echo 'getById '.JSON_encode($p).JSON_encode($result); exit();
+
             return $result;
         }
 
@@ -112,7 +115,7 @@
             $u->password = $record->password;
             $id = parent::save($u);
 
-            $record->avatar = '';
+            // $record->avatar = '';
             // avatr kép feltöltés
             $error = '';
             if (isset($_FILES['avatar'])) {

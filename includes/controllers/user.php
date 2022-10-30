@@ -190,7 +190,7 @@ class User extends Controller {
     }     
 
     /**
-     * user tárolása POST -ban: user és profil adatok
+     * user tárolása POST -ban: user és profil adatok és browserUrl
 	 * - group -ot csak admin modosithatja
 	 * - password adatokat admin és a record->id user modosithatja
      */
@@ -220,6 +220,10 @@ class User extends Controller {
 		if ((isAdmin() | $this->loged == $record->id)) {
         	$this->save($record); 
 		}	
+		if ($this->session->input('loged') == $id) {
+			$this->session->set('logedAvatar',$record->avatar);
+		}
+
     }
   
     /**

@@ -35,7 +35,7 @@ class Atvaltasok extends Controller {
             "admin" => $this->logedAdmin,
             "total" => $total,
             "pages" => $pages,
-            "task" => 'atvaltasok'
+            "task" => 'admin/act/adminatvaltasok'
         ]);
     }
 
@@ -77,7 +77,7 @@ class Atvaltasok extends Controller {
             $this->model->saveObject($obj);
         }
         echo '<script>
-        location="index.php?task=atvaltasok";
+        location="index.php?task=admin&act=adminatvaltasok";
         </script>
         ';
     }

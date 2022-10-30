@@ -3,11 +3,17 @@
 * admin / userek
 * az admin controllerbe van includolva
 */
+include_once 'includes/controllers/user.php';
+$controller = new User();
+$controller->browserURL = 'index.php/task/admin/act/adminuserek';
+$controller->browserTask = 'admin/act/adminuserek';
+
 ?>
 <div class="col-md-12">
     <div class="adminBox adminBox0">
-        <iframe width="100%" height="2000" id="idIframe"
-        src="index.php/task/useredit/id/<?php echo $this->session->input('loged') ?>"
-        onload="iframeLoaded()"></iframe>
+        <?php
+        $this->request->set('id',$this->session->input('loged'));
+        $controller->userEdit();
+        ?>
     </div>    
 </div>

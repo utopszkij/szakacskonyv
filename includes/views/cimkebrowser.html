@@ -9,7 +9,7 @@
     <h2 class="ribbon-banner"><span><em class="fa fa-sitemap" aria-hidden="true"></em>&nbsp;Cimkék</span></h2>
     <ul>
         <li v-for="record in items" v-if="logedAdmin">
-            <a v-bind:href="'index.php?task=cimkeedit&id='+record.id">{{ record.cimke }}</a> 
+            <a v-bind:href="'index.php?task=cimkeedit&id='+record.id+'&browserUrl='+encodeURI(browserUrl)">{{ record.cimke }}</a> 
         </li>
         <li v-for="record in items" v-if="!logedAdmin">
             {{ record.cimke }}
@@ -17,7 +17,7 @@
     </ul>
     include paginator
     <div v-if="logedAdmin">Modosításhoz, törléshez kattints a cimkére!<br />
-        <a href="index.php?task=cimkeadd" class="btn btn-primary">
+        <a v-bind:href="'index.php?task=cimkeadd&browserUrl='+encodeURI(browserUrl)" class="btn btn-primary">
             <em class="fas fa-plus"></em>&nbsp;Új cimke</a>
         </a>
     </div>    

@@ -19,7 +19,7 @@
             $result->user = 0;
             
             $q =  new Query('receptek');
-            $result->recept = $q->count();
+            $result->recept = $q->where('nev','<>','')->count();
 
             $q =  new Query('napimenuk');
             $result->menu = $q->count();

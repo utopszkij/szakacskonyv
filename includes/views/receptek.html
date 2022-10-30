@@ -32,14 +32,14 @@
 					</div>
 					
 					<div>
-						<label></label>
+						<label>Feltöltő</label>
 						<input type="text" name="filtercreator" id="filtercreator"
-							v-model="filterCreator" class="form-control" /> {{ lng('UPLOADER') }}
+							v-model="filterCreator" class="form-control" />
 					</div>		
 					<div>
-						<label></label>
+						<label>Feltöltés &ge;</label>
 						<input type="date" name="filtercreated" id="filtercreated"
-							v-model="filterCreated" class="form-control" /> {{ lng('AFTER_UPLOAD') }}
+							v-model="filterCreated" class="form-control" />
 						<button type="submit" class="btn btn-primary searchBtn">
 								<em class="fa fa-search"></em>&nbsp;<span>{{ lng('SEARCH') }}</span></button>
 						<button type="button" v-on:click="delFilter()" 
@@ -72,7 +72,9 @@
 							<tr v-for="item in news" class="makeTrClass(item)">
 								<td>
 									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
-										<img v-bind:id="'img_'+item.id" />
+										<var class="imgContainer">
+											<img v-bind:id="'img_'+item.id" />
+										</var>	
                                         <span class="id">{{ item.id }}</span>
                                         <div class="name">{{ item.nev }}</div>
 										<div class="likeLine">
@@ -96,7 +98,9 @@
 							<tr v-for="item in list" class="makeTrClass(item)">
 								<td>
 									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
-										<img v-bind:id="'img'+item.id" />
+										<var class="imgContainer">
+											<img v-bind:id="'img'+item.id" />
+										</var>			
 										<em v-if="item.favorit" 
 											style="margin-top:-20px; padding:2px; color:green; background-color:white; z-index:10"
 											class="fas fa-heart"></em>

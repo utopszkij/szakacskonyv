@@ -12,6 +12,7 @@
         <input type="hidden" value="cimkesave" name="task" />			
         <input type="hidden" v-model="record.id" name="id" />
         <input type="hidden" v-model="flowKey" name="flowKey" />
+        <input type="hidden" v-model="browserUrl" name="browserUrl" />
         <div class="row">
             <div class="form-outline col-12">
                     <h1 class="ribbon-banner"><span>Cimke</span><h1>	
@@ -56,7 +57,7 @@
     methods = {
         delClick() {
             popupConfirm('Biztos törölni akarod?',function() {
-                location = 'index.php?task=cimkedelete&id='+app.record.id;
+                location = 'index.php?task=cimkedelete&id='+app.record.id+'&browserUrl='+encodeURI(app.browserUrl);
             });
         }
     }
