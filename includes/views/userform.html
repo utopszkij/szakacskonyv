@@ -12,6 +12,7 @@
         <input type="hidden" v-model="record.phone" name="phone" />
         <input type="hidden" v-model="record.avatar" name="avatar" />
         <input type="hidden" v-model="flowKey" name="flowKey" />
+        <input type="hidden" v-model="browserUrl" name="browserUrl" />
         <div class="row">
             <em class="fas fa-address-card fa-4x"></em>
             <center>
@@ -125,7 +126,9 @@
         delClick() {
             popupConfirm(' Biztos törölni akarod ?', 
             function() {
-                location='index.php?task=userdelete&id='+app.record.id+'&flowKey='+app.flowKey; 
+                location='index.php?task=userdelete&id='+app.record.id+
+                    '&flowKey='+app.flowKey+
+                    '&browserUrl='+encodeURI(app.browserUrl); 
             })
         }    
     }

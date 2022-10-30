@@ -238,6 +238,7 @@ class Controller {
             "logedName" => $this->loged,
             "logedAdmin" => $this->logedAdmin,
             "previous" => SITEURL,
+            "browserUrl" => $this->browserURL,
             "errorMsg" => $this->session->input('errorMsg',''),
             "successMsg" => $this->session->input('successMsg','')
         ]);
@@ -261,6 +262,7 @@ class Controller {
         if ($this->session->isset('oldRecord')) {
             $item = $this->session->input('oldRecord');
         }
+        $this->browserURL = $this->request->input('browserUrl', $this->browserURL);
         view($this->name.'form',[
             "flowKey" => $this->newFlowKey(),
             "record" => $item,
@@ -268,6 +270,7 @@ class Controller {
             "logedName" => $this->loged,
             "logedAdmin" => $this->logedAdmin,
             "previous" => $this->browserURL,
+            "browserUrl" => $this->browserURL,
             "errorMsg" => $this->session->input('errorMsg','')
         ]);
         $this->session->delete('errorMsg');
@@ -291,12 +294,14 @@ class Controller {
         if ($this->session->isset('oldRecord')) {
             $record = $this->session->input('oldRecord');
         }
+        $this->browserURL = $this->request->input('browserUrl', $this->browserURL);
         view($this->name.'form',[
             "flowKey" => $this->newFlowKey(),
             "record" => $record,
             "logedAdmin" => $this->logedAdmin,
             "loged" => $this->loged,
             "previous" => $this->browserURL,
+            "browserUrl" => $this->browserURL,
             "errorMsg" => $this->session->input('errorMsg',''),
         ]);
         $this->session->delete('errorMsg');
@@ -317,6 +322,7 @@ class Controller {
         }
         $this->session->set('flowKey','used');
         $this->session->set('oldRecord',$record);
+        $this->browserURL = $this->request->input('browserUrl',$this->browserURL);
         if ($record->id == 0) {
             if (!$this->accessRight('new',$record)) {
                 $this->session->set('errorMsg','Hozzáférés nem engedélyezett');
@@ -370,6 +376,7 @@ class Controller {
     protected function delete() {
         $id = $this->request->input('id',0);
         $item = $this->model->getById($id);
+        $this->browserURL = $this->request->input('browserUrl',$this->browserURL);
         if (!$this->accessRight('delete',$item)) {
             $this->session->set('errorMsg','Hozzáférés nem engedélyezett');
             echo '<script>

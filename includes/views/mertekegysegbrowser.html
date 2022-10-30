@@ -12,7 +12,7 @@
         szavakat tekinti mértékegységnek.</p>
     <ul>
         <li v-for="record in items" v-if="logedAdmin">
-            <a v-bind:href="'index.php?task=meedit&id='+record.id">{{ record.nev }}</a> 
+            <a v-bind:href="'index.php?task=meedit&id='+record.id+'&browserUrl='+encodeURI(this.browserUrl)">{{ record.nev }}</a> 
         </li>
         <li v-for="record in items" v-if="!logedAdmin">
             {{ record.nev }}
@@ -20,7 +20,7 @@
     </ul>
     include paginator
     <div v-if="logedAdmin">Modosításhoz, törléshez kattints a névre!<br />
-        <a href="index.php?task=meadd" class="btn btn-primary">
+        <a v-bind:href="'index.php?task=meadd&browserUrl='+encodeURI(browserUrl)" class="btn btn-primary">
             <em class="fas fa-plus"></em>&nbsp;Új mértékegység</a>
         </a>
     </div>    

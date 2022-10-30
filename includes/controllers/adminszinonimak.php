@@ -1,12 +1,17 @@
 <?php
 /**
-* admin / átváltások
+* admin / szinonimák
 * az admin controllerbe van includolva
 */
+include_once 'includes/controllers/szinonima.php';
+$controller = new Szinonima();
+$controller->browserURL = 'index.php/task/admin/act/adminszinonimak';
+$controller->browserTask = 'admin/act/adminszinonimak';
 ?>
 <div class="col-md-12">
     <div class="adminBox adminBox0">
-        <iframe width="100%" height="2000" id="idIframe"
-            src="index.php/task/szinonimak" onload="iframeLoaded()"></iframe>
+    <?php
+        $controller->szinonimak();
+    ?>
     </div>    
 </div>

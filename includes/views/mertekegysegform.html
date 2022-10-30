@@ -12,6 +12,7 @@
         <input type="hidden" value="mesave" name="task" />			
         <input type="hidden" v-model="record.id" name="id" />
         <input type="hidden" v-model="flowKey" name="flowKey" />
+        <input type="hidden" v-model="browserUrl" name="browserUrl" />
         <div class="row">
             <div class="form-outline col-12">
                     <h1 class="ribbon-banner"><span>Mértékegység</span><h1>	
@@ -27,7 +28,7 @@
                 <button type="submit" class="btn btn-success">
                     <em class="fas fa-check"></em>&nbsp;Mentés
                 </button>&nbsp;
-                <a v-bind:href="previous" class="btn btn-secondary">
+                <a v-bind:href="browserUrl" class="btn btn-secondary">
                     <em class="fas fa-reply"></em>&nbsp;Mégsem
                 </a>&nbsp;
                 <button type="button" 
@@ -40,7 +41,7 @@
         </div>
         <div class="row formBUttons" v-if="! logedAdmin">
             <div class="col-12">
-                <a v-bind:href="previous" class="btn btn-secondary">
+                <a v-bind:href="browserUrl" class="btn btn-secondary">
                     <em class="fas fa-reply"></em>&nbsp;Vissza
                 </a>
             </div>
@@ -52,7 +53,8 @@
     methods = {
         delClick() {
             popupConfirm('Biztos törölni akarod?',function() {
-                location = 'index.php?task=medelete&id='+app.record.id; 
+                location = 'index.php?task=medelete&id='+app.record.id+
+                '&browserUrl='+encodeURI(app.browserUrl); 
 
             });
         }

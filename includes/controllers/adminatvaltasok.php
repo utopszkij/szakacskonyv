@@ -3,10 +3,15 @@
 * admin / átváltások
 * az admin controllerbe van includolva
 */
+include_once 'includes/controllers/atvaltasok.php';
+$controller = new Atvaltasok();
+$controller->browserURL = 'index.php/task/admin/act/adminatvaltasok';
+$controller->browserTask = 'admin/act/adminmatvaltasok';
 ?>
 <div class="col-md-12">
     <div class="adminBox adminBox0">
-        <iframe width="100%" height="2000" id="idIframe"
-            src="index.php/task/atvaltasok" onload="iframeLoaded()"></iframe>
+    <?php
+        $controller->atvaltasok();
+    ?>
     </div>    
 </div>

@@ -13,22 +13,22 @@
 					<input type="hidden" name="page" value="1" />
 					<div>
 						<label>{{ lng('TITLE_SUBSTR') }}:</label>
-						<input type="text" name="titleStr" id="titleStr" 
+						<input type="text" name="titlestr" id="titleStr" 
 							   v-model="filter.titleStr" class="form-control"/>
 					</div>
 					<div>
 						<label>{{ lng('BODY_SUBSTR') }}:</label>
-						<input type="text" name="bodyStr" id="bodyStr" 
+						<input type="text" name="bodystr" id="bodyStr" 
 							   v-model="filter.bodyStr" class="form-control"/>
 					</div>
 					<div>
 						<label>{{ lng('CREATOR_NAME') }}:</label>
-						<input type="text" name="creatorName" id="creatorName" 
+						<input type="text" name="creatorname" id="creatorName" 
 							   v-model="filter.creatorName" class="form-control"/>
 					</div>
 					<div>
 						<label>{{ lng('CREATED_BY_GE') }}:</label>
-						<input type="date" name="createdAt" id="createdAt" 
+						<input type="date" name="createdat" id="createdAt" 
 							   v-model="filter.createdAt" class="form-control"/>
                         &nbsp;&nbsp;       
                         <div style="display:inline-block; width:auto">
@@ -78,7 +78,7 @@
         },
 		delFilter() {
             document.getElementById('titleStr').value = '';
-            document.getElementById('bodyeStr').value = '';
+            document.getElementById('bodyStr').value = '';
 			document.getElementById('creatorName').value = '';
 			document.getElementById('createdAt').value = '';
 			document.getElementById('filterForm').submit();
