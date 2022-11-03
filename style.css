@@ -223,6 +223,9 @@ figure.image-style-side img {float:right; width:40%}
  #blog .ck-content {width:100%; height:600px}
  #blog img, #blogs img {max-width:90%}
 
+ #receptEdit .ck-content {width:100%; height:600px}
+ 
+
  .likeLine a {text-decoration:none}
   
  .light .userlike_true {color:blue}

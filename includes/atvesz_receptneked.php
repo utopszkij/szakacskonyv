@@ -149,13 +149,13 @@ function atvetel($url = 'https://www.receptneked.hu/....',
     $i = stripos($s,'<p');
     $j = stripos($s,'</p>');
     if (($j > $i) | ($j < 20)) {
-        $s1 = kiemel($s, '<p','</div>');  //b.eset
+        $s1 = kiemel($s, '<p>','</div>');  //b.eset
+        // $recept->leiras = str_replace('>','',$s1);
     } else {
-        $s1 = kiemel($s, ':','</p>');     //a.eset
+        $s1 =kiemel($s, ':','</p>');     //a.eset
     }   
 
-    $s1 = strip_tags($s1);
-    $recept->leiras = str_replace('>','',$s1);
+    $recept->leiras = strip_tags($s1,['ul','ol','li','p','br']);
 
     if ($kep != '') {
         $imageFileType = strtolower(pathinfo($kep,PATHINFO_EXTENSION));

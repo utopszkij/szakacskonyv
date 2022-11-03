@@ -85,7 +85,7 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 							$w2 = explode('</ol>',$w2[1]);
 							$elkeszites = $w2[0];	
 							$w2 = explode('<div',$elkeszites);
-							$elkeszites = $w2[0];
+							$elkeszites = '<ol>'.$w2[0].'</ol>';
 						} else {
 							$w2 = explode('<div class="instructions">',$w[1]);
 							if (count($w2) > 1) {
@@ -94,9 +94,9 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 							}	
 						}	
 						$elkeszites = str_replace("\n",' ',$elkeszites);
-						$elkeszites = str_replace('</li>',"\n",$elkeszites);
+						//$elkeszites = str_replace('</li>',"\n",$elkeszites);
 						$elkeszites = str_replace("\r",' ',$elkeszites);
-						$recept->leiras = trim(strip_tags($elkeszites));
+						$recept->leiras = trim(strip_tags($elkeszites,['ul','ol','li','p','br']));
 			}
 			if ($kep != '') {
 				$imageFileType = strtolower(pathinfo($kep,PATHINFO_EXTENSION));

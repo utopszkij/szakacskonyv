@@ -116,13 +116,13 @@ function atvetel($url = 'https://www.nosalty.hu/....',
     // leírás
     $w = $s;
     $s1 = kiemel($w, 'Elkészítés</h3>','<div class="d-print-none');
-    $s1 = str_replace('</li>','[br]',$s1);
+    //$s1 = str_replace('</li>','[br]',$s1);
     $s1 = str_replace("\n",'',$s1);
     $s1 = str_replace("\r",'',$s1);
     for ($i=0; $i<10;$i++) {
         $s1 = str_replace('  ',' ',$s1);
     }    
-    $s1 = strip_tags($s1);
+    $s1 = strip_tags($s1,['ul','ol','li','p','br']);
     $recept->leiras = str_replace('[br]',"\n\n",trim($s1));
 
     /*
