@@ -44,11 +44,35 @@
               </li -->
 
             </ul>
+          </div>  
+          <ul class="navbar-nav mr-auto mb-2 mb-lg-0 text-right">
+              <li class="nav-item" v-if="MULTIUSER & (loged <= 0)">
+                <a v-bind:href="HREF('login',{})" class="btn btn-info" role="button">
+                        <em class="fas fa-sign-in-alt"></em>&nbsp;Belépés</a>
+              </li>
+              <li class="nav-item" v-if="loged > 0">
+                  <var class="nav-link" onclick="submenuToggle()" 
+                      style="cursor:pointer">
+                      <var v-bind:class="logedGroup"> 
+                        {{ logedName }}
+                        <img v-if="logedAvatar != ''"
+                             v-bind:src="'images/users/'+logedAvatar"
+                              style="height:34px; margin:0px;" />
+                      </var>
+                  </var>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="submenu">
+                          <a class="dropdown-item" v-bind:href="HREF('useredit',{id:loged})">
+                            <em class="fas fa-user"></em>&nbsp;Profil
+                          </a>
+                          <a v-bind:href="HREF('logout',{})" class="dropdown-item">
+                            <em class="fas fa-sign-out-alt"></em>&nbsp;{{ lng('LOGOUT') }}
+                          </a>
+                  </div>
+              </li>
+            </ul>  
+
+            <!--  
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0 text-right">
-                  <li class="nav-item" v-if="MULTIUSER & (loged <= 0)">
-                    <a v-bind:href="HREF('login',{})" class="btn btn-info" role="button">
-                            <em class="fas fa-sign-in-alt"></em>&nbsp;{{ lng('LOGIN') }}</a>
-                  </li>
                   <li class="nav-item" v-if="MULTIUSER & (loged > 0)">
                     <a v-bind:href="HREF('logout',{})" class="btn btn-info" role="button">
                       <em class="fas fa-sign-out-alt"></em>&nbsp;{{ lng('LOGOUT') }}</a>
@@ -73,6 +97,7 @@
                       </a>
                   </li>
           </ul>
+        -->
       </nav>
       <div class="warning" v-if="(lastVerzio > fileVerzio) & (MULTIUSER) & (isAdmin)">
           <a v-bind:href="HREF('upgrade1',{version:lastVerzio})" 

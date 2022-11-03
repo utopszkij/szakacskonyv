@@ -72,10 +72,15 @@ function atvetel($url = 'https://www.receptneked.hu/....',
     $w = explode('Hozzávalók',$s,2);
     if (count($w) > 1) {
         $s = $w[1];
-        $hozzaStr = kiemel($s,'<ul','Elkészítés'); // <li>...</li> -k vannak benne
+        if (stripos('Elkészitese',$s) > 0) {
+            $hozzaStr = kiemel($s,'<ul','Elkészítése'); // <li>...</li> -k vannak benne
+        } else {
+            $hozzaStr = kiemel($s,'<ul','Elkészítés'); // <li>...</li> -k vannak benne
+        }    
         $s1 = kiemel($hozzaStr,"recipeIngredient'>",'</li>');
         while ($s1 != '') {
             $s1 = str_replace('</span>','',$s1);
+            // most $s1-ben a hozzávlaó lista egy sora van string formában
             if (strpos($s1,'</a>') > 0) {
                 // reklám link van benne; el kell távolítani
                 $w2 = explode('<a',$s1,2);
@@ -83,6 +88,11 @@ function atvetel($url = 'https://www.receptneked.hu/....',
                 $w2 = explode('</a>',$w2[1],2);
                 $s1 .= $w2[1];
             } 
+            // ne legyenek benne html elemek
+            $i = stripos($s1,'<');
+            if ($i > 0) {
+                $s1 = substr($s1,0,$i);
+            }
             $s1 = html_entity_decode($s1);
             $s1 = str_replace($mit, $mire, ' '.$s1.' ');
             $s1 = trim($s1);
@@ -131,7 +141,19 @@ function atvetel($url = 'https://www.receptneked.hu/....',
     }
 
     // leírás
-    $s1 = kiemel($s, '<p','</div>');
+
+    // a.eset van amikor  egy P -ben van az egész így:<p> Elkeszítése:<br>......</p>
+    // b.eset van amikor  igy van: <div....<p>Elkeszítése:</p><p>......</p>...</div>
+
+    // most az $s -ben a ':' -al kezdődő string részlet van
+    $i = stripos($s,'<p');
+    $j = stripos($s,'</p>');
+    if (($j > $i) | ($j < 20)) {
+        $s1 = kiemel($s, '<p','</div>');  //b.eset
+    } else {
+        $s1 = kiemel($s, ':','</p>');     //a.eset
+    }   
+
     $s1 = strip_tags($s1);
     $recept->leiras = str_replace('>','',$s1);
 
