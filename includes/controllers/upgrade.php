@@ -200,7 +200,7 @@ class Upgrade {
 					<a class="btn btn-secondary" href="index.php">Késöbb</a>&nbsp;
 					<a class="btn btn-secondary" 
 					    href="index.php?task=upgrade2&version=<?php echo $version; ?>"
-						onclick="document.getElementById('upgradeWait').style.display='block'; true;">
+						onclick="document.getElementById('upgradeWait').style.display='block';">
 						A fájlok frissitése most</a>
 					<a class="btn btn-secondary" 
 						href="index.php?task=upgrade3&version=<?php echo $version; ?>">
