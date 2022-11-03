@@ -173,6 +173,9 @@ class Upgrade {
 		$files = $this->getNewFilesList($this->githubReadme, $version);
 		
 		?>
+	    <div style="position:fixed; z-index:90; text-align:center; display:none" id="upgradeWait">
+			<img src="images/waiting-icon.gif" style="margin:200px; width:150px" />
+		</div>
 		<div class="upgrade">
 			<h2>Új verzió <?php echo $version; ?></h2>
 			<div><?php echo $this->info; ?></div>
@@ -195,9 +198,12 @@ class Upgrade {
 			<?php if ($actions > 0) : ?>
 				<p>
 					<a class="btn btn-secondary" href="index.php">Késöbb</a>&nbsp;
-					<a class="btn btn-secondary" href="index.php?task=upgrade2&version=<?php echo $version; ?>">
+					<a class="btn btn-secondary" 
+					    href="index.php?task=upgrade2&version=<?php echo $version; ?>"
+						onclick="document.getElementById('upgradeWait').style.display='block'; true;">
 						A fájlok frissitése most</a>
-					<a class="btn btn-secondary" href="index.php?task=upgrade3&version=<?php echo $version; ?>">
+					<a class="btn btn-secondary" 
+						href="index.php?task=upgrade3&version=<?php echo $version; ?>">
 						A fájlok frissitést megcsináltam</a>
 				</p>				
 				<p><strong>A "fájlok frissitése most" funkció csak akkor használható, ha a web szervernek joga 
@@ -218,8 +224,6 @@ class Upgrade {
 	/**
 	 * változott fájlok frissitése
 	 * GET: version
-	 * 
-	 * TEST egyenlőre nem aktiv
 	 * 
 	 */
 	public function upgrade2() {

@@ -145,6 +145,13 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.1.2
+2022.11.03
+- kép fájl feltöltési hiba javítása
+- főmenü login/regist/logout módosítása
+- admin felületen a grafikonok "x" tengely tartomány lapozható
+### *************************************
+
 ## verzió v2.1.1
 2022.10.30
 - Új admin felület

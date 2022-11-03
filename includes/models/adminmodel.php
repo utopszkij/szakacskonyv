@@ -34,28 +34,31 @@
             return $result;
         }
 
-        protected function buildDates(string $interval):array {
+        protected function buildDates(string $interval, int $base = 0):array {
             $dates = [];
+            if ($base == 0) {
+                $base = time();
+            }
             if ($interval == 'week') {
                 for ($i = 7; $i >= 0; $i--) {
-                    $dates[] = date('Y-m-d', time() - $i*24*60*60);
+                    $dates[] = date('Y-m-d', $base - $i*24*60*60);
                 }    
             }    
             if ($interval == 'month') {
                 for ($i = 30; $i >= 0; $i--) {
-                    $dates[] = date('Y-m-d', time() - $i*24*60*60);
+                    $dates[] = date('Y-m-d', $base - $i*24*60*60);
                 }    
             }    
             if ($interval == 'year') {
                 for ($i = 365; $i >= 0; $i--) {
-                    $dates[] = date('Y-m-d', time() - $i*24*60*60);
+                    $dates[] = date('Y-m-d', $base - $i*24*60*60);
                 }    
             }    
             return $dates;
         }
 
-        public function getReceptDatas(string $interval): array {
-            $dates = $this->buildDates($interval);
+        public function getReceptDatas(string $interval, int $base): array {
+            $dates = $this->buildDates($interval,$base);
             $dmin = $dates[0];
             $dmax = $dates[count($dates) - 1];
             $q = new Query('receptek');
@@ -79,8 +82,11 @@
             return $result;
         }
 
-        public function getBlogDatas(string $interval): array {
-            $dates = $this->buildDates($interval);
+        public function getBlogDatas(string $interval, int $base = 0): array {
+            $dates = $this->buildDates($interval,$base);
+            if ($base == 0) {
+                $base = time();
+            }
             $dmin = $dates[0];
             $dmax = $dates[count($dates) - 1];
             $q = new Query('blogs');
@@ -104,8 +110,8 @@
             return $result;
         }
 
-        public function getRegistDatas(string $interval): array {
-            $dates = $this->buildDates($interval);
+        public function getRegistDatas(string $interval, int $base): array {
+            $dates = $this->buildDates($interval,$base);
             $dmin = $dates[0];
             $dmax = $dates[count($dates) - 1];
             $q = new Query('users');
@@ -129,8 +135,8 @@
             return $result;
         }
 
-        public function getVisitDatas(string $interval): array {
-            $dates = $this->buildDates($interval);
+        public function getVisitDatas(string $interval, int $base): array {
+            $dates = $this->buildDates($interval,$base);
             $dmin = $dates[0];
             $dmax = $dates[count($dates) - 1];
             $q = new Query('events');
@@ -155,8 +161,8 @@
             return $result;
         }
 
-        public function getLoginDatas(string $interval): array {
-            $dates = $this->buildDates($interval);
+        public function getLoginDatas(string $interval, int $base): array {
+            $dates = $this->buildDates($interval,$base);
             $dmin = $dates[0];
             $dmax = $dates[count($dates) - 1];
             $q = new Query('events');
@@ -181,8 +187,8 @@
             return $result;
         }
 
-        public function getMenuDatas(string $interval): array {
-            $dates = $this->buildDates($interval);
+        public function getMenuDatas(string $interval, int $base): array {
+            $dates = $this->buildDates($interval,$base);
             $dmin = $dates[0];
             $dmax = $dates[count($dates) - 1];
             $q = new Query('napimenuk');

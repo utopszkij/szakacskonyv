@@ -15,7 +15,62 @@ class Admin extends Controller {
         // $this->editURL = 'index.php?task=cimkeedit';
         // $this->browserTask = 'cimkek';
 	}
+
+    protected function echoIcons($adminTask, $interval, $base) {  
+        $adminTask = 'admin'.$adminTask;
+        ?>           
+            <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=week" 
+                class="<?php if ($interval == 'week') echo 'current'; ?>">
+                Hét</a>&nbsp; &nbsp;
+            <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=month" 
+                class="<?php if ($interval == 'month') echo 'current'; ?>">
+                Hónap</a>&nbsp; &nbsp;
+            <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=year" 
+                class="<?php if ($interval == 'year') echo 'current'; ?>">
+                Év</a>
+            &nbsp;&nbsp;
+            <?php if ($interval == 'week') : ?>
+                <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=week&base=<?php echo ($base - (7*24*60*60)) ?>">
+                &lt;</a>&nbsp
+                <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=week&base=<?php echo ($base + (7*24*60*60)) ?>"> 
+                &gt;</a>
+            <?php endif ?>
+            <?php if ($interval == 'month') : ?>
+                <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=month&base=<?php echo ($base - (30*24*60*60)) ?>">
+                &lt;</a>&nbsp
+                <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=month&base=<?php echo ($base + (30*24*60*60)) ?>"> 
+                &gt;</a>
+            <?php endif ?>
+            <?php if ($interval == 'year') : ?>
+                <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=year&base=<?php echo ($base - (365*60*60)) ?>">
+                &lt;</a>&nbsp
+                <a href="index.php?task=admin&act=<?php echo $adminTask; ?>&interval=year&base=<?php echo ($base + (365*24*60*60)) ?>"> 
+                &gt;</a>
+            <?php endif ?>
+        <?php    
+    }        
 	
+    protected function buildLabels(string $interval, int $base): array {
+        // adat lekérés az adatbázisból
+        $labels = [];
+        if ($interval == 'week') {
+            for ($i = 7; $i >= 0; $i--) {
+                $labels[] = date('Y.m.d', $base - $i*24*60*60);
+            }    
+        }    
+        if ($interval == 'month') {
+            for ($i = 30; $i >= 0; $i--) {
+                $labels[] = date('Y.m.d', $base - $i*24*60*60);
+            }    
+        }    
+        if ($interval == 'year') {
+            for ($i = 365; $i >= 0; $i--) {
+                $labels[] = date('Y.m.d', $base - $i*24*60*60);
+            }    
+        }    
+        return $labels;
+    }
+    
     public function admin() {
         $act = $this->request->input('act','adminhome');
         // adat lekérések (test)
