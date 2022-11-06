@@ -679,7 +679,8 @@ class Query {
 			$result .= 'GROUP BY '.implode(',', $this->groupBy)."\n";		
 		}
 		if ($this->order != '') {
-			$result .= 'ORDER BY '.sqlName($this->order);
+			// $result .= 'ORDER BY '.sqlName($this->order);
+			$result .= 'ORDER BY '.$this->order;
 			if (($this->order != '') & ($this->orderDir != '')) {
 				$result .= ' '.$this->orderDir;
 			}

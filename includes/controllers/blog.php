@@ -148,6 +148,7 @@ class Blog extends Controller {
                     $i = 0;
                     while (($i < count($w)) & (strlen($s) < 500)) {
                         $s .= $w[$i].'>';
+                        $i++;
                     }
                     $s = urlprocess($this->closeHtmlTags($s));
                     $fv->body = $s.'<button class="btn btn-secondary" type="button">&gt;&gt;&gt;</button>';
@@ -213,11 +214,31 @@ class Blog extends Controller {
             "total" => $total,
             "page" => $page,
             "pages" => $pages,
-            "task" => 'blog',
+            "task" => 'blog/blog_id/'.$blog->id,
             "errorMsg" => $this->session->input('errorMsg',''),
             "successMsg" => $this->session->input('successMsg','')
         ]);
 	}
+
+    /**
+     * látógatói vélemények az oldalról
+     */
+    public function velemenyek() {
+        $blogs = $this->model->getBy('title','Vélemények');
+        if (count($blogs) == 0) {
+            $blog = new Record();
+            $blog->id = 0;
+            $blog->title = 'Vélemények';
+            $blog->body = '---';
+            $blog->created_by = 1;
+            $blog->created_at = date('Y-m-d');
+            $id = $this->model->save($blog);
+            $this->request->set('blog_id',$id);
+        } else {
+            $this->request->set('blog_id',$blogs[0]->id);
+        }
+        $this->blog();
+    }
 
    /*
     * Blog bejegyzés add form
@@ -363,7 +384,7 @@ class Blog extends Controller {
                 $record->created_at = date('Y.m.d H:i');
                 $record->created_by = $this->session->input('loged');        
             }    
-            $record->title = $this->request->input('title','');
+            $record->title = $this->request->input('title','',HTML);
             $record->body = $this->request->input('body','',HTML);
             $errorMsg = ($this->validator($record));
             if ($errorMsg == '') {    
@@ -391,16 +412,20 @@ class Blog extends Controller {
 	/**
 	 * blog comment add/edit képernyő tárolása
 	 * session[loged] és [logedGroup] jogosultság ellenörzéssel 
-	 * POSTban: blog_id, comment rekord adatai
+	 * POSTban: blog_id, comment rekord adatai, parent, parentname
 	 * SESSIONBAN logged, logedGroup
 	 * tárolás után --> blogcomments
+     * 
+     * ha parent > 0
+     *    ha a megadott parentben parent==0akkor az új rekordban a parent a POST -ban érkezett
+     *    ha a megadott parentben parent>0akkor az új rekordban a parent a parent rekordban lévő parent
 	 */ 
 	public function blogcommentsave() {
         if ($this->session->input('loged') > 0) {
             $record = new \RATWEB\DB\Record();
             $record->blog_id = $this->request->input('blog_id',0);
             $record->id = $this->request->input('id',0);
-            $record->body = $this->request->input('commentbody',0);
+            $record->body = $this->request->input('commentbody','',HTML);
             if ($record->id == 0) {
                 $record->created_at = date('Y.m.d');
                 $record->created_by = $this->session->input('loged',0);
@@ -409,6 +434,27 @@ class Blog extends Controller {
                 echo 'flowKey error. Lehet hogy túl hosszú várakozás miatt lejárt a munkamenet, vagy a böngésző frissitést használtad.'; exit(); 
             }
             $commentModel = new BlogcommentModel();
+
+            // válasz kezelés
+            $parentId = $this->request->input('parent',0);
+            $parentName = $this->request->input('parentname','');
+            if ($parentId > 0) {
+				if ($record->id == 0) {
+					$record->body = '<var class="parentName">#'.$parentName.'</var>:&nbsp;'.$record->body;
+			    }
+				$record->parent = $parentId;
+                // most jön a $parentId szükség szerinti felülbirálata....
+                // (hogy ne legyen végtelen mélységű fa szerkezet)
+                $parent = $commentModel->getById($parentId);
+                if (isset($parent->id)) {
+                    if ($parent->parent > 0) {
+                        $record->parent = $parent->parent;
+                    }
+                }
+            } else {
+                $record->parent = 0;
+            }
+
             $commentModel->save($record);
 
             $this->session->set('errorMsg', '');

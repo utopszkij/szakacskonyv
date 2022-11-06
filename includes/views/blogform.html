@@ -64,12 +64,44 @@ var methods = {
 			});
 		},
         afterMount() {
+
+
+/*
+CKEDITOR.editorConfig = function( config ) {
+	config.toolbarGroups = [
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+		{ name: 'links', groups: [ 'links' ] },
+		{ name: 'insert', groups: [ 'insert' ] },
+		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+		{ name: 'styles', groups: [ 'styles' ] },
+		{ name: 'colors', groups: [ 'colors' ] },
+		{ name: 'tools', groups: [ 'tools' ] },
+		{ name: 'others', groups: [ 'others' ] },
+		{ name: 'about', groups: [ 'about' ] }
+	];
+
+	config.removeButtons = 'Save,Templates,Cut,SelectAll,
+    Scayt,Form,Strike,Subscript,Superscript,CopyFormatting,
+    RemoveFormat,Outdent,Indent,Blockquote,
+    CreateDiv,BidiLtr,BidiRtl,Language,JustifyLeft,
+    JustifyCenter,JustifyRight,JustifyBlock,
+    Unlink,Anchor,Flash,HorizontalRule,Smiley,PageBreak,
+    Iframe,TextColor,BGColor,Format,Font,Maximize,ShowBlocks,About,Find,
+    Replace,Copy,Paste,PasteText,PasteFromWord,Print,Preview,NewPage,
+    Checkbox,Radio,TextField,Textarea,Select,Button,
+    ImageButton,HiddenField,Source';
+};
+*/
+
+
+
             console.log(ClassicEditor);
             if (window.editor == undefined) {
-
                 ClassicEditor
                 .create( document.querySelector( 'textarea#body' ), {
-                    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link']
+                    toolbar: [ 'heading', '|', 'bold' , 'italic', 'link', 'bulletedList', 'numberedList',
+                       'imageUpload','insertTable','sourceEditing','mediaEmbed','undo','redo'],
                     language: 'hu',
                     extraPlugins: [ MyCustomUploadAdapterPlugin ],
                     mediaEmbed: {
@@ -99,7 +131,6 @@ var methods = {
             		}
                 } )
                 .then( editor => {
-
                     window.editor = editor;
                     console.log(editor);
                 } )

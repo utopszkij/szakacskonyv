@@ -41,7 +41,7 @@ $statisticModel->saveStatistic();
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.1.2';
+$fileVerzio = 'v2.1.3';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -193,10 +193,11 @@ if (in_array($fw->compName.'.'.$fw->task,
 </body>
 <script type="text/javascript">
 		// check in iframe 
-		// az admin oldalon vannak iframe -be hivva, itt mindig a lift téma kell és
+		// az admin oldalon vannak iframe -be hivva, itt mindig a light téma kell és
 		// apage header, footer nem kell
 		if (window.self !== window.top) {
-			document.body.className = 'light';
+			// document.body.className = 'light';
+			document.body.className = getCookie('theme');
 			document.getElementById('header').style.display="none";
 			document.getElementById('mainmenu').style.display="none";
 			document.getElementById('footer').style.display="none";

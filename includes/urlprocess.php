@@ -2,14 +2,14 @@
 
 function getUrls($string)
 {
-$regex = '/[^\"\>]https?\:\/\/[^\" \n]+/i';
+$regex = '/[^\"\>]https?\:\/\/[^\" \n\<]+/i';
 preg_match_all($regex, $string, $matches);
 return $matches[0];
 }
 
 /**
- * a $đtring ben lévő url -eket átalakítja <a...>...</a>
- * vagy youtube iframe --re
+ * a $string ben lévő url -eket átalakítja <a...>...</a>
+ * vagy youtube,vimeo. tiktok hívásra iframe --re
  * @param string $string
  * @return string
  */ 
@@ -58,10 +58,20 @@ function urlprocess(string $string):string {
 				</a>
 			</div>',$string);
 		} else {
-			$string = str_replace($url, '<a href="'.$url.'">'.$url.'</a>',$string);
+			$string = str_replace($url, '<a href="'.str_replace("\n",'',$url).'">'.$url.'</a>',$string);
 		}
 	}
-	
+	$string = str_replace(':)','<em class="fas fa-smile"></em>',$string);
+	$string = str_replace(':-)','<em class="fas fa-smile"></em>',$string);
+	$string = str_replace(':(','<em class="fas fa-frown"></em>',$string);
+	$string = str_replace(':-(','<em class="fas fa-frown"></em>',$string);
+	$string = str_replace(':|','<em class="fas fa-meh"></em>',$string);
+	$string = str_replace(':-|','<em class="fas fa-meh"></em>',$string);
+	$string = str_replace(':D','<em class="fas fa-laugh"></em>',$string);
+	$string = str_replace(';)','<em class="fas fa-smile-wink"></em>',$string);
+	$string = str_replace(';(','<em class="fas fa-sad-tear"></em>',$string);
+	$string = str_replace(':*','<em class="fas fa-kiss-wink-heart"></em>',$string);
+	$string = str_replace(':^)','<em class="fas fa-kiss-wink-heart"></em>',$string);
 	return $string;
 }
 

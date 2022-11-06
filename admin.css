@@ -8,9 +8,11 @@
 #adminLeftBar li {padding:2%; border-style:solid; border-width:0px 0px 1px 0px; display:block}
 #adminLeftBar li:hover {background-color:#545A60;}
 
-#adminBody {background-color: white; color:#212444; text-align:center;
-   border-style:solid; border-width:0px 0px 0px 5px; border-color:#EEEEEE}
-
+.light #adminBody {background-color: white; color:#212444; text-align:center;
+    border-style:solid; border-width:0px 0px 0px 5px; border-color:#EEEEEE}
+.dark #adminBody {background-color: black; color:white; text-align:center;
+        border-style:solid; border-width:0px 0px 0px 5px; border-color:#EEEEEE}
+      
 #adminNavBar {border-style:solid; border-width:1px 0px 1px; padding:10px; text-align:left}
 #adminNavBar a,
 #adminNavBar a:hover {color:#76b5c5; text-decoration:none}

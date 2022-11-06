@@ -20,7 +20,7 @@ class Recept extends Controller{
 	public function getTitle(string $task) {
 		$result = 'Szakácskönyv';
 		if ($task == 'recept') {
-			$recept = $this->model->getById($this->request->input('id'));
+			$recept = $this->model->getById( (int) $this->request->input('id',0));
 			if (isset($recept->nev)) {
 				$result = $recept->nev;
 			}
@@ -192,13 +192,12 @@ class Recept extends Controller{
 
 		// receptCimkek tárolása
 		foreach ($cimkek as $cimke) {
-			if (isset($_POST[$cimke])) {
+			if (isset($_POST[str_replace(' ','_',$cimke)])) {
 				$this->model->saveReceptCimke($receptId, $cimke);
 			} else {
 				$this->model->delReceptCimke($receptId, $cimke);
 			}	
 		}
-
 		$this->receptek();
 	}
 	
