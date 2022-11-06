@@ -1,5 +1,7 @@
     <div id="blog">
-			<div class="row">
+        <!-- Ez a form jeleniti meg a "Vélemények az oldalról" -t is (blog.tilt='Vélemények')= -->
+		<div v-if="blog.title != 'Vélemények'">	
+            <div class="row">
 				<h1 class="ribbon-banner"><span><em class="fas fa-feather"></em>&nbsp;{{ lng('BLOG') }}</span></h1>
 			</div>	
 			<div class="row">
@@ -53,17 +55,31 @@
                             {{ lng('DELETE') }}
                         </button>
                     </div>
-                </div>        
+                </div> 
+            </div>     
+        </div><!-- nem "Vélemények"-->  
+        <div v-if="blog.title == 'Vélemények'">
+                <div class="row">
+                    <h1 class="ribbon-banner"><span><em class="fas fa-feather"></em>&nbsp;Látogatói vélemények az oldalról</span></h1>
+                </div>	
+        </div><!-- Vélemények -->        
                 <div class="row comments">
-                    <h3 class="ribbon-banner">
+                    <h3 class="ribbon-banner" v-if="blog.title != 'Vélemények'">
                         <em class="fas fa-comment"></em>
                         {{ lng('COMMENTS') }}
                     </h3>
-                    <div class="blogCommentList col-md-12" v-for="comment in comments">
+                    <div v-bind:class="'blogCommentList col-md-12 '+getCommentClass(comment)" 
+                         v-for="comment in comments">
                         <p><img v-bind:src="comment.creator.avatar" class="avatar" />
                         {{ comment.creator.name }} {{ comment.createdAt }}
                         </p>
                         <div class="commentBody" v-html="comment.body"></div>
+                        <div v-if="loged > 0">
+                            <button type="button" class="btn btn-secondary" 
+                                v-on:click="answerClick(comment)">
+                               <em class="fas fa-reply"></em>&nbsp;Válasz
+                            </button>
+                        </div>
                         <div v-if="((logedGroup == 'admin') | (logedGroup == 'moderator'))">
                             <a class="btn btn-secondary" v-bind:href="HREF('editblogcomment',{'id': comment.id,'blog_id':blog.id})">
                                 <em class="fas fa-edit"></em>
@@ -71,15 +87,38 @@
                             <button class="btn btn-danger" v-on:click="commentDelClick(comment.id)">
                                 <em class="fas fa-eraser"></em>
                             </button>&nbsp;
-                            
+                        </div>
+                        <!-- válasz form -->
+                        <form class="addComment" method="post" action="index.php"
+                            v-bind:id="'answer_'+comment.id" style="padding-left:30px; display:none"
+                            v-if="(loged > 0)">
+                            <input type="hidden" name="task" value="blogcommentsave" />
+                            <input type="hidden" name="blog_id" v-model="blog.id" />
+                            <input type="hidden" name="id" value="0" />
+                            <input type="hidden" name="parent" v-model="comment.id" />
+                            <input type="hidden" name="parentname" v-model="comment.creator.name" />
+                            <input type="hidden" name="flowKey" v-model="flowKey" />
+                            <textarea style="height:100px; width:100%" name="commentbody"></textarea>
+                            <p>
+                                <button type="submit" class="btn btn-primary">
+                                    <em class="fas fa-check"></em>
+                                    {{ lng('SEND') }}
+                                </button>
+                            </p>
+                        </form>
+                        <div v-if="(comment.notFirstAnswer != undefined)"
+                            class="col-md-12 alert alert-warning">
+                            Vannak korábbi hozzászólások is!
                         </div>
                     </div> 
 			        include paginator
                     <div class="col-12">
+                        <!-- Új felső szintű komment -->
                         <form class="addComment" method="post" action="index.php">
                             <input type="hidden" name="task" value="blogcommentsave" />
                             <input type="hidden" name="blog_id" v-model="blog.id" />
                             <input type="hidden" name="id" value="0" />
+                            <input type="hidden" name="parent" value="0" />
                             <input type="hidden" name="flowKey" v-model="flowKey" />
                             <textarea style="height:100px; width:100%" name="commentbody"></textarea>
                             <p>
@@ -90,19 +129,18 @@
                             </p>
                         </form>
                     </div>
+                </div><!-- comments -->
+                <div class="row" v-if="blog.title != 'Vélemények'">
+                    <div class="col-12">
+                        <a class="btn btn-secondary" v-bind:href="HREF('blogs',{})">
+                            <em class="fas fa-reply"></em>
+                            {{ lng('BLOGS') }}
+                        </a>
+                    </div>
+                </div>        
+                <div style="display:none">
+                    <iframe id="hideIframe"></iframe>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <a class="btn btn-secondary" v-bind:href="HREF('blogs',{})">
-                        <em class="fas fa-reply"></em>
-                        {{ lng('BLOGS') }}
-                    </a>
-                </div>
-            </div>        
-            <div style="display:none">
-                <iframe id="hideIframe"></iframe>
-            </div>
     </div>    
     <script>
         methods = {
@@ -139,6 +177,19 @@
                 popupConfirm('Biztos törölni akarod?', function() {
                     location='index.php?task=blogcommentdelete&comment_id='+id+'&blog_id='+app.blog.id;
                 });
+            },
+            answerClick(comment) {
+                var w = document.getElementById('answer_'+comment.id);
+                if (w) {
+                    w.style.display='block';
+                }    
+            },
+            getCommentClass(comment) {
+                var result = '';
+                if (comment.parent > 0) {
+                    result = 'answerComment';
+                }
+                return result;
             }
         };
     </script>       

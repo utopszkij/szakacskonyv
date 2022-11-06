@@ -3,6 +3,7 @@ use \RATWEB\DB\Query;
 use \RATWEB\DB\Record;
 include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
+include_once __DIR__.'/../urlprocess.php';
 
 class Comment extends Controller {
 	function __construct() {
@@ -115,12 +116,12 @@ class Comment extends Controller {
             if ($comment->id > 0) {
                 $comment = $this->model->getById($comment->id);
             }
+            $comment->recept_id = $this->request->input('recept_id',0,INTEGER);
             if (!$this->checkFlowKey('index.php?task=recept&id='.$comment->recept_id)) {
                 echo 'flowKey error. Lehet, hogy túl hosszú várakozás miatt lejárt a munkamenet.'; 
                 exit();
             }
-            $comment->recept_id = $this->request->input('recept_id',0,INTEGER);
-            $comment->msg = $this->request->input('msg');
+            $comment->msg = urlprocess($this->request->input('msg','',HTML));
             $comment->created_by = $this->request->input('created_by',0,INTEGER);
             $comment->created_at = $this->request->input('created_at');
             if ($comment->id == 0) {

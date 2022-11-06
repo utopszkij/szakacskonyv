@@ -289,6 +289,27 @@ class Upgrade {
 		return $result;
 	} 
 	
+		protected function do_v2_2($dbverzio) {
+			if ($this->versionAdjust($dbverzio) < 'v 2. 2') {
+
+				$q = new Query('dbverzio');
+				$q->exec('alter table blogcomments add column parent INT default 0');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+
+				$q = new Query('dbverzio');
+				$q->exec('SET SQL_SAFE_UPDATES = 0');	
+				$q = new Query('dbverzio');
+				$r = new Record();
+				$r->verzio = 'v2.2';
+				$q->where('verzio','<>','')->update($r);
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+			}	
+		}
+
 		protected function do_v2_1($dbverzio) {
 			if ($this->versionAdjust($dbverzio) < 'v 2. 1') {
 				$q = new Query('users');
@@ -653,6 +674,7 @@ class Upgrade {
 		$this->do_v1_6($dbverzio);
 		$this->do_v2_0($dbverzio);
 		$this->do_v2_1($dbverzio);
+		$this->do_v2_2($dbverzio);
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

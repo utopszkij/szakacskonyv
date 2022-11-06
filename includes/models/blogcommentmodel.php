@@ -3,6 +3,8 @@
     use \RATWEB\DB\Query;
     use \RATWEB\DB\Record;
 
+    include_once 'includes/urlprocess.php';
+
     class BlogcommentModel extends Model  {
 
         function __construct() {
@@ -19,6 +21,7 @@
             $result->id = 0;
             $result->blog_id = 0;
             $result->body = '';
+            $result->parent = 0;
             $result->created_by = '';
             $result->created_at = '';
             return $result;
@@ -39,17 +42,13 @@
          * @param string $name
          * @return string
          */
-        protected function userAvatar(string $name): string {
+        protected function userAvatar($user): string {
             $result = 'images/users/noavatar.png';
-            if (file_exists('images/users/'.$name.'.png')) {
-                $result = 'images/users/'.$name.'.png';
-            }
-            if (file_exists('images/users/'.$name.'.jpg')) {
-                $result = 'images/users/'.$name.'.jpg';
-            }
-            if (file_exists('images/users/'.$name.'.gif')) {
-                $result = 'images/users/'.$name.'.gif';
-            }
+            $q = new Query('profilok');
+            $profil = $q->where('id','=',$user->id)->first();
+            if (isset($profil->avatar)) {
+				$result = 'images/users/'.$profil->avatar;
+			}
             return $result;
         }
 
@@ -64,23 +63,59 @@
          */
         public function getComments(int $page, int $blog_id,
                  int $limit, string $order, string $orderDir):array {
-            $q = new Query('blogcomments');
-            $result = $q->select(['id','body',
-                               'created_by','created_at createdAt'])
+
+            // válaszok
+            $q1 = new Query('blogcomments');
+            $q1->select(['parent as orderid','id','body',
+                               'created_by','created_at createdAt','parent'])
                     ->where('blog_id','=',$blog_id)           
-                    ->offset(($page-1)*$limit)
+                    ->where('parent','>',0);
+                    
+            // fő rekordok + alrekordok        
+            $q = new Query('blogcomments');
+            $result = $q->select(['id as orderid','id','body',
+                               'created_by','created_at createdAt','parent'])
+                    ->where('blog_id','=',$blog_id)           
+                    ->where('parent','=',0)
+                    ->addUnion($q1)
+                    ->orderBy('orderid,id')
+                    ->orderDir('ASC')
+                    ->offset(($page - 1) * $limit)
                     ->limit($limit)
-                    ->orderBy($order)
-                    ->orderDir($orderDir)
                     ->all();
+                    
+                    
+            // ha a lista elején válasz áll, akkor be kell olvasni a tulajdonosát is
+            if (count($result) > 0) {
+                if ($result[0]->parent > 0) {
+                    $q = new  Query('blogcomments');
+                    $parentRecs = $q->select(['id as orderid','id','body',
+                                    'created_by','created_at createdAt','parent'])
+                                    ->where('blog_id','=',$blog_id)           
+                                    ->where('id','=',$result[0]->parent)
+                                    ->all();
+                    $q = new  Query('blogcomments');
+                    $firstAnswer = $q->select(['parent as orderid','id','body',
+                                    'created_by','created_at createdAt','parent'])
+                                    ->where('blog_id','=',$blog_id)           
+                                    ->where('parent','=',$parentRecs[0]->id)
+                                    ->orderBy('id')
+                                    ->first();
+                    if ($result[0]->id != $firstAnswer->id) {                
+                        $parentRecs[0]->notFirstAnswer = true;
+                    }    
+                    $result = array_merge($parentRecs, $result);
+                }
+            }
             foreach ($result as $res) {
                 $q2 = new Query('users');
                 $user = $q2->where('id','=',$res->created_by)->first();
                 $res->creator = new \stdClass();
+                $res->body = str_replace("\n",'<br />',urlprocess($res->body));
                 if (isset($user->id)) {
                     $res->creator->id = $user->id;
                     $res->creator->name = $user->username;
-                    $res->creator->avatar = $this->userAvatar($user->username);
+                    $res->creator->avatar = $this->userAvatar($user);
                 } else {
                     $res->creator->id = 0;
                     $res->creator->name = '';

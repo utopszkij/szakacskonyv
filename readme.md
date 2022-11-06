@@ -145,6 +145,13 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.1.3
+2022.11.06
+- speciális karakterek megjelenési hájának a javítása (cikk, recept leírás, kommentek)
+- recept leírásokban, cikkekben, kommentekben :)  :(  :D  :|  ;)  ;(  hangulatjelek használhatóak
+- "Vélemények" menüpont a láblécben
+### *************************************
+
 ## verzió v2.1.2
 2022.11.03
 - kép fájl feltöltési hiba javítása

@@ -127,7 +127,8 @@
         </div>
         <div class="row">
             <div class="cimke" style="display:inline-block; width:auto;" v-for="cimke in cimkek">
-                <input type="checkbox" v-bind:id="cimke" v-bind:name="cimke" value="1" :disabled="disabled != ''" />
+                <input type="checkbox" v-bind:id="cimke" 
+                    v-bind:name="cimke.replace(' ','_')" value="1" :disabled="disabled != ''" />
                 {{ cimke }}&nbsp;
             </div>
         </div>
@@ -345,7 +346,7 @@
                     {{ comment.username }}
                 </strong>
             </p>
-            <p>{{ comment.msg }}</p>
+            <p v-html="comment.msg"></p>
             <div class="commentImages">
                 <div v-if="comment.img0 > '0'" style="display:inline-block; width:auto; height:auto">
                     <img v-bind:src="'images/comments/'+comment.img0" />
@@ -520,7 +521,8 @@ var methods = {
 
                 ClassicEditor
                 .create( document.querySelector( 'textarea#leiras' ), {
-                    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link']
+                    toolbar: [ 'heading', '|', 'bold' , 'italic', 'link', 'bulletedList', 'numberedList',
+                       'imageUpload','insertTable','sourceEditing','mediaEmbed','undo','redo'],
                     language: 'hu',
                     extraPlugins: [ MyCustomUploadAdapterPlugin ],
                     mediaEmbed: {
