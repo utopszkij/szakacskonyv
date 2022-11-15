@@ -151,7 +151,7 @@
                 if (isset($user->id)) {
                     $result->creator->id = $user->id;
                     $result->creator->name = $user->username;
-                    $result->creator->avatar = $this->userAvatar($user->username);
+                    $result->creator->avatar = $this->userAvatar($user);
                 } else {
                     $result->creator->id = 0;
                     $result->creator->name = '';

@@ -288,10 +288,18 @@
         v-if="recept.id > 0"
         v-on:click="printClick(receptId)">
         <em class="fas fa-print"></em>&nbsp;{{ lng('PRINT') }}</button>&nbsp;
+
+        <a v-if="recept.id > 0" class="btn btn-primary" title="Facebbok megosztás"
+            v-bind:href="'https://www.facebook.com/sharer/sharer.php?u='+location"
+            role="button" target="_new">
+            <i class="fab fa-facebook-f"></i>&nbsp; megosztás
+        </a>&nbsp;
+
         <a class="btn btn-success" id="addFavorit" style="display:none"
         v-bind:href="HREF('addtofavorit',{'recept_id':recept.id})">
             <em class="fas fa-heart"></em>&nbsp;Kedvencekhez adom 
         </a>
+
         <a class="btn btn-danger" id="delFavorit" style="display:none"
             v-bind:href="HREF('delfromfavorit',{'recept_id':recept.id})">
             <em class="fas fa-heart"></em>&nbsp;Kedvencekből törlöm 
@@ -329,6 +337,10 @@
     </div>
     <div style="display:none">
         <iframe id="hideIframe"></iframe>
+    </div>
+    <div class="row">
+        <div class="col-12">
+        </div>     
     </div>
 </div><!-- recept show -->
 

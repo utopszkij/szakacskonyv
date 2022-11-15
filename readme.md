@@ -145,6 +145,12 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.1.4
+2022.11.15
+- technikai jellegű javítás a látogatottság statisztikában
+- facebook megosztás gomb a recpt képernyőre
+### *************************************
+
 ## verzió v2.1.3
 2022.11.06
 - speciális karakterek megjelenési hájának a javítása (cikk, recept leírás, kommentek)
