@@ -139,6 +139,12 @@
             $dates = $this->buildDates($interval,$base);
             $dmin = $dates[0];
             $dmax = $dates[count($dates) - 1];
+
+            // 4 évnél régebbi bejegyzések törlése
+            $q = new Query('events');
+            $q->where('created_at','<',date('Y-m-d',time() - (4*365*24*60*60)))->delete();
+
+
             $q = new Query('events');
             $recs = $q->select(['created_at',['count(*)','cc']])
                     ->where('created_at','>=',$dmin)
