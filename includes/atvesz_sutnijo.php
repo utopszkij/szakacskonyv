@@ -125,6 +125,7 @@ function atvetel($url = 'https://www.sutnijo.hu/....',
         $hozzavalo->nev = $w[2];
         // $w[1] valós mértékegység?
         if (count($w) > 1) {
+            $w[1] = trim(str_replace($mit,$mire,' '.$w[1].' '));
             if (in_array($w[1],$mes)) {
                 $hozzavalo->me = $w[1];
             } else {

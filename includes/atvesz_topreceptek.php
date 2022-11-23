@@ -79,16 +79,18 @@ function atvetel($url = 'https://www.topreceptek.hu/....',
 
     // hozzávalók
     $hozzavalok = []; // [{mennyiseg, nev, me},...]
-    $s1 = kiemel($s,'<div class="ingredients">','<div class="instructions">'); 
+    $s1 = kiemel($s,'Alapanyagok</div>','<div class="instructions">'); 
     $s = '<div class="instructions">'.$s;
-
     //$s1 =  <div class="key">4 db</div><div class="value">hagyma</div>....
     while (($s1 != '') & (strlen($s1 > 10))){
         $hozzavalo = new \stdClass();
         $s2 = kiemel($s1,'<div class="key">','</div>');
         $w2 = explode(' ',$s2,3); // $w2[0] mennyiség, $w2[1] mértékegység
+        $w2[] = ''; // hogy biztos legyen 3 elem
+        $w3[] = ''; 
         $hozzavalo->nev = kiemel($s1,'<div class="value">','</div>');
         // $w2[1] valós mértékegység?
+        $w2[1] = trim(str_replace($mit,$mire,' '.$w2[1].' '));
         if (count($w2) > 1) {
             if (in_array($w2[1],$mes)) {
                 $hozzavalo->me = $w2[1];
