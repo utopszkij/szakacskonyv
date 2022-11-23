@@ -29,6 +29,7 @@ tokens = {
     "HOME":"Kezdőlap",
     "RECEPTS":"Receptek",
     "DOTOTAL":"Összegzés",
+    "DAYMENUS":"Napi menük",
     "SETUP":"Beállítások",
     "USERS":"Felhasználók",
     "TRANLATIONS":"Mértékegység átváltások",

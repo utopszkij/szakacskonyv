@@ -3,7 +3,7 @@ use \RATWEB\DB\Query;
 
 include_once 'includes/models/blogmodel.php';
 include_once 'includes/urlprocess.php';
-class Naptar {
+class Naptar  {
 
 	function __construct() {
 		// a napi menü modul számára szükséges dolgok
@@ -50,8 +50,15 @@ class Naptar {
 		$_SESSION['numYear'] = $numYear;
 		$this->home();
 	}
+
+	public function naptar() {
+		$this->home(); // a task=='naptar' miatt friss hirt nem jelenit meg
+	}
 	
 	public function home() {
+		if (!isset($_GET['task'])) {
+			$_GET['task'] = 'home';
+		}
 		$numDay = $_SESSION['numDay'];
 		$numMonth = $_SESSION['numMonth'];
 		$numYear = $_SESSION['numYear'];
@@ -74,10 +81,10 @@ class Naptar {
 		$frissHir = '';
 		$blogModel = new BlogModel();
 		$recs = $blogModel->getBy('title','Friss hír');
-		if (count($recs) > 0) {
+		if ((count($recs) > 0) & ($_GET['task'] == 'home')) {
 			$frissHir = urlprocess($recs[0]->body);
 			$frissHir = str_replace('<img','<img style="width:80%"',$frissHir);
-		} else {
+		} else if ($_GET['task'] == 'home') {
 			$frissHir = 'nincs friss hír';
 		}
 

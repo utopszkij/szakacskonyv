@@ -145,6 +145,12 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.1.5
+2022.11.23
+- adat átvétel a sutnijo.hu és toprecept.hu oldalakról
+- fő,menü javítása
+### *************************************
+
 ## verzió v2.1.4
 2022.11.15
 - technikai jellegű javítás a látogatottság statisztikában

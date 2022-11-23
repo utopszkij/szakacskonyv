@@ -15,6 +15,10 @@
                 <em class="fas fa-book"></em>&nbsp;{{ lng('RECEPTS') }}</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" v-bind:href="HREF('naptar',{})">
+                <em class="fas fa-calendar"></em>&nbsp;{{ lng('DAYMENUS') }}</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" v-bind:href="HREF('osszeg',{})">
                 <em class="fas fa-plus"></em>&nbsp;{{ lng('DOTOTAL') }}</a>
               </li>
