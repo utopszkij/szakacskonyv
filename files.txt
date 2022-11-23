@@ -8,7 +8,7 @@ drwxrwxrwx 3 root      root       4096 2022-07-06 doc
 -rwxrwxrwx 1 root      root         71 2022-07-06 documentor.sh
 -rwxrwxrwx 1 root      root         58 2022-07-06 files.sh
 -rwxrwxrwx 1 root      root          0 2022-11-23 files.txt
-drwxrwxrwx 5 root      root      12288 2022-11-22 images
+drwxrwxrwx 5 root      root      12288 2022-11-23 images
 drwxrwxrwx 6 root      root       4096 2022-11-22 includes
 -rwxrwxrwx 1 root      root       5706 2022-05-22 index2.html
 -rw-rw-r-- 1 utopszkij utopszkij  4750 2022-10-21 index.js
@@ -327,7 +327,7 @@ drwxrwxrwx 2 root      root        4096 2022-09-29 search
 -rwxrwxrwx 1 root      root        553 2022-10-28 search_r.png
 
 ./images:
-összesen 9988
+összesen 9996
 -rwxrwxrwx 1 root      root      188270 2022-06-09 Afrikai harcsa sörtésztában medvehagymás burgonyával recept.jpg?v=1633609313
 -rwxrwxrwx 1 www-data  www-data    3488 2022-09-17 A legegyszerűbb muffin.png
 -rwxrwxrwx 1 root      root        6464 2021-11-07 A legjobb palacsintatészta.jpg
@@ -451,6 +451,7 @@ drwxrwxrwx 2 root      root        4096 2022-06-20 comments
 -rw-r--r-- 1 www-data  www-data    5726 2022-11-23 recept167.png
 -rw-r--r-- 1 www-data  www-data    3982 2022-11-23 recept168.png
 -rw-r--r-- 1 www-data  www-data    5101 2022-11-23 recept169.png
+-rw-r--r-- 1 www-data  www-data    5305 2022-11-23 recept170.png
 -rw-r--r-- 1 www-data  www-data    4371 2022-10-27 recept17.png
 -rw-r--r-- 1 www-data  www-data    3777 2022-10-19 recept18.png
 -rw-r--r-- 1 www-data  www-data    3977 2022-10-27 recept23.png
@@ -532,8 +533,8 @@ drwxrwxrwx 2 root      root        4096 2022-10-29 users
 -rwxrwxrwx 1 root      root      3928 2022-11-03 atvesz_nosalty.php
 -rwxrwxrwx 1 root      root      1887 2022-11-22 atvesz.php
 -rwxrwxrwx 1 root      root      5256 2022-11-03 atvesz_receptneked.php
--rw-rw-r-- 1 utopszkij utopszkij 4134 2022-11-22 atvesz_sutnijo.php
--rw-rw-r-- 1 utopszkij utopszkij 3775 2022-11-22 atvesz_topreceptek.php
+-rw-rw-r-- 1 utopszkij utopszkij 4199 2022-11-23 atvesz_sutnijo.php
+-rw-rw-r-- 1 utopszkij utopszkij 3899 2022-11-23 atvesz_topreceptek.php
 -rwxrwxrwx 1 root      root       182 2022-06-22 cimkek.txt
 drwxrwxrwx 2 root      root      4096 2022-11-04 controllers
 drwxrwxrwx 2 utopszkij utopszkij 4096 2022-11-03 extras
