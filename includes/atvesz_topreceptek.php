@@ -62,11 +62,11 @@ function atvetel($url = 'https://www.topreceptek.hu/....',
     $s1 = kiemel($s,'<div class="times">','<div class="ingredients">'); 
     $s = '<div class="ingredients">'.$s;
     $s2 = kiemel($s1,'<strong>','</strong>');
-    $elkeszites = (int)str_replace(' perc','',$s2);   
+    $elkeszites = szam(str_replace(' perc','',$s2));   
     // második idő... 
     $s3 = kiemel($s1,'<strong>','</strong>');
     if ($s3 != '') {
-        $elkeszites2 = (int)str_replace(' perc','',$s3);    
+        $elkeszites2 = szam(str_replace(' perc','',$s3));    
         $elkeszites = $elkeszites + $elkeszites2;
     }    
     $recept->elkeszites = html_entity_decode($elkeszites);
@@ -102,16 +102,10 @@ function atvetel($url = 'https://www.topreceptek.hu/....',
                 $hozzavalo->nev = $w2[1].' '.$hozzavalo->nev;
             }    
         }
-        // a $w2[0] mennyiség lehet 4-5 formában is
-        $w3 = explode('-',$w2[0],2);
-        if (count($w3) == 2) {
-            $w2[0] = ((int)(trim($w3[0])) + (int)(trim($w3[1]))) / 2;
-        }        
-        // a $w2[0] lehet 1/2 -is
-        if ($w2[0] == '1/2') {
-            $w2[0] = 0.5;
+        $hozzavalo->mennyiseg = szam($w2[0]);
+        if ($hozzavalo->mennyiseg == '') {
+            $hozzavalo->nev = $w2[0].' '.$hozzavalo->nev;
         }
-        $hozzavalo->mennyiseg = $w2[0];
         $hozzavalok[] = $hozzavalo;
     }
 

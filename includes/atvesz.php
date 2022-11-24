@@ -36,6 +36,32 @@ foreach ($recs as $rec) {
     $mire[] = ' '.trim($rec->mire).' ';
 }
 
+/**
+ * szám string értelmezés (###-###, #/#)
+ * @param string $s
+ * @return float | ''
+ */
+function szam(string $s) {
+	$result = '';
+	$s = str_replace('kb.','',$s);
+	$s = str_replace('kb','',$s);
+	$s = trim(str_replace(' ','',$s));
+	$w = explode('-',$s);
+	if (count($w) > 1) {
+		$result = round(10*((float)$w[0]+(float)$w[1])/2)/10;
+	} else {
+		$w = explode('/',$s);
+		if (count($w) > 1) {
+			$result = round(10*float($w[0])/float($w[1]))/10;
+		} else if (is_numeric($s)){
+			$result = (float)$s;
+		} else {
+			$result = '';
+		} 
+	} 
+	return $result;
+}
+
 function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesztaval.recept/',
     &$recept, &$hozzavalok) {	
 

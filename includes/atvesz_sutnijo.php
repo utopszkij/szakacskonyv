@@ -60,25 +60,13 @@ function atvetel($url = 'https://www.sutnijo.hu/....',
     $s1 = '';
     $elkeszites = '';
     $s1 = kiemel($s,'alt="Szükséges idő" width="16">','</div>');
-    $w = explode(' ',$s1);
-    foreach ($w as $w1) {
-        if (is_numeric($w1)) {
-            $recept->elkeszites = (int)$w1;   
-        }    
-    }    
+    $recept->elkeszites = szam($s1);
 
     // adag 
     $s1 = '';
     $adag = '';
     $s1 = kiemel($s,'alt="Adag" width="16">','</div>'); 
-    $w = explode(' ',$s1);
-    foreach ($w as $w1) {
-        if (is_numeric($w1)) {
-            $recept->adag = (int)$w1;   
-        }    
-    }    
-    
-
+    $recept->adag = szam($s1);
     // hozzávalók
     $hozzavalok = []; // [{mennyiseg, nev, me},...]
     $s1 = kiemel($s,'ingredients">','<h3');
@@ -100,7 +88,7 @@ function atvetel($url = 'https://www.sutnijo.hu/....',
             if (count($w) > 1) {
                 // feltehetőleg me hiányzik
                 $w[2] = $w[1];
-                $w[1] = 0;
+                $w[1] = '';
             } else {
                 // mennyiség és me is hiányzik
                 $w[1] = '';
@@ -108,16 +96,8 @@ function atvetel($url = 'https://www.sutnijo.hu/....',
                 $w[0] = '';
             }
         }
-        // a $w[0] mennyiség lehet 4-5 formában is
-        $w3 = explode('-',$w[0],2);
-        if (count($w3) == 2) {
-            $w[0] = ((int)(trim($w3[0])) + (int)(trim($w3[1]))) / 2;
-        }        
-        // a $w[0] lehet 1/2 -is
-        if ($w[0] == '1/2') {
-            $w[0] = 0.5;
-        }
-        if (!is_numeric($w[0])) {
+        $mennyiseg = szam($w[0]);
+        if ($mennyiseg == '') {
             $w[0] = '';
             $w[1] = '';
             $w[2] = $s2;
@@ -134,10 +114,9 @@ function atvetel($url = 'https://www.sutnijo.hu/....',
                 $hozzavalo->nev = $w[1].' '.$hozzavalo->nev;
             }    
         }
-        $hozzavalo->mennyiseg = $w[0];
+        $hozzavalo->mennyiseg = $mennyiseg;
         $hozzavalok[] = $hozzavalo;
     }
-
 
     // leírás
     $s1 = kiemel($s,'<div class="recipe-step mb-3">','<div class="recipe-images');

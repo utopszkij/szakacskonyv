@@ -62,7 +62,7 @@ class NapiMenu extends Controller{
 		$this->model->save($r);
 		
 		$comp = new Naptar();
-		$comp->home();	
+		$comp->naptar();	
 	}
 	
 	private function receptSelect($v, $a) {
