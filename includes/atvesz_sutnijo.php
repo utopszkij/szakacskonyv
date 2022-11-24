@@ -126,10 +126,12 @@ function atvetel($url = 'https://www.sutnijo.hu/....',
         // $w[1] valós mértékegység?
         if (count($w) > 1) {
             $w[1] = trim(str_replace($mit,$mire,' '.$w[1].' '));
+            $w[2] = trim(str_replace($mit,$mire,' '.$w[2].' '));
             if (in_array($w[1],$mes)) {
                 $hozzavalo->me = $w[1];
             } else {
                 $hozzavalo->me = '';
+                $hozzavalo->nev = $w[1].' '.$hozzavalo->nev;
             }    
         }
         $hozzavalo->mennyiseg = $w[0];

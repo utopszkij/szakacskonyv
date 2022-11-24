@@ -30,12 +30,14 @@ class Upgrade {
 		if (isset($_GET['branch'])) {
 			$this->branch = $_GET['branch'];
 			$_SESSION['branch'] = $this->branch;
-			$this->github = 'https://raw.githubusercontent.com/utopszkij/szakacskonyv/'.$this->branch.'/';
 		} else if (isset($_SESSION['branch'])) {
 			$this->branch = $_SESSION['branch'];
 			$_SESSION['branch'] = $this->branch;
-			$this->github = 'https://raw.githubusercontent.com/utopszkij/szakacskonyv/'.$this->branch.'/';
+		} else {
+			$this->branch = 'main';
+			$_SESSION['branch'] = $this->branch;
 		}
+		$this->github = 'https://raw.githubusercontent.com/utopszkij/szakacskonyv/'.$this->branch.'/';
 		$this->githubReadme = $this->github.'readme.md';
 	}
 
@@ -289,6 +291,88 @@ class Upgrade {
 		return $result;
 	} 
 	
+		protected function do_v2_2_1($dbverzio) {
+			if ($this->versionAdjust($dbverzio) < 'v 2. 2. 1') {
+				// szinonímák bővitése a topreceptek.hu szerint	
+				$q = new Query('szinonimak');
+				$w = $q->where('mit','=','ev. kanál')->first();
+				if (!isset($w->id)) {
+					$r = new Record();
+					$r->id = 0;
+					$r->mit = 'ev. kanál';
+					$r->mire = 'ek';
+					$q->insert($r);
+				}
+				$q = new Query('szinonimak');
+				$w = $q->where('mit','=','kv. kanál')->first();
+				if (!isset($w->id)) {
+					$r = new Record();
+					$r->id = 0;
+					$r->mit = 'kv. kanál';
+					$r->mire = 'kk';
+					$q->insert($r);
+				}
+				$q = new Query('szinonimak');
+				$w = $q->where('mit','=','csapott ev. kanál')->first();
+				if (!isset($w->id)) {
+					$r = new Record();
+					$r->id = 0;
+					$r->mit = 'csapott ev. kanál';
+					$r->mire = 'ek';
+					$q->insert($r);
+				}
+				$q = new Query('szinonimak');
+				$w = $q->where('mit','=','csapott ek')->first();
+				if (!isset($w->id)) {
+					$r = new Record();
+					$r->id = 0;
+					$r->mit = 'csapott ek';
+					$r->mire = 'ek';
+					$q->insert($r);
+				}
+				$q = new Query('szinonimak');
+				$w = $q->where('mit','=','csapott evőkanál')->first();
+				if (!isset($w->id)) {
+					$r = new Record();
+					$r->id = 0;
+					$r->mit = 'csapott evőkanál';
+					$r->mire = 'ek';
+					$q->insert($r);
+				}
+				$q = new Query('szinonimak');
+				$w = $q->where('mire','=','csapott_ek')->delete();
+				$q = new Query('szinonimak');
+				$w = $q->where('mire','=','csapott_kk')->delete();
+				// mértékegységek bővítése
+				$q = new Query('mertekegysegek');
+				$w = $q->where('nev','=','tasak')->first();
+				if (!isset($w->id)) {
+					$r = new Record();
+					$r->id = 0;
+					$r->nev = 'tasak';
+					$q->insert($r);
+				}
+				$q = new Query('mertekegysegek');
+				$w = $q->where('nev','=','zacskó')->first();
+				if (!isset($w->id)) {
+					$r = new Record();
+					$r->id = 0;
+					$r->nev = 'zacskó';
+					$q->insert($r);
+				}
+
+				$q = new Query('dbverzio');
+				$q->exec('SET SQL_SAFE_UPDATES = 0');	
+				$q = new Query('dbverzio');
+				$r = new Record();
+				$r->verzio = 'v2.2.1';
+				$q->where('verzio','<>','')->update($r);
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+			}
+		}
+
 		protected function do_v2_2($dbverzio) {
 			if ($this->versionAdjust($dbverzio) < 'v 2. 2') {
 
@@ -307,7 +391,7 @@ class Upgrade {
 				if ($q->error != '') {
 					echo $q->error; exit();
 				}
-			}	
+			}
 		}
 
 		protected function do_v2_1($dbverzio) {
@@ -528,7 +612,7 @@ class Upgrade {
 			(14,'púpozott_ek'),(15,'szál'),(16,'pár'),(17,'szelet'),
 			(18,'csipet'),(19,'késhegynyi'),(20,'újnyi'),(21,'kg'),
 			(22,'dkg'),(23,'g'),(24,'l'),(25,'dl'),(26,'ml'),(27,'bögre'),
-			(28,'csésze'),(29,'kis'),(30,'közepes'),(31,'nagy');
+			(28,'csésze'),(29,'kis'),(30,'közepes'),(31,'nagy'),(32,'gerezd');
 			");
 			if ($q->error != '') {
 				echo $q->error; exit();
@@ -675,6 +759,7 @@ class Upgrade {
 		$this->do_v2_0($dbverzio);
 		$this->do_v2_1($dbverzio);
 		$this->do_v2_2($dbverzio);
+		$this->do_v2_2_1($dbverzio);
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

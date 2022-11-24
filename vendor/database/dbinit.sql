@@ -1015,7 +1015,8 @@ INSERT INTO `mertekegysegek` VALUES (4,'mk'),
 (28,'csésze'),
 (29,'kis'),
 (30,'közepes'),
-(31,'nagy');
+(31,'nagy'),
+(32,'gerezd');
 
 INSERT INTO `recept_cimke` VALUES (13,'Főétel'),
 (13,'Marha'),

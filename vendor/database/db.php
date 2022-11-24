@@ -288,6 +288,8 @@ class Query {
 		} else if (is_bool($s)) {
 			$result = $s;
 		} else if (substr((string)$s,0,1) == '"') {
+			$s = str_replace(';',',',$s);
+			$s = str_replace('--','__',$s);
 			$result = $s;
 		} else {
 			$result = '"'.$mysqli->real_escape_string((string)$s).'"';	
