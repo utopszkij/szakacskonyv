@@ -66,11 +66,11 @@ class Recept extends Controller{
 			$cimkek[] = $rec->cimke;
 		}
 		
-		$receptId = $_POST['id'];
+		$receptId = $this->request->input('id');
 		if ($receptId == 0) {
 			$r = new Record();
 			$r->id = 0;
-			$r->nev = $_POST['nev'];
+			$r->nev = $this->request->input('nev');
 			if ($this->session->input('loged') > 0) {
 				$r->created_by = $this->session->input('loged');
 			} else {
@@ -92,15 +92,12 @@ class Recept extends Controller{
 	
 		$r = new Record();
 		$r->id = $this->model->sqlValue($receptId);
-		$r->leiras = $_POST['leiras'];
-		$r->nev = $_POST['nev'];
-		$r->adag = intval($_POST['adag']);
-		$r->elkeszites = intval($_POST['elkeszites']);
-		$r->energia = intval($_POST['energia']);
-		
-	
+		$r->leiras = $this->request->input('leiras','',HTML);
+		$r->nev = $this->request->input('nev');
+		$r->adag = intval($this->request->input('adag'));
+		$r->elkeszites = intval($this->request->input('elkeszites'));
+		$r->energia = intval($this->request->input('energia'));
 		$this->model->save($r);
-		
 		// meglévő hozzávalók törlése
 		$this->model->deleteHozzavalok($r->id);
 		if ($this->model->errorMsg != '') {
@@ -353,6 +350,7 @@ class Recept extends Controller{
 			foreach ($hozzavalok as $hozzavalo) {
 				$hozzavalo->menny = $hozzavalo->mennyiseg;
 			}
+			$kep = $this->receptKep($recept);
 		}
 
 		// likes infok a $recept -be

@@ -11,8 +11,6 @@
 					</a>
 				</div>
 			</div>	
-			<div class="row">&nbsp;</div>
-
 			<div class="filterForm">
 				<form method="get" action="index.php" id="filterForm" class="form">
 					<input type="hidden" name="task" value="receptek" />
@@ -51,6 +49,12 @@
 									<em class="fa fa-heart"></em>&nbsp;Kedvencek</button>		
 					</div>	
 				</form>
+			</div>
+			<div class="row" v-if="loged > 0">
+				<div class="col-12">
+					<a v-bind:href="HREF('recept',{id:0})" class="btn btn-primary">
+						<em class="fas fa-plus-circle"></em>&nbsp;{{ lng('ADD') }}</a>
+				</div>	
 			</div>
 			<div class="row">	
 				<h5 class="fancy">

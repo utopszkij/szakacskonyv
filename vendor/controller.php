@@ -47,6 +47,10 @@ class Request {
             case INTEGER:
                 $result = (int)$result;
                 break;    
+            case HTML:       
+                // no sql incejction
+                $result = str_replace('--','__',$result);
+                break;
         }    
         return $result;
     }
