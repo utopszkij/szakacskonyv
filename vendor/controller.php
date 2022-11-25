@@ -48,8 +48,7 @@ class Request {
                 $result = (int)$result;
                 break;    
             case HTML:       
-                // no sql incection
-                $result = str_replace(';',',',$result);
+                // no sql incejction
                 $result = str_replace('--','__',$result);
                 break;
         }    

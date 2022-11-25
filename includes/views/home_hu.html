@@ -1,0 +1,137 @@
+        <div id="receptList">
+            <div class="row">
+                <div class="vol-12" v-html="frissHir">
+                </div>
+            </div>
+			<div class="row">	
+				<h5 class="fancy">
+					<em class="fas fa-clock"></em>&nbsp;Új receptek
+				</h5>
+				<div id="receptListTable" class="col-md-8">
+					<table style="width:100%">
+						<thead>
+							<tr><td>ID</td><td>{{ lng('NAME') }}</td></tr>		
+						</thead>
+						<tbody>
+							<tr v-for="item in news" class="makeTrClass(item)">
+								<td>
+									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
+										<var class="imgContainer">
+											<img v-bind:id="'img_'+item.id" />
+										</var>	
+                                        <span class="id">{{ item.id }}</span>
+                                        <div class="name">{{ item.nev }}</div>
+										<div class="likeLine">
+											<em class="fas fa-thumbs-up"></em>&nbsp;{{ item.likeCount }}
+										</div>
+									</a>
+								</td>
+                            </tr>
+						</tbody>
+					</table>
+			   </div>		
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="leiras">
+						<h3>Leírás</h3>
+						<p>A programba étel recepteket és napi menüket lehet kezelni.</p>
+						<p>Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
+						Ebből bevásárló listát lehat a program segitségével készíteni.</p>
+						<p></p>
+						<h3>Tulajdonságok</h3>
+						<ul>
+							<li>Recepthez hozzávalók, elkészítési leírás és kép vihető fel,</li>
+							<li>egy recepthez max 30 hozzávaló adható meg,</li>
+							<li>a program támogatja a mindmegette.hu -ról és a receptneked.hu -ról 
+								történő adatátvételt,</li>
+							<li>a receptek módosíthatóak, törölhetőek,</li>
+							<li>ha a recepthez képet nem adunk meg akkor a program a recept neve 
+							alapján megpróbál a net-en képet keresni,</li>
+							<li>a receptek kinyomtathatóak,</li>		
+							<li>napi menübe naponta max. 4 fogás vihető fel, megadható hány főre főzünk aznap,</li>
+							<li>a napi menük módosíthatóak, törölhetőek,</li>			
+							<li>a számított hozzávaló összesítés (bevásárló lista), nyomtatás előtt módosítható
+							(pl. törölhető amiből "van a spájzban").</li>
+							<li>A receptekhez hozzászólást lehet írni (pl: megfőztem, jó ), 
+								a hozzászóláshoz max 3 db kép is csatolható (pl a saját "alkotásom" fényképei).
+								A hozzászólások és csatolt képek minden látogató számára láthatóak. 
+								Törölni, modosítani csak a feltöltő, a moderátorok és a rendszer adminisztrátorok tudják őket.
+							</li>			
+							<li>Az össesítés optimális müködése érdekében a program egy "szinonima szótárat" és 
+								"átváltási adatbázist" kezel. Ezek tartalmát csak a rendszer adminisztrátorok módosíthatják.
+							</li>
+						</ul>
+						<p>A program konfigurálható egyfelhasználós vagy többfelhasználós módba.</p>
+						<p>Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket 
+						látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
+						látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
+						sajátmaga által felvitteket tudja. Illetve a rendszer adminisztrátorok és moderátorok 
+						módosíthatják, törölhetik az összes receptet. A hozzászólások mindenki számára láthatóak</p>
+						<p></p>
+						<p><strong>A felhasználók által felvitt receptek, hozzászólások és képek tartalmáért, a kizárólag
+						az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
+						ezekkel kapcsolatban semmilyen felelősséget nem vállal.</strong></p>
+						<p></p>
+						<!--
+						<h4>A programot mindenki csak saját felelősségére használhatja.</h4>
+						-->
+					</div>
+				</div>
+			</div><!-- row -->
+        </div>    
+<script>
+    var methods = {
+		afterMount() {
+			this.newsOpened = true;
+			// window.receptImages = [];
+			window.onscroll = function() {window.scrollFunction(); app.scrollFunction()};
+			window.setTimeout('app.scrollFunction()',1000);
+		},
+		makeTrClass(item) {
+            trClass = '';
+			if (item.created_by == this.loged) {
+				trClass = 'sajat';
+			} else {
+				trClass = 'idegen';
+			}
+            return trClass;    
+        },
+		loadImg1(id) {
+			// window.scroll esemény hívja 
+			// az app.receptImages -ből a még nem betöltött, 
+			// és az adott scroll pozicióban látszó képeket tölri be
+			var w = document.getElementById('img'+id);
+			if (!w) {
+				w = document.getElementById('img_'+id);
+			}
+			if (w) {
+				if ((w.src == '') & (w.getBoundingClientRect().top <= window.innerHeight)) {
+					w.src = 'images/loader.gif';
+					axios.get('index.php?task=getImage&id='+id)
+					.then(function(response) {
+						var w = document.getElementById('img'+id)
+						if (w) {
+							w.src = response.data.replace('\n','');
+						}	
+						w = document.getElementById('img_'+id)
+						if (w) {
+							w.src = response.data.replace('\n','');
+						}	
+					})
+				}
+			}
+		},
+		scrollFunction() {
+			// a recept képek betöltése
+			imgs = document.images;
+			for (var i = 0; i < imgs.length; i++) {
+				if (imgs[i].id.substr(0,3) == 'img') {
+					var id = imgs[i].id.substr(3,100).replace('_','');
+			 		app.loadImg1(id);
+				}	
+			}
+		}
+    }
+
+ </script>       

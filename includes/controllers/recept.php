@@ -350,6 +350,7 @@ class Recept extends Controller{
 			foreach ($hozzavalok as $hozzavalo) {
 				$hozzavalo->menny = $hozzavalo->mennyiseg;
 			}
+			$kep = $this->receptKep($recept);
 		}
 
 		// likes infok a $recept -be
