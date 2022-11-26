@@ -60,6 +60,14 @@ GNU v3
 
 ## Információk informatikusok számára      
 
+A vendor könyvtár tartalmazza a felhasznált harmadik féltől származó fájlokat. 
+Nem szeretem az ilyen fájlok más szerverről (pl. cdn) történő behívását, mert
+ez esetben a fájlok fejlesztői álltal eszközölt változtatások könnyen a program
+összeomlásához vezethetnek. Ugyanezen okból a források npm -el 
+történő letöltését is ellenzem. Viszont így a rendszergazda felaladata a
+harmadik féltől származó elemek változásainak nyomonkövetése, és szükség esetén
+a (tesztelés, szükséges javítások után) a vendor könyvtrában történő cseréje.
+
 ## Szükséges sw környezet
 ### futtatáshoz
 - web szerver   .htacces és rewrite támogatással
@@ -95,20 +103,22 @@ Könyvtár szerkezet a futtató web szerveren:
     [views]
       viewer templates  spec. html fájlok. vue elemeket tartalmaznak
     [extras]
-      extra includok  
+      task -tól függő extra includok  
     egyéb inlude fájlok
   [vendor]
     keretrendszer fájlok és harmadik féltől származó fájlok (több alkönyvtárat is tartalmaz)
+  [styles]
+    css fájlok  
   index.php  - fő program
   config.php - konfigurációs adatok
-  style.css  - megjelenés
-  files.txt  - a telepített fájlok felsorolása, az upgrade folyamat használja
+  files.txt  - a telepített fájlok felsorolása (az upgrade folyamat használja)
 
 ```  
-index.php hívással a "welcome" komponens betöltésével indul a program.
+index.php paraméterek nélküli hívása esetén a "naptar.php" -ben lévő "home" task futtatásával indul a program.
 
 index.php?task=upgrade1&version=vx.x&branch=xxxx hívással a github megadott branch -et használva  
 is tesztelhető/használható az upgrade folyamat.
+
 
 ## unit test
 

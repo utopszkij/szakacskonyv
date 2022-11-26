@@ -3,47 +3,44 @@
                 <div class="vol-12" v-html="frissHir">
                 </div>
             </div>
-			<div class="row">	
+
+
+			<div class="row text-center">	
 				<h5 class="fancy">
 					<em class="fas fa-clock"></em>&nbsp;Új receptek
 				</h5>
-				<div id="receptListTable" class="col-md-8">
-					<table style="width:100%">
-						<thead>
-							<tr><td>ID</td><td>{{ lng('NAME') }}</td></tr>		
-						</thead>
-						<tbody>
-							<tr v-for="item in news" class="makeTrClass(item)">
-								<td>
-									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
-										<var class="imgContainer">
-											<img v-bind:id="'img_'+item.id" />
-										</var>	
-                                        <span class="id">{{ item.id }}</span>
-                                        <div class="name">{{ item.nev }}</div>
-										<div class="likeLine">
-											<em class="fas fa-thumbs-up"></em>&nbsp;{{ item.likeCount }}
-										</div>
-									</a>
-								</td>
-                            </tr>
-						</tbody>
-					</table>
-			   </div>		
+			</div>	
+			<!-- Swiper -->
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" v-for="item in news">
+						<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
+							<var class="imgContainer">
+								<img v-bind:id="'img_'+item.id" />
+							</var>
+							<br />	
+							<span class="id">#{{ item.id }}</span>
+							<span class="name">{{ item.nev }}</span>
+						</a>
+					</div>
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
 			</div>
+
 			<div class="row">
 				<div class="col-12">
 					<div class="leiras">
-						<h3>Leírás</h3>
+						<h5 class="fancy">Leírás</h5>
 						<p>A programba étel recepteket és napi menüket lehet kezelni.</p>
 						<p>Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
 						Ebből bevásárló listát lehat a program segitségével készíteni.</p>
 						<p></p>
-						<h3>Tulajdonságok</h3>
+						<h5>Tulajdonságok</h5>
 						<ul>
 							<li>Recepthez hozzávalók, elkészítési leírás és kép vihető fel,</li>
 							<li>egy recepthez max 30 hozzávaló adható meg,</li>
-							<li>a program támogatja a mindmegette.hu -ról és a receptneked.hu -ról 
+							<li>a program támogatja a mindmegette.hu, receptneked.hu, topreceptek.hu, sutnijo.hu -ról 
 								történő adatátvételt,</li>
 							<li>a receptek módosíthatóak, törölhetőek,</li>
 							<li>ha a recepthez képet nem adunk meg akkor a program a recept neve 
@@ -106,7 +103,7 @@
 				w = document.getElementById('img_'+id);
 			}
 			if (w) {
-				if ((w.src == '') & (w.getBoundingClientRect().top <= window.innerHeight)) {
+				if (w.src == '') {
 					w.src = 'images/loader.gif';
 					axios.get('index.php?task=getImage&id='+id)
 					.then(function(response) {

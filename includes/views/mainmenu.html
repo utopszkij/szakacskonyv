@@ -54,7 +54,7 @@
                 <a v-bind:href="HREF('login',{})" class="btn btn-info" role="button">
                         <em class="fas fa-sign-in-alt"></em>&nbsp;Belépés</a>
               </li>
-              <li class="nav-item" v-if="loged > 0">
+              <li id="loged" class="nav-item" v-if="loged > 0">
                   <var class="nav-link" onclick="submenuToggle()" 
                       style="cursor:pointer">
                       <var v-bind:class="logedGroup"> 

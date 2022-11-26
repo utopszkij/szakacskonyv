@@ -138,15 +138,7 @@
 <script>
     var methods = {
 		afterMount() {
-			if ((this.page == 1) &
-			    (this.filterStr == '') &
-				(this.filterCimke == '') &
-				(this.filterCreated == '') &
-				(this.filterCreator <= 0)) {
-				this.newsOpened = true;
- 			} else {
-				this.newsOpened = false;
-			}	
+			this.newsOpened = false;
 			// window.receptImages = [];
 			window.onscroll = function() {window.scrollFunction(); app.scrollFunction()};
 			window.setTimeout('app.scrollFunction()',1000);

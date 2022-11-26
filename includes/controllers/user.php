@@ -55,8 +55,34 @@ class User extends Controller {
 				<?php			
 		} else {
 			$rec = $recs[0];
+			//+ Tervezett funkció 
+			$rec->locked = '';
+			$rec->errorcount = 0;
+			//- Tervezett funkció
+			if ($rec->locked < (time()-(10*60))) {
+				/* zárolás idő lejárt
+				$rec->locekd = '';
+				$rec->errorcount = 0;
+				$this->model-save($rec);
+				*/
+			}	
+			if ($rec->locked > (time()-(10*60))) {
+				$error = '5 hibás belépési kisérlet miatt a fiók 10 percre zárolva van!';
+				?>
+				<script>
+					document.location="index.php?task=login&msg=<?php echo $error; ?>&redirect=<?php echo urlencode($redirect) ?>";		
+				</script>
+				<?php			
+			}
 			if ($rec->password != md5($password)) {
 				$error = 'Nem jó jelszó!';
+				/* hiba számláló növelése a rekordban
+				$rec->errorcount = $rec->errorcount + 1;
+				if ($rec->errorcount == 5) {
+					$rec->locked = time();
+				}
+				$this->model-save($rec);
+				*/
 				?>
 				<script>
 					document.location="index.php?task=login&msg=<?php echo $error; ?>&redirect=<?php echo urlencode($redirect) ?>";		
@@ -64,6 +90,12 @@ class User extends Controller {
 				<?php			
 			} else {
 				$rec = $this->model->getById($recs[0]->id);
+				/* adatbázisban hibaszámláló és locked nulázása
+					$rec->errorcount = 0;
+					$rec->locked='';
+					$this->model-save($rec);
+				*/
+
 				$_SESSION['loged'] = $rec->id;
 				$_SESSION['logedName'] = $rec->username;
 				$_SESSION['logedAvatar'] = $rec->avatar;
