@@ -160,23 +160,14 @@ class Naptar  {
 	
 	
 	public function home() {
-		if (!isset($_GET['task'])) {
-			$_GET['task'] = 'home';
-		}
-
 		$likeModel = new LikeModel();
 		$q = new Query('receptek');
 		$news = $q->orderBy('id')->orderDir('DESC')->limit(8)->all();
-		foreach ($news as $new) {
-			// likes infok a $recept -be
-			$new->likeCount = $likeModel->getLikesTotal('recept', $new->id);
-		}
-
 
 		$frissHir = '';
 		$blogModel = new BlogModel();
 		$recs = $blogModel->getBy('title','Friss hír');
-		if ((count($recs) > 0) & ($_GET['task'] == 'home')) {
+		if (count($recs) > 0) {
 			$frissHir = urlprocess($recs[0]->body);
 			$frissHir = str_replace('<img','<img style="width:80%"',$frissHir);
 		} else if ($_GET['task'] == 'home') {
@@ -184,6 +175,28 @@ class Naptar  {
 		}
 
 		view('home',["news" => $news, "frissHir" => $frissHir]);
+		echo '
+		<!-- Initialize Swiper -->
+		<script src="vendor/swiper/swiper-bundle.js"></script>
+		<script>
+		var sliderCount = 3;
+		if (screen.width > 1000) {
+			sliderCount = 3;
+		} else if (screen.width > 700) {
+			sliderCount = 2;
+		} else {
+			sliderCount = 1;
+		}
+		var swiper = new Swiper(".mySwiper", {
+			slidesPerView: sliderCount,
+			spaceBetween: 30,
+			navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+			},
+		});
+	</script>
+		';
 	}
 } // class
 

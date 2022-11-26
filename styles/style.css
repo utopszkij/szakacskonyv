@@ -55,7 +55,7 @@ body {text-align:center}
 .dark .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
     border-radius:30px; background-color:#1f2029}
 
-#header {height:100px; margin:1%; background-image:url('images/fejlec.png'); cursor:pointer}
+#header {height:100px; margin:1%; background-image:url('../images/fejlec.png'); cursor:pointer}
 h1,h2,h3,h4,h5 {padding:1%}
 span, var {display:inline-block; width:auto}
 .row {--bs-gutter-x: 0px }
@@ -121,7 +121,7 @@ form {margin:1% 1% 1% 1%}
 
 .receptKep {width:100%}
 
-/* naptár */    
+/* naptár, home */    
 .light .van {background-color:green; padding:5px}
 .light .van a {color:white; text-decoration:none }
 .light .nincs {background-color:white; padding:5px}
@@ -144,13 +144,13 @@ figure.image {text-align:center}
 figure.image-style-side img {float:right; width:40%}
 #bloglist figure.image img,
 #bloglist .blogBody img {width:300px}
-#bloglist p,ul.ol,div {margin-bottom:0px;} }
+#bloglist p,ul.ol,div {margin-bottom:0px;} 
 
 /* user goups */
-.light .admin {color: red}
-.light .moderator {color:green}
-.dark .admin {color: red}
-.dark .moderator {color:green}
+.light #loged .admin {color:red}
+.light #loged .moderator {color:green}
+.dark #loged .admin {color: red}
+.dark #loged .moderator {color:green}
 
 .light .comment {border-style:solid; border-width:1px; border-radius:5px;
   padding:0.5%; margin:0.3% 0.8% 0.3% 0%; background-color:#eee2a9; color: black; height:auto}

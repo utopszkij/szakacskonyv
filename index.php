@@ -76,28 +76,27 @@ if (in_array($fw->compName.'.'.$fw->task,
 }
 
 ?>
-<html lang="en">
+<html lang="hu">
 <head>
-  <meta>
     <meta charset="UTF-8">
-	<meta property="og:title"  content="<?php echo $title; ?>" />
+	<meta property="og:title"  content="<?php echo $title; ?>">
 	<base href="<?php echo SITEURL; ?>/">
 	<link rel="icon" type="image/x-icon" href="images/szakacs.png">
     <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 <!-- bootstrap -->	
-	 <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!-- bootstrap -->	
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!-- vue -->
     <script src="vendor/vue/vue.global.js"></script>
 	<!-- axios -->
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="vendor/axios/axios.js"></script>
 	<!-- fontawesome --> 
 	<script src="vendor/fontawesome/js/all.min.js"></script>
 	<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
 
-	<link rel="stylesheet" href="admin.css?t=<?php echo $fileVerzio; ?>">
-	<link rel="stylesheet" href="style.css?t=<?php echo $fileVerzio; ?>">
+	<link rel="stylesheet" href="styles/admin.css?t=<?php echo $fileVerzio; ?>">
+	<link rel="stylesheet" href="styles/style.css?t=<?php echo $fileVerzio; ?>">
 	<!-- multi language -->
 	<?php
 		if (defined('LNG')) {
