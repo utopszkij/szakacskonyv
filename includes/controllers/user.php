@@ -272,6 +272,10 @@ class User extends Controller {
 		$record->email = '';
 		$record->password = md5(rand(10000,99000));
 		$record->password2 = $record->password;
+		$_SESSION['loged'] = -1;
+		$_SESSION['logedName'] = 'guest';
+		$_SESSION['logedAvatar'] = '';
+		$_SESSION['logedGroup'] = '';
         $this->save($record); 
     }    
 

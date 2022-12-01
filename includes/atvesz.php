@@ -98,7 +98,6 @@ function atvesz($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesz
 	}	
 
 	// $recept->leiras .= '<p>&nbsp;</p><p>Forrás:'.$url.'</p>';
-	$recept->leiras .= '<p>&nbsp;</p><p>Feltöltő:'.$_SESSION['logedName'].'</p>';
 
 }	
 

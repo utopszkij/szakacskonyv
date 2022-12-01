@@ -289,7 +289,7 @@ class Query {
 			$result = $s;
 		} else if (substr((string)$s,0,1) == '"') {
 			$s = trim(str_replace('--','__',$s));
-			$s = substr($s,2,strlen($s)-2); // eltávolítja a kezdő és záró " -t
+			$s = substr($s,1,strlen($s)-2); // eltávolítja a kezdő és záró " -t
 			$result = '"'.$mysqli->real_escape_string((string)$s).'"';	
 		} else {
 			$result = '"'.$mysqli->real_escape_string((string)$s).'"';	

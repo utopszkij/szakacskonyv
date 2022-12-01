@@ -41,7 +41,7 @@ $statisticModel->saveStatistic();
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.1.5';
+$fileVerzio = 'v2.1.6';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -76,38 +76,61 @@ if (in_array($fw->compName.'.'.$fw->task,
 }
 
 ?>
-<html lang="hu">
+<html>
 <head>
     <meta charset="UTF-8">
 	<meta property="og:title"  content="<?php echo $title; ?>">
 	<base href="<?php echo SITEURL; ?>/">
-	<link rel="icon" type="image/x-icon" href="images/szakacs.png">
+	<link rel="icon" type="image/x-icon" href="<?php echo SITEURL; ?>/images/szakacs.png" />
     <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A programba étel recepteket és napi menüket lehet kezelni.
+Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
+Ebből bevásárló listát lehat a program segitségével készíteni.
+Tulajdonságok Recepthez hozzávalók, elkészítési leírás és kép vihető fel,
+egy recepthez max 30 hozzávaló adható meg, a program támogatja a mindmegette.hu, receptneked.hu, 
+topreceptek.hu, sutnijo.hu -ról történő adatátvételt, a receptek módosíthatóak, törölhetőek, ha 
+a recepthez képet nem adunk meg akkor a program a recept neve alapján megpróbál a net-en képet 
+keresni, a receptek kinyomtathatóak, napi menübe naponta max. 4 fogás vihető fel, megadható 
+hány főre főzünk aznap, a napi menük módosíthatóak, törölhetőek, a számított hozzávaló összesítés 
+(bevásárló lista), nyomtatás előtt módosítható (pl. törölhető amiből 'van a spájzban').
+A receptekhez hozzászólást lehet írni (pl: megfőztem, jó ), a hozzászóláshoz max 3 db kép is 
+csatolható (pl a saját 'alkotásom' fényképei). A hozzászólások és csatolt képek minden látogató 
+számára láthatóak. Törölni, modosítani csak a feltöltő, a moderátorok és a rendszer adminisztrátorok 
+tudják őket. Az össesítés optimális müködése érdekében a program egy 'szinonima szótárat' és 
+'átváltási adatbázist' kezel. Ezek tartalmát csak a rendszer adminisztrátorok módosíthatják.
+A program konfigurálható egyfelhasználós vagy többfelhasználós módba.
+Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket látja és ezeket 
+kezelheti, az összesítés is ezek alapján készül. A recepteknél látja, használhatja a mások által 
+felvitteket is, de modosítani, törölni csak a sajátmaga által felvitteket tudja. Illetve a 
+rendszer adminisztrátorok és moderátorok módosíthatják, törölhetik az összes receptet. 
+A hozzászólások mindenki számára láthatóak">
+ 	<meta name="keywords" content="recept, receptek, szakács, szakácskönyv, napi menü, összesítés, bevásárló lista, étel, ételek, sütemény, sütemények">
+  	<meta name="author" content="Fogler Tibor">
 	<!-- bootstrap -->	
-	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="<?php echo SITEURL; ?>/vendor/bootstrap/css/bootstrap.min.css" />
+    <script src="<?php echo SITEURL; ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!-- vue -->
-    <script src="vendor/vue/vue.global.js"></script>
+    <script src="<?php echo SITEURL; ?>/vendor/vue/vue.global.js"></script>
 	<!-- axios -->
-	<script src="vendor/axios/axios.js"></script>
+	<script src="<?php echo SITEURL; ?>/vendor/axios/axios.js"></script>
 	<!-- fontawesome --> 
-	<script src="vendor/fontawesome/js/all.min.js"></script>
-	<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+	<script src="<?php echo SITEURL; ?>/vendor/fontawesome/js/all.min.js"></script>
+	<link rel="stylesheet" href="<?php echo SITEURL; ?>/vendor/fontawesome/css/all.min.css" />
 
-	<link rel="stylesheet" href="styles/admin.css?t=<?php echo $fileVerzio; ?>">
-	<link rel="stylesheet" href="styles/style.css?t=<?php echo $fileVerzio; ?>">
+	<link rel="stylesheet" href="<?php echo SITEURL; ?>/styles/admin.css?t=<?php echo $fileVerzio; ?>" />
+	<link rel="stylesheet" href="<?php echo SITEURL; ?>/styles/style.css?t=<?php echo $fileVerzio; ?>" />
 	<!-- multi language -->
 	<?php
 		if (defined('LNG')) {
 			if (file_exists(__DIR__.'/languages/'.LNG.'.js')) {
-				echo '<script src="languages/'.LNG.'.js"></script>';
+				echo '<script src="'.SITEURL.'/languages/'.LNG.'.js"></script>';
 			} else {
 				echo '<script> tokens = {}; </script>';
 			}	
 		} else {
 			if (file_exists(__DIR__.'/languages/hu.js')) {
-				echo '<script src="languages/hu.js"></script>';
+				echo '<script src="'.SITEURL.'/languages/hu.js"></script>';
 			} else {
 				echo '<script> tokens = {}; </script>';
 			}	
@@ -177,12 +200,12 @@ if (in_array($fw->compName.'.'.$fw->task,
 	</div>
 	<script>
 		if (document.cookie.search('cookieEnabled=2') >= 0) {
-			document.write('<p id="cookieEnabled">Csoki kezelés engedélyezve van. Letiltásához kattints ide:'+
+			document.write('<p id="cookieEnabled">"Süti" kezelés engedélyezve van. Letiltásához kattints ide:'+
 			'<a href="index.php" onclick="setCookie(\'cookieEnabled\',0,100);">Letilt</a></p>');
 		} else if (document.location.href.search('adatkezeles') < 0) {
-			popupConfirm('Ennek a web oldalnak a használatához un. "munkamenet csokik" használtata szükséges.'+
+			popupConfirm('Ennek a web oldalnak a használatához un. "munkamenet sütik" használtata szükséges.'+
 			'<br />Lásd: <a href="index.php?task=adatkezeles">Adatkezelési leírás</a>'+
-			'<br />Kérjük engedélyezd a csokik kezelését!',
+			'<br />Kérjük engedélyezd a "sütik" kezelését!',
 			function() {
 				setCookie('cookieEnabled',2,100);
 				document.location='index.php';

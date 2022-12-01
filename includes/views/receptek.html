@@ -183,8 +183,8 @@
 			}
 			if (w) {
 				if ((w.src == '') & (w.getBoundingClientRect().top <= window.innerHeight)) {
-					w.src = 'images/loader.gif';
-					axios.get('index.php?task=getImage&id='+id)
+					w.src = siteurl+'/images/loader.gif';
+					axios.get(siteurl+'/index.php?task=getImage&id='+id)
 					.then(function(response) {
 						var w = document.getElementById('img'+id)
 						if (w) {

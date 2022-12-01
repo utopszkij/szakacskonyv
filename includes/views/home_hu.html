@@ -1,6 +1,11 @@
         <div id="receptList">
+			<div class="row text-center">	
+				<h5 class="fancy">
+					<em class="fas fa-newspaper"></em>&nbsp;Friss hírek
+				</h5>
+			</div>	
             <div class="row">
-                <div class="vol-12" v-html="frissHir">
+				<div class="vol-12" v-html="frissHir">
                 </div>
             </div>
 
@@ -104,8 +109,8 @@
 			}
 			if (w) {
 				if (w.src == '') {
-					w.src = 'images/loader.gif';
-					axios.get('index.php?task=getImage&id='+id)
+					w.src = siteurl+'/images/loader.gif';
+					axios.get(siteurl+'/index.php?task=getImage&id='+id)
 					.then(function(response) {
 						var w = document.getElementById('img'+id)
 						if (w) {

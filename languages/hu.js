@@ -68,6 +68,7 @@ tokens = {
     "RECEPT":"Recept",
     "UPDATE_MUST_LOGIN":"Új felviteléhez, modosításhoz, törléshez be kell jelentkezni.",
     "TRANSVER":" oldalon nyisd meg a recept oldalát,  a web címét másold az alábbi input mezőbe, majd kattints a \"Feldolgoz\" gombra!",
+    "TRANSVER2":"Szerői joggal védett receptek esetén; ki kell kérni a jogtulajdonos engedélyét!",
     "OR":"vagy",
     "PROCESS":"Feldolgoz",
     "BUILDTIME":"Elkészítési idő",

@@ -1,8 +1,10 @@
 <?php
 use \RATWEB\DB\Query;
+include_once 'vendor/controller.php';
 
-class Osszegzes {
+class Osszegzes extends Controller{
 	function __construct() {
+		parent::__construct();
 	}
 
 	/**
@@ -43,12 +45,12 @@ class Osszegzes {
 	* $_GET['datum1'],$_GET['datum2'] 
 	*/
 	public function szamol() {
-		$datum1 = $_GET['datum1'];	
-		$datum2 = $_GET['datum2'];
+		$datum1 = $this->request->input('datum1');	
+		$datum2 = $this->request->input('datum2');
 		$loged = $_SESSION['loged'];	
 	
-	$union2 = new Query('napimenuk','m');
-	$union2->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
+		$union2 = new Query('napimenuk','m');
+		$union2->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept2')
 			->join('LEFT OUTER','receptek','r','r.id','=','m.recept2')
 			->where('h.nev','<>',Query::sqlValue(''))
@@ -57,8 +59,8 @@ class Osszegzes {
 			->where('m.datum','<=',Query::sqlValue($datum2))
 			->where('m.created_by','=',Query::sqlValue($loged));
 	
-	$union3 = new Query('napimenuk','m');
-	$union3->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
+		$union3 = new Query('napimenuk','m');
+		$union3->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept3')
 			->join('LEFT OUTER','receptek','r','r.id','=','m.recept3')
 			->where('h.nev','<>',Query::sqlValue(''))
@@ -67,8 +69,8 @@ class Osszegzes {
 			->where('m.datum','<=',Query::sqlValue($datum2))
 			->where('m.created_by','=',Query::sqlValue($loged));
 	
-	$union4 = new Query('napimenuk','m');
-	$union4->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
+		$union4 = new Query('napimenuk','m');
+		$union4->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept4')
 			->join('LEFT OUTER','receptek','r','r.id','=','m.recept4')
 			->where('h.nev','<>',Query::sqlValue(''))
@@ -77,8 +79,8 @@ class Osszegzes {
 			->where('m.datum','<=',Query::sqlValue($datum2))
 			->where('m.created_by','=',Query::sqlValue($loged));
 	
-	$subSelect = new Query('napimenuk','m');
-	$subSelect->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
+		$subSelect = new Query('napimenuk','m');
+		$subSelect->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 				->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept1')
 				->join('LEFT OUTER','receptek','r','r.id','=','m.recept1')
 				->where('h.nev','<>',Query::sqlValue(''))
@@ -90,10 +92,11 @@ class Osszegzes {
 				->addUnion($union3)
 				->addUnion($union4);
 	 
-	$db = new Query($subSelect,'s');
-	$db->select(['s.nev',['sum(s.mennyiseg)','mennyiseg'],'s.szme'])
-	->groupBy(['s.nev','szme'])
-	->orderBy('s.nev');
+		$db = new Query($subSelect,'s');
+		$db->select(['s.nev',['sum(s.mennyiseg)','mennyiseg'],'s.szme'])
+		->groupBy(['s.nev','szme'])
+		->orderBy('s.nev');
+
 	$items = $db->all();
 	foreach ($items as $item) {
 		$item->mennyiseg = Round($item->mennyiseg * 10) / 10;
