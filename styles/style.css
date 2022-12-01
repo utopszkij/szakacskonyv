@@ -4,6 +4,8 @@ body {
   --text-color: #222;
   --bkg-color: #fff;
 }
+a, a:hover {text-decoration:none}
+
 body.dark {
   color:white;
   background-color:#1f2029;
@@ -50,10 +52,10 @@ body {
 
 
 body {text-align:center}
-.light .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
-  border-radius:30px; background-color:#EEE8AA}
-.dark .container {display:inline-block; margin:0%; padding:0px 0px 0px 0px;
-    border-radius:30px; background-color:#1f2029}
+.light .container {display:inline-block; width:100%; margin:0%; padding:0px 0px 0px 0px;
+  border-radius:0px; background-color:#EEE8AA}
+.dark .container {display:inline-block; width:100%; margin:0%; padding:0px 0px 0px 0px;
+    border-radius:0px; background-color:#1f2029}
 
 #header {height:100px; margin:1%; background-image:url('../images/fejlec.png'); cursor:pointer}
 h1,h2,h3,h4,h5 {padding:1%}
@@ -256,7 +258,7 @@ figure.image-style-side img {float:right; width:40%}
 #likewinners .medal9 {color:#60604b}
 
 #footer {background-color:#1a4d80; padding:20px; margin-top:5px;
-  border-radius: 0px 0px 30px 30px; text-align:center}
+  border-radius: 0px 0px 0px 0px; text-align:center}
 #footer a {background-color:inherit}  
 #footer a:hover {background-color:inherit}  
 
@@ -321,7 +323,7 @@ figure.image-style-side img {float:right; width:40%}
 
 .fancy {
   --b: 6px;   /* control the border thickness */
-  --w: 350px;  /* control the width of the line*/
+  --w: 150px;  /* control the width of the line */
   --g: 15px;  /* control the gap */
   --c: #1a4d80;
  
@@ -329,7 +331,7 @@ figure.image-style-side img {float:right; width:40%}
   padding: 0 1em;
   margin-top: 5px;
   line-height: 1.6em;
-  border: 1px solid;
+  border: 0px solid;
   color: #fff;
   text-align:center;
   background: 
@@ -338,12 +340,15 @@ figure.image-style-side img {float:right; width:40%}
   background-size: 51% 100%;
   background-origin: border-box;
   background-repeat: no-repeat;
+  border-style:none;
+  /*
   border-image: 
      linear-gradient(
        #0000      calc(50% - var(--b)/2),
        var(--c) 0 calc(50% + var(--b)/2),
        #0000    0) 
     1/0 var(--w)/calc(var(--w) + var(--g));
+  */  
   margin-inline: auto;
 }
 /* admin felület */
@@ -359,6 +364,7 @@ figure.image-style-side img {float:right; width:40%}
 .inIframe #receptList #receptListTable td div.likeLine {display:inline-block; width:auto; margin-left:10px}
 .inIframe #blogList {border-style:solid; border-width:1px; padding:5px}
 .inIframe #blogList .blogBody {display:none}
+
 
 /* phone */
 @media screen and (max-width: 992px) {

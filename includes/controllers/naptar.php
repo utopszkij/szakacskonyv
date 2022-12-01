@@ -180,9 +180,9 @@ class Naptar  {
 		<script src="vendor/swiper/swiper-bundle.js"></script>
 		<script>
 		var sliderCount = 3;
-		if (screen.width > 1000) {
+		if (window.innerWidth > 1000) {
 			sliderCount = 3;
-		} else if (screen.width > 700) {
+		} else if (window.innerWidth > 700) {
 			sliderCount = 2;
 		} else {
 			sliderCount = 1;

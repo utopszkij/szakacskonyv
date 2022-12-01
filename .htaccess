@@ -4,6 +4,11 @@
     </IfModule>
 
     RewriteEngine On
+        
+    # set http (exlude ip: 192.168.0.13)
+	RewriteCond %{HTTPS} off 
+	RewriteCond %{HTTP_HOST} [^192.168.0.13]
+	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]    
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
@@ -18,4 +23,6 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+    
+    
 </IfModule>

@@ -42,6 +42,7 @@ GNU v3
 ## Müködő demo:
 
 [https://szakacskonyv.nfx.hu](http://szakacskonyv.nfx.hu)
+[https://befalom.hu](https://befalom.hu)
 
 ## képernyő képek
 
@@ -155,6 +156,13 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.1.6
+2022.12.01
+- összesítés funkció hibajavítás
+- dizájn fejlesztés
+- befalom.hu domain -re költözés
+### *************************************
+
 ## verzió v2.1.5
 2022.11.23
 - adat átvétel a sutnijo.hu és toprecept.hu oldalakról
