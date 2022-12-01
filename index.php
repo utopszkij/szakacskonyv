@@ -41,7 +41,7 @@ $statisticModel->saveStatistic();
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.1.6';
+$fileVerzio = 'v2.1.7';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -105,7 +105,7 @@ kezelheti, az összesítés is ezek alapján készül. A recepteknél látja, ha
 felvitteket is, de modosítani, törölni csak a sajátmaga által felvitteket tudja. Illetve a 
 rendszer adminisztrátorok és moderátorok módosíthatják, törölhetik az összes receptet. 
 A hozzászólások mindenki számára láthatóak">
- 	<meta name="keywords" content="recept, receptek, szakács, szakácskönyv, napi menü, összesítés, bevásárló lista, étel, ételek, sütemény, sütemények">
+ 	<meta name="keywords" content="recept, receptek, szakács, szakácskönyv, napi menü, összegit checkout -b sítés, bevásárló lista, étel, ételek, sütemény, sütemények">
   	<meta name="author" content="Fogler Tibor">
 	<!-- bootstrap -->	
 	<link rel="stylesheet" href="<?php echo SITEURL; ?>/vendor/bootstrap/css/bootstrap.min.css" />

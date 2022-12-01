@@ -7,7 +7,7 @@
 include_once 'config.php';
 include_once 'vendor/database/db.php';
 
-$urls = [SITEURL.'/index.php'];
+$urls = [SITEURL];
 
 $q = new \RATWEB\DB\Query('receptek');
 $recs = $q->all();
@@ -31,7 +31,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>'."\n";
 <?php foreach ($urls as $url) : ?>
 <url>
   <loc><?php echo $url; ?></loc>
-  <lastmod><?php echo date('Y-m-dTH:i:s'); ?>+00.00</lastmod>
+  <lastmod><?php echo date('Y-m-d'); ?></lastmod>
   <priority>1.00</priority>
 </url>
 <?php endforeach; ?>

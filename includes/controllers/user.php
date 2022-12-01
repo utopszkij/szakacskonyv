@@ -197,6 +197,19 @@ class User extends Controller {
      */
     protected function  accessRight(string $action, $record):bool {
 		$result = true;
+		if ($action == 'delete') {
+			if (($_SESSION['loged'] <= 0) | 
+				(($_SESSION['logedGroup'] != 'admin') & ($_SESSION['loged'] != $record->id))) {
+				$result = false;  // nincs bejelentkezve, vagy nem jogosult erre
+			}
+		} else if ($action == 'edit') {
+			if (($_SESSION['loged'] <= 0) | 
+				(($_SESSION['logedGroup'] != 'admin') & ($_SESSION['loged'] != $record->id))) {
+					$result = false;  // nincs bejelentkezve, vagy nem jogosult erre
+			}
+		} else {
+			$result = true;
+		}	
         return $result;
     }
 
@@ -227,9 +240,18 @@ class User extends Controller {
 	 * - password adatokat admin és a record->id user modosithatja
      */
     public function usersave() {
+		if (!$this->checkFlowKey('index.php')) {
+			echo 'flowKey error'; exit();
+		}
 		$id = $this->request->input('id',0);
 		if ($id > 0) {
 			$record = $this->model->getById($id);
+			if (!isset($record->id)) {
+				return; // nincs ilyen rekord
+			}
+			if (!$this->accessRight('edit',$record)) {
+				return; // nem jogosult erre
+			}
 			$record->password2 = $record->password;
 		} else {
 			$record = $this->model->emptyRecord();
@@ -264,6 +286,16 @@ class User extends Controller {
     public function userdelete() {
 		$id = $this->request->input('id',0, INTEGER);
 		$record = $this->model->getById($id);
+		if (!isset($record->id)) {
+			return; // nincs ilyen user
+		}
+		if (!$this->checkFlowKey('index.php')) {
+			echo 'flowKey error'; exit();
+		}
+		if (!$this->accessRight('delete',$record)) {
+			echo 'accssRight error'; exit();
+			return;  // nincs bejelentkezve, vagy nem jogosult erre
+		}
 		$record->username = 'törölt'.$record->id;
 		$record->password= md5(rand(100000,9999999));
 		$record->avatar = '';
@@ -272,14 +304,20 @@ class User extends Controller {
 		$record->email = '';
 		$record->password = md5(rand(10000,99000));
 		$record->password2 = $record->password;
-		$_SESSION['loged'] = -1;
-		$_SESSION['logedName'] = 'guest';
-		$_SESSION['logedAvatar'] = '';
-		$_SESSION['logedGroup'] = '';
-        $this->save($record); 
+		$this->model->save($record); 
+		if ($_SESSION['loged'] == $id) {
+			$_SESSION['loged'] = -1;
+			$_SESSION['logedName'] = 'guest';
+			$_SESSION['logedAvatar'] = '';
+			$_SESSION['logedGroup'] = '';
+			echo '<script>
+				document.location="index.php";
+			</script>';
+		} else{
+			$this->userek();
+		}
+
     }    
-
-
 }
 
 

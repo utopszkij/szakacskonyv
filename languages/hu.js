@@ -18,6 +18,7 @@ tokens = {
     "CLEARFILTER":"Szűrés törlése",
     "SAVED": "Tárolva",
     "DELETED": "Törölve",
+    "NOT_FOUND": "Nincs ilyen",
 
     "TOTAL":"Osszesen",
     "LINES":"sor",
