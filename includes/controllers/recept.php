@@ -15,32 +15,8 @@ class Recept extends Controller{
 		parent::__construct();
 		$this->model = new ReceptModel();
 	}	
+	
 
-    /**
-     * loged user hozzáférés ellenörzése
-     * @param string $action  'new'|'edit'|'delete'|'show'
-     * @param RecordObject $record
-     * @return bool
-     */    
-    protected function accessRight(string $action, $record): bool {
-		$result = true;
-		if ($action == 'new') {
-			$result = ($this->session->input('loged') > 0);
-		} else if ($action == 'edit') {
-			$result = (($this->session->input('loged') > 0) &
-					   (($this->session->input('loged') == $record->created_by) | ($this->session->input('logedGroup') == 'admin')));
-		} else if ($action == 'delete') {
-			$result = (($this->session->input('loged') > 0) &
-					   (($this->session->input('loged') == $record->created_by) | ($this->session->input('logedGroup') == 'admin')));
-		} else if ($action = 'show') {
-			$result = true;
-		}
-        return $result;
-    }
-
-	/**
-	 * html met title képzése
-	 */
 	public function getTitle(string $task) {
 		$result = 'Szakácskönyv';
 		if ($task == 'recept') {
@@ -51,17 +27,14 @@ class Recept extends Controller{
 		}
 		return $result;
 	}
-
 	// $_GET['id']
 	public function receptdelete() {
 		// normál user csak a saját maga által felvittet törölheti
 		// system admin mindent törölhet
 		$recept = $this->model->getById($this->request->input('id',0,INTEGER));
-		if (!isset($recept->id)) {
-		    $this->receptek(); // nincs ilyen
-		}
-		if (!$this->accessRight('delete',$recept)) {
-			$this->receptek(); // nincs joga hozzá
+		if (($recept->created_by != $this->session->input('loged')) &
+		    (!$this->logedAdmin)) {
+		    $this->receptek();
 		} else {
 			$this->model->delById($this->request->input('id',0,INTEGER));
 			$this->model->deleteHozzavalok($this->request->input('id'));
@@ -107,10 +80,8 @@ class Recept extends Controller{
 			$receptId = $this->model->save($r);
 		} else {
 			$recept = $this->model->getById($this->model->sqlValue($receptId));
-			if (!isset($recept->id)) {
-				return;  // nincs ilyen
-			}
-			if (!$this->accessRight('delete',$recept)) {
+			if (($recept->created_by != $this->session->input('loged')) & 
+			    (!$this->logedAdmin) & ($this->logedGroup != 'moderator')) {
 				echo '<div class="alert alert-danger">Hozzáférés megtagadva!</div>';
 				return;
 			}
@@ -163,6 +134,9 @@ class Recept extends Controller{
 		if (file_exists($_FILES['kepfile']['tmp_name'])) { 
 			$target_dir = DOCROOT.'/images/';
 			$target_file = $target_dir . basename($_FILES["kepfile"]["name"]);
+			if (strpos($target_file,'.php') > 0) {
+			    exit();
+			}
 			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 			$target_file = $target_dir.'recept_'.$receptId.'.'.$imageFileType;		
 			$uploadOk = '';

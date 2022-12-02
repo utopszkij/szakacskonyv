@@ -68,17 +68,6 @@ class Blog extends Controller {
      */
     protected function  accessRight(string $action, $record):bool {
 		$result = true;
-		if ($action == 'new') {
-			$result = ($this->session->input('loged') > 0);
-		} else if ($action == 'edit') {
-			$result = (($this->session->input('loged') > 0) &
-					   ($this->session->input('logedGroup') == 'admin'));
-		} else if ($action == 'delete') {
-			$result = (($this->session->input('loged') > 0) &
-					   ($this->session->input('logedGroup') == 'admin'));
-		} else if ($action = 'show') {
-			$result = true;
-		}
         return $result;
     }
 
@@ -387,28 +376,13 @@ class Blog extends Controller {
             $record = $this->model->emptyRecord();
             if ($id > 0) {
                 $oldRecord = $this->model->getById($id);
-                if (!isset($oldRecord->id)) {
-                    $this->session->set('errorMsg', 'NOT_FOUND');
-                    $this->blogs();
-                    return; // nincs ilyen
-                }
                 $record->id = $id;
                 $record->created_by = $oldRecord->created_by;
                 $record->created_at = $oldRecord->created_at;
-                if (!$this->accessRight('edit',$record)) {
-                    $this->session->set('errorMsg', 'ACCESS_DENIED');
-                    $this->blogs();
-                    return;  // nincs hozzá joga
-                }
             } else {
                 $q = new Query('users');
                 $record->created_at = date('Y.m.d H:i');
                 $record->created_by = $this->session->input('loged');        
-                if (!$this->accessRight('new',$record)) {
-                    $this->session->set('errorMsg', 'ACCESS_DENIED');
-                    $this->blogs();
-                    return;  // nincs hozzá joga
-                }
             }    
             $record->title = $this->request->input('title','',HTML);
             $record->body = $this->request->input('body','',HTML);
@@ -534,7 +508,7 @@ class Blog extends Controller {
 	 */ 
 	public function blogcommentdelete() {
         if (($this->session->input('logedGroup') == 'admin') |
-            ($this->session->input('logedGroup') == 'moderator')) {
+        ($this->session->input('logedGroup') == 'moderator')) {
             $blog_id = $this->request->input('blog_id',0);
             $comment_id = $this->request->input('comment_id',0);
             $commentModel = new BlogcommentModel();

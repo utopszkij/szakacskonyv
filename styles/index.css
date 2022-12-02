@@ -1,0 +1,79 @@
+
+.header-area {padding-left:4%}
+.header-area img {max-width:100px}
+.avatar {height:32px}
+
+
+.hero-area  {display:block; margin-bottom: 1px; padding:1px 1px 1px 1px; line-height:20px}
+.hero-slides .single-hero-slide .hero-slides-content p {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #ffffff; }
+
+.single-top-catagory {height:400px; color:white}
+.single-top-catagory p {color:white}
+.single-top-catagory img {height:100%}
+
+.frissHir {margin:15px -5px; padding:10px; border-style:none; background-color:black; color:white}
+.frissHir img {max-width:300px;}
+.frissHir p, .frissHir div, .frissHir h1, .frissHir h2, .frissHir h3, .frissHir h4,
+.frissHir a, .frissHir a:hover {color: white}
+
+.single-best-receipe-area {height:250px; text-align:center}
+.single-best-receipe-area img {width:80%; height:170px}
+
+.single-small-receipe-area {height: 110px}
+.single-small-receipe-area img {width: 100px; height: 100px}
+
+ 
+.form-control {display:inline-block; width:auto; float:none}
+.nice-select {min-width:300px; float:none}
+label {display:inline-block; width:250px; max-width:250px; tex-align:left}
+
+.ratings {color:orange}
+.ratings .none {color:#f2efef}
+
+.page {padding:2%}
+a:hover {color:#40ba37}
+
+.paginator li {border-style:solid; border-width:1px; margin:1px;}
+.paginator li a,
+.paginator li strong {margin:10px; width:30px; text-align:center}
+
+#login form {margin-bottom:10px}
+#regist form, #regist a {margin-bottom:10px}
+
+#receptList .dekor {display:none}
+#receptListTable {display:block; clear:both; width:100%; max-width:100%;
+	margin:0px 0px 10px 0px;flex:none}
+#receptListTable table {display:block; clear:both}
+#receptListTable thead {display:none;}
+#receptListTable .id {display:none;}
+#receptListTable tr {display:inline-block; width:auto}
+#receptListTable td {display:inline-block; width:210px; height:270px; max-width:210px; max-height:270px;}
+#receptListTable td .name:hover {color:#40ba37}
+#receptListTable img {height:200px; width:200px;}
+
+#receptShow {padding:2%}
+#receptShow h2 {display:block; font-size:20px; margin:5px; width:100%}
+#receptShow img {width:400px; max-width:100%; height:auto}
+#receptShow #hozzavalokTable {display:inline-block; clear:both; width:500px; max-width:100%;
+	margin:0px 0px 10px 0px;flex:none; border-style:none}
+#receptShow .hozzavalok {display:inline-block; width:500px; max-width:100%; float:left}
+#receptShow .cimkek {display:inline-block; width:400px; max-width:100%;}
+#receptShow .leiras {display:inline-block; width:400px; max-width:100%; float:left}
+#receptShow .uploadInfo {margin-bottom:5px; display:inline-block; width:400px; max-width:100%;}
+#receptShow .likeLine {margin-bottom:5px; display:inline-block; width:400px; max-width:100%;}
+.comments {display:block; width:100%; clear:both; flex:none; padding:5px; margin-bottom:10px;
+	border-style:solid; border-width:1px}
+#receptShow form {margin-bottom:10px}
+#receptShow #hozzavalokTable tr {border-style:none; height:auto;}
+#receptShow #hozzavalokTable td {border-style:solid; padding:5px; border-width:1px}
+#receptShow .button  {display:inline-block; border-style:solid; border-width:1px; cursor:pointer}
+#receptShow .adag {display:inline-block; width:auto;}
+#receptShow .cimkek li {display:inline-block; width:auto; margin:2px; padding:2px;
+	border-style:solid; border-width:1px; border-radius:10px;}
+
+#footer {padding:5px 20px 5px 20px}
+#footer i, #footer a {display:inline-block; margin-right:20px;}
+

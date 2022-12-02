@@ -257,6 +257,7 @@ class User extends Controller {
 			$record = $this->model->emptyRecord();
 			$record->password2 = '';
 		}
+
         $record->id = $id;
         $password = trim($this->request->input('password',$record->password));
 		if (($password != '') & 
@@ -272,12 +273,13 @@ class User extends Controller {
         $record->phone = trim($this->request->input('phone',$record->phone));
 
 		if ((isAdmin() | $this->loged == $record->id)) {
-        	$this->save($record); 
+        	$this->model->save($record); 
 		}	
 		if ($this->session->input('loged') == $id) {
+			$record = $this->model->getById($id);
 			$this->session->set('logedAvatar',$record->avatar);
 		}
-
+		$this->userek();
     }
   
     /**

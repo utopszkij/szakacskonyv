@@ -157,7 +157,7 @@ cd docroot
 ./documentor.sh
 ```
 ## verzió v2.1.7
-2022.12.??
+2022.12.02
 - biztonsági rések elenörzése, javítása
 ### *************************************
 

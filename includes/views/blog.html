@@ -114,7 +114,7 @@
 			        include paginator
                     <div class="col-12">
                         <!-- Új felső szintű komment -->
-                        <form class="addComment" method="post" action="index.php">
+                        <form class="addComment" method="post" action="index.php" v-if="loged > 0">
                             <input type="hidden" name="task" value="blogcommentsave" />
                             <input type="hidden" name="blog_id" v-model="blog.id" />
                             <input type="hidden" name="id" value="0" />

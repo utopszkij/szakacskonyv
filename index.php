@@ -5,6 +5,7 @@ if (isset($_COOKIE['sid'])) {
 session_start();
 global $components;
 
+
 // server infok hozzáférhetővé tétele a php számára
 define('DOCROOT',__DIR__);
 $w1 = (int) str_replace('M', '', ini_get('post_max_size'));
@@ -83,6 +84,7 @@ if (in_array($fw->compName.'.'.$fw->task,
 	<base href="<?php echo SITEURL; ?>/">
 	<link rel="icon" type="image/x-icon" href="<?php echo SITEURL; ?>/images/szakacs.png" />
     <title><?php echo $title; ?></title>
+	<meta property="og:image" content="<?php echo SITEURL; ?>/images/fejlec.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="A programba étel recepteket és napi menüket lehet kezelni.
 Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
@@ -119,7 +121,7 @@ A hozzászólások mindenki számára láthatóak">
 	<link rel="stylesheet" href="<?php echo SITEURL; ?>/vendor/fontawesome/css/all.min.css" />
 
 	<link rel="stylesheet" href="<?php echo SITEURL; ?>/styles/admin.css?t=<?php echo $fileVerzio; ?>" />
-	<link rel="stylesheet" href="<?php echo SITEURL; ?>/styles/style.css?t=<?php echo $fileVerzio; ?>" />
+	<link rel="stylesheet" href="<?php echo SITEURL; ?>/styles/style.css?v=<?php echo $fileVerzio; ?>" />
 	<!-- multi language -->
 	<?php
 		if (defined('LNG')) {

@@ -9,7 +9,6 @@ class MyUploadAdapter {
 
         // URL ahol a file upload feldolgozo php van
         this.url = 'upload.php';
-        console.log(this.url);           
     }
 
     // Starts the upload process.
@@ -43,11 +42,14 @@ class MyUploadAdapter {
         const loader = this.loader;
         const genericErrorText = 'Couldn\'t upload file:' + ` ${ file.name }.`;
 
-        xhr.addEventListener( 'error', () => reject( genericErrorText ) );
-        xhr.addEventListener( 'abort', () => reject() );
+        xhr.addEventListener( 'error', () => reject( ' A '+genericErrorText ) );
+        xhr.addEventListener( 'abort', () => reject(' B ') );
         xhr.addEventListener( 'load', () => {
             const response = xhr.response;
+            console.log('response');
+			console.log(response);
             if ( !response || response.error ) {
+				// alert('response error'+response.error);
                 return reject( response && response.error ? response.error.message : genericErrorText );
             }
             //console.log(response);
@@ -71,11 +73,9 @@ class MyUploadAdapter {
     // Prepares the data and sends the request.
     _sendRequest(file) {
         const data = new FormData();
-        //console.log(this.loader.file);
         data.append('upload', file );
         //csrf_token CSRF protection
         //data.append('csrf_token', requestToken);
-
         this.xhr.send( data );
     }
 }
