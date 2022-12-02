@@ -158,7 +158,7 @@ cd docroot
 ```
 ## verzió v2.1.7
 2022.12.02
-- biztonsági rések elenörzése, javítása
+- biztonsá./files.shgi rések elenörzése, javítása
 ### *************************************
 
 ## verzió v2.1.6

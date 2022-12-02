@@ -17,7 +17,7 @@ drwxrwxrwx  2 root      root       4096 2022-07-08 languages
 -rw-rw-r--  1 utopszkij utopszkij   790 2022-09-28 old_upload.php
 -rwxrwxrwx  1 root      root         97 2022-09-20 package.json
 -rwxrwxrwx  1 root      root       7262 2022-09-20 package-lock.json
--rwxrwxrwx  1 root      root      14088 2022-12-02 readme.md
+-rwxrwxrwx  1 root      root      14098 2022-12-02 readme.md
 -rwxrwxrwx  1 root      root        271 2022-07-07 secure.sh
 -rw-rw-r--  1 utopszkij utopszkij  1057 2022-12-01 sitemap.php
 drwxrwxr-x  2 utopszkij utopszkij  4096 2022-12-02 styles
