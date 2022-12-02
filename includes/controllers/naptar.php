@@ -1,10 +1,10 @@
 <?php
 use \RATWEB\DB\Query;
 
-include_once 'includes/models/blogmodel.php';
-include_once 'includes/urlprocess.php';
-include_once __DIR__.'/../models/receptmodel.php';
-include_once __DIR__.'/../models/likemodel.php';
+// include_once 'includes/models/blogmodel.php';
+// include_once 'includes/urlprocess.php';
+// include_once __DIR__.'/../models/receptmodel.php';
+// include_once __DIR__.'/../models/likemodel.php';
 
 class Naptar  {
 
@@ -158,11 +158,21 @@ class Naptar  {
 			echo $t;
 	}
 	
-	
-	public function home() {
+	public function home($style = '') {
 		$likeModel = new LikeModel();
 		$q = new Query('receptek');
-		$news = $q->orderBy('id')->orderDir('DESC')->limit(8)->all();
+		if ($style == 'delicious') {
+			$limit = 16;
+		} else {
+			$limit = 8;
+		}
+		$news = $q->orderBy('id')->orderDir('DESC')->limit($limit)->all();
+		foreach($news as $new) {
+				$q = new Query('likes');
+				$new->likes = $q->where('target_id','=',$new->id)
+								->where('target_type','=','recept')
+								->count();
+		}	
 
 		$frissHir = '';
 		$blogModel = new BlogModel();
@@ -173,31 +183,35 @@ class Naptar  {
 		} else if ($_GET['task'] == 'home') {
 			$frissHir = 'nincs friss hír';
 		}
-
-		view('home',["news" => $news, "frissHir" => $frissHir]);
-		echo '
-		<!-- Initialize Swiper -->
-		<script src="vendor/swiper/swiper-bundle.js"></script>
-		<script>
-		var sliderCount = 3;
-		if (window.innerWidth > 1000) {
-			sliderCount = 3;
-		} else if (window.innerWidth > 700) {
-			sliderCount = 2;
+		if ($style == 'delicious') {
+			view('homedelicious',["news" => $news, "frissHir" => $frissHir]);
 		} else {
-			sliderCount = 1;
-		}
-		var swiper = new Swiper(".mySwiper", {
-			slidesPerView: sliderCount,
-			spaceBetween: 30,
-			navigation: {
-			nextEl: ".swiper-button-next",
-			prevEl: ".swiper-button-prev",
-			},
-		});
-	</script>
-		';
+			view('home',["news" => $news, "frissHir" => $frissHir]);
+			echo '
+			<!-- Initialize Swiper -->
+			<script src="vendor/swiper/swiper-bundle.js"></script>
+			<script>
+			var sliderCount = 3;
+			if (window.innerWidth > 1000) {
+				sliderCount = 3;
+			} else if (window.innerWidth > 700) {
+				sliderCount = 2;
+			} else {
+				sliderCount = 1;
+			}
+			var swiper = new Swiper(".mySwiper", {
+				slidesPerView: sliderCount,
+				spaceBetween: 30,
+				navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+				},
+			});
+			</script>
+			';
+			}	
 	}
+
 } // class
 
 ?>

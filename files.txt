@@ -1,29 +1,31 @@
 .:
-összesen 168
+összesen 176
 -rwxrwxrwx  1 root      root        627 2022-07-11 config-example.php
--rwxrwxrwx  1 root      root        544 2022-09-27 config.php
+-rwxrwxrwx  1 root      root        580 2022-12-01 config.php
 -rwxrwxrwx  1 root      root        546 2022-07-11 config_test.php
 drwxrwxrwx  3 root      root       4096 2022-07-06 doc
 -rwxrwxrwx  1 root      root         71 2022-07-06 documentor.sh
 -rwxrwxrwx  1 root      root         58 2022-07-06 files.sh
--rwxrwxrwx  1 root      root          0 2022-12-01 files.txt
-drwxrwxrwx  5 root      root      12288 2022-11-25 images
+-rwxrwxrwx  1 root      root          0 2022-12-02 files.txt
+drwxrwxrwx  5 root      root      12288 2022-12-01 images
 drwxrwxrwx  6 root      root       4096 2022-11-22 includes
 -rwxrwxrwx  1 root      root       5706 2022-05-22 index2.html
 -rw-rw-r--  1 utopszkij utopszkij  4750 2022-10-21 index.js
--rw-rw-r--  1 utopszkij utopszkij 10493 2022-12-01 index.php
+-rw-rw-r--  1 utopszkij utopszkij 10591 2022-12-01 index.php
 drwxrwxrwx  2 root      root       4096 2022-07-08 languages
 -rwxrwxrwx  1 root      root      35149 2021-10-31 LICENSE
+-rw-rw-r--  1 utopszkij utopszkij   790 2022-09-28 old_upload.php
 -rwxrwxrwx  1 root      root         97 2022-09-20 package.json
 -rwxrwxrwx  1 root      root       7262 2022-09-20 package-lock.json
--rwxrwxrwx  1 root      root      13970 2022-12-01 readme.md
+-rwxrwxrwx  1 root      root      14098 2022-12-02 readme.md
 -rwxrwxrwx  1 root      root        271 2022-07-07 secure.sh
--rw-rw-r--  1 utopszkij utopszkij  1082 2022-11-30 sitemap.php
-drwxrwxr-x  2 utopszkij utopszkij  4096 2022-11-26 styles
+-rw-rw-r--  1 utopszkij utopszkij  1057 2022-12-01 sitemap.php
+drwxrwxr-x  2 utopszkij utopszkij  4096 2022-12-02 styles
+-rw-rw-r--  1 utopszkij utopszkij  1790 2022-12-01 test.html
 drwxrwxrwx  2 root      root       4096 2022-09-20 tests
 -rwxrwxrwx  1 root      root        124 2022-07-07 unsecure.sh
--rw-rw-r--  1 utopszkij utopszkij   790 2022-09-28 upload.php
-drwxrwxrwx 10 root      root       4096 2022-11-26 vendor
+-rw-r--r--  1 utopszkij utopszkij  3009 2022-12-02 upload.php
+drwxrwxrwx 11 root      root       4096 2022-12-01 vendor
 -rwxrwxrwx  1 root      root        325 2022-07-07 viewtest.sh
 
 ./doc:
@@ -327,7 +329,7 @@ drwxrwxrwx 2 root      root        4096 2022-09-29 search
 -rwxrwxrwx 1 root      root        553 2022-10-28 search_r.png
 
 ./images:
-összesen 10024
+összesen 10028
 -rwxrwxrwx 1 root      root      188270 2022-06-09 Afrikai harcsa sörtésztában medvehagymás burgonyával recept.jpg?v=1633609313
 -rwxrwxrwx 1 www-data  www-data    3488 2022-09-17 A legegyszerűbb muffin.png
 -rwxrwxrwx 1 root      root        6464 2021-11-07 A legjobb palacsintatészta.jpg
@@ -350,7 +352,7 @@ drwxrwxrwx 2 root      root        4096 2022-09-29 search
 -rwxrwxrwx 1 www-data  www-data    4403 2022-09-26 Birsalmasajt tartósítószer-mentesen.png
 -rwxrwxrwx 1 www-data  www-data    6201 2022-09-17 Bolognai spagetti.png
 -rwxrwxrwx 1 root      root       62357 2021-10-29 Brassói apró pecsenye.jpg
-drwxrwxrwx 2 root      root        4096 2022-06-20 comments
+drwxrwxrwx 2 root      root        4096 2022-12-02 comments
 -rwxrwxrwx 1 root      root      229558 2022-06-15 Cukkínirudak fokhagymás mártogatóssal recept.jpg?v=1633956579
 -rwxrwxrwx 1 www-data  www-data    2808 2022-09-17 Csontleves.png
 -rwxrwxrwx 1 root      root        5852 2022-02-11 Darált húsos makaróni.jpg
@@ -443,19 +445,20 @@ drwxrwxrwx 2 root      root        4096 2022-06-20 comments
 -rw-r--r-- 1 www-data  www-data   31406 2022-11-02 recept_159.jpg
 -rw-r--r-- 1 www-data  www-data    4698 2022-11-02 recept159.png
 -rw-r--r-- 1 www-data  www-data    2309 2022-10-31 recept160.png
--rw-r--r-- 1 www-data  www-data    2309 2022-11-26 recept161.png
+-rw-r--r-- 1 www-data  www-data    2309 2022-12-02 recept161.png
 -rw-r--r-- 1 www-data  www-data  306730 2022-11-02 recept_162.png
--rw-r--r-- 1 www-data  www-data    3342 2022-11-24 recept163.png
--rw-r--r-- 1 www-data  www-data    4994 2022-12-01 recept164.png
--rw-r--r-- 1 www-data  www-data    6160 2022-12-01 recept165.png
--rw-r--r-- 1 www-data  www-data    3450 2022-12-01 recept166.png
--rw-r--r-- 1 www-data  www-data    5726 2022-12-01 recept167.png
--rw-r--r-- 1 www-data  www-data    3982 2022-12-01 recept168.png
+-rw-r--r-- 1 www-data  www-data    3342 2022-12-02 recept163.png
+-rw-r--r-- 1 www-data  www-data    4994 2022-12-02 recept164.png
+-rw-r--r-- 1 www-data  www-data    6160 2022-12-02 recept165.png
+-rw-r--r-- 1 www-data  www-data    3917 2022-12-02 recept166.png
+-rw-r--r-- 1 www-data  www-data    5726 2022-12-02 recept167.png
+-rw-r--r-- 1 www-data  www-data    3982 2022-12-02 recept168.png
 -rw-r--r-- 1 www-data  www-data    5101 2022-12-01 recept169.png
--rw-r--r-- 1 www-data  www-data    5305 2022-12-01 recept170.png
+-rw-r--r-- 1 www-data  www-data    5305 2022-12-02 recept170.png
 -rw-r--r-- 1 www-data  www-data    5359 2022-11-24 recept171.png
 -rw-r--r-- 1 www-data  www-data    6753 2022-11-24 recept172.png
--rw-r--r-- 1 www-data  www-data    4244 2022-12-01 recept173.png
+-rw-r--r-- 1 www-data  www-data    4244 2022-12-02 recept173.png
+-rw-r--r-- 1 www-data  www-data    2921 2022-12-01 recept174.png
 -rw-r--r-- 1 www-data  www-data    4501 2022-11-26 recept17.png
 -rw-r--r-- 1 www-data  www-data    3777 2022-10-19 recept18.png
 -rw-r--r-- 1 www-data  www-data    3977 2022-11-26 recept23.png
@@ -495,8 +498,8 @@ drwxrwxrwx 2 root      root        4096 2022-06-20 comments
 -rwxrwxrwx 1 www-data  www-data    3992 2022-09-18 Túros csusza.png
 -rwxrwxrwx 1 www-data  www-data    2733 2022-09-18 Túrós pogácsa.png
 -rwxrwxrwx 1 root      root      898074 2022-05-28 Ukrán fokhagymás tojás.png
-drwxr-xr-x 2 www-data  www-data    4096 2022-11-03 uploads
-drwxrwxrwx 2 root      root        4096 2022-10-29 users
+drwxr-xr-x 2 www-data  www-data    4096 2022-12-02 uploads
+drwxrwxrwx 2 root      root        4096 2022-12-02 users
 -rwxrwxrwx 1 root      root        2839 2022-05-29 Vörösboros vaddisznópörkölt.jpg
 -rwxrwxrwx 1 utopszkij utopszkij 174994 2022-02-20 waiting-icon.gif
 -rwxrwxrwx 1 www-data  www-data    4443 2022-09-18 Zöldborsó fözelék.png
@@ -504,29 +507,42 @@ drwxrwxrwx 2 root      root        4096 2022-10-29 users
 -rwxrwxrwx 1 www-data  www-data    3477 2022-09-18 Zsemlegombóc leves.png
 
 ./images/comments:
-összesen 1808
--rwxrwxrwx 1 root root 1849010 2022-06-20 14-IMG_20190118_161111.jpg
+összesen 2528
+-rwxrwxrwx 1 root     root     1849010 2022-06-20 14-IMG_20190118_161111.jpg
+-rw-r--r-- 1 www-data www-data  733495 2022-12-02 28-p5230010.jpg
 
 ./images/uploads:
-összesen 3048
+összesen 5376
+-rw-r--r-- 1 www-data www-data 366800 2022-12-02 kepernyokep2022-11-2307-54-36.png
+-rw-r--r-- 1 www-data www-data 200937 2022-12-02 kepernyokep2022-11-2307-56-25.png
+-rw-r--r-- 1 www-data www-data 334176 2022-12-02 Képernyőkép – 2022-11-23 07-52-06.png
 -rw-r--r-- 1 www-data www-data 103583 2022-11-03 lead_L_voros-lencse-bolognai-recept.jpg
 -rw-r--r-- 1 www-data www-data 725621 2022-09-28 P4170006.JPG
 -rw-r--r-- 1 www-data www-data 764124 2022-09-28 P4270019.JPG
+-rw-r--r-- 1 www-data www-data 733495 2022-12-02 p5230010.jpg
+-rw-r--r-- 1 www-data www-data 733495 2022-12-02 P5230010.JPG
 -rw-r--r-- 1 www-data www-data 759621 2022-09-28 P9190004.JPG
 -rw-r--r-- 1 www-data www-data  71811 2022-10-24 videotontavkapcsolo.jpg
 -rw-r--r-- 1 www-data www-data 682388 2022-10-09 vitorlas.JPG
 
 ./images/users:
-összesen 2508
+összesen 4916
 -rw-r--r-- 1 www-data  www-data     5160 2022-10-29 10-proba_rtf_m2a734ca2.jpg
 -rw-r--r-- 1 www-data  www-data  1660884 2022-09-30 13-IMG_20140501_091853.jpg
 -rw-r--r-- 1 www-data  www-data    36251 2022-09-30 13-nagymama-magdi-tomi.JPG
 -rwxrwxrwx 1 root      root         9195 2022-06-19 1-MOgasz10.jpg
+-rw-r--r-- 1 www-data  www-data   442264 2022-12-01 22-Képernyőkép – 2022-11-23 07-57-47.png
+-rw-r--r-- 1 www-data  www-data   366800 2022-12-01 23-Képernyőkép – 2022-11-23 07-54-36.png
 -rw-r--r-- 1 www-data  www-data   225988 2022-10-29 4-arckép-2021-kivagas.jpg
 -rw-r--r-- 1 www-data  www-data   308412 2022-10-29 4-DSC00168.JPG
+-rw-r--r-- 1 www-data  www-data     7016 2022-12-02 4-hack_7-hannibal_10.jpeg.php
 -rwxrwxrwx 1 root      root        45333 2022-06-19 4-IMG_20180405_153150_1.jpg
 -rwxrwxrwx 1 root      root       141717 2022-07-06 4-IMG_20180425_094144.jpg
+-rw-r--r-- 1 www-data  www-data   334176 2022-12-02 4-Képernyőkép – 2022-11-23 07-52-06.png
+-rw-r--r-- 1 www-data  www-data   366800 2022-12-02 4-Képernyőkép – 2022-11-23 07-54-36.png
+-rw-r--r-- 1 www-data  www-data   200937 2022-12-02 4-Képernyőkép – 2022-11-23 07-56-25.png
 -rwxrwxrwx 1 root      root        17046 2022-07-06 4-Marika3.jpg
+-rw-r--r-- 1 www-data  www-data   733495 2022-12-02 4-p5230010.jpg
 -rwxrwxrwx 1 root      root        57109 2022-06-19 4-Tibor-2016-08-retusált.jpg
 -rwxrwxrwx 1 utopszkij utopszkij   32830 2022-07-24 noavatar.png
 
@@ -540,16 +556,16 @@ drwxrwxrwx 2 root      root        4096 2022-10-29 users
 -rw-rw-r-- 1 utopszkij utopszkij 3815 2022-11-24 atvesz_sutnijo.php
 -rw-rw-r-- 1 utopszkij utopszkij 3799 2022-11-24 atvesz_topreceptek.php
 -rwxrwxrwx 1 root      root       182 2022-06-22 cimkek.txt
-drwxrwxrwx 2 root      root      4096 2022-11-04 controllers
-drwxrwxrwx 2 utopszkij utopszkij 4096 2022-11-25 extras
+drwxrwxrwx 2 root      root      4096 2022-12-02 controllers
+drwxrwxrwx 2 utopszkij utopszkij 4096 2022-12-02 extras
 -rwxrwxrwx 1 root      root        30 2022-05-23 index.php
-drwxrwxrwx 2 root      root      4096 2022-10-26 models
+drwxrwxrwx 2 root      root      4096 2022-12-02 models
 -rwxrwxrwx 1 root      root      6427 2022-07-28 osszegzes.php
 -rwxrwxrwx 1 utopszkij utopszkij 3438 2022-11-06 urlprocess.php
-drwxrwxrwx 2 root      root      4096 2022-11-25 views
+drwxrwxrwx 2 root      root      4096 2022-12-02 views
 
 ./includes/controllers:
-összesen 212
+összesen 216
 -rw-rw-r-- 1 utopszkij utopszkij   425 2022-10-30 adminatvaltasok.php
 -rw-rw-r-- 1 utopszkij utopszkij  1508 2022-11-02 adminblog.php
 -rw-rw-r-- 1 utopszkij utopszkij   285 2022-10-28 adminblogs.php
@@ -566,21 +582,21 @@ drwxrwxrwx 2 root      root      4096 2022-11-25 views
 -rw-rw-r-- 1 utopszkij utopszkij   393 2022-10-29 adminuserek.php
 -rw-rw-r-- 1 utopszkij utopszkij  1805 2022-11-02 adminvisit.php
 -rwxrwxrwx 1 root      root       2606 2022-10-30 atvaltasok.php
--rwxrwxrwx 1 utopszkij utopszkij 20104 2022-11-06 blog.php
+-rwxrwxrwx 1 utopszkij utopszkij 20104 2022-11-26 blog.php
 -rwxrwxrwx 1 root      root       2131 2022-10-21 cimkek.php
--rwxrwxrwx 1 root      root       8895 2022-11-06 comment.php
+-rwxrwxrwx 1 root      root      11276 2022-12-02 comment.php
 -rwxrwxrwx 1 root      root         30 2022-10-21 index.php
 -rwxrwxrwx 1 utopszkij utopszkij  3776 2022-10-25 like.php
 -rwxrwxrwx 1 root      root       1992 2022-10-21 login.html
 -rwxrwxrwx 1 root      root       1929 2022-10-21 mertekegyseg.php
 -rwxrwxrwx 1 root      root       2755 2022-11-24 napimenu.php
--rwxrwxrwx 1 root      root       5868 2022-12-01 naptar.php
--rwxrwxrwx 1 root      root       6641 2022-11-30 osszegzes.php
--rwxrwxrwx 1 root      root      20921 2022-11-25 recept.php
+-rwxrwxrwx 1 root      root       6290 2022-12-02 naptar.php
+-rwxrwxrwx 1 root      root       6641 2022-12-02 osszegzes.php
+-rwxrwxrwx 1 root      root      20983 2022-12-02 recept.php
 -rwxrwxrwx 1 root      root       3587 2022-10-30 szinonima.php
 -rwxrwxrwx 1 root      root        351 2022-10-21 szovegek.php
 -rwxrwxrwx 1 root      root      24866 2022-11-24 upgrade.php
--rwxrwxrwx 1 root      root       8122 2022-11-30 user.php
+-rwxrwxrwx 1 root      root       9341 2022-12-02 user.php
 
 ./includes/extras:
 összesen 28
@@ -590,10 +606,10 @@ drwxrwxrwx 2 root      root      4096 2022-11-25 views
 -rw-rw-r-- 1 utopszkij utopszkij  114 2022-11-26 home.html
 -rwxrwxrwx 1 utopszkij utopszkij   14 2022-11-26 likewinners.html
 -rwxrwxrwx 1 utopszkij utopszkij   18 2022-11-26 receptek.html
--rw-rw-r-- 1 utopszkij utopszkij 2705 2022-11-03 recept.html
+-rw-rw-r-- 1 utopszkij utopszkij 2742 2022-12-02 recept.html
 
 ./includes/models:
-összesen 84
+összesen 88
 -rw-rw-r-- 1 utopszkij utopszkij 7557 2022-11-10 adminmodel.php
 -rwxrwxrwx 1 root      root      6466 2022-06-15 atvaltasmodel.php
 -rwxrwxrwx 1 utopszkij utopszkij 6297 2022-11-07 blogcommentmodel.php
@@ -607,20 +623,21 @@ drwxrwxrwx 2 root      root      4096 2022-11-25 views
 -rwxrwxrwx 1 root      root      6427 2022-10-24 receptmodel.php
 -rw-rw-r-- 1 utopszkij utopszkij 1665 2022-10-27 statisticmodel.php
 -rwxrwxrwx 1 root      root      3168 2022-06-19 szinonimamodel.php
--rwxrwxrwx 1 root      root      5828 2022-10-29 usermodel.php
+-rwxrwxrwx 1 root      root      8330 2022-12-02 usermodel.php
 
 ./includes/views:
-összesen 208
+összesen 224
 -rwxrwxrwx 1 root      root       2957 2022-10-30 atvaltaskep.html
 -rwxrwxrwx 1 root      root       1262 2022-10-21 atvaltasok.html
 -rwxrwxrwx 1 utopszkij utopszkij  2625 2022-11-04 blogcommentform.html
 -rwxrwxrwx 1 utopszkij utopszkij  6175 2022-11-06 blogform.html
--rwxrwxrwx 1 utopszkij utopszkij 10406 2022-11-04 blog.html
+-rwxrwxrwx 1 utopszkij utopszkij 10423 2022-12-02 blog.html
 -rwxrwxrwx 1 utopszkij utopszkij  3726 2022-10-30 blogs.html
 -rwxrwxrwx 1 root      root       1277 2022-10-29 cimkebrowser.html
 -rwxrwxrwx 1 root      root       2517 2022-10-29 cimkeform.html
 -rwxrwxrwx 1 root      root       4915 2022-10-21 commentkep.html
--rwxrwxrwx 1 utopszkij utopszkij  3036 2022-12-01 footer.html
+-rwxrwxrwx 1 utopszkij utopszkij  2677 2022-12-02 footer.html
+-rw-rw-r-- 1 utopszkij utopszkij 16313 2022-12-02 homedelicious.html
 -rw-rw-r-- 1 utopszkij utopszkij  5375 2022-11-27 home_hu.html
 -rwxrwxrwx 1 root      root       1057 2022-11-30 impressum_hu.html
 -rwxrwxrwx 1 root      root         30 2022-10-21 index.php
@@ -629,12 +646,12 @@ drwxrwxrwx 2 root      root      4096 2022-11-25 views
 -rwxrwxrwx 1 utopszkij utopszkij  1830 2022-10-21 likes.html
 -rwxrwxrwx 1 utopszkij utopszkij  1923 2022-10-25 likewinners.html
 -rwxrwxrwx 1 root      root       2104 2022-10-25 login.html
--rwxrwxrwx 1 root      root       5888 2022-11-26 mainmenu.html
+-rwxrwxrwx 1 root      root       5889 2022-12-01 mainmenu.html
 -rwxrwxrwx 1 root      root       1534 2022-10-30 mertekegysegbrowser.html
 -rwxrwxrwx 1 root      root       2266 2022-10-30 mertekegysegform.html
 -rwxrwxrwx 1 root      root       3613 2022-10-21 napimenukep.html
 -rwxrwxrwx 1 root      root       2148 2022-10-21 paginator.html
--rwxrwxrwx 1 root      root       1228 2022-11-30 policy_hu.html
+-rwxrwxrwx 1 root      root       1712 2022-12-01 policy_hu.html
 -rwxrwxrwx 1 root      root        436 2022-11-30 protest_hu.html
 -rwxrwxrwx 1 utopszkij utopszkij  7313 2022-11-26 receptek.html
 -rwxrwxrwx 1 root      root      28688 2022-11-27 receptkep.html
@@ -643,17 +660,18 @@ drwxrwxrwx 2 root      root      4096 2022-11-25 views
 -rwxrwxrwx 1 root      root       1933 2022-10-21 szinonimabrowser.html
 -rwxrwxrwx 1 root      root       2275 2022-10-21 szinonimaform.html
 -rwxrwxrwx 1 utopszkij utopszkij  2904 2022-10-29 userbrowser.html
--rwxrwxrwx 1 root      root       6711 2022-10-29 userform.html
+-rwxrwxrwx 1 root      root       6714 2022-12-02 userform.html
 
 ./languages:
 összesen 4
--rwxrwxrwx 1 root root 3596 2022-11-27 hu.js
+-rwxrwxrwx 1 root root 3628 2022-12-01 hu.js
 
 ./styles:
-összesen 24
+összesen 28
 -rw-rw-r-- 1 utopszkij utopszkij  2329 2022-11-04 admin.css
+-rw-rw-r-- 1 utopszkij utopszkij  3428 2022-12-02 index.css
 -rw-rw-r-- 1 utopszkij utopszkij   903 2022-11-25 slider.css
--rw-rw-rw- 1 root      root      15282 2022-12-01 style.css
+-rw-rw-rw- 1 root      root      15334 2022-12-02 style.css
 
 ./tests:
 összesen 24
@@ -665,13 +683,14 @@ drwxrwxrwx 2 root      root      4096 2022-11-25 views
 -rwxrwxrwx 1 root      root      2973 2022-07-19 userTest.php
 
 ./vendor:
-összesen 92
+összesen 96
 drwxrwxr-x  2 utopszkij utopszkij  4096 2022-11-26 axios
 drwxrwxrwx  4 root      root       4096 2021-10-09 bootstrap
 drwxrwxr-x  6 utopszkij utopszkij  4096 2022-09-06 chart.js
 drwxrwxr-x  3 utopszkij utopszkij  4096 2022-10-09 ckeditor
 -rwxrwxrwx  1 root      root      14840 2022-11-25 controller.php
 drwxrwxrwx  2 root      root       4096 2022-06-20 database
+drwxrwxr-x  4 utopszkij utopszkij  4096 2022-12-01 delicious
 -rwxrwxrwx  1 root      root       3635 2022-07-19 fblogin.php
 drwxrwxrwx 10 root      root       4096 2021-10-17 fontawesome
 -rwxrwxrwx  1 root      root       4761 2022-10-19 fw.php
@@ -1638,6 +1657,41 @@ drwxr-xr-x 2 utopszkij utopszkij    4096 2022-08-03 translations
 összesen 100
 -rwxrwxrwx 1 root root 81183 2022-11-23 dbinit.sql
 -rwxrwxrwx 1 root root 18189 2022-11-30 db.php
+
+./vendor/delicious:
+összesen 8
+drwxrwxrwx 2 utopszkij utopszkij 4096 2022-12-02 css
+drwxrwxrwx 2 utopszkij utopszkij 4096 2019-11-16 fonts
+
+./vendor/delicious/css:
+összesen 332
+-rwxrwxrwx 1 utopszkij utopszkij  57095 2022-12-02 animate.css
+-rwxrwxrwx 1 utopszkij utopszkij 140421 2019-11-16 bootstrap.min.css
+-rwxrwxrwx 1 utopszkij utopszkij  18435 2019-11-16 classy-nav.min.css
+-rwxrwxrwx 1 utopszkij utopszkij   2622 2019-11-16 custom-icon.css
+-rwxrwxrwx 1 utopszkij utopszkij  31000 2019-11-16 font-awesome.min.css
+-rwxrwxrwx 1 utopszkij utopszkij   5599 2019-11-16 magnific-popup.css
+-rwxrwxrwx 1 utopszkij utopszkij   3117 2019-11-16 nice-select.min.css
+-rwxrwxrwx 1 utopszkij utopszkij   2977 2022-12-02 owl.carousel.min.css
+-rw-r--r-- 1 utopszkij utopszkij  38077 2022-12-01 style.css
+-rw-r--r-- 1 utopszkij utopszkij  23737 2019-11-16 style.css.map
+
+./vendor/delicious/fonts:
+összesen 1408
+-rwxrwxrwx 1 utopszkij utopszkij   1264 2019-11-16 classy.eot
+-rwxrwxrwx 1 utopszkij utopszkij    785 2019-11-16 classy.svg
+-rwxrwxrwx 1 utopszkij utopszkij   1100 2019-11-16 classy.ttf
+-rwxrwxrwx 1 utopszkij utopszkij   1176 2019-11-16 classy.woff
+-rwxrwxrwx 1 utopszkij utopszkij 134808 2019-11-16 FontAwesome.otf
+-rwxrwxrwx 1 utopszkij utopszkij 165742 2019-11-16 fontawesome-webfont.eot
+-rwxrwxrwx 1 utopszkij utopszkij 444379 2019-11-16 fontawesome-webfont.svg
+-rwxrwxrwx 1 utopszkij utopszkij 165548 2019-11-16 fontawesome-webfont.ttf
+-rwxrwxrwx 1 utopszkij utopszkij  98024 2019-11-16 fontawesome-webfont.woff
+-rwxrwxrwx 1 utopszkij utopszkij  77160 2019-11-16 fontawesome-webfont.woff2
+-rwxrwxrwx 1 utopszkij utopszkij  44908 2019-11-16 icomoon.eot
+-rwxrwxrwx 1 utopszkij utopszkij 193156 2019-11-16 icomoon.svg
+-rwxrwxrwx 1 utopszkij utopszkij  44744 2019-11-16 icomoon.ttf
+-rwxrwxrwx 1 utopszkij utopszkij  44820 2019-11-16 icomoon.woff
 
 ./vendor/fontawesome:
 összesen 40

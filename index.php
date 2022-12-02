@@ -5,6 +5,7 @@ if (isset($_COOKIE['sid'])) {
 session_start();
 global $components;
 
+
 // server infok hozzáférhetővé tétele a php számára
 define('DOCROOT',__DIR__);
 $w1 = (int) str_replace('M', '', ini_get('post_max_size'));
@@ -41,7 +42,7 @@ $statisticModel->saveStatistic();
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.1.6';
+$fileVerzio = 'v2.1.7';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -83,6 +84,7 @@ if (in_array($fw->compName.'.'.$fw->task,
 	<base href="<?php echo SITEURL; ?>/">
 	<link rel="icon" type="image/x-icon" href="<?php echo SITEURL; ?>/images/szakacs.png" />
     <title><?php echo $title; ?></title>
+	<meta property="og:image" content="<?php echo SITEURL; ?>/images/fejlec.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="A programba étel recepteket és napi menüket lehet kezelni.
 Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
@@ -105,7 +107,7 @@ kezelheti, az összesítés is ezek alapján készül. A recepteknél látja, ha
 felvitteket is, de modosítani, törölni csak a sajátmaga által felvitteket tudja. Illetve a 
 rendszer adminisztrátorok és moderátorok módosíthatják, törölhetik az összes receptet. 
 A hozzászólások mindenki számára láthatóak">
- 	<meta name="keywords" content="recept, receptek, szakács, szakácskönyv, napi menü, összesítés, bevásárló lista, étel, ételek, sütemény, sütemények">
+ 	<meta name="keywords" content="recept, receptek, szakács, szakácskönyv, napi menü, összegit checkout -b sítés, bevásárló lista, étel, ételek, sütemény, sütemények">
   	<meta name="author" content="Fogler Tibor">
 	<!-- bootstrap -->	
 	<link rel="stylesheet" href="<?php echo SITEURL; ?>/vendor/bootstrap/css/bootstrap.min.css" />
@@ -119,7 +121,7 @@ A hozzászólások mindenki számára láthatóak">
 	<link rel="stylesheet" href="<?php echo SITEURL; ?>/vendor/fontawesome/css/all.min.css" />
 
 	<link rel="stylesheet" href="<?php echo SITEURL; ?>/styles/admin.css?t=<?php echo $fileVerzio; ?>" />
-	<link rel="stylesheet" href="<?php echo SITEURL; ?>/styles/style.css?t=<?php echo $fileVerzio; ?>" />
+	<link rel="stylesheet" href="<?php echo SITEURL; ?>/styles/style.css?v=<?php echo $fileVerzio; ?>" />
 	<!-- multi language -->
 	<?php
 		if (defined('LNG')) {

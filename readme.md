@@ -156,6 +156,11 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.1.7
+2022.12.02
+- biztonsá./files.shgi rések elenörzése, javítása
+### *************************************
+
 ## verzió v2.1.6
 2022.12.01
 - összesítés funkció hibajavítás

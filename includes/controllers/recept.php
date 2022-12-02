@@ -134,6 +134,9 @@ class Recept extends Controller{
 		if (file_exists($_FILES['kepfile']['tmp_name'])) { 
 			$target_dir = DOCROOT.'/images/';
 			$target_file = $target_dir . basename($_FILES["kepfile"]["name"]);
+			if (strpos($target_file,'.php') > 0) {
+			    exit();
+			}
 			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 			$target_file = $target_dir.'recept_'.$receptId.'.'.$imageFileType;		
 			$uploadOk = '';
