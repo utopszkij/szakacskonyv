@@ -4,6 +4,7 @@ use \RATWEB\DB\Record;
 include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
 include_once __DIR__.'/../urlprocess.php';
+include_once __DIR__.'/../uploader.php';
 
 class Comment extends Controller {
 	function __construct() {
@@ -89,34 +90,14 @@ class Comment extends Controller {
     protected function doUpload(string $name, &$comment): string {            
         $result = '';
         if (file_exists($_FILES[$name]['tmp_name'])) { 
-            $target_dir = DOCROOT.'/images/comments';
-            if (!is_dir($target_dir)) {
-                mkdir($target_dir,0777);
-            }
-            $target_dir .= '/';
-            $target_file = $target_dir.$comment->id.'-'.$this->clearFileName($_FILES[$name]["name"]);
-
-            $uploadFileExt = pathinfo($target_file,PATHINFO_EXTENSION);
-            if (!in_array($uploadFileExt, Array('jpg','jpeg','png','gif'))) {
-                $result = 'upload not enabled';
-            }
-
-            $check = getimagesize($_FILES[$name]["tmp_name"]);
-            if($check == false) {
-                $result = 'nem kép fájl';
-            }
-            if ($_FILES[$name]['size'] > (UPLOADLIMIT * 1024 * 1024)) {
-                $result = 'túl nagy kép fájl';
-            }
-            if (file_exists($target_file) & ($result == '')) {
-                unlink($target_file);
-            }
-            if ($result == '') {
-                if (!move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
-                    $uploadOk = "Hiba a kép fájl feltöltés közben ".$name; 
-                }
-                $comment->$name = $comment->id.'-'.$this->clearFileName($_FILES[$name]["name"]);
-            }
+            $uploadRes = Uploader::doImgUpload($name, 
+                                                DOCROOT.'/images/comments',
+                                                'comment_'.$comment->id.'.*');
+            if ($uploadRes->error == '') {
+                $comment->$name = $uploadRes->name;
+            } else {
+                $result = $uploadRes->error;
+            }                                   
         } 
         return $result;
     }            

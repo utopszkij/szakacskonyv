@@ -160,19 +160,20 @@ class Naptar  {
 	
 	public function home($style = '') {
 		$likeModel = new LikeModel();
-		$q = new Query('receptek');
+		$q = new Query('receptek','r');
 		if ($style == 'delicious') {
 			$limit = 16;
 		} else {
 			$limit = 8;
 		}
-		$news = $q->orderBy('id')->orderDir('DESC')->limit($limit)->all();
-		foreach($news as $new) {
-				$q = new Query('likes');
-				$new->likes = $q->where('target_id','=',$new->id)
-								->where('target_type','=','recept')
-								->count();
-		}	
+		$news = $q->select(['r.id','r.nev','count(l.id) likes'])
+		->join('LEFT','likes','l','l.target_id','=','r.id')
+		->where('l.target_type','=','recept')
+		->groupBy(['r.id','r.nev'])
+		->orderBy('r.id')
+		->orderDir('DESC')
+		->limit($limit)
+		->all();
 
 		$frissHir = '';
 		$blogModel = new BlogModel();

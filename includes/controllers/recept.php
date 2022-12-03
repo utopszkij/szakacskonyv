@@ -7,6 +7,7 @@ include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
 include_once __DIR__.'/../models/likemodel.php';
 include_once __DIR__.'/../urlprocess.php';
+include_once __DIR__.'/../uploader.php';
 
 class Recept extends Controller{
 	protected $model;
@@ -130,66 +131,14 @@ class Recept extends Controller{
 		}
 		
 		// kép file feltöltése
-
+		$uploadRes = Uploader::doImgUpload('kepfile',
+			DOCROOT.'/images',
+			'recept_'.$receptId.'.*');
 		if (file_exists($_FILES['kepfile']['tmp_name'])) { 
-			$target_dir = DOCROOT.'/images/';
-			$target_file = $target_dir . basename($_FILES["kepfile"]["name"]);
-			if (strpos($target_file,'.php') > 0) {
-			    exit();
+			if ($uploadRes->error != '') {
+				echo '<div class="alert alert-danger">'.$uploadRes->error.'</div>';
 			}
-			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-			$target_file = $target_dir.'recept_'.$receptId.'.'.$imageFileType;		
-			$uploadOk = '';
-			
-		    $check = getimagesize($_FILES["kepfile"]["tmp_name"]);
-			if($check == false) {
-			    $uploadOk = 'nem kép fájl';
-			}
-			
-			if (file_exists($target_dir.$_POST['nev'].'.jpg')) {
-				unlink($target_dir.$_POST['nev'].'.jpg');
-			}
-			if (file_exists($target_dir.$_POST['nev'].'.png')) {
-				unlink($target_dir.$_POST['nev'].'.png');
-			}
-			if (file_exists($target_dir.$_POST['nev'].'.jpeg')) {
-				unlink($target_dir.$_POST['nev'].'.jpeg');
-			}
-			if (file_exists($target_dir.$_POST['nev'].'.gif')) {
-				unlink($target_dir.$_POST['nev'].'.gif');
-			}
-
-			if (file_exists($target_dir.'recept_'.$receptId.'.jpg')) {
-				unlink($target_dir.'recept_'.$receptId.'.jpg');
-			}
-			if (file_exists($target_dir.'recept_'.$receptId.'.png')) {
-				unlink($target_dir.'recept_'.$receptId.'.png');
-			}
-			if (file_exists($target_dir.'recept_'.$receptId.'.jpeg')) {
-				unlink($target_dir.'recept_'.$receptId.'.jpeg');
-			}
-			if (file_exists($target_dir.'recept_'.$receptId.'.gif')) {
-				unlink($target_dir.'recept_'.$receptId.'.gif');
-			}
-			if ($_FILES["kepfile"]["size"] > 5000000) {
-			  $uploadOk .= ' túl nagy fájl méret';
-			}
-			
-			if($imageFileType != "jpg" && 
-			   $imageFileType != "png" && 
-			   $imageFileType != "jpeg") {
-			  $uploadOk .= ' nem megengedett fájl kiterjesztés';
-			}
-			
-			if ($uploadOk == '') {
-			  if (!move_uploaded_file($_FILES["kepfile"]["tmp_name"], $target_file)) {
-			    echo "Hiba a fájl feltöltés közben ".$target_file; exit();
-			  }
-			} else {
-				echo $uploadOk; exit();			
-			}
-		} // van file upload
-
+		}
 		// receptCimkek tárolása
 		foreach ($cimkek as $cimke) {
 			if (isset($_POST[str_replace(' ','_',$cimke)])) {
@@ -208,15 +157,7 @@ class Recept extends Controller{
 	 */
 	private function receptKep($recept) {
 		$kep = 'images/noimage.png'; 
-		if (file_exists('images/'.$recept->nev.'.png')) {
-			$kep = 'images/'.$recept->nev.'.png';
-		} else if (file_exists('images/'.$recept->nev.'.jpg')) {
-			$kep = 'images/'.$recept->nev.'.jpg';
-		} else if (file_exists('images/'.$recept->nev.'.jpeg')) {
-			$kep = 'images/'.$recept->nev.'.jpeg';
-		} else if (file_exists('images/'.$recept->nev.'.gif')) {
-			$kep = 'images/'.$recept->nev.'.gif';
-		} else if (file_exists('images/recept_'.$recept->id.'.jpg')) {
+		if (file_exists('images/recept_'.$recept->id.'.jpg')) {
 			$kep = 'images/recept_'.$recept->id.'.jpg';
 		} else if (file_exists('images/recept_'.$recept->id.'.jpeg')) {
 			$kep = 'images/recept_'.$recept->id.'.jpeg';
@@ -224,6 +165,14 @@ class Recept extends Controller{
 			$kep = 'images/recept_'.$recept->id.'.png';
 		} else if (file_exists('images/recept_'.$recept->id.'.gif')) {
 			$kep = 'images/recept_'.$recept->id.'.gif';
+		} else if (file_exists('images/'.$recept->nev.'.png')) {
+			$kep = 'images/'.$recept->nev.'.png';
+		} else if (file_exists('images/'.$recept->nev.'.jpg')) {
+			$kep = 'images/'.$recept->nev.'.jpg';
+		} else if (file_exists('images/'.$recept->nev.'.jpeg')) {
+			$kep = 'images/'.$recept->nev.'.jpeg';
+		} else if (file_exists('images/'.$recept->nev.'.gif')) {
+			$kep = 'images/'.$recept->nev.'.gif';
 		} else {
 		// adat lekérés a google -ról	
 			$receptNev = urlencode($recept->nev);
