@@ -110,6 +110,7 @@ class User extends Controller {
 	}
 	
 	public function doregist() {
+return;
 		$db = new Query('users');
 		$userName = $_POST['username'];
 		$password = $_POST['password'];
