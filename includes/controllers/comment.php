@@ -18,7 +18,7 @@ class Comment extends Controller {
      * a képek mellet adminnak és a crátornak törlő link is van.
      */
     public function comment() {
-        $comment = $this->model->getById(intval($_GET['id']));
+        $comment = $this->model->getById(intval($this->request->input('id')));
         if (isset($comment->recept_id)) {
             $receptModel = new ReceptModel();
             $recept = $receptModel->getById($comment->recept_id);

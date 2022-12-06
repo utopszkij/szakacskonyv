@@ -96,7 +96,6 @@ CKEDITOR.editorConfig = function( config ) {
 
 
 
-            console.log(ClassicEditor);
             if (window.editor == undefined) {
                 ClassicEditor
                 .create( document.querySelector( 'textarea#body' ), {
@@ -132,7 +131,6 @@ CKEDITOR.editorConfig = function( config ) {
                 } )
                 .then( editor => {
                     window.editor = editor;
-                    console.log(editor);
                 } )
                 .catch( err => {
                     console.error( err.stack );

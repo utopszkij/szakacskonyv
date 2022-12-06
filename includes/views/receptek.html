@@ -1,17 +1,21 @@
         <div id="receptList">
 			<div class="row">
-				<div class="col-md-10">
+				<div class="col-12 col-md-9">
 					<h1 class="ribbon-banner"><span>{{ lng('RECEPTS') }}</span></h1>
 				</div>
-				<div class="col-md-2">
+				<div class="col-12 col-md-3">
+					<a href="#" id="filterFormToggle" v-on:click="filterFormShow()"
+						class="btn btn-secondary" style="margin-right:2px" v-bind:title="lng('SEARCH')">
+						<em class="fa fa-search"></em>
+					</a>
 					<a v-bind:href="HREF('likewinners',{'type':'recept'})" 
 						class="btn btn-primary"
 						style="display:inline-block; width:auto; text-decoration:none">
 						<em class="fas fa-signal"></em>&nbsp;Like bajnokság
 					</a>
 				</div>
-			</div>	
-			<div class="filterForm">
+			</div>
+			<div id="filterForm" class="filterForm" style="display:none">
 				<form method="get" action="index.php" id="filterForm" class="form">
 					<input type="hidden" name="task" value="receptek" />
 					<input type="hidden" name="page" value="1" />
@@ -81,8 +85,18 @@
 										</var>	
                                         <span class="id">{{ item.id }}</span>
                                         <div class="name">{{ item.nev }}</div>
-										<div class="likeLine">
-											<em class="fas fa-thumbs-up"></em>&nbsp;{{ item.likeCount}}
+										<div class="likeLine ratings">
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= LIKESIZE"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < LIKESIZE"></i>
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (2*LIKESIZE)"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (2*LIKESIZE)"></i>
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (3*LIKESIZE)"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (3*LIKESIZE)"></i>
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (4*LIKESIZE)"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (4*LIKESIZE)"></i>
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (5*LIKESIZE)"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (5*LIKESIZE)"></i>
+											&nbsp;{{ item.likeCount}} like
 										</div>
 									</a>
 								</td>
@@ -103,7 +117,7 @@
 								<td>
 									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
 										<var class="imgContainer">
-											<img v-bind:id="'img'+item.id" />
+											<img v-bind:id="'img_'+item.id" />
 										</var>			
 										<em v-if="item.favorit" 
 											style="margin-top:-20px; padding:2px; color:green; background-color:white; z-index:10"
@@ -112,8 +126,18 @@
                                         <div class="name">
 											{{ item.nev }}
 										</div>	
-										<div class="likeLine">
-											<em class="fas fa-thumbs-up"></em>&nbsp;{{ item.likeCount}}
+										<div class="likeLine ratings">
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= LIKESIZE"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < LIKESIZE"></i>
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (2*LIKESIZE)"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (2*LIKESIZE)"></i>
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (3*LIKESIZE)"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (3*LIKESIZE)"></i>
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (4*LIKESIZE)"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (4*LIKESIZE)"></i>
+											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (5*LIKESIZE)"></i>
+											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (5*LIKESIZE)"></i>
+											&nbsp;{{ item.likeCount}} like
 										</div>
 									</a>
 								</td>
@@ -142,6 +166,12 @@
 			// window.receptImages = [];
 			window.onscroll = function() {window.scrollFunction(); app.scrollFunction()};
 			window.setTimeout('app.scrollFunction()',1000);
+		},
+		filterFormShow() {
+			var d = document.getElementById('filterForm');
+			d.style.display = 'block';
+			document.getElementById('filterFormToggle').style.display='none';
+			return false;	
 		},
 		newsTogle() {
 			this.newsOpened = !this.newsOpened;
@@ -173,27 +203,14 @@
 					document.getElementById('filtercimke').value = '';
 					document.getElementById('filterForm').submit();
 		},
-		loadImg1(id) {
-			// window.scroll esemény hívja 
-			// az app.receptImages -ből a még nem betöltött, 
-			// és az adott scroll pozicióban látszó képeket tölri be
-			var w = document.getElementById('img'+id);
-			if (!w) {
-				w = document.getElementById('img_'+id);
-			}
+		loadImg1(w) {
 			if (w) {
 				if ((w.src == '') & (w.getBoundingClientRect().top <= window.innerHeight)) {
 					w.src = siteurl+'/images/loader.gif';
+					id = w.id.substring(4,100);
 					axios.get(siteurl+'/index.php?task=getImage&id='+id)
 					.then(function(response) {
-						var w = document.getElementById('img'+id)
-						if (w) {
-							w.src = response.data.replace('\n','');
-						}	
-						w = document.getElementById('img_'+id)
-						if (w) {
-							w.src = response.data.replace('\n','');
-						}	
+						w.src = response.data.replace('\n','');
 					})
 				}
 			}
@@ -202,9 +219,9 @@
 			// a recept képek betöltése
 			imgs = document.images;
 			for (var i = 0; i < imgs.length; i++) {
-				if (imgs[i].id.substr(0,3) == 'img') {
-					var id = imgs[i].id.substr(3,100).replace('_','');
-			 		app.loadImg1(id);
+				if (imgs[i].id.substring(0,3) == 'img') {
+					// var id = imgs[i].id.substr(3,100).replace('_','');
+			 		app.loadImg1(imgs[i]);
 				}	
 			}
 		}

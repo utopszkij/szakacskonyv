@@ -189,7 +189,6 @@ class Osszegzes extends Controller{
 		function printClick() {
 			var sorok = document.getElementById('bevLista').value;
 			var sorokSzama = sorok.split("\n").length;
-			console.log('sorok száma',sorokSzama); 	
 			document.getElementById('bevLista').rows = sorokSzama + 10;
 			window.print();
 		}

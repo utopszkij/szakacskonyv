@@ -157,7 +157,6 @@
                 if ((app.loged > 0) & (!app.blog.userLike)) {
                     app.blog.likeCount = app.blog.likeCount + 1;
                     app.blog.userLike = true;
-                    console.log('likeClick ',app.loged, app.blog.userLike);
                     document.getElementById('hideIframe').src = HREF('likesave',{'type':'blog','id':app.blog.id});
                 }
             },

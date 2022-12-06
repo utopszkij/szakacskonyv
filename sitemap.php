@@ -7,7 +7,7 @@
 include_once 'config.php';
 include_once 'vendor/database/db.php';
 
-$urls = [SITEURL];
+$urls = [SITEURL, SITEURL.'/', SITEURL.'/index.php',SITEURL.'/task/receptek/page/1',SITEURL.'/task/blogs/page/1'];
 
 $q = new \RATWEB\DB\Query('receptek');
 $recs = $q->all();

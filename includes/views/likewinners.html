@@ -1,34 +1,35 @@
-<div id="likewinners">
-    <h2 class="ribbon-banner"><span><em class="fas fa-trophy"></em>&nbsp;Like najnokság gyöztesei</span></h2>
-    <h3>{{ datum }}</h3>
-    <table>
-        <tbody>
-            <tr v-for="item in items">
-                <td>
-                    <strong v-bind:id="'position_'+item.id">{{ item.position }}.</strong>
-                    &nbsp;
-                    <em v-bind:class="'fas fa-medal medal'+item.position" v-bind:id="'medal_'+item.id"
-                        style="font-size:32px;"></em> 
-                    &nbsp;{{ item.cc }} like 
-                </td>
-                <td>
-                    <img v-bind:id="'img_'+item.id" style="height:100px" />
-                </td>
-                <td>
-                    <a v-bind:href="HREF('recept',{'id':item.id})"> 
-                        &nbsp; {{ item.nev }}
-                    </a>
-                </td> 
-            </tr>
-        </tbody>
-    </table>
-    <div class="alert alert-warning" v-if="items.length == 0">Nincs egyetlen like sem.</div>
+<div id="likewinners" class="row">
+	<div class="col-12">
+		<h2 class="ribbon-banner"><em class="fas fa-trophy"></em>&nbsp;Like najnokság gyöztesei</h2>
+		<h3>{{ datum }}</h3>
+		<table style="display:block; width:80%">
+			<tbody>
+				<tr v-for="item in items">
+					<td style="width:30%">
+						<strong v-bind:id="'position_'+item.id">{{ item.position }}.</strong>
+						&nbsp;
+						<em v-bind:class="'fas fa-medal medal'+item.position" v-bind:id="'medal_'+item.id"
+							style="font-size:32px;"></em> 
+						&nbsp;{{ item.cc }} like&nbsp; 
+					</td>
+					<td style="width:30%">
+						<img v-bind:id="'img_'+item.id" style="height:100px" />
+					</td>
+					<td style="width:36%">
+						<a v-bind:href="HREF('recept',{'id':item.id})"> 
+							&nbsp; {{ item.nev }}
+						</a>
+					</td> 
+				</tr>
+			</tbody>
+		</table>
+		<div class="alert alert-warning" v-if="items.length == 0">Nincs egyetlen like sem.</div>
+    </div>
 </div>
 
 <script>
     methods = {
 		afterMount() {
-            console.log(this.items);
             window.setTimeout('app.loadImages()',1000);
 		},
         loadImg1(id) {

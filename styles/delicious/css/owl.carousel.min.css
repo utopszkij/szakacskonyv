@@ -27,7 +27,7 @@
 .owl-carousel .owl-animated-out{z-index:1}
 .owl-carousel .fadeOut{animation-name:fadeOut}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}
 .owl-height{transition:height .5s ease-in-out}
-.owl-carousel .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}
+.owl-carousel .owl-item .owl-lazy{opacity:0;transition:opacity0. 4s ease}
 .owl-carousel .owl-item img.owl-lazy{transform-style:preserve-3d}
 .owl-carousel .owl-video-wrapper{position:relative;height:100%;background:#000}
 .owl-carousel .owl-video-play-icon{position:absolute;height:80px;width:80px;left:50%;top:50%;margin-left:-40px;margin-top:-40px;

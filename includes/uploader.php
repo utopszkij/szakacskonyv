@@ -32,7 +32,7 @@ class Uploader {
         if (isset($_FILES[$cname])) {
             if (file_exists($_FILES[$cname]['tmp_name'])) { 
                 if (!is_dir($targetDir.'/')) {
-                    mkdir($targetDir,0777);
+                    mkdir($targetDir,0755);
                 }
                 $targetDir .= '/';
                 if ($targetName == '') {

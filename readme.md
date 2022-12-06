@@ -156,6 +156,11 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.2.0
+2022.12.06
+- Új dizájn
+### *************************************
+
 ## verzió v2.1.7
 2022.12.02
 - biztonsá./files.shgi rések elenörzése, javítása

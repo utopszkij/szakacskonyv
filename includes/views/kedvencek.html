@@ -74,8 +74,6 @@
         loadImg(id) {
                 axios.get('index.php?task=getImage&id='+id)
                 .then(function(response) {
-                    console.log(id);
-                    console.log(response.data);
                     document.getElementById('img'+id).src = response.data.replace('\n','');
                 })
         }

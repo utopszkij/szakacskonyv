@@ -530,7 +530,6 @@ var methods = {
             document.querySelector('head').append('<meta property="og:title" content="'+this.recept.nev+'">');
 
             // 2022.11.03 ckeditor
-            console.log(ClassicEditor);
             if (window.editor == undefined) {
 
                 ClassicEditor
@@ -568,7 +567,6 @@ var methods = {
                 .then( editor => {
 
                     window.editor = editor;
-                    console.log(editor);
                 } )
                 .catch( err => {
                     console.error( err.stack );
@@ -642,7 +640,9 @@ function adjust() {
     for (var i=0; i<30; i++) {
         var ta = document.getElementById('hozzavalo'+i);
         if (ta) {
-            ta.style.height = ta.scrollHeight+'px';
+            if (ta.scrollHeight > 0) {
+                ta.style.height = ta.scrollHeight+'px';
+            }    
         }
     }
     

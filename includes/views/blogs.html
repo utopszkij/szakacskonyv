@@ -3,11 +3,19 @@
 			<div class="alert alert-danger" v-if="errorMsg != ''" v-html="lng(errorMsg)"></div>
 			<div class="alert alert-success" v-if="successMsg != ''" v-html="lng(successMsg)"></div>
 			<div class="row">
-				<h1 class="ribbon-banner"><span><em class="fas fa-feather"></em>&nbsp;{{ lng('BLOGS') }}</span></h1>
+				<div class="col-10">
+					<h1 class="ribbon-banner"><span>{{ lng('BLOGS') }}</span></h1>
+				</div>
+				<div class="col-2">
+					<a href="#" id="filterFormToggle" v-on:click="filterFormShow()"
+						class="btn btn-secondary" style="margin-right:2px"  v-bind:title="lng('SEARCH')">
+						<em class="fa fa-search"></em>
+					</a>
+				</div>
 			</div>	
 			<div class="row">&nbsp;</div>
 
-			<div class="filterForm">
+			<div class="filterForm" id="filterForm" style="display:none">
 				<form method="get" action="index.php" id="filterForm" class="form">
 					<input type="hidden" name="task" value="blogs" />
 					<input type="hidden" name="page" value="1" />
@@ -76,6 +84,12 @@
             }
             return result;
         },
+		filterFormShow() {
+			var d = document.getElementById('filterForm');
+			d.style.display = 'block';
+			document.getElementById('filterFormToggle').style.display='none';
+			return false;	
+		},
 		delFilter() {
             document.getElementById('titleStr').value = '';
             document.getElementById('bodyStr').value = '';

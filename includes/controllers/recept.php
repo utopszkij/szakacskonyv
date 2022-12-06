@@ -30,6 +30,9 @@ class Recept extends Controller{
 	}
 	// $_GET['id']
 	public function receptdelete() {
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
+		}	
 		// normál user csak a saját maga által felvittet törölheti
 		// system admin mindent törölhet
 		$recept = $this->model->getById($this->request->input('id',0,INTEGER));
@@ -87,6 +90,7 @@ class Recept extends Controller{
 				return;
 			}
 		}
+		// most már $receptId -nek van értéke (akkor is ha új felvitel)
 		if ($this->model->errorMsg != '') {
 			echo ' error in insert '.$this->model->errorMsg; exit();
 		}
@@ -107,18 +111,17 @@ class Recept extends Controller{
 		// hozzávalók felvitele
 		for ($i = 0; $i < 30; $i++) {
 			if (isset($_POST['hozzavalo'.$i])) {
-				if ($_POST['hozzavalo'.$i] != '') {
 					$r = new Record();
 					$r->recept_id = $receptId;
-					$r->nev = $_POST['hozzavalo'.$i];
+					$r->nev = $this->request->input('hozzavalo'.$i);
 					if (isset($_POST['mennyiseg'.$i])) {
-						$r->mennyiseg = $_POST['mennyiseg'.$i];
+						$r->mennyiseg = $this->request->input('mennyiseg'.$i);
 					} else {
 						$r->mennyiseg = 0;
 					}	
 					if (!is_numeric($r->mennyiseg)) $r->mennyiseg = 0;
 					if (isset($_POST['me'.$i])) {
-						$r->me = $_POST['me'.$i];
+						$r->me = $this->request->input('me'.$i);
 					} else {
 						$r->me = '';				
 					}
@@ -126,18 +129,30 @@ class Recept extends Controller{
 					if ($this->model->errorMsg != '') {
 						echo ' error in insert hozzavalok '.$this->model->errorMsg; exit();
 					}
-				}
 			}	
 		}
 		
 		// kép file feltöltése
-		$uploadRes = Uploader::doImgUpload('kepfile',
-			DOCROOT.'/images',
-			'recept_'.$receptId.'.*');
 		if (file_exists($_FILES['kepfile']['tmp_name'])) { 
+			// képernyőn megadott képfile
+			$uploadRes = Uploader::doImgUpload('kepfile',
+			DOCROOT.'/images',
+			'recept'.$receptId.'.*');
 			if ($uploadRes->error != '') {
 				echo '<div class="alert alert-danger">'.$uploadRes->error.'</div>';
 			}
+		} else if (isset($_SESSION['origImg'])) {
+			// átvételnél talált eredeti képfájl a forrás oldalon
+			$kep = $_SESSION['origImg'];
+			$imageFileType = strtolower(pathinfo($kep,PATHINFO_EXTENSION));
+			$imgFileName = 'images/recept'.$receptId.'.'.$imageFileType;
+			if (file_exists($imgFileName)) {
+				unlink($imgFileName);			
+			}
+			copy($kep, $imgFileName);
+		}
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
 		}
 		// receptCimkek tárolása
 		foreach ($cimkek as $cimke) {
@@ -211,6 +226,9 @@ class Recept extends Controller{
 
 	public function recept() {	
 		global $hozzavalok;
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
+		}	
 		$recept = JSON_decode('{"id":0, "leiras":"", "nev":"", "created_by":0, 
 			"created_at":"2022.01.01",
 			"adag":4,
@@ -302,7 +320,11 @@ class Recept extends Controller{
 			foreach ($hozzavalok as $hozzavalo) {
 				$hozzavalo->menny = $hozzavalo->mennyiseg;
 			}
-			$kep = $this->receptKep($recept);
+			if (isset($_SESSION['origImg'])) {
+				$kep = $_SESSION['origImg'];
+			} else {
+				$kep = $this->receptKep($recept);
+			}	
 		}
 
 		// likes infok a $recept -be
@@ -333,6 +355,7 @@ class Recept extends Controller{
 			"page" => $page,
 			"pages" => $pages,
 			"UPLOADLIMIT" => UPLOADLIMIT,
+			"LIKESIZE" => LIKESIZE,
 			"task" => 'recapt&id='.$recept->id 
 
 		]);
@@ -456,6 +479,9 @@ class Recept extends Controller{
 		$filterCreated = $this->getParam('filtercreated');
 		$filterCimke = $this->getParam('filtercimke');
 		$filterCreatorId = -1;
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
+		}	
 		
 		$q = new Query('receptek');
 		$news = $q->orderBy('id')->orderDir('DESC')->limit(8)->all();
@@ -541,7 +567,8 @@ class Recept extends Controller{
 			"total" => $total,
 			"loged" => $this->session->input('loged'),
 			"cimkek" => $cimkek,
-			"task" => $task
+			"task" => $task,
+			"LIKESIZE" => LIKESIZE
 		]); 
 
 	}
