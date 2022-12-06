@@ -1,10 +1,17 @@
 
+body.dark {background-color:#303030; color:white;}
+body.dark a {color:#E0E0E0 }
+body.dark .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a {color:#E0E0E0 }
+
 .header-area {padding-left:4%}
 .header-area .delicious-main-menu {height:95px;}
 .header-area .delicious-main-menu .classy-navbar {height:95px;}
 .header-area img {max-width:100px}
 .avatar {height:32px}
 .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a.active {background-color:green; color:white}
+
+.dark .header-area .top-header-area {background-color: transparent; color:white}
+.dark .header-area .top-header-area a {background-color: transparent; color:white}
 
 .hero-area  {display:block; margin: 1% 1% 1% 1%; 
 	padding:1px 1px 1px 1px; line-height:16px; height:600px; overflow:hidden}
@@ -41,13 +48,17 @@ label {display:inline-block; width:250px; max-width:250px; tex-align:left}
 .ratings .none {color:#ffffff}
 
 .page {margin:0px 5% 0px 5%; padding:1%; background-color:#F0F0F0}
+.dark .page {background-color:#101010}
+
 .row {margin:0px 0px 0px 0px}
 a:hover {color:#40ba37; text-decoration:none}
 h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; flex:none;
 	font-size: 20px; padding:3px}
+.nice-select {height:36px; line-height:36px}	
 .ribbon-banner  {display:inline-block; width:auto; clear:both; flex:none;
 	padding:5px 10px 5px 10px; background-color: #40ba37; color:white; }
 .formBUttons, .formButtons {margin-top:1%}
+.ck-content {height:350px}
 
 .paginator li {border-style:solid; border-width:1px; margin:1px;}
 .paginator li a,

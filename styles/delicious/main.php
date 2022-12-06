@@ -30,25 +30,20 @@ kezelheti, az összesítés is ezek alapján készül. A recepteknél látja, ha
 felvitteket is, de modosítani, törölni csak a sajátmaga által felvitteket tudja. Illetve a 
 rendszer adminisztrátorok és moderátorok módosíthatják, törölhetik az összes receptet. 
 A hozzászólások mindenki számára láthatóak">
- 	<meta name="keywords" content="recept, receptek, szakács, szakácskönyv, napi menü, összegit checkout -b sítés, bevásárló lista, étel, ételek, sütemény, sütemények">
+	<meta name="keywords" content="recept, receptek, szakács, szakácskönyv, napi menü, összegit checkout -b sítés, bevásárló lista, étel, ételek, sütemény, sütemények">
   	<meta name="author" content="Fogler Tibor">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<!-- vue -->
     <script src="<?php echo SITEURL; ?>/vendor/vue/vue.global.prod.js"></script>
-	<!-- axios -->
 	<script src="<?php echo SITEURL; ?>/vendor/axios/axios.js"></script>
 
-    <!-- Core Stylesheet -->
 	<link rel="stylesheet" href="styles/delicious/css/style.css">
 	<link rel="stylesheet" href="styles/delicious/index.css">
 	<link rel="stylesheet" href="styles/default/admin.css">
 	
-	<!-- fontawesome --> 
 	<script src="<?php echo SITEURL; ?>/vendor/fontawesome/js/all.min.js"></script>
 	<link rel="stylesheet" href="<?php echo SITEURL; ?>/vendor/fontawesome/css/all.min.css">
 	
-	<!-- multi language -->
 	<?php
 	if (!defined('LNG')) {
 		define('LNG','hu');
@@ -57,7 +52,7 @@ A hozzászólások mindenki számára láthatóak">
 			echo '<script src="languages/'.LNG.'.js"></script>';
 	} else {
 			echo '<script> tokens = {}; </script>';
-	}	
+	}
 	?>
 	<script type="text/javascript">
 		var rewrite = <?php echo (int)REWRITE; ?>;
@@ -66,7 +61,7 @@ A hozzászólások mindenki számára láthatóak">
 	<script src="index.js"></script>
 </head>
 
-<body>
+<body class="dark">
 	<div id="scrolltotop"></div>
 	<div id="popup" style="display:none">
 		<div style="text-align:right">
@@ -90,10 +85,12 @@ A hozzászólások mindenki számára láthatóak">
 	?>
 	
     <!-- Preloader -->
+	<div style="display:none">
     <div id="preloader">
         <i class="circle-preloader"></i>
         <img src="styles/delicious/img/core-img/salad.png" alt="">
     </div>
+	</div>
     
     <!-- Search Wrapper -->
     <div class="search-wrapper">
@@ -211,8 +208,21 @@ A hozzászólások mindenki számára láthatóak">
                 </div>
             </div>
         </div>
-        
         <!-- Navbar Area End -->
+
+		<!-- new version manager Start -->								
+		<?php if (($_SESSION['logedGroup'] == 'admin') & ($fileVerzio < $lastVerzio)) : ?>
+		<div class="alert alert-warning">
+		  Új verzió érhető el.	
+          <a href="<?php echo SITEURL.'/task/upgrade1/version/'.$lastVerzio; ?>" 
+              class="btn btn-primary">
+              Új verzió <?php echo $lastVerzio; ?> 
+          </a>
+      	</div>	
+		<?php endif; ?>
+
+		<!-- new version manager End -->								
+
     </header>
     <!-- ##### Header Area End ##### -->
 	
@@ -260,13 +270,13 @@ A hozzászólások mindenki számára láthatóak">
 						&nbsp;<a href="https://themewagon.com/author/kimlabs/">Colorlib </a>
 					</div>
                     
-  				   <!-- div style="text-align:center">
+  				   <div style="text-align:center">
 					  <button class="btn btn-toggle btn-secondary" 
 						 type="button" onclick="themeTogle()">
 						 <em class="fas fa-adjust"></em>&nbsp;
 						 Világos/sötét mód váltás
 					  </button>
-				   </div -->
+				   </div>
 				   <div>&nbsp;</div>
 				   <div>&nbsp;</div>
 	</div>
@@ -315,6 +325,7 @@ A hozzászólások mindenki számára láthatóak">
 				document.body.className = 'light';
 				theme = 'light';
 			} else {
+				// default
 				document.body.className = 'light';
 				theme = 'light';
 			}

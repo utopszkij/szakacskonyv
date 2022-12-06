@@ -25,6 +25,7 @@ class Upgrade extends Controller {
 	protected $info = '';
 
 	function __construct() {
+		parent::__construct();
 		// fejlesztő környezetben ?branch=xxx URL paraméterrel cserélhető
 		// a github alapértelmezett "main" branch
 		if (isset($_GET['branch'])) {
