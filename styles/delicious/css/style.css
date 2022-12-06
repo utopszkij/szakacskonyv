@@ -16,7 +16,7 @@
 @import url(font-awesome.min.css);
 @import url(custom-icon.css);
 @import url(classy-nav.min.css);
-@import url(nice-select.min.css);
+@import url(nice-select.css);
 /* :: 3.0 Base CSS */
 * {
   margin: 0;
@@ -42,6 +42,7 @@ p {
   line-height: 2;
   font-weight: 400; }
 
+
 a,
 a:hover,
 a:focus {
@@ -49,10 +50,13 @@ a:focus {
   transition-duration: 500ms;
   text-decoration: none;
   outline: 0 solid transparent;
-  color: #000000;
-  font-weight: 600;
-  font-size: 14px;
-  color: #474747; }
+   color: #000000;
+   /*font-weight: 600;
+     font-size: 14px; 
+   */ 
+   color: #474747; 
+  }
+
 
 ul,
 ol {
