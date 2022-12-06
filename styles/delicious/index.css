@@ -1,0 +1,122 @@
+
+.header-area {padding-left:4%}
+.header-area .delicious-main-menu {height:95px;}
+.header-area .delicious-main-menu .classy-navbar {height:95px;}
+.header-area img {max-width:100px}
+.avatar {height:32px}
+.header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a.active {background-color:green; color:white}
+
+.hero-area  {display:block; margin: 1% 1% 1% 1%; 
+	padding:1px 1px 1px 1px; line-height:16px; height:600px; overflow:hidden}
+.hero-slides .single-hero-slide {height:600px;  overflow:hidden}
+.hero-slides .single-hero-slide	.hero-slides-content {height:550px;}
+.hero-slides .single-hero-slide .hero-slides-content p {
+        font-size: 20px;
+        margin-left: 40px;
+        margin-bottom: 10px;
+        color: #ffffff; 
+        line-height:150%}
+
+.single-top-catagory {height:400px; color:white}
+.single-top-catagory p {color:white}
+.single-top-catagory img {height:100%}
+
+#frissHir {margin:15px -5px; padding:10px; border-style:none; background-color:black; color:white}
+#frissHir img {max-width:300px;}
+#frissHir p, .frissHir div, .frissHir h1, .frissHir h2, .frissHir h3, .frissHir h4,
+#frissHir a, .frissHir a:hover {color: white}
+
+.single-best-receipe-area {height:280px; text-align:center}
+.single-best-receipe-area img {width:80%; height:170px}
+
+.single-small-receipe-area {height: 110px}
+.single-small-receipe-area img {width: 100px; height: 100px}
+ 
+.leiras ul li {list-style:disc}
+.form-control {display:inline-block; width:auto; float:none; background-color:white}
+.nice-select {min-width:300px; float:none; background-color:white}
+label {display:inline-block; width:250px; max-width:250px; tex-align:left}
+
+.ratings {color:orange}
+.ratings .none {color:#ffffff}
+
+.page {margin:0px 5% 0px 5%; padding:1%; background-color:#F0F0F0}
+.row {margin:0px 0px 0px 0px}
+a:hover {color:#40ba37; text-decoration:none}
+h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; flex:none;
+	font-size: 20px; padding:3px}
+.ribbon-banner  {display:inline-block; width:auto; clear:both; flex:none;
+	padding:5px 10px 5px 10px; background-color: #40ba37; color:white; }
+.formBUttons, .formButtons {margin-top:1%}
+
+.paginator li {border-style:solid; border-width:1px; margin:1px;}
+.paginator li a,
+.paginator li strong {margin:10px; width:30px; text-align:center}
+
+.comments {display:block; width:100%; clear:both; flex:none; 
+	padding:5px; margin:10px 0px 10px 0px;
+	border-style:solid; border-width:1px}
+.comment, .blogCommentList {border-style:solid; border-width:0px 0px 2px 0px; border-color:#40ba37; 
+	border-radius: 0.5% 0.5% 0% 0%; 
+	margin:0.8%; padding:0.8%; width:99%;
+	background-color: silver}
+.answerComment	 {margin-left:5%; width:95%}
+.comments img {max-width:20%}
+
+#login form {margin-bottom:10px}
+#regist form, #regist a {margin-bottom:10px}
+
+#receptList .dekor {display:none}
+#receptListTable {display:block; clear:both; width:100%; max-width:100%;
+	margin:0px 0px 10px 0px;flex:none}
+#receptListTable table {display:block; clear:both}
+#receptListTable thead {display:none;}
+#receptListTable .id {display:none;}
+#receptListTable tr {display:inline-block; width:auto}
+#receptListTable td {display:inline-block; width:230px; height:300px; max-width:230px; max-height:300px;
+	overflow:hidden: text-align:center}
+#receptListTable td .name:hover {color:#40ba37}
+#receptListTable img {height:200px; width:200px; 
+	border-style:solid; border-width: 0px 0px 6px 0px; border-color: #40ba37}
+
+#receptShow {padding:2%}
+#receptShow h2,
+#receptShow h3 {font-size:20px;}
+#receptShow img {width:400px; max-width:100%; height:auto}
+#receptShow #hozzavalokTable {display:inline-block; clear:both; width:500px; max-width:100%;
+	margin:0px 0px 10px 0px;flex:none; border-style:none}
+#receptShow .hozzavalok {display:inline-block; width:500px; max-width:100%; float:left}
+#receptShow .cimkek {display:inline-block; width:400px; max-width:100%;}
+#receptShow .leiras {display:inline-block; width:400px; max-width:100%; float:left}
+#receptShow .uploadInfo {margin-bottom:5px; display:inline-block; width:400px; max-width:100%;}
+#receptShow .likeLine {margin-bottom:5px; display:inline-block; width:400px; max-width:100%;}
+#receptShow form {margin-bottom:10px}
+#receptShow #hozzavalokTable tr {border-style:none; height:auto;}
+#receptShow #hozzavalokTable td {border-style:solid; padding:5px; border-width:1px}
+#receptShow .button  {display:inline-block; border-style:solid; border-width:1px; cursor:pointer}
+#receptShow .adag {display:inline-block; width:auto;}
+#receptShow .cimkek li {display:inline-block; width:auto; margin:2px; padding:2px;
+	border-style:solid; border-width:1px; border-radius:10px;}
+
+#blogList .bloghead {border-style:solid; border-width:1px;
+	margin:5px; padding:5px;}
+
+/* nptár */
+.van {background-color:#40ba37; color:white}	
+.van a {background-color:#40ba37; color:white}	
+.van a:hover {color:orange}
+
+#likewinners {background-color:#ab9ed8; color:white; padding:1%}
+#likewinners td {padding:0.5%}
+#likewinners h3 {color:white}
+#likewinners .medal1 {backgroind-color:brown; norder-radius:10px; padding:5px; color:#f9f490; }
+#likewinners .medal2 {backgroind-color:brown; norder-radius:10px; padding:5px; color:white; }
+#likewinners .medal3 {backgroind-color:brown; norder-radius:10px; padding:5px; color:#edb96d; }
+
+#footer {padding:5px 20px 5px 20px}
+#footer i, #footer a {display:inline-block; margin-right:20px;}
+#cookieEnabled {text-align:center}
+
+#adminBody tr {display:block; width:100%}
+#adminBody td {height:80px; max-height:80px; width:auto;}
+#adminBody td img {height:auto; max-height:60px; }

@@ -160,19 +160,34 @@ class Naptar  {
 	
 	public function home($style = '') {
 		$likeModel = new LikeModel();
+		$winers = $likeModel->getWinners('recept',10);
 		$q = new Query('receptek');
-		if ($style == 'delicious') {
+		if ((STYLE == 'delicious') | (STYLE == 'modern')) {
 			$limit = 16;
+			$q->setSql('
+			SELECT r.id, r.nev, count(l.id) likes
+			FROM receptek r
+			INNER JOIN likes l ON l.target_id = r.id AND l.target_type = "recept"
+			INNER JOIN users u ON u.id = l.user_id
+			GROUP BY r.id,r.nev
+			UNION ALL
+			SELECT r.id, r.nev, count(l.id) likes
+			FROM receptek r
+			LEFT OUTER JOIN likes l ON l.target_id = r.id AND l.target_type = "recept"
+			WHERE l.id is NULL
+			GROUP BY r.id,r.nev
+			ORDER BY 1 DESC
+			LIMIT 8
+			');
+			$news = $q->all();
 		} else {
 			$limit = 8;
+			$news = $q->select(['id','nev'])
+			->orderBy('id')
+			->orderDir('DESC')
+			->limit($limit)
+			->all();
 		}
-		$news = $q->orderBy('id')->orderDir('DESC')->limit($limit)->all();
-		foreach($news as $new) {
-				$q = new Query('likes');
-				$new->likes = $q->where('target_id','=',$new->id)
-								->where('target_type','=','recept')
-								->count();
-		}	
 
 		$frissHir = '';
 		$blogModel = new BlogModel();
@@ -183,10 +198,11 @@ class Naptar  {
 		} else if ($_GET['task'] == 'home') {
 			$frissHir = 'nincs friss hír';
 		}
-		if ($style == 'delicious') {
-			view('homedelicious',["news" => $news, "frissHir" => $frissHir]);
-		} else {
-			view('home',["news" => $news, "frissHir" => $frissHir]);
+		view('home',["news" => $news, 
+		"frissHir" => $frissHir, 
+		"winers" => $winers, 
+		"LIKESIZE" => LIKESIZE]);
+		if ($style == 'defauult') {
 			echo '
 			<!-- Initialize Swiper -->
 			<script src="vendor/swiper/swiper-bundle.js"></script>

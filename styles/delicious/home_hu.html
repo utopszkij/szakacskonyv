@@ -1,0 +1,306 @@
+    <div id="homedelicious">
+    <!-- ##### Hero Area Start ##### -->
+	<section class="hero-area">
+        <div class="hero-slides owl-carousel">
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url(styles/delicious/img/bg-img/bg1.jpg);">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Recept adatbázis</h2>
+                                <div data-animation="fadeInUp" data-delay="700ms">
+									<p>Böngéssz a folyamatosan bövülő recept adatbázisban, vagy vidd fel saját receptjeidet!</p>
+								</div>
+                                <a href="index.php/task/receptek" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Receptek</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url(styles/delicious/img/bg-img/bg6.jpg);">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Tervezés</h2>
+                                <div data-animation="fadeInUp" data-delay="700ms">
+									<p>Tevezd meg mit fözöl a következő néhány napban! </p>
+									<p>Válaszd ki az adatbázisból a recepteket és add meg hány adagot készítesz! </p>
+								</div>
+                                <a href="index.php/task/naptar" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Napi menük</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url(styles/delicious/img/bg-img/bg7.jpg);">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                            <div class="hero-slides-content" data-animation="fadeInUp" data-delay="100ms">
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Alapanyag szükséglet összesítés</h2>
+                                <div data-animation="fadeInUp" data-delay="700ms">
+									<p>Készítsd el az adott időszak összesített alapanyag szükségletét és a bevásárló listát!</p>
+								</div>
+                                <a href="index.php/task/osszeg" class="btn delicious-btn" data-animation="fadeInUp" data-delay="1000ms">Összegzés</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Hero Area End ##### -->
+
+
+
+    <!-- ##### Top Catagory Area Start ##### -->
+    <section class="top-catagory-area section-padding">
+        <div class="container">
+            <div class="row frissHir" id="frissHir">
+                <!-- Top Catagory Area -->
+                <div class="col-12">
+                    <div>
+                        <!-- Content -->
+                        <div v-html="frissHir"></div>
+                        <div>
+                            <strong>A felhasználók aáltal felvitt receptek, kommentek, képek 
+                            tartalmáért az azokat felviő felhasználó a felelős. 
+                            Ezzel kapcsolatban a fejlesztő, üzemeltető semmilyen felelőséget nem vállal.
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div class="row">
+                <!-- Top Catagory Area -->
+                <div class="col-12 col-lg-6">
+                    <div class="single-top-catagory">
+                        <img src="styles/delicious/img/bg-img/bg2.jpg" alt="">
+                        <!-- Content -->
+                        <div class="top-cta-content">
+   										<p>Egy recepthez max 30 hozzávaló és egy kép adható meg, 
+										A program támogat néhány népszerű recept oldalról -ról 
+										történő adatátvételt.
+                                        </p>
+                            <a href="#leiras" class="btn delicious-btn">Leírás</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Top Catagory Area -->
+                <div class="col-12 col-lg-6">
+                    <div class="single-top-catagory">
+                        <img src="styles/delicious/img/bg-img/bg3.jpg" alt="">
+                        <!-- Content -->
+                        <div class="top-cta-content">
+										<p>A receptekhez hozzászólásokat lehet írni (pl: megfőztem, jó ), 
+                                            a hozzászóláshoz max 3 db kép is csatolható (pl a saját "alkotásom" fényképei).
+                                        </p>
+										<a href="#leiras" class="btn delicious-btn">Leírás</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Top Catagory Area End ##### -->
+
+    <!-- ##### Best Receipe Area Start ##### -->
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h3>Legújabb receptek</h3>
+                    </div>
+                </div>    
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-4" v-for="(item,i) in news">
+                    <div class="single-best-receipe-area mb-30">
+                        <img v-bind:id="'img_'+item.id" alt="">
+                        <div class="receipe-content">
+                            <a v-bind:href="'index.php/task/recept/id/'+item.id">
+                                <h5>{{ item.nev }}</h5>
+                            </a>    
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.likes >= LIKESIZE"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.likes < LIKESIZE"></i>
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.likes >= (2*LIKESIZE)"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.likes < (2*LIKESIZE)"></i>
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.likes >= (3*LIKESIZE)"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.likes < (3*LIKESIZE)"></i>
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.likes >= (4*LIKESIZE)"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.likes < (4*LIKESIZE)"></i>
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.likes >= (5*LIKESIZE)"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.likes < (5*LIKESIZE)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </section>
+    <!-- ##### Best Receipe Area End ##### -->
+
+    <!-- ##### CTA Area Start ##### -->
+    <section class="cta-area bg-img bg-overlay" style="background-image: url(styles/delicious/img/bg-img/bg4.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <!-- Cta Content -->
+                    <div class="cta-content text-center">
+                        <h2>Leg kedveltebb receptek</h2>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <div class="text-center">
+                            <a href="index.php/task/likewinners/type/recept" class="btn delicious-btn">
+                                <em class="fas fa-trophy"></em>&nbsp;Like bajnokság
+                            </a>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### CTA Area End ##### -->
+
+    <!-- ##### Small Receipe Area Start ##### -->
+    <section class="small-receipe-area section-padding-80-0">
+        <div class="container">
+            <div class="row">
+
+                <!-- Small Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4" v-for="(item,i) in winers">
+                    <div class="single-small-receipe-area d-flex">
+                        <!-- Receipe Thumb -->
+                        <div class="receipe-thumb">
+                            <img v-bind:id="'img_'+item.id" alt="">
+                        </div>
+                        <!-- Receipe Content -->
+                        <div class="receipe-content">
+                            <span>{{ item.created_at }}</span>
+                            <a v-bind:href="'index.php/task/recept/id/'+item.id">
+                                <h5>{{ item.nev }}</h5>
+                            </a>
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.cc >= LIKESIZE"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.cc < LIKESIZE"></i>
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.cc >= (2*LIKESIZE)"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.cc < (2*LIKESIZE)"></i>
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.cc >= (3*LIKESIZE)"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.cc < (3*LIKESIZE)"></i>
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.cc >= (4*LIKESIZE)"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.ccs < (4*LIKESIZE)"></i>
+                                <i class="fa fa-star" aria-hidden="true" v-if="item.cc >= (5*LIKESIZE)"></i>
+                                <i class="fa fa-star none" aria-hidden="true" v-if="item.cc < (5*LIKESIZE)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ##### Small Receipe Area End ##### -->
+    </div>
+    <a name="leiras"></a>
+    <div class="row leiras">
+        <div class="col-12">
+                <h5 class="fancy">Leírás</h5>
+                <p>A programba étel recepteket és napi menüket lehet kezelni.</p>
+                <p>Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
+                Ebből bevásárló listát lehat a program segitségével készíteni.</p>
+                <p></p>
+                <h5>Tulajdonságok</h5>
+                <ul>
+                    <li>Recepthez hozzávalók, elkészítési leírás és kép vihető fel,</li>
+                    <li>egy recepthez max 30 hozzávaló és egy kép adható meg,</li>
+                    <li>Az elkészítéso leírásba youtube videó linkek is beilleszthetőek,</li>
+                    <li>a program támogatja a mindmegette.hu, receptneked.hu, topreceptek.hu, sutnijo.hu -ról 
+                        történő adatátvételt,</li>
+                    <li>a receptek módosíthatóak, törölhetőek,</li>
+                    <li>ha a recepthez képet nem adunk meg akkor a program a recept neve 
+                    alapján megpróbál a net-en képet keresni,</li>
+                    <li>a receptek kinyomtathatóak,</li>		
+                    <li>napi menübe naponta max. 4 fogás vihető fel, megadható hány főre főzünk aznap,</li>
+                    <li>a napi menük módosíthatóak, törölhetőek,</li>			
+                    <li>a számított hozzávaló összesítés (bevásárló lista), nyomtatás előtt módosítható
+                    (pl. törölhető amiből "van a kamrában").</li>
+                    <li>A receptekhez hozzászólást lehet írni (pl: megfőztem, jó ), 
+                        a hozzászóláshoz max 3 db kép is csatolható (pl a saját "alkotásom" fényképei).
+                        A hozzászólások és csatolt képek minden látogató számára láthatóak. 
+                        Törölni, modosítani csak a feltöltő, a moderátorok és a rendszer adminisztrátorok tudják őket.
+                    </li>			
+                    <li>A hozzászólásokba  youtube videó linkek is beilleszthetőek,</li>
+                    <li>Az össesítés optimális működése érdekében a program egy "szinonima szótárat" és 
+                        "átváltási adatbázist" kezel. Ezek tartalmát csak a rendszer adminisztrátorok módosíthatják.
+                    </li>
+                </ul>
+                <p>A program konfigurálható egyfelhasználós vagy többfelhasználós módba.</p>
+                <p>Több felhasználós módban mindenki csak a sajátmaga által felvitt napi menüket 
+                látja és ezeket kezelheti, az összesítés is ezek alapján készül. A recepteknél 
+                látja, használhatja a mások által felvitteket is, de modosítani, törölni csak a 
+                sajátmaga által felvitteket tudja. Illetve a rendszer adminisztrátorok és moderátorok 
+                módosíthatják, törölhetik az összes receptet. A hozzászólások mindenki számára láthatóak</p>
+                <p></p>
+                <p><strong>A felhasználók által felvitt receptek, hozzászólások és képek tartalmáért, a kizárólag
+                az azokat felvivő felhasználó a felelős, a program szerzője és üzemeltetője
+                ezekkel kapcsolatban semmilyen felelősséget nem vállal.</strong></p>
+                <p></p>
+                <!--
+                <h4>A programot mindenki csak saját felelősségére használhatja.</h4>
+                -->
+        </div>
+    </div>
+    
+    <script>
+        var methods = {
+            afterMount() {
+                this.newsOpened = true;
+                this.sliderId = -1;
+                window.onscroll = function() {window.scrollFunction(); app.scrollFunction()};
+                window.setTimeout('app.scrollFunction()',1000);
+            },
+            makeTrClass(item) {
+                trClass = '';
+                if (item.created_by == this.loged) {
+                    trClass = 'sajat';
+                } else {
+                    trClass = 'idegen';
+                }
+                return trClass;    
+            },
+            loadImg1(w) {
+                // w = image DOM element
+                // ha nincs src -je akkor megprobál hozzá az id alapján betölteni
+                if (w) {
+                    if ((w.getBoundingClientRect().top <= window.innerHeight) & (w.src == '')) {
+                        w.src = siteurl+'/images/loader.gif';
+                        axios.get(siteurl+'/index.php?task=getImage&id='+w.id.substr(4,100))
+                        .then(function(response) {
+                            response.data = response.data.replace('\n','');
+                            response.data = response.data.replace('\r','');
+                            if (w) {
+                                w.src = response.data.replace('\n','');
+                            }	
+                        })
+                    }
+                }
+            },
+            scrollFunction() {
+                var images = document.getElementsByTagName('img'); 
+				for (var i = 0; i < images.length; i++) {
+					app.loadImg1(images[i]);
+                }    
+            }    
+        }
+        // https://www.w3schools.com/css/css3_animations.asp
+     </script>       
+    

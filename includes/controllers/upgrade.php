@@ -15,7 +15,7 @@ a github/readm.md -t használja:
 ### *************
 
 */
-class Upgrade {
+class Upgrade extends Controller {
 
 	protected $github =       'https://raw.githubusercontent.com/utopszkij/szakacskonyv/main/';
 	protected $githubReadme = ''; // __constructor állítja be
@@ -28,7 +28,7 @@ class Upgrade {
 		// fejlesztő környezetben ?branch=xxx URL paraméterrel cserélhető
 		// a github alapértelmezett "main" branch
 		if (isset($_GET['branch'])) {
-			$this->branch = $_GET['branch'];
+			$this->branch = $this->request->input('branch');
 			$_SESSION['branch'] = $this->branch;
 		} else if (isset($_SESSION['branch'])) {
 			$this->branch = $_SESSION['branch'];
@@ -170,7 +170,7 @@ class Upgrade {
 	 * GET param: version
  	*/
 	public function upgrade1() {
-		$version = $_GET['version'];
+		$version = $this->request->input('version');
 		// github -on lévő readme.md -ből változás infó olvasása
 		$files = $this->getNewFilesList($this->githubReadme, $version);
 		

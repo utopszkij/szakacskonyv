@@ -10,6 +10,9 @@
 function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tesztaval.recept/',
     &$recept, &$hozzavalok) {	
 	global $mes, $mit, $mire;
+	if (isset($_SESSION['origImg'])) {
+		unset($_SESSION['origImg']);
+	}
 	$cim = '';
 	$kep = '';
 	$elkeszites = '';
@@ -99,12 +102,11 @@ function atvetel($url = 'https://www.mindmegette.hu/sult-kacsacomb-kaposztas-tes
 						$recept->leiras = trim(strip_tags($elkeszites,['ul','ol','li','p','br']));
 			}
 			if ($kep != '') {
-				$imageFileType = strtolower(pathinfo($kep,PATHINFO_EXTENSION));
-				$imgFileName = 'images/'.$cim.'.'.$imageFileType;
-				if (file_exists($imgFileName)) {
-					unlink($imgFileName);			
-				}
-				copy($kep, $imgFileName);
+				$_SESSION['origImg'] = $kep;
+			} else {
+				if (isset($_SESSION['origImg'])) {
+					unset($_SESSION['origImg']);
+				}	
 			}
 		}
 		

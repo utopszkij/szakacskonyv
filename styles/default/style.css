@@ -57,7 +57,7 @@ body {text-align:center}
 .dark .container {display:inline-block; width:100%; margin:0%; padding:0px 0px 0px 0px;
     border-radius:0px; background-color:#1f2029}
 
-#header {height:100px; margin:1%; background-image:url('../images/fejlec.png'); cursor:pointer}
+#header {height:100px; margin:1%; background-image:url('../../images/fejlec.png'); cursor:pointer}
 h1,h2,h3,h4,h5 {padding:1%}
 span, var {display:inline-block; width:auto}
 .row {--bs-gutter-x: 0px }

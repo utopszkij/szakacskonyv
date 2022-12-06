@@ -7,6 +7,7 @@ include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
 include_once __DIR__.'/../models/likemodel.php';
 include_once __DIR__.'/../urlprocess.php';
+include_once __DIR__.'/../uploader.php';
 
 class Recept extends Controller{
 	protected $model;
@@ -29,6 +30,9 @@ class Recept extends Controller{
 	}
 	// $_GET['id']
 	public function receptdelete() {
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
+		}	
 		// normál user csak a saját maga által felvittet törölheti
 		// system admin mindent törölhet
 		$recept = $this->model->getById($this->request->input('id',0,INTEGER));
@@ -86,6 +90,7 @@ class Recept extends Controller{
 				return;
 			}
 		}
+		// most már $receptId -nek van értéke (akkor is ha új felvitel)
 		if ($this->model->errorMsg != '') {
 			echo ' error in insert '.$this->model->errorMsg; exit();
 		}
@@ -106,18 +111,17 @@ class Recept extends Controller{
 		// hozzávalók felvitele
 		for ($i = 0; $i < 30; $i++) {
 			if (isset($_POST['hozzavalo'.$i])) {
-				if ($_POST['hozzavalo'.$i] != '') {
 					$r = new Record();
 					$r->recept_id = $receptId;
-					$r->nev = $_POST['hozzavalo'.$i];
+					$r->nev = $this->request->input('hozzavalo'.$i);
 					if (isset($_POST['mennyiseg'.$i])) {
-						$r->mennyiseg = $_POST['mennyiseg'.$i];
+						$r->mennyiseg = $this->request->input('mennyiseg'.$i);
 					} else {
 						$r->mennyiseg = 0;
 					}	
 					if (!is_numeric($r->mennyiseg)) $r->mennyiseg = 0;
 					if (isset($_POST['me'.$i])) {
-						$r->me = $_POST['me'.$i];
+						$r->me = $this->request->input('me'.$i);
 					} else {
 						$r->me = '';				
 					}
@@ -125,71 +129,31 @@ class Recept extends Controller{
 					if ($this->model->errorMsg != '') {
 						echo ' error in insert hozzavalok '.$this->model->errorMsg; exit();
 					}
-				}
 			}	
 		}
 		
 		// kép file feltöltése
-
 		if (file_exists($_FILES['kepfile']['tmp_name'])) { 
-			$target_dir = DOCROOT.'/images/';
-			$target_file = $target_dir . basename($_FILES["kepfile"]["name"]);
-			if (strpos($target_file,'.php') > 0) {
-			    exit();
+			// képernyőn megadott képfile
+			$uploadRes = Uploader::doImgUpload('kepfile',
+			DOCROOT.'/images',
+			'recept'.$receptId.'.*');
+			if ($uploadRes->error != '') {
+				echo '<div class="alert alert-danger">'.$uploadRes->error.'</div>';
 			}
-			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-			$target_file = $target_dir.'recept_'.$receptId.'.'.$imageFileType;		
-			$uploadOk = '';
-			
-		    $check = getimagesize($_FILES["kepfile"]["tmp_name"]);
-			if($check == false) {
-			    $uploadOk = 'nem kép fájl';
+		} else if (isset($_SESSION['origImg'])) {
+			// átvételnél talált eredeti képfájl a forrás oldalon
+			$kep = $_SESSION['origImg'];
+			$imageFileType = strtolower(pathinfo($kep,PATHINFO_EXTENSION));
+			$imgFileName = 'images/recept'.$receptId.'.'.$imageFileType;
+			if (file_exists($imgFileName)) {
+				unlink($imgFileName);			
 			}
-			
-			if (file_exists($target_dir.$_POST['nev'].'.jpg')) {
-				unlink($target_dir.$_POST['nev'].'.jpg');
-			}
-			if (file_exists($target_dir.$_POST['nev'].'.png')) {
-				unlink($target_dir.$_POST['nev'].'.png');
-			}
-			if (file_exists($target_dir.$_POST['nev'].'.jpeg')) {
-				unlink($target_dir.$_POST['nev'].'.jpeg');
-			}
-			if (file_exists($target_dir.$_POST['nev'].'.gif')) {
-				unlink($target_dir.$_POST['nev'].'.gif');
-			}
-
-			if (file_exists($target_dir.'recept_'.$receptId.'.jpg')) {
-				unlink($target_dir.'recept_'.$receptId.'.jpg');
-			}
-			if (file_exists($target_dir.'recept_'.$receptId.'.png')) {
-				unlink($target_dir.'recept_'.$receptId.'.png');
-			}
-			if (file_exists($target_dir.'recept_'.$receptId.'.jpeg')) {
-				unlink($target_dir.'recept_'.$receptId.'.jpeg');
-			}
-			if (file_exists($target_dir.'recept_'.$receptId.'.gif')) {
-				unlink($target_dir.'recept_'.$receptId.'.gif');
-			}
-			if ($_FILES["kepfile"]["size"] > 5000000) {
-			  $uploadOk .= ' túl nagy fájl méret';
-			}
-			
-			if($imageFileType != "jpg" && 
-			   $imageFileType != "png" && 
-			   $imageFileType != "jpeg") {
-			  $uploadOk .= ' nem megengedett fájl kiterjesztés';
-			}
-			
-			if ($uploadOk == '') {
-			  if (!move_uploaded_file($_FILES["kepfile"]["tmp_name"], $target_file)) {
-			    echo "Hiba a fájl feltöltés közben ".$target_file; exit();
-			  }
-			} else {
-				echo $uploadOk; exit();			
-			}
-		} // van file upload
-
+			copy($kep, $imgFileName);
+		}
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
+		}
 		// receptCimkek tárolása
 		foreach ($cimkek as $cimke) {
 			if (isset($_POST[str_replace(' ','_',$cimke)])) {
@@ -208,15 +172,7 @@ class Recept extends Controller{
 	 */
 	private function receptKep($recept) {
 		$kep = 'images/noimage.png'; 
-		if (file_exists('images/'.$recept->nev.'.png')) {
-			$kep = 'images/'.$recept->nev.'.png';
-		} else if (file_exists('images/'.$recept->nev.'.jpg')) {
-			$kep = 'images/'.$recept->nev.'.jpg';
-		} else if (file_exists('images/'.$recept->nev.'.jpeg')) {
-			$kep = 'images/'.$recept->nev.'.jpeg';
-		} else if (file_exists('images/'.$recept->nev.'.gif')) {
-			$kep = 'images/'.$recept->nev.'.gif';
-		} else if (file_exists('images/recept_'.$recept->id.'.jpg')) {
+		if (file_exists('images/recept_'.$recept->id.'.jpg')) {
 			$kep = 'images/recept_'.$recept->id.'.jpg';
 		} else if (file_exists('images/recept_'.$recept->id.'.jpeg')) {
 			$kep = 'images/recept_'.$recept->id.'.jpeg';
@@ -224,6 +180,14 @@ class Recept extends Controller{
 			$kep = 'images/recept_'.$recept->id.'.png';
 		} else if (file_exists('images/recept_'.$recept->id.'.gif')) {
 			$kep = 'images/recept_'.$recept->id.'.gif';
+		} else if (file_exists('images/'.$recept->nev.'.png')) {
+			$kep = 'images/'.$recept->nev.'.png';
+		} else if (file_exists('images/'.$recept->nev.'.jpg')) {
+			$kep = 'images/'.$recept->nev.'.jpg';
+		} else if (file_exists('images/'.$recept->nev.'.jpeg')) {
+			$kep = 'images/'.$recept->nev.'.jpeg';
+		} else if (file_exists('images/'.$recept->nev.'.gif')) {
+			$kep = 'images/'.$recept->nev.'.gif';
 		} else {
 		// adat lekérés a google -ról	
 			$receptNev = urlencode($recept->nev);
@@ -262,6 +226,9 @@ class Recept extends Controller{
 
 	public function recept() {	
 		global $hozzavalok;
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
+		}	
 		$recept = JSON_decode('{"id":0, "leiras":"", "nev":"", "created_by":0, 
 			"created_at":"2022.01.01",
 			"adag":4,
@@ -353,7 +320,11 @@ class Recept extends Controller{
 			foreach ($hozzavalok as $hozzavalo) {
 				$hozzavalo->menny = $hozzavalo->mennyiseg;
 			}
-			$kep = $this->receptKep($recept);
+			if (isset($_SESSION['origImg'])) {
+				$kep = $_SESSION['origImg'];
+			} else {
+				$kep = $this->receptKep($recept);
+			}	
 		}
 
 		// likes infok a $recept -be
@@ -384,6 +355,7 @@ class Recept extends Controller{
 			"page" => $page,
 			"pages" => $pages,
 			"UPLOADLIMIT" => UPLOADLIMIT,
+			"LIKESIZE" => LIKESIZE,
 			"task" => 'recapt&id='.$recept->id 
 
 		]);
@@ -507,6 +479,9 @@ class Recept extends Controller{
 		$filterCreated = $this->getParam('filtercreated');
 		$filterCimke = $this->getParam('filtercimke');
 		$filterCreatorId = -1;
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
+		}	
 		
 		$q = new Query('receptek');
 		$news = $q->orderBy('id')->orderDir('DESC')->limit(8)->all();
@@ -592,7 +567,8 @@ class Recept extends Controller{
 			"total" => $total,
 			"loged" => $this->session->input('loged'),
 			"cimkek" => $cimkek,
-			"task" => $task
+			"task" => $task,
+			"LIKESIZE" => LIKESIZE
 		]); 
 
 	}

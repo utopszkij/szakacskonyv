@@ -46,8 +46,6 @@ class MyUploadAdapter {
         xhr.addEventListener( 'abort', () => reject(' B ') );
         xhr.addEventListener( 'load', () => {
             const response = xhr.response;
-            console.log('response');
-			console.log(response);
             if ( !response || response.error ) {
 				// alert('response error'+response.error);
                 return reject( response && response.error ? response.error.message : genericErrorText );

@@ -35,7 +35,12 @@
 
 function view(string $name,array $params, string $appName = 'app') {
     $scriptExist = false;
-    if (file_exists(__DIR__.'/../includes/views/'.$name.'_'.LNG.'.html')) {
+    
+    if (file_exists(__DIR__.'/../styles/'.STYLE.'/'.$name.'_'.LNG.'.html')) {
+        $lines = file(__DIR__.'/../styles/'.STYLE.'/'.$name.'_'.LNG.'.html');
+    } else if (file_exists(__DIR__.'/../styles/'.STYLE.'/'.$name.'.html')) {
+        $lines = file(__DIR__.'/../styles/'.STYLE.'/'.$name.'.html');
+    } else  if (file_exists(__DIR__.'/../includes/views/'.$name.'_'.LNG.'.html')) {
         $lines = file(__DIR__.'/../includes/views/'.$name.'_'.LNG.'.html');
     } else if (file_exists(__DIR__.'/../includes/views/'.$name.'.html')) {
         $lines = file(__DIR__.'/../includes/views/'.$name.'.html');

@@ -12,7 +12,7 @@
   $uploadDir = __DIR__.'/images/uploads/';
   $uploadUrl = 'images/uploads/'; 
 	if (!is_dir($uploadDir)) {
-		mkdir($uploadDir);
+		mkdir($uploadDir,0755);
 	}
   foreach ($_FILES as $fn => $fv) {
 		$uploadFile = $uploadDir . clearFileName(basename($_FILES[$fn]['name']));

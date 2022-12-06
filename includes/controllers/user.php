@@ -42,9 +42,9 @@ class User extends Controller {
 	}
 	
 	public function dologin() {
-		$userName = $_POST['username'];
-		$password = $_POST['password'];
-		$redirect = $_POST['redirect'];
+		$userName = $this->request->input('username');
+		$password = $this->request->input('password');
+		$redirect = $this->request->input('redirect');
 		$recs = $this->model->getBy('username',$userName);
 		if (count($recs) == 0) {
 				$error = 'Nincs ilyen néven fiók! ';
@@ -112,10 +112,10 @@ class User extends Controller {
 	public function doregist() {
 return;
 		$db = new Query('users');
-		$userName = $_POST['username'];
-		$password = $_POST['password'];
-		$password2 = $_POST['password2'];
-		$redirect = base64_decode($_POST['redirect']);
+		$userName = $this->request->input('username');
+		$password = $this->request->input('password');
+		$password2 = $this->request->input('password2');
+		$redirect = base64_decode($this->request->input('redirect'));
 		$error = '';
 		if (!$this->checkFlowKey($redirect)) {
 			echo 'flowKey error'; exit();

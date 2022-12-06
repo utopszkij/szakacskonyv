@@ -30,6 +30,9 @@ function kiemel(string &$s, string $start, string $end): string {
 function atvetel($url = 'https://www.topreceptek.hu/....',
     &$recept, &$hozzavalok) {	
     global $mes, $mit, $mire;
+    if (isset($_SESSION['origImg'])) {
+        unset($_SESSION['origImg']);
+    }
     $cim = '';
 	$kep = '';
 	$elkeszites = '';
@@ -115,12 +118,11 @@ function atvetel($url = 'https://www.topreceptek.hu/....',
     $recept->leiras = strip_tags($s1,['ul','ol','li','p','br']);
 
     if ($kep != '') {
-        $imageFileType = strtolower(pathinfo($kep,PATHINFO_EXTENSION));
-        $imgFileName = 'images/'.$cim.'.'.$imageFileType;
-        if (file_exists($imgFileName)) {
-            unlink($imgFileName);			
-        }
-        copy($kep, $imgFileName);
+        $_SESSION['origImg'] = $kep;
+    } else {
+        if (isset($_SESSION['origImg'])) {
+            unset($_SESSION['origImg']);
+        }	
     }
 
 }	
