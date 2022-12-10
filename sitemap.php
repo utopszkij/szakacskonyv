@@ -12,7 +12,7 @@ $urls = [SITEURL, SITEURL.'/', SITEURL.'/index.php',SITEURL.'/task/receptek/page
 $q = new \RATWEB\DB\Query('receptek');
 $recs = $q->all();
 foreach ($recs as $rec) {
-	$urls[] = SITEURL.'/task/recept/id/'.$rec->id;
+	$urls[] = SITEURL.'/task/recept/id/'.$rec->id.'/title/'.urlencode($rec->nev);
 }
 $q = new \RATWEB\DB\Query('blogs');
 $recs = $q->all();

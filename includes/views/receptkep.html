@@ -72,8 +72,8 @@
             </thead>    
             <tbody>
             <tr class="form-outline col-mb-10 hozzavalo" v-for="(hozzavalo, i) in hozzavalok">
-                <td>
-                <textarea cols="60" :disabled="disabled != ''"
+                <td style="width:50%">
+                <textarea cols="50" :disabled="disabled != ''" style="width:100%"
                     v-model="hozzavalo.nev" 
                     v-bind:name="makeName('hozzavalo',i)" 
                     v-bind:id="makeName('hozzavalo',i)"
@@ -84,15 +84,15 @@
                       <option v-for="nev in nevek">{{ nev.nev }}</option>
                 </datalist>
                 </td>
-                <td style="width:90px">
+                <td style="width:25%">
                 <input type="number" min="0" max="100000" step="0.1" 
                    :disabled="disabled != ''"
                    v-model="hozzavalo.mennyiseg"
-                   v-bind:name="makeName('mennyiseg',i)" style="width:90px"
+                   v-bind:name="makeName('mennyiseg',i)" style="width:100%"
                    v-bind:id="makeName('mennyiseg',i)"  class="form-control"/>			
                 </td>
-                <td style="width:125px">
-                <input style="width:125px" 
+                <td style="width:25%">
+                <input style="width:100%" 
                    :disabled="disabled != ''" 
                    v-bind:name="makeName('me',i)"
                    v-bind:id="makeName('me',i)"

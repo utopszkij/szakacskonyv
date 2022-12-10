@@ -10,13 +10,13 @@
 						&nbsp;
 						<em v-bind:class="'fas fa-medal medal'+item.position" v-bind:id="'medal_'+item.id"
 							style="font-size:32px;"></em> 
-						&nbsp;{{ item.cc }} like&nbsp; 
+						<br />{{ item.cc }} like&nbsp; 
 					</td>
 					<td style="width:30%">
 						<img v-bind:id="'img_'+item.id" style="height:100px" />
 					</td>
 					<td style="width:36%">
-						<a v-bind:href="HREF('recept',{'id':item.id})"> 
+						<a v-bind:href="HREF('recept',{'id':item.id,'title':encodeURI(item.nev)})"> 
 							&nbsp; {{ item.nev }}
 						</a>
 					</td> 

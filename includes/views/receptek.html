@@ -15,7 +15,7 @@
 					</a>
 				</div>
 			</div>
-			<div id="filterForm" class="filterForm" style="display:none">
+			<div id="divFilterForm" class="filterForm" style="display:none">
 				<form method="get" action="index.php" id="filterForm" class="form">
 					<input type="hidden" name="task" value="receptek" />
 					<input type="hidden" name="page" value="1" />
@@ -79,7 +79,7 @@
 						<tbody>
 							<tr v-for="item in news" class="makeTrClass(item)">
 								<td>
-									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
+									<a v-bind:href="HREF('recept',{id:item.id,title:encodeURI(item.nev)})">
 										<var class="imgContainer">
 											<img v-bind:id="'img_'+item.id" />
 										</var>	
@@ -115,7 +115,7 @@
 						<tbody>
 							<tr v-for="item in list" class="makeTrClass(item)">
 								<td>
-									<a v-bind:href="HREF('recept',{id:item.id,title:item.nev})">
+									<a v-bind:href="HREF('recept',{id:item.id,title:encodeURI(item.nev)})">
 										<var class="imgContainer">
 											<img v-bind:id="'img_'+item.id" />
 										</var>			
@@ -168,7 +168,7 @@
 			window.setTimeout('app.scrollFunction()',1000);
 		},
 		filterFormShow() {
-			var d = document.getElementById('filterForm');
+			var d = document.getElementById('divFilterForm');
 			d.style.display = 'block';
 			document.getElementById('filterFormToggle').style.display='none';
 			return false;	
@@ -216,6 +216,13 @@
 			}
 		},
 		scrollFunction() {
+			// szükség esteén a filter Form megjelenítése
+			if ((app.filterStr != '') | 
+			    (app.filterCimke != '') | 
+				(app.filterCreator != '') |
+				(app.filterCreated != '')) {
+				app.filterFormShow();
+			}
 			// a recept képek betöltése
 			imgs = document.images;
 			for (var i = 0; i < imgs.length; i++) {

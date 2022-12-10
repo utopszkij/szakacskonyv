@@ -171,3 +171,4 @@
 	// képernyő méretek tárolása csokiba
 	setCookie('screen_width',screen.width,100); 
 	setCookie('screen_height',screen.height,100); 
+

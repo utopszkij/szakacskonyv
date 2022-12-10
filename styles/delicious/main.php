@@ -160,13 +160,28 @@ A hozzászólások mindenki számára láthatóak">
 							<br /><var>BEFALOM</var>
 						</a>
 
+						<!-- loged user amikor a menü ikonizálva van -->
+						<?php if ($_SESSION['loged'] > 0) : ?>
+								<div style="width:auto" href="#" class="smLoged">
+								<?php 
+									if ($_SESSION['logedAvatar'] == '') {
+										$_SESSION['logedAvatar'] = 'noavatar.png';
+									}
+									echo $_SESSION['logedName']; 
+								?>
+								<img class="avatar"	src="images/users/<?php echo $_SESSION['logedAvatar']; ?>" />
+								</div>
+                       	<?php endif; ?>
+
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                            <span class="navbarToggler">
+							<span></span><span></span><span></span>
+							</span>
                         </div>
 
                         <!-- Menu -->
-                        <div class="classy-menu">
+                        <div class="classy-menu" id="classy-menu">
 
                             <!-- close btn -->
                             <div class="classycloseIcon">
@@ -174,7 +189,7 @@ A hozzászólások mindenki számára láthatóak">
                             </div>
 
                             <!-- Nav Start -->
-                            <div class="classynav">
+                            <div class="classynav" id="classnav">
                                 <ul>
                                     <li><a href="<?php echo SITEURL; ?>/">Kezdőlap</a></li>
                                     <li><a href="<?php echo SITEURL; ?>/task/receptek/page/1">Receptek</a></li>
@@ -271,6 +286,7 @@ A hozzászólások mindenki számára láthatóak">
 					</div>
                     
   				   <div style="text-align:center">
+					  <p>&nbsp;</p> 
 					  <button class="btn btn-toggle btn-secondary" 
 						 type="button" onclick="themeTogle()">
 						 <em class="fas fa-adjust"></em>&nbsp;

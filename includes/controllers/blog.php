@@ -87,7 +87,7 @@ class Blog extends Controller {
         $page = 1;
         $filter = new \stdClass();
         $filter->titleStr = '';
-        $filter->bodyeStr = '';
+        $filter->bodyStr = '';
         $filter->creatorName = '';
         $filter->createdAt = '';
         $name = 'blogs_';
