@@ -116,6 +116,14 @@
                 <a v-bind:href="previous" class="btn btn-secondary">
                     <em class="fas fa-reply"></em>&nbsp;Vissza
                 </a>
+                &nbsp;
+                <a v-bind:href="'index.php?task=receptek&page=1&filtercreator='+record.username+'&filterstr=&filtercimke=&filtercreated='">
+                    <em class="fas fa-hand-point-right"></em>Általa feltöltött receptek
+                </a>
+                &nbsp;
+                <a v-bind:href="'index.php?task=blogs&page=1&creatorname='+record.username+'&titlestr=&bodystr=&createdat='">
+                    <em class="fas fa-hand-point-right"></em>Általa feltöltött cikkek
+                </a>
             </div>
         </div>
     </form>    

@@ -15,7 +15,7 @@
 			</div>	
 			<div class="row">&nbsp;</div>
 
-			<div class="filterForm" id="filterForm" style="display:none">
+			<div class="filterForm" id="divFilterForm" style="display:none">
 				<form method="get" action="index.php" id="filterForm" class="form">
 					<input type="hidden" name="task" value="blogs" />
 					<input type="hidden" name="page" value="1" />
@@ -85,7 +85,7 @@
             return result;
         },
 		filterFormShow() {
-			var d = document.getElementById('filterForm');
+			var d = document.getElementById('divFilterForm');
 			d.style.display = 'block';
 			document.getElementById('filterFormToggle').style.display='none';
 			return false;	
@@ -100,7 +100,19 @@
         afterMount() {
 			if (this.errorMsg == undefined) this.errorMsg = '';
 			if (this.successMsg == undefined) this.successMsg = '';
-        }
+			window.setTimeout('app.afterShow()',1000);
+        },
+		afterShow() {
+			// szükség esteén a filter Form megjelenítése
+			console.log(app.filter);
+			if ((app.filter.titleStr != '') | 
+			    (app.filter.bodyStr != '') | 
+				(app.filter.creatorName != '') |
+				(app.filter.createdAt != '')) {
+				console.log('AAAA');	
+				app.filterFormShow();
+			}
+		}
     }
 
  </script>       

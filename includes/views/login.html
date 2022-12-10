@@ -8,14 +8,16 @@
                 <span>{{ lng('LOGIN') }}</span>
             </h1>
             <br /><br />
-        <form name="login" action="index.php?task=dologin" method="post">
+        <form name="login" action="index.php?task=dologin" method="post" class="form">
         <input type="hidden" name="task" value="dologin" />
         <input type="hidden" name="redirect" v-model="redirect" />
-        <i class="fa fa-user"></i> <input type="text" name="username" 
+        <i class="fa fa-user"></i>&nbsp; 
+            <input type="text" name="username" class="form-control" autofocus 
             v-bind:placeholder="lng('NICKNAME')" required="true" />
         <br /><br />
-        <i class="fa fa-key"></i> <input type="password" name="password" 
-            v-bind:placeholder="lng('PASSWORD')" required="true" />
+        <i class="fa fa-key"></i>&nbsp; 
+            <input type="password" name="password" 
+            v-bind:placeholder="lng('PASSWORD')" required="true" class="form-control"/>
         <br /><br />
         <button type="submit" class="btn btn-success" style="width:250px" name="submit">
             <em class="fas fa-check"></em>&nbsp;{{ lng('OK') }}

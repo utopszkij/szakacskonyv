@@ -156,6 +156,14 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.2.1
+2022.12.10
+- a felhasználó profil oldaláról behivható
+az általa felvitt receptek és cikkek listája
+- Új dizájn fejlesztés 
+(mobil nézet, világos/sötét mód)
+### *************************************
+
 ## verzió v2.2.0
 2022.12.06
 - Új dizájn

@@ -126,7 +126,7 @@
                     <div class="single-best-receipe-area mb-30">
                         <img v-bind:id="'img_'+item.id" alt="">
                         <div class="receipe-content">
-                            <a v-bind:href="'index.php/task/recept/id/'+item.id">
+                            <a v-bind:href="'index.php/task/recept/id/'+item.id+'/title/'+encodeURI(item.nev)">
                                 <h5>{{ item.nev }}</h5>
                             </a>    
                             <div class="ratings">
@@ -186,7 +186,7 @@
                         <!-- Receipe Content -->
                         <div class="receipe-content">
                             <span>{{ item.created_at }}</span>
-                            <a v-bind:href="'index.php/task/recept/id/'+item.id">
+                            <a v-bind:href="'index.php/task/recept/id/'+item.id+'/title/'+encodeURI(item.nev)">
                                 <h5>{{ item.nev }}</h5>
                             </a>
                             <div class="ratings">

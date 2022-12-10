@@ -232,7 +232,7 @@ return;
 	 * - mások semmit nem modosithatnak
      */
     public function useredit() {
-        $this->edit();
+		$this->edit();
     }     
 
     /**
