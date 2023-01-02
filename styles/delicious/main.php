@@ -7,7 +7,8 @@
 	<base href="<?php echo SITEURL; ?>/">
 	<link rel="icon" type="image/x-icon" href="<?php echo SITEURL; ?>/images/szakacs.png" />
     <title><?php echo $title; ?></title>
-	<meta property="og:image" content="<?php echo SITEURL; ?>/images/fejlec.png">
+	<meta property="og:title" content="<?php echo $title; ?>">
+	<meta property="og:image" content="<?php echo $image; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="A programba étel recepteket és napi menüket lehet kezelni.
 Ezek alapján a program adott időszak összesített anyagszükségleteit tudja meghatározni. 
@@ -123,7 +124,7 @@ A hozzászólások mindenki számára láthatóak">
                                 <ul>
                                     <li><a href="#">Hello!</a></li>
                                     <li><a href="#">Üdvözöllek a web oldalunkon.</a></li>
-                                    <li><a href="#">Használd egészséggel!</a></li>
+									<li><a href="#"><script type="text/javascript" src="vendor/bootstrap/js/name-day.js"></script></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -134,10 +135,12 @@ A hozzászólások mindenki számára láthatóak">
                         <div class="top-social-info text-right">
                             <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+location,'_blank'); false">
 								<i class="fab fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#" onclick="window.open(https://twitter.com/intent/tweet?&url='+location, '_blank'); false">
+                            <a href="#" onclick="window.open('https://twitter.com/intent/tweet?&url='+location, '_blank'); false">
 								<i class="fab fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" onclcik="window.open(https://www.linkedin.com/cws/share?url='+location, '_blank'); false">
+                            <a href="#" onclick="window.open('https://www.linkedin.com/cws/share?url='+location, '_blank'); false">
 								<i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="#" onclick="window.open('viber://forward?text='+encodeURIComponent(' '+window.location.href), '_blank'); false">
+								<i class="fab fa-viber" aria-hidden="true"></i></a>
                             <a href="#" onclick="window.open('https://mail.google.com/mail/?view=cm&body='+location,'_blank'); false">
 								<i class="fa fa-envelope" aria-hidden="true"></i></a>
                             <a target="_blank" href="https://github.com/utopszkij/szakacskonyv"><i class="fab fa-github" aria-hidden="true"></i></a>
@@ -157,7 +160,8 @@ A hozzászólások mindenki számára láthatóak">
                         <!-- Logo -->
                         <a class="nav-brand" href="index.php">
 							<img src="images/fejlec.png" alt="">
-							<br /><var>BEFALOM</var>
+							<br />
+							<img src="images/logosapi.png" alt="">
 						</a>
 
 						<!-- loged user amikor a menü ikonizálva van -->
@@ -256,19 +260,20 @@ A hozzászólások mindenki számára láthatóak">
 								<i class="fab fa-facebook" aria-hidden="true"></i></a>
                             <a href="#" onclick="window.open(https://twitter.com/intent/tweet?&url='+location, '_blank'); false">
 								<i class="fab fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" onclcik="window.open(https://www.linkedin.com/cws/share?url='+location, '_blank'); false">
+                            <a href="#" onclick="window.open(https://www.linkedin.com/cws/share?url='+location, '_blank'); false">
 								<i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="#" onclick="window.open('viber://forward?text='+encodeURIComponent(' '+window.location.href), '_blank'); false">
+								<i class="fab fa-viber" aria-hidden="true"></i></a>
                             <a href="#" onclick="window.open('https://mail.google.com/mail/?view=cm&body='+location,'_blank'); false">
 								<i class="fa fa-envelope" aria-hidden="true"></i></a>
                             <a target="_blank" href="https://github.com/utopszkij/szakacskonyv"><i class="fab fa-github" aria-hidden="true"></i></a>
                         </div>
                     </div>
-
 					<div style="text-align:right"><?php echo $fileVerzio; ?>&nbsp;</div>
 					<div style="text-align:center">
 						<hr>
 						<a href="<?php echo SITEURL; ?>/task/impresszum">Imresszum</a>&nbsp;&nbsp;&nbsp;
-						<a href="<?php echo SITEURL; ?>/task/blog/blog_id/9">Segédlet</a>&nbsp;&nbsp;&nbsp;
+						<a href="<?php echo SITEURL; ?>/task/blog/blog_id/4">Segédlet</a>&nbsp;&nbsp;&nbsp;
 						<a href="<?php echo SITEURL; ?>/task/adatkezeles">Adatkezelési leírás</a>&nbsp;&nbsp;&nbsp;
 						<a href="<?php echo SITEURL; ?>/task/visszaeles">Visszaélés jelzése</a>&nbsp;&nbsp;&nbsp;
 						<a href="https://gnu.hu/gplv3.html" >Licensz</a>&nbsp;&nbsp;&nbsp;
@@ -325,12 +330,17 @@ A hozzászólások mindenki számára láthatóak">
 <script type="text/javascript">
 		// check in iframe 
 		// az admin oldalon vannak iframe -be hivva, itt mindig a light téma kell és
-		// a page header, footer nem kell
+		// a page header, footer nem kell, paginátor számozott itemek nem kellenek
 		if (window.self !== window.top) {
 			// document.body.className = 'light';
 			document.body.className = getCookie('theme');
 			document.getElementById('header').style.display="none";
 			document.getElementById('footer').style.display="none";
+			$('.paginatorItem').css('display','none');
+			$('.pgFirst').css('display','inline-block');
+			$('.pgLast').css('display','inline-block');
+			$('.pgPrev').css('display','inline-block');
+			$('.pgNext').css('display','inline-block');
 		} else {
 			const currentTheme = getCookie("theme");
 			var theme = '';

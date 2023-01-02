@@ -281,7 +281,13 @@ class Query {
    	   		$this->exec('SET character_set_connection=utf8');
       		$this->exec('SET character_set_client=utf8');		
 		}
-		if ($s === '') {
+		if (is_array($s)) {
+			$w = [];
+			foreach ($s as $s1) {
+				$w[] = '"'.$mysqli->real_escape_string((string)$s1).'"';	
+			}
+			$result = '('.implode(',',$w).')';
+		} else if ($s === '') {
 			$result = '""';
 		} else if (is_numeric($s)) {
 			$result = $s;

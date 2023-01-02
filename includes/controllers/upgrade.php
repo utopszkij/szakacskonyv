@@ -292,6 +292,41 @@ class Upgrade extends Controller {
 		return $result;
 	} 
 	
+		protected function do_v2_3_0($dbverzio) {
+			if ($this->versionAdjust($dbverzio) < 'v 2. 3. 0') {
+				$q = new Query('dbverzio');
+				$q->exec('SET SQL_SAFE_UPDATES = 0');	
+
+				$q->exec('alter table cimkek add column tulaj INT default 0');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+				$q->exec('update cimkek set tulaj = 0');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+
+				$q->exec('alter table receptek add column lattak INT default 0');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+				$q->exec('update receptek set lattak = 0');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+				$q = new Query('dbverzio');
+				$q->exec('SET SQL_SAFE_UPDATES = 0');	
+				$q = new Query('dbverzio');
+				$r = new Record();
+				$r->verzio = 'v2.3.0';
+				$q->where('verzio','<>','')->update($r);
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+
+			}	
+		
+		}	
 		protected function do_v2_2_1($dbverzio) {
 			if ($this->versionAdjust($dbverzio) < 'v 2. 2. 1') {
 				// szinonímák bővitése a topreceptek.hu szerint	
@@ -761,6 +796,7 @@ class Upgrade extends Controller {
 		$this->do_v2_1($dbverzio);
 		$this->do_v2_2($dbverzio);
 		$this->do_v2_2_1($dbverzio);
+		$this->do_v2_3_0($dbverzio);
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 

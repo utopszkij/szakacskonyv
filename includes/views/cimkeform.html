@@ -20,6 +20,13 @@
         </div>
         <div class="row">
             <div class="form-outline col-12">
+                {{ lng('TULAJ') }}
+                <select name="tulaj" id="tulaj" class="form-control" v-model="record.tulaj">
+                </select>    
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-outline col-12">
                 <input name="cimke" class="form-control" v-model="record.cimke" type="text" />
             </div>
         </div>
@@ -55,6 +62,19 @@
 
 <script>
     methods = {
+        afterMount() {
+            var items = JSON.parse(window.localStorage.getItem('cimkek'));
+                items.push({id:0, tulaj:0, cimke:'--'});
+				for (var i = 0; i<items.length; i++) {
+					var option = document.createElement('OPTION');
+					option.value = items[i].id;
+					option.innerHTML = items[i].cimke;
+					if (this.record.tulaj == items[i].id) {
+						option.selected = 'selected';
+					}					
+					document.getElementById('tulaj').appendChild(option);
+				}
+        },        
         delClick() {
             popupConfirm('Biztos törölni akarod?',function() {
                 location = 'index.php?task=cimkedelete&id='+app.record.id+'&browserUrl='+encodeURI(app.browserUrl);

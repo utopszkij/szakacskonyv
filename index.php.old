@@ -48,7 +48,7 @@ $statisticModel->saveStatistic();
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.3.0';
+$fileVerzio = 'v2.2.0';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -71,12 +71,8 @@ if (isset($_COOKIE['screen_height'])) {
 $task = $fw->task;
 $comp = $fw->comp;
 $title = 'Szakácskönyv';
-$image = SITEURL.'/images/fejlec.png';
 if (method_exists($comp, 'getTitle')) {
 	$title = $comp->getTitle($task);
-} 
-if (method_exists($comp, 'getFbImage')) {
-	$image = $comp->getFbImage($task);
 } 
 
 // execute API backends

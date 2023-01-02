@@ -14,11 +14,15 @@ $recs = $q->all();
 foreach ($recs as $rec) {
 	$urls[] = SITEURL.'/task/recept/id/'.$rec->id.'/title/'.urlencode($rec->nev);
 }
+
+$urls[] = SITEURL.'/task/blogs/page/1';
+
 $q = new \RATWEB\DB\Query('blogs');
 $recs = $q->all();
 foreach ($recs as $rec) {
 	$urls[] = SITEURL.'/task/blog/blog_id/'.$rec->id;
 }
+
 Header('Content-type: text/xml');
 echo '<?xml version="1.0" encoding="UTF-8"?>'."\n";
 ?>
