@@ -6,6 +6,7 @@ include_once __DIR__.'/../atvesz.php';
 include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
 include_once __DIR__.'/../models/likemodel.php';
+include_once __DIR__.'/../models/cimkemodel.php';
 include_once __DIR__.'/../urlprocess.php';
 include_once __DIR__.'/../uploader.php';
 
@@ -17,17 +18,28 @@ class Recept extends Controller{
 		$this->model = new ReceptModel();
 	}	
 	
-
 	public function getTitle(string $task) {
 		$result = 'Szakácskönyv';
 		if ($task == 'recept') {
-			$recept = $this->model->getById( (int) $this->request->input('id',0));
-			if (isset($recept->nev)) {
-				$result = $recept->nev;
+			$this->wrecept = $this->model->getById( (int) $this->request->input('id',0));
+			if (isset($this->wrecept->nev)) {
+				$result = $this->wrecept->nev;
 			}
 		}
 		return $result;
 	}
+
+	public function getFbImage(string $task) {
+		$result = SITEURL.'/images/fejlec.png';
+		if (isset($this->wrecept)) {
+			if (isset($this->wrecept->id)) {
+				$result = $this->receptKep($this->wrecept);
+			}	
+		}
+		return $result;
+	}
+	
+	
 	// $_GET['id']
 	public function receptdelete() {
 		if (isset($_SESSION['origImg'])) {
@@ -224,6 +236,33 @@ class Recept extends Controller{
 		return $kep;
 	}
 
+    /**
+    * ha az adott receptet ez a user még nem látta akkor új rekordot visz fel
+    * az event táblába és növeli a recept rekorban a számlálót.
+    * user azonositás: ha loged akkor a "logedName" ha nem akkor az  "si"
+    */
+    protected function setShow(int $recept_id, string $loged) {
+            $q = new Query('events');
+            $q->where('event','=','show')
+                    ->where('data','=',$loged.'_recept_'.$recept_id)
+					->orWhere('data','=',session_id().'_recept_'.$recept_id)
+					->where('event','=','show'); 
+			echo $q->getSql().'<br />';		
+            $rec = $q->first();
+            if (!isset($rec->created_at)) {
+				if ($loged == 'guest') {
+					$loged = session_id();
+				}
+                $rec = new Record();
+                $rec->created_at = date('Y-m-d');
+                $rec->event = 'show';
+                $rec->data = $loged.'_recept_'.$recept_id;
+                $q->insert($rec);
+            }        
+            // most lehetne növelni a recept rekordban a show countert
+    }
+
+
 	public function recept() {	
 		global $hozzavalok;
 		if (isset($_SESSION['origImg'])) {
@@ -238,9 +277,13 @@ class Recept extends Controller{
 		$hozzavalok = [];	
 		$receptId = $this->request->input('id',0,INTEGER);
 		$disable = '';
+
 	
 		// aktuális recept és hozzávalók beolvasása
 		if ($receptId > '0') {
+			// recept megjelenítés naplózása
+			$this->setShow($receptId, $this->session->input('logedName'));
+
 			$recept = $this->model->getById($receptId);	
 			$hozzavalok = $this->model->getHozzavalok($receptId);
 
@@ -427,6 +470,10 @@ class Recept extends Controller{
 		return $result;
 	}
 	
+	/*
+	* lekérdező sql kialakitása 
+	* figyelem a filterCimke -nél lehet fa szerkezet is!
+	*/
 	protected function buildQuery():Query {
 		$filterStr = $this->getParam('filterstr');
 		$filterCreator = $this->getParam('filtercreator');
@@ -465,10 +512,24 @@ class Recept extends Controller{
 			$db->where('created_by','=',$filterCreatorId);
 		}
 		if ($filterCimke != '') {
-			$db->where('cimke','=',$filterCimke);
-		}
+			$cimkeModel = new CimkeModel();
+			$cimkek = $cimkeModel->getBy('cimke',$filterCimke);
+			if (count($cimkek) > 0) {
+				$cimke0 =$cimkek[0]; // a képernyőre beirt cimke rekord
+				$w = [];
+				$cimkeModel->getItems1($cimke0->id, 0, $w); 
+				// most $w a beirt alrekordjait tartalmazza
+				$cimkeList = [$cimke0->cimke];
+				foreach ($w as $w1) {
+					$cimkeList[] = $w1->cimke;
+				}
+				// most CimkeList a kiválasztott cimke és annak alrekordjai
+				$db->where('cimke','in',$cimkeList);
+			}
+		}	
 		$db->groupBy(['id','nev']);
 		$db->orderBy('nev');
+		//echo $db->getSql();
 		return $db;
 	}
 
@@ -548,12 +609,9 @@ class Recept extends Controller{
 
 
 		// összes cimke listája
-		$cimkek = [];
-		$q = new Query('cimkek');
-		$recs = $q->all();
-		foreach ($recs as $rec) {
-			$cimkek[] = $rec->cimke;
-		}
+		$cimkeModel = new CimkeModel();
+		$cimkek = $cimkeModel->getItems(0,0,'','');
+
 		view('receptek',[
 			"filterStr" => $filterStr,
 			"filterCreator" => $filterCreator,

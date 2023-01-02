@@ -86,7 +86,8 @@ function echoEndScript(array $params, string $appName) {
             innerWidth : window.innerWidth,
             HREF: window.HREF,
             location: encodeURI(window.location),
-            lng: window.lng
+            lng: window.lng,
+            siteurl: window.siteurl
             };
         },
         mounted() {

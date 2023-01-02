@@ -20,10 +20,10 @@ tokens = {
     "DELETED": "Törölve",
     "NOT_FOUND": "Nincs ilyen",
 
-    "TOTAL":"Osszesen",
-    "LINES":"sor",
+    "TOTAL":"Összesen",
+    "LINES":"adat",
     "FIRST":"Első",
-    "PREVIOUS":"Elöző",
+    "PREVIOUS":"Előző",
     "NEXT":"Következő",
     "LAST":"Utolsó",
 
@@ -40,6 +40,7 @@ tokens = {
     "LOGOUT":"Kijelentkezés",
     "NEWVERSION":"Új verzió érhető el",
     "BLOGS":"Cikkek",
+    "TULAJ":"Tulajdonos",
 
     "POLICY":"Adatkezelési tájékoztató",
     "PROTEST":"Visszaélés jelzése",

@@ -1,7 +1,7 @@
 
-body.dark {background-color:#303030; color:white;}
+body.dark {background-color:#1f2029; color:white;}
 body.dark a {color:#E0E0E0 }
-body.dark .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a {color:#E0E0E0 }
+body.dark .header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a {color:#E0E0E0; border-radius: 8px;}
 
 #popup {position:fixed; z-index:99; background-color:silver; opacity:1;
 	padding:1%;
@@ -12,10 +12,10 @@ body.dark .header-area .delicious-main-menu .classy-navbar .classynav > ul > li 
 .header-area .delicious-main-menu .classy-navbar {height:95px;}
 .header-area img {max-width:100px}
 .avatar {height:32px}
-.header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a.active {background-color:green; color:white}
+.header-area .delicious-main-menu .classy-navbar .classynav > ul > li > a.active {background-color:green; color:white; border-radius: 8px;}
 .header-area  .smLoged {display:none}
 
-.dark #classy-menu {background-color:black}
+.dark #classy-menu {background-color:#303030; border-radius: 8px;}
 
 .dark .header-area .top-header-area {background-color: transparent; color:white}
 .dark .header-area .top-header-area a {background-color: transparent; color:white}
@@ -35,7 +35,7 @@ body.dark .header-area .delicious-main-menu .classy-navbar .classynav > ul > li 
 .single-top-catagory p {color:white}
 .single-top-catagory img {height:100%}
 
-#frissHir {margin:15px -5px; padding:10px; border-style:none; background-color:black; color:white}
+#frissHir {margin:15px -5px; padding:10px; border-style:none; background-color:#565656; color:white; border-radius: 8px;}
 #frissHir img {max-width:300px;}
 #frissHir p, .frissHir div, .frissHir h1, .frissHir h2, .frissHir h3, .frissHir h4,
 #frissHir a, .frissHir a:hover {color: white}
@@ -54,8 +54,8 @@ label {display:inline-block; width:250px; max-width:250px; text-align:left}
 .ratings {color:orange}
 .ratings .none {color:#ffffff}
 
-.page {margin:0px 5% 0px 5%; padding:1%; background-color:#F0F0F0}
-.dark .page {background-color:#101010}
+.page {margin:0px 5% 0px 5%; padding:1%; background-color:#F0F0F0; border-radius: 8px;}
+.dark .page {background-color:#303030; border-radius: 8px;}
 
 .row {margin:0px 0px 0px 0px}
 a:hover {color:#40ba37; text-decoration:none}
@@ -65,7 +65,7 @@ h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; fl
 .ribbon-banner  {display:inline-block; width:auto; clear:both; flex:none;
 	padding:5px 10px 5px 10px; background-color: #40ba37; color:white; }
 .formBUttons, .formButtons {margin-top:1%}
-.ck-content {height:350px}
+.ck-content {height:350px; color:black}
 
 .paginator li {border-style:none; border-width:0px; margin:0px;}
 .paginator .paginatorItem {border-style:solid; border-width:1px; padding: 2px; margin:1px}
@@ -94,10 +94,10 @@ h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; fl
 #receptListTable thead {display:none;}
 #receptListTable .id {display:none;}
 #receptListTable tr {display:inline-block; width:auto}
-#receptListTable td {display:inline-block; width:200px; height:300px; max-width:200px; max-height:300px;
+#receptListTable td {display:inline-block; width:160px; height:250px; max-width:160px; max-height:250px;
 	overflow:hidden; text-align:center}
 #receptListTable td .name:hover {color:#40ba37}
-#receptListTable img {height:180px; width:180px; 
+#receptListTable img {height:150px; width:150px; border-radius: 8px; 
 	border-style:solid; border-width: 0px 0px 6px 0px; border-color: #40ba37}
 
 #receptShow {padding:2%}
@@ -141,6 +141,8 @@ h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; fl
 #adminBody tr {display:block; width:100%}
 #adminBody td {height:80px; max-height:80px; width:auto;}
 #adminBody td img {height:auto; max-height:60px; }
+#userek #receptListTable {text-align:left}
+
 
 @media screen and (max-width: 990px) {
 	/* itt  a főmenü már ikonizálva */
@@ -148,10 +150,10 @@ h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; fl
 }
 
 /* phone */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 992px) {
 	.paginatorItem {display:none}
 	.pgFirst, .pgPrev, .pgNext, .pgLast {display:inline-block}
-	#receptListTable td {display:inline-block; width:160px; height:300px; max-width:160px; max-height:300px;
+	#receptListTable td {display:inline-block; width:160px; height:auto; max-width:160px; max-height:300px;
 		overflow:hidden; text-align:center}
 	#receptListTable img {height:150px; width:150px; 
 		border-style:solid; border-width: 0px 0px 6px 0px; border-color: #40ba37}
@@ -175,3 +177,165 @@ h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; fl
 	#osszegzes {display:block; width:50%; margin:0px; padding:0px; float:right}
 	#bevasarloLista {display:block; width:50%; margin:0px; padding:0px; float:left}
 }
+
+.ffa{
+	vertical-align:middle;
+	margin-top:0px;
+	position:absolute;
+	overflow:visible;
+	margin-left:5px;
+}
+.ffa .fa-tree{
+	/*color:#306A40;*/
+	color:#237039;
+	font-size:38px !important;
+	position:relative;
+	z-index:2;
+}
+.ffa .fa-star{
+	position:absolute;
+	z-index:2;
+	color:#EEDD22;
+	font-size:9px;
+	top:-7px;
+	left:12px;
+}
+.ffa .fa-asterisk{
+	position:absolute;
+	z-index:2;
+	font-size:5px;
+}
+.ffa .l1{
+	top:7px;
+	left:9px;	
+	color:#22EEEE;
+	animation:l1a 1.7s alternate infinite; 
+	-webkit-animation:l1a 1.7s alternate infinite; 
+}
+.ffa .l2{
+	top:13px;
+	left:15px;	
+	color:#EE4422;
+	animation:l2a 1.7s alternate infinite; 
+	-webkit-animation:l2a 2.0s alternate infinite; 
+}
+.ffa .l3{
+	top:17px;
+	left:22px;	
+	color:#FFDD22;
+	animation:l3a 1.7s alternate infinite; 
+	-webkit-animation:l3a 1.9s alternate infinite; 
+}
+.ffa .l4{
+	top:18px;
+	left:5px;	
+	color:#DDFF22;
+	animation:l4a 1.7s alternate infinite; 
+	-webkit-animation:l4a 1.8s alternate infinite; 
+}
+.ffa .l5{
+	top:24px;
+	left:15px;	
+	color:#11FF22;
+	animation:l5a 1.7s alternate infinite; 
+	-webkit-animation:l5a 2.2s alternate infinite; 
+}
+.ffa .l6{
+	top:28px;
+	left:25px;	
+	color:#DD22EE;
+	animation:l6a 1.7s alternate infinite; 
+	-webkit-animation:l6a 2.1s alternate infinite; 
+}
+.ffa .fa-gift{
+	position:absolute;
+	z-index:1;
+	cursor:pointer;
+}
+.ffa .fa-gift.g1{
+	color: #f92341;
+    font-size: 9px;
+    top: 33px;
+    left: 2px;
+}
+.ffa .fa-gift.g2{
+    color: #ffb203;
+    font-size: 7px;
+    top: 36px;
+    left: 8px;
+    z-index: 3;
+}
+.ffa .fa-gift.g3{
+    color: #2d9dec;
+    font-size: 9px;
+    top: 34px;
+    left: 20px;
+    z-index: 3;
+}
+
+@keyframes l1a
+{
+50%{color:#FFDD22;text-shadow:0 0 2px #FFDD22;}
+} 
+@keyframes l2a
+{
+50%{color:#55FFFF;text-shadow:0 0 2px #55FFFF;}
+} 
+@keyframes l3a
+{
+50%{color:#55FFFF;text-shadow:0 0 2px #55FFFF;}
+} 
+@keyframes l4a
+{
+50%{color:#FF55FF;text-shadow:0 0 2px #FF55FF;}
+} 
+@keyframes l5a
+{
+50%{color:#FF55FF;text-shadow:0 0 2px #FF55FF;}
+} 
+@keyframes l6a
+{
+50%{color:#55FFFF;text-shadow:0 0 2px #55FFFF;}
+} 
+
+@-webkit-keyframes l1a
+{
+50%{color:#FFDD22;text-shadow:0 0 2px #FFDD22;}
+} 
+@-webkit-keyframes l2a
+{
+50%{color:#55FFFF;text-shadow:0 0 2px #55FFFF;}
+} 
+@-webkit-keyframes l3a
+{
+50%{color:#55FFFF;text-shadow:0 0 2px #55FFFF;}
+} 
+@-webkit-keyframes l4a
+{
+50%{color:#FF55FF;text-shadow:0 0 2px #FF55FF;}
+} 
+@-webkit-keyframes l5a
+{
+50%{color:#FF55FF;text-shadow:0 0 2px #FF55FF;}
+} 
+@-webkit-keyframes l6a
+{
+50%{color:#55FFFF;text-shadow:0 0 2px #55FFFF;}
+}
+
+.gft{
+	text-shadow:0 0 0px #E02040;
+	font-size:15px !important;
+	animation:gftt 1.4s linear 0s infinite alternate; 
+	/*-webkit-animation:gft 2.0s alternate infinite; */
+}
+@keyframes gftt
+{
+	from{text-shadow:-1px -1px 3px #262d37, 1px 1px 3px #262d37, 0px 0px 2px #262d37, 0 0 4px #E02040;}
+	to{text-shadow:-1px -1px 3px #262d37, 1px 1px 3px #262d37, 0px 0px 2px #262d37, 0 0 12px #E02040, 0 0 12px #E02040, 0 0 12px #E02040;}
+} 
+/*
+@-webkit-keyframes gft
+{
+50%{text-shadow:0 0 22px #E02040 !important;}
+}*/

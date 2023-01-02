@@ -3,7 +3,6 @@
  * MVC controller
  * Request
  * Session
- * 
  */
 
 define('NOSQLINJECTION','NOSQLINJECTION');
@@ -132,18 +131,18 @@ class Session {
  * controller abstract model
  * a __construct mindig átdefiniálandó
  * a validator($record), accessRight($action,$record) szinte mindig átdefiniálandó
+ * az items, new, edit, save, delete pedig egyedi nevü rutinokban hívandó pl:
+ *    public function valamik() {
+ *          $this->items()
+ *    }
  * igényelt model methodusok: emptyRecord(), save($record), 
- *      getById($id), deleteById($id), getItems($page,$limit,$filter,$order), 
+ *      getById($id), delteById($id), getItems($page,$limit,$filter,$order), 
  *      getTotal($filter)
- * igényelt viewerek {name}browser, {name}form 
+ * igényel viewerek {name}browser, {name}form 
  *      a {name}form legyen alkalmas show funkcióra is record,loged,logedAdmin alapján
- *      a browser jelenitse meg szükség szerint az errorMsg, successMsg adatot is!
- *      a form jelenitse meg szükség szerint az errorMsg datot is, a rekord mezőivel azonos nevü
- *             kontrolokoat tartalmazzon (beleértve az id -t is)
- * igényelt session adatok: loged,logedName, logedGroup
  * 
- * A taskok public function -ként legyenek definiálva 
- *   standart taskok: items, edit, new, save, delete.
+ * A taskok public function -ként legyenek definiálva.
+ * FIGYELEM az összes komponensben nézve egyedinek kell a task neveknek lenniük!
  */
 class Controller {
     protected $request;
@@ -315,13 +314,7 @@ class Controller {
     /**
      * edit vagy new form tárolása
      */
-    protected function save($record = '') {
-		if ($record == '') {
-			$record = $this->model->emptyRecord();
-			foreach ($record as $fn => $fv) {
-				$record->$fn = $this->request->input($fn, $fv);
-			}	
-		}
+    protected function save($record) {
         if (!$this->checkFlowKey($this->browserURL)) {
             $this->session->set('flowKey','used');
             $this->session->set('errorMsg','flowKey error. Lehet, hogy túl hosszú várakozás miatt lejárt a munkamenet.');

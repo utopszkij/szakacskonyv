@@ -297,6 +297,10 @@
             <i class="fab fa-facebook-f"></i>&nbsp; megosztás
         </a>&nbsp;
 
+<button class="btn btn-primary" style='background-color: #7360F2'><a id="viber_share">
+	<em class='fab fa-viber'></em>&nbsp; megosztás</a>
+</button>&nbsp;
+
         <a class="btn btn-success" id="addFavorit" style="display:none"
         v-bind:href="HREF('addtofavorit',{'recept_id':recept.id})">
             <em class="fas fa-heart"></em>&nbsp;Kedvencekhez adom 
@@ -668,6 +672,11 @@ function adjust() {
 		    document.getElementById('addFavorit').style.display='inline-block';
         }    
 	}
+	var buttonID = "viber_share";
+	var text = "Ezt nézd meg: ";
+	document.getElementById(buttonID)
+			.setAttribute('href',"viber://forward?text=" + encodeURIComponent(text + " " + window.location.href));
 }
 window.setTimeout("adjust()",1000);
+
 </script>

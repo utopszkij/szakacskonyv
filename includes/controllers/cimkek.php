@@ -66,6 +66,7 @@ class Cimkek extends Controller {
         $record = new Record();
         $record->id = $this->request->input('id');
         $record->cimke = trim($this->request->input('cimke',''));
+        $record->tulaj = trim($this->request->input('tulaj',''));
         $this->save($record); 
     }
   

@@ -29,7 +29,9 @@
 						<select name="filtercimke" id="filtercimke" 
 							   v-model="filterCimke" class="form-control">
 							<option value=""></option>	   
-							<option v-for="cimke in cimkek" v-bind:value="cimke">{{ cimke }}</option>
+							<option v-for="cimke in cimkek" 
+								v-bind:value="cimke.cimke" v-html="getOptionLabel(cimke)"></option>
+							</option>
 						</select>	   
 					</div>
 					
@@ -214,6 +216,13 @@
 					})
 				}
 			}
+		},
+		getOptionLabel(cimke) {
+			var result = '';
+			for (var i=0; i<cimke.szint;i++) {
+				result += '&nbsp;&nbsp;&nbsp;';
+			}
+			return result+cimke.cimke;
 		},
 		scrollFunction() {
 			// szükség esteén a filter Form megjelenítése

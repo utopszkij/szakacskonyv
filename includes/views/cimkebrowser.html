@@ -9,10 +9,12 @@
     <h2 class="ribbon-banner"><span><em class="fa fa-sitemap" aria-hidden="true"></em>&nbsp;Cimkék</span></h2>
     <ul>
         <li v-for="record in items" v-if="logedAdmin">
-            <a v-bind:href="'index.php?task=cimkeedit&id='+record.id+'&browserUrl='+encodeURI(browserUrl)">{{ record.cimke }}</a> 
+            <a v-bind:href="'index.php?task=cimkeedit&id='+record.id+'&browserUrl='+encodeURI(browserUrl)">
+                <var v-bind:style="'display:inline-block; '+getBehuzas(record.szint)">&nbsp;</var>{{ record.cimke }}
+            </a> 
         </li>
         <li v-for="record in items" v-if="!logedAdmin">
-            {{ record.cimke }}
+            <var v-bind:style="'display:inline-block; '+getBehuzas(record.szint)">&nbsp;</var>{{ record.cimke }}
         </li>
     </ul>
     include paginator
@@ -32,7 +34,11 @@
             } else {
                 result="paginatorItem"
             }
+            window.localStorage.setItem('cimkek', JSON.stringify(this.items));
             return result;
+        },
+        getBehuzas(szint) {
+            return 'width:'+(szint*25)+'px';
         }
     }
 </script>

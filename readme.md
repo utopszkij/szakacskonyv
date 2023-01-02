@@ -156,6 +156,11 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.3.0
+2023.01.??
+- Fa szerkezetű kategória rendszer
+### *************************************
+
 ## verzió v2.2.1
 2022.12.10
 - a felhasználó profil oldaláról behivható
