@@ -140,7 +140,7 @@
 
             $db = new Query('likes','l');
             if ($type == 'recept') {
-                $result = $db->select([['count(l.id)','cc'],'r.id','r.nev'])
+                $result = $db->select([['count(l.id)','cc'],'r.id','r.nev','max(r.lattak) lattak'])
                 ->join('INNER','users','u','u.id','=','l.user_id')
                 ->join('LEFT OUTER','receptek','r','r.id','=','l.target_id')
                 ->groupBy(['r.id'])

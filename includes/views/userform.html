@@ -41,7 +41,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="form-outline col-12">
-                                    <label><strong>Nick név:</strong></label>
+                                    <label><strong>Felhasználónév:</strong></label>
                                     <input name="username" class="form-control" 
                                             v-model="record.username" type="text" disabled="disabled"/>
                                 </div>
@@ -60,7 +60,7 @@
                             <div class="row" v-if="(logedAdmin | (loged == record.id))">
                                 <div class="form-outline col-12">
                                     <label><strong>Új jelszó:</strong></label>
-                                    <em class="fas fa-key"></em>
+                                    <em class="fas fa-key"></em>&nbsp;
                                     <input name="password" class="form-control password" 
                                             type="password" value="" />
                                 </div>
@@ -68,7 +68,7 @@
                             <div class="row" v-if="(logedAdmin | (loged == record.id))">
                                 <div class="col-12">
                                     <label><strong>Új jelszó ismét:</strong></label>
-                                    <em class="fas fa-key"></em>
+                                    <em class="fas fa-key"></em>&nbsp;
                                     <input name="password2" class="form-control password" 
                                             type="password" value="" />
                                 </div>
@@ -117,13 +117,13 @@
                     <em class="fas fa-reply"></em>&nbsp;Vissza
                 </a>
                 &nbsp;
-                <a v-bind:href="'index.php?task=receptek&page=1&filtercreator='+record.username+'&filterstr=&filtercimke=&filtercreated='">
+                <button type="button" class="btn btn-primary"><a v-bind:href="'index.php?task=receptek&page=1&filtercreator='+record.username+'&filterstr=&filtercimke=&filtercreated='">
                     <em class="fas fa-hand-point-right"></em>Általa feltöltött receptek
-                </a>
+                </a></button>
                 &nbsp;
-                <a v-bind:href="'index.php?task=blogs&page=1&creatorname='+record.username+'&titlestr=&bodystr=&createdat='">
+                <button type="button" class="btn btn-primary"><a v-bind:href="'index.php?task=blogs&page=1&creatorname='+record.username+'&titlestr=&bodystr=&createdat='">
                     <em class="fas fa-hand-point-right"></em>Általa feltöltött cikkek
-                </a>
+                </a></button>
             </div>
         </div>
     </form>    

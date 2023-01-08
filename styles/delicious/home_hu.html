@@ -65,7 +65,7 @@
             <div class="row frissHir" id="frissHir">
                 <!-- Top Catagory Area -->
                 <div class="col-12">
-                    <div>
+                    <center><div>
                         <!-- Content -->
                         <div v-html="frissHir"></div>
                         <div>
@@ -74,7 +74,7 @@
                             Ezzel kapcsolatban a fejlesztő, üzemeltető semmilyen felelőséget nem vállal.
                             </strong>
                         </div>
-                    </div>
+                    </div></center>
                 </div>
             </div>    
             <div class="row">
@@ -140,6 +140,10 @@
                                 <i class="fa fa-star none" aria-hidden="true" v-if="item.likes < (4*LIKESIZE)"></i>
                                 <i class="fa fa-star" aria-hidden="true" v-if="item.likes >= (5*LIKESIZE)"></i>
                                 <i class="fa fa-star none" aria-hidden="true" v-if="item.likes < (5*LIKESIZE)"></i>
+                                &nbsp;
+                                <var class="lattak">
+                                    <em class="fa fa-eye" title="Látták"></em>{{ item.lattak }}
+                                </var>    
                             </div>
                         </div>
                     </div>

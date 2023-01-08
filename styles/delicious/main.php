@@ -162,6 +162,7 @@ A hozzászólások mindenki számára láthatóak">
 							<img src="images/fejlec.png" alt="">
 							<br />
 							<img src="images/logosapi.png" alt="">
+							<span class="ffa"><i class="fa fa-tree"></i><i class="fa fa-star"></i><i class="fa fa-asterisk l1"></i><i class="fa fa-asterisk l2"></i><i class="fa fa-asterisk l3"></i><i class="fa fa-asterisk l4"></i><i class="fa fa-asterisk l5"></i><i class="fa fa-asterisk l6"></i></span>
 						</a>
 
 						<!-- loged user amikor a menü ikonizálva van -->
@@ -316,7 +317,7 @@ A hozzászólások mindenki számára láthatóak">
 				document.write('<p id="cookieEnabled">"Süti" kezelés engedélyezve van. Letiltásához kattints ide:'+
 				'<a href="index.php" onclick="setCookie(\'cookieEnabled\',0,100);">Letilt</a></p>');
 			} else if (document.location.href.search('adatkezeles') < 0) {
-				popupConfirm('Ennek a web oldalnak a használatához un. "munkamenet sütik" használtata szükséges.'+
+				popupConfirm('<img src="cookie-icon.png" alt="Girl in a jacket" width="30" height="30"><br />Ennek a web oldalnak a használatához un. "munkamenet sütik" használtata szükséges.'+
 				'<br />Lásd: <a href="index.php?task=adatkezeles">Adatkezelési leírás</a>'+
 				'<br />Kérjük engedélyezd a "sütik" kezelését!',
 				function() {

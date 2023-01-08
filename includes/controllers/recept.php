@@ -7,6 +7,7 @@ include_once __DIR__.'/../models/receptmodel.php';
 include_once __DIR__.'/../models/commentmodel.php';
 include_once __DIR__.'/../models/likemodel.php';
 include_once __DIR__.'/../models/cimkemodel.php';
+include_once __DIR__.'/../models/statisticmodel.php';
 include_once __DIR__.'/../urlprocess.php';
 include_once __DIR__.'/../uploader.php';
 
@@ -236,35 +237,9 @@ class Recept extends Controller{
 		return $kep;
 	}
 
-    /**
-    * ha az adott receptet ez a user még nem látta akkor új rekordot visz fel
-    * az event táblába és növeli a recept rekorban a számlálót.
-    * user azonositás: ha loged akkor a "logedName" ha nem akkor az  "si"
-    */
-    protected function setShow(int $recept_id, string $loged) {
-            $q = new Query('events');
-            $q->where('event','=','show')
-                    ->where('data','=',$loged.'_recept_'.$recept_id)
-					->orWhere('data','=',session_id().'_recept_'.$recept_id)
-					->where('event','=','show'); 
-			echo $q->getSql().'<br />';		
-            $rec = $q->first();
-            if (!isset($rec->created_at)) {
-				if ($loged == 'guest') {
-					$loged = session_id();
-				}
-                $rec = new Record();
-                $rec->created_at = date('Y-m-d');
-                $rec->event = 'show';
-                $rec->data = $loged.'_recept_'.$recept_id;
-                $q->insert($rec);
-            }        
-            // most lehetne növelni a recept rekordban a show countert
-    }
-
-
 	public function recept() {	
 		global $hozzavalok;
+		$statisticModel = new StatisticModel();
 		if (isset($_SESSION['origImg'])) {
 			unset($_SESSION['origImg']);
 		}	
@@ -272,7 +247,8 @@ class Recept extends Controller{
 			"created_at":"2022.01.01",
 			"adag":4,
 			"energia":0,
-			"elkeszites":0
+			"elkeszites":0,
+			"lattak":0
 		}');	
 		$hozzavalok = [];	
 		$receptId = $this->request->input('id',0,INTEGER);
@@ -281,11 +257,10 @@ class Recept extends Controller{
 	
 		// aktuális recept és hozzávalók beolvasása
 		if ($receptId > '0') {
-			// recept megjelenítés naplózása
-			$this->setShow($receptId, $this->session->input('logedName'));
 
 			$recept = $this->model->getById($receptId);	
 			$hozzavalok = $this->model->getHozzavalok($receptId);
+			$statisticModel->setShow($recept, $this->session->input('logedName'));
 
 			if (($recept->created_by != $this->session->input('loged')) &
 			    (!$this->logedAdmin) &
@@ -350,9 +325,13 @@ class Recept extends Controller{
 		$cimkek = [];
 		$q = new Query('cimkek');
 		$recs = $q->all();
+		/* 2023.01.03 cimke fa struktura
 		foreach ($recs as $rec) {
 			$cimkek[] = $rec->cimke;
-		}	
+		}
+		*/
+		$cimkek = $recs;
+
 		$receptCimkek = $this->model->getReceptCimkek($receptId);
 
 		if ($this->request->isset('url')) {
@@ -490,7 +469,7 @@ class Recept extends Controller{
 			}
 		}
 		$db = new Query('receptek');
-		$db->select(['id','nev'])
+		$db->select(['id','nev','lattak'])
 			->join('left outer','recept_cimke','c','c.recept_id','=','receptek.id')
 			->where('nev','<>','');
 		if ($filterStr != '') {
@@ -527,7 +506,7 @@ class Recept extends Controller{
 				$db->where('cimke','in',$cimkeList);
 			}
 		}	
-		$db->groupBy(['id','nev']);
+		$db->groupBy(['id','nev','lattak']);
 		$db->orderBy('nev');
 		//echo $db->getSql();
 		return $db;
