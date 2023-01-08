@@ -130,38 +130,12 @@
         <div class="row">
             <div v-bind:class="cimkeClass(cimke)" style="display:inline-block; width:auto;" 
                 v-for="cimke in cimkek">
-                <span v-if="((cimke.tulaj == 0) & (isParent(cimke) == false))">
-                    <input type="checkbox" v-bind:id="cimke.cimke" 
-                        v-bind:name="cimke.cimke.replace(' ','_')"
-                        value="1" :disabled="disabled != ''" />
-                    <span>{{ cimke.cimke }}</span> &nbsp;
-                </span>
-                <span v-if="((cimke.tulaj == 0) & (isParent(cimke) == true))">
-                        <a href="#" v-on:click="cimkeChildsTogle(cimke)">
-                            <span class="cimkeToglerIcon" v-bind:id="'cimkeTogler'+cimke.id">&darr;</span> 
-                            {{ cimke.cimke }}
-                        </a>
-                        <ul v-bind:id="'cimkeChilds'+cimke.id" style="display:none">
-                            <li>
-                                <input type="checkbox" v-bind:id="cimke.cimke" 
-                                v-bind:name="cimke.cimke.replace(' ','_')"
-                                value="1" :disabled="disabled != ''" />
-                                <span>{{ cimke.cimke }}</span>
-                            </li>
-                            <li v-for="childCimke in cimkek">
-                                <span v-if="childCimke.tulaj == cimke.id">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="checkbox" v-bind:id="childCimke.cimke" 
-                                    v-bind:name="childCimke.cimke.replace(' ','_')"
-                                    value="1" :disabled="disabled != ''" />
-                                    <span>{{ childCimke.cimke }}</span>
-                                </span>
-                            </li>
-                        </ul>
-                </span>    
+                <input type="checkbox" v-bind:id="cimke.cimke" 
+                    v-bind:name="cimke.cimke.replace(' ','_')" 
+                    value="1" :disabled="disabled != ''" />
+                {{ cimke.cimke }}  &nbsp;
             </div>
         </div>
-        <div class="row">&nbsp;</div>
         <div>
             <button type="button" class="btn btn-secondary" v-on:click="addHozzavalo">
                 + {{ lng('INGREDIENT') }}</button>
@@ -556,11 +530,6 @@ var methods = {
             if (this.recept.id == 0) {
                 this.editClick();
             }
-            /*
-            for (var i=0; i<this.cimkek.length; i++) {
-                this.cimkek[i].showChildrens = false;
-            } 
-            */   
             for (var i=0; i<this.receptCimkek.length; i++) {
                 if (document.getElementById(this.receptCimkek[i].cimke)) {
                     document.getElementById(this.receptCimkek[i].cimke).checked = true;
@@ -682,28 +651,6 @@ var methods = {
                 result = "cimkeChildren"
             }
             return result;
-        },
-        isParent(cimke) {
-            result = false;
-            for (var i=0; i < this.cimkek.length; i++) {
-                if (this.cimkek[i].tulaj == cimke.id) {
-                    result = true;
-                }
-            }
-            return result;
-        },
-        cimkeChildsTogle(cimke) {
-            var c = window.document.getElementById('cimkeChilds'+cimke.id);
-            if (c) {
-                if (c.style.display == 'block') {
-                    c.style.display = 'none';
-                    window.document.getElementById('cimkeTogler'+cimke.id).innerHTML='&darr;';
-                } else {
-                    c.style.display = 'block';
-                    window.document.getElementById('cimkeTogler'+cimke.id).innerHTML='&uarr;';
-                }
-            }
-            return false;
         }
 };   
 

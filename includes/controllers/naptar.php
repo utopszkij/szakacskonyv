@@ -165,13 +165,13 @@ class Naptar  {
 		if ((STYLE == 'delicious') | (STYLE == 'modern')) {
 			$limit = 16;
 			$q->setSql('
-			SELECT r.id, r.nev, count(l.id) likes
+			SELECT r.id, r.nev, count(l.id) likes, r.lattak
 			FROM receptek r
 			INNER JOIN likes l ON l.target_id = r.id AND l.target_type = "recept"
 			INNER JOIN users u ON u.id = l.user_id
 			GROUP BY r.id,r.nev
 			UNION ALL
-			SELECT r.id, r.nev, count(l.id) likes
+			SELECT r.id, r.nev, count(l.id) likes, r.lattak
 			FROM receptek r
 			LEFT OUTER JOIN likes l ON l.target_id = r.id AND l.target_type = "recept"
 			WHERE l.id is NULL

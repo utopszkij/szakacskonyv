@@ -17,6 +17,8 @@ body.dark .header-area .delicious-main-menu .classy-navbar .classynav > ul > li 
 
 .dark #classy-menu {background-color:#303030; border-radius: 8px;}
 
+.dark .card {background-color:transparent; border-style:solid; border-color:white; background-color:#565656;}
+
 .dark .header-area .top-header-area {background-color: transparent; color:white}
 .dark .header-area .top-header-area a {background-color: transparent; color:white}
 
@@ -47,8 +49,8 @@ body.dark .header-area .delicious-main-menu .classy-navbar .classynav > ul > li 
 .single-small-receipe-area img {width: 100px; height: 100px}
  
 .leiras ul li {list-style:disc}
-.form-control {display:inline-block; width:auto; float:none; background-color:white}
-.nice-select {min-width:300px; float:none; background-color:white}
+.form-control {display:inline-block; width:220px; float:none; background-color:white}
+.nice-select {min-width:auto; float:none; background-color:white}
 label {display:inline-block; width:250px; max-width:250px; text-align:left}
 
 .ratings {color:orange}
@@ -118,6 +120,12 @@ h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; fl
 #receptShow .adag {display:inline-block; width:auto;}
 #receptShow .cimkek li {display:inline-block; width:auto; margin:2px; padding:2px;
 	border-style:solid; border-width:1px; border-radius:10px;}
+.cimkeRoot {background-color:transparent; min-width:120px;}
+.cimkeChildren {background-color:transparent}
+.cimkeToglerIcon {border-style:solid; border-width:1px; padding:1px; width:20px; height:20px}
+.cimkeRoot ul {position:absolute; z-index:10; padding:3px;
+	width:auto; min-width:150px; height:auto; background-color:silver;}
+.nice-select .list {max-height:400px; overflow:scroll}	
 
 #blogList .bloghead {border-style:solid; border-width:1px;
 	margin:5px; padding:5px;}
@@ -140,7 +148,7 @@ h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; fl
 
 #adminBody tr {display:block; width:100%}
 #adminBody td {height:80px; max-height:80px; width:auto;}
-#adminBody td img {height:auto; max-height:60px; }
+#adminBody td img {height:auto; max-height:100%; }
 #userek #receptListTable {text-align:left}
 
 

@@ -156,6 +156,15 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.3.1
+2023.01.08
+- cimke kezelő admin felület modosítása
+- recept felvitel/modositás képernyőn a 
+  cimke kezelés modosítása
+- látogatottság/megtekintés statisztikánál
+  robot szürés javítása  
+### *************************************
+
 ## verzió v2.3.0
 2023.01.??
 - Fa szerkezetű kategória rendszer

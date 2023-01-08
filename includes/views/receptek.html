@@ -99,8 +99,12 @@
 											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (5*LIKESIZE)"></i>
 											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (5*LIKESIZE)"></i>
 											&nbsp;{{ item.likeCount}} like
+											&nbsp;
 										</div>
-									</a>
+										<var class="lattak">
+											<em class="fa fa-eye" title="Látták"></em>{{ item.lattak }}
+										</var>    
+								</a>
 								</td>
                             </tr>
 						</tbody>
@@ -141,6 +145,9 @@
 											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (5*LIKESIZE)"></i>
 											&nbsp;{{ item.likeCount}} like
 										</div>
+										<var class="lattak">
+											<em class="fa fa-eye" title="Látták"></em>{{ item.lattak }}
+										</var>    
 									</a>
 								</td>
                             </tr>
