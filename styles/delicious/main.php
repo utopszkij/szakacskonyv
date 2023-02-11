@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5G543JVS91"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5G543JVS91');
+</script>
     <meta charset="UTF-8">
 	<meta property="og:title"  content="<?php echo $title; ?>">
 	<base href="<?php echo SITEURL; ?>/">

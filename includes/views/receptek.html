@@ -118,46 +118,13 @@
 						<thead>
 							<tr><td>ID</td><td>{{ lng('NAME') }}</td></tr>		
 						</thead>
-						<tbody>
-							<tr v-for="item in list" class="makeTrClass(item)">
-								<td>
-									<a v-bind:href="HREF('recept',{id:item.id,title:encodeURI(item.nev)})">
-										<var class="imgContainer">
-											<img v-bind:id="'img_'+item.id" />
-										</var>			
-										<em v-if="item.favorit" 
-											style="margin-top:-20px; padding:2px; color:green; background-color:white; z-index:10"
-											class="fas fa-heart"></em>
-                                        <span class="id">{{ item.id }}</span>
-                                        <div class="name">
-											{{ item.nev }}
-										</div>	
-										<div class="likeLine ratings">
-											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= LIKESIZE"></i>
-											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < LIKESIZE"></i>
-											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (2*LIKESIZE)"></i>
-											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (2*LIKESIZE)"></i>
-											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (3*LIKESIZE)"></i>
-											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (3*LIKESIZE)"></i>
-											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (4*LIKESIZE)"></i>
-											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (4*LIKESIZE)"></i>
-											<i class="fa fa-star" aria-hidden="true" v-if="item.likeCount >= (5*LIKESIZE)"></i>
-											<i class="fa fa-star none" aria-hidden="true" v-if="item.likeCount < (5*LIKESIZE)"></i>
-											&nbsp;{{ item.likeCount}} like
-										</div>
-										<var class="lattak">
-											<em class="fa fa-eye" title="Látták"></em>{{ item.lattak }}
-										</var>    
-									</a>
-								</td>
-                            </tr>
-						</tbody>
+						<tbody id="listBody"></tbody>
 					</table>
 					<div class="d-none d-md-inline col-md-4">
 						<img class="dekor" src="images/dekor1.jpg" class="dekorImg" />
 					</div>	
 				</div>
-				include paginator
+				<div id="paginator"></div>
 			</div>
 			<p>{{ lng('RECEPTSHELP') }}</p>
 			<div style="text-align:center" v-if="loged > 0">
@@ -165,14 +132,81 @@
 					<em class="fas fa-plus-circle"></em>&nbsp;{{ lng('ADD') }}</a>
 			</div>
 			<div v-if="loged <= 0">{{ lng('ADD_MUST_LOGIN') }}</div>
-
 		</div>	
 
 <script>
+	
+	class MyDataBrowser extends DataBrowser {
+		showItems(items) {
+			// items megjelenitése (tr -ek) a tbody#domId elembe
+			var s = '';
+			var i = 0;
+			for (i=0; i < items.length; i++) {
+				var item = items[i];
+
+				var likes = '<div class="likeLine ratings">';
+				if (item.likeCount >= this.LIKESIZE) likes += '<i class="fa fa-star" aria-hidden="true"></i>';
+				if (item.likeCount < this.LIKESIZE) likes += '<i class="fa fa-star none" aria-hidden="true"></i>';
+				if (item.likeCount >= (2*this.LIKESIZE)) likes += '<i class="fa fa-star" aria-hidden="true"></i>';
+				if (item.likeCount < (2*this.LIKESIZE)) likes += '<i class="fa fa-star none" aria-hidden="true"></i>';
+				if (item.likeCount >= (3*this.LIKESIZE)) likes += '<i class="fa fa-star" aria-hidden="true"></i>';
+				if (item.likeCount < (3*this.LIKESIZE)) likes += '<i class="fa fa-star none" aria-hidden="true"></i>';
+				if (item.likeCount >= (4*this.LIKESIZE)) likes += '<i class="fa fa-star" aria-hidden="true"></i>';
+				if (item.likeCount < (4*this.LIKESIZE)) likes += '<i class="fa fa-star none" aria-hidden="true"></i>';
+				if (item.likeCount >= (5*this.LIKESIZE)) likes += '<i class="fa fa-star" aria-hidden="true"></i>';
+				if (item.likeCount < (5*this.LIKESIZE)) likes += '<i class="fa fa-star none" aria-hidden="true"></i>';
+				likes += '&nbsp;'+item.likeCount+' like';
+				likes +=   '</div>'+
+							'<var class="lattak">'+
+								'<em class="fa fa-eye" title="Látták"></em>'+item.lattak+'</var>';
+
+				if (i > 0) s += ',';
+				s += '<tr class="makeTrClass(item)">'+
+					'<td>'+
+						'<a href="'+HREF('recept',{id:item.id,title:encodeURI(item.nev)})+'">'+
+							'<var class="imgContainer">'+
+								'<img id="img_'+item.id+' />'+
+							'</var>';
+							if ("item.favorit") { 
+								s += '<em style="margin-top:-20px; padding:2px; color:green; background-color:white; z-index:10"'+
+								'class="fas fa-heart"></em>';
+							}	
+							s += 
+							'<span class="id">'+item.id+'</span>'+
+							'<div class="name">'+item.nev+'</div>'+
+						'</a>'+
+						likes+
+					'</td>'+
+				'</tr>';
+			}	
+			document.getElementById(this.listDomId).innerHTML = s;
+			window.setTimeout('app.scrollFunction()',500); // realtime kép betötés init
+		}
+	};	
+
+
     var methods = {
 		afterMount() {
 			this.newsOpened = false;
-			// window.receptImages = [];
+
+			window.dataBrowser = new MyDataBrowser(
+				siteurl+'/index.php?task=Recept.apiReceptekList'+
+				'&filterstr='+this.filterStr+
+				'&filtercreator='+this.filterCreator+
+				'&filterCreated='+this.filterCreated+
+				'&filterCimke='+this.filterCimke+
+				'&filterCreatorId='+this.filterCreatorId, 
+				this.pages.length,
+				this.total,
+				'listBody',
+				'paginator');
+			window.dataBrowser.LIKESIZE = this.LIKESIZE;
+
+			// aktuális list és paginatormegjelenitése
+			dataBrowser.showItems(this.list);
+			dataBrowser.showPaginator(this.page);
+
+			// képek realtime betöltés init
 			window.onscroll = function() {window.scrollFunction(); app.scrollFunction()};
 			window.setTimeout('app.scrollFunction()',1000);
 		},
@@ -187,24 +221,6 @@
 			window.setTimeout('app.scrollFunction()',1000);
 			return false;
 		},
-		makeTrClass(item) {
-            trClass = '';
-			if (item.created_by == this.loged) {
-				trClass = 'sajat';
-			} else {
-				trClass = 'idegen';
-			}
-            return trClass;    
-        },
-        makePaginatorClass(p,page) {
-            var result = '';
-            if (p == page) {
-                result="actPaginatorItem";
-            } else {
-                result="paginatorItem"
-            }
-            return result;
-        },
 		delFilter() {
 					document.getElementById('filterstr').value = '';
 					document.getElementById('filtercreator').value = '';
@@ -232,6 +248,7 @@
 			return result+cimke.cimke;
 		},
 		scrollFunction() {
+			// ez a rutin fut minden window onscroll eseménynél
 			// szükség esteén a filter Form megjelenítése
 			if ((app.filterStr != '') | 
 			    (app.filterCimke != '') | 

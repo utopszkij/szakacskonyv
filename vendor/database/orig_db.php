@@ -289,8 +289,6 @@ class Query {
 			$result = '('.implode(',',$w).')';
 		} else if ($s === '') {
 			$result = '""';
-		} else if (strpos(' '.$s,'`') > 0) {
-			$result = $s;	
 		} else if (is_numeric($s)) {
 			$result = $s;
 		} else if (is_bool($s)) {

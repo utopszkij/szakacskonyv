@@ -513,7 +513,8 @@ class Recept extends Controller{
 	}
 
 	public function receptek($task = 'receptek') {
-		$pageSize = round((int)$_SESSION['screen_height'] / 80);
+		// $pageSize = round((int)$_SESSION['screen_height'] / 80);
+		$pageSize = 15;
 		$filterStr = $this->getParam('filterstr');
 		$filterCreator = $this->getParam('filtercreator');
 		$filterCreated = $this->getParam('filtercreated');
@@ -608,6 +609,72 @@ class Recept extends Controller{
 			"LIKESIZE" => LIKESIZE
 		]); 
 
+	}
+
+	/**
+	 * api backend funcion
+	 * GET page
+	 * return items
+	 */
+	public function apiReceptekList() {
+		$pageSize = 15;
+		$filterStr = $this->getParam('filterstr');
+		$filterCreator = $this->getParam('filtercreator');
+		$filterCreated = $this->getParam('filtercreated');
+		$filterCimke = $this->getParam('filtercimke');
+		$filterCreatorId = -1;
+		if (isset($_SESSION['origImg'])) {
+			unset($_SESSION['origImg']);
+		}	
+		
+		if ($filterCreator != '') {
+			$db = new Query('users');
+			$r = $db->where('username','=',$filterCreator)->first();
+			if (isset($r->id)) {
+				$filterCreatorId = $r->id;
+			} else {
+				$filterCreatorId = 999999999;
+			}
+		}
+		if ($this->request->isset('page')) {
+			$page = $this->request->input('page');
+			$offset = ($pageSize * $page) - $pageSize;
+		} else if ($this->session->isset('page')) {
+			$page = $this->session->input('page');
+			$offset = ($pageSize * $page) - $pageSize;
+		} else {
+			$page = 1;
+			$offset = 0;
+		}
+		if ($page < 1) {
+			$page = 1;
+			$offset = 0;
+		}
+		$db = new Query('receptek');
+		$db = $this->buildQuery();
+		$list = $db->all();
+
+		// $page tárolása sessionba
+		$this->session->set('page',$page);
+
+		// rekordok lekérése
+		$db = $this->buildQuery();
+		$list = $db->offset($offset)->limit($pageSize)->all();
+		$likeModel = new LikeModel();
+		foreach ($list as $item) {
+			$item->favorit = $this->model->isFavorit($this->session->input('loged',0), $item->id);
+			// likes infok a $recept -be
+			$item->likeCount = $likeModel->getLikesTotal('recept', $item->id);
+			$item->userLiked = $likeModel->userLiked('recept',$item->id, $this->session->input('loged'));
+		}
+		$result = '[';
+		for ($i=0; $i<count($list); $i++) {
+			if ($i > 0) $result .= ',';
+			$result .= JSON_encode($list[$i]);
+		}
+		$result .= ']';
+		header('Content-Type: application/json; charset=utf-8');
+		echo $result;
 	}
 
 	/**
