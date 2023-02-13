@@ -96,6 +96,7 @@ class Fw {
 		} else {
 			$this->task = 'home';
 		}
+
 		if (strpos($this->task,'.')) {
 			$w = explode('.',$this->task);
 			$compName = $w[0];

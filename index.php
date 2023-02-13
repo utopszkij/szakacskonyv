@@ -2,6 +2,9 @@
 if (isset($_COOKIE['sid'])) {
 	session_id($_COOKIE['sid']);
 }
+if (isset($_GET['sid'])) {
+	session_id($_GET['sid']);
+}
 session_start();
 global $components;
 
@@ -48,7 +51,7 @@ $statisticModel->saveStatistic();
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.3.1';
+$fileVerzio = 'v2.4.0';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();
@@ -81,7 +84,8 @@ if (method_exists($comp, 'getFbImage')) {
 
 // execute API backends
 if (in_array($fw->compName.'.'.$fw->task,
-    ['Recept.getImage'])) {
+    ['Recept.getImage',
+	 'Recept.apiReceptekList'])) {
 	$comp->$task ();
     exit();
 }

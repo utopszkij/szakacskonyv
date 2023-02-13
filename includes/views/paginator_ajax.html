@@ -1,0 +1,53 @@
+<!-- paginator include használt VUE változók: pages, page, total ,task  -->
+                <p>{{ lng('TOTAL') }}: {{ total }} {{ lng('LINES') }}</p>
+                <ul class="paginator" v-if="pages.length > 1">
+					<li style="display:inline-block; width:auto" v-if="page > 2">
+						<span class="paginatorItem pgFirst">
+                            <a href="#" v-on:click="this.paginatorClick(1)"
+								v-bind:title="lng('FIRST')">
+                                &lt;&lt;
+                            </a>
+                        </span>
+					</li>
+					<li style="display:inline-block; width:auto" v-if="page > 1">
+						<span class="paginatorItem pgPrev">
+                            <a href="#" ov-on:click="this.paginatorClick(this.page - 1)"
+								v-bind:title="lng('PREVIOUS')">
+                                &lt;
+                            </a>
+                        </span>
+					</li>
+                    <li v-for="p in pages" style="display:inline-block; width:auto">
+                        <span class="kihagyva"
+                            v-if="(((p < Math.min((parseInt(page) - 2), (pages.length - 5))) | (p > Math.max((parseInt(page) + 2), 5))) & (p == 1))"> 
+                                ...
+                        </span>
+                        <span :class="makePaginatorClass(p,page)"
+                            v-if="((p >= Math.min((parseInt(page) - 2), (pages.length - 5))) & (p <= Math.max((parseInt(page) + 2), 5)))"> 
+                            <a href="#" v-if="p != page"  v-on:click="this.paginatorClick(p)">
+                                {{ p }}
+                            </a>
+                            <strong v-if="p == page">{{ p }}</strong>
+                        </span>
+                        <span class="kihagyva"
+                            v-if="(((p < Math.min((parseInt(page) - 2), (pages.length - 5))) | (p > Math.max((parseInt(page) + 2), 5))) & (p == pages.length))"> 
+                                ...
+                        </span>
+                    </li>
+					<li style="display:inline-block; width:auto" v-if="page < pages.length">
+						<span class="paginatorItem pgNext">
+                            <a href="#"  v-on:click="this.paginatorClick(this.page + 1)"
+								v-bind:title="lng('NEXT')">
+                                &gt;
+                            </a>
+                        </span>
+					</li>
+					<li style="display:inline-block; width:auto" v-if="page < (pages.length - 1)" >
+						<span class="paginatorItem pgLast">
+                            <a href="#"  v-on:click="this.paginatorClick(this.pages.length)"
+								v-bind:title="lng('LAST')">
+                                &gt;&gt;
+                            </a>
+                        </span>
+					</li>
+                </ul>	

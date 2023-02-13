@@ -49,6 +49,7 @@ class Osszegzes extends Controller{
 		$datum2 = $this->request->input('datum2');
 		$loged = $_SESSION['loged'];	
 	
+		/* 2023.02.13 új napimenu rekord szerkezet
 		$union2 = new Query('napimenuk','m');
 		$union2->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
 			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept2')
@@ -97,12 +98,28 @@ class Osszegzes extends Controller{
 		->groupBy(['s.nev','szme'])
 		->orderBy('s.nev');
 
+		*/
+		$subselect = new Query('napimenuk','m');
+		$subselect->select(['m.adag','h.nev',['(m.adag / r.adag * h.szmennyiseg)','mennyiseg'],'h.szme'])
+			->join('LEFT OUTER','hozzavalok','h','h.recept_id','=','m.recept')
+			->join('LEFT OUTER','receptek','r','r.id','=','m.recept')
+			->where('h.nev','<>',Query::sqlValue(''))
+			->where('h.mennyiseg','>',0)
+			->where('m.datum','>=',Query::sqlValue($datum1))
+			->where('m.datum','<=',Query::sqlValue($datum2))
+			->where('m.created_by','=',Query::sqlValue($loged));
+		$db = new Query($subselect,'s');
+		$db->select(['s.nev',['sum(s.mennyiseg)','mennyiseg'],'s.szme'])
+		->groupBy(['s.nev','szme'])
+		->orderBy('s.nev');
 	$items = $db->all();
 	foreach ($items as $item) {
 		$item->mennyiseg = Round($item->mennyiseg * 10) / 10;
 	}
 	
 	/* időszak napimenük */
+
+	/* 2023.02.13 új rekord szerkezet
 	$db = new Query('napimenuk','m');
 	$db->select(['m.datum','m.adag',
 					['r1.nev','nev1'],
@@ -117,6 +134,16 @@ class Osszegzes extends Controller{
 		->where('m.datum','<=',Query::sqlValue($datum2))
 		->where('m.created_by','=',Query::sqlValue($loged))
 		->orderBy('m.datum');
+	*/
+	$db = new Query('napimenuk','m');
+	$db->select(['m.datum','m.adag','m.sorszam','r.nev','r.id'])
+		->join('LEFT OUTER','receptek','r','r.id','=','m.recept')
+		->where('m.datum','>=',Query::sqlValue($datum1))
+		->where('m.datum','<=',Query::sqlValue($datum2))
+		->where('r.nev','<>','') 
+		->where('m.created_by','=',Query::sqlValue($loged))
+		->orderBy('m.datum, m.sorszam');
+
 
 	$napiMenuk = $db->all();	
 	
@@ -127,13 +154,18 @@ class Osszegzes extends Controller{
 			<div class="col-md-8">
 				<div class="napimenu">
 				<?php foreach ($napiMenuk as $napiMenu) : ?>
-					<div><?php 
-						echo $napiMenu->datum.' '.$napiMenu->adag.' adag '.
-						$napiMenu->nev1.' '.
-					   $napiMenu->nev2.' '.
-					   $napiMenu->nev3.' '.
-					   $napiMenu->nev4; 
-					   ?>
+					<div><em class="fas fa-hand-point-right"></em>
+						<?php 
+						if ($napiMenu->sorszam <= 2) {
+							$type = 'Reggeli';
+						} else if ($napiMenu->sorszam <= 7) {
+							$type = 'Ebéd';
+						} else {
+							$type = 'Vacsora';
+						}
+						echo '<a href="index.php?task=recept&id='.$napiMenu->id.'" target="_recept">'.
+						$napiMenu->datum.' '.$type.' '.	$napiMenu->adag.' adag '.$napiMenu->nev.'</a>'; 
+					    ?>
 					</div>
 				<?php endforeach; ?>
 				</div>

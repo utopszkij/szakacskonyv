@@ -87,7 +87,8 @@ function echoEndScript(array $params, string $appName) {
             HREF: window.HREF,
             location: encodeURI(window.location),
             lng: window.lng,
-            siteurl: window.siteurl
+            siteurl: window.siteurl,
+            sid:"'.session_id().'"
             };
         },
         mounted() {

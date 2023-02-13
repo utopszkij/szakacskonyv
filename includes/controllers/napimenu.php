@@ -18,13 +18,18 @@ class NapiMenu extends Controller{
 	// napi menü törlése (csak a saját maga által felvittet törölheti)
 	// $_GET['id'] menu rekord id
 	public function menuDelete() {
-		$this->model->delById($this->request->input('id',0,INTEGER));
+		$rec = $this->model->getById($this->request->input('id',0,INTEGER));
+		$olds = $this->model->getByDate($rec->ev, $rec->ho, $rec->nap);
+		foreach ($olds as $old) {
+			$this->model->delById($old->id);
+		}	
 		$comp = new Naptar();
 		$comp->home();	
 	}
 	
 	// napimenü képernyő adatainak tárolása
-	// $_GET['ev', 'ho', 'nap', .... képernyő mezők .... ] 
+	// $_POST['ev', 'ho', 'nap', .... képernyő mezők .... ] 
+	// 0-2 reggeli, 3-7 ebéd, 8-12 vacsora
 	public function menusave() {
 		if (!$this->checkFlowKey('index.php')) {
 			echo 'flowKey hiba'; exit();
@@ -39,28 +44,31 @@ class NapiMenu extends Controller{
 			return;	
 		}
 		
-		$old = $this->model->getByDate($ev, $ho, $nap);
-		if (isset($old->id)) {
-			$id = $old->id;
-		} else {
-			$id = 0;
+		$olds = $this->model->getByDate($ev, $ho, $nap);
+		for ($i=0; $i <= 12; $i++) {
+			$r = new Record();
+			if (count($olds) > 0) {
+				$r->id = $olds[$i]->id;
+			} else {
+				$r->id = 0;
+			}	
+			$r->ev = $ev;	
+			$r->ho = $ho;	
+			$r->nap = $nap;	
+			$r->datum = $ev.'-'.$ho.'-'.$nap;
+			$r->sorszam = $i;	
+			$r->recept = $this->request->input('recept'.$i);	
+			$r->created_by = $this->loged;
+			if ($i <= 2) {	
+				$r->adag = $this->request->input('adag0',4,INTEGER);
+			} else if ($i <= 7)	{
+				$r->adag = $this->request->input('adag3',4,INTEGER);
+			} else {
+				$r->adag = $this->request->input('adag8',4,INTEGER);
+			}
+			if (!is_numeric($r->adag)) $r->adag = 4;	
+			$this->model->save($r);
 		}
-		
-		$r = new Record();
-		$r->id = $id;
-		$r->ev = $ev;	
-		$r->ho = $ho;	
-		$r->nap = $nap;	
-		$r->datum = $ev.'-'.$ho.'-'.$nap;
-		$r->recept1 = $this->request->input('recept1');	
-		$r->recept2 = $this->request->input('recept2');	
-		$r->recept3 = $this->request->input('recept3');	
-		$r->recept4 = $this->request->input('recept4');
-		$r->created_by = $this->loged;	
-		$r->adag = $this->request->input('adag',4,INTEGER);
-		if (!is_numeric($r->adag)) $r->adag = 4;	
-		$this->model->save($r);
-		
 		$comp = new Naptar();
 		$comp->naptar();	
 	}
@@ -71,6 +79,7 @@ class NapiMenu extends Controller{
 
 	// napi menü felvivő/modsító képernyő
 	// $_GET['nap'], $_SESSION['numYear'], $_SESSION['numMonth'],
+	// 0-2 reggeli, 3-7 ebéd, 8-12 vacsora
 	public function napimenu() {
 		// get nap
 		// sessionban a numYear és numMonth
@@ -78,12 +87,46 @@ class NapiMenu extends Controller{
 		$ho = $this->session->input('numMonth',0);
 		$ev = $this->session->input('numYear',0);
 	
-		// aktuális menu
-		$rec = $this->model->getByDate($ev,$ho,$nap);
-		if (!isset($rec->id)) {
-			$rec = JSON_decode('{"id":0, "recept1":0, "recept2":0, "recept3":0, "recept4":0, "adag":4}');	
+		// aktuális menu (virtuális rekord)
+		$recs = $this->model->getByDate($ev,$ho,$nap);
+		if (count($recs) == 0) {
+			$rec = JSON_decode('{"id":0, 
+				"recept0":0, 
+				"recept1":0, 
+				"recept2":0, 
+				"recept3":0, 
+				"recept4":0, 
+				"recept5":0, 
+				"recept6":0, 
+				"recept7":0, 
+				"recept8":0, 
+				"recept9":0, 
+				"recept10":0, 
+				"recept11":0, 
+				"recept12":0, 
+				"adag0":4,
+				"adag1":4,
+				"adag2":4,
+				"adag3":4,
+				"adag4":4,
+				"adag5":4,
+				"adag6":4,
+				"adag7":4,
+				"adag8":4,
+				"adag9":4,
+				"adag10":4,
+				"adag11":4,
+				"adag12":4}');	
+		} else {
+			$rec = clone $recs[0];
+			for ($i=0; $i <= 12; $i++) {
+				$fn = 'adag'.$i;
+				$rec->$fn = $recs[$i]->adag;
+				$fn = 'recept'.$i;
+				$rec->$fn = $recs[$i]->recept;
+			}
 		}
-	
+
 		// összes meglévő recept
 		$receptek = $this->model->getAllRecept();
 

@@ -8,17 +8,23 @@
     <div class="alert alert-danger" v-if="loged <= 0">Napi menü felviteléhez be kell jelentkezni!</div>	
     <div class="row">
         <div class="col-md-6">
-        <form id="menuForm" action="index.php" class="form">
+        <form id="menuForm" action="index.php" class="form" method="post">
             <input type="hidden" value="menusave" name="task" />			
             <input type="hidden" v-model="nap" name="nap" />
             <input type="hidden" v-model="ho" name="ho" />
             <input type="hidden" v-model="ev" name="ev" />
             <input type="hidden" v-model="flowKey" name="flowKey" />
+            
+            <strong class="col-mb-6">Reggeli
+                <input type="number" name="adag0" class="form-control"
+                     v-model="rec.adag0" style="display:inline-block; width:60px" /> adag<br /><br />
+            </strong>	
             <div class="form-outline mb-4">
-                <input type="number" name="adag" class="form-control"
-                     v-model="rec.adag" style="display:inline-block; width:60px" /> adag
-                <br /><br />	
-            </div>	
+                <select name="recept0" style="width:90%" v-model="rec.recept0" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
             <div class="form-outline mb-4">
                 <select name="recept1" style="width:90%" v-model="rec.recept1" class="form-control">
                     <option value="0"></option>
@@ -31,6 +37,12 @@
                     <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
                 </select>
             </div>
+
+            <strong class="col-mb-6">Ebéd
+                <input type="number" name="adag3" class="form-control"
+                     v-model="rec.adag3" style="display:inline-block; width:60px" /> adag
+                <br /><br />	
+            </strong>	
             <div class="form-outline mb-4">
                 <select name="recept3" style="width:90%" v-model="rec.recept3" class="form-control">
                     <option value="0"></option>
@@ -43,7 +55,61 @@
                     <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
                 </select>
             </div>
-            
+            <div class="form-outline mb-4">
+                <select name="recept5" style="width:90%" v-model="rec.recept5" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
+            <div class="form-outline mb-4">
+                <select name="recept6" style="width:90%" v-model="rec.recept6" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
+            <div class="form-outline mb-4">
+                <select name="recept7" style="width:90%" v-model="rec.recept7" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
+
+            <strong class="col-mb-6">Vacsora
+                <input type="number" name="adag8" class="form-control"
+                     v-model="rec.adag8" style="display:inline-block; width:60px" /> adag
+                <br /><br />	
+            </strong>	
+            <div class="form-outline mb-4">
+                <select name="recept8" style="width:90%" v-model="rec.recept8" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
+            <div class="form-outline mb-4">
+                <select name="recept9" style="width:90%" v-model="rec.recept9" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
+            <div class="form-outline mb-4">
+                <select name="recept10" style="width:90%" v-model="rec.recept10" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
+            <div class="form-outline mb-4">
+                <select name="recept11" style="width:90%" v-model="rec.recept11" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
+            <div class="form-outline mb-4">
+                <select name="recept12" style="width:90%" v-model="rec.recept12" class="form-control">
+                    <option value="0"></option>
+                    <option v-for="recept in receptek" v-bind:value="recept.id">{{ recept.nev }}</option>
+                </select>
+            </div>
+
             <div class="form-outline mb-4">
                 A legtöbb főétel receptje nem tartalmazza a köretet. Szükség esetén azt
                 külön sorban válaszd ki!
