@@ -156,6 +156,11 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.4.0
+2023.???
+- napi menü felvitel átdolgozása
+### *************************************
+
 ## verzió v2.3.1
 2023.01.08
 - cimke kezelő admin felület modosítása

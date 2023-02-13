@@ -51,7 +51,7 @@ $statisticModel->saveStatistic();
 $fw = new Fw();
 
 //+ ----------- verzio kezelés start ------------
-$fileVerzio = 'v2.3.1';
+$fileVerzio = 'v2.4.0';
 $upgrade = new \Upgrade();
 $dbverzio  = $upgrade->getDBVersion();
 $lastVerzio = $upgrade->getLastVersion();

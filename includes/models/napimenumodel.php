@@ -16,25 +16,24 @@
                     nap int,
                     datum varchar(12),
                     adag int,
-                    recept1 int,
-                    recept2 int,
-                    recept3 int,
-                    recept4 int,
+                    sorszam int,
+                    recept int,
                     created_by int,
                     PRIMARY KEY (id)
             )');	
         }
 
         /**
-         * napimenu rekord olvasása dátum (és loged) alapján
+         * napimenu rekordok olvasása dátum (és loged) alapján
          */
-        public function getByDate(int $ev, int $ho, int $nap): Record {
+        public function getByDate(int $ev, int $ho, int $nap): array {
             $db = new Query('napimenuk');
             return $db->where('ev','=',$ev)
                ->where('ho','=',$ho)
                ->where('nap','=',$nap)
                ->where('created_by','=',$db->sqlValue($_SESSION['loged']))
-               ->first();
+               ->orderBy('sorszam')
+               ->all();
         }
 
         /**

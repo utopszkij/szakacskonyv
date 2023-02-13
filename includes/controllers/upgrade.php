@@ -291,7 +291,31 @@ class Upgrade extends Controller {
 		*/
 		return $result;
 	} 
-	
+
+		protected function do_v2_4_0($dbverzio) {
+			if ($this->versionAdjust($dbverzio) < 'v 2. 4. 0') {
+				$q = new Query('dbverzio');
+				$q->exec('SET SQL_SAFE_UPDATES = 0');	
+				$q->exec('alter table napimenuk add column sorszam INT default 0');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+				$q->exec('alter table napimenuk add column recept INT default 0');
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+		
+				$q = new Query('dbverzio');
+				$q->exec('SET SQL_SAFE_UPDATES = 0');	
+				$q = new Query('dbverzio');
+				$r = new Record();
+				$r->verzio = 'v2.4.0';
+				$q->where('verzio','<>','')->update($r);
+				if ($q->error != '') {
+					echo $q->error; exit();
+				}
+			}	
+		}	
 		protected function do_v2_3_0($dbverzio) {
 			if ($this->versionAdjust($dbverzio) < 'v 2. 3. 0') {
 				$q = new Query('dbverzio');
@@ -314,6 +338,7 @@ class Upgrade extends Controller {
 				if ($q->error != '') {
 					echo $q->error; exit();
 				}
+				
 				$q = new Query('dbverzio');
 				$q->exec('SET SQL_SAFE_UPDATES = 0');	
 				$q = new Query('dbverzio');
@@ -757,46 +782,19 @@ class Upgrade extends Controller {
 	 * @param string $dbverzio jelenlegi telepitett adatbázis verzió
 	 */
 	public function dbUpgrade(string $dbverzio) {
-		if ($this->versionAdjust($dbverzio) < 'v 0. 1') {
-			$q = new Query('receptek');
-			$q->exec('alter table receptek 
-				add created_at date
-			');
-			$q = new Query('dbverzio');
-			$r = new Record();
-			$r->verzio = 'v0.1';
-			$q->where('verzio','<>','')->update($r);
-		}
-		if ($this->versionAdjust($dbverzio) < 'v 0. 3') {
-			$q = new Query('receptek');
-			$q->exec('alter table receptek 
-				add energia varchar(32),
-				add elkeszites int,
-				add adag int
-			');
-			$q->exec('update receptek set energia = 0, elkeszites = 0, adag = 4');
-			$q->exec('create table if not exists recept_cimke ( 
-				recept_id int,
-				cimke varchar(64),
-				KEY `recept_cimke_id` (`recept_id`),
-				KEY `recept_cimke_cimke` (`cimke`)
-				) DEFAULT CHARSET=utf8mb3 COLLATE=utf8_hungarian_ci
-			');
-			$q = new Query('dbverzio');
-			$r = new Record();
-			$r->verzio = 'v0.3';
-			$q->where('verzio','<>','')->update($r);
-		}
+		/*
 		$this->do_v1_1($dbverzio);
 		$this->do_v1_2($dbverzio);
 		$this->do_v1_3($dbverzio);
 		$this->do_v1_4($dbverzio);
 		$this->do_v1_6($dbverzio);
+		*/
 		$this->do_v2_0($dbverzio);
 		$this->do_v2_1($dbverzio);
 		$this->do_v2_2($dbverzio);
 		$this->do_v2_2_1($dbverzio);
 		$this->do_v2_3_0($dbverzio);
+		$this->do_v2_4_0($dbverzio);
 		// ide jönek a későbbi verziokhoz szükséges db alterek növekvő verzió szerint
 	}
 
