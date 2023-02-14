@@ -156,8 +156,14 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.4.1
+2023.02.14.
+- összegsés eredmény képernyőn a receptek a megfelelő adagszámmal jelennek meg
+- recept felvitelnél, modosításnál kép feltöltés helyett kép url is használható.
+### *************************************
+
 ## verzió v2.4.0
-2023.???
+2023.02.13.
 - napi menü felvitel átdolgozása
 ### *************************************
 

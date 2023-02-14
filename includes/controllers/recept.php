@@ -17,6 +17,8 @@ class Recept extends Controller{
 	function __construct() {
 		parent::__construct();
 		$this->model = new ReceptModel();
+		$this->dataBrowser = 'index.php?task=receptek';
+		$this->browserTask = 'receptek';
 	}	
 	
 	public function getTitle(string $task) {
@@ -51,16 +53,36 @@ class Recept extends Controller{
 		$recept = $this->model->getById($this->request->input('id',0,INTEGER));
 		if (($recept->created_by != $this->session->input('loged')) &
 		    (!$this->logedAdmin)) {
-		    $this->receptek();
+			// nics extras js betöltve! $this->receptek();
+			echo '<script>location="index.php?task=receptek";</script>';
 		} else {
 			$this->model->delById($this->request->input('id',0,INTEGER));
 			$this->model->deleteHozzavalok($this->request->input('id'));
 			$this->model->deleteCimkek($this->request->input('id'));
 			$likeModel = new LikeModel();
 			$likeModel->deleteLikes('recept',$this->request->input('id'));
-			$this->receptek();
+			echo '<script>location="index.php?task=receptek";</script>';
+			// nics extras js betöltve! $this->receptek();
 		}
 	}
+
+	protected function delReceptImg(int $receptId) {
+		if (file_exists('images/recept'.$receptId.'.jpg')) {
+			unlink('images/recept'.$receptId.'.jpg');
+		}
+		if (file_exists('images/recept'.$receptId.'.jpeg')) {
+			unlink('images/recept'.$receptId.'.jpeg');
+		}
+		if (file_exists('images/recept'.$receptId.'.png')) {
+			unlink('images/recept'.$receptId.'.png');
+		}
+		if (file_exists('images/recept'.$receptId.'.gif')) {
+			unlink('images/recept'.$receptId.'.gif');
+		}
+		if (file_exists('images/recept'.$receptId.'.url')) {
+			unlink('images/recept'.$receptId.'.url');
+		}
+	}	
 	
 	public function receptsave() {
         if (!$this->checkFlowKey('index.php?task=receptek')) {
@@ -148,6 +170,7 @@ class Recept extends Controller{
 		// kép file feltöltése
 		if (file_exists($_FILES['kepfile']['tmp_name'])) { 
 			// képernyőn megadott képfile
+			$this->delReceptImg($receptId);
 			$uploadRes = Uploader::doImgUpload('kepfile',
 			DOCROOT.'/images',
 			'recept'.$receptId.'.*');
@@ -164,6 +187,12 @@ class Recept extends Controller{
 			}
 			copy($kep, $imgFileName);
 		}
+		if ($this->request->input('kepurl','') != '') {
+			$this->delReceptImg($receptId);
+			$fp = fopen('images/recept'.$receptId.'.url','w+');
+			fwrite($fp,$this->request->input('kepurl',''));
+			fclose($fp);
+		}
 		if (isset($_SESSION['origImg'])) {
 			unset($_SESSION['origImg']);
 		}
@@ -175,24 +204,25 @@ class Recept extends Controller{
 				$this->model->delReceptCimke($receptId, $cimke);
 			}	
 		}
-		$this->receptek();
+		// extras nincs betöltve! $this->receptek();
+		echo '<script>location="index.php?task=receptek";</script>';
 	}
 	
 	/**
 	 * kép url képzése
-	 * 1. van az images könyvtárban?
+	 * 1. van az images könyvtárban? (lehet url is!)
 	 * 2. ha nincs megpróbál név alapján  net-től keresni
 	 */
 	private function receptKep($recept) {
 		$kep = 'images/noimage.png'; 
-		if (file_exists('images/recept_'.$recept->id.'.jpg')) {
-			$kep = 'images/recept_'.$recept->id.'.jpg';
-		} else if (file_exists('images/recept_'.$recept->id.'.jpeg')) {
-			$kep = 'images/recept_'.$recept->id.'.jpeg';
-		} else if (file_exists('images/recept_'.$recept->id.'.png')) {
-			$kep = 'images/recept_'.$recept->id.'.png';
-		} else if (file_exists('images/recept_'.$recept->id.'.gif')) {
-			$kep = 'images/recept_'.$recept->id.'.gif';
+		if (file_exists('images/recept'.$recept->id.'.jpg')) {
+			$kep = 'images/recept'.$recept->id.'.jpg';
+		} else if (file_exists('images/recept'.$recept->id.'.jpeg')) {
+			$kep = 'images/recept'.$recept->id.'.jpeg';
+		} else if (file_exists('images/recept'.$recept->id.'.png')) {
+			$kep = 'images/recept'.$recept->id.'.png';
+		} else if (file_exists('images/recept'.$recept->id.'.gif')) {
+			$kep = 'images/recept'.$recept->id.'.gif';
 		} else if (file_exists('images/'.$recept->nev.'.png')) {
 			$kep = 'images/'.$recept->nev.'.png';
 		} else if (file_exists('images/'.$recept->nev.'.jpg')) {
@@ -201,6 +231,8 @@ class Recept extends Controller{
 			$kep = 'images/'.$recept->nev.'.jpeg';
 		} else if (file_exists('images/'.$recept->nev.'.gif')) {
 			$kep = 'images/'.$recept->nev.'.gif';
+		} else if (file_exists('images/recept'.$recept->id.'.url')) {
+			$kep = implode('', file('images/recept'.$recept->id.'.url'));
 		} else {
 		// adat lekérés a google -ról	
 			$receptNev = urlencode($recept->nev);
@@ -252,6 +284,7 @@ class Recept extends Controller{
 		}');	
 		$hozzavalok = [];	
 		$receptId = $this->request->input('id',0,INTEGER);
+		$adag = $this->request->input('adag',0,INTEGER);
 		$disable = '';
 
 	
@@ -361,6 +394,7 @@ class Recept extends Controller{
 			"logedAdmin" => $this->logedAdmin,
 			"logedGroup" => $this->logedGroup,
 			"receptId" => $receptId,
+			"adag" => $adag,
 			"kep" => $kep,
 			"recept" => $recept,
 			"isFavorit" => $isFavorit,

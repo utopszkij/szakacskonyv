@@ -163,7 +163,7 @@ class Osszegzes extends Controller{
 						} else {
 							$type = 'Vacsora';
 						}
-						echo '<a href="index.php?task=recept&id='.$napiMenu->id.'" target="_recept">'.
+						echo '<a href="index.php?task=recept&id='.$napiMenu->id.'&adag='.$napiMenu->adag.'" target="_recept">'.
 						$napiMenu->datum.' '.$type.' '.	$napiMenu->adag.' adag '.$napiMenu->nev.'</a>'; 
 					    ?>
 					</div>
