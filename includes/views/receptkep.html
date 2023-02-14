@@ -175,6 +175,9 @@
             cols="40" rows="15" v-model="recept.leiras" style="height:600px"></textarea>
             <p>{{ lng('IMGFILE') }}</p>
             <input type="file" name="kepfile" :disabled="disabled != ''" />			
+            <p>vagy web -en lévő kép URL:</p>
+            <input type="text" name="kepurl" :disabled="disabled != ''" style="width:80%" />			
+
         </div>
         
         <div class="col-12" v-if="recept.id > 0">
@@ -613,6 +616,18 @@ var methods = {
                 .catch( err => {
                     console.error( err.stack );
                 } );
+            }
+            window.setTimeout('app.setAdag()',1000);
+        },
+        setAdag() {
+            // adag paraméter kezelése
+            if (this.adag != 0) {
+                while (this.adag > this.recept.adag) {
+                    this.adagPlusClick();
+                }
+                while (this.adag < this.recept.adag) {
+                    this.adagMinusClick();
+                }
             }
         },
         round1(n) {
