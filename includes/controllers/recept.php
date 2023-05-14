@@ -433,7 +433,9 @@ class Recept extends Controller{
 		}
 		$db = new Query('hozzavalok');
 		if ($receptId > '0') {
-			$hozzavalok = $db->where('recept_id','=',$db->sqlValue($receptId))->all();	
+			$hozzavalok = $db->where('recept_id','=',$db->sqlValue($receptId))
+			->where('mennyiseg','>',0)
+			->all();	
 		}
 		$recept->leiras = str_replace("\n",'<br />',$recept->leiras);
 
