@@ -13,7 +13,7 @@ class DataBrowser {
         // abstract method, mindig átirandó
     }	
     showPaginator(page) {
-        // paginátort jelenít meg a #domId  elemben
+        // paginátort jelenít meg a #this.paginatorDomId  elemben
         page = parseInt(page); // azért, hogy biztosan számolni lehessen vele
         var pointCounter = 0; // megjelenitett '.' számláló
         var k = (window.innerWidth * 0.6) / 36; // össesen ennyi .paginatorItem fér ki
@@ -32,7 +32,8 @@ class DataBrowser {
         var p = 1;
         while (p <= this.pageCount) {
             if (p == page) {
-                s += '<li><span class="actPaginatorItem"><strong>'+p+'</strong></span></li>';
+                s += '<li><input id="goPage" type="text" value="'+p+'" size="2"'+
+                ' onchange="dataBrowser.paginatorChange()" /></li>';
                 pointCounter = 0;
             } else {
                 if (((p >= (page - k)) & (p < page)) | 
@@ -65,5 +66,21 @@ class DataBrowser {
                 });
         dataBrowser.showPaginator(page);
         return false;
+    }
+    paginatorChange() {
+        var p = parseInt($('#goPage').val());
+        if (p == undefined) {
+            p = 1;
+        }
+        if (isNaN(p)) {
+            p = 1;
+        }
+        if (p > this.pageCount) {
+            p = this.pageCount;
+        }
+        if (p < 1) {
+            p = 1;
+        }
+        this.paginatorClick(p);
     }
 };

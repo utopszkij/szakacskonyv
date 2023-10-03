@@ -32,6 +32,17 @@ function urlprocess(string $string):string {
 			allowfullscreen>
 			</iframe>
 			</div>',$string);
+		} else if (strpos($url,'youtube.com') > 0) {
+			$code = trim(str_replace('https://youtube.com/watch?v=','',$url));
+			$string = str_replace($url,
+			'<div style="text-align:center">
+			<iframe width="400" height="240" 
+			src="https://www.youtube.com/embed/'.$code.'" 
+			title="YouTube video player" frameborder="0" 
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+			allowfullscreen>
+			</iframe>
+			</div>',$string);
 		} else if (strpos($url,'vimeo.com') > 0) {
 			$code = trim(str_replace('https://vimeo.com/','',$url));
 			$string = str_replace($url,'
