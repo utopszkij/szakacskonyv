@@ -156,6 +156,16 @@ h1,h2,h3,h4,h5  {color:#40ba37; display:inline-block; width:auto; clear:both; fl
 #userek #receptListTable {text-align:left}
 
 
+#goPage::-webkit-outer-spin-button,
+#goPage::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#goPage[type=number] {
+  -moz-appearance: textfield;
+}
+
+
 @media screen and (max-width: 990px) {
 	/* itt  a főmenü már ikonizálva */
 	.header-area .smLoged {display:inline-block; width:auto;}

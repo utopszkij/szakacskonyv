@@ -13,10 +13,10 @@ class Blog extends Controller {
 		parent::__construct();
 		$this->model = new BlogModel();
         $this->name = "blog";
-        $this->browserURL = 'index.php?task=blogs';
-        $this->addURL = 'index.php?task=addblog';
-        $this->editURL = 'index.php?task=editblog';
-        $this->browserTask = 'blogs';
+        $this->browserURL = 'index.php?task=bblog.logs';
+        $this->addURL = 'index.php?task=blog.addblog';
+        $this->editURL = 'index.php?task=eblof.ditblog';
+        $this->browserTask = 'blog.blogs';
 	}
 
     /**

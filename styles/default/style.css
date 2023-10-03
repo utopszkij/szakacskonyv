@@ -342,6 +342,16 @@ figure.image-style-side img {float:right; width:40%}
   background-origin: border-box;
   background-repeat: no-repeat;
   border-style:none;
+
+  #goPage::-webkit-outer-spin-button,
+  #goPage::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  #goPage[type=number] {
+    -moz-appearance: textfield;
+  }
+
   /*
   border-image: 
      linear-gradient(

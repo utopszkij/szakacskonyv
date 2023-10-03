@@ -156,6 +156,10 @@ Ezután linux terminálban:
 cd docroot
 ./documentor.sh
 ```
+## verzió v2.4.2
+2023.10.03. webp kép formátum támogatása
+### *************************************
+
 ## verzió v2.4.1
 2023.02.14.
 - összegsés eredmény képernyőn a receptek a megfelelő adagszámmal jelennek meg

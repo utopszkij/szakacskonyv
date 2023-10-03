@@ -85,7 +85,7 @@ class Uploader {
      * @return {"error":" ''|errorMsg ", "name":"uploaded filename+ext"}
      */
     public static function doImgUpload(string $cname, string $targetDir, string $targetName = '') {
-        return Uploader::doUpload($cname, $targetDir, $targetName, Array('jpg','jpeg','png','gif'));
+        return Uploader::doUpload($cname, $targetDir, $targetName, Array('jpg','jpeg','png','gif','webp'));
     }
 }
 ?>

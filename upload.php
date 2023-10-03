@@ -17,7 +17,7 @@
   foreach ($_FILES as $fn => $fv) {
 		$uploadFile = $uploadDir . clearFileName(basename($_FILES[$fn]['name']));
 		$uploadFileExt = pathinfo($uploadFile,PATHINFO_EXTENSION);
-		if (!in_array($uploadFileExt, Array('jpg','jpeg','png','gif'))) {
+		if (!in_array($uploadFileExt, Array('jpg','jpeg','png','gif','webp')) {
 			echo JSON_encode(array('error'=>'upload not enabled'));
 			exit();	
 		}

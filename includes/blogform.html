@@ -1,0 +1,166 @@
+
+<div v-if="errorMsg != ''" class="alert alert-danger">
+    <div v-html="lng(errorMsg)"></div>
+</div>
+
+<div id="blog">
+	<h2>{{ lng('BLOG') }}</h2>
+    <form id="blogForm" action="index.php" method="post" class="form" 
+        enctype="multipart/form-data"  style="display:none">
+        <input type="hidden" v-model="flowKey" name="flowKey" />
+        <input type="hidden" value="blog.save" name="task" />			
+		
+					<div class="row">
+						<div class="col-12">
+							<label>{{ lng("ID") }}</label>:
+							<input type="number" name="id" v-model="record.id" disabled="disabled" />
+							<input type="hidden" name="id" v-model="record.id" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-12">
+							<label>{{ lng("TITLE") }}</label>:
+							<input type="text" name="title" id="title" v-model="record.title"  required="required" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-12">
+							<label>{{ lng("BODY") }}</label>:
+							<textarea cols="60" rows="5" name="body" id="body" v-html="record.body"></textarea>
+						</div>
+					</div>
+					
+							<input type="hidden" name="created_by" v-model="record.created_by" />
+					
+							<input type="hidden" name="created_at" v-model="record.created_at" />
+					
+        <div class="row formButtons" v-if="logedAdmin">
+            <div class="col-12">
+                <button type="submit" class="btn btn-success">
+                    <em class="fas fa-check"></em>&nbsp;{{ lng('SAVE') }}
+                </button>&nbsp;
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;{{ lng('CANCEL') }}
+                </a>&nbsp;
+                <button type="button" 
+                   v-on:click="delClick()"
+                   v-if="record.id > 0"
+                   class="btn btn-danger">
+                    <em class="fas fa-eraser"></em>&nbsp;{{ lng('DELETE') }}
+                </button>
+            </div>
+        </div>
+        <div class="row formButtons" v-if="!logedAdmin">
+            <div class="col-12">
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;{{ lng('BACK') }}
+                </a>
+            </div>
+        </div>
+    </form>    
+
+    <div id="blogShow" class="form">
+		
+					<div class="row">
+						<div class="col-12">
+							<label>{{ lng("ID") }}</label>:
+							<var v-html="record.id"></var>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-12">
+							<label>{{ lng("TITLE") }}</label>:
+							<var v-html="record.title"></var>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-12">
+							<label>{{ lng("BODY") }}</label>:
+							<var v-html="record.body2"></var>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-12">
+							<label>{{ lng("CREATED_BY") }}</label>:
+							<var v-html="record.created_by"></var>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-12">
+							<label>{{ lng("CREATED_AT") }}</label>:
+							<var v-html="record.created_at"></var>
+						</div>
+					</div>
+					
+        <div class="row formButtons" v-if="logedAdmin">
+            <div class="col-12">
+                <button type="button" 
+                   v-on:click="editClick()"
+                   class="btn btn-primary">
+                    <em class="fas fa-edit"></em>&nbsp;{{ lng('EDIT') }}
+                </button>
+                <button type="button" 
+                   v-on:click="delClick()"
+                   class="btn btn-danger">
+                    <em class="fas fa-eraser"></em>&nbsp;{{ lng('DELETE') }}
+                </button>
+            </div>
+        </div>
+        <div class="row formButtons" v-if="!logedAdmin">
+            <div class="col-12">
+                <a v-bind:href="previous" class="btn btn-secondary">
+                    <em class="fas fa-reply"></em>&nbsp;{{ lng('BACK') }}
+                </a>
+            </div>
+        </div>
+    </div>    
+    
+    
+</div>
+
+
+
+<script>
+    methods = {
+		afterMount() {
+			if (this.record != undefined) {
+				if ((this.record.id == 0) | (this.record.displayMode == 'edit')) {
+                    document.getElementById('blogForm').style='display:block';
+        			document.getElementById('blogShow').style='display:none';
+		        	document.querySelector("input[name=\"title\"]").focus();
+				}
+			}
+            if (window.editor == undefined) {
+                ClassicEditor
+                .create( document.querySelector( 'textarea#body' ), {
+                    toolbar: [ 'heading', '|', 'bold' , 'italic', 'link', 'bulletedList', 'numberedList',
+                       'imageUpload','insertTable','sourceEditing','mediaEmbed','undo','redo'],
+                    language: 'hu',
+                    extraPlugins: [ MyCustomUploadAdapterPlugin ],
+                    mediaEmbed: { extraProviders: myExtraProviders }
+                } )
+                .then( editor => {
+                    window.editor = editor;
+                } )
+                .catch( err => {
+                    console.error( err.stack );
+                } );
+            }
+		},
+        delClick() {
+            popupConfirm(lng('SUREDELETE'), 
+            function() {
+                location=HREF('blog.delete',{id:app.record.id, key:app.flowKey}); 
+            })
+        },
+        editClick() {
+            document.location = HREF('blog.editform',{id:this.record.id});
+		}    
+    }
+</script>
